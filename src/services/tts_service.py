@@ -1,19 +1,21 @@
-from openai import OpenAI
+from elevenlabs.client import ElevenLabs
 import os
 import uuid
 import subprocess
 
 class TTSService:
     def __init__(self, output_dir="assets/cache"):
-        self.client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+        self.client = ElevenLabs(api_key=os.getenv("ELEVENLABS_API_KEY"))
         self.cache_dir = output_dir
         os.makedirs(self.cache_dir, exist_ok=True)
-        # 'alloy' is generally the most articulate and balanced voice for Turkish.
-        self.voice = "alloy" 
+        # ElevenLabs 'Bella' or 'Adam' are great. 
+        # For Turkish, Multilingual v2 is the gold standard.
+        self.voice_id = "21m00Tcm4TlvDq8ikWAM" # Bella
+        self.model_id = "eleven_multilingual_v2"
 
     def generate_audio_with_subtitles(self, text, language="tr"):
         """
-        Generates PREMIUM audio and returns (audio_path, subs_path, duration).
+        Generates PREMIUM ElevenLabs audio and returns (audio_path, subs_path, duration).
         """
         id = str(uuid.uuid4())
         audio_path = os.path.join(self.cache_dir, f"{id}.mp3")
@@ -23,16 +25,20 @@ class TTSService:
         clean_text = text.replace(".", ". ").replace("!", "! ").replace("?", "? ").strip()
         
         try:
-            print(f"      🎙️ [OpenAI TTS - Alloy Narrator]: Precise and clear articulation...")
-            with self.client.audio.speech.with_streaming_response.create(
-                model="tts-1-hd",
-                voice=self.voice,
-                input=clean_text,
-                speed=1.0 # Normal speed for maximum clarity
-            ) as response:
-                response.stream_to_file(audio_path)
+            print(f"      🎙️ [ElevenLabs TTS - Bella Premium]: Deep, rich and natural Turkish...")
+            audio_generator = self.client.generate(
+                text=clean_text,
+                voice=self.voice_id,
+                model=self.model_id
+            )
+            
+            # Save the generator content to file
+            with open(audio_path, "wb") as f:
+                for chunk in audio_generator:
+                    f.write(chunk)
+                    
         except Exception as e:
-            print(f"      ❌ OpenAI TTS Error: {e}")
+            print(f"      ❌ ElevenLabs TTS Error: {e}")
             return None, None, 0
 
         # Get actual duration for perfect sync
