@@ -1,0 +1,90 @@
+� Hesabınızdaki tüm sesler listeleniyor...
+
+👤 İsim: Roger - Laid-Back, Casual, Resonant
+🆔 ID: CwhRBWXzGAHq8TQ4Fs17
+🏷️ Etiketler: {'accent': 'american', 'descriptive': 'classy', 'age': 'middle_aged', 'gender': 'male', 'language': 'en', 'use_case': 'conversational'}
+------------------------------
+👤 İsim: Sarah - Mature, Reassuring, Confident
+🆔 ID: EXAVITQu4vr4xnSDxMaL
+🏷️ Etiketler: {'accent': 'american', 'descriptive': 'professional', 'age': 'young', 'gender': 'female', 'language': 'en', 'use_case': 'entertainment_tv'}
+------------------------------
+👤 İsim: Laura - Enthusiast, Quirky Attitude
+🆔 ID: FGY2WhTYpPnrIDTdsKH5
+🏷️ Etiketler: {'accent': 'american', 'descriptive': 'sassy', 'age': 'young', 'gender': 'female', 'language': 'en', 'use_case': 'social_media'}
+------------------------------
+👤 İsim: Charlie - Deep, Confident, Energetic
+🆔 ID: IKne3meq5aSn9XLyUdCD
+🏷️ Etiketler: {'accent': 'australian', 'descriptive': 'hyped', 'age': 'young', 'gender': 'male', 'language': 'en', 'use_case': 'conversational'}
+------------------------------
+👤 İsim: George - Warm, Captivating Storyteller
+🆔 ID: JBFqnCBsd6RMkjVDRZzb
+🏷️ Etiketler: {'accent': 'british', 'descriptive': 'mature', 'age': 'middle_aged', 'gender': 'male', 'language': 'en', 'use_case': 'narrative_story'}
+------------------------------
+👤 İsim: Callum - Husky Trickster
+🆔 ID: N2lVS1w4EtoT3dr4eOWO
+🏷️ Etiketler: {'accent': 'american', 'age': 'middle_aged', 'language': 'en', 'gender': 'male', 'use_case': 'characters_animation'}
+------------------------------
+👤 İsim: River - Relaxed, Neutral, Informative
+🆔 ID: SAz9YHcvj6GT2YYXdXww
+🏷️ Etiketler: {'accent': 'american', 'descriptive': 'calm', 'age': 'middle_aged', 'gender': 'neutral', 'language': 'en', 'use_case': 'conversational'}
+------------------------------
+👤 İsim: Harry - Fierce Warrior
+🆔 ID: SOYHLrjzK2X1ezoPC6cr
+🏷️ Etiketler: {'accent': 'american', 'descriptive': 'rough', 'age': 'young', 'gender': 'male', 'language': 'en', 'use_case': 'characters_animation'}
+------------------------------
+👤 İsim: Liam - Energetic, Social Media Creator
+🆔 ID: TX3LPaxmHKxFdv7VOQHJ
+🏷️ Etiketler: {'accent': 'american', 'descriptive': 'confident', 'age': 'young', 'gender': 'male', 'language': 'en', 'use_case': 'social_media'}
+------------------------------
+👤 İsim: Alice - Clear, Engaging Educator
+🆔 ID: Xb7hH8MSUJpSbSDYk0k2
+🏷️ Etiketler: {'accent': 'british', 'descriptive': 'professional', 'age': 'middle_aged', 'gender': 'female', 'language': 'en', 'use_case': 'informative_educational'}
+------------------------------
+👤 İsim: Matilda - Knowledgable, Professional
+🆔 ID: XrExE9yKIg1WjnnlVkGX
+🏷️ Etiketler: {'accent': 'american', 'descriptive': 'upbeat', 'age': 'middle_aged', 'gender': 'female', 'language': 'en', 'use_case': 'informative_educational'}
+------------------------------
+👤 İsim: Will - Relaxed Optimist
+🆔 ID: bIHbv24MWmeRgasZH58o
+🏷️ Etiketler: {'accent': 'american', 'descriptive': 'chill', 'age': 'young', 'gender': 'male', 'language': 'en', 'use_case': 'conversational'}
+------------------------------
+👤 İsim: Jessica - Playful, Bright, Warm
+🆔 ID: cgSgspJ2msm6clMCkdW9
+🏷️ Etiketler: {'accent': 'american', 'descriptive': 'cute', 'age': 'young', 'gender': 'female', 'language': 'en', 'use_case': 'conversational'}
+------------------------------
+👤 İsim: Eric - Smooth, Trustworthy
+🆔 ID: cjVigY5qzO86Huf0OWal
+🏷️ Etiketler: {'accent': 'american', 'descriptive': 'classy', 'age': 'middle_aged', 'gender': 'male', 'language': 'en', 'use_case': 'conversational'}
+------------------------------
+👤 İsim: Bella - Professional, Bright, Warm
+🆔 ID: hpp4J3VqNfWAUOO0d1Us
+🏷️ Etiketler: {'accent': 'american', 'descriptive': 'professional', 'age': 'middle_aged', 'gender': 'female', 'language': 'en', 'use_case': 'informative_educational'}
+------------------------------
+👤 İsim: Chris - Charming, Down-to-Earth
+🆔 ID: iP95p4xoKVk53GoZ742B
+🏷️ Etiketler: {'accent': 'american', 'descriptive': 'casual', 'age': 'middle_aged', 'gender': 'male', 'language': 'en', 'use_case': 'conversational'}
+------------------------------
+👤 İsim: Brian - Deep, Resonant and Comforting
+🆔 ID: nPczCjzI2devNBz1zQrb
+🏷️ Etiketler: {'accent': 'american', 'descriptive': 'classy', 'age': 'middle_aged', 'gender': 'male', 'language': 'en', 'use_case': 'social_media'}
+------------------------------
+👤 İsim: Daniel - Steady Broadcaster
+🆔 ID: onwK4e9ZLuTAKqWW03F9
+🏷️ Etiketler: {'accent': 'british', 'descriptive': 'formal', 'age': 'middle_aged', 'gender': 'male', 'language': 'en', 'use_case': 'informative_educational'}
+------------------------------
+👤 İsim: Lily - Velvety Actress
+🆔 ID: pFZP5JQG7iQjIQuC4Bku
+🏷️ Etiketler: {'accent': 'british', 'descriptive': 'confident', 'age': 'middle_aged', 'gender': 'female', 'language': 'en', 'use_case': 'informative_educational'}
+------------------------------
+👤 İsim: Adam - Dominant, Firm
+🆔 ID: pNInz6obpgDQGcFmaJgB
+🏷️ Etiketler: {'accent': 'american', 'age': 'middle_aged', 'language': 'en', 'gender': 'male', 'use_case': 'social_media'}
+------------------------------
+👤 İsim: Bill - Wise, Mature, Balanced
+🆔 ID: pqHfZKP75CvOlQylNhV4
+🏷️ Etiketler: {'accent': 'american', 'descriptive': 'crisp', 'age': 'old', 'gender': 'male', 'language': 'en', 'use_case': 'advertisement'}
+------------------------------
+👤 İsim: Doga - Upbeat and Rich
+🆔 ID: IuRRIAcbQK5AQk1XevPj
+🏷️ Etiketler: {'accent': 'istanbul', 'descriptive': 'confident', 'age': 'middle_aged', 'gender': 'male', 'language': 'tr', 'use_case': 'social_media'}
+------------------------------

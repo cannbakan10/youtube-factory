@@ -19,6 +19,8 @@ class SceneBlueprint(BaseModel):
 class VideoBlueprint(BaseModel):
     video_id: str
     metadata: dict
+    music_prompt: str = "" # New: Prompt for background music
+    music_path: str = "" # New: Path to generated music
     scenes: List[SceneBlueprint]
 
 class ScriptWriter:
@@ -102,6 +104,7 @@ class ScriptWriter:
             "description": "Açıklama buraya...",
             "tags": ["tag1", "tag2"]
           }},
+          "music_prompt": "dark ambient suspenseful cinematic background music",
           "scenes": [
             {{
               "text": "Buraya seslendirilecek Türkçe cümle.",

@@ -43,6 +43,7 @@ class YoutubeFactory:
         
         # Servisleri başlat
         self.tts = TTSService(output_dir=cache_dir)
+        self.tts.set_voice() # Pick a random voice from the pool (Male/Female)
         self.pexels = PexelsService(output_dir=cache_dir)
         self.engine = VideoEngine()
 
@@ -58,6 +59,11 @@ class YoutubeFactory:
             narrative = self.scriptwriter.generate_narrative(research_data, topic)
             blueprint = self.scriptwriter.generate_blueprint(narrative, topic, language=lang)
             blueprint.video_id = production_id # ID eşitleme
+            
+            # Yeni: ElevenLabs AI Music Generation
+            if blueprint.music_prompt:
+                music_path = self.tts.generate_music(blueprint.music_prompt)
+                blueprint.music_path = music_path
             
             # 3. Medya Toplama
             for i, scene in enumerate(blueprint.scenes):

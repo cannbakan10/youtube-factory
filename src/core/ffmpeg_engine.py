@@ -12,10 +12,10 @@ class VideoEngine:
 
     def render(self, blueprint, language="tr"):
         """
-        Stream Global Ultra-Flow Engine v3.0:
-        - Precise Word-Sync Subtitles (ElevenLabs Hyper-Sync)
-        - Multi-Audio Mixing (Narrative + Ambient SFX)
-        - High-Impact Cinematic Look
+        Stream Global Ultra-Flow Engine v3.6:
+        - Adjusted Subtitle Scaling (FontSize=65 for better balance)
+        - Refined Audio Mixing (Lower Background levels for clarity)
+        - Tri-Audio Mixing (Narrative + Ambient SFX + AI Background Music)
         """
         video_id = getattr(blueprint, 'video_id', 'output')
         final_output = os.path.join(self.output_dir, f"{video_id}_{language}_final.mp4")
@@ -27,33 +27,40 @@ class VideoEngine:
 
         current_input_idx = 0
         
+        # 1. Background Music Input (If exists)
+        music_in = None
+        if hasattr(blueprint, 'music_path') and blueprint.music_path and os.path.exists(blueprint.music_path):
+            input_args.extend(["-i", blueprint.music_path])
+            music_in = current_input_idx
+            current_input_idx += 1
+
         for i, scene in enumerate(blueprint.scenes):
             if not scene.audio_path or not os.path.exists(scene.audio_path): continue
             
-            # Subtitle styling: High-impact Yellow with Black Outline, Centered
-            # Using Arial for better rendering of special chars and bold look
+            # Subtitle styling: Reduced FontSize to 65 as requested
             style = (
-                "FontName=Arial,FontSize=80,PrimaryColour=&H00FFFF,OutlineColour=&H000000,"
-                "BorderStyle=1,Outline=4,Shadow=0,Alignment=10,MarginV=10,Bold=1"
+                "FontName=Arial,FontSize=65,PrimaryColour=&H00FFFF,OutlineColour=&H000000,"
+                "BorderStyle=1,Outline=3,Shadow=0,Alignment=10,MarginV=15,Bold=1"
             )
             abs_subs = os.path.abspath(scene.subs_path).replace("\\", "/").replace(":", "\\:")
             duration = scene.duration 
 
-            # Inputs: Video (if exists), Audio, SFX (if exists)
-            input_args.extend(["-i", scene.audio_path if not scene.video_path else scene.video_path])
-            if scene.video_path: input_args.extend(["-i", scene.audio_path])
+            # Scene Inputs: Video (if exists), Narrative Audio, SFX (if exists)
+            v_in = None
+            if scene.video_path and os.path.exists(scene.video_path):
+                input_args.extend(["-i", scene.video_path])
+                v_in = current_input_idx
+                current_input_idx += 1
             
-            v_in = current_input_idx if scene.video_path else None
-            a_narrative_in = current_input_idx + 1 if scene.video_path else current_input_idx
+            input_args.extend(["-i", scene.audio_path])
+            a_narrative_in = current_input_idx
+            current_input_idx += 1
             
-            # SFX handling
             sfx_in = None
             if scene.sfx_path and os.path.exists(scene.sfx_path):
                 input_args.extend(["-i", scene.sfx_path])
-                sfx_in = current_input_idx + 2 if scene.video_path else current_input_idx + 1
-                current_input_idx += 3 if scene.video_path else 2
-            else:
-                current_input_idx += 2 if scene.video_path else 1
+                sfx_in = current_input_idx
+                current_input_idx += 1
 
             # Video Filter (Dynamic scaling and Subtitles)
             if v_in is not None:
@@ -68,14 +75,14 @@ class VideoEngine:
                     f"[v_black{i}]subtitles='{abs_subs}':force_style='{style}'[v{i}_out];"
                 )
             
-            # Audio Mixing: Narrative + SFX
+            # Audio Mix (Scene level): Narrative + SFX
             if sfx_in is not None:
-                # Mix narrative and SFX (SFX volume slightly lower at 0.6)
+                # Lower SFX volume to 0.25 (was 0.4)
                 a_filter = (
                     f"[{a_narrative_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS[a{i}_nar];"
-                    f"[{sfx_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,volume=0.6[a{i}_sfx];"
-                    f"[a{i}_nar][a{i}_sfx]amix=inputs=2:duration=first:dropout_transition=0,"
-                    f"aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo[a{i}_out];"
+                    f"[{sfx_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,volume=0.25[a{i}_sfx];"
+                    f"[a{i}_nar][a{i}_sfx]amix=inputs=2:duration=first:dropout_transition=0[a{i}_mixed];"
+                    f"[a{i}_mixed]aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo[a{i}_out];"
                 )
             else:
                 a_filter = f"[{a_narrative_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo[a{i}_out];"
@@ -87,9 +94,21 @@ class VideoEngine:
 
         if not v_labels: return None
 
+        # 2. Concat all scenes
         num_scenes = len(v_labels)
-        concat_str = "".join([f"{v}{a}" for v, a in zip(v_labels, a_labels)])
-        filter_complex_parts.append(f"{concat_str}concat=n={num_scenes}:v=1:a=1[v_full][a_full];")
+        concat_v_labels = "".join(v_labels)
+        concat_a_labels = "".join(a_labels)
+        filter_complex_parts.append(f"{concat_v_labels}{concat_a_labels}concat=n={num_scenes}:v=1:a=1[v_full][a_no_music];")
+
+        #  global Audio Mix: Concat Audio + Background Music (Looped if necessary)
+        if music_in is not None:
+            # Lower Background Music volume to 0.1 (was 0.2)
+            filter_complex_parts.append(
+                f"[{music_in}:a]aloop=loop=-1:size=2e9,volume=0.1[bg_music];"
+                f"[a_no_music][bg_music]amix=inputs=2:duration=first:dropout_transition=2[a_full];"
+            )
+        else:
+            filter_complex_parts.append(f"[a_no_music]copy[a_full];")
 
         cmd = [
             "ffmpeg", "-y", "-v", "warning",
@@ -103,7 +122,7 @@ class VideoEngine:
             final_output
         ]
 
-        logging.info(f"🎬 Factory V3 (Cinematic) render başlıyor...")
+        logging.info(f"🎬 Factory V3.6 (Acoustic Cleanup) render başlıyor...")
         try:
             subprocess.run(cmd, check=True)
             return final_output
