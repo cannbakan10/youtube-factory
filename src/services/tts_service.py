@@ -25,11 +25,12 @@ class TTSService:
         clean_text = text.replace(".", ". ").replace("!", "! ").replace("?", "? ").strip()
         
         try:
-            print(f"      🎙️ [ElevenLabs TTS - Bella Premium]: Deep, rich and natural Turkish...")
-            audio_generator = self.client.generate(
+            print(f"      🎙️ [ElevenLabs TTS - Adam Premium]: Deep, rich and natural Turkish...")
+            # ElevenLabs 2.x SDK usage
+            audio_generator = self.client.text_to_speech.convert(
+                voice_id=self.voice_id,
                 text=clean_text,
-                voice=self.voice_id,
-                model=self.model_id
+                model_id=self.model_id
             )
             
             # Save the generator content to file
