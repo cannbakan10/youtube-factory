@@ -38,25 +38,23 @@ class VideoEngine:
             v_idx = 2 * i
             a_idx = 2 * i + 1
             
-            # Altyazı Yolu Düzenleme (FFmpeg Windows uyumu için)
-            rel_subs = os.path.relpath(scene.subs_path, start=os.getcwd()).replace("\\", "/")
+            # Altyazı Yolu Düzenleme (FFmpeg Kaçış Karakterleri)
+            # FFmpeg'in altyazı dosyası yollarında hata almaması için mutlak yol ve kaçış kullanıyoruz
+            abs_subs = os.path.abspath(scene.subs_path).replace("\\", "/").replace(":", "\\:")
             
             # MODERN ALTYAZI STİLİ:
             # - Sarı metin (&H00FFFF), Siyah çerçeve, Kalın font.
-            # - MarginV=280: YouTube butonlarının (Beğen/Abone Ol) hemen üstünde, güvenli alanda kalır.
+            # - MarginV=280: YouTube butonlarının hemen üzerinde, güvenli alanda.
             style = (
-                "FontName=Arial,FontSize=24,PrimaryColour=&H00FFFF,OutlineColour=&H000000,"
-                "BorderStyle=1,Outline=2,Shadow=0,Alignment=2,MarginV=280,Bold=1"
+                "FontName=Verdana,FontSize=28,PrimaryColour=&H00FFFF,OutlineColour=&H000000,"
+                "BorderStyle=1,Outline=2,Shadow=1,Alignment=2,MarginV=280,Bold=1"
             )
 
-            # VİDEO İŞLEME: 
-            # - Force Original Aspect Ratio: Görüntüyü bozmadan doldurur.
-            # - Crop: Tam 1080x1920 yapar.
-            # - Subtitles: Altyazıyı gömer.
+            # VİDEO İŞLEME: 1080x1920 Kesin Çözünürlük
             v_filter = (
                 f"[{v_idx}:v]scale=w=1080:h=1920:force_original_aspect_ratio=increase,"
                 f"crop=1080:1920,setsar=1,"
-                f"subtitles='{rel_subs}':force_style='{style}'[v{i}];"
+                f"subtitles='{abs_subs}':force_style='{style}'[v{i}];"
             )
             
             # SES İŞLEME: Tüm sesleri aynı formata (Stereo, 44.1kHz) getiriyoruz ki concat hata vermesin.
@@ -76,10 +74,11 @@ class VideoEngine:
             bg_idx = 2 * num_scenes
             
             # Konuşma sesi (a_full) varken müziği otomatik kısan (ducking) filtre
+            # threshold=0.05: Konuşma başladığında müziği anında kısar.
             audio_mixing_filter = (
-                f"[{bg_idx}:a]aloop=loop=-1:size=2e9,volume=0.15,"
+                f"[{bg_idx}:a]aloop=loop=-1:size=2e9,volume=0.10,"
                 f"aformat=sample_fmts=fltp:sample_rates=44100:channel_layouts=stereo[bg_ready];"
-                f"[bg_ready][a_full]sidechaincompress=threshold=0.15:ratio=12:attack=20:release=300[outa]"
+                f"[bg_ready][a_full]sidechaincompress=threshold=0.05:ratio=16:attack=20:release=300[outa]"
             )
             map_audio = "[outa]"
         else:
