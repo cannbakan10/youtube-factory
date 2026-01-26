@@ -41,17 +41,16 @@ class VideoEngine:
         for i, scene in enumerate(blueprint.scenes):
             if not scene.audio_path or not os.path.exists(scene.audio_path): continue
             
-            # Subtitle styling: Smaller font size (55) as requested by user
+            # Subtitle styling: Reduced to 45 for a cleaner look
             style = (
-                f"FontName={font_name},FontSize=55,PrimaryColour=&H00FFFF,OutlineColour=&H000000,"
-                "BorderStyle=1,Outline=3,Shadow=0,Alignment=10,MarginV=20,Bold=1"
+                f"FontName={font_name},FontSize=45,PrimaryColour=&H00FFFF,OutlineColour=&H000000,"
+                "BorderStyle=1,Outline=2,Shadow=0,Alignment=10,MarginV=25,Bold=1"
             )
             
             subs_path = os.path.abspath(scene.subs_path)
             if os.name == 'nt':
                 subs_path = subs_path.replace("\\", "/").replace(":", "\\:")
             else:
-                # Subtitles filter needs backslash escaping for some characters on Linux
                 subs_path = subs_path.replace("'", "'\\\\\\''")
             
             duration = scene.duration 
@@ -93,10 +92,10 @@ class VideoEngine:
             
             # --- AUDIO FILTERING ---
             if sfx_in is not None:
-                # SFX Volume: 0.25 (as requested to be lower)
+                # SFX Volume: Further reduced to 0.15
                 a_filter = (
                     f"[{a_narrative_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS[a{i}_nar];"
-                    f"[{sfx_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,volume=0.25[a{i}_sfx];"
+                    f"[{sfx_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,volume=0.15[a{i}_sfx];"
                     f"[a{i}_nar][a{i}_sfx]amix=inputs=2:duration=first:dropout_transition=0[a{i}_mixed];"
                     f"[a{i}_mixed]aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo[a{i}_out];"
                 )
@@ -119,9 +118,9 @@ class VideoEngine:
 
         # 3. Global Audio Mix: Narrative/SFX + Background Music
         if music_in is not None:
-            # Music Volume: 0.1 (very low to avoid overlap as requested)
+            # Music Volume: Reduced to 0.05 (barely audible mood music)
             filter_complex_parts.append(
-                f"[{music_in}:a]aloop=loop=-1:size=2e9,volume=0.1[bg_music];"
+                f"[{music_in}:a]aloop=loop=-1:size=2e9,volume=0.05[bg_music];"
                 f"[a_no_music][bg_music]amix=inputs=2:duration=first:dropout_transition=2[a_full];"
             )
         else:
