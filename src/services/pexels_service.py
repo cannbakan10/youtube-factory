@@ -4,7 +4,7 @@ import uuid
 
 class PexelsService:
     def __init__(self, output_dir=None):
-        self.api_key = os.getenv("PEXELS_API_KEY")
+        self.api_key = os.getenv("PEXELS_API_KEY", "").strip()
         self.base_url = "https://api.pexels.com/v1/videos/search"
         if output_dir:
             self.cache_dir = output_dir

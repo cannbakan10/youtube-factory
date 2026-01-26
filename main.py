@@ -15,7 +15,7 @@ load_dotenv()
 
 class YoutubeFactory:
     def __init__(self):
-        required_keys = ["GEMINI_API_KEY", "OPENAI_API_KEY", "PEXELS_API_KEY", "TAVILY_API_KEY", "ELEVENLABS_API_KEY"]
+        required_keys = ["GEMINI_API_KEY", "PEXELS_API_KEY", "TAVILY_API_KEY", "ELEVENLABS_API_KEY"]
         missing = [k for k in required_keys if not os.getenv(k)]
         if missing:
             print(f"⚠️ UYARI: Şu API anahtarları eksik: {', '.join(missing)}")

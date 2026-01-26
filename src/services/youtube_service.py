@@ -19,20 +19,36 @@ class YouTubeService:
     def _authenticate(self):
         creds = None
         if os.path.exists(self.token_file):
+            print(f"   🔑 [YouTube]: Loading credentials from {self.token_file}")
             with open(self.token_file, "rb") as token:
                 creds = pickle.load(token)
         
-        # If there are no (valid) credentials available, let the user log in.
+        # If there are no (valid) credentials available
         if not creds or not creds.valid:
             if creds and creds.expired and creds.refresh_token:
-                creds.refresh(Request())
-            else:
-                flow = InstalledAppFlow.from_client_secrets_file(
-                    self.client_secrets_file, self.scopes)
-                creds = flow.run_local_server(port=0)
+                print("   🔄 [YouTube]: Refreshing expired token...")
+                try:
+                    creds.refresh(Request())
+                except Exception as e:
+                    print(f"   ❌ [YouTube]: Token refresh failed: {e}")
+                    creds = None
+            
+            if not creds:
+                if os.getenv("GITHUB_ACTIONS"):
+                    print("   ❌ [YouTube ERROR]: Valid 'token.pickle' not found in GitHub Actions environment.")
+                    print("      Authentication cannot be performed interactively in CI/CD.")
+                    print("      Please generate a fresh 'token.pickle' locally and update the GITHUB SECRET.")
+                    return None
+                else:
+                    print("   🌐 [YouTube]: Starting local authentication flow...")
+                    flow = InstalledAppFlow.from_client_secrets_file(
+                        self.client_secrets_file, self.scopes)
+                    creds = flow.run_local_server(port=0)
+            
             # Save the credentials for the next run
-            with open(self.token_file, "wb") as token:
-                pickle.dump(creds, token)
+            if creds:
+                with open(self.token_file, "wb") as token:
+                    pickle.dump(creds, token)
         return creds
 
     def upload_video(self, file_path, title, description, tags=None):

@@ -3,7 +3,7 @@ import google.generativeai as genai
 from dotenv import load_dotenv
 from src.services.tts_service import TTSService
 
-def test_gemini_elevenlabs_pipeline():
+def test_gemini_openai_pipeline():
     # 1. Ortam değişkenlerini yükle
     load_dotenv()
     
@@ -29,8 +29,8 @@ def test_gemini_elevenlabs_pipeline():
         print(f"❌ Gemini Hatası: {e}")
         return
 
-    # 4. ElevenLabs (TTSService) ile Seslendirme
-    print(f"🎙️ ElevenLabs seslendirmeye başlıyor...")
+    # 4. OpenAI (TTSService) ile Seslendirme
+    print(f"🎙️ OpenAI seslendirmeye başlıyor...")
     tts = TTSService()
     
     try:
@@ -46,7 +46,7 @@ def test_gemini_elevenlabs_pipeline():
         else:
             print("❌ HATA: Ses dosyası oluşturulamadı.")
     except Exception as e:
-        print(f"❌ ElevenLabs Hatası: {e}")
+        print(f"❌ OpenAI Hatası: {e}")
 
 if __name__ == "__main__":
-    test_gemini_elevenlabs_pipeline()
+    test_gemini_openai_pipeline()

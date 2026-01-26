@@ -21,7 +21,7 @@ class VideoBlueprint(BaseModel):
 
 class ScriptWriter:
     def __init__(self):
-        self.client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+        self.client = genai.Client(api_key=os.getenv("GEMINI_API_KEY", "").strip())
         self.model = "gemini-2.0-flash-lite"
 
     def generate_narrative(self, research_data, topic) -> str:

@@ -27,7 +27,6 @@ class TTSService:
         try:
             print(f"      🎙️ [ElevenLabs TTS - Natural Turkish Flow]: Optimized for native prosody...")
             # ElevenLabs 2.x SDK
-            # voice_settings: stability(low=more expressive), similarity_boost(high=closer to original)
             audio_generator = self.client.text_to_speech.convert(
                 voice_id=self.voice_id,
                 text=clean_text,
@@ -45,7 +44,7 @@ class TTSService:
                     if chunk:
                         f.write(chunk)
                 f.flush()
-                os.fsync(f.fileno())
+                # os.fsync(f.fileno()) # Not strictly necessary but safe
             
             # Double check file
             if not os.path.exists(audio_path) or os.path.getsize(audio_path) < 1000:

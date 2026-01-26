@@ -2,16 +2,16 @@ import os
 from dotenv import load_dotenv
 from src.services.tts_service import TTSService
 
-def test_elevenlabs():
+def test_openai():
     # Load environment variables
     load_dotenv()
     
     # Initialize TTS Service
     tts = TTSService()
     
-    test_text = "Merhaba! Bu bir Eleven Labs test seslendirmesidir. Eğer bu sesi duyuyorsanız, sistemimiz başarıyla çalışıyor demektir."
+    test_text = "Merhaba! Bu bir OpenAI test seslendirmesidir. Eğer bu sesi duyuyorsanız, sistemimiz başarıyla çalışıyor demektir."
     
-    print(f"🎙️ ElevenLabs üzerinden ses üretiliyor: '{test_text}'")
+    print(f"🎙️ OpenAI üzerinden ses üretiliyor: '{test_text}'")
     
     audio_path, subs_path, duration = tts.generate_audio_with_subtitles(test_text)
     
@@ -30,4 +30,4 @@ def test_elevenlabs():
         print("❌ HATA: Ses dosyası oluşturulamadı!")
 
 if __name__ == "__main__":
-    test_elevenlabs()
+    test_openai()

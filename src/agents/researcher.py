@@ -5,8 +5,8 @@ import os
 
 class ResearchAgent:
     def __init__(self):
-        self.client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
-        self.tavily = TavilyClient(api_key=os.getenv("TAVILY_API_KEY")) if os.getenv("TAVILY_API_KEY") else None
+        self.client = genai.Client(api_key=os.getenv("GEMINI_API_KEY", "").strip())
+        self.tavily = TavilyClient(api_key=os.getenv("TAVILY_API_KEY", "").strip()) if os.getenv("TAVILY_API_KEY") else None
         self.model = "gemini-2.0-flash-lite"
 
     def research(self, topic):
