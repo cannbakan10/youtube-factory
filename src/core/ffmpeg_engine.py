@@ -66,10 +66,9 @@ class VideoEngine:
             a_filter_chains.append(a_filter)
 
         # 2. Concat (Birleştirme) Etiketlerini Oluştur
-        num_scenes = len(blueprint.scenes)
-        concat_v_labels = "".join([f"[v{i}]" for i in range(num_scenes)])
-        concat_a_labels = "".join([f"[a{i}]" for i in range(num_scenes)])
-        concat_filter = f"{concat_v_labels}{concat_a_labels}concat=n={num_scenes}:v=1:a=1[v_full][a_full];"
+        num_scenes = len(v_filter_chains) # Use actual count of processed scenes
+        concat_labels = "".join([f"[v{i}][a{i}]" for i in range(num_scenes)])
+        concat_filter = f"{concat_labels}concat=n={num_scenes}:v=1:a=1[v_full][a_full];"
 
         # 3. Arka Plan Müziği ve Sidechain Compression (Profesyonel Dokunuş)
         if os.path.exists(bg_music):
