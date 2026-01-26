@@ -5,7 +5,8 @@ import subprocess
 
 class TTSService:
     def __init__(self, output_dir="assets/cache"):
-        self.client = ElevenLabs(api_key=os.getenv("ELEVENLABS_API_KEY"))
+        api_key = os.getenv("ELEVENLABS_API_KEY", "").strip()
+        self.client = ElevenLabs(api_key=api_key)
         self.cache_dir = output_dir
         os.makedirs(self.cache_dir, exist_ok=True)
         # Custom Native Turkish Voice provided by user
