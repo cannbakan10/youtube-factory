@@ -12,10 +12,9 @@ class VideoEngine:
 
     def render(self, blueprint, language="tr"):
         """
-        Stream Global Ultra-Flow Engine v3.6:
-        - Adjusted Subtitle Scaling (FontSize=65 for better balance)
-        - Refined Audio Mixing (Lower Background levels for clarity)
-        - Tri-Audio Mixing (Narrative + Ambient SFX + AI Background Music)
+        Stream Global Ultra-Flow Engine v3.7 (CI Compatible):
+        - Adjusted Subtitle Scaling and Font for Linux/Mac compatibility
+        - Better Error Logging for FFmpeg
         """
         video_id = getattr(blueprint, 'video_id', 'output')
         final_output = os.path.join(self.output_dir, f"{video_id}_{language}_final.mp4")
@@ -34,15 +33,26 @@ class VideoEngine:
             music_in = current_input_idx
             current_input_idx += 1
 
+        # Use a more generic font name or let FFmpeg fallback
+        # On Ubuntu: DejaVu Sans is usually available. On Mac: Arial/Verdana.
+        # We can try "Sans" which is a generic alias.
+        font_name = "sans" if os.name != 'nt' else "Arial"
+        
         for i, scene in enumerate(blueprint.scenes):
             if not scene.audio_path or not os.path.exists(scene.audio_path): continue
             
-            # Subtitle styling: Reduced FontSize to 65 as requested
             style = (
-                "FontName=Arial,FontSize=65,PrimaryColour=&H00FFFF,OutlineColour=&H000000,"
+                f"FontName={font_name},FontSize=60,PrimaryColour=&H00FFFF,OutlineColour=&H000000,"
                 "BorderStyle=1,Outline=3,Shadow=0,Alignment=10,MarginV=15,Bold=1"
             )
-            abs_subs = os.path.abspath(scene.subs_path).replace("\\", "/").replace(":", "\\:")
+            
+            # FFmpeg subtitles filter path escaping
+            subs_path = os.path.abspath(scene.subs_path)
+            if os.name == 'nt':
+                subs_path = subs_path.replace("\\", "/").replace(":", "\\:")
+            else:
+                subs_path = subs_path.replace("'", "'\\\\\\''") # Escape single quotes for many shells
+            
             duration = scene.duration 
 
             # Scene Inputs: Video (if exists), Narrative Audio, SFX (if exists)
@@ -67,17 +77,16 @@ class VideoEngine:
                 v_filter = (
                     f"[{v_in}:v]scale=w=1080:h=1920:force_original_aspect_ratio=increase,"
                     f"crop=1080:1920,setsar=1,trim=duration={duration},setpts=PTS-STARTPTS,"
-                    f"subtitles='{abs_subs}':force_style='{style}'[v{i}_out];"
+                    f"subtitles='{subs_path}':force_style='{style}'[v{i}_out];"
                 )
             else:
                 v_filter = (
                     f"color=c=black:s=1080x1920:d={duration}[v_black{i}];"
-                    f"[v_black{i}]subtitles='{abs_subs}':force_style='{style}'[v{i}_out];"
+                    f"[v_black{i}]subtitles='{subs_path}':force_style='{style}'[v{i}_out];"
                 )
             
             # Audio Mix (Scene level): Narrative + SFX
             if sfx_in is not None:
-                # Lower SFX volume to 0.25 (was 0.4)
                 a_filter = (
                     f"[{a_narrative_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS[a{i}_nar];"
                     f"[{sfx_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,volume=0.25[a{i}_sfx];"
@@ -92,7 +101,9 @@ class VideoEngine:
             v_labels.append(f"[v{i}_out]")
             a_labels.append(f"[a{i}_out]")
 
-        if not v_labels: return None
+        if not v_labels: 
+            logging.error("❌ Render Hatası: Herhangi bir sahne oluşturulamadı (Ses dosyaları eksik mi?)")
+            return None
 
         # 2. Concat all scenes
         num_scenes = len(v_labels)
@@ -100,9 +111,8 @@ class VideoEngine:
         concat_a_labels = "".join(a_labels)
         filter_complex_parts.append(f"{concat_v_labels}{concat_a_labels}concat=n={num_scenes}:v=1:a=1[v_full][a_no_music];")
 
-        #  global Audio Mix: Concat Audio + Background Music (Looped if necessary)
+        # 3. Global Audio Mix: Concat Audio + Background Music
         if music_in is not None:
-            # Lower Background Music volume to 0.1 (was 0.2)
             filter_complex_parts.append(
                 f"[{music_in}:a]aloop=loop=-1:size=2e9,volume=0.1[bg_music];"
                 f"[a_no_music][bg_music]amix=inputs=2:duration=first:dropout_transition=2[a_full];"
@@ -111,7 +121,7 @@ class VideoEngine:
             filter_complex_parts.append(f"[a_no_music]copy[a_full];")
 
         cmd = [
-            "ffmpeg", "-y", "-v", "warning",
+            "ffmpeg", "-y", "-v", "error",
             *input_args,
             "-filter_complex", "".join(filter_complex_parts),
             "-map", "[v_full]",
@@ -122,10 +132,14 @@ class VideoEngine:
             final_output
         ]
 
-        logging.info(f"🎬 Factory V3.6 (Acoustic Cleanup) render başlıyor...")
+        logging.info(f"🎬 Factory V3.7 (CI Ready) render başlıyor...")
         try:
-            subprocess.run(cmd, check=True)
+            # Capture output to see what exactly fails
+            result = subprocess.run(cmd, capture_output=True, text=True)
+            if result.returncode != 0:
+                logging.error(f"❌ FFmpeg Hatası: {result.stderr}")
+                return None
             return final_output
-        except subprocess.CalledProcessError as e:
-            logging.error(f"❌ Render Hatası: {e}")
+        except Exception as e:
+            logging.error(f"❌ Beklenmedik Render Hatası: {e}")
             return None
