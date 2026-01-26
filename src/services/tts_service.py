@@ -8,9 +8,8 @@ class TTSService:
         self.client = ElevenLabs(api_key=os.getenv("ELEVENLABS_API_KEY"))
         self.cache_dir = output_dir
         os.makedirs(self.cache_dir, exist_ok=True)
-        # ElevenLabs 'Adam' (pNInz6obpgDQGcFmaJgB) is a globally recognized professional narrator.
-        # Combined with multilingual_v2, it provides a deep, authoritative Turkish tone.
-        self.voice_id = "pNInz6obpgDQGcFmaJgB" 
+        # Custom Native Turkish Voice provided by user
+        self.voice_id = "IuRRIAcbQK5AQk1XevPj" 
         self.model_id = "eleven_multilingual_v2"
 
     def generate_audio_with_subtitles(self, text, language="tr"):
@@ -25,14 +24,21 @@ class TTSService:
         clean_text = text.replace(".", ". ").replace("!", "! ").replace("?", "? ").strip()
         
         try:
-            print(f"      🎙️ [ElevenLabs TTS - Adam Premium]: Deep, rich and natural Turkish...")
+            print(f"      🎙️ [ElevenLabs TTS - Natural Turkish Flow]: Optimized for native prosody...")
+            # ElevenLabs 2.x SDK
+            # voice_settings: stability(low=more expressive), similarity_boost(high=closer to original)
             audio_generator = self.client.text_to_speech.convert(
                 voice_id=self.voice_id,
                 text=clean_text,
-                model_id=self.model_id
+                model_id=self.model_id,
+                voice_settings={
+                    "stability": 0.45,
+                    "similarity_boost": 0.8,
+                    "style": 0.0,
+                    "use_speaker_boost": True
+                }
             )
             
-            # Write stream to file and ensure it is flushed
             with open(audio_path, "wb") as f:
                 for chunk in audio_generator:
                     if chunk:

@@ -63,18 +63,16 @@ class YoutubeFactory:
             for i, scene in enumerate(blueprint.scenes):
                 print(f"   🎥 Sahne {i+1}: Görsel ve Ses hazırlanıyor...")
                 
-                # Video İndir
+                # Video İndir (Fail-safe: Video yoksa siyah ekran kullanılacak)
                 video_path = self.pexels.get_video(scene.keywords)
                 if not video_path:
-                    print(f"      ⚠️ Video bulunamadı, varsayılan kullanılacak.")
-                    # Burada varsayılan bir 'black screen' veya 'default.mp4' mantığı eklenebilir
-                    continue 
+                    print(f"      ⚠️ Video bulunamadı, sesle devam ediliyor.")
                 scene.video_path = video_path
                 
-                # Ses ve Altyazı
+                # Ses ve Altyazı (SES ZORUNLUDUR)
                 audio, subs, dur = self.tts.generate_audio_with_subtitles(scene.text, lang)
                 if not audio:
-                    print("      ❌ Ses oluşturulamadı!")
+                    print("      ❌ Ses oluşturulamadı! Sahne atlanıyor.")
                     continue
                     
                 scene.audio_path = audio

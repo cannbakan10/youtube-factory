@@ -1,14 +1,14 @@
 from google import genai
 import os
 import json
-import time
-from pydantic import BaseModel, Field
+import re
+from pydantic import BaseModel
 from typing import List, Union
 
 class SceneBlueprint(BaseModel):
     text: str
     keywords: Union[str, List[str]]
-    duration: float = 10.0
+    duration: float = 0.0 # TTS servisi bunu güncelleyecek
     language: str = "en"
     video_path: str = ""
     audio_path: str = ""
@@ -26,99 +26,114 @@ class ScriptWriter:
 
     def generate_narrative(self, research_data, topic) -> str:
         """
-        Stage 1: Viral Scripting. Stream Global 3-Bar Brand Logic.
-        Ultra-clean text for TTS (No stage directions).
+        AŞAMA 1: İLK TASLAK (VIRAL NARRATIVE)
+        Burada amaç, sıkıcı ansiklopedik bilgi değil, "Tiktok/Shorts Akışı"na uygun,
+        ritmi yüksek ve merak uyandırıcı bir metin oluşturmaktır.
         """
         prompt = f"""
+        ROL: Sen dünyanın en iyi YouTube Shorts senaristisin. Görevin "Stream Global" kanalı için milyonlarca izlenecek viral bir metin yazmak.
+
         KONU: {topic}
-        VERİLER:
+        
+        ARAŞTIRMA VERİLERİ (BUNLARI KULLAN):
         {research_data}
 
-        GÖREV: "Stream Global" için 3 maddelik, vuruşu yüksek bir Shorts senaryosu yaz.
-
-        YOL HARİTASI (VİRAL KANCA VE YAPI):
-        1. KANCA (İLK CÜMLE): Aşağıdaki kalıplardan en uygun olanıyla başla:
-           - "Herkes yanlış yapıyor, doğrusu aslında şu..."
-           - "Eğer {topic} ile ilgileniyorsanız, bunu görmeniz şart."
-           - "Kimse size söylemedi ama gerçek aslında çok farklı..."
+        YAZIM KURALLARI (KESİN UYULACAK):
+        1. TON: "Belgesel sunucusu" ile "Teknoloji gurusu" karışımı. Ciddi ama heyecanlı.
+        2. YAPI:
+           - 0-3. Sn: (KANCA) İzleyiciyi durduran ters köşe bir cümle. Asla "Merhaba arkadaşlar" deme. Doğrudan konuya gir.
+           - 3-50. Sn: (BİLGİ AKIŞI) Konuyu tam olarak 3 vurucu maddeye böl. "Birincisi...", "İkincisi..." kalıplarını kullan.
+           - 50-60. Sn: (KAPANIŞ) "Geleceği kaçırmamak için abone ol." cümlesiyle bitir.
         
-        2. GÖVDE (3 ÖNEMLİ MADDE): Marka kimliğimiz olan "3 yatay bar"ı temsilen, konuyu tam olarak 3 net maddeye böl. Her maddeyi "Birincisi...", "İkincisi..." diye belirt.
-
-        3. KAPANIŞ: "Stream Global ile keşfetmeye devam et!" cümlesiyle bitir.
-
-        KRİTİK TTS KURALLARI (SESLENDİRME HATALARINI ÖNLEME):
-        - SADECE OKUNACAK METNİ YAZ. Parantez içinde notlar [Ses Efekti], *Gülümser* gibi ifadeleri ASLA ekleme.
-        - Türkiye örneği (konu değilse) verme. 
-        - Rakamları yuvarla ve yazıyla yaz. 
-        - Maksimum 90 kelime.
-
-        YALNIZCA anlatıcı metnini döndür.
+        3. DİL VE ÜSLUP:
+           - Asla "gibi görünüyor", "olduğu söyleniyor" gibi zayıf ifadeler kullanma. Otoriter konuş.
+           - Cümleler kısa ve net olsun. Nefes almadan okunabilecek gibi yaz.
+           - Rakamları yazıyla yaz (Örn: "1000" değil "Bin").
+           - Toplam kelime sayısı 75-90 kelime arasında olmalı.
+        
+        ÇIKTI FORMATI:
+        Sadece seslendirilecek metni ver. Başlık, sahne notu vs. yazma.
         """
+        
         response = self.client.models.generate_content(model=self.model, contents=prompt)
         text = response.text.strip()
         
-        # Viral purity cleanup (Remove all non-speech artifacts)
-        import re
-        text = re.sub(r'\[.*?\]', '', text) # Remove [stage directions]
-        text = re.sub(r'\(.*?\)', '', text) # Remove (notes)
+        # Temizlik (AI bazen parantez içinde yönetmen notu ekler, onları siliyoruz)
+        text = re.sub(r'\[.*?\]', '', text)
+        text = re.sub(r'\(.*?\)', '', text)
+        text = text.replace("*", "").strip()
         
-        forbidden_phrases = [
-            "2024 verilerine göre", "Tahminlere göre", "Verilere göre",
-            "Bunu biliyor muydunuz", "Siz ne düşünüyorsunuz", "Yorumlarda buluşalım"
-        ]
-        
-        lower_topic = topic.lower()
-        for phrase in forbidden_phrases:
-            text = re.sub(re.escape(phrase), "", text, flags=re.IGNORECASE)
-            
-        if "türkiye" not in lower_topic:
-            text = text.replace("Türkiye", "").replace("türkiye", "")
+        # Yasaklı kelime temizliği
+        forbidden = ["Merhaba", "Hoşgeldiniz", "Bugünkü videomuzda", "Arkadaşlar"]
+        for f in forbidden:
+            text = text.replace(f, "")
 
-        return text.replace("  ", " ").replace(" ,", ",").replace(" .", ".").strip()
+        return text
 
     def generate_blueprint(self, narrative, topic, language="tr") -> VideoBlueprint:
         """
-        Stage 2: Blueprint with full SEO optimization (Roadmap compliant).
+        AŞAMA 2: SAHNELEŞTİRME VE GÖRSEL ZEKA
+        Metni sahnelere bölerken Pexels için EN İYİ görsel arama terimlerini (İngilizce) üretir.
         """
         prompt = f"""
-        ANA METİN:
+        GÖREV: Aşağıdaki YouTube Shorts metnini sahnelere böl ve her sahne için stok video arama terimleri (keywords) oluştur.
+
+        SENARYO METNİ:
         {narrative}
 
-        GÖREV: Yukarıdaki metni 4-6 sahneye böl ve SEO uyumlu YouTube Shorts metadatasını hazırla.
+        ÖNEMLİ KURALLAR:
+        1. SAHNE BÖLÜMLEMESİ: Metni her 1-2 cümlede bir yeni sahneye böl. Sahne süresi kısa olmalı (max 5-6 saniye) ki video akıcı olsun.
+        2. KEYWORDS (KRİTİK): 
+           - "keywords" alanı Pexels.com'da video aramak için kullanılacak.
+           - Senaryo dili ne olursa olsun, **KEYWORDS KESİNLİKLE İNGİLİZCE OLMALI**. Çünkü Pexels İngilizce'de en iyi sonucu verir.
+           - Soyut kelimeler kullanma (Örn: "Başarı" yerine "Man standing on mountain top", "Mutluluk" yerine "Smiling friends at beach").
+           - Görsel, metindeki konuyu tam yansıtmalı.
         
-        SEO VE KURGU KURALLARI (YOL HARİTASI):
-        1. BAŞLIK: Maksimum 40-50 karakter. Merak uyandırıcı, içinde sayı geçen vuruşu yüksek başlık. (Örn: "En Kalabalık 5 Dev Ülke!")
-        2. AÇIKLAMA: İlk 2 satır videonun en can alıcı özetini içermeli. Mutlaka #shorts ve konuyla ilgili 3 hashtag ekle. Sonuna "Daha fazlası için abone ol!" ekle.
-        3. ETİKETLER: Konuyla ilgili 5-6 adet anahtar kelime.
-        4. SAHNE DÜZENİ: Metni normal cümle düzeninde tut (Asla all-caps değil).
+        3. METADATA:
+           - Başlık (title): Clickbait (Tık tuzağı) ama dürüst, emoji içeren, kısa başlık.
+           - Açıklama (description): Videonun özeti ve #shorts etiketi.
 
-        JSON FORMATI:
+        JSON FORMATI (Sadece bunu döndür):
         {{
-          "video_id": "shorts_{int(time.time())}",
+          "video_id": "auto_gen",
           "metadata": {{
-            "title": "SEO Uyumlu Başlık",
-            "description": "Özet ve #shorts #bilgi #etiketler. Daha fazlası için abone ol!",
-            "tags": ["shorts", "konu", "bilgi"]
+            "title": "Başlık Buraya",
+            "description": "Açıklama buraya...",
+            "tags": ["tag1", "tag2"]
           }},
           "scenes": [
             {{
-              "text": "Normal cümle düzeninde metin",
-              "keywords": ["visual match terms"],
-              "duration": 9.0,
+              "text": "Buraya seslendirilecek Türkçe cümle.",
+              "keywords": ["futuristic city", "neon lights", "4k"],
               "language": "{language}"
             }}
           ]
         }}
-        
-        SADECE ham JSON döndür.
         """
-        response = self.client.models.generate_content(model=self.model, contents=prompt)
-        clean_json = response.text.replace("```json", "").replace("```", "").strip()
-        data = json.loads(clean_json)
         
-        # Code-level safeguard: Convert all-caps text to natural casing if Gemini fails
-        for scene in data.get('scenes', []):
-            if scene['text'].isupper():
-                scene['text'] = scene['text'].capitalize()
-                
-        return VideoBlueprint(**data)
+        try:
+            response = self.client.models.generate_content(
+                model=self.model, 
+                contents=prompt,
+                config={'response_mime_type': 'application/json'} # Gemini JSON Mode
+            )
+            
+            # JSON Temizliği
+            json_str = response.text.strip()
+            if json_str.startswith("```json"):
+                json_str = json_str[7:-3]
+            
+            data = json.loads(json_str)
+            
+            # Güvenlik Kontrolü: Keywords listesi string gelirse listeye çevir
+            for scene in data.get("scenes", []):
+                if isinstance(scene["keywords"], str):
+                    scene["keywords"] = [scene["keywords"]]
+            
+            return VideoBlueprint(**data)
+
+        except Exception as e:
+            print(f"ScriptWriter Hatası: {e}")
+            # Hata durumunda boş bir blueprint dönmek yerine basit bir fallback yapılabilir
+            # Şimdilik hatayı fırlatalım
+            raise e
