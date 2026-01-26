@@ -41,15 +41,14 @@ class ScriptWriter:
         YAZIM KURALLARI (KESİN UYULACAK):
         1. TON: "Belgesel sunucusu" ile "Teknoloji gurusu" karışımı. Ciddi ama heyecanlı.
         2. YAPI:
-           - 0-3. Sn: (KANCA) İzleyiciyi durduran ters köşe bir cümle. Asla "Merhaba arkadaşlar" deme. Doğrudan konuya gir.
-           - 3-50. Sn: (BİLGİ AKIŞI) Konuyu tam olarak 3 vurucu maddeye böl. "Birincisi...", "İkincisi..." kalıplarını kullan.
-           - 50-60. Sn: (KAPANIŞ) "Geleceği kaçırmamak için abone ol." cümlesiyle bitir.
+           - 0-3. Sn: (KANCA) İzleyiciyi durduran ters köşe bir cümle.
+           - 3-50. Sn: (BİLGİ AKIŞI) Konuyu tam olarak konuda belirtilen SAYI KADAR maddeye böl (Örn: Eğer konuda 10 özellik yazıyorsa 10 özellik anlat). "Birincisi...", "İkincisi..." kalıplarını kullan.
+           - 50-60. Sn: (KAPANIŞ) Abone ol çağrısı ile bitir.
         
         3. DİL VE ÜSLUP:
-           - Asla "gibi görünüyor", "olduğu söyleniyor" gibi zayıf ifadeler kullanma. Otoriter konuş.
-           - Cümleler kısa ve net olsun. Nefes almadan okunabilecek gibi yaz.
-           - Rakamları yazıyla yaz (Örn: "1000" değil "Bin").
-           - Toplam kelime sayısı 75-90 kelime arasında olmalı.
+           - Otoriter konuş. Cümleler kısa ve net olsun.
+           - Rakamları yazıyla yaz.
+           - Toplam kelime sayısı metnin akıcılığını bozmayacak şekilde, her maddeyi 1-2 kısa cümleyle anlatacak şekilde olmalı.
         
         ÇIKTI FORMATI:
         Sadece seslendirilecek metni ver. Başlık, sahne notu vs. yazma.
@@ -89,9 +88,9 @@ class ScriptWriter:
            - Soyut kelimeler kullanma (Örn: "Başarı" yerine "Man standing on mountain top", "Mutluluk" yerine "Smiling friends at beach").
            - Görsel, metindeki konuyu tam yansıtmalı.
         
-        3. METADATA:
-           - Başlık (title): Clickbait (Tık tuzağı) ama dürüst, emoji içeren, kısa başlık.
-           - Açıklama (description): Videonun özeti ve #shorts etiketi.
+        3. METADATA (DİL KRİTİK):
+           - Başlık (title): Clickbait (Tık tuzağı) ama dürüst, emoji içeren, kısa başlık. **KESİNLİKLE {language.upper()} DİLİNDE OLMALI**.
+           - Açıklama (description): Videonun özeti ve #shorts etiketi. **KESİNLİKLE {language.upper()} DİLİNDE OLMALI**.
 
         JSON FORMATI (Sadece bunu döndür):
         {{
