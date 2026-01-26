@@ -13,34 +13,32 @@ class TTSService:
         self.cache_dir = output_dir
         os.makedirs(self.cache_dir, exist_ok=True)
         
-        # Available high-quality Turkish/Multilingual voices
+        # Sadece Native Türkçe Sesler (Doğrulanmış & Yeni Eklenenler)
         self.voices = {
             "male": [
-                "IuRRIAcbQK5AQk1XevPj", # Doga (Turkish Native)
-                "pNInz6obpgDQGcFmaJgB", # Adam (Strong, Social Media)
-                "IKne3meq5aSn9XLyUdCD", # Charlie (Energetic)
+                "IuRRIAcbQK5AQk1XevPj", # Doga (İstanbul Aksanı)
+                "6H6FG7kAHiOf7LXnwus7", # Cahit (Derin, Yatıştırıcı)
+                "z2ObNnp0E5ZGeTlSXkX0", # Mert Aksoy (Ciddi, Tok)
             ],
             "female": [
-                "EXAVITQu4vr4xnSDxMaL", # Sarah (Mature, Professional)
-                "Xb7hH8MSUJpSbSDYk0k2", # Alice (Engaging Educator)
-                "XrExE9yKIg1WjnnlVkGX", # Matilda (Professional)
+                "bj1uMlYGikistcXNmFoh", # Nisa (Genç, Arkadaş Canlısı, Yumuşak)
             ]
         }
-        self.current_voice_id = self.voices["male"][0] # Default
+        self.current_voice_id = self.voices["male"][0] 
         self.model_id = "eleven_multilingual_v2"
 
     def set_voice(self, gender=None, voice_id=None):
-        """Sets the voice for the current production."""
+        """Üretim için sesi belirler. Sadece seçtiğin yerli sesleri kullanır."""
         if voice_id:
             self.current_voice_id = voice_id
         elif gender in self.voices:
             self.current_voice_id = random.choice(self.voices[gender])
         else:
-            # Pick any random voice from all categories
+            # Tüm Türkçe sesler arasından rastgele seç
             all_ids = self.voices["male"] + self.voices["female"]
             self.current_voice_id = random.choice(all_ids)
         
-        print(f"      🎭 [TTSService]: Voice set to {self.current_voice_id}")
+        print(f"      🎭 [TTSService]: Ses seçildi -> {self.current_voice_id} (Tamamen Türkçe)")
 
     def generate_audio_with_subtitles(self, text, language="tr"):
         """
@@ -53,7 +51,7 @@ class TTSService:
         clean_text = text.strip()
         
         try:
-            print(f"      🎙️ [ElevenLabs Hyper-Sync]: Generating audio ({self.current_voice_id})...")
+            print(f"      🎙️ [ElevenLabs Hyper-Sync]: Seslendiriliyor ({self.current_voice_id})...")
             
             response = self.client.text_to_speech.convert_with_timestamps(
                 voice_id=self.current_voice_id,
@@ -78,7 +76,7 @@ class TTSService:
             return audio_path, subs_path, duration
                     
         except Exception as e:
-            print(f"      ❌ ElevenLabs Hyper-Sync Error: {e}")
+            print(f"      ❌ ElevenLabs Hyper-Sync Hatası: {e}")
             return self._generate_audio_fallback(clean_text)
 
     def generate_sfx(self, prompt, duration_seconds=None):
@@ -86,7 +84,7 @@ class TTSService:
         id = str(uuid.uuid4())
         sfx_path = os.path.join(self.cache_dir, f"sfx_{id}.mp3")
         try:
-            print(f"      🔊 [ElevenLabs SFX]: Generating '{prompt}'...")
+            print(f"      🔊 [ElevenLabs SFX]: '{prompt}' üretiliyor...")
             sfx_generator = self.client.text_to_sound_effects.convert(
                 text=prompt,
                 duration_seconds=duration_seconds,
@@ -99,7 +97,7 @@ class TTSService:
             if os.path.exists(sfx_path) and os.path.getsize(sfx_path) > 100:
                 return sfx_path
         except Exception as e:
-            print(f"      ⚠️ SFX Generation failed: {e}")
+            print(f"      ⚠️ SFX Hatası: {e}")
         return None
 
     def generate_music(self, prompt):
@@ -107,14 +105,14 @@ class TTSService:
         id = str(uuid.uuid4())
         music_path = os.path.join(self.cache_dir, f"music_{id}.mp3")
         try:
-            print(f"      🎵 [ElevenLabs Music]: Composing '{prompt}'...")
+            print(f"      🎵 [ElevenLabs Music]: '{prompt}' besteleniyor...")
             music_generator = self.client.music.compose(prompt=prompt)
             with open(music_path, "wb") as f:
                 for chunk in music_generator:
                     if chunk: f.write(chunk)
             return music_path
         except Exception as e:
-            print(f"      ⚠️ Music Generation failed: {e}")
+            print(f"      ⚠️ Müzik Hatası: {e}")
         return None
 
     def _alignment_to_srt(self, alignment, subs_path):
