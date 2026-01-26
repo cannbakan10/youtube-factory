@@ -8,9 +8,9 @@ class TTSService:
         self.client = ElevenLabs(api_key=os.getenv("ELEVENLABS_API_KEY"))
         self.cache_dir = output_dir
         os.makedirs(self.cache_dir, exist_ok=True)
-        # ElevenLabs 'Bella' or 'Adam' are great. 
-        # For Turkish, Multilingual v2 is the gold standard.
-        self.voice_id = "21m00Tcm4TlvDq8ikWAM" # Bella
+        # ElevenLabs 'Adam' (pNInz6obpgDQGcFmaJgB) is a globally recognized professional narrator.
+        # Combined with multilingual_v2, it provides a deep, authoritative Turkish tone.
+        self.voice_id = "pNInz6obpgDQGcFmaJgB" 
         self.model_id = "eleven_multilingual_v2"
 
     def generate_audio_with_subtitles(self, text, language="tr"):
