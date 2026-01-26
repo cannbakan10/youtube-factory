@@ -1,144 +1,99 @@
-from google import genai
 import os
 import json
-import re
+from typing import List, Optional
 from pydantic import BaseModel
-from typing import List, Union
+from google import genai
+from google.genai import types
 
 class SceneBlueprint(BaseModel):
     text: str
-    keywords: Union[str, List[str]]
-    duration: float = 0.0 # TTS servisi bunu güncelleyecek
-    language: str = "en"
-    video_path: str = ""
+    keywords: List[str]
+    sfx_prompt: str = ""
+    sfx_path: str = ""
     audio_path: str = ""
-    sfx_path: str = "" # New: Path to the generated sound effect
-    sfx_prompt: str = "" # New: Prompt for ElevenLabs SFX
     subs_path: str = ""
+    video_path: str = ""
+    duration: float = 0.0
 
 class VideoBlueprint(BaseModel):
     video_id: str
     metadata: dict
-    music_prompt: str = "" # New: Prompt for background music
-    music_path: str = "" # New: Path to generated music
+    music_prompt: str = ""
+    music_path: str = ""
     scenes: List[SceneBlueprint]
 
 class ScriptWriter:
     def __init__(self):
-        self.client = genai.Client(api_key=os.getenv("GEMINI_API_KEY", "").strip())
-        self.model = "gemini-2.0-flash-lite"
+        self.api_key = os.getenv("GEMINI_API_KEY")
+        self.client = genai.Client(api_key=self.api_key)
+        self.model = "gemini-2.0-flash-exp"
 
-    def generate_narrative(self, research_data, topic) -> str:
+    def generate_narrative(self, research_data, topic):
         """
-        AŞAMA 1: İLK TASLAK (VIRAL NARRATIVE)
-        Burada amaç, sıkıcı ansiklopedik bilgi değil, "Tiktok/Shorts Akışı"na uygun,
-        ritmi yüksek ve merak uyandırıcı bir metin oluşturmaktır.
+        AŞAMA 1: DRAMATİK VE SÜRÜKLEYİCİ BİR ANLATIM OLUŞTURMA
         """
         prompt = f"""
-        ROL: Sen dünyanın en iyi YouTube Shorts senaristisin. Görevin "Stream Global" kanalı için milyonlarca izlenecek viral bir metin yazmak.
-
+        Aşağıdaki araştırma verilerini kullanarak, YouTube Shorts için heyecan verici, merak uyandıran ve 
+        insanları saniyeler içinde yakalayan bir anlatım metni yaz.
+        
+        ARAŞTIRMA VERİSİ: {research_data}
         KONU: {topic}
         
-        ARAŞTIRMA VERİLERİ (BUNLARI KULLAN):
-        {research_data}
-
-        YAZIM KURALLARI (KESİN UYULACAK):
-        1. TON: "Belgesel sunucusu" ile "Teknoloji gurusu" karışımı. Ciddi ama heyecanlı.
-        2. YAPI:
-           - 0-3. Sn: (KANCA) İzleyiciyi durduran ters köşe bir cümle.
-           - 3-50. Sn: (BİLGİ AKIŞI) Konuyu tam olarak konuda belirtilen SAYI KADAR maddeye böl (Örn: Eğer konuda 10 özellik yazıyorsa 10 özellik anlat). "Birincisi...", "İkincisi..." kalıplarını kullan.
-           - 50-60. Sn: (KAPANIŞ) Abone ol çağrısı ile bitir.
-        
-        3. DİL VE ÜSLUP:
-           - Otoriter konuş. Cümleler kısa ve net olsun.
-           - Rakamları yazıyla yaz.
-           - Toplam kelime sayısı metnin akıcılığını bozmayacak şekilde, her maddeyi 1-2 kısa cümleyle anlatacak şekilde olmalı.
-        
-        ÇIKTI FORMATI:
-        Sadece seslendirilecek metni ver. Başlık, sahne notu vs. yazma.
+        KURALLAR:
+        - Metin samimi, enerjik ve 'storytelling' tarzında olmalı.
+        - Shorts süresine uygun (yaklaşık 50-60 saniye, 150-180 kelime) olmalı.
+        - Dikkat çekici bir giriş (Hook) ile başlamalı.
+        - Mutlaka Türkçe olmalı.
         """
         
-        response = self.client.models.generate_content(model=self.model, contents=prompt)
-        text = response.text.strip()
-        
-        # Temizlik (AI bazen parantez içinde yönetmen notu ekler, onları siliyoruz)
-        text = re.sub(r'\[.*?\]', '', text)
-        text = re.sub(r'\(.*?\)', '', text)
-        text = text.replace("*", "").strip()
-        
-        # Yasaklı kelime temizliği
-        forbidden = ["Merhaba", "Hoşgeldiniz", "Bugünkü videomuzda", "Arkadaşlar"]
-        for f in forbidden:
-            text = text.replace(f, "")
-
-        return text
+        response = self.client.models.generate_content(
+            model=self.model, contents=prompt
+        )
+        return response.text.strip()
 
     def generate_blueprint(self, narrative, topic, language="tr") -> VideoBlueprint:
         """
         AŞAMA 2: SAHNELEŞTİRME VE GÖRSEL ZEKA
-        Metni sahnelere bölerken Pexels için EN İYİ görsel arama terimlerini (İngilizce) üretir.
         """
         prompt = f"""
-        GÖREV: Aşağıdaki YouTube Shorts metnini sahnelere böl ve her sahne için stok video arama terimleri (keywords) oluştur.
-
-        SENARYO METNİ:
-        {narrative}
-
-        ÖNEMLİ KURALLAR:
-        1. SAHNE BÖLÜMLEMESİ: Metni her 1-2 cümlede bir yeni sahneye böl. Sahne süresi kısa olmalı (max 5-6 saniye) ki video akıcı olsun.
-        2. KEYWORDS (KRİTİK): 
-           - "keywords" alanı Pexels.com'da video aramak için kullanılacak.
-           - Senaryo dili ne olursa olsun, **KEYWORDS KESİNLİKLE İNGİLİZCE OLMALI**. Çünkü Pexels İngilizce'de en iyi sonucu verir.
-           - Soyut kelimeler kullanma (Örn: "Başarı" yerine "Man standing on mountain top", "Mutluluk" yerine "Smiling friends at beach").
-           - Görsel, metindeki konuyu tam yansıtmalı.
+        Verilen anlatım metnini (narrative) kullanarak bir video prodüksiyon planı (blueprint) oluştur.
         
-        3. METADATA (DİL KRİTİK):
-           - Başlık (title): Clickbait (Tık tuzağı) ama dürüst, emoji içeren, kısa başlık. **KESİNLİKLE {language.upper()} DİLİNDE OLMALI**.
-           - Açıklama (description): Videonun özeti ve #shorts etiketi. **KESİNLİKLE {language.upper()} DİLİNDE OLMALI**.
+        ANLATIM METNİ: {narrative}
+        KONU: {topic}
+        DİL: {language}
 
-        JSON FORMATI (Sadece bunu döndür):
+        Senden beklenenler:
+        1. Metni anlamlı sahnelere böl (her sahne 3-5 saniye sürmeli).
+        2. Her sahne için Pexels'te aranabilecek İngilizce görsel anahtar kelimeler (keywords) belirle.
+        3. Her sahne için ElevenLabs SFX üretimine uygun bir ses efekti açıklaması (sfx_prompt) yaz.
+        4. Tüm video için uygun bir arka plan müziği talimatı (music_prompt) yaz.
+        5. YouTube için başlık, açıklama ve etiketler üret.
+
+        JSON FORMATI DETAYI:
         {{
-          "video_id": "auto_gen",
+          "video_id": "unique_id",
           "metadata": {{
-            "title": "Başlık Buraya",
-            "description": "Açıklama buraya...",
-            "tags": ["tag1", "tag2"]
+            "title": "Shorts Başlığı",
+            "description": "Açıklama ve hashtagler",
+            "tags": ["etiket1", "etiket2"]
           }},
-          "music_prompt": "dark ambient suspenseful cinematic background music",
+          "music_prompt": "cinematic epic suspenseful background music",
           "scenes": [
             {{
-              "text": "Buraya seslendirilecek Türkçe cümle.",
-              "keywords": ["futuristic city", "neon lights", "4k"],
-              "sfx_prompt": "cinematic riser with digital glitch",
+              "text": "Sahnede söylenecek metin",
+              "keywords": ["scenic", "landscape", "drone shot"],
+              "sfx_prompt": "cinematic boom sound",
               "language": "{language}"
             }}
           ]
         }}
         """
         
-        try:
-            response = self.client.models.generate_content(
-                model=self.model, 
-                contents=prompt,
-                config={'response_mime_type': 'application/json'} # Gemini JSON Mode
-            )
-            
-            # JSON Temizliği
-            json_str = response.text.strip()
-            if json_str.startswith("```json"):
-                json_str = json_str[7:-3]
-            
-            data = json.loads(json_str)
-            
-            # Güvenlik Kontrolü: Keywords listesi string gelirse listeye çevir
-            for scene in data.get("scenes", []):
-                if isinstance(scene["keywords"], str):
-                    scene["keywords"] = [scene["keywords"]]
-            
-            return VideoBlueprint(**data)
-
-        except Exception as e:
-            print(f"ScriptWriter Hatası: {e}")
-            # Hata durumunda boş bir blueprint dönmek yerine basit bir fallback yapılabilir
-            # Şimdilik hatayı fırlatalım
-            raise e
+        response = self.client.models.generate_content(
+            model=self.model, 
+            contents=prompt,
+            config={'response_mime_type': 'application/json'}
+        )
+        
+        data = json.loads(response.text.strip())
+        return VideoBlueprint(**data)

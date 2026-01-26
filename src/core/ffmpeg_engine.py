@@ -12,9 +12,11 @@ class VideoEngine:
 
     def render(self, blueprint, language="tr"):
         """
-        Stream Global Ultra-Flow Engine v3.7 (CI Compatible):
-        - Adjusted Subtitle Scaling and Font for Linux/Mac compatibility
-        - Better Error Logging for FFmpeg
+        Stream Global Ultra-Flow Engine v4.1 (Stable Factory):
+        - Correct Label Interleaving (Fixes CI Render Failure)
+        - Cross-Platform Font Support (sans-serif fallback)
+        - Optimized Audio Balance (Lower Background Levels)
+        - Discrete Word-Sync Subtitles (Reduced Font Size)
         """
         video_id = getattr(blueprint, 'video_id', 'output')
         final_output = os.path.join(self.output_dir, f"{video_id}_{language}_final.mp4")
@@ -26,36 +28,35 @@ class VideoEngine:
 
         current_input_idx = 0
         
-        # 1. Background Music Input (If exists)
+        # 1. Background Music Input
         music_in = None
         if hasattr(blueprint, 'music_path') and blueprint.music_path and os.path.exists(blueprint.music_path):
             input_args.extend(["-i", blueprint.music_path])
             music_in = current_input_idx
             current_input_idx += 1
 
-        # Use a more generic font name or let FFmpeg fallback
-        # On Ubuntu: DejaVu Sans is usually available. On Mac: Arial/Verdana.
-        # We can try "Sans" which is a generic alias.
+        # Use a generic font for CI compatibility
         font_name = "sans" if os.name != 'nt' else "Arial"
         
         for i, scene in enumerate(blueprint.scenes):
             if not scene.audio_path or not os.path.exists(scene.audio_path): continue
             
+            # Subtitle styling: Smaller font size (55) as requested by user
             style = (
-                f"FontName={font_name},FontSize=60,PrimaryColour=&H00FFFF,OutlineColour=&H000000,"
-                "BorderStyle=1,Outline=3,Shadow=0,Alignment=10,MarginV=15,Bold=1"
+                f"FontName={font_name},FontSize=55,PrimaryColour=&H00FFFF,OutlineColour=&H000000,"
+                "BorderStyle=1,Outline=3,Shadow=0,Alignment=10,MarginV=20,Bold=1"
             )
             
-            # FFmpeg subtitles filter path escaping
             subs_path = os.path.abspath(scene.subs_path)
             if os.name == 'nt':
                 subs_path = subs_path.replace("\\", "/").replace(":", "\\:")
             else:
-                subs_path = subs_path.replace("'", "'\\\\\\''") # Escape single quotes for many shells
+                # Subtitles filter needs backslash escaping for some characters on Linux
+                subs_path = subs_path.replace("'", "'\\\\\\''")
             
             duration = scene.duration 
 
-            # Scene Inputs: Video (if exists), Narrative Audio, SFX (if exists)
+            # Scene Inputs: Video, Narrative Audio, SFX
             v_in = None
             if scene.video_path and os.path.exists(scene.video_path):
                 input_args.extend(["-i", scene.video_path])
@@ -72,21 +73,27 @@ class VideoEngine:
                 sfx_in = current_input_idx
                 current_input_idx += 1
 
-            # Video Filter (Dynamic scaling and Subtitles)
+            # --- VIDEO FILTERING ---
+            v_filters = [
+                "scale=w=1080:h=1920:force_original_aspect_ratio=increase",
+                "crop=1080:1920",
+                "setsar=1",
+                f"trim=duration={duration}",
+                "setpts=PTS-STARTPTS",
+                f"subtitles='{subs_path}':force_style='{style}'"
+            ]
+            
             if v_in is not None:
-                v_filter = (
-                    f"[{v_in}:v]scale=w=1080:h=1920:force_original_aspect_ratio=increase,"
-                    f"crop=1080:1920,setsar=1,trim=duration={duration},setpts=PTS-STARTPTS,"
-                    f"subtitles='{subs_path}':force_style='{style}'[v{i}_out];"
-                )
+                v_filter = f"[{v_in}:v]{','.join(v_filters)}[v{i}_out];"
             else:
                 v_filter = (
                     f"color=c=black:s=1080x1920:d={duration}[v_black{i}];"
-                    f"[v_black{i}]subtitles='{subs_path}':force_style='{style}'[v{i}_out];"
+                    f"[v_black{i}]{','.join(v_filters)}[v{i}_out];"
                 )
             
-            # Audio Mix (Scene level): Narrative + SFX
+            # --- AUDIO FILTERING ---
             if sfx_in is not None:
+                # SFX Volume: 0.25 (as requested to be lower)
                 a_filter = (
                     f"[{a_narrative_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS[a{i}_nar];"
                     f"[{sfx_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,volume=0.25[a{i}_sfx];"
@@ -102,17 +109,17 @@ class VideoEngine:
             a_labels.append(f"[a{i}_out]")
 
         if not v_labels: 
-            logging.error("❌ Render Hatası: Herhangi bir sahne oluşturulamadı (Ses dosyaları eksik mi?)")
+            logging.error("❌ Render Hatası: Hiçbir sahne için video/ses etiketi oluşmadı.")
             return None
 
-        # 2. Concat all scenes
+        # 2. Concat Scenes: Labels MUST be interleaved [v0][a0][v1][a1]... for concat=v=1:a=1
         num_scenes = len(v_labels)
-        concat_v_labels = "".join(v_labels)
-        concat_a_labels = "".join(a_labels)
-        filter_complex_parts.append(f"{concat_v_labels}{concat_a_labels}concat=n={num_scenes}:v=1:a=1[v_full][a_no_music];")
+        interleaved_labels = "".join([f"{v}{a}" for v, a in zip(v_labels, a_labels)])
+        filter_complex_parts.append(f"{interleaved_labels}concat=n={num_scenes}:v=1:a=1[v_full][a_no_music];")
 
-        # 3. Global Audio Mix: Concat Audio + Background Music
+        # 3. Global Audio Mix: Narrative/SFX + Background Music
         if music_in is not None:
+            # Music Volume: 0.1 (very low to avoid overlap as requested)
             filter_complex_parts.append(
                 f"[{music_in}:a]aloop=loop=-1:size=2e9,volume=0.1[bg_music];"
                 f"[a_no_music][bg_music]amix=inputs=2:duration=first:dropout_transition=2[a_full];"
@@ -132,14 +139,13 @@ class VideoEngine:
             final_output
         ]
 
-        logging.info(f"🎬 Factory V3.7 (CI Ready) render başlıyor...")
+        logging.info("🎬 Factory V4.1 (Stable Cinema) render başlıyor...")
         try:
-            # Capture output to see what exactly fails
             result = subprocess.run(cmd, capture_output=True, text=True)
             if result.returncode != 0:
                 logging.error(f"❌ FFmpeg Hatası: {result.stderr}")
                 return None
             return final_output
         except Exception as e:
-            logging.error(f"❌ Beklenmedik Render Hatası: {e}")
+            logging.error(f"❌ Render Beklenmedik Hata: {e}")
             return None

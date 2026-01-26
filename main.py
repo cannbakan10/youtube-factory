@@ -18,7 +18,7 @@ class YoutubeFactory:
         required_keys = ["GEMINI_API_KEY", "PEXELS_API_KEY", "TAVILY_API_KEY", "ELEVENLABS_API_KEY"]
         missing = [k for k in required_keys if not os.getenv(k)]
         if missing:
-            print(f"⚠️ UYARI: Şu API anahtarları eksik: {', '.join(missing)}")
+            print(f"⚠️ UYARI: Şu API anahtarlar eksik: {', '.join(missing)}")
             
         self.researcher = ResearchAgent()
         self.scriptwriter = ScriptWriter()
@@ -33,7 +33,7 @@ class YoutubeFactory:
         base_dir = os.path.join(project_root, "assets", "productions", production_id)
         cache_dir = os.path.join(project_root, "assets", "cache")
         
-        # Cache temizliği (Her üretimde sıfırla)
+        # Cache temizliği
         if os.path.exists(cache_dir):
             shutil.rmtree(cache_dir)
         os.makedirs(cache_dir, exist_ok=True)
@@ -43,7 +43,7 @@ class YoutubeFactory:
         
         # Servisleri başlat
         self.tts = TTSService(output_dir=cache_dir)
-        self.tts.set_voice() # Pick a random voice from the pool (Male/Female)
+        self.tts.set_voice() # Pick a random Turkish voice
         self.pexels = PexelsService(output_dir=cache_dir)
         self.engine = VideoEngine()
 
@@ -58,24 +58,21 @@ class YoutubeFactory:
             # 2. Senaryo
             narrative = self.scriptwriter.generate_narrative(research_data, topic)
             blueprint = self.scriptwriter.generate_blueprint(narrative, topic, language=lang)
-            blueprint.video_id = production_id # ID eşitleme
+            blueprint.video_id = production_id
             
-            # Yeni: ElevenLabs AI Music Generation
+            # ElevenLabs AI Music Generation
             if blueprint.music_prompt:
                 music_path = self.tts.generate_music(blueprint.music_prompt)
                 blueprint.music_path = music_path
             
             # 3. Medya Toplama
             for i, scene in enumerate(blueprint.scenes):
-                print(f"   🎥 Sahne {i+1}: Görsel ve Ses hazırlanıyor...")
+                print(f"   🎥 Sahne {i+1}: Hazırlanıyor...")
                 
-                # Video İndir (Fail-safe: Video yoksa siyah ekran kullanılacak)
                 video_path = self.pexels.get_video(scene.keywords)
-                if not video_path:
-                    print(f"      ⚠️ Video bulunamadı, sesle devam ediliyor.")
                 scene.video_path = video_path
                 
-                # Ses ve Altyazı (SES ZORUNLUDUR)
+                # Ses ve Altyazı
                 audio, subs, dur = self.tts.generate_audio_with_subtitles(scene.text, lang)
                 if not audio:
                     print("      ❌ Ses oluşturulamadı! Sahne atlanıyor.")
@@ -85,7 +82,7 @@ class YoutubeFactory:
                 scene.subs_path = subs
                 scene.duration = dur
                 
-                # Yeni: ElevenLabs Cinematic SFX
+                # ElevenLabs Cinematic SFX
                 if scene.sfx_prompt:
                     sfx = self.tts.generate_sfx(scene.sfx_prompt, duration_seconds=dur)
                     scene.sfx_path = sfx
@@ -104,7 +101,7 @@ class YoutubeFactory:
                 meta_file = os.path.join(lang_dir, "metadata.json")
                 with open(meta_file, "w", encoding="utf-8") as f:
                     meta_data = blueprint.metadata
-                    meta_data['file_path'] = dest_path # Upload için kolaylık
+                    meta_data['file_path'] = dest_path
                     json.dump(meta_data, f, indent=2, ensure_ascii=False)
                 
                 print(f"✅ VİDEO HAZIR: {dest_path}")
