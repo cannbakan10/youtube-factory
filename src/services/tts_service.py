@@ -26,22 +26,23 @@ class TTSService:
         
         try:
             print(f"      🎙️ [ElevenLabs TTS - Adam Premium]: Deep, rich and natural Turkish...")
-            # ElevenLabs 2.x SDK returns a generator of bytes
             audio_generator = self.client.text_to_speech.convert(
                 voice_id=self.voice_id,
                 text=clean_text,
                 model_id=self.model_id
             )
             
-            # Efficiently write the generator to file
+            # Write stream to file and ensure it is flushed
             with open(audio_path, "wb") as f:
                 for chunk in audio_generator:
                     if chunk:
                         f.write(chunk)
+                f.flush()
+                os.fsync(f.fileno())
             
-            # Verify file size
-            if os.path.getsize(audio_path) < 100:
-                print(f"      ⚠️ ElevenLabs returned empty/small file.")
+            # Double check file
+            if not os.path.exists(audio_path) or os.path.getsize(audio_path) < 1000:
+                print(f"      ❌ ElevenLabs Error: Generated file is invalid or empty.")
                 return None, None, 0
                     
         except Exception as e:
