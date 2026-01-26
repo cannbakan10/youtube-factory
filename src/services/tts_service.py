@@ -5,13 +5,20 @@ import subprocess
 import json
 import base64
 import random
+import hashlib
 
 class TTSService:
     def __init__(self, output_dir="assets/cache"):
         api_key = os.getenv("ELEVENLABS_API_KEY", "").strip()
         self.client = ElevenLabs(api_key=api_key)
         self.cache_dir = output_dir
+        
+        # New Library for reuse (Not cleaned every run)
+        self.project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        self.library_dir = os.path.join(self.project_root, "assets", "library", "music")
+        
         os.makedirs(self.cache_dir, exist_ok=True)
+        os.makedirs(self.library_dir, exist_ok=True)
         
         # Sadece Native Türkçe Sesler (Doğrulanmış & Yeni Eklenenler)
         self.voices = {
@@ -102,15 +109,25 @@ class TTSService:
 
     def generate_music(self, prompt):
         if not prompt: return None
-        id = str(uuid.uuid4())
-        music_path = os.path.join(self.cache_dir, f"music_{id}.mp3")
+        
+        # Check if we have this music in our library (reusable)
+        music_id = hashlib.md5(prompt.lower().strip().encode()).hexdigest()
+        library_path = os.path.join(self.library_dir, f"{music_id}.mp3")
+        
+        if os.path.exists(library_path):
+            print(f"      🎵 [ElevenLabs Music]: Müzik kütüphaneden alındı (Kredi Tasarrufu!): '{prompt}'")
+            return library_path
+
         try:
             print(f"      🎵 [ElevenLabs Music]: '{prompt}' besteleniyor...")
             music_generator = self.client.music.compose(prompt=prompt)
-            with open(music_path, "wb") as f:
+            
+            # Save to library for future use
+            with open(library_path, "wb") as f:
                 for chunk in music_generator:
                     if chunk: f.write(chunk)
-            return music_path
+            
+            return library_path
         except Exception as e:
             print(f"      ⚠️ Müzik Hatası: {e}")
         return None
