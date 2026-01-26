@@ -12,6 +12,8 @@ class SceneBlueprint(BaseModel):
     language: str = "en"
     video_path: str = ""
     audio_path: str = ""
+    sfx_path: str = "" # New: Path to the generated sound effect
+    sfx_prompt: str = "" # New: Prompt for ElevenLabs SFX
     subs_path: str = ""
 
 class VideoBlueprint(BaseModel):
@@ -104,6 +106,7 @@ class ScriptWriter:
             {{
               "text": "Buraya seslendirilecek Türkçe cümle.",
               "keywords": ["futuristic city", "neon lights", "4k"],
+              "sfx_prompt": "cinematic riser with digital glitch",
               "language": "{language}"
             }}
           ]

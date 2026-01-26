@@ -2,6 +2,8 @@ from elevenlabs.client import ElevenLabs
 import os
 import uuid
 import subprocess
+import json
+import base64
 
 class TTSService:
     def __init__(self, output_dir="assets/cache"):
@@ -15,19 +17,20 @@ class TTSService:
 
     def generate_audio_with_subtitles(self, text, language="tr"):
         """
-        Generates PREMIUM ElevenLabs audio and returns (audio_path, subs_path, duration).
+        Hyper-Sync Edition: Uses ElevenLabs Timestamps for perfect word-level alignment.
         """
         id = str(uuid.uuid4())
         audio_path = os.path.join(self.cache_dir, f"{id}.mp3")
         subs_path = os.path.join(self.cache_dir, f"{id}.srt")
+        json_sync_path = os.path.join(self.cache_dir, f"{id}.json")
         
-        # Proper punctuation for natural flow
-        clean_text = text.replace(".", ". ").replace("!", "! ").replace("?", "? ").strip()
+        clean_text = text.strip()
         
         try:
-            print(f"      🎙️ [ElevenLabs TTS - Natural Turkish Flow]: Optimized for native prosody...")
-            # ElevenLabs 2.x SDK
-            audio_generator = self.client.text_to_speech.convert(
+            print(f"      🎙️ [ElevenLabs Hyper-Sync]: Generating audio with word-level timestamps...")
+            
+            # Use convert_with_timestamps for precise alignment
+            response = self.client.text_to_speech.convert_with_timestamps(
                 voice_id=self.voice_id,
                 text=clean_text,
                 model_id=self.model_id,
@@ -39,63 +42,127 @@ class TTSService:
                 }
             )
             
+            # Response contains 'audio_base64' and 'alignment'
+            audio_bytes = base64.b64decode(response.audio_base64)
             with open(audio_path, "wb") as f:
-                for chunk in audio_generator:
-                    if chunk:
-                        f.write(chunk)
-                f.flush()
-                # os.fsync(f.fileno()) # Not strictly necessary but safe
+                f.write(audio_bytes)
+
+            alignment = response.alignment
             
-            # Double check file
-            if not os.path.exists(audio_path) or os.path.getsize(audio_path) < 1000:
-                print(f"      ❌ ElevenLabs Error: Generated file is invalid or empty.")
-                return None, None, 0
+            # Save raw alignment for advanced rendering if needed
+            with open(json_sync_path, "w", encoding="utf-8") as f:
+                json.dump(alignment, f)
+
+            # Create SRT from precise alignment
+            self._alignment_to_srt(alignment, subs_path)
+            
+            duration = self._get_duration(audio_path)
+            return audio_path, subs_path, duration
                     
         except Exception as e:
-            print(f"      ❌ ElevenLabs TTS Error: {e}")
-            return None, None, 0
+            print(f"      ❌ ElevenLabs Hyper-Sync Error: {e}")
+            # Fallback to character-based sync if timestamps fail
+            return self._generate_audio_fallback(clean_text)
 
-        # Get actual duration for perfect sync
-        duration = self._get_duration(audio_path)
+    def generate_sfx(self, prompt, duration_seconds=None):
+        """
+        Cinematic SFX: Generates sound effects based on text prompts.
+        """
+        if not prompt: return None
         
-        # Professional Sync Logic
-        self._create_dynamic_srt(clean_text, duration, subs_path)
+        id = str(uuid.uuid4())
+        sfx_path = os.path.join(self.cache_dir, f"sfx_{id}.mp3")
         
-        return audio_path, subs_path, duration
+        try:
+            print(f"      🔊 [ElevenLabs SFX]: Generating '{prompt}'...")
+            
+            # SFX API call
+            sfx_generator = self.client.sound_effects.generate(
+                text=prompt,
+                duration_seconds=duration_seconds,
+                prompt_influence=0.8
+            )
+            
+            with open(sfx_path, "wb") as f:
+                for chunk in sfx_generator:
+                    if chunk:
+                        f.write(chunk)
+            
+            if os.path.exists(sfx_path) and os.path.getsize(sfx_path) > 100:
+                return sfx_path
+        except Exception as e:
+            print(f"      ⚠️ SFX Generation failed: {e}")
+        return None
+
+    def _alignment_to_srt(self, alignment, subs_path):
+        """
+        Converts ElevenLabs alignment data to SRT.
+        alignment contains 'characters', 'character_start_times_seconds', 'character_end_times_seconds'
+        """
+        # We group into words for better Shorts readability
+        words = []
+        current_word = ""
+        word_start = 0.0
+        
+        chars = alignment.characters
+        starts = alignment.character_start_times_seconds
+        ends = alignment.character_end_times_seconds
+        
+        for i in range(len(chars)):
+            char = chars[i]
+            if char == " " or i == len(chars) - 1:
+                if i == len(chars) - 1 and char != " ": 
+                    current_word += char
+                
+                if current_word:
+                    words.append({
+                        "text": current_word.strip().upper(),
+                        "start": word_start,
+                        "end": ends[i]
+                    })
+                    current_word = ""
+                word_start = starts[i+1] if i+1 < len(starts) else ends[i]
+            else:
+                if not current_word:
+                    word_start = starts[i]
+                current_word += char
+
+        with open(subs_path, "w", encoding="utf-8") as f:
+            for i, word in enumerate(words):
+                start_str = self._format_srt_time(word["start"])
+                end_str = self._format_srt_time(word["end"])
+                f.write(f"{i+1}\n{start_str} --> {end_str}\n{word['text']}\n\n")
+
+    def _generate_audio_fallback(self, text):
+        # Implementation of the old style character-based sync as a safety net
+        id = str(uuid.uuid4())
+        audio_path = os.path.join(self.cache_dir, f"{id}.mp3")
+        subs_path = os.path.join(self.cache_dir, f"{id}.srt")
+        try:
+            audio_generator = self.client.text_to_speech.convert(
+                voice_id=self.voice_id,
+                text=text,
+                model_id=self.model_id
+            )
+            with open(audio_path, "wb") as f:
+                for chunk in audio_generator: f.write(chunk)
+            duration = self._get_duration(audio_path)
+            # Simple proportional sync
+            words = text.split()
+            with open(subs_path, "w", encoding="utf-8") as f:
+                for i, w in enumerate(words):
+                    t = (i / len(words)) * duration
+                    next_t = ((i+1) / len(words)) * duration
+                    f.write(f"{i+1}\n{self._format_srt_time(t)} --> {self._format_srt_time(next_t)}\n{w.upper()}\n\n")
+            return audio_path, subs_path, duration
+        except:
+            return None, None, 0
 
     def _get_duration(self, audio_path):
         try:
-            cmd = [
-                "ffprobe", "-v", "error", "-show_entries", "format=duration",
-                "-of", "default=noprint_wrappers=1:nokey=1", audio_path
-            ]
+            cmd = ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "default=noprint_wrappers=1:nokey=1", audio_path]
             return float(subprocess.check_output(cmd).decode().strip())
-        except:
-            return 0.0
-
-    def _create_dynamic_srt(self, text, duration, subs_path):
-        words = text.split()
-        # 1-2 words per chunk for best Shorts readability and fitting
-        chunk_size = 1 
-        chunks = [words[i:i + chunk_size] for i in range(0, len(words), chunk_size)]
-        
-        total_chars = sum(len(w) for w in words)
-        current_time = 0.0
-        
-        with open(subs_path, "w", encoding="utf-8") as f:
-            for i, chunk in enumerate(chunks):
-                chunk_text = " ".join(chunk)
-                chunk_chars = sum(len(w) for w in chunk)
-                
-                # Proportional duration based on characters
-                chunk_duration = (chunk_chars / total_chars) * duration if total_chars > 0 else 0
-                
-                start_time = self._format_srt_time(current_time)
-                # Ensure it doesn't overlap or go beyond duration
-                current_time += chunk_duration
-                end_time = self._format_srt_time(min(current_time, duration))
-                
-                f.write(f"{i+1}\n{start_time} --> {end_time}\n{chunk_text.upper()}\n\n")
+        except: return 0.0
 
     def _format_srt_time(self, seconds):
         td_hours = int(seconds // 3600)

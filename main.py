@@ -78,6 +78,11 @@ class YoutubeFactory:
                 scene.audio_path = audio
                 scene.subs_path = subs
                 scene.duration = dur
+                
+                # Yeni: ElevenLabs Cinematic SFX
+                if scene.sfx_prompt:
+                    sfx = self.tts.generate_sfx(scene.sfx_prompt, duration_seconds=dur)
+                    scene.sfx_path = sfx
 
             # 4. Render
             final_path = self.engine.render(blueprint, language=lang)
