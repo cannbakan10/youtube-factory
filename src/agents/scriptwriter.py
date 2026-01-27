@@ -48,6 +48,7 @@ class ScriptWriter:
             STORYTELLING RULES:
             - Start with: "Did you know this actually happened?" or a similar topic-specific 'True Horror' hook.
             - Focus on the most disturbing parts of the research.
+            - SENTENCE STRUCTURE (Turkish): Use standard, formal sentences. DO NOT use inverted (devrik) sentences.
             - Use a 'true crime' or 'chilling mystery' tone (not 'cheesy' fiction).
             - Word count: ~110-130 words (measured, dramatic intervals).
             - Language: STRICTLY {lang_name} only.
@@ -65,6 +66,7 @@ class ScriptWriter:
               (Turkish: "1 numara sizi kesinlikle şok edecek!") to keep viewers until the end.
             - COUNTDOWN STRUCTURE: If the topic involves a list (e.g., "5 reasons", "Top 3"), ALWAYS start from the HIGHEST number and count down to 1. 
               (Example: Start at 5, finish at 1). Save the most incredible part for Number 1.
+            - SENTENCE STRUCTURE (Turkish): Use standard KURALLI sentences (Subject-Object-Verb). NEVER use DEVRİK (inverted) sentences; they sound unprofessional in AI narration.
             - Use simple, punchy sentences to maintain energy.
             - Tone: Energetic, professional, and slightly dramatic.
             - Target: ~130 words maximum for a 60-second video.
