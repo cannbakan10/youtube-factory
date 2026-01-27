@@ -65,19 +65,21 @@ class VideoEngine:
             
             # --- VIDEO FILTERING ---
             v_filters = [
+                "fps=30", # Standardize frame rate for seamless concat
                 "scale=w=1080:h=1920:force_original_aspect_ratio=increase",
                 "crop=1080:1920",
                 "setsar=1",
                 f"trim=duration={duration}",
                 "setpts=PTS-STARTPTS",
-                f"subtitles='{subs_path}':force_style='{style}'"
+                f"subtitles='{subs_path}':force_style='{style}'",
+                "format=yuv420p" # Ensure consistent pixel format
             ]
             
             if v_in is not None:
                 v_filter = f"[{v_in}:v]{','.join(v_filters)}[v_sc{valid_scenes_count}];"
             else:
                 v_filter = (
-                    f"color=c=black:s=1080x1920:d={duration}[v_black{valid_scenes_count}];"
+                    f"color=c=black:s=1080x1920:d={duration},fps=30[v_black{valid_scenes_count}];"
                     f"[v_black{valid_scenes_count}]{','.join(v_filters)}[v_sc{valid_scenes_count}];"
                 )
             
@@ -106,6 +108,7 @@ class VideoEngine:
             "-map", "[a_full]",
             "-c:v", "libx264", "-preset", "ultrafast", "-crf", "22",
             "-pix_fmt", "yuv420p",
+            "-shortest", # Critical for infinite loop inputs
             final_output
         ]
 
