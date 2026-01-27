@@ -91,8 +91,8 @@ class TTSService:
                     
         except Exception as e:
             print(f"      ❌ ElevenLabs Error: {e}. Falling back to account voices...")
-            # Fallback to confirmed account voices if native IDs fail (some accounts restricted)
-            self.current_voice_id = "z2ObNnp0E5ZGeTlSXkX0" # Mert Aksoy (Confirmed fallback)
+            # Fallback is now ALSO locked to the requested female voice
+            self.current_voice_id = "XfNU2rGpBa01ckF309OY" 
             return self._generate_audio_fallback_retry(clean_text)
 
     def _alignment_to_srt_grouped(self, alignment, subs_path, words_per_chunk=3):
