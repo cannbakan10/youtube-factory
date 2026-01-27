@@ -23,6 +23,7 @@ class TTSService:
         # Native English Professional Voices (Using standard ElevenLabs IDs)
         self.voices = {
             "male": [
+                "XfNU2rGpBa01ckF309OY", # User requested specific voice
                 "pNInz6ob8mW8mY4Rnd87", # Adam (Classic Native English)
                 "erXw78R7V9rS2S753JkO", # Antoni (Clear British/American)
             ],
@@ -31,7 +32,7 @@ class TTSService:
                 "EXAVITQu4vr4xnSDxMaL", # Bella (Calm Native English)
             ]
         }
-        self.current_voice_id = self.voices["male"][0] 
+        self.current_voice_id = "XfNU2rGpBa01ckF309OY" 
         self.model_id = "eleven_multilingual_v2" # Best for sync and variety
 
     def set_voice(self, gender=None, voice_id=None):
