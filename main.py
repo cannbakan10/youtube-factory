@@ -39,28 +39,28 @@ class YoutubeFactory:
         os.makedirs(cache_dir, exist_ok=True)
         os.makedirs(base_dir, exist_ok=True)
 
-        print(f"\n🚀 SHORTS FACTORY STARTING (ENGLISH MODE): {topic}")
+        print(f"\n🚀 SHORTS FACTORY STARTING (Multi-Lang Mode): {topic}")
         
         # Initialize services
         self.tts = TTSService(output_dir=cache_dir)
-        self.tts.set_voice() # Pick a professional English voice
         self.pexels = PexelsService(output_dir=cache_dir)
         self.engine = VideoEngine()
 
-        # 1. Research (English)
-        print(f"🔍 Researching topic in English...")
-        research_data = self.researcher.research(topic) # Researcher will now handle en prompts if topic is en
+        # 1. Research (Based on Topic)
+        print(f"🔍 Researching topic...")
+        research_data = self.researcher.research(topic)
         
         for lang in languages:
             lang = lang.strip().lower()
             print(f"\n🌍 PROCESSING LANGUAGE: {lang.upper()}")
             
-            # 2. Script (English)
-            narrative = self.scriptwriter.generate_narrative(research_data, topic)
+            # Update Voice for current language
+            self.tts.set_voice(language=lang)
+            
+            # 2. Script & Blueprint
+            narrative = self.scriptwriter.generate_narrative(research_data, topic, language=lang)
             blueprint = self.scriptwriter.generate_blueprint(narrative, topic, language=lang)
             blueprint.video_id = production_id
-            
-            # Music logic removed as per user request
             
             # 3. Media Collection
             for i, scene in enumerate(blueprint.scenes):
@@ -69,17 +69,17 @@ class YoutubeFactory:
                 video_path = self.pexels.get_video(scene.keywords)
                 scene.video_path = video_path
                 
-                # Narration & Subtitles (EN)
+                # Narration & Subtitles
                 audio, subs, dur = self.tts.generate_audio_with_subtitles(scene.text, lang)
                 if not audio:
-                    print("      ❌ Narration failed! Skipping scene.")
+                    print(f"      ❌ Narration failed for {lang}! Skipping scene.")
                     continue
                     
                 scene.audio_path = audio
                 scene.subs_path = subs
                 scene.duration = dur
 
-            # 4. Render (Pure Narration Mode)
+            # 4. Render
             final_path = self.engine.render(blueprint, language=lang)
             
             if final_path and os.path.exists(final_path):
@@ -103,7 +103,6 @@ class YoutubeFactory:
                     if not self.youtube_service:
                         self.youtube_service = YouTubeService()
                     
-                    # Upload in English context
                     self.youtube_service.upload_video(
                         dest_path, 
                         blueprint.metadata.get('title', topic), 
@@ -118,7 +117,7 @@ class YoutubeFactory:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--topic", type=str, required=True, help="Video topic")
-    parser.add_argument("--langs", type=str, default="en", help="Languages (comma-separated): en,es")
+    parser.add_argument("--langs", type=str, default="en", help="Languages (comma-separated): en,tr")
     parser.add_argument("--upload", action="store_true", help="Auto-upload to YouTube")
     args = parser.parse_args()
 

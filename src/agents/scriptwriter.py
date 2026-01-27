@@ -28,24 +28,26 @@ class ScriptWriter:
         self.client = genai.Client(api_key=self.api_key)
         self.model = "gemini-2.0-flash-exp"
 
-    def generate_narrative(self, research_data, topic):
+    def generate_narrative(self, research_data, topic, language="en"):
         """
-        Step 1: Create a dramatic and engaging narrative in English.
-        Optimized for a MEASURED and CLEAR pace.
+        Step 1: Create a dramatic and engaging narrative in the specified language (TR/EN).
         """
+        lang_name = "English" if language == "en" else "Turkish"
+        
         prompt = f"""
         Using the following research data, write an exciting narration script for YouTube Shorts.
-        The script MUST be entirely in English.
+        The script MUST be entirely in {lang_name}.
         
         RESEARCH DATA: {research_data}
         TOPIC: {topic}
         
         PACING RULES:
         - Use simple, punchy sentences.
-        - Avoid long, winded paragraphs that cause fast talking.
+        - Avoid long, winded paragraphs.
         - Tone: Energetic but professional.
-        - Words: ~130 words for 60 seconds (to ensure a slower, native-like pace).
-        - Hook: Start with something that halts the scroll.
+        - Words: ~130 words for 60 seconds (measured pace).
+        - Hook: Start with a powerful attention-grabbing first sentence.
+        - Language: STRICTLY {lang_name} only.
         """
         
         response = self.client.models.generate_content(
@@ -55,20 +57,22 @@ class ScriptWriter:
 
     def generate_blueprint(self, narrative, topic, language="en") -> VideoBlueprint:
         """
-        Step 2: Scenes and Visual Intelligence in English.
+        Step 2: Scenes and Visual Intelligence in the specified language.
         """
+        lang_name = "English" if language == "en" else "Turkish"
+        
         prompt = f"""
-        Using the provided English narration, create a video production blueprint.
-        Everything MUST be in English.
+        Using the provided {lang_name} narration, create a video production blueprint.
+        The text and metadata MUST be in {lang_name}. Keywords for search MUST be in English.
         
         NARRATION: {narrative}
         TOPIC: {topic}
-        LANGUAGE: English
+        LANGUAGE: {lang_name}
 
         REQUIREMENTS:
         1. Break the script into meaningful scenes (each 3.5 - 5 seconds long).
-        2. Assign HIGH-QUALITY English keywords for Pexels search.
-        3. Generate professional YouTube Title, Description, and Tags.
+        2. Assign HIGH-QUALITY English keywords for Pexels search (Regardless of narration language).
+        3. Generate professional YouTube Title, Description, and Tags in {lang_name}.
 
         JSON OUTPUT FORMAT:
         {{
@@ -76,13 +80,13 @@ class ScriptWriter:
           "metadata": {{
             "title": "Shorts Title",
             "description": "Shorts Description",
-            "tags": ["space", "facts", "short"]
+            "tags": ["tag1", "tag2"]
           }},
           "scenes": [
             {{
-              "text": "The narration text for this specific scene",
-              "keywords": ["epic", "cinematic", "galaxy"],
-              "language": "en"
+              "text": "The narration text for this specific scene in {lang_name}",
+              "keywords": ["visual", "keywords", "in", "english"],
+              "language": "{language}"
             }}
           ]
         }}

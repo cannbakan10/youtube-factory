@@ -20,25 +20,35 @@ class TTSService:
         os.makedirs(self.cache_dir, exist_ok=True)
         os.makedirs(self.library_dir, exist_ok=True)
         
-        # Locked to Nichalia Schwartz (English Female) as per user request
-        self.voices = {
-            "male": ["XfNU2rGpBa01ckF309OY"],
-            "female": ["XfNU2rGpBa01ckF309OY"]
+        # Language-Specific Voice Settings
+        self.voices_config = {
+            "tr": {
+                "male": ["z2ObNnp0E5ZGeTlSXkX0", "6H6FG7kAHiOf7LXnwus7"],
+                "female": ["bj1uMlYGikistcXNmFoh"],
+                "default": "z2ObNnp0E5ZGeTlSXkX0"
+            },
+            "en": {
+                "male": ["XfNU2rGpBa01ckF309OY", "pNInz6ob8mW8mY4Rnd87"],
+                "female": ["XfNU2rGpBa01ckF309OY", "EXAVITQu4vr4xnSDxMaL"],
+                "default": "XfNU2rGpBa01ckF309OY"
+            }
         }
-        self.current_voice_id = "XfNU2rGpBa01ckF309OY" 
+        
+        self.current_voice_id = self.voices_config["en"]["default"]
         self.model_id = "eleven_multilingual_v2"
 
-    def set_voice(self, gender=None, voice_id=None):
-        """Sets the voice for production. Optimized for NATIVE English tone."""
+    def set_voice(self, language="en", gender=None, voice_id=None):
+        """Sets the voice based on language and preferences."""
+        lang_cfg = self.voices_config.get(language, self.voices_config["en"])
+        
         if voice_id:
             self.current_voice_id = voice_id
-        elif gender in self.voices:
-            self.current_voice_id = random.choice(self.voices[gender])
+        elif gender and gender in lang_cfg:
+            self.current_voice_id = random.choice(lang_cfg[gender])
         else:
-            all_ids = self.voices["male"] + self.voices["female"]
-            self.current_voice_id = random.choice(all_ids)
+            self.current_voice_id = lang_cfg["default"]
         
-        print(f"      🎭 [TTSService]: Native English Voice -> {self.current_voice_id}")
+        print(f"      🎭 [TTSService]: Voice selected -> {self.current_voice_id} ({language.upper()})")
 
     def generate_audio_with_subtitles(self, text, language="en"):
         """
@@ -51,10 +61,9 @@ class TTSService:
         clean_text = text.strip()
         
         try:
-            print(f"      🎙️ [ElevenLabs Hyper-Sync]: Narrating with Slow & Clear Pace ({self.current_voice_id})...")
+            print(f"      🎙️ [ElevenLabs Hyper-Sync]: Narrating ({language.upper()}) with Voice {self.current_voice_id}...")
             
-            # stability: 0.80 for slow, clear, and measured delivery.
-            # similarity_boost: 0.55 for consistent professional tone.
+            # stability: 0.80 for slow, clear delivery.
             response = self.client.text_to_speech.convert_with_timestamps(
                 voice_id=self.current_voice_id,
                 text=clean_text,
@@ -75,7 +84,7 @@ class TTSService:
             padded_audio_path = audio_path.replace(".mp3", "_padded.mp3")
             pad_cmd = [
                 "ffmpeg", "-y", "-i", audio_path, 
-                "-af", "apad=pad_dur=0.3", # Add 0.3s of silence at the end
+                "-af", "apad=pad_dur=0.3", 
                 padded_audio_path
             ]
             subprocess.run(pad_cmd, capture_output=True)
@@ -90,13 +99,10 @@ class TTSService:
             return audio_path, subs_path, duration
                     
         except Exception as e:
-            print(f"      ❌ ElevenLabs Error: {e}. Falling back to account voices...")
-            # Fallback is now ALSO locked to the requested female voice
-            self.current_voice_id = "XfNU2rGpBa01ckF309OY" 
+            print(f"      ❌ ElevenLabs Error: {e}. Attempting fallback...")
             return self._generate_audio_fallback_retry(clean_text)
 
-    def _alignment_to_srt_grouped(self, alignment, subs_path, words_per_chunk=3):
-        """Groups words to make subtitles more readable and less 'busy'."""
+    def _alignment_to_srt_grouped(self, alignment, subs_path, words_per_chunk=2):
         chars = alignment.characters
         starts = alignment.character_start_times_seconds
         ends = alignment.character_end_times_seconds
@@ -121,12 +127,10 @@ class TTSService:
                 if not current_word: word_start = starts[i]
                 current_word += char
         
-        # Group words into chunks
         chunks = []
         for i in range(0, len(words), words_per_chunk):
             chunk_words = words[i:i + words_per_chunk]
             if not chunk_words: continue
-            
             combined_text = " ".join([w["text"] for w in chunk_words])
             chunks.append({
                 "text": combined_text,
@@ -139,7 +143,6 @@ class TTSService:
                 f.write(f"{i+1}\n{self._format_srt_time(chunk['start'])} --> {self._format_srt_time(chunk['end'])}\n{chunk['text']}\n\n")
 
     def _generate_audio_fallback_retry(self, text):
-        # Similar logic to standard fallback but uses grouped SRT
         id = str(uuid.uuid4())
         audio_path = os.path.join(self.cache_dir, f"{id}.mp3")
         subs_path = os.path.join(self.cache_dir, f"{id}.srt")
@@ -148,10 +151,8 @@ class TTSService:
             with open(audio_path, "wb") as f:
                 for chunk in audio_generator: f.write(chunk)
             duration = self._get_duration(audio_path)
-            
-            # Simple word split for fallback (no exact alignment available)
             words = text.split()
-            chunks = [" ".join(words[i:i+3]) for i in range(0, len(words), 3)]
+            chunks = [" ".join(words[i:i+2]) for i in range(0, len(words), 2)]
             with open(subs_path, "w", encoding="utf-8") as f:
                 for i, c in enumerate(chunks):
                     t = (i/len(chunks))*duration
