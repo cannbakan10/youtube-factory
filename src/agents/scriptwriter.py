@@ -61,7 +61,10 @@ class ScriptWriter:
             TOPIC: {topic}
             
             PACING & STYLE RULES:
-            - Hook: Start with a powerful, TOPIC-SPECIFIC sentence that captures curiosity in 2 seconds.
+            - RETENTION HOOK: Every script MUST start with a variation of: "Number 1 will absolutely shock you!" 
+              (Turkish: "1 numara sizi kesinlikle şok edecek!") to keep viewers until the end.
+            - COUNTDOWN STRUCTURE: If the topic involves a list (e.g., "5 reasons", "Top 3"), ALWAYS start from the HIGHEST number and count down to 1. 
+              (Example: Start at 5, finish at 1). Save the most incredible part for Number 1.
             - Use simple, punchy sentences to maintain energy.
             - Tone: Energetic, professional, and slightly dramatic.
             - Target: ~130 words maximum for a 60-second video.
