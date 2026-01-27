@@ -12,11 +12,11 @@ class VideoEngine:
 
     def render(self, blueprint, language="en"):
         """
-        Stream Global Ultra-Flow Engine v5.0 (English Professional Cinema):
-        - Aggressively reduced font size (28) for professional text fit.
-        - NO Background Music mixing (User request: Voice ONLY).
-        - Word-Sync Subtitles (English optimized).
-        - High-contrast text for visibility.
+        Stream Global Ultra-Flow Engine v5.1 (Professional Global Edition):
+        - Subtitle Alignment=2 (Bottom Center) for standard readability.
+        - Text scale optimization for English chunks.
+        - Video Looping (Fixes cut-off issues).
+        - Pure Narration Audio.
         """
         video_id = getattr(blueprint, 'video_id', 'output')
         final_output = os.path.join(self.output_dir, f"{video_id}_{language}_final.mp4")
@@ -28,20 +28,17 @@ class VideoEngine:
 
         current_input_idx = 0
         
-        # NOTE: Music input logic removed as per user's "no background music" request.
-        music_in = None
-
-        # Professional cross-platform font selection
+        # Professional font selection (Arial/Sans)
         font_name = "sans" if os.name != 'nt' else "Arial"
         
         for i, scene in enumerate(blueprint.scenes):
             if not scene.audio_path or not os.path.exists(scene.audio_path): continue
             
-            # Subtitle styling: Reduced to 28 for ultra-professional fit & look
-            # Alignment=10 (Bottom center), MarginV increased to keep text neat.
+            # Subtitle styling: FontSize=30 with wrapping support via grouping 
+            # Alignment=2 is Bottom-Center (Standard for professional videos)
             style = (
-                f"FontName={font_name},FontSize=28,PrimaryColour=&H00FFFFFF,OutlineColour=&H000000,"
-                "BorderStyle=1,Outline=1.2,Shadow=0,Alignment=10,MarginV=45,Bold=1"
+                f"FontName={font_name},FontSize=30,PrimaryColour=&H00FFFFFF,OutlineColour=&H000000,"
+                "BorderStyle=1,Outline=1.5,Shadow=0.5,Alignment=2,MarginV=60,Bold=1"
             )
             
             subs_path = os.path.abspath(scene.subs_path)
@@ -52,10 +49,11 @@ class VideoEngine:
             
             duration = scene.duration 
 
-            # Scene Inputs: Video, Narrative Audio
+            # Scene Inputs: Video (LOOPED to prevent cut-off), Narrative Audio
             v_in = None
             if scene.video_path and os.path.exists(scene.video_path):
-                input_args.extend(["-i", scene.video_path])
+                # We use stream_loop -1 to ensure video covers the audio duration
+                input_args.extend(["-stream_loop", "-1", "-i", scene.video_path])
                 v_in = current_input_idx
                 current_input_idx += 1
             
@@ -63,9 +61,8 @@ class VideoEngine:
             a_narrative_in = current_input_idx
             current_input_idx += 1
             
-            # SFX logic removed as per user request.
-
             # --- VIDEO FILTERING ---
+            # Added fps=30 and force_divisible_by=2 for encoding stability
             v_filters = [
                 "scale=w=1080:h=1920:force_original_aspect_ratio=increase",
                 "crop=1080:1920",
@@ -83,7 +80,7 @@ class VideoEngine:
                     f"[v_black{i}]{','.join(v_filters)}[v{i}_out];"
                 )
             
-            # --- AUDIO FILTERING (NARRATION ONLY) ---
+            # --- AUDIO FILTERING ---
             a_filter = f"[{a_narrative_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo[a{i}_out];"
             
             filter_complex_parts.append(v_filter)
@@ -91,11 +88,9 @@ class VideoEngine:
             v_labels.append(f"[v{i}_out]")
             a_labels.append(f"[a{i}_out]")
 
-        if not v_labels: 
-            logging.error("❌ Render Error: No video/audio segments generated.")
-            return None
+        if not v_labels: return None
 
-        # Concat Scenes: Interleaved labels [v0][a0][v1][a1]...
+        # Concat Scenes
         num_scenes = len(v_labels)
         interleaved_labels = "".join([f"{v}{a}" for v, a in zip(v_labels, a_labels)])
         filter_complex_parts.append(f"{interleaved_labels}concat=n={num_scenes}:v=1:a=1[v_full][a_full];")
@@ -107,12 +102,12 @@ class VideoEngine:
             "-map", "[v_full]",
             "-map", "[a_full]",
             "-c:v", "libx264", "-preset", "ultrafast", "-crf", "22",
-            "-c:a", "aac", "-b:a", "192k",
             "-pix_fmt", "yuv420p",
+            "-shortest", 
             final_output
         ]
 
-        logging.info("🎬 Factory V5.0 (English Professional) render starting...")
+        logging.info("🎬 Factory V5.1 (Professional English) render starting...")
         try:
             result = subprocess.run(cmd, capture_output=True, text=True)
             if result.returncode != 0:
@@ -120,5 +115,5 @@ class VideoEngine:
                 return None
             return final_output
         except Exception as e:
-            logging.error(f"❌ Unexpected Render Error: {e}")
+            logging.error(f"❌ Render Error: {e}")
             return None

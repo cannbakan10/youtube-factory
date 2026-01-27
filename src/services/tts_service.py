@@ -20,36 +20,35 @@ class TTSService:
         os.makedirs(self.cache_dir, exist_ok=True)
         os.makedirs(self.library_dir, exist_ok=True)
         
-        # Verified Professional Multilingual Voices (Guaranteed to work in this account)
+        # Native English Professional Voices (Using standard ElevenLabs IDs)
         self.voices = {
             "male": [
-                "z2ObNnp0E5ZGeTlSXkX0", # Mert Aksoy (Serious, Tok, Professional)
-                "6H6FG7kAHiOf7LXnwus7", # Cahit (Deep, Professional)
+                "pNInz6ob8mW8mY4Rnd87", # Adam (Classic Native English)
+                "erXw78R7V9rS2S753JkO", # Antoni (Clear British/American)
             ],
             "female": [
-                "bj1uMlYGikistcXNmFoh", # Nisa (Professional, Clear)
+                "21m00Tcm4TbcDqjt8gaZ", # Rachel (Professional Native English)
+                "EXAVITQu4vr4xnSDxMaL", # Bella (Calm Native English)
             ]
         }
         self.current_voice_id = self.voices["male"][0] 
-        self.model_id = "eleven_multilingual_v2"
+        self.model_id = "eleven_multilingual_v2" # Best for sync and variety
 
     def set_voice(self, gender=None, voice_id=None):
-        """Sets the voice for production. Optimized for English professional tone."""
+        """Sets the voice for production. Optimized for NATIVE English tone."""
         if voice_id:
             self.current_voice_id = voice_id
         elif gender in self.voices:
             self.current_voice_id = random.choice(self.voices[gender])
         else:
-            # Randomly pick from all high-quality voices
             all_ids = self.voices["male"] + self.voices["female"]
             self.current_voice_id = random.choice(all_ids)
         
-        print(f"      🎭 [TTSService]: Voice selected -> {self.current_voice_id} (English Professional)")
+        print(f"      🎭 [TTSService]: Native English Voice -> {self.current_voice_id}")
 
     def generate_audio_with_subtitles(self, text, language="en"):
         """
-        Hyper-Sync Edition: Uses ElevenLabs Timestamps for perfect word-level alignment.
-        Defaulting to EN for English-ONLY factory mode.
+        Hyper-Sync Edition: Uses ElevenLabs Timestamps for perfect alignment.
         """
         id = str(uuid.uuid4())
         audio_path = os.path.join(self.cache_dir, f"{id}.mp3")
@@ -58,16 +57,17 @@ class TTSService:
         clean_text = text.strip()
         
         try:
-            print(f"      🎙️ [ElevenLabs Hyper-Sync]: Narrating (Voice: {self.current_voice_id})...")
+            print(f"      🎙️ [ElevenLabs Hyper-Sync]: Narrating with Native Voice ({self.current_voice_id})...")
             
+            # stability: 0.65 for more measured, articulated speech (less speed)
             response = self.client.text_to_speech.convert_with_timestamps(
                 voice_id=self.current_voice_id,
                 text=clean_text,
                 model_id=self.model_id,
                 voice_settings={
-                    "stability": 0.50,
+                    "stability": 0.65,
                     "similarity_boost": 0.75,
-                    "style": 0.0,
+                    "style": 0.05,
                     "use_speaker_boost": True
                 }
             )
@@ -77,46 +77,63 @@ class TTSService:
                 f.write(audio_bytes)
 
             alignment = response.alignment
-            self._alignment_to_srt(alignment, subs_path)
+            # Now grouping words in subtitles to avoid "ultra-fast flickering" and fit screen better
+            self._alignment_to_srt_grouped(alignment, subs_path)
             
             duration = self._get_duration(audio_path)
             return audio_path, subs_path, duration
                     
         except Exception as e:
-            print(f"      ❌ ElevenLabs Hyper-Sync Error: {e}")
-            return self._generate_audio_fallback(clean_text)
+            print(f"      ❌ ElevenLabs Error: {e}. Falling back to account voices...")
+            # Fallback to confirmed account voices if native IDs fail (some accounts restricted)
+            self.current_voice_id = "z2ObNnp0E5ZGeTlSXkX0" # Mert Aksoy (Confirmed fallback)
+            return self._generate_audio_fallback_retry(clean_text)
 
-    def generate_sfx(self, prompt, duration_seconds=None):
-        """Disabled as per user request to stop generating SFX/Music."""
-        return None
-
-    def generate_music(self, prompt):
-        """Disabled as per user request to stop generating SFX/Music."""
-        return None
-
-    def _alignment_to_srt(self, alignment, subs_path):
+    def _alignment_to_srt_grouped(self, alignment, subs_path, words_per_chunk=3):
+        """Groups words to make subtitles more readable and less 'busy'."""
         chars = alignment.characters
         starts = alignment.character_start_times_seconds
         ends = alignment.character_end_times_seconds
+        
         words = []
         current_word = ""
         word_start = 0.0
+        
         for i in range(len(chars)):
             char = chars[i]
             if char == " " or i == len(chars) - 1:
                 if i == len(chars) - 1 and char != " ": current_word += char
                 if current_word:
-                    words.append({"text": current_word.strip().upper(), "start": word_start, "end": ends[i]})
+                    words.append({
+                        "text": current_word.strip().upper(), 
+                        "start": word_start, 
+                        "end": ends[i]
+                    })
                     current_word = ""
                 word_start = starts[i+1] if i+1 < len(starts) else (ends[i] if i < len(ends) else 0)
             else:
                 if not current_word: word_start = starts[i]
                 current_word += char
-        with open(subs_path, "w", encoding="utf-8") as f:
-            for i, word in enumerate(words):
-                f.write(f"{i+1}\n{self._format_srt_time(word['start'])} --> {self._format_srt_time(word['end'])}\n{word['text']}\n\n")
+        
+        # Group words into chunks
+        chunks = []
+        for i in range(0, len(words), words_per_chunk):
+            chunk_words = words[i:i + words_per_chunk]
+            if not chunk_words: continue
+            
+            combined_text = " ".join([w["text"] for w in chunk_words])
+            chunks.append({
+                "text": combined_text,
+                "start": chunk_words[0]["start"],
+                "end": chunk_words[-1]["end"]
+            })
 
-    def _generate_audio_fallback(self, text):
+        with open(subs_path, "w", encoding="utf-8") as f:
+            for i, chunk in enumerate(chunks):
+                f.write(f"{i+1}\n{self._format_srt_time(chunk['start'])} --> {self._format_srt_time(chunk['end'])}\n{chunk['text']}\n\n")
+
+    def _generate_audio_fallback_retry(self, text):
+        # Similar logic to standard fallback but uses grouped SRT
         id = str(uuid.uuid4())
         audio_path = os.path.join(self.cache_dir, f"{id}.mp3")
         subs_path = os.path.join(self.cache_dir, f"{id}.srt")
@@ -125,13 +142,20 @@ class TTSService:
             with open(audio_path, "wb") as f:
                 for chunk in audio_generator: f.write(chunk)
             duration = self._get_duration(audio_path)
+            
+            # Simple word split for fallback (no exact alignment available)
             words = text.split()
+            chunks = [" ".join(words[i:i+3]) for i in range(0, len(words), 3)]
             with open(subs_path, "w", encoding="utf-8") as f:
-                for i, w in enumerate(words):
-                    t, next_t = (i/len(words))*duration, ((i+1)/len(words))*duration
-                    f.write(f"{i+1}\n{self._format_srt_time(t)} --> {self._format_srt_time(next_t)}\n{w.upper()}\n\n")
+                for i, c in enumerate(chunks):
+                    t = (i/len(chunks))*duration
+                    next_t = ((i+1)/len(chunks))*duration
+                    f.write(f"{i+1}\n{self._format_srt_time(t)} --> {self._format_srt_time(next_t)}\n{c.upper()}\n\n")
             return audio_path, subs_path, duration
         except: return None, None, 0
+
+    def generate_sfx(self, prompt, duration_seconds=None): return None
+    def generate_music(self, prompt): return None
 
     def _get_duration(self, audio_path):
         try:

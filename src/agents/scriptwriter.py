@@ -31,19 +31,21 @@ class ScriptWriter:
     def generate_narrative(self, research_data, topic):
         """
         Step 1: Create a dramatic and engaging narrative in English.
+        Optimized for a MEASURED and CLEAR pace.
         """
         prompt = f"""
-        Using the following research data, write an exciting, mysterious, and high-impact narration script for YouTube Shorts.
+        Using the following research data, write an exciting narration script for YouTube Shorts.
         The script MUST be entirely in English.
         
         RESEARCH DATA: {research_data}
         TOPIC: {topic}
         
-        RULES:
-        - Tone: Energetic, professional, and storytelling-oriented.
-        - Duration: Suitable for Shorts (approx. 50-60 seconds, 140-160 words).
-        - Hook: Start with a powerful attention-grabbing first sentence.
-        - Language: STRICTLY English only.
+        PACING RULES:
+        - Use simple, punchy sentences.
+        - Avoid long, winded paragraphs that cause fast talking.
+        - Tone: Energetic but professional.
+        - Words: ~130 words for 60 seconds (to ensure a slower, native-like pace).
+        - Hook: Start with something that halts the scroll.
         """
         
         response = self.client.models.generate_content(
@@ -57,30 +59,29 @@ class ScriptWriter:
         """
         prompt = f"""
         Using the provided English narration, create a video production blueprint.
-        Everything MUST be in English. No background music or SFX prompts needed.
+        Everything MUST be in English.
         
         NARRATION: {narrative}
         TOPIC: {topic}
         LANGUAGE: English
 
         REQUIREMENTS:
-        1. Break the script into meaningful scenes (each 3-5 seconds long).
-        2. Assign keywords for Pexels video search (must be highly relevant English keywords).
-        3. Generate YouTube metadata (Title, Description, Tags) in English.
-        4. Focus on professional pacing and vocabulary.
+        1. Break the script into meaningful scenes (each 3.5 - 5 seconds long).
+        2. Assign HIGH-QUALITY English keywords for Pexels search.
+        3. Generate professional YouTube Title, Description, and Tags.
 
         JSON OUTPUT FORMAT:
         {{
           "video_id": "unique_id",
           "metadata": {{
-            "title": "Shorts Title in English",
-            "description": "Engaging English description with hashtags",
-            "tags": ["tag1", "tag2", "english"]
+            "title": "Shorts Title",
+            "description": "Shorts Description",
+            "tags": ["space", "facts", "short"]
           }},
           "scenes": [
             {{
               "text": "The narration text for this specific scene",
-              "keywords": ["visual", "keywords", "for", "search"],
+              "keywords": ["epic", "cinematic", "galaxy"],
               "language": "en"
             }}
           ]
