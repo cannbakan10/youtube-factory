@@ -13,3 +13,4 @@ client_secrets.json
 token.pickle
 assets/productions/*
 !assets/productions/.gitkeep
+!assets/templates/bg_music.mp3
