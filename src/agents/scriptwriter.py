@@ -30,20 +30,20 @@ class ScriptWriter:
 
     def generate_narrative(self, research_data, topic):
         """
-        AŞAMA 1: DRAMATİK VE SÜRÜKLEYİCİ BİR ANLATIM OLUŞTURMA
+        Step 1: Create a dramatic and engaging narrative in English.
         """
         prompt = f"""
-        Aşağıdaki araştırma verilerini kullanarak, YouTube Shorts için heyecan verici, merak uyandıran ve 
-        insanları saniyeler içinde yakalayan bir anlatım metni yaz.
+        Using the following research data, write an exciting, mysterious, and high-impact narration script for YouTube Shorts.
+        The script MUST be entirely in English.
         
-        ARAŞTIRMA VERİSİ: {research_data}
-        KONU: {topic}
+        RESEARCH DATA: {research_data}
+        TOPIC: {topic}
         
-        KURALLAR:
-        - Metin samimi, enerjik ve 'storytelling' tarzında olmalı.
-        - Shorts süresine uygun (yaklaşık 50-60 saniye, 150-180 kelime) olmalı.
-        - Dikkat çekici bir giriş (Hook) ile başlamalı.
-        - Mutlaka Türkçe olmalı.
+        RULES:
+        - Tone: Energetic, professional, and storytelling-oriented.
+        - Duration: Suitable for Shorts (approx. 50-60 seconds, 140-160 words).
+        - Hook: Start with a powerful attention-grabbing first sentence.
+        - Language: STRICTLY English only.
         """
         
         response = self.client.models.generate_content(
@@ -51,39 +51,37 @@ class ScriptWriter:
         )
         return response.text.strip()
 
-    def generate_blueprint(self, narrative, topic, language="tr") -> VideoBlueprint:
+    def generate_blueprint(self, narrative, topic, language="en") -> VideoBlueprint:
         """
-        AŞAMA 2: SAHNELEŞTİRME VE GÖRSEL ZEKA
+        Step 2: Scenes and Visual Intelligence in English.
         """
         prompt = f"""
-        Verilen anlatım metnini (narrative) kullanarak bir video prodüksiyon planı (blueprint) oluştur.
+        Using the provided English narration, create a video production blueprint.
+        Everything MUST be in English. No background music or SFX prompts needed.
         
-        ANLATIM METNİ: {narrative}
-        KONU: {topic}
-        DİL: {language}
+        NARRATION: {narrative}
+        TOPIC: {topic}
+        LANGUAGE: English
 
-        Senden beklenenler:
-        1. Metni anlamlı sahnelere böl (her sahne 3-5 saniye sürmeli).
-        2. Her sahne için Pexels'te aranabilecek İngilizce görsel anahtar kelimeler (keywords) belirle.
-        3. Her sahne için ElevenLabs SFX üretimine uygun bir ses efekti açıklaması (sfx_prompt) yaz.
-        4. Tüm video için uygun bir arka plan müziği talimatı (music_prompt) yaz.
-        5. YouTube için başlık, açıklama ve etiketler üret.
+        REQUIREMENTS:
+        1. Break the script into meaningful scenes (each 3-5 seconds long).
+        2. Assign keywords for Pexels video search (must be highly relevant English keywords).
+        3. Generate YouTube metadata (Title, Description, Tags) in English.
+        4. Focus on professional pacing and vocabulary.
 
-        JSON FORMATI DETAYI:
+        JSON OUTPUT FORMAT:
         {{
           "video_id": "unique_id",
           "metadata": {{
-            "title": "Shorts Başlığı",
-            "description": "Açıklama ve hashtagler",
-            "tags": ["etiket1", "etiket2"]
+            "title": "Shorts Title in English",
+            "description": "Engaging English description with hashtags",
+            "tags": ["tag1", "tag2", "english"]
           }},
-          "music_prompt": "cinematic epic suspenseful background music",
           "scenes": [
             {{
-              "text": "Sahnede söylenecek metin",
-              "keywords": ["scenic", "landscape", "drone shot"],
-              "sfx_prompt": "cinematic boom sound",
-              "language": "{language}"
+              "text": "The narration text for this specific scene",
+              "keywords": ["visual", "keywords", "for", "search"],
+              "language": "en"
             }}
           ]
         }}

@@ -10,13 +10,13 @@ class VideoEngine:
         self.output_dir = os.path.join(self.project_root, "assets", "cache")
         os.makedirs(self.output_dir, exist_ok=True)
 
-    def render(self, blueprint, language="tr"):
+    def render(self, blueprint, language="en"):
         """
-        Stream Global Ultra-Flow Engine v4.1 (Stable Factory):
-        - Correct Label Interleaving (Fixes CI Render Failure)
-        - Cross-Platform Font Support (sans-serif fallback)
-        - Optimized Audio Balance (Lower Background Levels)
-        - Discrete Word-Sync Subtitles (Reduced Font Size)
+        Stream Global Ultra-Flow Engine v5.0 (English Professional Cinema):
+        - Aggressively reduced font size (28) for professional text fit.
+        - NO Background Music mixing (User request: Voice ONLY).
+        - Word-Sync Subtitles (English optimized).
+        - High-contrast text for visibility.
         """
         video_id = getattr(blueprint, 'video_id', 'output')
         final_output = os.path.join(self.output_dir, f"{video_id}_{language}_final.mp4")
@@ -28,23 +28,20 @@ class VideoEngine:
 
         current_input_idx = 0
         
-        # 1. Background Music Input
+        # NOTE: Music input logic removed as per user's "no background music" request.
         music_in = None
-        if hasattr(blueprint, 'music_path') and blueprint.music_path and os.path.exists(blueprint.music_path):
-            input_args.extend(["-i", blueprint.music_path])
-            music_in = current_input_idx
-            current_input_idx += 1
 
-        # Use a generic font for CI compatibility
+        # Professional cross-platform font selection
         font_name = "sans" if os.name != 'nt' else "Arial"
         
         for i, scene in enumerate(blueprint.scenes):
             if not scene.audio_path or not os.path.exists(scene.audio_path): continue
             
-            # Subtitle styling: Reduced to 35 for a very subtle, modern look
+            # Subtitle styling: Reduced to 28 for ultra-professional fit & look
+            # Alignment=10 (Bottom center), MarginV increased to keep text neat.
             style = (
-                f"FontName={font_name},FontSize=35,PrimaryColour=&H00FFFF,OutlineColour=&H000000,"
-                "BorderStyle=1,Outline=1.5,Shadow=0,Alignment=10,MarginV=30,Bold=1"
+                f"FontName={font_name},FontSize=28,PrimaryColour=&H00FFFFFF,OutlineColour=&H000000,"
+                "BorderStyle=1,Outline=1.2,Shadow=0,Alignment=10,MarginV=45,Bold=1"
             )
             
             subs_path = os.path.abspath(scene.subs_path)
@@ -55,7 +52,7 @@ class VideoEngine:
             
             duration = scene.duration 
 
-            # Scene Inputs: Video, Narrative Audio, SFX
+            # Scene Inputs: Video, Narrative Audio
             v_in = None
             if scene.video_path and os.path.exists(scene.video_path):
                 input_args.extend(["-i", scene.video_path])
@@ -66,11 +63,7 @@ class VideoEngine:
             a_narrative_in = current_input_idx
             current_input_idx += 1
             
-            sfx_in = None
-            if scene.sfx_path and os.path.exists(scene.sfx_path):
-                input_args.extend(["-i", scene.sfx_path])
-                sfx_in = current_input_idx
-                current_input_idx += 1
+            # SFX logic removed as per user request.
 
             # --- VIDEO FILTERING ---
             v_filters = [
@@ -90,17 +83,8 @@ class VideoEngine:
                     f"[v_black{i}]{','.join(v_filters)}[v{i}_out];"
                 )
             
-            # --- AUDIO FILTERING ---
-            if sfx_in is not None:
-                # SFX Volume: Dropped to 0.08 (minimal ambient cues)
-                a_filter = (
-                    f"[{a_narrative_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS[a{i}_nar];"
-                    f"[{sfx_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,volume=0.08[a{i}_sfx];"
-                    f"[a{i}_nar][a{i}_sfx]amix=inputs=2:duration=first:dropout_transition=0[a{i}_mixed];"
-                    f"[a{i}_mixed]aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo[a{i}_out];"
-                )
-            else:
-                a_filter = f"[{a_narrative_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo[a{i}_out];"
+            # --- AUDIO FILTERING (NARRATION ONLY) ---
+            a_filter = f"[{a_narrative_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo[a{i}_out];"
             
             filter_complex_parts.append(v_filter)
             filter_complex_parts.append(a_filter)
@@ -108,23 +92,13 @@ class VideoEngine:
             a_labels.append(f"[a{i}_out]")
 
         if not v_labels: 
-            logging.error("❌ Render Hatası: Hiçbir sahne için video/ses etiketi oluşmadı.")
+            logging.error("❌ Render Error: No video/audio segments generated.")
             return None
 
-        # 2. Concat Scenes: Labels MUST be interleaved [v0][a0][v1][a1]... for concat=v=1:a=1
+        # Concat Scenes: Interleaved labels [v0][a0][v1][a1]...
         num_scenes = len(v_labels)
         interleaved_labels = "".join([f"{v}{a}" for v, a in zip(v_labels, a_labels)])
-        filter_complex_parts.append(f"{interleaved_labels}concat=n={num_scenes}:v=1:a=1[v_full][a_no_music];")
-
-        # 3. Global Audio Mix: Narrative/SFX + Background Music
-        if music_in is not None:
-            # Music Volume: Dropped to 0.02 (barely audible background aura)
-            filter_complex_parts.append(
-                f"[{music_in}:a]aloop=loop=-1:size=2e9,volume=0.02[bg_music];"
-                f"[a_no_music][bg_music]amix=inputs=2:duration=first:dropout_transition=2[a_full];"
-            )
-        else:
-            filter_complex_parts.append(f"[a_no_music]copy[a_full];")
+        filter_complex_parts.append(f"{interleaved_labels}concat=n={num_scenes}:v=1:a=1[v_full][a_full];")
 
         cmd = [
             "ffmpeg", "-y", "-v", "error",
@@ -138,13 +112,13 @@ class VideoEngine:
             final_output
         ]
 
-        logging.info("🎬 Factory V4.1 (Stable Cinema) render başlıyor...")
+        logging.info("🎬 Factory V5.0 (English Professional) render starting...")
         try:
             result = subprocess.run(cmd, capture_output=True, text=True)
             if result.returncode != 0:
-                logging.error(f"❌ FFmpeg Hatası: {result.stderr}")
+                logging.error(f"❌ FFmpeg Error: {result.stderr}")
                 return None
             return final_output
         except Exception as e:
-            logging.error(f"❌ Render Beklenmedik Hata: {e}")
+            logging.error(f"❌ Unexpected Render Error: {e}")
             return None

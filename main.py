@@ -18,13 +18,13 @@ class YoutubeFactory:
         required_keys = ["GEMINI_API_KEY", "PEXELS_API_KEY", "TAVILY_API_KEY", "ELEVENLABS_API_KEY"]
         missing = [k for k in required_keys if not os.getenv(k)]
         if missing:
-            print(f"⚠️ UYARI: Şu API anahtarlar eksik: {', '.join(missing)}")
+            print(f"⚠️ WARNING: Missing API keys: {', '.join(missing)}")
             
         self.researcher = ResearchAgent()
         self.scriptwriter = ScriptWriter()
         self.youtube_service = None 
 
-    def run(self, topic, languages=["tr"], auto_upload=False):
+    def run(self, topic, languages=["en"], auto_upload=False):
         timestamp = int(time.time())
         topic_slug = "".join(c for c in topic if c.isalnum() or c.isspace()).replace(" ", "_")[:30]
         production_id = f"{topic_slug}_{timestamp}"
@@ -33,84 +33,77 @@ class YoutubeFactory:
         base_dir = os.path.join(project_root, "assets", "productions", production_id)
         cache_dir = os.path.join(project_root, "assets", "cache")
         
-        # Cache temizliği
+        # Cleanup cache
         if os.path.exists(cache_dir):
             shutil.rmtree(cache_dir)
         os.makedirs(cache_dir, exist_ok=True)
         os.makedirs(base_dir, exist_ok=True)
 
-        print(f"\n🚀 SHORTS FACTORY BAŞLIYOR: {topic}")
+        print(f"\n🚀 SHORTS FACTORY STARTING (ENGLISH MODE): {topic}")
         
-        # Servisleri başlat
+        # Initialize services
         self.tts = TTSService(output_dir=cache_dir)
-        self.tts.set_voice() # Pick a random Turkish voice
+        self.tts.set_voice() # Pick a professional English voice
         self.pexels = PexelsService(output_dir=cache_dir)
         self.engine = VideoEngine()
 
-        # 1. Araştırma
-        print(f"🔍 Konu Araştırılıyor...")
-        research_data = self.researcher.research(topic)
+        # 1. Research (English)
+        print(f"🔍 Researching topic in English...")
+        research_data = self.researcher.research(topic) # Researcher will now handle en prompts if topic is en
         
         for lang in languages:
             lang = lang.strip().lower()
-            print(f"\n🌍 DİL İŞLENİYOR: {lang.upper()}")
+            print(f"\n🌍 PROCESSING LANGUAGE: {lang.upper()}")
             
-            # 2. Senaryo
+            # 2. Script (English)
             narrative = self.scriptwriter.generate_narrative(research_data, topic)
             blueprint = self.scriptwriter.generate_blueprint(narrative, topic, language=lang)
             blueprint.video_id = production_id
             
-            # ElevenLabs AI Music Generation
-            if blueprint.music_prompt:
-                music_path = self.tts.generate_music(blueprint.music_prompt)
-                blueprint.music_path = music_path
+            # Music logic removed as per user request
             
-            # 3. Medya Toplama
+            # 3. Media Collection
             for i, scene in enumerate(blueprint.scenes):
-                print(f"   🎥 Sahne {i+1}: Hazırlanıyor...")
+                print(f"   🎥 Scene {i+1}: Processing...")
                 
                 video_path = self.pexels.get_video(scene.keywords)
                 scene.video_path = video_path
                 
-                # Ses ve Altyazı
+                # Narration & Subtitles (EN)
                 audio, subs, dur = self.tts.generate_audio_with_subtitles(scene.text, lang)
                 if not audio:
-                    print("      ❌ Ses oluşturulamadı! Sahne atlanıyor.")
+                    print("      ❌ Narration failed! Skipping scene.")
                     continue
                     
                 scene.audio_path = audio
                 scene.subs_path = subs
                 scene.duration = dur
-                
-                # ElevenLabs Cinematic SFX
-                if scene.sfx_prompt:
-                    sfx = self.tts.generate_sfx(scene.sfx_prompt, duration_seconds=dur)
-                    scene.sfx_path = sfx
 
-            # 4. Render
+            # 4. Render (Pure Narration Mode)
             final_path = self.engine.render(blueprint, language=lang)
             
             if final_path and os.path.exists(final_path):
-                # Çıktıyı kaydet
+                # Save output
                 lang_dir = os.path.join(base_dir, lang)
                 os.makedirs(lang_dir, exist_ok=True)
                 dest_path = os.path.join(lang_dir, f"{production_id}_{lang}.mp4")
                 shutil.move(final_path, dest_path)
                 
-                # Metadata kaydet
+                # Save Metadata
                 meta_file = os.path.join(lang_dir, "metadata.json")
                 with open(meta_file, "w", encoding="utf-8") as f:
                     meta_data = blueprint.metadata
                     meta_data['file_path'] = dest_path
                     json.dump(meta_data, f, indent=2, ensure_ascii=False)
                 
-                print(f"✅ VİDEO HAZIR: {dest_path}")
+                print(f"✅ VIDEO READY: {dest_path}")
 
-                # 5. Otomatik Yükleme
+                # 5. Auto-Upload
                 if auto_upload:
                     if not self.youtube_service:
                         self.youtube_service = YouTubeService()
                     
+                    # Upload in English context
                     self.youtube_service.upload_video(
                         dest_path, 
                         blueprint.metadata.get('title', topic), 
@@ -118,16 +111,16 @@ class YoutubeFactory:
                         blueprint.metadata.get('tags', [])
                     )
             else:
-                print(f"❌ Render başarısız oldu: {lang}")
+                print(f"❌ Render failed: {lang}")
 
-        print(f"\n🏁 İŞLEM TAMAMLANDI. Dosyalar: {base_dir}")
+        print(f"\n🏁 OPERATION COMPLETE. Production ID: {production_id}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--topic", type=str, required=True, help="Video konusu")
-    parser.add_argument("--langs", type=str, default="tr", help="Diller (virgülle ayır): tr,en")
-    parser.add_argument("--upload", action="store_true", help="Otomatik yükle")
+    parser.add_argument("--topic", type=str, required=True, help="Video topic")
+    parser.add_argument("--langs", type=str, default="en", help="Languages (comma-separated): en,es")
+    parser.add_argument("--upload", action="store_true", help="Auto-upload to YouTube")
     args = parser.parse_args()
 
     factory = YoutubeFactory()
-    factory.run(args.topic, languages=args.langs.split(","), auto_upload=args.upload)
+    factory.run(topic=args.topic, languages=args.langs.split(","), auto_upload=args.upload)

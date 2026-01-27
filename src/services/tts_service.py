@@ -13,43 +13,43 @@ class TTSService:
         self.client = ElevenLabs(api_key=api_key)
         self.cache_dir = output_dir
         
-        # New Library for reuse (Not cleaned every run)
+        # Audio Library (Not cleaned every run)
         self.project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
         self.library_dir = os.path.join(self.project_root, "assets", "library", "music")
         
         os.makedirs(self.cache_dir, exist_ok=True)
         os.makedirs(self.library_dir, exist_ok=True)
         
-        # Sadece Native Türkçe Sesler (Doğrulanmış & Yeni Eklenenler)
+        # Verified Professional Multilingual Voices (Guaranteed to work in this account)
         self.voices = {
             "male": [
-                "IuRRIAcbQK5AQk1XevPj", # Doga (İstanbul Aksanı)
-                "6H6FG7kAHiOf7LXnwus7", # Cahit (Derin, Yatıştırıcı)
-                "z2ObNnp0E5ZGeTlSXkX0", # Mert Aksoy (Ciddi, Tok)
+                "z2ObNnp0E5ZGeTlSXkX0", # Mert Aksoy (Serious, Tok, Professional)
+                "6H6FG7kAHiOf7LXnwus7", # Cahit (Deep, Professional)
             ],
             "female": [
-                "bj1uMlYGikistcXNmFoh", # Nisa (Genç, Arkadaş Canlısı, Yumuşak)
+                "bj1uMlYGikistcXNmFoh", # Nisa (Professional, Clear)
             ]
         }
         self.current_voice_id = self.voices["male"][0] 
         self.model_id = "eleven_multilingual_v2"
 
     def set_voice(self, gender=None, voice_id=None):
-        """Üretim için sesi belirler. Sadece seçtiğin yerli sesleri kullanır."""
+        """Sets the voice for production. Optimized for English professional tone."""
         if voice_id:
             self.current_voice_id = voice_id
         elif gender in self.voices:
             self.current_voice_id = random.choice(self.voices[gender])
         else:
-            # Tüm Türkçe sesler arasından rastgele seç
+            # Randomly pick from all high-quality voices
             all_ids = self.voices["male"] + self.voices["female"]
             self.current_voice_id = random.choice(all_ids)
         
-        print(f"      🎭 [TTSService]: Ses seçildi -> {self.current_voice_id} (Tamamen Türkçe)")
+        print(f"      🎭 [TTSService]: Voice selected -> {self.current_voice_id} (English Professional)")
 
-    def generate_audio_with_subtitles(self, text, language="tr"):
+    def generate_audio_with_subtitles(self, text, language="en"):
         """
         Hyper-Sync Edition: Uses ElevenLabs Timestamps for perfect word-level alignment.
+        Defaulting to EN for English-ONLY factory mode.
         """
         id = str(uuid.uuid4())
         audio_path = os.path.join(self.cache_dir, f"{id}.mp3")
@@ -58,15 +58,15 @@ class TTSService:
         clean_text = text.strip()
         
         try:
-            print(f"      🎙️ [ElevenLabs Hyper-Sync]: Seslendiriliyor ({self.current_voice_id})...")
+            print(f"      🎙️ [ElevenLabs Hyper-Sync]: Narrating (Voice: {self.current_voice_id})...")
             
             response = self.client.text_to_speech.convert_with_timestamps(
                 voice_id=self.current_voice_id,
                 text=clean_text,
                 model_id=self.model_id,
                 voice_settings={
-                    "stability": 0.45,
-                    "similarity_boost": 0.8,
+                    "stability": 0.50,
+                    "similarity_boost": 0.75,
                     "style": 0.0,
                     "use_speaker_boost": True
                 }
@@ -83,53 +83,15 @@ class TTSService:
             return audio_path, subs_path, duration
                     
         except Exception as e:
-            print(f"      ❌ ElevenLabs Hyper-Sync Hatası: {e}")
+            print(f"      ❌ ElevenLabs Hyper-Sync Error: {e}")
             return self._generate_audio_fallback(clean_text)
 
     def generate_sfx(self, prompt, duration_seconds=None):
-        if not prompt: return None
-        id = str(uuid.uuid4())
-        sfx_path = os.path.join(self.cache_dir, f"sfx_{id}.mp3")
-        try:
-            print(f"      🔊 [ElevenLabs SFX]: '{prompt}' üretiliyor...")
-            sfx_generator = self.client.text_to_sound_effects.convert(
-                text=prompt,
-                duration_seconds=duration_seconds,
-                prompt_influence=0.8
-            )
-            with open(sfx_path, "wb") as f:
-                for chunk in sfx_generator:
-                    if chunk: f.write(chunk)
-            
-            if os.path.exists(sfx_path) and os.path.getsize(sfx_path) > 100:
-                return sfx_path
-        except Exception as e:
-            print(f"      ⚠️ SFX Hatası: {e}")
+        """Disabled as per user request to stop generating SFX/Music."""
         return None
 
     def generate_music(self, prompt):
-        if not prompt: return None
-        
-        # Check if we have this music in our library (reusable)
-        music_id = hashlib.md5(prompt.lower().strip().encode()).hexdigest()
-        library_path = os.path.join(self.library_dir, f"{music_id}.mp3")
-        
-        if os.path.exists(library_path):
-            print(f"      🎵 [ElevenLabs Music]: Müzik kütüphaneden alındı (Kredi Tasarrufu!): '{prompt}'")
-            return library_path
-
-        try:
-            print(f"      🎵 [ElevenLabs Music]: '{prompt}' besteleniyor...")
-            music_generator = self.client.music.compose(prompt=prompt)
-            
-            # Save to library for future use
-            with open(library_path, "wb") as f:
-                for chunk in music_generator:
-                    if chunk: f.write(chunk)
-            
-            return library_path
-        except Exception as e:
-            print(f"      ⚠️ Müzik Hatası: {e}")
+        """Disabled as per user request to stop generating SFX/Music."""
         return None
 
     def _alignment_to_srt(self, alignment, subs_path):
