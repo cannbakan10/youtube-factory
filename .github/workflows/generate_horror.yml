@@ -1,0 +1,57 @@
+name: Stream Global Horror Story Factory
+
+on:
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: 'Korku Hikayesi Teması (Örn: Lanetli bir ev, Ormandaki gölge)'
+        required: true
+        default: 'Orphanage of Shadows'
+      langs:
+        description: 'Diller (en, tr veya en,tr)'
+        required: true
+        default: 'en'
+        type: choice
+        options:
+        - en
+        - tr
+        - en,tr
+
+jobs:
+  generate-and-upload:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install FFmpeg
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y ffmpeg
+
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Set up Credentials
+      run: |
+        echo "${{ secrets.CLIENT_SECRETS_JSON }}" > client_secrets.json
+        echo "${{ secrets.TOKEN_PICKLE_BASE64 }}" | base64 -d > token.pickle
+      shell: bash
+
+    - name: Run Horror Factory
+      env:
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+        TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+        ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+      run: |
+        python main.py --topic "${{ github.event.inputs.topic }}" --langs "${{ github.event.inputs.langs }}" --mode horror --upload

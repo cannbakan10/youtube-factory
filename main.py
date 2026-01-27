@@ -24,7 +24,7 @@ class YoutubeFactory:
         self.scriptwriter = ScriptWriter()
         self.youtube_service = None 
 
-    def run(self, topic, languages=["en"], auto_upload=False):
+    def run(self, topic, languages=["en"], auto_upload=False, mode="info"):
         timestamp = int(time.time())
         topic_slug = "".join(c for c in topic if c.isalnum() or c.isspace()).replace(" ", "_")[:30]
         production_id = f"{topic_slug}_{timestamp}"
@@ -39,15 +39,16 @@ class YoutubeFactory:
         os.makedirs(cache_dir, exist_ok=True)
         os.makedirs(base_dir, exist_ok=True)
 
-        print(f"\n🚀 SHORTS FACTORY STARTING (Multi-Lang Mode): {topic}")
+        mode_title = "HORROR STORY MODE" if mode == "horror" else "INFO MODE"
+        print(f"\n🚀 SHORTS FACTORY STARTING ({mode_title}): {topic}")
         
         # Initialize services
         self.tts = TTSService(output_dir=cache_dir)
         self.pexels = PexelsService(output_dir=cache_dir)
         self.engine = VideoEngine()
 
-        # 1. Research (Based on Topic)
-        print(f"🔍 Researching topic...")
+        # 1. Research (Used as inspiration even for horror)
+        print(f"🔍 Gathering inspiration and research...")
         research_data = self.researcher.research(topic)
         
         for lang in languages:
@@ -57,9 +58,9 @@ class YoutubeFactory:
             # Update Voice for current language
             self.tts.set_voice(language=lang)
             
-            # 2. Script & Blueprint
-            narrative = self.scriptwriter.generate_narrative(research_data, topic, language=lang)
-            blueprint = self.scriptwriter.generate_blueprint(narrative, topic, language=lang)
+            # 2. Script & Blueprint (Pass mode here)
+            narrative = self.scriptwriter.generate_narrative(research_data, topic, language=lang, mode=mode)
+            blueprint = self.scriptwriter.generate_blueprint(narrative, topic, language=lang, mode=mode)
             blueprint.video_id = production_id
             
             # 3. Media Collection
@@ -119,7 +120,8 @@ if __name__ == "__main__":
     parser.add_argument("--topic", type=str, required=True, help="Video topic")
     parser.add_argument("--langs", type=str, default="en", help="Languages (comma-separated): en,tr")
     parser.add_argument("--upload", action="store_true", help="Auto-upload to YouTube")
+    parser.add_argument("--mode", type=str, default="info", choices=["info", "horror"], help="Format: info or horror")
     args = parser.parse_args()
 
     factory = YoutubeFactory()
-    factory.run(topic=args.topic, languages=args.langs.split(","), auto_upload=args.upload)
+    factory.run(topic=args.topic, languages=args.langs.split(","), auto_upload=args.upload, mode=args.mode)
