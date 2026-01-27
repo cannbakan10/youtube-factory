@@ -20,20 +20,19 @@ class TTSService:
         os.makedirs(self.cache_dir, exist_ok=True)
         os.makedirs(self.library_dir, exist_ok=True)
         
-        # Native English Professional Voices (Using standard ElevenLabs IDs)
+        # Verified Professional Native & Multilingual Voices
         self.voices = {
             "male": [
-                "XfNU2rGpBa01ckF309OY", # User requested specific voice
-                "pNInz6ob8mW8mY4Rnd87", # Adam (Classic Native English)
-                "erXw78R7V9rS2S753JkO", # Antoni (Clear British/American)
+                "XfNU2rGpBa01ckF309OY", # User requested specific Native voice
+                "z2ObNnp0E5ZGeTlSXkX0", # Mert Aksoy (Verified Multilingual)
+                "6H6FG7kAHiOf7LXnwus7", # Cahit (Verified Multilingual)
             ],
             "female": [
-                "21m00Tcm4TbcDqjt8gaZ", # Rachel (Professional Native English)
-                "EXAVITQu4vr4xnSDxMaL", # Bella (Calm Native English)
+                "bj1uMlYGikistcXNmFoh", # Nisa (Verified Multilingual)
             ]
         }
         self.current_voice_id = "XfNU2rGpBa01ckF309OY" 
-        self.model_id = "eleven_multilingual_v2" # Best for sync and variety
+        self.model_id = "eleven_multilingual_v2"
 
     def set_voice(self, gender=None, voice_id=None):
         """Sets the voice for production. Optimized for NATIVE English tone."""
