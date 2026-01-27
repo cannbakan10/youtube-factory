@@ -53,8 +53,12 @@ class YouTubeService:
 
     def upload_video(self, file_path, title, description, tags=None):
         """
-        Uploads a video to YouTube.
+        Uploads a video to YouTube with error handling for quota and limits.
         """
+        if not self.credentials:
+            print("   ⚠️ [YouTube]: Upload skipped (No credentials).")
+            return None
+
         print(f"🚀 [YouTube]: Starting upload for {title}...")
         
         body = {
@@ -65,24 +69,39 @@ class YouTubeService:
                 "categoryId": "27" # Education
             },
             "status": {
-                "privacyStatus": "public", # Now directly Public!
+                "privacyStatus": "public",
                 "selfDeclaredMadeForKids": False
             }
         }
 
-        # Call the API's videos.insert method to create and upload the video.
-        insert_request = self.youtube.videos().insert(
-            part="snippet,status",
-            body=body,
-            media_body=MediaFileUpload(file_path, chunksize=-1, resumable=True)
-        )
+        try:
+            # Call the API's videos.insert method to create and upload the video.
+            insert_request = self.youtube.videos().insert(
+                part="snippet,status",
+                body=body,
+                media_body=MediaFileUpload(file_path, chunksize=-1, resumable=True)
+            )
 
-        response = None
-        while response is None:
-            status, response = insert_request.next_chunk()
-            if status:
-                print(f"   📊 Upload Progress: {int(status.progress() * 100)}%")
+            response = None
+            while response is None:
+                status, response = insert_request.next_chunk()
+                if status:
+                    print(f"   📊 Upload Progress: {int(status.progress() * 100)}%")
 
-        video_id = response.get("id")
-        print(f"✅ [YouTube]: Video uploaded successfully! ID: {video_id}")
-        return video_id
+            video_id = response.get("id")
+            print(f"✅ [YouTube]: Video uploaded successfully! ID: {video_id}")
+            return video_id
+
+        except Exception as e:
+            print(f"\n❌ [YouTube ERROR]: Upload failed.")
+            error_str = str(e)
+            if "uploadLimitExceeded" in error_str:
+                print("   ⚠️ DURUM: YouTube günlük video yükleme sınırına takıldınız.")
+                print("   💡 NEDEN: Yeni veya doğrulanmamış kanalların günlük Shorts yükleme limiti düşüktür.")
+                print("   ✅ ÇÖZÜM: 24 saat beklemeniz veya kanalınızı telefonla doğrulamanız gerekir.")
+            elif "quotaExceeded" in error_str:
+                print("   ⚠️ DURUM: Google Cloud API kotası doldu.")
+                print("   ✅ ÇÖZÜM: Yarın tekrar deneyin veya Google Cloud Console'dan ek kota isteyin.")
+            else:
+                print(f"   ⚠️ HATA DETAYI: {error_str}")
+            return None
