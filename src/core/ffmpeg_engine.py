@@ -34,11 +34,11 @@ class VideoEngine:
         for i, scene in enumerate(blueprint.scenes):
             if not scene.audio_path or not os.path.exists(scene.audio_path): continue
             
-            # Subtitle styling: FontSize=30 with wrapping support via grouping 
-            # Alignment=2 is Bottom-Center (Standard for professional videos)
+            # Subtitle styling: Reduced to 22 for an ultra-subtle, minimal look.
+            # Increased MarginV to 80 to position it neatly at the bottom center.
             style = (
-                f"FontName={font_name},FontSize=30,PrimaryColour=&H00FFFFFF,OutlineColour=&H000000,"
-                "BorderStyle=1,Outline=1.5,Shadow=0.5,Alignment=2,MarginV=60,Bold=1"
+                f"FontName={font_name},FontSize=22,PrimaryColour=&H00FFFFFF,OutlineColour=&H000000,"
+                "BorderStyle=1,Outline=1.2,Shadow=0.5,Alignment=2,MarginV=80,Bold=1"
             )
             
             subs_path = os.path.abspath(scene.subs_path)
