@@ -7,6 +7,15 @@ on:
         description: 'Video Konusu (Title)'
         required: true
         default: 'Teknolojide bilinmeyen 3 gerçek'
+      langs:
+        description: 'Diller (en, tr veya en,tr)'
+        required: true
+        default: 'en'
+        type: choice
+        options:
+        - en
+        - tr
+        - en,tr
 
 jobs:
   generate-and-upload:
@@ -14,7 +23,7 @@ jobs:
     
     steps:
     - name: Checkout Code
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v3
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -45,4 +54,4 @@ jobs:
         TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
         ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
       run: |
-        python main.py --topic "${{ github.event.inputs.topic }}" --upload
+        python main.py --topic "${{ github.event.inputs.topic }}" --langs "${{ github.event.inputs.langs }}" --upload
