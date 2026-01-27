@@ -31,14 +31,17 @@ class VideoEngine:
         # Professional font selection (Arial/Sans)
         font_name = "sans" if os.name != 'nt' else "Arial"
         
+        valid_scenes_count = 0
         for i, scene in enumerate(blueprint.scenes):
-            if not scene.audio_path or not os.path.exists(scene.audio_path): continue
+            if not scene.audio_path or not os.path.exists(scene.audio_path):
+                logging.warning(f"⚠️ Skipping Scene {i+1}: Missing audio file.")
+                continue
             
-            # Subtitle styling: Reduced to 22 for an ultra-subtle, minimal look.
-            # Increased MarginV to 80 to position it neatly at the bottom center.
+            # Subtitle styling: Reduced to 18 for an ultra-minimal, premium feel. 
+            # Alignment=2 is Bottom-Center. MarginV=90 for perfect vertical clearance.
             style = (
-                f"FontName={font_name},FontSize=22,PrimaryColour=&H00FFFFFF,OutlineColour=&H000000,"
-                "BorderStyle=1,Outline=1.2,Shadow=0.5,Alignment=2,MarginV=80,Bold=1"
+                f"FontName={font_name},FontSize=18,PrimaryColour=&H00FFFFFF,OutlineColour=&H000000,"
+                "BorderStyle=1,Outline=1.0,Shadow=0.5,Alignment=2,MarginV=90,Bold=1"
             )
             
             subs_path = os.path.abspath(scene.subs_path)
@@ -52,7 +55,6 @@ class VideoEngine:
             # Scene Inputs: Video (LOOPED to prevent cut-off), Narrative Audio
             v_in = None
             if scene.video_path and os.path.exists(scene.video_path):
-                # We use stream_loop -1 to ensure video covers the audio duration
                 input_args.extend(["-stream_loop", "-1", "-i", scene.video_path])
                 v_in = current_input_idx
                 current_input_idx += 1
@@ -62,7 +64,6 @@ class VideoEngine:
             current_input_idx += 1
             
             # --- VIDEO FILTERING ---
-            # Added fps=30 and force_divisible_by=2 for encoding stability
             v_filters = [
                 "scale=w=1080:h=1920:force_original_aspect_ratio=increase",
                 "crop=1080:1920",
@@ -73,27 +74,29 @@ class VideoEngine:
             ]
             
             if v_in is not None:
-                v_filter = f"[{v_in}:v]{','.join(v_filters)}[v{i}_out];"
+                v_filter = f"[{v_in}:v]{','.join(v_filters)}[v_sc{valid_scenes_count}];"
             else:
                 v_filter = (
-                    f"color=c=black:s=1080x1920:d={duration}[v_black{i}];"
-                    f"[v_black{i}]{','.join(v_filters)}[v{i}_out];"
+                    f"color=c=black:s=1080x1920:d={duration}[v_black{valid_scenes_count}];"
+                    f"[v_black{valid_scenes_count}]{','.join(v_filters)}[v_sc{valid_scenes_count}];"
                 )
             
             # --- AUDIO FILTERING ---
-            a_filter = f"[{a_narrative_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo[a{i}_out];"
+            a_filter = f"[{a_narrative_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo[a_sc{valid_scenes_count}];"
             
             filter_complex_parts.append(v_filter)
             filter_complex_parts.append(a_filter)
-            v_labels.append(f"[v{i}_out]")
-            a_labels.append(f"[a{i}_out]")
+            v_labels.append(f"[v_sc{valid_scenes_count}]")
+            a_labels.append(f"[a_sc{valid_scenes_count}]")
+            valid_scenes_count += 1
 
-        if not v_labels: return None
+        if not v_labels: 
+            logging.error("❌ Render Error: No valid scenes generated.")
+            return None
 
         # Concat Scenes
-        num_scenes = len(v_labels)
         interleaved_labels = "".join([f"{v}{a}" for v, a in zip(v_labels, a_labels)])
-        filter_complex_parts.append(f"{interleaved_labels}concat=n={num_scenes}:v=1:a=1[v_full][a_full];")
+        filter_complex_parts.append(f"{interleaved_labels}concat=n={valid_scenes_count}:v=1:a=1[v_full][a_full];")
 
         cmd = [
             "ffmpeg", "-y", "-v", "error",
@@ -103,11 +106,10 @@ class VideoEngine:
             "-map", "[a_full]",
             "-c:v", "libx264", "-preset", "ultrafast", "-crf", "22",
             "-pix_fmt", "yuv420p",
-            "-shortest", 
             final_output
         ]
 
-        logging.info("🎬 Factory V5.1 (Professional English) render starting...")
+        logging.info(f"🎬 Factory V5.3 (Ultra-Clean) starting render for {valid_scenes_count} scenes...")
         try:
             result = subprocess.run(cmd, capture_output=True, text=True)
             if result.returncode != 0:

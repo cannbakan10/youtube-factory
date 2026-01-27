@@ -57,17 +57,18 @@ class TTSService:
         clean_text = text.strip()
         
         try:
-            print(f"      🎙️ [ElevenLabs Hyper-Sync]: Narrating with Native Voice ({self.current_voice_id})...")
+            print(f"      🎙️ [ElevenLabs Hyper-Sync]: Narrating with Slow & Clear Pace ({self.current_voice_id})...")
             
-            # stability: 0.65 for more measured, articulated speech (less speed)
+            # stability: 0.80 for slow, clear, and measured delivery.
+            # similarity_boost: 0.55 for consistent professional tone.
             response = self.client.text_to_speech.convert_with_timestamps(
                 voice_id=self.current_voice_id,
                 text=clean_text,
                 model_id=self.model_id,
                 voice_settings={
-                    "stability": 0.65,
-                    "similarity_boost": 0.75,
-                    "style": 0.05,
+                    "stability": 0.80,
+                    "similarity_boost": 0.55,
+                    "style": 0.0,
                     "use_speaker_boost": True
                 }
             )
@@ -76,9 +77,20 @@ class TTSService:
             with open(audio_path, "wb") as f:
                 f.write(audio_bytes)
 
+            # Added a tiny padding to the end of the audio using FFmpeg to avoid abrupt cuts
+            padded_audio_path = audio_path.replace(".mp3", "_padded.mp3")
+            pad_cmd = [
+                "ffmpeg", "-y", "-i", audio_path, 
+                "-af", "apad=pad_dur=0.3", # Add 0.3s of silence at the end
+                padded_audio_path
+            ]
+            subprocess.run(pad_cmd, capture_output=True)
+            if os.path.exists(padded_audio_path):
+                os.replace(padded_audio_path, audio_path)
+
             alignment = response.alignment
-            # Now grouping words in subtitles to avoid "ultra-fast flickering" and fit screen better
-            self._alignment_to_srt_grouped(alignment, subs_path)
+            # Grouping 2 words at a time for even smaller, more readable lines
+            self._alignment_to_srt_grouped(alignment, subs_path, words_per_chunk=2)
             
             duration = self._get_duration(audio_path)
             return audio_path, subs_path, duration
