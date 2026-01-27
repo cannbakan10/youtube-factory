@@ -33,6 +33,8 @@ class ScriptWriter:
         Step 1: Create a dramatic narrative.
         Supports 'info' (Standard) and 'horror' (Storytelling) modes.
         """
+        lang_name = "English" if language == "en" else "Turkish"
+        
         if mode == "horror":
             prompt = f"""
             Using the provided research about REAL terrifying events or urban legends, 
