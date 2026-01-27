@@ -81,7 +81,14 @@ class YoutubeFactory:
                 scene.duration = dur
 
             # 4. Render
-            final_path = self.engine.render(blueprint, language=lang)
+            bg_music = os.path.join(project_root, "assets", "templates", "bg_music.mp3")
+            if not os.path.exists(bg_music):
+                bg_music = None
+                print("   🎵 [Main]: No background music template found, skipping mix.")
+            else:
+                print("   🎵 [Main]: Mixing background music template...")
+
+            final_path = self.engine.render(blueprint, language=lang, bg_music_path=bg_music)
             
             if final_path and os.path.exists(final_path):
                 # Save output

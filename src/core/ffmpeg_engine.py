@@ -10,13 +10,12 @@ class VideoEngine:
         self.output_dir = os.path.join(self.project_root, "assets", "cache")
         os.makedirs(self.output_dir, exist_ok=True)
 
-    def render(self, blueprint, language="en"):
+    def render(self, blueprint, language="en", bg_music_path=None):
         """
-        Stream Global Ultra-Flow Engine v5.1 (Professional Global Edition):
-        - Subtitle Alignment=2 (Bottom Center) for standard readability.
-        - Text scale optimization for English chunks.
-        - Video Looping (Fixes cut-off issues).
-        - Pure Narration Audio.
+        Stream Global Ultra-Flow Engine v6.1 (Music & Stability Update):
+        - Optional Background Music mixing at 10% volume.
+        - Frame rate and pixel format standardization.
+        - Looped video support.
         """
         video_id = getattr(blueprint, 'video_id', 'output')
         final_output = os.path.join(self.output_dir, f"{video_id}_{language}_final.mp4")
@@ -37,8 +36,7 @@ class VideoEngine:
                 logging.warning(f"⚠️ Skipping Scene {i+1}: Missing audio file.")
                 continue
             
-            # Subtitle styling: Reduced to 18 for an ultra-minimal, premium feel. 
-            # Alignment=2 is Bottom-Center. MarginV=90 for perfect vertical clearance.
+            # Subtitle styling: FontSize 18 for high-end look.
             style = (
                 f"FontName={font_name},FontSize=18,PrimaryColour=&H00FFFFFF,OutlineColour=&H000000,"
                 "BorderStyle=1,Outline=1.0,Shadow=0.5,Alignment=2,MarginV=90,Bold=1"
@@ -52,7 +50,7 @@ class VideoEngine:
             
             duration = scene.duration 
 
-            # Scene Inputs: Video (LOOPED to prevent cut-off), Narrative Audio
+            # Scene Inputs: Video (LOOPED), Narrative Audio
             v_in = None
             if scene.video_path and os.path.exists(scene.video_path):
                 input_args.extend(["-stream_loop", "-1", "-i", scene.video_path])
@@ -65,14 +63,14 @@ class VideoEngine:
             
             # --- VIDEO FILTERING ---
             v_filters = [
-                "fps=30", # Standardize frame rate for seamless concat
+                "fps=30",
                 "scale=w=1080:h=1920:force_original_aspect_ratio=increase",
                 "crop=1080:1920",
                 "setsar=1",
                 f"trim=duration={duration}",
                 "setpts=PTS-STARTPTS",
                 f"subtitles='{subs_path}':force_style='{style}'",
-                "format=yuv420p" # Ensure consistent pixel format
+                "format=yuv420p"
             ]
             
             if v_in is not None:
@@ -98,17 +96,33 @@ class VideoEngine:
 
         # Concat Scenes
         interleaved_labels = "".join([f"{v}{a}" for v, a in zip(v_labels, a_labels)])
-        filter_complex_parts.append(f"{interleaved_labels}concat=n={valid_scenes_count}:v=1:a=1[v_full][a_full];")
+        filter_complex_parts.append(f"{interleaved_labels}concat=n={valid_scenes_count}:v=1:a=1[v_full][a_narrative];")
+
+        # --- BACKGROUND MUSIC MIXING ---
+        final_video_label = "[v_full]"
+        final_audio_label = "[a_narrative]"
+        
+        if bg_music_path and os.path.exists(bg_music_path):
+            input_args.extend(["-stream_loop", "-1", "-i", bg_music_path])
+            bg_in = current_input_idx
+            current_input_idx += 1
+            
+            # Mix: Narrative + (BG Music at 10% volume)
+            filter_complex_parts.append(
+                f"[{bg_in}:a]volume=0.10[bg_low];"
+                f"[a_narrative][bg_low]amix=inputs=2:duration=first:dropout_transition=0[a_final]"
+            )
+            final_audio_label = "[a_final]"
 
         cmd = [
             "ffmpeg", "-y", "-v", "error",
             *input_args,
             "-filter_complex", "".join(filter_complex_parts),
-            "-map", "[v_full]",
-            "-map", "[a_full]",
+            "-map", final_video_label,
+            "-map", final_audio_label,
             "-c:v", "libx264", "-preset", "ultrafast", "-crf", "22",
             "-pix_fmt", "yuv420p",
-            "-shortest", # Critical for infinite loop inputs
+            "-shortest", 
             final_output
         ]
 
