@@ -20,16 +20,10 @@ class TTSService:
         os.makedirs(self.cache_dir, exist_ok=True)
         os.makedirs(self.library_dir, exist_ok=True)
         
-        # Verified Professional Native & Multilingual Voices
+        # Locked to Nichalia Schwartz (English Female) as per user request
         self.voices = {
-            "male": [
-                "XfNU2rGpBa01ckF309OY", # User requested specific Native voice
-                "z2ObNnp0E5ZGeTlSXkX0", # Mert Aksoy (Verified Multilingual)
-                "6H6FG7kAHiOf7LXnwus7", # Cahit (Verified Multilingual)
-            ],
-            "female": [
-                "bj1uMlYGikistcXNmFoh", # Nisa (Verified Multilingual)
-            ]
+            "male": ["XfNU2rGpBa01ckF309OY"],
+            "female": ["XfNU2rGpBa01ckF309OY"]
         }
         self.current_voice_id = "XfNU2rGpBa01ckF309OY" 
         self.model_id = "eleven_multilingual_v2"
