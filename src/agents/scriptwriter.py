@@ -92,9 +92,17 @@ class ScriptWriter:
 
         REQUIREMENTS:
         1. Break the script into meaningful scenes (each 3.5 - 5 seconds long).
-        2. Assign HIGH-QUALITY English keywords for Pexels search.
-           {'CRITICAL: Use dark, cinematic, horror-themed keywords.' if mode == 'horror' else ''}
-        3. Generate professional YouTube Title, Description, and Tags in {lang_name}.
+        2. CLEAN TEXT: DO NOT include stage directions, timestamps (e.g., 0:15), 
+           headers (e.g., Intro:), or narrator notes in the scene "text" field. 
+           Only include the EXACT sentence to be spoken.
+           
+        3. VISUAL INTELLIGENCE & SAFETY:
+           - For RELIGIOUS topics (Dua, Mosque, etc.): Use keywords like "Mosque architecture", "Praying hands (cinematic)", "Antique Quran", "Peaceful nature", "Stars and sky". 
+             NEVER use keywords like "model", "beach", "fashion" or generic "people".
+           - For HISTORICAL figures (Pargalı Ibrahim, Sultan, etc.): Use "Ottoman archive", "Topkapi Palace", "Imperial architecture", "Antique portrait", "Historical museum", "16th century aesthetic".
+           - GENERAL: Be specific. Instead of "Dog", use "Golden Retriever puppy playing".
+           
+        4. Generate professional YouTube Title, Description, and Tags in {lang_name}.
 
         JSON OUTPUT FORMAT:
         {{
@@ -106,8 +114,8 @@ class ScriptWriter:
           }},
           "scenes": [
             {{
-              "text": "The narration text for this specific scene",
-              "keywords": ["cinematic", "visual", "keywords"],
+              "text": "ONLY THE SPOKEN TEXT. NO BRACKETS. NO DIRECTIONS.",
+              "keywords": ["specific", "visual", "keywords", "in", "english"],
               "language": "{language}"
             }}
           ]
