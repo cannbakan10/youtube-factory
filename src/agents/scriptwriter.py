@@ -33,21 +33,21 @@ class ScriptWriter:
         Step 1: Create a dramatic narrative.
         Supports 'info' (Standard) and 'horror' (Storytelling) modes.
         """
-        lang_name = "English" if language == "en" else "Turkish"
-        
         if mode == "horror":
             prompt = f"""
-            Write a terrifying and atmospheric HORROR story for a 60-second YouTube Short.
+            Using the provided research about REAL terrifying events or urban legends, 
+            write a spine-chilling narration for a 60-second YouTube Short. 
+            The story MUST be based on the TRUE facts found in the research.
             Everything MUST be in {lang_name}.
             
-            TOPIC/THEME: {topic}
+            RESEARCH DATA (The Raw Horror): {research_data}
+            TOPIC: {topic}
             
             STORYTELLING RULES:
-            - Start with a chilling, atmospheric hook that sets the mood instantly.
-            - Use sensory details (shadows, cold whispers, footsteps).
-            - Build suspense rapidly and end with a disturbing twist or cliffhanger.
-            - Style: Dark, mysterious, and creepy.
-            - Word count: ~120-140 words (to allow for slow, dramatic pauses).
+            - Start with: "Did you know this actually happened?" or a similar topic-specific 'True Horror' hook.
+            - Focus on the most disturbing parts of the research.
+            - Use a 'true crime' or 'chilling mystery' tone (not 'cheesy' fiction).
+            - Word count: ~110-130 words (measured, dramatic intervals).
             - Language: STRICTLY {lang_name} only.
             """
         else:
