@@ -41,12 +41,14 @@ class ScriptWriter:
         RESEARCH DATA: {research_data}
         TOPIC: {topic}
         
-        PACING RULES:
-        - Use simple, punchy sentences.
-        - Avoid long, winded paragraphs.
-        - Tone: Energetic but professional.
-        - Words: ~130 words for 60 seconds (measured pace).
-        - Hook: Start with a powerful attention-grabbing first sentence.
+        PACING & STYLE RULES:
+        - Hook: Start with a powerful, TOPIC-SPECIFIC sentence that captures curiosity in 2 seconds.
+          (Example: Instead of "Did you know?", use "Did you know these mysterious facts about DOGS?")
+          (Turkish Example: "Biliyor muydunuz?" yerine "Köpekler hakkında bu gizemli bilgileri biliyor muydunuz?" kullan.)
+        - Use simple, punchy sentences to maintain energy.
+        - Avoid generic intros; get straight to the value.
+        - Tone: Energetic, professional, and slightly dramatic.
+        - Target: ~130 words maximum for a 60-second video (Clear and measured pace).
         - Language: STRICTLY {lang_name} only.
         """
         
