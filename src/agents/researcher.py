@@ -1,13 +1,18 @@
 from duckduckgo_search import DDGS
 from google import genai
 from tavily import TavilyClient
+from openai import OpenAI
 import os
 
 class ResearchAgent:
     def __init__(self):
-        self.client = genai.Client(api_key=os.getenv("GEMINI_API_KEY", "").strip())
+        self.gemini_key = os.getenv("GEMINI_API_KEY", "").strip()
+        self.openai_key = os.getenv("OPENAI_API_KEY", "").strip()
+        self.client = genai.Client(api_key=self.gemini_key)
+        self.oa_client = OpenAI(api_key=self.openai_key) if self.openai_key else None
         self.tavily = TavilyClient(api_key=os.getenv("TAVILY_API_KEY", "").strip()) if os.getenv("TAVILY_API_KEY") else None
         self.model = "gemini-2.0-flash-lite"
+        self.oa_model = "gpt-4o-mini"
 
     def research(self, topic):
         print(f"[*] AI-Powered Research started for: {topic}")
@@ -52,10 +57,20 @@ class ResearchAgent:
         Yalnızca YUVARLANMIŞ VERİ RAPORUNU döndür.
         """
         
-        response = self.client.models.generate_content(
-            model=self.model,
-            contents=prompt
-        )
-        report = response.text
+        try:
+            response = self.client.models.generate_content(
+                model=self.model,
+                contents=prompt
+            )
+            report = response.text
+        except Exception as e:
+            print(f"   ⚠️ Gemini Research Error: {e}. Falling back to OpenAI...")
+            if not self.oa_client: return "Araştırma başarısız oldu."
+            oa_response = self.oa_client.chat.completions.create(
+                model=self.oa_model,
+                messages=[{"role": "user", "content": prompt}]
+            )
+            report = oa_response.choices[0].message.content
+            
         print(f"   📊 High-Fidelity Data Report Generated ({len(report)} chars)")
         return report

@@ -4,6 +4,7 @@ from typing import List, Optional
 from pydantic import BaseModel
 from google import genai
 from google.genai import types
+from openai import OpenAI
 
 class SceneBlueprint(BaseModel):
     text: str
@@ -24,9 +25,12 @@ class VideoBlueprint(BaseModel):
 
 class ScriptWriter:
     def __init__(self):
-        self.api_key = os.getenv("GEMINI_API_KEY")
-        self.client = genai.Client(api_key=self.api_key)
+        self.gemini_key = os.getenv("GEMINI_API_KEY")
+        self.openai_key = os.getenv("OPENAI_API_KEY")
+        self.client = genai.Client(api_key=self.gemini_key)
+        self.oa_client = OpenAI(api_key=self.openai_key) if self.openai_key else None
         self.model = "gemini-2.0-flash-exp"
+        self.oa_model = "gpt-4o-mini"
 
     def generate_narrative(self, research_data, topic, language="en", mode="info"):
         """
@@ -73,10 +77,19 @@ class ScriptWriter:
             - Language: STRICTLY {lang_name} only.
             """
         
-        response = self.client.models.generate_content(
-            model=self.model, contents=prompt
-        )
-        return response.text.strip()
+        try:
+            response = self.client.models.generate_content(
+                model=self.model, contents=prompt
+            )
+            return response.text.strip()
+        except Exception as e:
+            print(f"   ⚠️ Gemini Narrative Error: {e}. Falling back to OpenAI...")
+            if not self.oa_client: return None
+            oa_response = self.oa_client.chat.completions.create(
+                model=self.oa_model,
+                messages=[{"role": "user", "content": prompt}]
+            )
+            return oa_response.choices[0].message.content.strip()
 
     def generate_blueprint(self, narrative, topic, language="en", mode="info") -> VideoBlueprint:
         """
@@ -127,11 +140,21 @@ class ScriptWriter:
         }}
         """
         
-        response = self.client.models.generate_content(
-            model=self.model, 
-            contents=prompt,
-            config={'response_mime_type': 'application/json'}
-        )
-        
-        data = json.loads(response.text.strip())
+        try:
+            response = self.client.models.generate_content(
+                model=self.model, 
+                contents=prompt,
+                config={'response_mime_type': 'application/json'}
+            )
+            data = json.loads(response.text.strip())
+        except Exception as e:
+            print(f"   ⚠️ Gemini Blueprint Error: {e}. Falling back to OpenAI...")
+            if not self.oa_client: return None
+            oa_response = self.oa_client.chat.completions.create(
+                model=self.oa_model,
+                messages=[{"role": "user", "content": prompt}],
+                response_format={ "type": "json_object" }
+            )
+            data = json.loads(oa_response.choices[0].message.content.strip())
+            
         return VideoBlueprint(**data)
