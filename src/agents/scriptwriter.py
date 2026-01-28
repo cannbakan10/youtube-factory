@@ -110,7 +110,9 @@ class ScriptWriter:
               (Turkish: "1 numara sizi kesinlikle şok edecek!") to keep viewers until the end.
             - COUNTDOWN STRUCTURE: If the topic involves a list (e.g., "5 reasons", "Top 3"), ALWAYS start from the HIGHEST number and count down to 1. 
               (Example: Start at 5, finish at 1). Save the most incredible part for Number 1.
-            - SENTENCE STRUCTURE (Turkish): Use standard KURALLI sentences (Subject-Object-Verb). NEVER use DEVRİK (inverted) sentences; they sound unprofessional in AI narration.
+            - SENTENCE STRUCTURE (Turkish): Use standard KURALLI sentences (Subject-Object-Verb). NEVER use DEVRİK (inverted) sentences.
+            - CONVERSATIONAL PUNCTUATION (Turkish): Use exclamation marks (!) and ellipses (...) to force the AI to take breaths and change its pitch. This makes it sound human.
+            - EMPHASIS: Use words that trigger emphasis. Instead of simple facts, use descriptive and 'vurgulu' (emphasized) words.
             - Use simple, punchy sentences to maintain energy.
             - Tone: Energetic, professional, and slightly dramatic.
             - Target: ~130 words maximum for a 60-second video.

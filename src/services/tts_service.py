@@ -20,12 +20,14 @@ class TTSService:
         os.makedirs(self.cache_dir, exist_ok=True)
         os.makedirs(self.library_dir, exist_ok=True)
         
-        # Language-Specific Voice Settings
+        # Language-Specific Voice Settings (Optimized for Prosody)
         self.voices_config = {
             "tr": {
-                "male": ["z2ObNnp0E5ZGeTlSXkX0", "6H6FG7kAHiOf7LXnwus7"],
+                # 'pNInz6ob8mW8mY4Rnd87' is Antoni (Great multilingual prosody)
+                # 'ErXwS2RjAs9569ux6XfM' is a strong Turkish-native sounding clone
+                "male": ["pNInz6ob8mW8mY4Rnd87", "z2ObNnp0E5ZGeTlSXkX0"],
                 "female": ["bj1uMlYGikistcXNmFoh"],
-                "default": "z2ObNnp0E5ZGeTlSXkX0"
+                "default": "pNInz6ob8mW8mY4Rnd87" 
             },
             "en": {
                 "male": ["XfNU2rGpBa01ckF309OY", "pNInz6ob8mW8mY4Rnd87"],
@@ -35,7 +37,8 @@ class TTSService:
         }
         
         self.current_voice_id = self.voices_config["en"]["default"]
-        self.model_id = "eleven_multilingual_v2"
+        # Upgraded to Turbo v2.5 - Much more natural for Turkish and faster
+        self.model_id = "eleven_turbo_v2_5"
 
     def set_voice(self, language="en", gender=None, voice_id=None):
         """Sets the voice based on language and preferences."""
@@ -60,18 +63,25 @@ class TTSService:
         
         clean_text = text.strip()
         
-        try:
-            print(f"      🎙️ [ElevenLabs Hyper-Sync]: Narrating ({language.upper()}) with Voice {self.current_voice_id}...")
+        # Adaptive Voice Settings: Turkish needs more emotional soul (lower stability, higher style)
+        if language == "tr":
+            stability = 0.45 # Lower stability = More variance/pitch/emotion
+            style = 0.35     # Higher style = More expressive delivery
+        else:
+            stability = 0.70 # English is more stable at high settings
+            style = 0.10
             
-            # stability: 0.80 for slow, clear delivery.
+        try:
+            print(f"      🎙️ [ElevenLabs V2.5]: Narrating ({language.upper()}) | Stability: {stability} | Style: {style}")
+            
             response = self.client.text_to_speech.convert_with_timestamps(
                 voice_id=self.current_voice_id,
                 text=clean_text,
                 model_id=self.model_id,
                 voice_settings={
-                    "stability": 0.80,
-                    "similarity_boost": 0.55,
-                    "style": 0.0,
+                    "stability": stability,
+                    "similarity_boost": 0.75,
+                    "style": style,
                     "use_speaker_boost": True
                 }
             )
