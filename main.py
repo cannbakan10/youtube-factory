@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 from src.agents.researcher import ResearchAgent
 from src.agents.scriptwriter import ScriptWriter
 from src.services.pexels_service import PexelsService
+from src.services.pixabay_service import PixabayService
 from src.services.tts_service import TTSService
 from src.services.youtube_service import YouTubeService
 from src.core.ffmpeg_engine import VideoEngine
@@ -41,11 +42,12 @@ class YoutubeFactory:
 
         mode_title = "HORROR STORY MODE" if mode == "horror" else "INFO MODE"
         print(f"\n🚀 SHORTS FACTORY STARTING ({mode_title}): {topic}")
-        print("🚀 V7.4 - CINEMATIC ENGINE ACTIVE (4K Priority + Color Grade)")
+        print("🚀 V7.5 - GLOBAL ASSET HYBRID (Pexels + Pixabay + 4K Cinematic)")
         
         # Initialize services
         self.tts = TTSService(output_dir=cache_dir)
         self.pexels = PexelsService(output_dir=cache_dir)
+        self.pixabay = PixabayService(output_dir=cache_dir)
         self.engine = VideoEngine()
 
         # 1. Research (Used as inspiration even for horror)
@@ -69,6 +71,12 @@ class YoutubeFactory:
                 print(f"   🎥 Scene {i+1}: Processing...")
                 
                 video_path = self.pexels.get_video(scene.keywords)
+                
+                # Hybrid Fallback: If Pexels fails or find nothing, try Pixabay
+                if not video_path:
+                    print(f"      🔄 Pexels empty for '{scene.keywords[:30]}...', trying Pixabay...")
+                    video_path = self.pixabay.get_video(scene.keywords)
+                
                 scene.video_path = video_path
                 
                 # Narration & Subtitles
