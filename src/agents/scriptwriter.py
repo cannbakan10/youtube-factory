@@ -32,6 +32,46 @@ class ScriptWriter:
         self.model = "gemini-2.0-flash-exp"
         self.oa_model = "gpt-4o-mini"
 
+    def _clean_text(self, text):
+        """Removes AI trash, stage directions, and common unwanted markers."""
+        import re
+        if not text: return ""
+        # Remove markdown headers like ### or ##
+        text = re.sub(r'#+\s*', '', text)
+        # Remove stage directions like [Enerjik giriş], (15 seconds), [INTRO]
+        text = re.sub(r'\[.*?\]', '', text)
+        text = re.sub(r'\(.*?\)', '', text)
+        # Remove timestamps like 0:15, 01:20
+        text = re.sub(r'\d{1,2}:\d{2}', '', text)
+        # Remove common prefixes
+        prefixes = ["NARRATOR:", "ANLATICI:", "SCENE:", "SAHNE:", "INTRO:", "GİRİŞ:", "OUTRO:", "SONUÇ:"]
+        for p in prefixes:
+            text = text.replace(p, "")
+        # Remove bold/italic markers
+        text = text.replace("**", "").replace("__", "").replace("*", "").replace("_", "")
+        return text.strip()
+
+    def _extract_json(self, text):
+        """Resilient JSON extraction from AI response (handles markdown blocks)."""
+        import re
+        if not text: return None
+        try:
+            # Try direct parse
+            return json.loads(text.strip())
+        except:
+            # Try to find json block
+            match = re.search(r'```json\s*(.*?)\s*```', text, re.DOTALL)
+            if match:
+                try: return json.loads(match.group(1))
+                except: pass
+            
+            # Try to find anything between { and }
+            match = re.search(r'(\{.*\})', text, re.DOTALL)
+            if match:
+                try: return json.loads(match.group(1))
+                except: pass
+        return None
+
     def generate_narrative(self, research_data, topic, language="en", mode="info"):
         """
         Step 1: Create a dramatic narrative.
@@ -89,7 +129,7 @@ class ScriptWriter:
                 model=self.oa_model,
                 messages=[{"role": "user", "content": prompt}]
             )
-            return oa_response.choices[0].message.content.strip()
+            return self._clean_text(oa_response.choices[0].message.content.strip())
 
     def generate_blueprint(self, narrative, topic, language="en", mode="info") -> VideoBlueprint:
         """
@@ -146,7 +186,7 @@ class ScriptWriter:
                 contents=prompt,
                 config={'response_mime_type': 'application/json'}
             )
-            data = json.loads(response.text.strip())
+            data = self._extract_json(response.text)
         except Exception as e:
             print(f"   ⚠️ Gemini Blueprint Error: {e}. Falling back to OpenAI...")
             if not self.oa_client: return None
@@ -155,6 +195,11 @@ class ScriptWriter:
                 messages=[{"role": "user", "content": prompt}],
                 response_format={ "type": "json_object" }
             )
-            data = json.loads(oa_response.choices[0].message.content.strip())
+            data = self._extract_json(oa_response.choices[0].message.content)
             
-        return VideoBlueprint(**data)
+        if data:
+            # Final cleanup of all scene texts in the blueprint
+            for scene in data.get('scenes', []):
+                scene['text'] = self._clean_text(scene.get('text', ''))
+            return VideoBlueprint(**data)
+        return None

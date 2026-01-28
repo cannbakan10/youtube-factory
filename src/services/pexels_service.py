@@ -18,13 +18,22 @@ class PexelsService:
         # Handle list of keywords if necessary
         if isinstance(query, list):
             query = " ".join(query)
+            
+        # Quality & Context Refinement
+        # Appending cinematic/high-quality keywords to push for better stock choice
+        refined_query = f"{query} cinematic high quality professional"
+        
+        # Topic-specific steering (Safety Filter)
+        sensitive_keywords = ["dua", "pray", "religious", "mosque", "islam", "church", "god"]
+        if any(sk in query.lower() for sk in sensitive_keywords):
+            refined_query += " architecture nature peaceful"
 
         if not self.api_key:
             print("[!] Pexels API Key not found. Skipping video download.")
             return None
 
         headers = {"Authorization": self.api_key}
-        params = {"query": query, "per_page": 1, "orientation": "portrait"}
+        params = {"query": refined_query, "per_page": 1, "orientation": "portrait"}
         
         try:
             response = requests.get(self.base_url, headers=headers, params=params)
