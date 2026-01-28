@@ -29,7 +29,7 @@ class ScriptWriter:
         self.openai_key = os.getenv("OPENAI_API_KEY")
         self.client = genai.Client(api_key=self.gemini_key)
         self.oa_client = OpenAI(api_key=self.openai_key) if self.openai_key else None
-        self.model = "gemini-1.5-flash"
+        self.model = "gemini-2.0-flash"
         self.oa_model = "gpt-4o-mini"
 
     def _clean_text(self, text):

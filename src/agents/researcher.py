@@ -11,7 +11,7 @@ class ResearchAgent:
         self.client = genai.Client(api_key=self.gemini_key)
         self.oa_client = OpenAI(api_key=self.openai_key) if self.openai_key else None
         self.tavily = TavilyClient(api_key=os.getenv("TAVILY_API_KEY", "").strip()) if os.getenv("TAVILY_API_KEY") else None
-        self.model = "gemini-1.5-flash"
+        self.model = "gemini-2.0-flash"
         self.oa_model = "gpt-4o-mini"
 
     def research(self, topic):

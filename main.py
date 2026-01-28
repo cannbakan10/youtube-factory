@@ -41,6 +41,7 @@ class YoutubeFactory:
 
         mode_title = "HORROR STORY MODE" if mode == "horror" else "INFO MODE"
         print(f"\n🚀 SHORTS FACTORY STARTING ({mode_title}): {topic}")
+        print("🚀 V7.3 - STABLE MODELS ACTIVE (Gemini 2.0 Flash + OpenAI Fallback)")
         
         # Initialize services
         self.tts = TTSService(output_dir=cache_dir)
