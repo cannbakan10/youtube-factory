@@ -41,7 +41,7 @@ class YoutubeFactory:
 
         mode_title = "HORROR STORY MODE" if mode == "horror" else "INFO MODE"
         print(f"\n🚀 SHORTS FACTORY STARTING ({mode_title}): {topic}")
-        print("🚀 V7.3 - STABLE MODELS ACTIVE (Gemini 2.0 Flash + OpenAI Fallback)")
+        print("🚀 V7.4 - CINEMATIC ENGINE ACTIVE (4K Priority + Color Grade)")
         
         # Initialize services
         self.tts = TTSService(output_dir=cache_dir)
@@ -99,9 +99,14 @@ class YoutubeFactory:
                 shutil.move(final_path, dest_path)
                 
                 # Save Metadata
+                # CREDIT GENERATION: Legal safety as per sectoral report
+                credits = "\n\n--- Credits ---\nVideos: Pexels & Pixabay\nMusic: Stream Global Royalty Free\n#Shorts #AI #Factory"
+                
                 meta_file = os.path.join(lang_dir, "metadata.json")
                 with open(meta_file, "w", encoding="utf-8") as f:
                     meta_data = blueprint.metadata
+                    if 'description' in meta_data:
+                        meta_data['description'] += credits
                     meta_data['file_path'] = dest_path
                     json.dump(meta_data, f, indent=2, ensure_ascii=False)
                 

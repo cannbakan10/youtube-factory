@@ -12,10 +12,9 @@ class VideoEngine:
 
     def render(self, blueprint, language="en", bg_music_path=None):
         """
-        Stream Global Ultra-Flow Engine v6.1 (Music & Stability Update):
+        Stream Global Ultra-Flow Engine v7.4 (Cinematic Grade Update):
+        - Cinematic Color Grading (Contrast, Saturation, Vignette).
         - Optional Background Music mixing at 10% volume.
-        - Frame rate and pixel format standardization.
-        - Looped video support.
         """
         video_id = getattr(blueprint, 'video_id', 'output')
         final_output = os.path.join(self.output_dir, f"{video_id}_{language}_final.mp4")
@@ -62,11 +61,14 @@ class VideoEngine:
             current_input_idx += 1
             
             # --- VIDEO FILTERING ---
+            # Cinematic Color Grade: Subtle contrast/saturation boost + vignette for focus
             v_filters = [
                 "fps=30",
                 "scale=w=1080:h=1920:force_original_aspect_ratio=increase",
                 "crop=1080:1920",
                 "setsar=1",
+                "eq=brightness=0.02:contrast=1.1:saturation=1.1",
+                "vignette=angle=0.5:x0=w/2:y0=h/2",
                 f"trim=duration={duration}",
                 "setpts=PTS-STARTPTS",
                 f"subtitles='{subs_path}':force_style='{style}'",
@@ -126,7 +128,7 @@ class VideoEngine:
             final_output
         ]
 
-        logging.info(f"🎬 Factory V5.3 (Ultra-Clean) starting render for {valid_scenes_count} scenes...")
+        logging.info(f"🎬 Factory V7.4 (Cinematic) starting render for {valid_scenes_count} scenes...")
         try:
             result = subprocess.run(cmd, capture_output=True, text=True)
             if result.returncode != 0:

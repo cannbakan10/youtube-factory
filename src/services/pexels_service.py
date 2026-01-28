@@ -40,11 +40,25 @@ class PexelsService:
             data = response.json()
             
             if data.get('videos'):
-                video_url = data['videos'][0]['video_files'][0]['link']
+                video_files = data['videos'][0]['video_files']
+                
+                # Priority: 4K (Ultra HD) -> Full HD -> HD
+                # We look for 'width' >= 2160 for 4K
+                video_url = None
+                
+                # Sort by width descending to get best quality
+                sorted_files = sorted(video_files, key=lambda x: x.get('width', 0) or 0, reverse=True)
+                if sorted_files:
+                    video_url = sorted_files[0]['link']
+                    quality = f"{sorted_files[0].get('width')}x{sorted_files[0].get('height')}"
+                
+                if not video_url:
+                    return None
+
                 filename = f"{uuid.uuid4()}.mp4"
                 filepath = os.path.join(self.cache_dir, filename)
                 
-                print(f"      📥 Downloading clip: {video_url[:50]}...")
+                print(f"      📥 Downloading clip ({quality}): {video_url[:50]}...")
                 # Download the video
                 with requests.get(video_url, stream=True) as r:
                     r.raise_for_status()
