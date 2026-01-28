@@ -159,8 +159,13 @@ class ScriptWriter:
              NEVER use keywords like "model", "beach", "fashion" or generic "people".
            - For HISTORICAL figures (Pargalı Ibrahim, Sultan, etc.): Use "Ottoman archive", "Topkapi Palace", "Imperial architecture", "Antique portrait", "Historical museum", "16th century aesthetic".
            - GENERAL: Be specific. Instead of "Dog", use "Golden Retriever puppy playing".
+        
+        4. AUDIO INTELLIGENCE (SFX):
+           - For each scene, generate a specific "sfx_prompt" (in English) describing a sound effect that matches the moment.
+           - Examples: "cinematic whoosh", "deep horror drone", "modern transition pop", "nature birds chirping", "epic drum hit".
+           - If no sound is needed, use "none".
            
-        4. Generate professional YouTube Title, Description, and Tags in {lang_name}.
+        5. Generate professional YouTube Title, Description, and Tags in {lang_name}.
 
         JSON OUTPUT FORMAT:
         {{
@@ -174,6 +179,7 @@ class ScriptWriter:
             {{
               "text": "ONLY THE SPOKEN TEXT. NO BRACKETS. NO DIRECTIONS.",
               "keywords": ["specific", "visual", "keywords", "in", "english"],
+              "sfx_prompt": "sound effect description in english",
               "language": "{language}"
             }}
           ]

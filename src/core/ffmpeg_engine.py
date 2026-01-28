@@ -12,9 +12,9 @@ class VideoEngine:
 
     def render(self, blueprint, language="en", bg_music_path=None):
         """
-        Stream Global Ultra-Flow Engine v7.4 (Cinematic Grade Update):
+        Stream Global Ultra-Flow Engine v8.0 (Audio-Vivid Update):
+        - Multi-layer audio mixing (Narrative + Music + SFX).
         - Cinematic Color Grading (Contrast, Saturation, Vignette).
-        - Optional Background Music mixing at 10% volume.
         """
         video_id = getattr(blueprint, 'video_id', 'output')
         final_output = os.path.join(self.output_dir, f"{video_id}_{language}_final.mp4")
@@ -49,7 +49,7 @@ class VideoEngine:
             
             duration = scene.duration 
 
-            # Scene Inputs: Video (LOOPED), Narrative Audio
+            # Scene Inputs: Video (LOOPED), Narrative Audio, SFX (Optional)
             v_in = None
             if scene.video_path and os.path.exists(scene.video_path):
                 input_args.extend(["-stream_loop", "-1", "-i", scene.video_path])
@@ -59,6 +59,12 @@ class VideoEngine:
             input_args.extend(["-i", scene.audio_path])
             a_narrative_in = current_input_idx
             current_input_idx += 1
+
+            sfx_in = None
+            if hasattr(scene, 'sfx_path') and scene.sfx_path and os.path.exists(scene.sfx_path):
+                input_args.extend(["-i", scene.sfx_path])
+                sfx_in = current_input_idx
+                current_input_idx += 1
             
             # --- VIDEO FILTERING ---
             # Cinematic Color Grade: Subtle contrast/saturation boost + vignette for focus
@@ -83,11 +89,26 @@ class VideoEngine:
                     f"[v_black{valid_scenes_count}]{','.join(v_filters)}[v_sc{valid_scenes_count}];"
                 )
             
-            # --- AUDIO FILTERING ---
-            a_filter = f"[{a_narrative_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo[a_sc{valid_scenes_count}];"
+            # --- AUDIO FILTERING (Narrative + SFX Mix) ---
+            a_narr_label = f"a_narr{valid_scenes_count}"
+            filter_complex_parts.append(
+                f"[{a_narrative_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo[{a_narr_label}];"
+            )
+
+            if sfx_in is not None:
+                a_sfx_label = f"a_sfx{valid_scenes_count}"
+                filter_complex_parts.append(
+                    f"[{sfx_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo,volume=0.40[{a_sfx_label}];"
+                )
+                # Mix Narrative + SFX
+                filter_complex_parts.append(
+                    f"[{a_narr_label}][{a_sfx_label}]amix=inputs=2:duration=first[a_sc{valid_scenes_count}];"
+                )
+            else:
+                # No SFX, use narrative only
+                filter_complex_parts.append(f"[{a_narr_label}]acopy[a_sc{valid_scenes_count}];")
             
             filter_complex_parts.append(v_filter)
-            filter_complex_parts.append(a_filter)
             v_labels.append(f"[v_sc{valid_scenes_count}]")
             a_labels.append(f"[a_sc{valid_scenes_count}]")
             valid_scenes_count += 1

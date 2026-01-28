@@ -42,7 +42,7 @@ class YoutubeFactory:
 
         mode_title = "HORROR STORY MODE" if mode == "horror" else "INFO MODE"
         print(f"\n🚀 SHORTS FACTORY STARTING ({mode_title}): {topic}")
-        print("🚀 V7.5 - GLOBAL ASSET HYBRID (Pexels + Pixabay + 4K Cinematic)")
+        print("🚀 V8.0 - AUDIO-VIVID ENGINE (4K + Hybrid Assets + Auto SFX)")
         
         # Initialize services
         self.tts = TTSService(output_dir=cache_dir)
@@ -78,6 +78,11 @@ class YoutubeFactory:
                     video_path = self.pixabay.get_video(scene.keywords)
                 
                 scene.video_path = video_path
+                
+                # SFX Collection (Audio-Vivid Engine)
+                if scene.sfx_prompt and scene.sfx_prompt.lower() != "none":
+                    sfx_path = self.pixabay.get_sfx(scene.sfx_prompt)
+                    scene.sfx_path = sfx_path
                 
                 # Narration & Subtitles
                 audio, subs, dur = self.tts.generate_audio_with_subtitles(scene.text, lang)
