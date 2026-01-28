@@ -91,6 +91,7 @@ class ScriptWriter:
             
             STORYTELLING RULES:
             - Start with: "Did you know this actually happened?" or a similar topic-specific 'True Horror' hook.
+            - NO INTRO: Do NOT say "Here is a script" or "YouTube Shorts için video". Start DIRECTLY with the story.
             - Focus on the most disturbing parts of the research.
             - SENTENCE STRUCTURE (Turkish): Use standard, formal sentences. DO NOT use inverted (devrik) sentences.
             - Use a 'true crime' or 'chilling mystery' tone (not 'cheesy' fiction).
@@ -106,16 +107,17 @@ class ScriptWriter:
             TOPIC: {topic}
             
             PACING & STYLE RULES:
-            - RETENTION HOOK: Every script MUST start with a variation of: "Number 1 will absolutely shock you!" 
-              (Turkish: "1 numara sizi kesinlikle şok edecek!") to keep viewers until the end.
-            - COUNTDOWN STRUCTURE: If the topic involves a list (e.g., "5 reasons", "Top 3"), ALWAYS start from the HIGHEST number and count down to 1. 
-              (Example: Start at 5, finish at 1). Save the most incredible part for Number 1.
+            - MANDATORY HOOK: Start EVERY video with the exact pattern: "[TOPIC] Hakkında bunları biliyor muydunuz?" 
+              (Example: "Penguenler hakkındaki bu inanılmaz bilgileri biliyor muydunuz?")
+            - STRICT 5-STEP COUNTDOWN: You MUST list exactly 5 facts. Start from "5 numara" and count down sequentially to "1 numara".
+            - NO META-TALK: Do NOT include titles, headers, or instructions. Start DIRECTLY with the hook.
+            - THE #1 CLIMAX: 1 numara MUST be the most shocking fact. Use dramatic lead-ins like "Gelelim en çılgın gerçeğe..." or "1 numara sizi gerçekten sarsacak..."
+            - RETENTION FOCUS: Keep sentences short, punchy, and fast-paced to prevent scrolling.
             - SENTENCE STRUCTURE (Turkish): Use standard KURALLI sentences (Subject-Object-Verb). NEVER use DEVRİK (inverted) sentences.
-            - CONVERSATIONAL PUNCTUATION (Turkish): Use exclamation marks (!) and ellipses (...) to force the AI to take breaths and change its pitch. This makes it sound human.
-            - EMPHASIS: Use words that trigger emphasis. Instead of simple facts, use descriptive and 'vurgulu' (emphasized) words.
-            - Use simple, punchy sentences to maintain energy.
+            - CONVERSATIONAL PUNCTUATION (Turkish): Use exclamation marks (!) and ellipses (...) to force the AI to take breaths.
+            - EMPHASIS: Use words that trigger emphasis for Number 1.
             - Tone: Energetic, professional, and slightly dramatic.
-            - Target: ~130 words maximum for a 60-second video.
+            - Target: ~130-140 words maximum for a 60-second video.
             - Language: STRICTLY {lang_name} only.
             """
         
@@ -123,7 +125,7 @@ class ScriptWriter:
             response = self.client.models.generate_content(
                 model=self.model, contents=prompt
             )
-            return response.text.strip()
+            return self._clean_text(response.text.strip())
         except Exception as e:
             print(f"   ⚠️ Gemini Narrative Error: {e}. Falling back to OpenAI...")
             if not self.oa_client: return None
@@ -152,9 +154,9 @@ class ScriptWriter:
 
         REQUIREMENTS:
         1. Break the script into meaningful scenes (each 3.5 - 5 seconds long).
-        2. CLEAN TEXT: DO NOT include stage directions, timestamps (e.g., 0:15), 
-           headers (e.g., Intro:), or narrator notes in the scene "text" field. 
-           Only include the EXACT sentence to be spoken.
+        2. CLEAN TEXT: DO NOT include stage directions, timestamps, headers, 
+           narrator notes, or meta-commentary (e.g., "YouTube Shorts için video", "Sahne 1", "[Müzik]"). 
+           ONLY include the EXACT sentence to be spoken.
            
         3. VISUAL INTELLIGENCE & SAFETY:
            - For RELIGIOUS topics (Dua, Mosque, etc.): Use keywords like "Mosque architecture", "Praying hands (cinematic)", "Antique Quran", "Peaceful nature", "Stars and sky". 

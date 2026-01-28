@@ -48,7 +48,11 @@ class VideoEngine:
                 subs_path = subs_path.replace("'", "'\\\\\\''")
             
             duration = scene.duration 
-
+            
+            # Robust path escaping for subtitles filter
+            # FFmpeg on Mac/Linux needs extra care with single quotes and colons
+            safe_subs_path = subs_path.replace("'", "'\\\\\\''")
+            
             # Scene Inputs: Video (LOOPED), Narrative Audio, SFX (Optional)
             v_in = None
             if scene.video_path and os.path.exists(scene.video_path):
@@ -77,7 +81,7 @@ class VideoEngine:
                 "vignette=angle=0.5:x0=w/2:y0=h/2",
                 f"trim=duration={duration}",
                 "setpts=PTS-STARTPTS",
-                f"subtitles='{subs_path}':force_style='{style}'",
+                f"subtitles=f='{safe_subs_path}':force_style='{style}'",
                 "format=yuv420p"
             ]
             
@@ -98,15 +102,16 @@ class VideoEngine:
             if sfx_in is not None:
                 a_sfx_label = f"a_sfx{valid_scenes_count}"
                 filter_complex_parts.append(
-                    f"[{sfx_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo,volume=0.40[{a_sfx_label}];"
+                    f"[{sfx_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo,volume=0.30[{a_sfx_label}];"
                 )
-                # Mix Narrative + SFX
+                # Mix Narrative (1.3x) + SFX (0.3x)
                 filter_complex_parts.append(
-                    f"[{a_narr_label}][{a_sfx_label}]amix=inputs=2:duration=first[a_sc{valid_scenes_count}];"
+                    f"[{a_narr_label}]volume=1.30[a_narr_v{valid_scenes_count}];"
+                    f"[a_narr_v{valid_scenes_count}][{a_sfx_label}]amix=inputs=2:duration=first:dropout_transition=0[a_sc{valid_scenes_count}];"
                 )
             else:
-                # No SFX, use narrative only
-                filter_complex_parts.append(f"[{a_narr_label}]acopy[a_sc{valid_scenes_count}];")
+                # No SFX, use narrative with slight boost
+                filter_complex_parts.append(f"[{a_narr_label}]volume=1.30[a_sc{valid_scenes_count}];")
             
             filter_complex_parts.append(v_filter)
             v_labels.append(f"[v_sc{valid_scenes_count}]")
@@ -130,17 +135,21 @@ class VideoEngine:
             bg_in = current_input_idx
             current_input_idx += 1
             
-            # Mix: Narrative + (BG Music at 10% volume)
+            # Mix: Multi-Layer (Narr + SFX) + (BG Music at 8% volume)
             filter_complex_parts.append(
-                f"[{bg_in}:a]volume=0.10[bg_low];"
+                f"[{bg_in}:a]volume=0.08[bg_low];"
                 f"[a_narrative][bg_low]amix=inputs=2:duration=first:dropout_transition=0[a_final]"
             )
             final_audio_label = "[a_final]"
 
+        filter_complex_str = "".join(filter_complex_parts)
+        if filter_complex_str.endswith(";"):
+            filter_complex_str = filter_complex_str[:-1]
+
         cmd = [
             "ffmpeg", "-y", "-v", "error",
             *input_args,
-            "-filter_complex", "".join(filter_complex_parts),
+            "-filter_complex", filter_complex_str,
             "-map", final_video_label,
             "-map", final_audio_label,
             "-c:v", "libx264", "-preset", "ultrafast", "-crf", "22",
@@ -149,11 +158,15 @@ class VideoEngine:
             final_output
         ]
 
-        logging.info(f"🎬 Factory V7.4 (Cinematic) starting render for {valid_scenes_count} scenes...")
+        logging.info(f"🎬 Factory V8.5 (Pro-Mix) starting render for {valid_scenes_count} scenes...")
         try:
             result = subprocess.run(cmd, capture_output=True, text=True)
             if result.returncode != 0:
                 logging.error(f"❌ FFmpeg Error: {result.stderr}")
+                debug_file = os.path.join(self.output_dir, "ffmpeg_error.txt")
+                with open(debug_file, "w") as f:
+                    f.write(f"ERROR: {result.stderr}\n\nCOMMAND:\n{' '.join(cmd)}")
+                logging.info(f"📁 Full command logged to: {debug_file}")
                 return None
             return final_output
         except Exception as e:

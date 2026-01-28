@@ -27,7 +27,9 @@ class YoutubeFactory:
 
     def run(self, topic, languages=["en"], auto_upload=False, mode="info"):
         timestamp = int(time.time())
-        topic_slug = "".join(c for c in topic if c.isalnum() or c.isspace()).replace(" ", "_")[:30]
+        import unicodedata
+        topic_ascii = unicodedata.normalize('NFKD', topic).encode('ascii', 'ignore').decode('ascii')
+        topic_slug = "".join(c for c in topic_ascii if c.isalnum() or c.isspace()).replace(" ", "_")[:30]
         production_id = f"{topic_slug}_{timestamp}"
         
         project_root = os.path.dirname(os.path.abspath(__file__))
@@ -42,7 +44,7 @@ class YoutubeFactory:
 
         mode_title = "HORROR STORY MODE" if mode == "horror" else "INFO MODE"
         print(f"\n🚀 SHORTS FACTORY STARTING ({mode_title}): {topic}")
-        print("🚀 V8.0 - AUDIO-VIVID ENGINE (4K + Hybrid Assets + Auto SFX)")
+        print("🚀 V8.5 - PRO-MIX EDITION (5-1 Countdown + Studio Audio)")
         
         # Initialize services
         self.tts = TTSService(output_dir=cache_dir)

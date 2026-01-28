@@ -23,11 +23,11 @@ class TTSService:
         # Language-Specific Voice Settings (Optimized for Prosody)
         self.voices_config = {
             "tr": {
-                # 'NNn9dv8zq2kUo7d3JSGG' is the user's preferred Turkish voice
-                # 'z2ObNnp0E5ZGeTlSXkX0' is Mert Aksoy (Alternative)
-                "male": ["NNn9dv8zq2kUo7d3JSGG", "z2ObNnp0E5ZGeTlSXkX0"],
+                # 'uvU9jrgGLWNPeNA4NgNT' is the user's latest preferred Turkish voice
+                # 'NNn9dv8zq2kUo7d3JSGG' was the previous voice
+                "male": ["uvU9jrgGLWNPeNA4NgNT", "NNn9dv8zq2kUo7d3JSGG"],
                 "female": ["bj1uMlYGikistcXNmFoh"],
-                "default": "NNn9dv8zq2kUo7d3JSGG" 
+                "default": "uvU9jrgGLWNPeNA4NgNT" 
             },
             "en": {
                 "male": ["XfNU2rGpBa01ckF309OY", "pNInz6ob8mW8mY4Rnd87"],
