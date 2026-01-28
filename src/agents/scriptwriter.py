@@ -213,3 +213,67 @@ class ScriptWriter:
                 scene['text'] = self._clean_text(scene.get('text', ''))
             return VideoBlueprint(**data)
         return None
+    def generate_edit_blueprint(self, topic, language="en") -> VideoBlueprint:
+        """
+        Step 1 & 2 for Edit Mode: Directly generate a blueprint for a visual-only edit.
+        No narration, focuses on sourcing specific YouTube clips.
+        """
+        lang_name = "English" if language == "en" else "Turkish"
+        
+        prompt = f"""
+        Create a high-energy video production blueprint for a '{topic}' highlight edit.
+        There will be NO narration. The video relies on visuals and background music.
+        
+        TOPIC: {topic}
+        LANGUAGE: {lang_name}
+
+        REQUIREMENTS:
+        1. Identify 5 legendary moments or items related to the topic.
+        2. Create 5-7 scenes. 
+           - Scene 1: Intro hook text (shown as overlay).
+           - Scenes 2-6: The 5 items/moments.
+           - Scene 7: Outro/Call to action.
+        3. For each scene, provide:
+           - "text": A SHORT overlay text (max 5 words) to be displayed on screen.
+           - "keywords": A specific YouTube search query (in English) to find the EXACT footage. 
+             Example: "Messi legendary free kick goal vs Liverpool 2019".
+           - "duration": Exactly 4.0 seconds for each clip.
+           - "sfx_prompt": A high-energy sound effect like "crowd roar", "stadium atmosphere", "power whoosh".
+           
+        4. Provide a "music_prompt" for the background track. Example: "aggressive phonk", "epic cinematic orchestral", "fast energetic hip hop".
+        
+        5. Generate professional YouTube Title, Description, and Tags in {lang_name}.
+
+        JSON OUTPUT FORMAT:
+        {{
+          "video_id": "edit_id",
+          "metadata": {{
+            "title": "Edit Title",
+            "description": "Edit Description",
+            "tags": ["football", "edit", "viral"]
+          }},
+          "music_prompt": "background music genre",
+          "scenes": [
+            {{
+              "text": "OVERLAY TEXT",
+              "keywords": ["YouTube Search Query"],
+              "sfx_prompt": "sfx description",
+              "duration": 4.0
+            }}
+          ]
+        }}
+        """
+        
+        try:
+            response = self.client.models.generate_content(
+                model=self.model, 
+                contents=prompt,
+                config={'response_mime_type': 'application/json'}
+            )
+            data = self._extract_json(response.text)
+            if data:
+                return VideoBlueprint(**data)
+        except Exception as e:
+            print(f"   ⚠️ Edit Blueprint Error: {e}")
+            
+        return None

@@ -10,6 +10,7 @@ from src.services.pexels_service import PexelsService
 from src.services.pixabay_service import PixabayService
 from src.services.tts_service import TTSService
 from src.services.youtube_service import YouTubeService
+from src.services.youtube_clip_service import YoutubeClipService
 from src.core.ffmpeg_engine import VideoEngine
 
 load_dotenv()
@@ -44,15 +45,19 @@ class YoutubeFactory:
 
         mode_title = "HORROR STORY MODE" if mode == "horror" else "INFO MODE"
         print(f"\n🚀 SHORTS FACTORY STARTING ({mode_title}): {topic}")
-        print("🚀 V8.5 - PRO-MIX EDITION (5-1 Countdown + Studio Audio)")
+        if mode == "edit":
+            print("🚀 V9.0 - EDIT ENGINE (Professional Highlights + YouTube Sourcing)")
+        else:
+            print("🚀 V8.5 - PRO-MIX EDITION (5-1 Countdown + Studio Audio)")
         
         # Initialize services
         self.tts = TTSService(output_dir=cache_dir)
         self.pexels = PexelsService(output_dir=cache_dir)
         self.pixabay = PixabayService(output_dir=cache_dir)
+        self.yt_clips = YoutubeClipService(cache_dir=cache_dir)
         self.engine = VideoEngine()
 
-        # 1. Research (Used as inspiration even for horror)
+        # 1. Research
         print(f"🔍 Gathering inspiration and research...")
         research_data = self.researcher.research(topic)
         
@@ -63,21 +68,32 @@ class YoutubeFactory:
             # Update Voice for current language
             self.tts.set_voice(language=lang)
             
-            # 2. Script & Blueprint (Pass mode here)
-            narrative = self.scriptwriter.generate_narrative(research_data, topic, language=lang, mode=mode)
-            blueprint = self.scriptwriter.generate_blueprint(narrative, topic, language=lang, mode=mode)
+            # 2. Script & Blueprint
+            if mode == "edit":
+                blueprint = self.scriptwriter.generate_edit_blueprint(topic, language=lang)
+            else:
+                narrative = self.scriptwriter.generate_narrative(research_data, topic, language=lang, mode=mode)
+                blueprint = self.scriptwriter.generate_blueprint(narrative, topic, language=lang, mode=mode)
+            
+            if not blueprint:
+                print(f"   ❌ Blueprint generation failed for {lang}!")
+                continue
+
             blueprint.video_id = production_id
             
             # 3. Media Collection
             for i, scene in enumerate(blueprint.scenes):
                 print(f"   🎥 Scene {i+1}: Processing...")
                 
-                video_path = self.pexels.get_video(scene.keywords)
-                
-                # Hybrid Fallback: If Pexels fails or find nothing, try Pixabay
-                if not video_path:
-                    print(f"      🔄 Pexels empty for '{scene.keywords[:30]}...', trying Pixabay...")
-                    video_path = self.pixabay.get_video(scene.keywords)
+                if mode == "edit":
+                    query = " ".join(scene.keywords) if isinstance(scene.keywords, list) else scene.keywords
+                    video_path = self.yt_clips.get_clip(query, duration=scene.duration)
+                else:
+                    video_path = self.pexels.get_video(scene.keywords)
+                    # Hybrid Fallback
+                    if not video_path:
+                        print(f"      🔄 Pexels empty for '{str(scene.keywords)[:30]}...', trying Pixabay...")
+                        video_path = self.pixabay.get_video(scene.keywords)
                 
                 scene.video_path = video_path
                 
@@ -87,9 +103,14 @@ class YoutubeFactory:
                     scene.sfx_path = sfx_path
                 
                 # Narration & Subtitles
-                audio, subs, dur = self.tts.generate_audio_with_subtitles(scene.text, lang)
+                if mode == "edit":
+                    # Generate silent audio + simple subtitles for the text
+                    audio, subs, dur = self.tts.generate_silent_audio_with_subtitles(scene.text, duration=scene.duration)
+                else:
+                    audio, subs, dur = self.tts.generate_audio_with_subtitles(scene.text, lang)
+                
                 if not audio:
-                    print(f"      ❌ Narration failed for {lang}! Skipping scene.")
+                    print(f"      ❌ Audio processing failed for {lang}! Skipping scene.")
                     continue
                     
                 scene.audio_path = audio
@@ -148,7 +169,7 @@ if __name__ == "__main__":
     parser.add_argument("--topic", type=str, required=True, help="Video topic")
     parser.add_argument("--langs", type=str, default="en", help="Languages (comma-separated): en,tr")
     parser.add_argument("--upload", action="store_true", help="Auto-upload to YouTube")
-    parser.add_argument("--mode", type=str, default="info", choices=["info", "horror"], help="Format: info or horror")
+    parser.add_argument("--mode", type=str, default="info", choices=["info", "horror", "edit"], help="Format: info, horror or edit")
     args = parser.parse_args()
 
     factory = YoutubeFactory()
