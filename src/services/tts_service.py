@@ -23,11 +23,11 @@ class TTSService:
         # Language-Specific Voice Settings (Optimized for Prosody)
         self.voices_config = {
             "tr": {
-                # 'pNInz6ob8mW8mY4Rnd87' is Antoni (Great multilingual prosody)
-                # 'ErXwS2RjAs9569ux6XfM' is a strong Turkish-native sounding clone
-                "male": ["pNInz6ob8mW8mY4Rnd87", "z2ObNnp0E5ZGeTlSXkX0"],
+                # 'z2ObNnp0E5ZGeTlSXkX0' is Mert Aksoy (Verified available)
+                # '6H6FG7kAHiOf7LXnwus7' is Cahit (Verified available)
+                "male": ["z2ObNnp0E5ZGeTlSXkX0", "6H6FG7kAHiOf7LXnwus7"],
                 "female": ["bj1uMlYGikistcXNmFoh"],
-                "default": "pNInz6ob8mW8mY4Rnd87" 
+                "default": "z2ObNnp0E5ZGeTlSXkX0" 
             },
             "en": {
                 "male": ["XfNU2rGpBa01ckF309OY", "pNInz6ob8mW8mY4Rnd87"],
@@ -171,7 +171,37 @@ class TTSService:
             return audio_path, subs_path, duration
         except: return None, None, 0
 
-    def generate_sfx(self, prompt, duration_seconds=None): return None
+    def generate_sfx(self, prompt, duration_seconds=None):
+        """Generates a custom sound effect using ElevenLabs AI."""
+        if not prompt or prompt.lower() == "none":
+            return None
+            
+        id = str(uuid.uuid4())
+        sfx_path = os.path.join(self.cache_dir, f"sfx_{id}.mp3")
+        
+        try:
+            print(f"      🔊 [ElevenLabs SFX]: Generating '{prompt}'...")
+            
+            # The correct method in the SDK 2.x is text_to_sound_effects.convert
+            # It returns an iterator of bytes
+            iterator = self.client.text_to_sound_effects.convert(
+                text=prompt,
+                duration_seconds=duration_seconds
+            )
+            
+            with open(sfx_path, "wb") as f:
+                for chunk in iterator:
+                    f.write(chunk)
+            
+            if os.path.exists(sfx_path):
+                print(f"      ✅ [SFX SUCCESS]: Created '{prompt}'")
+                return sfx_path
+                
+        except Exception as e:
+            print(f"      ❌ ElevenLabs SFX Error: {e}")
+            
+        return None
+
     def generate_music(self, prompt): return None
 
     def _get_duration(self, audio_path):

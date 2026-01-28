@@ -79,9 +79,9 @@ class YoutubeFactory:
                 
                 scene.video_path = video_path
                 
-                # SFX Collection (Audio-Vivid Engine)
+                # SFX Collection (Audio-Vivid Engine with ElevenLabs AI)
                 if scene.sfx_prompt and scene.sfx_prompt.lower() != "none":
-                    sfx_path = self.pixabay.get_sfx(scene.sfx_prompt)
+                    sfx_path = self.tts.generate_sfx(scene.sfx_prompt)
                     scene.sfx_path = sfx_path
                 
                 # Narration & Subtitles
