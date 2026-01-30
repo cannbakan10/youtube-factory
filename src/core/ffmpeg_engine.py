@@ -105,19 +105,19 @@ class VideoEngine:
                 f"[{a_narrative_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo[{a_narr_label}];"
             )
 
-            if sfx_in is not None:
+            if sfx_in is not None and not is_long:
                 a_sfx_label = f"a_sfx{valid_scenes_count}"
-                sfx_vol = 0.20 if is_long else 0.30
+                sfx_vol = 0.30 
                 filter_complex_parts.append(
                     f"[{sfx_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo,volume={sfx_vol}[{a_sfx_label}];"
                 )
-                # Mix Narrative (1.3x) + SFX (0.3x)
+                # Mix Narrative (1.30x) + SFX (0.30x)
                 filter_complex_parts.append(
                     f"[{a_narr_label}]volume=1.30[a_narr_v{valid_scenes_count}];"
                     f"[a_narr_v{valid_scenes_count}][{a_sfx_label}]amix=inputs=2:duration=first:dropout_transition=0[a_sc{valid_scenes_count}];"
                 )
             else:
-                # No SFX, use narrative with slight boost
+                # No SFX OR Long-Form: Just use narrative with studio boost
                 filter_complex_parts.append(f"[{a_narr_label}]volume=1.30[a_sc{valid_scenes_count}];")
             
             filter_complex_parts.append(v_filter)
@@ -142,8 +142,8 @@ class VideoEngine:
             bg_in = current_input_idx
             current_input_idx += 1
             
-            # Mix: Multi-Layer (Narr + SFX) + (BG Music at 8% shorts / 5% long)
-            bg_vol = 0.05 if is_long else 0.08
+            # Mix: Multi-Layer (Narr + SFX) + (BG Music at 8% shorts / 3% long)
+            bg_vol = 0.03 if is_long else 0.08
             filter_complex_parts.append(
                 f"[{bg_in}:a]volume={bg_vol}[bg_low];"
                 f"[a_narrative][bg_low]amix=inputs=2:duration=first:dropout_transition=0[a_final]"
