@@ -72,16 +72,27 @@ class YoutubeFactory:
             blueprint.video_id = production_id
             
             # 3. Media Collection
+            import random
             orientation = "landscape" if video_type == "long" else "portrait"
             for i, scene in enumerate(blueprint.scenes):
                 print(f"   🎥 Scene {i+1}: Processing...")
                 
-                video_path = self.pexels.get_video(scene.keywords, orientation=orientation)
+                # Randomize keyword order for variety
+                random.shuffle(scene.keywords)
                 
-                # Hybrid Fallback
-                if not video_path:
-                    print(f"      🔄 Pexels empty for '{scene.keywords[:30]}...', trying Pixabay...")
-                    video_path = self.pixabay.get_video(scene.keywords)
+                # Alternate between Pexels and Pixabay for each scene to maximize variety
+                if i % 2 == 0:
+                    print(f"      🎞️ Source: Pexels")
+                    video_path = self.pexels.get_video(scene.keywords, orientation=orientation)
+                    if not video_path:
+                        print(f"      🔄 Pexels empty, failing over to Pixabay...")
+                        video_path = self.pixabay.get_video(scene.keywords, orientation=orientation)
+                else:
+                    print(f"      🎞️ Source: Pixabay")
+                    video_path = self.pixabay.get_video(scene.keywords, orientation=orientation)
+                    if not video_path:
+                        print(f"      🔄 Pixabay empty, failing over to Pexels...")
+                        video_path = self.pexels.get_video(scene.keywords, orientation=orientation)
                 
                 scene.video_path = video_path
                 

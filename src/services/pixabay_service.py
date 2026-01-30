@@ -15,16 +15,23 @@ class PixabayService:
             self.cache_dir = os.path.join(project_root, "assets", "cache")
         os.makedirs(self.cache_dir, exist_ok=True)
 
-    def get_video(self, query):
+    def get_video(self, query, orientation="portrait"):
         if not self.api_key:
             return None
 
         if isinstance(query, list):
             query = " ".join(query)
+            
+        # Refine query based on orientation for better Pixabay results
+        refined_query = query
+        if orientation == "portrait":
+            refined_query += " vertical"
+        else:
+            refined_query += " landscape"
 
         params = {
             "key": self.api_key,
-            "q": query,
+            "q": refined_query,
             "video_type": "film",
             "per_page": 5,
             "safesearch": "true"
