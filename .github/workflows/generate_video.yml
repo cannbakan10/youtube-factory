@@ -4,18 +4,22 @@ on:
   workflow_dispatch:
     inputs:
       topic:
-        description: 'Video Konusu (Title)'
+        description: 'Video Konusu (Type "trend" for auto-discovery)'
         required: true
-        default: 'Teknolojide bilinmeyen 3 gerçek'
+        default: 'trend'
       langs:
-        description: 'Diller (en, tr veya en,tr)'
+        description: 'Diller'
         required: true
-        default: 'en'
+        default: 'tr'
         type: choice
         options:
-        - en
         - tr
+        - en
         - en,tr
+      list_trends:
+        description: 'Sadece trendleri listele (Videonun yapılmasını beklemez)'
+        type: boolean
+        default: false
 
 jobs:
   generate-and-upload:
@@ -55,4 +59,8 @@ jobs:
         TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
         ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
       run: |
-        python main.py --topic "${{ github.event.inputs.topic }}" --langs "${{ github.event.inputs.langs }}" --upload
+        if [[ "${{ github.event.inputs.list_trends }}" == "true" ]]; then
+          python main.py --list-trends
+        else
+          python main.py --topic "${{ github.event.inputs.topic }}" --langs "${{ github.event.inputs.langs }}" --upload
+        fi

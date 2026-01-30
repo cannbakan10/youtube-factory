@@ -11,6 +11,7 @@ from src.services.pixabay_service import PixabayService
 from src.services.tts_service import TTSService
 from src.services.youtube_service import YouTubeService
 from src.core.ffmpeg_engine import VideoEngine
+from src.agents.trend_agent import TrendAgent
 
 load_dotenv()
 
@@ -23,6 +24,7 @@ class YoutubeFactory:
             
         self.researcher = ResearchAgent()
         self.scriptwriter = ScriptWriter()
+        self.trend_agent = TrendAgent()
         self.youtube_service = None 
 
     def run(self, topic, languages=["en"], auto_upload=False, mode="info"):
@@ -145,11 +147,32 @@ class YoutubeFactory:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--topic", type=str, required=True, help="Video topic")
+    parser.add_argument("--topic", type=str, required=False, help="Video topic (use 'trend' for auto-trend)")
     parser.add_argument("--langs", type=str, default="en", help="Languages (comma-separated): en,tr")
     parser.add_argument("--upload", action="store_true", help="Auto-upload to YouTube")
     parser.add_argument("--mode", type=str, default="info", choices=["info", "horror"], help="Format: info or horror")
+    parser.add_argument("--list-trends", action="store_true", help="Just list current trending topics and exit")
     args = parser.parse_args()
 
     factory = YoutubeFactory()
-    factory.run(topic=args.topic, languages=args.langs.split(","), auto_upload=args.upload, mode=args.mode)
+
+    if args.list_trends:
+        print("\n🔍 Fetching latest viral trends...")
+        trends = factory.trend_agent.get_trending_topics()
+        for i, t in enumerate(trends):
+            print(f"{i+1}. 🔥 {t['topic']}")
+            print(f"   💡 {t['reason']}\n")
+        exit()
+
+    if not args.topic or args.topic.lower() == "trend":
+        print("\n🌊 Auto-Trend Mode: Selecting top viral topic...")
+        trends = factory.trend_agent.get_trending_topics()
+        if trends:
+            args.topic = trends[0]['topic']
+            print(f"✅ Selected: {args.topic}")
+        else:
+            print("❌ No trends found. Please provide a manual topic.")
+            exit()
+
+    langs = args.langs.split(",")
+    factory.run(topic=args.topic, languages=langs, auto_upload=args.upload, mode=args.mode)
