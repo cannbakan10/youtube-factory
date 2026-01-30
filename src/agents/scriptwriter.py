@@ -203,7 +203,11 @@ class ScriptWriter:
            - Examples: "cinematic whoosh", "nature ambience", "city traffic hum", "soft piano note".
            - Use "none" if not needed.
            
-        5. Generate professional YouTube Title, Description, and Tags in {lang_name}.
+        5. METADATA & SEO:
+           - Generate professional YouTube Title, Description, and Tags in {lang_name}.
+           - TAG RULES: 
+             - If format is SHORTS: Include #Shorts and viral niche tags.
+             - If format is LONG: DO NOT use #Shorts. Use deep context tags like #Documentary, #Geopolitics, #History, #Education and topic-specific tags.
 
         JSON OUTPUT FORMAT:
         {{
