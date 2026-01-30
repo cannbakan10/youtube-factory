@@ -75,29 +75,39 @@ class ScriptWriter:
     def generate_narrative(self, research_data, topic, language="en", mode="info", video_type="shorts"):
         """
         Step 1: Create a dramatic narrative.
-        Supports 'info', 'horror' and now 'long' modes.
+        Supports 'info', 'horror' and now 'long' modes with dynamic duration detection.
         """
         lang_name = "English" if language == "en" else "Turkish"
         is_long = video_type == "long"
         
+        # Dynamic Duration Detection
+        import re
+        duration_match = re.search(r'(\d+)\s*(dakika|minute|dk|min)', topic.lower())
+        target_minutes = int(duration_match.group(1)) if duration_match else (8 if is_long else 1)
+        
+        # Word count calculation: 1 minute of speech is roughly 130-150 words.
+        # We'll target 135 words per minute for a professional, steady pace.
+        target_word_count = target_minutes * 135
+        
         if is_long:
             prompt = f"""
             Using the provided research data, write a DEEP and ENGAGING documentary-style narration script.
-            The script MUST be entirely in {lang_name}.
+            The script MUST be exactly sized for a {target_minutes} minute video.
+            Everything MUST be in {lang_name}.
             
             RESEARCH DATA: {research_data}
             TOPIC: {topic}
+            TARGET DURATION: {target_minutes} minutes
+            STRICT WORD COUNT TARGET: {target_word_count} words
             
             STRUCTURE & STYLE RULES:
             - INTRO: High-energy hook to explain what we are exploring.
-            - CHAPTERS: Break the topic into 4-6 logical sections (e.g., History, Culture, Geography, Modern Life).
-            - TRANSITIONS: Use smooth verbal transitions between sections (e.g., "Ama Japonya sadece gökyüzüne uzanan binalardan ibaret değil...").
-            - NO META-TALK: Start DIRECTLY with the narration. NO "Scene 1", "Narrator:", or brackets.
-            - DEPTH: Provide interesting details, not just surface-level facts.
-            - PACING: Varied sentence lengths to keep listeners engaged for multiple minutes.
+            - CHAPTERS: Break the topic into logical sections.
+            - TRANSITIONS: Use smooth verbal transitions.
+            - DEPTH: Provide interesting details. You MUST expand on the research to reach the {target_word_count} word mark.
+            - PACING: Varied sentence lengths.
             - SENTENCE STRUCTURE (Turkish): Standard KURALLI sentences only.
-            - CONVERSATIONAL PUNCTUATION: Use ! and ... for natural breathing.
-            - WORD COUNT: Aim for approximately 700-1000 words (approx. 5-7 minutes of spoken audio).
+            - CONVERSATIONAL PUNCTUATION: Use ! and ...
             - Language: STRICTLY {lang_name} only.
             """
         elif mode == "horror":
