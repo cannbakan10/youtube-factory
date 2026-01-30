@@ -17,7 +17,11 @@ on:
         - en
         - en,tr
       list_trends:
-        description: 'Sadece trendleri listele (Videonun yapılmasını beklemez)'
+        description: 'Sadece trendleri listele'
+        type: boolean
+        default: false
+      bulk:
+        description: 'BULK MOD: Bulunan TİRE tüm trendler için video yap (Topic "trend" olmalı)'
         type: boolean
         default: false
 
@@ -59,8 +63,13 @@ jobs:
         TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
         ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
       run: |
+        BULK_FLAG=""
+        if [[ "${{ github.event.inputs.bulk }}" == "true" ]]; then
+          BULK_FLAG="--bulk"
+        fi
+
         if [[ "${{ github.event.inputs.list_trends }}" == "true" ]]; then
           python main.py --list-trends
         else
-          python main.py --topic "${{ github.event.inputs.topic }}" --langs "${{ github.event.inputs.langs }}" --upload
+          python main.py --topic "${{ github.event.inputs.topic }}" --langs "${{ github.event.inputs.langs }}" --upload $BULK_FLAG
         fi

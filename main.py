@@ -147,11 +147,12 @@ class YoutubeFactory:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--topic", type=str, required=False, help="Video topic (use 'trend' for auto-trend)")
+    parser.add_argument("--topic", type=str, required=False, help="Video topic (use 'trend' for auto-discovery)")
     parser.add_argument("--langs", type=str, default="en", help="Languages (comma-separated): en,tr")
     parser.add_argument("--upload", action="store_true", help="Auto-upload to YouTube")
     parser.add_argument("--mode", type=str, default="info", choices=["info", "horror"], help="Format: info or horror")
     parser.add_argument("--list-trends", action="store_true", help="Just list current trending topics and exit")
+    parser.add_argument("--bulk", action="store_true", help="Produce videos for ALL discovered trends (works with 'trend' topic)")
     args = parser.parse_args()
 
     factory = YoutubeFactory()
@@ -164,15 +165,30 @@ if __name__ == "__main__":
             print(f"   💡 {t['reason']}\n")
         exit()
 
+    langs = args.langs.split(",")
+
+    # Handle Trend Selection
     if not args.topic or args.topic.lower() == "trend":
-        print("\n🌊 Auto-Trend Mode: Selecting top viral topic...")
-        trends = factory.trend_agent.get_trending_topics()
-        if trends:
-            args.topic = trends[0]['topic']
-            print(f"✅ Selected: {args.topic}")
-        else:
+        print("\n🌊 Auto-Trend Mode: Selecting viral topics...")
+        trends = factory.trend_agent.get_trending_topics(count=5)
+        
+        if not trends:
             print("❌ No trends found. Please provide a manual topic.")
             exit()
 
-    langs = args.langs.split(",")
-    factory.run(topic=args.topic, languages=langs, auto_upload=args.upload, mode=args.mode)
+        if args.bulk:
+            print(f"🚀 BULK MODE: Producing {len(trends)} trending videos automatically!")
+            for i, t in enumerate(trends):
+                print(f"\n🎬 [Bulk {i+1}/{len(trends)}] Starting: {t['topic']}")
+                try:
+                    factory.run(topic=t['topic'], languages=langs, auto_upload=args.upload, mode=args.mode)
+                except Exception as e:
+                    print(f"⚠️ Failed to produce trend video '{t['topic']}': {e}")
+            print(f"\n✅ BULK PRODUCTION COMPLETE!")
+        else:
+            args.topic = trends[0]['topic']
+            print(f"✅ Selected Top Trend: {args.topic}")
+            factory.run(topic=args.topic, languages=langs, auto_upload=args.upload, mode=args.mode)
+    else:
+        # Manual Topic
+        factory.run(topic=args.topic, languages=langs, auto_upload=args.upload, mode=args.mode)
