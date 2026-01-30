@@ -85,14 +85,12 @@ class ScriptWriter:
         duration_match = re.search(r'(\d+)\s*(dakika|minute|dk|min)', topic.lower())
         target_minutes = int(duration_match.group(1)) if duration_match else (8 if is_long else 1)
         
-        # Word count calculation: 1 minute of speech is roughly 130-150 words.
-        # We'll target 135 words per minute for a professional, steady pace.
-        target_word_count = target_minutes * 135
+        # Word count calculation: 1 minute of speech is roughly 150 words for a standard documentary pace.
+        target_word_count = target_minutes * 150
         
         if is_long:
             prompt = f"""
             Using the provided research data, write a DEEP and ENGAGING documentary-style narration script.
-            The script MUST be exactly sized for a {target_minutes} minute video.
             Everything MUST be in {lang_name}.
             
             RESEARCH DATA: {research_data}
@@ -101,9 +99,11 @@ class ScriptWriter:
             STRICT WORD COUNT TARGET: {target_word_count} words
             
             STRUCTURE & STYLE RULES:
-            - INTRO: High-energy hook to explain what we are exploring.
+            - INTRO: High-energy hook.
             - CHAPTERS: Break the topic into logical sections.
-            - TRANSITIONS: Use smooth verbal transitions.
+            - TRANSITIONS: Use smooth verbal transitions. 
+            - ⚠️ NO TIME REVEAL: NEVER mention specific numbers about the video length (e.g., AVOID "5 dakikalık videomuzun sonuna geldik", "10 dakika boyunca anlattık"). 
+              USE natural closing phrases like "Şimdilik bu yolculuğun sonuna geldik," or "Siz bu konuda ne düşünüyorsunuz?".
             - DEPTH: Provide interesting details. You MUST expand on the research to reach the {target_word_count} word mark.
             - PACING: Varied sentence lengths.
             - SENTENCE STRUCTURE (Turkish): Standard KURALLI sentences only.
