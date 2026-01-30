@@ -33,7 +33,7 @@ class PixabayService:
             "key": self.api_key,
             "q": refined_query,
             "video_type": "film",
-            "per_page": 5,
+            "per_page": 10,
             "safesearch": "true"
         }
 
@@ -42,27 +42,29 @@ class PixabayService:
             data = response.json()
 
             if data.get('hits'):
-                for hit in data['hits']:
-                    videos = hit.get('videos', {})
-                    best_video = videos.get('large') or videos.get('medium')
-                    if not best_video or not best_video.get('url'):
-                        continue
+                import random
+                # Pick a random hit for variety
+                hit = random.choice(data['hits'])
+                videos = hit.get('videos', {})
+                best_video = videos.get('large') or videos.get('medium')
+                if not best_video or not best_video.get('url'):
+                    return None
 
-                    video_url = best_video['url']
-                    quality = f"{best_video.get('width')}x{best_video.get('height')}"
-                    
-                    filename = f"pixabay_{uuid.uuid4()}.mp4"
-                    filepath = os.path.join(self.cache_dir, filename)
-                    
-                    print(f"      📥 [Pixabay] Downloading clip ({quality}): {video_url[:50]}...")
-                    with requests.get(video_url, stream=True) as r:
-                        r.raise_for_status()
-                        with open(filepath, 'wb') as f:
-                            for chunk in r.iter_content(chunk_size=8192):
-                                f.write(chunk)
-                    
-                    print(f"      ✅ [Pixabay] Saved to: {filepath}")
-                    return filepath
+                video_url = best_video['url']
+                quality = f"{best_video.get('width')}x{best_video.get('height')}"
+                
+                filename = f"pixabay_{uuid.uuid4()}.mp4"
+                filepath = os.path.join(self.cache_dir, filename)
+                
+                print(f"      📥 [Pixabay] Downloading clip ({quality}): {video_url[:50]}...")
+                with requests.get(video_url, stream=True) as r:
+                    r.raise_for_status()
+                    with open(filepath, 'wb') as f:
+                        for chunk in r.iter_content(chunk_size=8192):
+                            f.write(chunk)
+                
+                print(f"      ✅ [Pixabay] Saved to: {filepath}")
+                return filepath
             else:
                 print(f"      ⚠️ No Pixabay video found for: '{query}'")
         except Exception as e:

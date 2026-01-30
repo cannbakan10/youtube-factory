@@ -182,6 +182,7 @@ class ScriptWriter:
         The text and metadata MUST be in {lang_name}.
         
         STYLE: {style_context}
+        FORMAT: {video_type.upper()}
         NARRATION: {narrative}
         TOPIC/THEME: {topic}
         LANGUAGE: {lang_name}
@@ -206,9 +207,9 @@ class ScriptWriter:
         5. METADATA & SEO:
            - Generate professional YouTube Title, Description, and Tags in {lang_name}.
            - TITLE RULES: 
-             - If format is SHORTS: Create a viral, high-energy title.
-             - If format is LONG: Create a professional, educational documentary title. 
-               STRICTLY FORBIDDEN: Do NOT use the word "Shorts" in the title, description, or tags.
+             - If format is SHORTS (9:16): Create a viral, high-energy title.
+             - If format is LONG (16:9): Create a professional, educational documentary-style title. 
+               ⚠️ ZERO TOLERANCE: For LONG videos, you MUST NOT use the word "Shorts" ANYWHERE (Title, Description, Tags).
            - TAG RULES: 
              - If format is SHORTS: Include #Shorts and viral niche tags.
              - If format is LONG: DO NOT use #Shorts. Use deep context tags like #Documentary, #Geopolitics, #History, #Education and topic-specific tags.

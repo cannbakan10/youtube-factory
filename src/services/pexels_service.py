@@ -33,14 +33,17 @@ class PexelsService:
             return None
 
         headers = {"Authorization": self.api_key}
-        params = {"query": refined_query, "per_page": 1, "orientation": orientation}
+        params = {"query": refined_query, "per_page": 10, "orientation": orientation}
         
         try:
             response = requests.get(self.base_url, headers=headers, params=params)
             data = response.json()
             
             if data.get('videos'):
-                video_files = data['videos'][0]['video_files']
+                import random
+                # Pick a random video from the results for variety
+                video_data = random.choice(data['videos'])
+                video_files = video_data['video_files']
                 
                 # Priority: 4K (Ultra HD) -> Full HD -> HD
                 # We look for 'width' >= 2160 for 4K

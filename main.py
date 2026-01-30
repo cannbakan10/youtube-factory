@@ -28,6 +28,7 @@ class YoutubeFactory:
         self.youtube_service = None 
 
     def run(self, topic, languages=["en"], auto_upload=False, mode="info", video_type="shorts"):
+        is_long = video_type == "long"
         timestamp = int(time.time())
         import unicodedata
         topic_ascii = unicodedata.normalize('NFKD', topic).encode('ascii', 'ignore').decode('ascii')
@@ -96,8 +97,8 @@ class YoutubeFactory:
                 
                 scene.video_path = video_path
                 
-                # SFX Collection
-                if scene.sfx_prompt and scene.sfx_prompt.lower() != "none":
+                # SFX Collection (Skip entirely for long-form)
+                if not is_long and scene.sfx_prompt and scene.sfx_prompt.lower() != "none":
                     sfx_path = self.tts.generate_sfx(scene.sfx_prompt)
                     scene.sfx_path = sfx_path
                 
@@ -128,11 +129,27 @@ class YoutubeFactory:
                 dest_path = os.path.join(lang_dir, f"{production_id}_{lang}.mp4")
                 shutil.move(final_path, dest_path)
                 
+                # Metadata Cleanup (Strict 'Shorts' Removal for Long Form)
+                title = blueprint.metadata.get('title', topic)
+                desc = blueprint.metadata.get('description', '')
+                tags = blueprint.metadata.get('tags', [])
+                
+                if is_long:
+                    import re
+                    title = re.sub(r'(?i)shorts?', '', title).strip()
+                    desc = re.sub(r'(?i)shorts?', '', desc).strip()
+                    tags = [re.sub(r'(?i)shorts?', '', str(t)).strip() for t in tags if t]
+                    tags = [t for t in tags if t] # Remove empty
+                
                 # Save Metadata
                 meta_file = os.path.join(lang_dir, "metadata.json")
                 with open(meta_file, "w", encoding="utf-8") as f:
-                    meta_data = blueprint.metadata
-                    meta_data['file_path'] = dest_path
+                    meta_data = {
+                        "title": title,
+                        "description": desc,
+                        "tags": tags,
+                        "file_path": dest_path
+                    }
                     json.dump(meta_data, f, indent=2, ensure_ascii=False)
                 
                 print(f"✅ VIDEO READY: {dest_path}")
@@ -144,9 +161,9 @@ class YoutubeFactory:
                     
                     self.youtube_service.upload_video(
                         dest_path, 
-                        blueprint.metadata.get('title', topic), 
-                        blueprint.metadata.get('description', ''), 
-                        blueprint.metadata.get('tags', [])
+                        title, 
+                        desc, 
+                        tags
                     )
             else:
                 print(f"❌ Render failed: {lang}")
