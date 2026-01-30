@@ -202,29 +202,6 @@ class TTSService:
             
         return None
 
-    def generate_silent_audio_with_subtitles(self, text, duration=4.0):
-        """Generates silent audio and text overlay (SRT) for visual-only scenes."""
-        id = str(uuid.uuid4())
-        audio_path = os.path.join(self.cache_dir, f"silent_{id}.mp3")
-        subs_path = os.path.join(self.cache_dir, f"silent_{id}.srt")
-        
-        try:
-            # Create silent audio using ffmpeg
-            cmd = [
-                "ffmpeg", "-y", "-f", "lavfi", "-i", f"anullsrc=r=44100:cl=stereo", 
-                "-t", str(duration), audio_path
-            ]
-            subprocess.run(cmd, capture_output=True)
-            
-            # Create simple SRT for the overlay text
-            with open(subs_path, "w", encoding="utf-8") as f:
-                f.write(f"1\n00:00:00,000 --> {self._format_srt_time(duration)}\n{text.upper()}\n\n")
-            
-            return audio_path, subs_path, duration
-        except Exception as e:
-            print(f"      ❌ Silent Audio Error: {e}")
-            return None, None, 0
-
     def generate_music(self, prompt): return None
 
     def _get_duration(self, audio_path):
