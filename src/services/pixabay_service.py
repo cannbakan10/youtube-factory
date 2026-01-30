@@ -4,7 +4,9 @@ import uuid
 
 class PixabayService:
     def __init__(self, output_dir=None):
-        self.api_key = os.getenv("PIXABAY_API_KEY", "").strip()
+        # Ultra-Clean Key Loading
+        raw_key = os.getenv("PIXABAY_API_KEY", "")
+        self.api_key = raw_key.strip().replace('"', '').replace("'", "")
         self.video_url = "https://pixabay.com/api/videos/"
         self.music_url = "https://pixabay.com/api/music/" # For SFX and Background Music
         

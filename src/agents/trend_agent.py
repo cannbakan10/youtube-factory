@@ -8,7 +8,9 @@ load_dotenv()
 
 class TrendAgent:
     def __init__(self):
-        self.gemini_key = os.getenv("GEMINI_API_KEY")
+        # Ultra-Clean Key Loading
+        raw_key = os.getenv("GEMINI_API_KEY", "")
+        self.gemini_key = raw_key.strip().replace('"', '').replace("'", "")
         if not self.gemini_key:
             raise ValueError("GEMINI_API_KEY not found in environment")
         self.client = genai.Client(api_key=self.gemini_key)

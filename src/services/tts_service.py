@@ -9,7 +9,9 @@ import hashlib
 
 class TTSService:
     def __init__(self, output_dir="assets/cache"):
-        api_key = os.getenv("ELEVENLABS_API_KEY", "").strip()
+        # Ultra-Clean Key Loading: Strips quotes and newlines that cause header errors
+        raw_key = os.getenv("ELEVENLABS_API_KEY", "")
+        api_key = raw_key.strip().replace('"', '').replace("'", "")
         self.client = ElevenLabs(api_key=api_key)
         self.cache_dir = output_dir
         

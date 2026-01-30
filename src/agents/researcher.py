@@ -6,11 +6,14 @@ import os
 
 class ResearchAgent:
     def __init__(self):
-        self.gemini_key = os.getenv("GEMINI_API_KEY", "").strip()
-        self.openai_key = os.getenv("OPENAI_API_KEY", "").strip()
+        # Ultra-Clean Key Loading
+        self.gemini_key = os.getenv("GEMINI_API_KEY", "").strip().replace('"', '').replace("'", "")
+        self.openai_key = os.getenv("OPENAI_API_KEY", "").strip().replace('"', '').replace("'", "")
         self.client = genai.Client(api_key=self.gemini_key)
         self.oa_client = OpenAI(api_key=self.openai_key) if self.openai_key else None
-        self.tavily = TavilyClient(api_key=os.getenv("TAVILY_API_KEY", "").strip()) if os.getenv("TAVILY_API_KEY") else None
+        
+        tavily_key = os.getenv("TAVILY_API_KEY", "").strip().replace('"', '').replace("'", "")
+        self.tavily = TavilyClient(api_key=tavily_key) if tavily_key else None
         self.model = "gemini-2.0-flash"
         self.oa_model = "gpt-4o-mini"
 
