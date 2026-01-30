@@ -20,6 +20,14 @@ on:
         description: 'Sadece trendleri listele'
         type: boolean
         default: false
+      video_type:
+        description: 'Video Formatı'
+        required: true
+        default: 'shorts'
+        type: choice
+        options:
+        - shorts
+        - long
 
 jobs:
   generate-and-upload:
@@ -62,5 +70,5 @@ jobs:
         if [[ "${{ github.event.inputs.list_trends }}" == "true" ]]; then
           python main.py --list-trends
         else
-          python main.py --topic "${{ github.event.inputs.topic }}" --langs "${{ github.event.inputs.langs }}" --mode horror --upload
+          python main.py --topic "${{ github.event.inputs.topic }}" --langs "${{ github.event.inputs.langs }}" --mode horror --type "${{ github.event.inputs.video_type }}" --upload
         fi

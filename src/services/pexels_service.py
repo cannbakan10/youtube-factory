@@ -14,7 +14,7 @@ class PexelsService:
             self.cache_dir = os.path.join(project_root, "assets", "cache")
         os.makedirs(self.cache_dir, exist_ok=True)
 
-    def get_video(self, query):
+    def get_video(self, query, orientation="portrait"):
         # Handle list of keywords if necessary
         if isinstance(query, list):
             query = " ".join(query)
@@ -33,7 +33,7 @@ class PexelsService:
             return None
 
         headers = {"Authorization": self.api_key}
-        params = {"query": refined_query, "per_page": 1, "orientation": "portrait"}
+        params = {"query": refined_query, "per_page": 1, "orientation": orientation}
         
         try:
             response = requests.get(self.base_url, headers=headers, params=params)

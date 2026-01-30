@@ -27,7 +27,7 @@ class YoutubeFactory:
         self.trend_agent = TrendAgent()
         self.youtube_service = None 
 
-    def run(self, topic, languages=["en"], auto_upload=False, mode="info"):
+    def run(self, topic, languages=["en"], auto_upload=False, mode="info", video_type="shorts"):
         timestamp = int(time.time())
         import unicodedata
         topic_ascii = unicodedata.normalize('NFKD', topic).encode('ascii', 'ignore').decode('ascii')
@@ -45,8 +45,9 @@ class YoutubeFactory:
         os.makedirs(base_dir, exist_ok=True)
 
         mode_title = "HORROR STORY MODE" if mode == "horror" else "INFO MODE"
-        print(f"\n🚀 SHORTS FACTORY STARTING ({mode_title}): {topic}")
-        print("🚀 V8.5 - PRO-MIX EDITION (5-1 Countdown + Studio Audio)")
+        type_title = "LONG FORM" if video_type == "long" else "SHORTS"
+        print(f"\n🚀 FACTORY STARTING ({mode_title} - {type_title}): {topic}")
+        print("🚀 V8.5 - PRO-MIX EDITION (Auto-Trend + Documentary Support)")
         
         # Initialize services
         self.tts = TTSService(output_dir=cache_dir)
@@ -54,7 +55,7 @@ class YoutubeFactory:
         self.pixabay = PixabayService(output_dir=cache_dir)
         self.engine = VideoEngine()
 
-        # 1. Research (Used as inspiration even for horror)
+        # 1. Research
         print(f"🔍 Gathering inspiration and research...")
         research_data = self.researcher.research(topic)
         
@@ -65,25 +66,26 @@ class YoutubeFactory:
             # Update Voice for current language
             self.tts.set_voice(language=lang)
             
-            # 2. Script & Blueprint (Pass mode here)
-            narrative = self.scriptwriter.generate_narrative(research_data, topic, language=lang, mode=mode)
-            blueprint = self.scriptwriter.generate_blueprint(narrative, topic, language=lang, mode=mode)
+            # 2. Script & Blueprint
+            narrative = self.scriptwriter.generate_narrative(research_data, topic, language=lang, mode=mode, video_type=video_type)
+            blueprint = self.scriptwriter.generate_blueprint(narrative, topic, language=lang, mode=mode, video_type=video_type)
             blueprint.video_id = production_id
             
             # 3. Media Collection
+            orientation = "landscape" if video_type == "long" else "portrait"
             for i, scene in enumerate(blueprint.scenes):
                 print(f"   🎥 Scene {i+1}: Processing...")
                 
-                video_path = self.pexels.get_video(scene.keywords)
+                video_path = self.pexels.get_video(scene.keywords, orientation=orientation)
                 
-                # Hybrid Fallback: If Pexels fails or find nothing, try Pixabay
+                # Hybrid Fallback
                 if not video_path:
                     print(f"      🔄 Pexels empty for '{scene.keywords[:30]}...', trying Pixabay...")
                     video_path = self.pixabay.get_video(scene.keywords)
                 
                 scene.video_path = video_path
                 
-                # SFX Collection (Audio-Vivid Engine with ElevenLabs AI)
+                # SFX Collection
                 if scene.sfx_prompt and scene.sfx_prompt.lower() != "none":
                     sfx_path = self.tts.generate_sfx(scene.sfx_prompt)
                     scene.sfx_path = sfx_path
@@ -106,7 +108,7 @@ class YoutubeFactory:
             else:
                 print("   🎵 [Main]: Mixing background music template...")
 
-            final_path = self.engine.render(blueprint, language=lang, bg_music_path=bg_music)
+            final_path = self.engine.render(blueprint, language=lang, bg_music_path=bg_music, video_type=video_type)
             
             if final_path and os.path.exists(final_path):
                 # Save output
@@ -116,14 +118,9 @@ class YoutubeFactory:
                 shutil.move(final_path, dest_path)
                 
                 # Save Metadata
-                # CREDIT GENERATION: Legal safety as per sectoral report
-                credits = "\n\n--- Credits ---\nVideos: Pexels & Pixabay\nMusic: Stream Global Royalty Free\n#Shorts #AI #Factory"
-                
                 meta_file = os.path.join(lang_dir, "metadata.json")
                 with open(meta_file, "w", encoding="utf-8") as f:
                     meta_data = blueprint.metadata
-                    if 'description' in meta_data:
-                        meta_data['description'] += credits
                     meta_data['file_path'] = dest_path
                     json.dump(meta_data, f, indent=2, ensure_ascii=False)
                 
@@ -153,6 +150,7 @@ if __name__ == "__main__":
     parser.add_argument("--mode", type=str, default="info", choices=["info", "horror"], help="Format: info or horror")
     parser.add_argument("--list-trends", action="store_true", help="Just list current trending topics and exit")
     parser.add_argument("--bulk", action="store_true", help="Produce videos for ALL discovered trends (works with 'trend' topic)")
+    parser.add_argument("--type", type=str, default="shorts", choices=["shorts", "long"], help="Video type: shorts (9:16) or long (16:9)")
     args = parser.parse_args()
 
     factory = YoutubeFactory()
@@ -168,7 +166,7 @@ if __name__ == "__main__":
     langs = args.langs.split(",")
 
     # Handle Trend Selection
-    if not args.topic or args.topic.lower() == "trend":
+    if args.topic and args.topic.lower() == "trend":
         print("\n🌊 Auto-Trend Mode: Selecting viral topics...")
         trends = factory.trend_agent.get_trending_topics(count=5)
         
@@ -181,14 +179,16 @@ if __name__ == "__main__":
             for i, t in enumerate(trends):
                 print(f"\n🎬 [Bulk {i+1}/{len(trends)}] Starting: {t['topic']}")
                 try:
-                    factory.run(topic=t['topic'], languages=langs, auto_upload=args.upload, mode=args.mode)
+                    factory.run(topic=t['topic'], languages=langs, auto_upload=args.upload, mode=args.mode, video_type=args.type)
                 except Exception as e:
                     print(f"⚠️ Failed to produce trend video '{t['topic']}': {e}")
             print(f"\n✅ BULK PRODUCTION COMPLETE!")
         else:
             args.topic = trends[0]['topic']
             print(f"✅ Selected Top Trend: {args.topic}")
-            factory.run(topic=args.topic, languages=langs, auto_upload=args.upload, mode=args.mode)
-    else:
+            factory.run(topic=args.topic, languages=langs, auto_upload=args.upload, mode=args.mode, video_type=args.type)
+    elif args.topic:
         # Manual Topic
-        factory.run(topic=args.topic, languages=langs, auto_upload=args.upload, mode=args.mode)
+        factory.run(topic=args.topic, languages=langs, auto_upload=args.upload, mode=args.mode, video_type=args.type)
+    else:
+        print("❌ Error: Please provide a --topic or use 'trend'.")

@@ -10,12 +10,18 @@ class VideoEngine:
         self.output_dir = os.path.join(self.project_root, "assets", "cache")
         os.makedirs(self.output_dir, exist_ok=True)
 
-    def render(self, blueprint, language="en", bg_music_path=None):
+    def render(self, blueprint, language="en", bg_music_path=None, video_type="shorts"):
         """
-        Stream Global Ultra-Flow Engine v8.0 (Audio-Vivid Update):
+        Stream Global Ultra-Flow Engine v8.5 (Pro-Mix + Long Form):
         - Multi-layer audio mixing (Narrative + Music + SFX).
-        - Cinematic Color Grading (Contrast, Saturation, Vignette).
+        - Supports Shorts (9:16) and Long Form (16:9).
+        - Dynamic Typography & Safe Zones.
         """
+        is_long = video_type == "long"
+        width, height = (1920, 1080) if is_long else (1080, 1920)
+        margin_v = 50 if is_long else 60
+        font_size = 20 if is_long else 12
+        
         video_id = getattr(blueprint, 'video_id', 'output')
         final_output = os.path.join(self.output_dir, f"{video_id}_{language}_final.mp4")
         
@@ -35,10 +41,10 @@ class VideoEngine:
                 logging.warning(f"⚠️ Skipping Scene {i+1}: Missing audio file.")
                 continue
             
-            # Subtitle styling: FontSize 12 and MarginV 60 (Compact Mode).
+            # Subtitle styling
             style = (
-                f"FontName={font_name},FontSize=12,PrimaryColour=&H00FFFFFF,OutlineColour=&H000000,"
-                "BorderStyle=1,Outline=1.0,Shadow=0.5,Alignment=2,MarginV=60,Bold=1"
+                f"FontName={font_name},FontSize={font_size},PrimaryColour=&H00FFFFFF,OutlineColour=&H000000,"
+                f"BorderStyle=1,Outline=1.0,Shadow=0.5,Alignment=2,MarginV={margin_v},Bold=1"
             )
             
             subs_path = os.path.abspath(scene.subs_path)
@@ -74,11 +80,11 @@ class VideoEngine:
             # Cinematic Color Grade: Subtle contrast/saturation boost + vignette for focus
             v_filters = [
                 "fps=30",
-                "scale=w=1080:h=1920:force_original_aspect_ratio=increase",
-                "crop=1080:1920",
+                f"scale=w={width}:h={height}:force_original_aspect_ratio=increase",
+                f"crop={width}:{height}",
                 "setsar=1",
-                "eq=brightness=0.02:contrast=1.1:saturation=1.1",
-                "vignette=angle=0.5:x0=w/2:y0=h/2",
+                "eq=brightness=0.01:contrast=1.05:saturation=1.05", # Slightly subtler for long form
+                "vignette=angle=0.3:x0=w/2:y0=h/2" if not is_long else "null", # Lighter vignette for long form
                 f"trim=duration={duration}",
                 "setpts=PTS-STARTPTS",
                 f"subtitles=f='{safe_subs_path}':force_style='{style}'",
@@ -89,7 +95,7 @@ class VideoEngine:
                 v_filter = f"[{v_in}:v]{','.join(v_filters)}[v_sc{valid_scenes_count}];"
             else:
                 v_filter = (
-                    f"color=c=black:s=1080x1920:d={duration},fps=30[v_black{valid_scenes_count}];"
+                    f"color=c=black:s={width}x{height}:d={duration},fps=30[v_black{valid_scenes_count}];"
                     f"[v_black{valid_scenes_count}]{','.join(v_filters)}[v_sc{valid_scenes_count}];"
                 )
             
@@ -101,8 +107,9 @@ class VideoEngine:
 
             if sfx_in is not None:
                 a_sfx_label = f"a_sfx{valid_scenes_count}"
+                sfx_vol = 0.20 if is_long else 0.30
                 filter_complex_parts.append(
-                    f"[{sfx_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo,volume=0.30[{a_sfx_label}];"
+                    f"[{sfx_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo,volume={sfx_vol}[{a_sfx_label}];"
                 )
                 # Mix Narrative (1.3x) + SFX (0.3x)
                 filter_complex_parts.append(
@@ -135,9 +142,10 @@ class VideoEngine:
             bg_in = current_input_idx
             current_input_idx += 1
             
-            # Mix: Multi-Layer (Narr + SFX) + (BG Music at 8% volume)
+            # Mix: Multi-Layer (Narr + SFX) + (BG Music at 8% shorts / 5% long)
+            bg_vol = 0.05 if is_long else 0.08
             filter_complex_parts.append(
-                f"[{bg_in}:a]volume=0.08[bg_low];"
+                f"[{bg_in}:a]volume={bg_vol}[bg_low];"
                 f"[a_narrative][bg_low]amix=inputs=2:duration=first:dropout_transition=0[a_final]"
             )
             final_audio_label = "[a_final]"

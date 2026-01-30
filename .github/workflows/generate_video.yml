@@ -21,9 +21,17 @@ on:
         type: boolean
         default: false
       bulk:
-        description: 'BULK MOD: Bulunan TİRE tüm trendler için video yap (Topic "trend" olmalı)'
+        description: 'BULK MOD (Sadece Trendler için)'
         type: boolean
         default: false
+      video_type:
+        description: 'Video Formatı'
+        required: true
+        default: 'shorts'
+        type: choice
+        options:
+        - shorts
+        - long
 
 jobs:
   generate-and-upload:
@@ -71,5 +79,5 @@ jobs:
         if [[ "${{ github.event.inputs.list_trends }}" == "true" ]]; then
           python main.py --list-trends
         else
-          python main.py --topic "${{ github.event.inputs.topic }}" --langs "${{ github.event.inputs.langs }}" --upload $BULK_FLAG
+          python main.py --topic "${{ github.event.inputs.topic }}" --langs "${{ github.event.inputs.langs }}" --type "${{ github.event.inputs.video_type }}" --upload $BULK_FLAG
         fi

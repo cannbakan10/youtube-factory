@@ -72,14 +72,35 @@ class ScriptWriter:
                 except: pass
         return None
 
-    def generate_narrative(self, research_data, topic, language="en", mode="info"):
+    def generate_narrative(self, research_data, topic, language="en", mode="info", video_type="shorts"):
         """
         Step 1: Create a dramatic narrative.
-        Supports 'info' (Standard) and 'horror' (Storytelling) modes.
+        Supports 'info', 'horror' and now 'long' modes.
         """
         lang_name = "English" if language == "en" else "Turkish"
+        is_long = video_type == "long"
         
-        if mode == "horror":
+        if is_long:
+            prompt = f"""
+            Using the provided research data, write a DEEP and ENGAGING documentary-style narration script.
+            The script MUST be entirely in {lang_name}.
+            
+            RESEARCH DATA: {research_data}
+            TOPIC: {topic}
+            
+            STRUCTURE & STYLE RULES:
+            - INTRO: High-energy hook to explain what we are exploring.
+            - CHAPTERS: Break the topic into 4-6 logical sections (e.g., History, Culture, Geography, Modern Life).
+            - TRANSITIONS: Use smooth verbal transitions between sections (e.g., "Ama Japonya sadece gökyüzüne uzanan binalardan ibaret değil...").
+            - NO META-TALK: Start DIRECTLY with the narration. NO "Scene 1", "Narrator:", or brackets.
+            - DEPTH: Provide interesting details, not just surface-level facts.
+            - PACING: Varied sentence lengths to keep listeners engaged for multiple minutes.
+            - SENTENCE STRUCTURE (Turkish): Standard KURALLI sentences only.
+            - CONVERSATIONAL PUNCTUATION: Use ! and ... for natural breathing.
+            - WORD COUNT: Aim for approximately 700-1000 words (approx. 5-7 minutes of spoken audio).
+            - Language: STRICTLY {lang_name} only.
+            """
+        elif mode == "horror":
             prompt = f"""
             Using the provided research about REAL terrifying events or urban legends, 
             write a spine-chilling narration for a 60-second YouTube Short. 
@@ -135,16 +156,19 @@ class ScriptWriter:
             )
             return self._clean_text(oa_response.choices[0].message.content.strip())
 
-    def generate_blueprint(self, narrative, topic, language="en", mode="info") -> VideoBlueprint:
+    def generate_blueprint(self, narrative, topic, language="en", mode="info", video_type="shorts") -> VideoBlueprint:
         """
         Step 2: Scenes and Visual Intelligence.
-        In horror mode, keywords are optimized for cinematic/scary visuals.
+        Supports both Shorts (Vertical) and Long (Landscape) formats.
         """
         lang_name = "English" if language == "en" else "Turkish"
-        style_context = "Terrifying, dark, cinematic, and atmospheric" if mode == "horror" else "Professional, engaging, and clear"
+        is_long = video_type == "long"
+        style_context = "Terrifying, dark, cinematic, and atmospheric" if mode == "horror" else "Professional, engaging, and documentary-like"
+        scene_duration = "6.0 - 10.0 seconds" if is_long else "3.5 - 5.0 seconds"
+        orientation = "LANDSCAPE (16:9)" if is_long else "PORTRAIT (9:16)"
         
         prompt = f"""
-        Using the provided {lang_name} narration, create a video production blueprint.
+        Using the provided {lang_name} narration, create a video production blueprint for a {orientation} video.
         The text and metadata MUST be in {lang_name}.
         
         STYLE: {style_context}
@@ -153,21 +177,21 @@ class ScriptWriter:
         LANGUAGE: {lang_name}
 
         REQUIREMENTS:
-        1. Break the script into meaningful scenes (each 3.5 - 5 seconds long).
+        1. Break the script into meaningful scenes (each {scene_duration} long).
         2. CLEAN TEXT: DO NOT include stage directions, timestamps, headers, 
-           narrator notes, or meta-commentary (e.g., "YouTube Shorts için video", "Sahne 1", "[Müzik]"). 
+           narrator notes, or meta-commentary. 
            ONLY include the EXACT sentence to be spoken.
            
         3. VISUAL INTELLIGENCE & SAFETY:
-           - For RELIGIOUS topics (Dua, Mosque, etc.): Use keywords like "Mosque architecture", "Praying hands (cinematic)", "Antique Quran", "Peaceful nature", "Stars and sky". 
-             NEVER use keywords like "model", "beach", "fashion" or generic "people".
-           - For HISTORICAL figures (Pargalı Ibrahim, Sultan, etc.): Use "Ottoman archive", "Topkapi Palace", "Imperial architecture", "Antique portrait", "Historical museum", "16th century aesthetic".
+           - FORMAT: All keywords should aim for {orientation} visuals.
+           - For RELIGIOUS topics: Use architectural/nature keywords. No people unless historic/archival feel.
+           - DOCUMENTARY STYLE: Use specific keywords that match the narrative depth.
            - GENERAL: Be specific. Instead of "Dog", use "Golden Retriever puppy playing".
         
         4. AUDIO INTELLIGENCE (SFX):
-           - For each scene, generate a specific "sfx_prompt" (in English) describing a sound effect that matches the moment.
-           - Examples: "cinematic whoosh", "deep horror drone", "modern transition pop", "nature birds chirping", "epic drum hit".
-           - If no sound is needed, use "none".
+           - Generate a matching "sfx_prompt" (in English) for each scene.
+           - Examples: "cinematic whoosh", "nature ambience", "city traffic hum", "soft piano note".
+           - Use "none" if not needed.
            
         5. Generate professional YouTube Title, Description, and Tags in {lang_name}.
 
@@ -175,8 +199,8 @@ class ScriptWriter:
         {{
           "video_id": "unique_id",
           "metadata": {{
-            "title": "Shorts Title",
-            "description": "Shorts Description",
+            "title": "Video Title",
+            "description": "Video Description",
             "tags": ["tag1", "tag2"]
           }},
           "scenes": [
