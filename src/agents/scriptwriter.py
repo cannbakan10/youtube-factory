@@ -205,6 +205,10 @@ class ScriptWriter:
            
         5. METADATA & SEO:
            - Generate professional YouTube Title, Description, and Tags in {lang_name}.
+           - TITLE RULES: 
+             - If format is SHORTS: Create a viral, high-energy title.
+             - If format is LONG: Create a professional, educational documentary title. 
+               STRICTLY FORBIDDEN: Do NOT use the word "Shorts" in the title, description, or tags.
            - TAG RULES: 
              - If format is SHORTS: Include #Shorts and viral niche tags.
              - If format is LONG: DO NOT use #Shorts. Use deep context tags like #Documentary, #Geopolitics, #History, #Education and topic-specific tags.
