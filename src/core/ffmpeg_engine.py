@@ -35,10 +35,10 @@ class VideoEngine:
                 logging.warning(f"⚠️ Skipping Scene {i+1}: Missing audio file.")
                 continue
             
-            # Subtitle styling: FontSize 15 and MarginV 70 as requested.
+            # Subtitle styling: FontSize 12 and MarginV 60 (Compact Mode).
             style = (
-                f"FontName={font_name},FontSize=15,PrimaryColour=&H00FFFFFF,OutlineColour=&H000000,"
-                "BorderStyle=1,Outline=1.0,Shadow=0.5,Alignment=2,MarginV=70,Bold=1"
+                f"FontName={font_name},FontSize=12,PrimaryColour=&H00FFFFFF,OutlineColour=&H000000,"
+                "BorderStyle=1,Outline=1.0,Shadow=0.5,Alignment=2,MarginV=60,Bold=1"
             )
             
             subs_path = os.path.abspath(scene.subs_path)
