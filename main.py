@@ -69,7 +69,15 @@ class YoutubeFactory:
             
             # 2. Script & Blueprint
             narrative = self.scriptwriter.generate_narrative(research_data, topic, language=lang, mode=mode, video_type=video_type)
+            if not narrative:
+                print(f"❌ Failed to generate narrative for {lang}. Skipping.")
+                continue
+
             blueprint = self.scriptwriter.generate_blueprint(narrative, topic, language=lang, mode=mode, video_type=video_type)
+            if not blueprint:
+                print(f"❌ Failed to generate blueprint for {lang}. Skipping.")
+                continue
+                
             blueprint.video_id = production_id
             
             # 3. Media Collection

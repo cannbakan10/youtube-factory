@@ -44,8 +44,9 @@ class ScriptWriter:
         # Remove timestamps like 0:15, 01:20
         text = re.sub(r'\d{1,2}:\d{2}', '', text)
         # Remove meta-commentary like "8 dakikalık video", "1200 kelimelik", "video yapmaya çalışacağız"
-        text = re.sub(r'(?i)\d+\s*(dakika|kelime|dk|min|word).*?(video|anlatım|script).*?(yap|yaz|oluştur).*?(cağız|ceğiz|acağız|eceğiz)', '', text)
-        text = re.sub(r'(?i)(bu|için)\s+\d+\s*(dakika|kelime|dk|min|word).*?(video|anlatım|script)', '', text)
+        text = re.sub(r'(?i)(\d+)\s*(dakika|kelime|dk|min|word).*?(video|anlatım|script|hazır).*?(yap|yaz|oluştur|hazır).*?(cağız|ceğiz|acağız|eceğiz|adım|dım|dık|dik)?', '', text)
+        text = re.sub(r'(?i)(bu|için|toplam|yaklaşık)\s+\d+\s*(dakika|kelime|dk|min|word).*?(video|anlatım|script)', '', text)
+        text = re.sub(r'(?i)(işte|burada|aşağıda)\s+\d+\s*(dakika|kelime).*?(metin|script)', '', text)
         
         # Remove common prefixes
         prefixes = ["NARRATOR:", "ANLATICI:", "SCENE:", "SAHNE:", "INTRO:", "GİRİŞ:", "OUTRO:", "SONUÇ:"]
@@ -235,8 +236,7 @@ class ScriptWriter:
             {{
               "text": "ONLY THE SPOKEN TEXT. NO BRACKETS. NO DIRECTIONS.",
               "keywords": ["specific", "visual", "keywords", "in", "english"],
-              "sfx_prompt": "sound effect description in english",
-              "language": "{language}"
+              "sfx_prompt": "sound effect description in english"
             }}
           ]
         }}

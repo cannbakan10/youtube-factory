@@ -154,10 +154,16 @@ class VideoEngine:
         if filter_complex_str.endswith(";"):
             filter_complex_str = filter_complex_str[:-1]
 
+        # Use a script file for the filter complex to avoid "Argument list too long" errors
+        # especially for long-form videos with many scenes.
+        filter_script_path = os.path.join(self.output_dir, f"filter_{video_id}.txt")
+        with open(filter_script_path, "w", encoding="utf-8") as f:
+            f.write(filter_complex_str)
+
         cmd = [
             "ffmpeg", "-y", "-v", "error",
             *input_args,
-            "-filter_complex", filter_complex_str,
+            "-filter_complex_script", filter_script_path,
             "-map", final_video_label,
             "-map", final_audio_label,
             "-c:v", "libx264", "-preset", "ultrafast", "-crf", "22",
