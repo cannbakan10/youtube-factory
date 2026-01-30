@@ -43,6 +43,10 @@ class ScriptWriter:
         text = re.sub(r'\(.*?\)', '', text)
         # Remove timestamps like 0:15, 01:20
         text = re.sub(r'\d{1,2}:\d{2}', '', text)
+        # Remove meta-commentary like "8 dakikalık video", "1200 kelimelik", "video yapmaya çalışacağız"
+        text = re.sub(r'(?i)\d+\s*(dakika|kelime|dk|min|word).*?(video|anlatım|script).*?(yap|yaz|oluştur).*?(cağız|ceğiz|acağız|eceğiz)', '', text)
+        text = re.sub(r'(?i)(bu|için)\s+\d+\s*(dakika|kelime|dk|min|word).*?(video|anlatım|script)', '', text)
+        
         # Remove common prefixes
         prefixes = ["NARRATOR:", "ANLATICI:", "SCENE:", "SAHNE:", "INTRO:", "GİRİŞ:", "OUTRO:", "SONUÇ:"]
         for p in prefixes:
@@ -95,15 +99,20 @@ class ScriptWriter:
             
             RESEARCH DATA: {research_data}
             TOPIC: {topic}
-            TARGET DURATION: {target_minutes} minutes
-            STRICT WORD COUNT TARGET: {target_word_count} words
+            
+            PRODUCTION SPECIFICATIONS:
+            - TARGET PACING: {target_minutes} minutes
+            - WORD COUNT TARGET: {target_word_count} words
             
             STRUCTURE & STYLE RULES:
-            - INTRO: High-energy hook.
+            - INTRO: High-energy hook. Start DIRECTLY with the topic.
             - CHAPTERS: Break the topic into logical sections.
             - TRANSITIONS: Use smooth verbal transitions. 
-            - ⚠️ NO TIME REVEAL: NEVER mention specific numbers about the video length (e.g., AVOID "5 dakikalık videomuzun sonuna geldik", "10 dakika boyunca anlattık"). 
-              USE natural closing phrases like "Şimdilik bu yolculuğun sonuna geldik," or "Siz bu konuda ne düşünüyorsunuz?".
+            - ⚠️ NO TIME REVEAL & NO META-COMMENTARY:
+              1. NEVER mention specific numbers about the video length (AVOID "Bu 8 dakikalık videoda", "5 dakikada anlattık").
+              2. NEVER mention target word counts or the task itself (AVOID "1200 kelimelik video yapmaya çalışacağız").
+              3. USE natural transitions and closing phrases like "Şimdilik bu yolculuğun sonuna geldik," or "Siz bu konuda ne düşünüyorsunuz?".
+            - STRICTLY NARRATION ONLY: Include ONLY the words to be spoken. No meta-talk, no narrator notes, no task acknowledgments.
             - DEPTH: Provide interesting details. You MUST expand on the research to reach the {target_word_count} word mark.
             - PACING: Varied sentence lengths.
             - SENTENCE STRUCTURE (Turkish): Standard KURALLI sentences only.
