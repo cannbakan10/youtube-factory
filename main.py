@@ -140,13 +140,55 @@ class YoutubeFactory:
                 scene.subs_path = subs
                 scene.duration = dur
 
-            # 4. Render
-            bg_music = os.path.join(project_root, "assets", "templates", "bg_music.mp3")
-            if not os.path.exists(bg_music):
-                bg_music = None
-                print("   🎵 [Main]: No background music template found, skipping mix.")
-            else:
-                print("   🎵 [Main]: Mixing background music template...")
+            # 4. Render (Intelligent Background Music Selection)
+            music_dir = os.path.join(project_root, "assets", "templates", "music")
+            bg_music = None
+            
+            if os.path.exists(music_dir):
+                all_tracks = [f for f in os.listdir(music_dir) if f.endswith(".mp3")]
+                if all_tracks:
+                    # Granular Theme Mapping
+                    theme_keywords = []
+                    
+                    if mode == "horror":
+                        theme_keywords = ["horror", "tension", "mystery"]
+                    elif mode == "info":
+                        # Further specialize based on topic keywords
+                        topic_lower = topic.lower()
+                        if any(k in topic_lower for k in ["tech", "future", "cyber", "ai", "robot"]):
+                            theme_keywords = ["cyberpunk", "retro", "modern"]
+                        elif any(k in topic_lower for k in ["history", "war", "battle", "epic", "ancient"]):
+                            theme_keywords = ["epic", "cinematic"]
+                        elif any(k in topic_lower for k in ["nature", "wild", "animal", "space", "earth", "planet"]):
+                            theme_keywords = ["nature", "natgeo", "documentary"]
+                        elif any(k in topic_lower for k in ["sad", "emotional", "touching", "story", "life"]):
+                            theme_keywords = ["emotional", "inspiring"]
+                        elif any(k in topic_lower for k in ["business", "professional", "company", "money", "corporate"]):
+                            theme_keywords = ["corporate", "modern", "upbeat"]
+                        elif any(k in topic_lower for k in ["chill", "relax", "study", "casual"]):
+                            theme_keywords = ["lofi", "jazz"]
+                        elif any(k in topic_lower for k in ["80s", "90s", "old", "vintage", "classic"]):
+                            theme_keywords = ["retro", "jazz"]
+                        else:
+                            # Balanced Doc Default
+                            theme_keywords = ["documentary", "cinematic", "inspiring"]
+                    
+                    # Filter tracks matching themes
+                    preferred = [t for t in all_tracks if any(k in t for k in theme_keywords)]
+                    
+                    # Fallback Logic
+                    selected_file = random.choice(preferred if preferred else all_tracks)
+                    bg_music = os.path.join(music_dir, selected_file)
+                    print(f"   🎵 [Main]: Intelligent Theme Mapping -> {selected_file} (Mode: {mode}, Themes: {theme_keywords})")
+                else:
+                    # Fallback to legacy single file
+                    default_bg = os.path.join(project_root, "assets", "templates", "bg_music.mp3")
+                    if os.path.exists(default_bg):
+                        bg_music = default_bg
+                        print("   🎵 [Main]: No themed tracks found, using default bg_music.mp3.")
+            
+            if not bg_music:
+                print("   ⚠️ [Main]: No background music tracks found. Rendering without music.")
 
             final_path = self.engine.render(blueprint, language=lang, bg_music_path=bg_music, video_type=video_type)
             

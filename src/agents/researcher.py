@@ -45,19 +45,19 @@ class ResearchAgent:
         context = "\n---\n".join(results)
         
         prompt = f"""
-        KONU: {topic}
-        GELEN HAM VERİLER:
+        TOPIC: {topic}
+        RAW DATA:
         {context}
         
-        GÖREV:
-        Sen bir VERİ ANALİSTİSİN. Tavily ve internetten gelen bu verileri analiz et.
+        TASK:
+        You are a DATA ANALYST. Analyze this data from Tavily/Internet.
         
-        KURALLAR:
-        1. YUVARLANMIŞ VERİ: Kesinlikle küsuratlı rakamlar verme. (Örn: "1.463.865.525" yerine "Bir buçuk milyar" veya "Bir milyar dört yüz elli milyon" gibi yuvarla).
-        2. DOĞRULUK: 2024 ve 2025 verilerine öncelik ver. 
-        3. ÖZET: Script yazarının kullanabileceği net, maddeler halinde bir VERİ RAPORU oluştur.
+        RULES:
+        1. ROUNDED DATA: Never use long decimals. (e.g., instead of "1,463,865,525", use "One and a half billion" or "Approx 1.4 billion").
+        2. ACCURACY: Prioritize 2024 and 2025 data. 
+        3. SUMMARY: Create a clear, bulleted DATA REPORT for the scriptwriter.
         
-        Yalnızca YUVARLANMIŞ VERİ RAPORUNU döndür.
+        ONLY return the DATA REPORT.
         """
         
         try:

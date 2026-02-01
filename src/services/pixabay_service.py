@@ -76,31 +76,29 @@ class PixabayService:
         
         return None
 
-    def get_sfx(self, query):
-        """Searches and downloads Sound Effects from Pixabay Music API."""
-        if not self.api_key or not query or query.lower() == "none":
+    def get_audio(self, query, category="music"):
+        """Downloads royalty-free music or SFX from Pixabay API."""
+        if not self.api_key:
             return None
-
-        # Pixabay Music API parameters
+            
         params = {
             "key": self.api_key,
             "q": query,
-            "per_page": 3,
+            "per_page": 20,
             "safesearch": "true"
         }
         
         try:
-            print(f"      🎵 [Audio-Vivid] Searching SFX: '{query}'...")
             response = requests.get(self.music_url, params=params)
             data = response.json()
             
             if data.get('hits'):
-                # Take the first high-quality hit
-                hit = data['hits'][0]
+                import random
+                hit = random.choice(data['hits'])
                 audio_url = hit.get('download_url') or hit.get('audio')
                 
                 if audio_url:
-                    filename = f"sfx_{uuid.uuid4()}.mp3"
+                    filename = f"{category}_{uuid.uuid4()}.mp3"
                     filepath = os.path.join(self.cache_dir, filename)
                     
                     with requests.get(audio_url, stream=True) as r:
@@ -109,11 +107,8 @@ class PixabayService:
                             for chunk in r.iter_content(chunk_size=8192):
                                 f.write(chunk)
                     
-                    print(f"      🔊 [SFX SUCCESS] Downloaded: {query}")
                     return filepath
-            else:
-                print(f"      ⚠️ No SFX found for: '{query}'")
         except Exception as e:
-            print(f"      ❌ SFX Search Error: {e}")
+            print(f"      ❌ Pixabay Audio Error: {e}")
             
         return None

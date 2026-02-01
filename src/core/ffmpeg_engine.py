@@ -120,14 +120,30 @@ class VideoEngine:
         
         intro_in = None
         if has_intro:
+            # Get duration and check for audio via ffprobe
+            import subprocess
+            try:
+                cmd = ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "default=noprint_wrappers=1:nokey=1", intro_path]
+                intro_duration = float(subprocess.check_output(cmd).decode().strip())
+                
+                cmd_audio = ["ffprobe", "-v", "error", "-select_streams", "a", "-show_entries", "stream=codec_name", "-of", "default=noprint_wrappers=1:nokey=1", intro_path]
+                has_audio = len(subprocess.check_output(cmd_audio).decode().strip()) > 0
+            except Exception:
+                intro_duration = 3.0
+                has_audio = False
+
             input_args.extend(["-i", intro_path])
             intro_in = current_input_idx
             current_input_idx += 1
-            filter_complex_parts.append(
-                f"[{intro_in}:v]scale=w={width}:h={height}:force_original_aspect_ratio=increase,crop={width}:{height},setsar=1,format=yuv420p[v_intro];"
-                f"anullsrc=channel_layout=stereo:sample_rate=44100[a_intro_raw];"
-                f"[a_intro_raw]atrim=duration=3,asetpts=PTS-STARTPTS[a_intro];"
-            )
+            
+            v_intro_filter = f"[{intro_in}:v]scale=w={width}:h={height}:force_original_aspect_ratio=increase,crop={width}:{height},setsar=1,format=yuv420p[v_intro];"
+            
+            if has_audio:
+                a_intro_filter = f"[{intro_in}:a]aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo,volume=0.8[a_intro];"
+            else:
+                a_intro_filter = f"anullsrc=channel_layout=stereo:sample_rate=44100[a_intro_raw];[a_intro_raw]atrim=duration={intro_duration},asetpts=PTS-STARTPTS[a_intro];"
+            
+            filter_complex_parts.append(v_intro_filter + a_intro_filter)
 
         # Concat Scenes
         v_final_labels = []

@@ -33,7 +33,7 @@ class ScriptWriter:
         self.model = "gemini-2.0-flash"
         self.oa_model = "gpt-4o-mini"
 
-    def _clean_text(self, text):
+    def _clean_text(self, text, language="en"):
         """Removes AI trash, stage directions, and common unwanted markers."""
         import re
         if not text: return ""
@@ -44,13 +44,17 @@ class ScriptWriter:
         text = re.sub(r'\(.*?\)', '', text)
         # Remove timestamps like 0:15, 01:20
         text = re.sub(r'\d{1,2}:\d{2}', '', text)
-        # Remove meta-commentary like "8 dakikalık video", "1200 kelimelik", "video yapmaya çalışacağız"
+        # Remove meta-commentary
         text = re.sub(r'(?i)(\d+)\s*(dakika|kelime|dk|min|word).*?(video|anlatım|script|hazır).*?(yap|yaz|oluştur|hazır).*?(cağız|ceğiz|acağız|eceğiz|adım|dım|dık|dik)?', '', text)
         text = re.sub(r'(?i)(bu|için|toplam|yaklaşık)\s+\d+\s*(dakika|kelime|dk|min|word).*?(video|anlatım|script)', '', text)
         text = re.sub(r'(?i)(işte|burada|aşağıda)\s+\d+\s*(dakika|kelime).*?(metin|script)', '', text)
         
         # Remove common prefixes
-        prefixes = ["NARRATOR:", "ANLATICI:", "SCENE:", "SAHNE:", "INTRO:", "GİRİŞ:", "OUTRO:", "SONUÇ:"]
+        if language == "tr":
+            prefixes = ["ANLATICI:", "SAHNE:", "GİRİŞ:", "SONUÇ:", "NARRATOR:", "SCENE:"]
+        else:
+            prefixes = ["NARRATOR:", "SCENE:", "INTRO:", "OUTRO:", "CHAPTER:"]
+            
         for p in prefixes:
             text = text.replace(p, "")
         # Remove bold/italic markers
@@ -95,6 +99,22 @@ class ScriptWriter:
         target_word_count = target_minutes * 150
         
         if is_long:
+            # Language-specific warnings
+            if language == "tr":
+                structure_rule = "SENTENCE STRUCTURE (Turkish): Standard KURALLI sentences only."
+                meta_avoid = """
+                  1. NEVER mention specific numbers about the video length (AVOID "Bu 8 dakikalık videoda").
+                  2. NEVER mention target word counts (AVOID "1200 kelimelik video").
+                  3. USE natural transitions like "Şimdilik bu yolculuğun sonuna geldik."
+                """
+            else:
+                structure_rule = f"SENTENCE STRUCTURE ({lang_name}): Professional documentary-style grammar."
+                meta_avoid = f"""
+                  1. NEVER mention specific numbers about the video length (AVOID "In this {target_minutes} minute video").
+                  2. NEVER mention target word counts (AVOID "This {target_word_count} word script").
+                  3. USE natural transitions like "That's all for now," or "What do you think about this?"
+                """
+
             prompt = f"""
             Using the provided research data, write a DEEP and ENGAGING documentary-style narration script.
             Everything MUST be in {lang_name}.
@@ -107,61 +127,63 @@ class ScriptWriter:
             - WORD COUNT TARGET: {target_word_count} words
             
             STRUCTURE & STYLE RULES:
-            - 🎞️ TRAILER/HOOK (FIRST 15 SECONDS): Start with a fast-paced, gripping summary or a shocking question that previews the most exciting parts of the video. 
-              This is the "FRAGMAN". It should end with a natural pause for a branding transition.
+            - 🎞️ TRAILER/HOOK (FIRST 15 SECONDS): Start with a fast-paced, gripping summary or a shocking question.
+              This is the "TRAILER/FRAGMAN". It should end with a natural pause for a branding transition.
             - INTRO: High-energy hook. Start DIRECTLY with the topic after the trailer.
             - CHAPTERS: Break the topic into logical sections.
             - TRANSITIONS: Use smooth verbal transitions. 
             - ⚠️ NO TIME REVEAL & NO META-COMMENTARY:
-              1. NEVER mention specific numbers about the video length (AVOID "Bu 8 dakikalık videoda", "5 dakikada anlattık").
-              2. NEVER mention target word counts or the task itself (AVOID "1200 kelimelik video yapmaya çalışacağız").
-              3. USE natural transitions and closing phrases like "Şimdilik bu yolculuğun sonuna geldik," or "Siz bu konuda ne düşünüyorsunuz?".
-            - STRICTLY NARRATION ONLY: Include ONLY the words to be spoken. No meta-talk, no narrator notes, no task acknowledgments.
+              {meta_avoid}
+            - STRICTLY NARRATION ONLY: Include ONLY the words to be spoken. No meta-talk, no narrator notes.
             - DEPTH: Provide interesting details. You MUST expand on the research to reach the {target_word_count} word mark.
             - PACING: Varied sentence lengths.
-            - SENTENCE STRUCTURE (Turkish): Standard KURALLI sentences only.
+            - {structure_rule}
             - CONVERSATIONAL PUNCTUATION: Use ! and ...
             - Language: STRICTLY {lang_name} only.
             """
         elif mode == "horror":
+            if language == "tr":
+                hook_start = "Bunun gerçekten yaşandığını biliyor muydunuz?"
+                structure_rule = "SENTENCE STRUCTURE (Turkish): Standart, resmi cümleler kullanın. DEVRİK cümlelerden kaçının."
+            else:
+                hook_start = "Did you know this actually happened?"
+                structure_rule = f"SENTENCE STRUCTURE ({lang_name}): Natural, formal storytelling grammar."
+
             prompt = f"""
             Using the provided research about REAL terrifying events or urban legends, 
             write a spine-chilling narration for a 60-second YouTube Short. 
-            The story MUST be based on the TRUE facts found in the research.
             Everything MUST be in {lang_name}.
             
-            RESEARCH DATA (The Raw Horror): {research_data}
-            TOPIC: {topic}
-            
             STORYTELLING RULES:
-            - Start with: "Did you know this actually happened?" or a similar topic-specific 'True Horror' hook.
-            - NO INTRO: Do NOT say "Here is a script" or "YouTube Shorts için video". Start DIRECTLY with the story.
+            - Start with: "{hook_start}" or a similar hook.
+            - NO INTRO: Do NOT say "Here is a script". Start DIRECTLY with the story.
             - Focus on the most disturbing parts of the research.
-            - SENTENCE STRUCTURE (Turkish): Use standard, formal sentences. DO NOT use inverted (devrik) sentences.
-            - Use a 'true crime' or 'chilling mystery' tone (not 'cheesy' fiction).
-            - Word count: ~110-130 words (measured, dramatic intervals).
+            - {structure_rule}
+            - Use a 'true crime' or 'chilling mystery' tone.
+            - Word count: ~110-130 words.
             - Language: STRICTLY {lang_name} only.
             """
         else:
+            hook_pattern = "[TOPIC] Hakkında bunları biliyor muydunuz?" if language == "tr" else "Did you know these facts about [TOPIC]?"
+            countdown_prefix = "numara" if language == "tr" else "Number"
+            climax_lead_in = "Gelelim en çılgın gerçeğe..." if language == "tr" else "Now for the most insane fact..."
+            
             prompt = f"""
             Using the following research data, write an exciting narration script for YouTube Shorts.
             The script MUST be entirely in {lang_name}.
             
-            RESEARCH DATA: {research_data}
-            TOPIC: {topic}
-            
             STRUCTURE & PACING RULES:
             - 🎞️ FRAGMAN / HOOK (MANDATORY): Start EVERY video with a gripping hook. 
-              Pattern: "[TOPIC] Hakkında bunları biliyor muydunuz?" 
-              (Example: "Antarktika hakkındaki bu gizemli bilgileri biliyor muydunuz?")
+              Pattern: "{hook_pattern}" 
+              (Example: "Did you know these mysterious facts about Antarctica?")
               This MUST be a separate first sentence/scene.
             - INTRO TRANSITION: The script should lead naturally into a short branding pause after the hook.
-            - STRICT 5-STEP COUNTDOWN: You MUST list exactly 5 facts. Start from "5 numara" and count down sequentially to "1 numara".
+            - STRICT 5-STEP COUNTDOWN: You MUST list exactly 5 facts. Start from "5 {countdown_prefix}" and count down sequentially to "1 {countdown_prefix}".
             - NO META-TALK: Do NOT include titles, headers, or instructions. Start DIRECTLY with the hook.
-            - THE #1 CLIMAX: 1 numara MUST be the most shocking fact. Use dramatic lead-ins like "Gelelim en çılgın gerçeğe..." or "1 numara sizi gerçekten sarsacak..."
+            - THE #1 CLIMAX: 1 {countdown_prefix} MUST be the most shocking fact. Use dramatic lead-ins like "{climax_lead_in}"
             - RETENTION FOCUS: Keep sentences short, punchy, and fast-paced to prevent scrolling.
-            - SENTENCE STRUCTURE (Turkish): Use standard KURALLI sentences (Subject-Object-Verb). NEVER use DEVRİK (inverted) sentences.
-            - CONVERSATIONAL PUNCTUATION (Turkish): Use exclamation marks (!) and ellipses (...) to force the AI to take breaths.
+            - SENTENCE STRUCTURE ({lang_name}): Use standard professional sentences.
+            - CONVERSATIONAL PUNCTUATION: Use exclamation marks (!) and ellipses (...) to force the AI to take breaths.
             - EMPHASIS: Use words that trigger emphasis for Number 1.
             - Tone: Energetic, professional, and slightly dramatic.
             - Target: ~130-140 words maximum for a 60-second video.
@@ -172,7 +194,7 @@ class ScriptWriter:
             response = self.client.models.generate_content(
                 model=self.model, contents=prompt
             )
-            return self._clean_text(response.text.strip())
+            return self._clean_text(response.text.strip(), language=language)
         except Exception as e:
             print(f"   ⚠️ Gemini Narrative Error: {e}. Falling back to OpenAI...")
             if not self.oa_client: return None
@@ -180,7 +202,7 @@ class ScriptWriter:
                 model=self.oa_model,
                 messages=[{"role": "user", "content": prompt}]
             )
-            return self._clean_text(oa_response.choices[0].message.content.strip())
+            return self._clean_text(oa_response.choices[0].message.content.strip(), language=language)
 
     def generate_blueprint(self, narrative, topic, language="en", mode="info", video_type="shorts") -> VideoBlueprint:
         """
@@ -269,7 +291,7 @@ class ScriptWriter:
         if data:
             # Final cleanup of all scene texts in the blueprint
             for i, scene in enumerate(data.get('scenes', [])):
-                scene['text'] = self._clean_text(scene.get('text', ''))
+                scene['text'] = self._clean_text(scene.get('text', ''), language=language)
                 # Force the first scene to be a trailer for branding transition
                 if i == 0:
                     scene['is_trailer'] = True
