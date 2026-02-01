@@ -219,60 +219,13 @@ class BrandingService:
                 enhancer = ImageEnhance.Contrast(img)
                 img = enhancer.enhance(1.1) # 10% more contrast
                 
-                draw = ImageDraw.Draw(img)
-                w, h = img.size
-                
-                # Viral Font Selection (Massive Bold)
-                try:
-                    font_path = "/System/Library/Fonts/Supplemental/Arial Narrow Bold.ttf"
-                    if not os.path.exists(font_path):
-                        font_path = "/System/Library/Fonts/Helvetica.ttc"
-                    
-                    font_size = int(h * 0.16) if is_long else int(h * 0.10)
-                    font = ImageFont.truetype(font_path, font_size)
-                except:
-                    font = ImageFont.load_default()
-                
-                # Extract ULTRA-PUNCHY text
-                if "ŞOK EDİCİ" in title.upper():
-                    punchy_text = "ŞOK EDİCİ!"
-                elif "DİKKAT" in title.upper():
-                    punchy_text = "SAKIN YAPMA!"
-                else:
-                    clean_title = title.split("!")[0].split("?")[0].strip()
-                    words = clean_title.split()[:3]
-                    punchy_text = " ".join(words).upper()
-                
-                if not punchy_text: punchy_text = topic.split()[:2]
-                
-                import textwrap
-                wrapper = textwrap.TextWrapper(width=10 if not is_long else 18)
-                lines = wrapper.wrap(text=punchy_text)
-                
-                # Position higher for Shorts to avoid UI buttons
-                current_h = h * 0.15 if is_long else h * 0.08
-                stroke_width = int(font_size * 0.10)
-                
-                for line in lines:
-                    bbox = draw.textbbox((0, 0), line, font=font)
-                    text_w = bbox[2] - bbox[0]
-                    text_h = bbox[3] - bbox[1]
-                    
-                    x = (w * 0.05) if is_long else (w - text_w) / 2
-                    
-                    # Viral Yellow with Strong Black Outline
-                    draw.text((x, current_h), line, font=font, fill="yellow", 
-                              stroke_width=stroke_width, stroke_fill="black")
-                    
-                    current_h += text_h + 40
-                
                 final_path = output_path or os.path.join(self.output_dir, "thumbnail.png")
                 img.save(final_path)
                 
             if os.path.exists(temp_bg):
                 os.remove(temp_bg)
                 
-            print(f"✅ [Branding]: High-Impact Thumbnail saved to {final_path}")
+            print(f"✅ [Branding]: High-Impact (Text-Free) Thumbnail saved to {final_path}")
             return final_path
             
         except Exception as e:
