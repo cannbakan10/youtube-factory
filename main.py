@@ -10,6 +10,7 @@ from src.services.pexels_service import PexelsService
 from src.services.pixabay_service import PixabayService
 from src.services.tts_service import TTSService
 from src.services.youtube_service import YouTubeService
+from src.services.branding_service import BrandingService
 from src.core.ffmpeg_engine import VideoEngine
 from src.agents.trend_agent import TrendAgent
 
@@ -25,6 +26,7 @@ class YoutubeFactory:
         self.researcher = ResearchAgent()
         self.scriptwriter = ScriptWriter()
         self.trend_agent = TrendAgent()
+        self.branding = BrandingService() # Flawless Branding + AI Video
         self.youtube_service = None 
 
     def run(self, topic, languages=["en"], auto_upload=False, mode="info", video_type="shorts"):
@@ -89,21 +91,32 @@ class YoutubeFactory:
                 # Randomize keyword order for variety
                 random.shuffle(scene.keywords)
                 
-                # Alternate between Pexels and Pixabay for each scene to maximize variety
-                if i % 2 == 0:
-                    print(f"      🎞️ Source: Pexels")
-                    video_path = self.pexels.get_video(scene.keywords, orientation=orientation)
+                # AI-Powered Trailer (Fragman) Logic: Use high-end AI Video (Kling) for trailers
+                if getattr(scene, 'is_trailer', False) and os.getenv("FAL_KEY"):
+                    print(f"      🎞️ Source: fal.ai Kling (AI Video Fragment)")
+                    video_path = self.branding.generate_cinematic_clip(", ".join(scene.keywords), orientation=orientation)
                     if not video_path:
-                        print(f"      🔄 Pexels empty, failing over to Pixabay...")
-                        video_path = self.pixabay.get_video(scene.keywords, orientation=orientation)
-                else:
-                    print(f"      🎞️ Source: Pixabay")
-                    video_path = self.pixabay.get_video(scene.keywords, orientation=orientation)
-                    if not video_path:
-                        print(f"      🔄 Pixabay empty, failing over to Pexels...")
+                        print(f"      🔄 Kling failed, falling back to stock...")
+                    else:
+                        scene.video_path = video_path
+
+                if not scene.video_path:
+                    # Stock Video Fallback
+                    # Alternate between Pexels and Pixabay for each scene to maximize variety
+                    if i % 2 == 0:
+                        print(f"      🎞️ Source: Pexels")
                         video_path = self.pexels.get_video(scene.keywords, orientation=orientation)
-                
-                scene.video_path = video_path
+                        if not video_path:
+                            print(f"      🔄 Pexels empty, failing over to Pixabay...")
+                            video_path = self.pixabay.get_video(scene.keywords, orientation=orientation)
+                    else:
+                        print(f"      🎞️ Source: Pixabay")
+                        video_path = self.pixabay.get_video(scene.keywords, orientation=orientation)
+                        if not video_path:
+                            print(f"      🔄 Pixabay empty, failing over to Pexels...")
+                            video_path = self.pexels.get_video(scene.keywords, orientation=orientation)
+                    
+                    scene.video_path = video_path
                 
                 # SFX Collection (Skip entirely for long-form)
                 if not is_long and scene.sfx_prompt and scene.sfx_prompt.lower() != "none":

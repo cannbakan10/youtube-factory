@@ -12,53 +12,85 @@ class BrandingService:
         os.makedirs(self.output_dir, exist_ok=True)
         
     def generate_logo(self, channel_name="Stream Global"):
-        """Generates a premium, minimalist logo using Fal.ai Flux Pro."""
-        print(f"🎨 [Branding]: Generating Logo for '{channel_name}'...")
+        """Generates a premium, minimalist logo using Fal.ai Flux Pro v1.1 Ultra."""
+        print(f"🎨 [Branding]: Generating Ultra-Pro Logo for '{channel_name}'...")
         prompt = (
-            f"A premium, minimalist, modern logo for a YouTube channel named '{channel_name}'. "
+            f"A masterfully designed, minimalist, modern logo for a YouTube channel named '{channel_name}'. "
             "The design should be cinematic, professional, high-tech documentary style. "
-            "Clean vector style, centered on a neutral dark background, 4k, sharp details."
+            "Clean vector style, centered on a neutral dark background, 4k, sharp details, "
+            "ultra-high resolution, professional branding quality."
         )
         
         try:
-            handler = fal_client.submit(
-                "fal-ai/flux-pro/v1.1",
-                arguments={"prompt": prompt, "image_size": "square_hd"}
+            # Using Flux Pro v1.1 Ultra as per flawless documentation
+            result = fal_client.run(
+                "fal-ai/flux-pro/v1.1-ultra",
+                arguments={"prompt": prompt, "aspect_ratio": "1:1"}
             )
-            result = handler.get()
             image_url = result['images'][0]['url']
             
             path = os.path.join(self.output_dir, "logo.png")
             self._download(image_url, path)
-            print(f"✅ [Branding]: Logo saved to {path}")
+            print(f"✅ [Branding]: Ultra Logo saved to {path}")
             return path
         except Exception as e:
-            logging.error(f"❌ Logo generation failed: {e}")
+            logging.error(f"❌ Ultra Logo generation failed: {e}")
             return None
 
     def generate_banner(self, channel_name="Stream Global"):
-        """Generates a cinematic YouTube banner (2560x1440)."""
-        print(f"🎬 [Branding]: Generating Banner...")
+        """Generates a cinematic YouTube banner (Ultra High Res)."""
+        print(f"🎬 [Branding]: Generating Ultra-Pro Banner...")
         prompt = (
             f"A wide cinematic YouTube banner for '{channel_name}'. Strategic, deep-dive documentary theme. "
             "World maps, digital data streams, elegant dark aesthetics, gold and deep blue accents. "
-            "High resolution, 8k, professional lighting. 2560x1440 aspect ratio style."
+            "High resolution, professional lighting, cinematic depth, 2560x1440 ratio feel."
         )
         
         try:
-            handler = fal_client.submit(
-                "fal-ai/flux-pro/v1.1",
-                arguments={"prompt": prompt, "image_size": "landscape_16_9"}
+            result = fal_client.run(
+                "fal-ai/flux-pro/v1.1-ultra",
+                arguments={"prompt": prompt, "aspect_ratio": "21:9"}
             )
-            result = handler.get()
             image_url = result['images'][0]['url']
             
             path = os.path.join(self.output_dir, "banner.png")
             self._download(image_url, path)
-            print(f"✅ [Branding]: Banner saved to {path}")
+            print(f"✅ [Branding]: Ultra Banner saved to {path}")
             return path
         except Exception as e:
-            logging.error(f"❌ Banner generation failed: {e}")
+            logging.error(f"❌ Ultra Banner generation failed: {e}")
+            return None
+
+    def generate_cinematic_clip(self, prompt, orientation="landscape"):
+        """
+        Generates a high-end cinematic clip using Kling Video v1.5.
+        Perfect for Fragman (Trailer) hooks.
+        """
+        print(f"🎬 [fal.ai Kling]: Generating cinematic clip: {prompt[:50]}...")
+        aspect_ratio = "16:9" if orientation == "landscape" else "9:16"
+        
+        try:
+            # Using subscribe for video generation as it takes longer
+            handler = fal_client.submit(
+                "fal-ai/kling-video/v1/standard/text-to-video",
+                arguments={
+                    "prompt": f"Cinematic, high quality documentary style: {prompt}",
+                    "aspect_ratio": aspect_ratio
+                }
+            )
+            
+            result = handler.get()
+            video_url = result['video']['url']
+            
+            filename = f"cinematic_{uuid.uuid4()}.mp4"
+            path = os.path.join(self.output_dir, "..", "cache", filename)
+            os.makedirs(os.path.dirname(path), exist_ok=True)
+            
+            self._download(video_url, path)
+            print(f"✅ [fal.ai Kling]: Cinematic clip saved to {path}")
+            return os.path.abspath(path)
+        except Exception as e:
+            logging.error(f"❌ Kling generation failed: {e}")
             return None
 
     def generate_intro_asset(self):
