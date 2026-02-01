@@ -100,6 +100,7 @@ class YoutubeFactory:
             blueprint.video_id = production_id
             
             # 3. Media Collection
+            valid_scenes = []
             import random
             orientation = "landscape" if video_type == "long" else "portrait"
             for i, scene in enumerate(blueprint.scenes):
@@ -109,7 +110,7 @@ class YoutubeFactory:
                 random.shuffle(scene.keywords)
                 
                 # Stock Video Collection
-                # Alternate between Pexels and Pixabay for each scene to maximize variety
+                video_path = None
                 if i % 2 == 0:
                     print(f"      🎞️ Source: Pexels")
                     video_path = self.pexels.get_video(scene.keywords, orientation=orientation)
@@ -123,7 +124,7 @@ class YoutubeFactory:
                         print(f"      🔄 Pixabay empty, failing over to Pexels...")
                         video_path = self.pexels.get_video(scene.keywords, orientation=orientation)
                 
-                # Global Topic Fallback: If scene keywords failed, try the overall topic
+                # Global Topic Fallback
                 if not video_path:
                     print(f"      ⚠️ Scene keywords failed. Recovering with global topic: '{topic}'...")
                     video_path = self.pexels.get_video([topic], orientation=orientation)
@@ -139,6 +140,13 @@ class YoutubeFactory:
                 scene.audio_path = audio
                 scene.subs_path = subs
                 scene.duration = dur
+                valid_scenes.append(scene)
+
+            if not valid_scenes:
+                print(f"❌ No valid scenes generated for {lang}. Skipping.")
+                continue
+                
+            blueprint.scenes = valid_scenes
 
             # 4. Render (Intelligent Background Music Selection)
             music_dir = os.path.join(project_root, "assets", "templates", "music")

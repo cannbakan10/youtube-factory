@@ -48,6 +48,9 @@ class PixabayService:
 
             try:
                 response = requests.get(self.video_url, params=params)
+                if response.status_code != 200:
+                    print(f"      ⚠️ Pixabay API Error (Status {response.status_code}): {response.text[:100]}")
+                    continue
                 data = response.json()
 
                 if data.get('hits'):
