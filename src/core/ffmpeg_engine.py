@@ -99,11 +99,22 @@ class VideoEngine:
                     f"[v_black{valid_scenes_count}]{','.join(v_filters)}[v_sc{valid_scenes_count}];"
                 )
             
-            # --- AUDIO FILTERING (Narrative Only) ---
-            a_narr_label = f"a_narr{valid_scenes_count}"
-            filter_complex_parts.append(
-                f"[{a_narrative_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo,volume=1.30[a_sc{valid_scenes_count}];"
-            )
+            # --- AUDIO FILTERING (Narrative + SFX Mix) ---
+            # Safety: Ensure fade out duration doesn't exceed scene duration
+            fade_dur = min(0.5, duration / 2)
+            fade_out_st = max(0, duration - fade_dur)
+            
+            if sfx_in is not None:
+                filter_complex_parts.append(
+                    f"[{a_narrative_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo,volume=1.30[a_voc{valid_scenes_count}];"
+                    f"[{sfx_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo,volume=0.4[a_sfx_raw{valid_scenes_count}];"
+                    f"[a_sfx_raw{valid_scenes_count}]afade=t=in:st=0:d={fade_dur},afade=t=out:st={fade_out_st}:d={fade_dur}[a_sfx{valid_scenes_count}];"
+                    f"[a_voc{valid_scenes_count}][a_sfx{valid_scenes_count}]amix=inputs=2:duration=first:dropout_transition=0[a_sc{valid_scenes_count}];"
+                )
+            else:
+                filter_complex_parts.append(
+                    f"[{a_narrative_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo,volume=1.30[a_sc{valid_scenes_count}];"
+                )
             
             filter_complex_parts.append(v_filter)
             v_labels.append(f"[v_sc{valid_scenes_count}]")

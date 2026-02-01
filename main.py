@@ -213,12 +213,18 @@ class YoutubeFactory:
                 
                 # Save Metadata
                 meta_file = os.path.join(lang_dir, "metadata.json")
+                thumb_path = os.path.join(lang_dir, "thumbnail.png")
+                
+                # Generate AI Thumbnail
+                self.branding.generate_thumbnail(topic, title, video_type=video_type, output_path=thumb_path)
+                
                 with open(meta_file, "w", encoding="utf-8") as f:
                     meta_data = {
                         "title": title,
                         "description": desc,
                         "tags": tags,
-                        "file_path": dest_path
+                        "file_path": dest_path,
+                        "thumbnail_path": thumb_path if os.path.exists(thumb_path) else None
                     }
                     json.dump(meta_data, f, indent=2, ensure_ascii=False)
                 

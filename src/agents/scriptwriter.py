@@ -141,6 +141,7 @@ class ScriptWriter:
             - STRICT ADHERENCE: You MUST write about {topic}. DO NOT hallucinate other topics or time periods not related to this.
             - CONVERSATIONAL PUNCTUATION: Use ! and ...
             - Language: STRICTLY {lang_name} only.
+            - ⚠️ ZERO TOLERANCE: Do NOT include ANY English words, meta-labels (like 'NARRATOR', 'SCENE'), or stage directions in the script. Every single word must be in {lang_name}.
             """
         elif mode == "horror":
             if language == "tr":
@@ -174,22 +175,21 @@ class ScriptWriter:
             TOPIC: {topic}
             
             STRUCTURE & PACING RULES:
-            - 🎞️ FRAGMAN / HOOK (MANDATORY): Start with a unique, gripping hook directly related to "{topic}". 
-              DO NOT use generic phrases like "Did you know these facts about...". 
-              Instead, start with a shocking statement or a high-stakes question about the topic itself.
-              (Example for 'Antarctica': "Deep beneath the frozen surface of Antarctica, something impossible has been discovered.")
-              This MUST be a separate first sentence.
-            - INTRO TRANSITION: The script should lead naturally into a short branding pause after the hook.
-            - NARRATIVE FLOW: Do NOT use a numbered countdown. Provide a continuous, high-speed narrative full of facts.
-            - NO META-TALK: Do NOT include titles, headers, or instructions. Start DIRECTLY with the hook.
-            - THE CLIMAX: End with the most shocking piece of information. Use dramatic lead-ins like "{climax_lead_in}"
-            - RETENTION FOCUS: Keep sentences short, punchy, and fast-paced to prevent scrolling.
-            - SENTENCE STRUCTURE ({lang_name}): Use standard professional sentences.
-            - CONVERSATIONAL PUNCTUATION: Use exclamation marks (!) and ellipses (...) to force the AI to take breaths.
-            - EMPHASIS: Use strong adjectives and verbs that trigger engagement.
-            - Tone: Energetic, professional, and slightly dramatic.
-            - STRICT ADHERENCE: You MUST write about {topic}. DO NOT talk about unrelated topics.
-            - Target: ~130-140 words maximum for a 60-second video.
+            - 🎞️ ACT 1: FRAGMAN / HOOK (MANDATORY): Start with a unique, gripping hook directly related to "{topic}". 
+              DO NOT use generic "Did you know" phrases. Start with a shocking statement. Must be the FIRST sentence.
+            - 🎬 ACT 2: INTRO TRANSITION: Naturally lead into a short pause for the branding intro.
+            - 📖 ACT 3: INFORMATION BODY: Provide a continuous, high-speed narrative full of facts. NO numbered lists.
+            - 🔥 ACT 4: THE CLIMAX & WRAP: End the content with the most shocking fact using "{climax_lead_in}". 
+              Then, provide a 1-sentence contextual summary that wraps up the topic.
+            - 🏁 ACT 5: OUTRO / CTA (ABSOLUTE FINAL): The VERY LAST sentence MUST be the call-to-action.
+              (Example TR: "Daha fazla bilgi için kanala abone olmayı, videoyu beğenmeyi ve yorum yapmayı unutmayın!")
+              (Example EN: "Don't forget to like, subscribe, and comment for more incredible stories!")
+              ⚠️ WARNING: THE CTA MUST NEVER BE AT THE BEGINNING. IT MUST BE AT THE END.
+            
+            RETENTION FOCUS:
+            - Keep sentences short and punchy.
+            - {topic} focus only.
+            - Target: ~130-140 words.
             - Language: STRICTLY {lang_name} only.
             """
         
@@ -243,6 +243,7 @@ class ScriptWriter:
         4. AUDIO INTELLIGENCE (SFX):
            - Generate a matching "sfx_prompt" (in English) for each scene.
            - Examples: "cinematic whoosh", "nature ambience", "city traffic hum", "soft piano note".
+           - ⚠️ STRICT RULE: DO NOT use prompts that involve human voices, talking, shouting, or any language-specific sounds. Only ambient, cinematic, or mechanical sounds allowed.
            - Use "none" if not needed.
            
         5. TOPIC ACCURACY:
@@ -251,12 +252,14 @@ class ScriptWriter:
         6. METADATA & SEO:
            - Generate professional YouTube Title, Description, and Tags in {lang_name}.
            - TITLE RULES: 
-             - If format is SHORTS (9:16): Create a viral, high-energy title.
-             - If format is LONG (16:9): Create a professional, educational documentary-style title. 
-               ⚠️ ZERO TOLERANCE: For LONG videos, you MUST NOT use the word "Shorts" ANYWHERE (Title, Description, Tags).
+             - If format is SHORTS (9:16): Create an EXTREME CLICKBAIT, viral, high-energy title. 
+               Use high-impact words (TR: DİKKAT, SAKIN, İNANILMAZ, ŞOK EDİCİ | EN: WARNING, NEVER, SHOCKING, IMPOSSIBLE).
+               (Example: "DİKKAT! Japonya'da Sakın Bunları Yapmayın!")
+             - If format is LONG (16:9): Create a professional, deep documentary title.
+               ⚠️ ZERO TOLERANCE: For LONG videos, you MUST NOT use the word "Shorts" ANYWHERE.
            - TAG RULES: 
-             - If format is SHORTS: Include #Shorts and viral niche tags.
-             - If format is LONG: DO NOT use #Shorts. Use deep context tags like #Documentary, #Geopolitics, #History, #Education and topic-specific tags.
+             - If format is SHORTS: Include #Shorts and niche hashtags.
+             - If format is LONG: DO NOT use #Shorts. Use deep context tags.
 
         JSON OUTPUT FORMAT:
         {{

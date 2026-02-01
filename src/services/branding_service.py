@@ -4,9 +4,10 @@ import sys
 # Python 3.9 Compatibility Fix for google-genai
 if sys.version_info < (3, 10):
     try:
-        import importlib_metadata
-        if not hasattr(sys.modules['importlib.metadata'], 'packages_distributions'):
-            sys.modules['importlib.metadata'].packages_distributions = importlib_metadata.packages_distributions
+        import importlib.metadata
+        if not hasattr(importlib.metadata, 'packages_distributions'):
+            import importlib_metadata
+            importlib.metadata.packages_distributions = importlib_metadata.packages_distributions
     except ImportError:
         pass
 
@@ -137,6 +138,145 @@ class BrandingService:
             return path
         except Exception as e:
             logging.error(f"❌ Intro asset failed: {e}")
+            return None
+
+    def generate_thumbnail(self, topic, title, video_type="shorts", output_path=None):
+        """
+        Generates a viral YouTube thumbnail using Fal.ai Flux 1.1 Pro + Text Overlay.
+        Strictly enforces 9:16 for Shorts and 16:9 for Long.
+        """
+        is_long = video_type == "long" or video_type == "horizontal"
+        aspect_ratio = "16:9" if is_long else "9:16"
+        
+        print(f"🖼️ [Branding]: Generating {aspect_ratio} Fal.ai Thumbnail for: {topic[:30]}...")
+        
+        # Topic-specific visual enhancers to avoid "Generic Castle" errors
+        visual_context = ""
+        lower_topic = topic.lower()
+        if "mısır" in lower_topic or "egypt" in lower_topic:
+            visual_context = "Ancient Egypt, the Great Sphinx or a golden pharaoh mask, mysterious pyramid interior with torchlight, cinematic shadows, 8k documentary style."
+        elif "kore" in lower_topic:
+            visual_context = "North Korean military officer, DMZ border, Pyongyang architecture, socialist realism, red flags, high contrast."
+        elif "kedi" in lower_topic:
+            visual_context = "Extreme close-up of a cat's face, glowing eyes, mysterious atmosphere, hyper-detailed fur."
+        elif "uzay" in lower_topic or "gezegen" in lower_topic:
+            visual_context = "Cinematic space view, glowing planets, astronaut silhouette, cosmic nebula."
+        else:
+            visual_context = f"Highly realistic and literal representation of {topic}."
+
+        prompt = (
+            f"A viral, high-impact YouTube thumbnail background. SUBJECT: {visual_context}. "
+            "STYLE: Professional documentary photography, cinematic lighting, dramatic shadows, vivid high-contrast colors. "
+            "COMPOSITION: One massive focal 'Hero' element taking up 60% of the frame. "
+            "STRICTLY NO TEXT, NO LETTERS, NO WORDS. High stakes, hyper-realistic 8k masterpiece."
+        )
+        
+        try:
+            import fal_client
+            # Explicitly force aspect ratio for Flux and add vertical cues to prompt
+            flux_prompt = f"PORTRAIT 9:16 MOBILE FORMAT, {prompt}" if aspect_ratio == "9:16" else prompt
+            
+            result = fal_client.run(
+                "fal-ai/flux-pro/v1.1",
+                arguments={
+                    "prompt": flux_prompt,
+                    "aspect_ratio": aspect_ratio,
+                    "safety_checker": False
+                }
+            )
+            image_url = result['images'][0]['url']
+            
+            temp_bg = os.path.join(self.output_dir, f"temp_thumb_{uuid.uuid4()}.png")
+            self._download(image_url, temp_bg)
+            
+            # 2. Add High-Visibility Text Overlay using PIL
+            from PIL import Image, ImageDraw, ImageFont, ImageEnhance
+            
+            with Image.open(temp_bg) as img:
+                # --- HARD FORMAT ENFORCEMENT ---
+                target_w, target_h = (1280, 720) if is_long else (1080, 1920)
+                
+                # Resize and Crop to fill the exact dimensions (Viral Style)
+                img_ratio = img.width / img.height
+                target_ratio = target_w / target_h
+                
+                if img_ratio > target_ratio:
+                    # Image is wider than target
+                    new_width = int(target_ratio * img.height)
+                    offset = (img.width - new_width) // 2
+                    img = img.crop((offset, 0, offset + new_width, img.height))
+                else:
+                    # Image is taller than target
+                    new_height = int(img.width / target_ratio)
+                    offset = (img.height - new_height) // 2
+                    img = img.crop((0, offset, img.width, offset + new_height))
+                
+                img = img.resize((target_w, target_h), Image.Resampling.LANCZOS)
+                
+                # --- VIRAL COLOR BOOST ---
+                enhancer = ImageEnhance.Color(img)
+                img = enhancer.enhance(1.3) # 30% more saturation for YouTube "Pop"
+                enhancer = ImageEnhance.Contrast(img)
+                img = enhancer.enhance(1.1) # 10% more contrast
+                
+                draw = ImageDraw.Draw(img)
+                w, h = img.size
+                
+                # Viral Font Selection (Massive Bold)
+                try:
+                    font_path = "/System/Library/Fonts/Supplemental/Arial Narrow Bold.ttf"
+                    if not os.path.exists(font_path):
+                        font_path = "/System/Library/Fonts/Helvetica.ttc"
+                    
+                    font_size = int(h * 0.16) if is_long else int(h * 0.10)
+                    font = ImageFont.truetype(font_path, font_size)
+                except:
+                    font = ImageFont.load_default()
+                
+                # Extract ULTRA-PUNCHY text
+                if "ŞOK EDİCİ" in title.upper():
+                    punchy_text = "ŞOK EDİCİ!"
+                elif "DİKKAT" in title.upper():
+                    punchy_text = "SAKIN YAPMA!"
+                else:
+                    clean_title = title.split("!")[0].split("?")[0].strip()
+                    words = clean_title.split()[:3]
+                    punchy_text = " ".join(words).upper()
+                
+                if not punchy_text: punchy_text = topic.split()[:2]
+                
+                import textwrap
+                wrapper = textwrap.TextWrapper(width=10 if not is_long else 18)
+                lines = wrapper.wrap(text=punchy_text)
+                
+                # Position higher for Shorts to avoid UI buttons
+                current_h = h * 0.15 if is_long else h * 0.08
+                stroke_width = int(font_size * 0.10)
+                
+                for line in lines:
+                    bbox = draw.textbbox((0, 0), line, font=font)
+                    text_w = bbox[2] - bbox[0]
+                    text_h = bbox[3] - bbox[1]
+                    
+                    x = (w * 0.05) if is_long else (w - text_w) / 2
+                    
+                    # Viral Yellow with Strong Black Outline
+                    draw.text((x, current_h), line, font=font, fill="yellow", 
+                              stroke_width=stroke_width, stroke_fill="black")
+                    
+                    current_h += text_h + 40
+                
+                final_path = output_path or os.path.join(self.output_dir, "thumbnail.png")
+                img.save(final_path)
+                
+            if os.path.exists(temp_bg):
+                os.remove(temp_bg)
+                
+            print(f"✅ [Branding]: High-Impact Thumbnail saved to {final_path}")
+            return final_path
+            
+        except Exception as e:
+            print(f"   ❌ [Branding] Thumbnail Fallback: {e}")
             return None
 
     def _download(self, url, path):
