@@ -32,7 +32,7 @@ class PixabayService:
 
         for attempt in search_attempts:
             # Refine query based on orientation
-            refined_query = attempt
+            refined_query = attempt[:95] # Pixabay limit is 100 characters
             if orientation == "portrait":
                 refined_query += " vertical"
             else:
