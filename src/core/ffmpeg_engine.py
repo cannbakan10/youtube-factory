@@ -99,26 +99,11 @@ class VideoEngine:
                     f"[v_black{valid_scenes_count}]{','.join(v_filters)}[v_sc{valid_scenes_count}];"
                 )
             
-            # --- AUDIO FILTERING (Narrative + SFX Mix) ---
+            # --- AUDIO FILTERING (Narrative Only) ---
             a_narr_label = f"a_narr{valid_scenes_count}"
             filter_complex_parts.append(
-                f"[{a_narrative_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo[{a_narr_label}];"
+                f"[{a_narrative_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo,volume=1.30[a_sc{valid_scenes_count}];"
             )
-
-            if sfx_in is not None and not is_long:
-                a_sfx_label = f"a_sfx{valid_scenes_count}"
-                sfx_vol = 0.30 
-                filter_complex_parts.append(
-                    f"[{sfx_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo,volume={sfx_vol}[{a_sfx_label}];"
-                )
-                # Mix Narrative (1.30x) + SFX (0.30x)
-                filter_complex_parts.append(
-                    f"[{a_narr_label}]volume=1.30[a_narr_v{valid_scenes_count}];"
-                    f"[a_narr_v{valid_scenes_count}][{a_sfx_label}]amix=inputs=2:duration=first:dropout_transition=0[a_sc{valid_scenes_count}];"
-                )
-            else:
-                # No SFX OR Long-Form: Just use narrative with studio boost
-                filter_complex_parts.append(f"[{a_narr_label}]volume=1.30[a_sc{valid_scenes_count}];")
             
             filter_complex_parts.append(v_filter)
             v_labels.append(f"[v_sc{valid_scenes_count}]")

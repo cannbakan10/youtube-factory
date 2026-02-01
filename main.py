@@ -125,11 +125,6 @@ class YoutubeFactory:
                 
                 scene.video_path = video_path
                 
-                # SFX Collection (Skip entirely for long-form)
-                if not is_long and scene.sfx_prompt and scene.sfx_prompt.lower() != "none":
-                    sfx_path = self.tts.generate_sfx(scene.sfx_prompt)
-                    scene.sfx_path = sfx_path
-                
                 # Narration & Subtitles
                 audio, subs, dur = self.tts.generate_audio_with_subtitles(scene.text, lang)
                 if not audio:
