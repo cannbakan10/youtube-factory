@@ -129,8 +129,8 @@ class ScriptWriter:
             STRUCTURE & STYLE RULES:
             - 🎞️ TRAILER/HOOK (FIRST 15 SECONDS): Start with a fast-paced, gripping summary or a shocking question.
               This is the "TRAILER/FRAGMAN". It should end with a natural pause for a branding transition.
+            - CONTINUOUS NARRATIVE: Avoid numbered lists (1, 2, 3...) or bullet points. Write a seamless, flowing documentary story.
             - INTRO: High-energy hook. Start DIRECTLY with the topic after the trailer.
-            - CHAPTERS: Break the topic into logical sections.
             - TRANSITIONS: Use smooth verbal transitions. 
             - ⚠️ NO TIME REVEAL & NO META-COMMENTARY:
               {meta_avoid}
@@ -138,6 +138,7 @@ class ScriptWriter:
             - DEPTH: Provide interesting details. You MUST expand on the research to reach the {target_word_count} word mark.
             - PACING: Varied sentence lengths.
             - {structure_rule}
+            - STRICT ADHERENCE: You MUST write about {topic}. DO NOT hallucinate other topics or time periods not related to this.
             - CONVERSATIONAL PUNCTUATION: Use ! and ...
             - Language: STRICTLY {lang_name} only.
             """
@@ -164,28 +165,30 @@ class ScriptWriter:
             - Language: STRICTLY {lang_name} only.
             """
         else:
-            hook_pattern = "[TOPIC] Hakkında bunları biliyor muydunuz?" if language == "tr" else "Did you know these facts about [TOPIC]?"
-            countdown_prefix = "numara" if language == "tr" else "Number"
-            climax_lead_in = "Gelelim en çılgın gerçeğe..." if language == "tr" else "Now for the most insane fact..."
+            climax_lead_in = "Gelelim en çarpıcı noktaya..." if language == "tr" else "Now for the most striking part..."
             
             prompt = f"""
-            Using the following research data, write an exciting narration script for YouTube Shorts.
+            Using the following research data, write an exciting and information-dense narration script for YouTube Shorts.
             The script MUST be entirely in {lang_name}.
             
+            TOPIC: {topic}
+            
             STRUCTURE & PACING RULES:
-            - 🎞️ FRAGMAN / HOOK (MANDATORY): Start EVERY video with a gripping hook. 
-              Pattern: "{hook_pattern}" 
-              (Example: "Did you know these mysterious facts about Antarctica?")
-              This MUST be a separate first sentence/scene.
+            - 🎞️ FRAGMAN / HOOK (MANDATORY): Start with a unique, gripping hook directly related to "{topic}". 
+              DO NOT use generic phrases like "Did you know these facts about...". 
+              Instead, start with a shocking statement or a high-stakes question about the topic itself.
+              (Example for 'Antarctica': "Deep beneath the frozen surface of Antarctica, something impossible has been discovered.")
+              This MUST be a separate first sentence.
             - INTRO TRANSITION: The script should lead naturally into a short branding pause after the hook.
-            - STRICT 5-STEP COUNTDOWN: You MUST list exactly 5 facts. Start from "5 {countdown_prefix}" and count down sequentially to "1 {countdown_prefix}".
+            - NARRATIVE FLOW: Do NOT use a numbered countdown. Provide a continuous, high-speed narrative full of facts.
             - NO META-TALK: Do NOT include titles, headers, or instructions. Start DIRECTLY with the hook.
-            - THE #1 CLIMAX: 1 {countdown_prefix} MUST be the most shocking fact. Use dramatic lead-ins like "{climax_lead_in}"
+            - THE CLIMAX: End with the most shocking piece of information. Use dramatic lead-ins like "{climax_lead_in}"
             - RETENTION FOCUS: Keep sentences short, punchy, and fast-paced to prevent scrolling.
             - SENTENCE STRUCTURE ({lang_name}): Use standard professional sentences.
             - CONVERSATIONAL PUNCTUATION: Use exclamation marks (!) and ellipses (...) to force the AI to take breaths.
-            - EMPHASIS: Use words that trigger emphasis for Number 1.
+            - EMPHASIS: Use strong adjectives and verbs that trigger engagement.
             - Tone: Energetic, professional, and slightly dramatic.
+            - STRICT ADHERENCE: You MUST write about {topic}. DO NOT talk about unrelated topics.
             - Target: ~130-140 words maximum for a 60-second video.
             - Language: STRICTLY {lang_name} only.
             """
@@ -242,7 +245,10 @@ class ScriptWriter:
            - Examples: "cinematic whoosh", "nature ambience", "city traffic hum", "soft piano note".
            - Use "none" if not needed.
            
-        5. METADATA & SEO:
+        5. TOPIC ACCURACY:
+           - You MUST strictly follow the {topic} theme. DO NOT use visual keywords for other cultures/civilizations (e.g., if topic is USA, do NOT use keywords for Rome/Greece).
+
+        6. METADATA & SEO:
            - Generate professional YouTube Title, Description, and Tags in {lang_name}.
            - TITLE RULES: 
              - If format is SHORTS (9:16): Create a viral, high-energy title.

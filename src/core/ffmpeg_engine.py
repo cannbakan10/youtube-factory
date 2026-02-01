@@ -114,8 +114,9 @@ class VideoEngine:
             logging.error("❌ Render Error: No valid scenes generated.")
             return None
 
-        # --- INTRO SUPPORT ---
-        intro_path = os.path.join(self.project_root, "assets", "branding", "fixed_intro.mp4")
+        # --- INTRO SUPPORT (Differentiated by format) ---
+        intro_filename = "fixed_intro2.mp4" if not is_long else "fixed_intro.mp4"
+        intro_path = os.path.join(self.project_root, "assets", "branding", intro_filename)
         has_intro = os.path.exists(intro_path)
         
         intro_in = None
@@ -136,10 +137,10 @@ class VideoEngine:
             intro_in = current_input_idx
             current_input_idx += 1
             
-            v_intro_filter = f"[{intro_in}:v]scale=w={width}:h={height}:force_original_aspect_ratio=increase,crop={width}:{height},setsar=1,format=yuv420p[v_intro];"
+            v_intro_filter = f"[{intro_in}:v]fps=30,scale=w={width}:h={height}:force_original_aspect_ratio=increase,crop={width}:{height},setsar=1,setpts=PTS-STARTPTS,format=yuv420p[v_intro];"
             
             if has_audio:
-                a_intro_filter = f"[{intro_in}:a]aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo,volume=0.8[a_intro];"
+                a_intro_filter = f"[{intro_in}:a]aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo,asetpts=PTS-STARTPTS,volume=0.8[a_intro];"
             else:
                 a_intro_filter = f"anullsrc=channel_layout=stereo:sample_rate=44100[a_intro_raw];[a_intro_raw]atrim=duration={intro_duration},asetpts=PTS-STARTPTS[a_intro];"
             
