@@ -247,7 +247,8 @@ class YoutubeFactory:
                         dest_path, 
                         title, 
                         desc, 
-                        tags
+                        tags,
+                        thumbnail_path=thumb_path
                     )
             else:
                 print(f"❌ Render failed: {lang}")
