@@ -129,9 +129,46 @@ class VideoEngine:
             logging.error("❌ Render Error: No valid scenes generated.")
             return None
 
+        # --- INTRO SUPPORT ---
+        intro_path = os.path.join(self.project_root, "assets", "branding", "fixed_intro.mp4")
+        has_intro = os.path.exists(intro_path) and is_long
+        
+        intro_in = None
+        if has_intro:
+            input_args.extend(["-i", intro_path])
+            intro_in = current_input_idx
+            current_input_idx += 1
+            filter_complex_parts.append(
+                f"[{intro_in}:v]scale=w={width}:h={height}:force_original_aspect_ratio=increase,crop={width}:{height},setsar=1,format=yuv420p[v_intro];"
+                f"[{intro_in}:a]aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo,volume=0.5[a_intro];"
+            )
+
         # Concat Scenes
-        interleaved_labels = "".join([f"{v}{a}" for v, a in zip(v_labels, a_labels)])
-        filter_complex_parts.append(f"{interleaved_labels}concat=n={valid_scenes_count}:v=1:a=1[v_full][a_narrative];")
+        v_final_labels = []
+        a_final_labels = []
+        
+        # Split scenes into Trailer and Main
+        trailer_v = []
+        trailer_a = []
+        main_v = []
+        main_a = []
+        
+        for i, scene in enumerate(blueprint.scenes):
+            if i < len(v_labels): # Safety check
+                if getattr(scene, 'is_trailer', False):
+                    trailer_v.append(v_labels[i])
+                    trailer_a.append(a_labels[i])
+                else:
+                    main_v.append(v_labels[i])
+                    main_a.append(a_labels[i])
+
+        # Sequence: Trailer -> Intro -> Main
+        v_parts = trailer_v + (["[v_intro]"] if has_intro else []) + main_v
+        a_parts = trailer_a + (["[a_intro]"] if has_intro else []) + main_a
+        
+        interleaved_labels = "".join([f"{v}{a}" for v, a in zip(v_parts, a_parts)])
+        total_parts = len(v_parts)
+        filter_complex_parts.append(f"{interleaved_labels}concat=n={total_parts}:v=1:a=1[v_full][a_narrative];")
 
         # --- BACKGROUND MUSIC MIXING ---
         final_video_label = "[v_full]"

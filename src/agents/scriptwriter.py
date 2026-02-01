@@ -15,6 +15,7 @@ class SceneBlueprint(BaseModel):
     subs_path: str = ""
     video_path: str = ""
     duration: float = 0.0
+    is_trailer: bool = False
 
 class VideoBlueprint(BaseModel):
     video_id: str
@@ -106,7 +107,9 @@ class ScriptWriter:
             - WORD COUNT TARGET: {target_word_count} words
             
             STRUCTURE & STYLE RULES:
-            - INTRO: High-energy hook. Start DIRECTLY with the topic.
+            - 🎞️ TRAILER/HOOK (FIRST 15 SECONDS): Start with a fast-paced, gripping summary or a shocking question that previews the most exciting parts of the video. 
+              This is the "FRAGMAN". It should end with a natural pause for a branding transition.
+            - INTRO: High-energy hook. Start DIRECTLY with the topic after the trailer.
             - CHAPTERS: Break the topic into logical sections.
             - TRANSITIONS: Use smooth verbal transitions. 
             - ⚠️ NO TIME REVEAL & NO META-COMMENTARY:
@@ -236,7 +239,8 @@ class ScriptWriter:
             {{
               "text": "ONLY THE SPOKEN TEXT. NO BRACKETS. NO DIRECTIONS.",
               "keywords": ["specific", "visual", "keywords", "in", "english"],
-              "sfx_prompt": "sound effect description in english"
+              "sfx_prompt": "sound effect description in english",
+              "is_trailer": true
             }}
           ]
         }}
