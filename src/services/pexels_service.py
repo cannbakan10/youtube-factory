@@ -17,64 +17,53 @@ class PexelsService:
         os.makedirs(self.cache_dir, exist_ok=True)
 
     def get_video(self, query, orientation="portrait"):
-        # Handle list of keywords if necessary
-        if isinstance(query, list):
-            query = " ".join(query)
-            
-        # Quality & Context Refinement
-        # Appending cinematic/high-quality keywords to push for better stock choice
-        refined_query = f"{query} cinematic high quality professional"
-        
-        # Topic-specific steering (Safety Filter)
-        sensitive_keywords = ["dua", "pray", "religious", "mosque", "islam", "church", "god"]
-        if any(sk in query.lower() for sk in sensitive_keywords):
-            refined_query += " architecture nature peaceful"
-
+        """Fetches a video from Pexels with smart retries and generic fallbacks."""
         if not self.api_key:
-            print("[!] Pexels API Key not found. Skipping video download.")
             return None
 
-        headers = {"Authorization": self.api_key}
-        params = {"query": refined_query, "per_page": 10, "orientation": orientation}
-        
-        try:
-            response = requests.get(self.base_url, headers=headers, params=params)
-            data = response.json()
-            
-            if data.get('videos'):
-                import random
-                # Pick a random video from the results for variety
-                video_data = random.choice(data['videos'])
-                video_files = video_data['video_files']
-                
-                # Priority: 4K (Ultra HD) -> Full HD -> HD
-                # We look for 'width' >= 2160 for 4K
-                video_url = None
-                
-                # Sort by width descending to get best quality
-                sorted_files = sorted(video_files, key=lambda x: x.get('width', 0) or 0, reverse=True)
-                if sorted_files:
-                    video_url = sorted_files[0]['link']
-                    quality = f"{sorted_files[0].get('width')}x{sorted_files[0].get('height')}"
-                
-                if not video_url:
-                    return None
+        keywords = query if isinstance(query, list) else query.split()
+        search_attempts = [
+            " ".join(keywords), # Attempt 1: Full query
+            keywords[0] if keywords else "cinematic", # Attempt 2: Primary keyword
+            "cinematic background", # Attempt 3: Genre fallback
+            "abstract cinematic" # Attempt 4: Ultimate safety fallback
+        ]
 
-                filename = f"{uuid.uuid4()}.mp4"
-                filepath = os.path.join(self.cache_dir, filename)
+        for attempt in search_attempts:
+            # Quality & Context Refinement
+            refined_query = f"{attempt} cinematic high quality"
+            
+            headers = {"Authorization": self.api_key}
+            params = {"query": refined_query, "per_page": 15, "orientation": orientation}
+            
+            try:
+                response = requests.get(self.base_url, headers=headers, params=params)
+                data = response.json()
                 
-                print(f"      📥 Downloading clip ({quality}): {video_url[:50]}...")
-                # Download the video
-                with requests.get(video_url, stream=True) as r:
-                    r.raise_for_status()
-                    with open(filepath, 'wb') as f:
-                        for chunk in r.iter_content(chunk_size=8192):
-                            f.write(chunk)
-                print(f"      ✅ Saved to: {filepath}")
-                return filepath
-            else:
-                print(f"      ⚠️ No stock video found for: '{query}'")
-        except Exception as e:
-            print(f"      ❌ Pexels API Error: {e}")
+                if data.get('hits') or data.get('videos'):
+                    import random
+                    videos_list = data.get('videos') or data.get('hits')
+                    video_data = random.choice(videos_list)
+                    video_files = video_data.get('video_files') or [video_data.get('video_files')]
+                    
+                    # Sort by width descending to get best quality
+                    sorted_files = sorted(video_files, key=lambda x: x.get('width', 0) or 0, reverse=True)
+                    if not sorted_files: continue
+                    
+                    video_url = sorted_files[0]['link']
+                    quality = f"{sorted_files[0].get('width') or '?' }x{sorted_files[0].get('height') or '?'}"
+
+                    filename = f"{uuid.uuid4()}.mp4"
+                    filepath = os.path.join(self.cache_dir, filename)
+                    
+                    print(f"      📥 Downloading clip ({quality}): {video_url[:50]}...")
+                    with requests.get(video_url, stream=True) as r:
+                        r.raise_for_status()
+                        with open(filepath, 'wb') as f:
+                            for chunk in r.iter_content(chunk_size=8192):
+                                f.write(chunk)
+                    return filepath
+            except Exception as e:
+                print(f"      ⚠️ Pexels Attempt Failed ({attempt}): {e}")
         
         return None

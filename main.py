@@ -123,6 +123,11 @@ class YoutubeFactory:
                         print(f"      🔄 Pixabay empty, failing over to Pexels...")
                         video_path = self.pexels.get_video(scene.keywords, orientation=orientation)
                 
+                # Global Topic Fallback: If scene keywords failed, try the overall topic
+                if not video_path:
+                    print(f"      ⚠️ Scene keywords failed. Recovering with global topic: '{topic}'...")
+                    video_path = self.pexels.get_video([topic], orientation=orientation)
+                
                 scene.video_path = video_path
                 
                 # Narration & Subtitles

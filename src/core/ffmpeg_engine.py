@@ -77,14 +77,14 @@ class VideoEngine:
                 current_input_idx += 1
             
             # --- VIDEO FILTERING ---
-            # Cinematic Color Grade: Subtle contrast/saturation boost + vignette for focus
+            # Cinematic Color Grade: Boost pop and clarity to prevent "dark screens"
             v_filters = [
                 "fps=30",
                 f"scale=w={width}:h={height}:force_original_aspect_ratio=increase",
                 f"crop={width}:{height}",
                 "setsar=1",
-                "eq=brightness=0.01:contrast=1.05:saturation=1.05", # Slightly subtler for long form
-                "vignette=angle=0.3:x0=w/2:y0=h/2" if not is_long else "null", # Lighter vignette for long form
+                "eq=brightness=0.04:contrast=1.15:saturation=1.10", # Punchier visuals
+                "vignette=angle=0.25:x0=w/2:y0=h/2", # Subtle focus
                 f"trim=duration={duration}",
                 "setpts=PTS-STARTPTS",
                 f"subtitles=f='{safe_subs_path}':force_style='{style}'",
@@ -125,7 +125,8 @@ class VideoEngine:
             current_input_idx += 1
             filter_complex_parts.append(
                 f"[{intro_in}:v]scale=w={width}:h={height}:force_original_aspect_ratio=increase,crop={width}:{height},setsar=1,format=yuv420p[v_intro];"
-                f"[{intro_in}:a]aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo,volume=0.5[a_intro];"
+                f"anullsrc=channel_layout=stereo:sample_rate=44100[a_intro_raw];"
+                f"[a_intro_raw]atrim=duration=3,asetpts=PTS-STARTPTS[a_intro];"
             )
 
         # Concat Scenes
