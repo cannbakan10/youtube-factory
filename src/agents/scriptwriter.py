@@ -150,9 +150,12 @@ class ScriptWriter:
             RESEARCH DATA: {research_data}
             TOPIC: {topic}
             
-            PACING & STYLE RULES:
-            - MANDATORY HOOK: Start EVERY video with the exact pattern: "[TOPIC] Hakkında bunları biliyor muydunuz?" 
-              (Example: "Penguenler hakkındaki bu inanılmaz bilgileri biliyor muydunuz?")
+            STRUCTURE & PACING RULES:
+            - 🎞️ FRAGMAN / HOOK (MANDATORY): Start EVERY video with a gripping hook. 
+              Pattern: "[TOPIC] Hakkında bunları biliyor muydunuz?" 
+              (Example: "Antarktika hakkındaki bu gizemli bilgileri biliyor muydunuz?")
+              This MUST be a separate first sentence/scene.
+            - INTRO TRANSITION: The script should lead naturally into a short branding pause after the hook.
             - STRICT 5-STEP COUNTDOWN: You MUST list exactly 5 facts. Start from "5 numara" and count down sequentially to "1 numara".
             - NO META-TALK: Do NOT include titles, headers, or instructions. Start DIRECTLY with the hook.
             - THE #1 CLIMAX: 1 numara MUST be the most shocking fact. Use dramatic lead-ins like "Gelelim en çılgın gerçeğe..." or "1 numara sizi gerçekten sarsacak..."
@@ -265,7 +268,10 @@ class ScriptWriter:
             
         if data:
             # Final cleanup of all scene texts in the blueprint
-            for scene in data.get('scenes', []):
+            for i, scene in enumerate(data.get('scenes', [])):
                 scene['text'] = self._clean_text(scene.get('text', ''))
+                # Force the first scene to be a trailer for branding transition
+                if i == 0:
+                    scene['is_trailer'] = True
             return VideoBlueprint(**data)
         return None

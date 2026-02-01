@@ -131,7 +131,7 @@ class VideoEngine:
 
         # --- INTRO SUPPORT ---
         intro_path = os.path.join(self.project_root, "assets", "branding", "fixed_intro.mp4")
-        has_intro = os.path.exists(intro_path) and is_long
+        has_intro = os.path.exists(intro_path)
         
         intro_in = None
         if has_intro:
