@@ -3,6 +3,23 @@ import argparse
 import shutil
 import time
 import json
+import sys
+import importlib.metadata
+
+# Python 3.9 Compatibility Fix for google-genai
+if sys.version_info < (3, 10):
+    try:
+        import importlib_metadata
+        if not hasattr(importlib.metadata, 'packages_distributions'):
+            importlib.metadata.packages_distributions = importlib_metadata.packages_distributions
+    except ImportError:
+        pass
+
+# Silence common SSL/NotOpenSSLWarning that confuses users on Mac
+import warnings
+from urllib3.exceptions import NotOpenSSLWarning
+warnings.filterwarnings("ignore", category=NotOpenSSLWarning)
+
 from dotenv import load_dotenv
 from src.agents.researcher import ResearchAgent
 from src.agents.scriptwriter import ScriptWriter
@@ -91,32 +108,22 @@ class YoutubeFactory:
                 # Randomize keyword order for variety
                 random.shuffle(scene.keywords)
                 
-                # AI-Powered Trailer (Fragman) Logic: Use high-end AI Video (Kling) for trailers
-                if getattr(scene, 'is_trailer', False) and os.getenv("FAL_KEY"):
-                    print(f"      🎞️ Source: fal.ai Kling (AI Video Fragment)")
-                    video_path = self.branding.generate_cinematic_clip(", ".join(scene.keywords), orientation=orientation)
+                # Stock Video Collection
+                # Alternate between Pexels and Pixabay for each scene to maximize variety
+                if i % 2 == 0:
+                    print(f"      🎞️ Source: Pexels")
+                    video_path = self.pexels.get_video(scene.keywords, orientation=orientation)
                     if not video_path:
-                        print(f"      🔄 Kling failed, falling back to stock...")
-                    else:
-                        scene.video_path = video_path
-
-                if not scene.video_path:
-                    # Stock Video Fallback
-                    # Alternate between Pexels and Pixabay for each scene to maximize variety
-                    if i % 2 == 0:
-                        print(f"      🎞️ Source: Pexels")
-                        video_path = self.pexels.get_video(scene.keywords, orientation=orientation)
-                        if not video_path:
-                            print(f"      🔄 Pexels empty, failing over to Pixabay...")
-                            video_path = self.pixabay.get_video(scene.keywords, orientation=orientation)
-                    else:
-                        print(f"      🎞️ Source: Pixabay")
+                        print(f"      🔄 Pexels empty, failing over to Pixabay...")
                         video_path = self.pixabay.get_video(scene.keywords, orientation=orientation)
-                        if not video_path:
-                            print(f"      🔄 Pixabay empty, failing over to Pexels...")
-                            video_path = self.pexels.get_video(scene.keywords, orientation=orientation)
-                    
-                    scene.video_path = video_path
+                else:
+                    print(f"      🎞️ Source: Pixabay")
+                    video_path = self.pixabay.get_video(scene.keywords, orientation=orientation)
+                    if not video_path:
+                        print(f"      🔄 Pixabay empty, failing over to Pexels...")
+                        video_path = self.pexels.get_video(scene.keywords, orientation=orientation)
+                
+                scene.video_path = video_path
                 
                 # SFX Collection (Skip entirely for long-form)
                 if not is_long and scene.sfx_prompt and scene.sfx_prompt.lower() != "none":

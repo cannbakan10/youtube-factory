@@ -1,3 +1,22 @@
+import json
+import sys
+
+# Python 3.9 Compatibility Fix for google-genai
+if sys.version_info < (3, 10):
+    try:
+        import importlib_metadata
+        if not hasattr(sys.modules['importlib.metadata'], 'packages_distributions'):
+            sys.modules['importlib.metadata'].packages_distributions = importlib_metadata.packages_distributions
+    except ImportError:
+        pass
+
+# Silence common SSL/NotOpenSSLWarning that confuses users on Mac
+import warnings
+from urllib3.exceptions import NotOpenSSLWarning
+warnings.filterwarnings("ignore", category=NotOpenSSLWarning)
+
+from dotenv import load_dotenv
+
 import os
 import fal_client
 import requests
@@ -70,7 +89,7 @@ class BrandingService:
         aspect_ratio = "16:9" if orientation == "landscape" else "9:16"
         
         try:
-            # Using subscribe for video generation as it takes longer
+            # Using subscribe with log updates for transparency
             handler = fal_client.submit(
                 "fal-ai/kling-video/v1/standard/text-to-video",
                 arguments={
@@ -79,7 +98,10 @@ class BrandingService:
                 }
             )
             
+            # Print queue updates so user knows it's not "errored"
+            print("   ⏳ [Kling]: In queue (Video generation takes 60-90 seconds)...")
             result = handler.get()
+            
             video_url = result['video']['url']
             
             filename = f"cinematic_{uuid.uuid4()}.mp4"
@@ -90,6 +112,7 @@ class BrandingService:
             print(f"✅ [fal.ai Kling]: Cinematic clip saved to {path}")
             return os.path.abspath(path)
         except Exception as e:
+            print(f"   ❌ [Branding] Fal.ai Error: {e}")
             logging.error(f"❌ Kling generation failed: {e}")
             return None
 
