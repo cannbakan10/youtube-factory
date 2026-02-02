@@ -51,9 +51,9 @@ class YouTubeService:
                     pickle.dump(creds, token)
         return creds
 
-    def upload_video(self, file_path, title, description, tags=None, thumbnail_path=None):
+    def upload_video(self, file_path, title, description, tags=None):
         """
-        Uploads a video to YouTube with error handling and optional thumbnail.
+        Uploads a video to YouTube with error handling for quota and limits.
         """
         if not self.credentials:
             print("   ⚠️ [YouTube]: Upload skipped (No credentials).")
@@ -90,19 +90,6 @@ class YouTubeService:
 
             video_id = response.get("id")
             print(f"✅ [YouTube]: Video uploaded successfully! ID: {video_id}")
-
-            # --- THUMBNAIL UPLOAD ---
-            if thumbnail_path and os.path.exists(thumbnail_path):
-                print(f"   🖼️ [YouTube]: Setting custom thumbnail: {thumbnail_path}")
-                try:
-                    self.youtube.thumbnails().set(
-                        videoId=video_id,
-                        media_body=MediaFileUpload(thumbnail_path)
-                    ).execute()
-                    print("   ✅ [YouTube]: Thumbnail set successfully!")
-                except Exception as thumb_err:
-                    print(f"   ⚠️ [YouTube]: Thumbnail upload failed: {thumb_err}")
-
             return video_id
 
         except Exception as e:

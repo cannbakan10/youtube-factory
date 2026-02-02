@@ -15,4 +15,3 @@ numpy
 Pillow
 imageio-ffmpeg
 python-telegram-bot
-fal-client
