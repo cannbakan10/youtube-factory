@@ -67,7 +67,7 @@ class YoutubeFactory:
         mode_title = "HORROR STORY MODE" if mode == "horror" else "INFO MODE"
         type_title = "LONG FORM" if video_type == "long" else "SHORTS"
         print(f"\n🚀 FACTORY STARTING ({mode_title} - {type_title}): {topic}")
-        print("🚀 V8.5 - PRO-MIX EDITION (Auto-Trend + Documentary Support)")
+        print("🚀 V8.6 - LIVE-MONITOR & STUB-BRANDING EDITION")
         
         # Initialize services
         self.tts = TTSService(output_dir=cache_dir)
