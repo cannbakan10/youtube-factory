@@ -133,7 +133,6 @@ class VideoEngine:
         intro_in = None
         if has_intro:
             # Get duration and check for audio via ffprobe
-            import subprocess
             try:
                 cmd = ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "default=noprint_wrappers=1:nokey=1", intro_path]
                 intro_duration = float(subprocess.check_output(cmd).decode().strip())
