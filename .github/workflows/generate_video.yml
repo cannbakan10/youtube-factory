@@ -1,4 +1,4 @@
-name: Stream Global Video Factory
+name: Generate and Upload Video
 
 on:
   workflow_dispatch:
