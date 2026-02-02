@@ -45,11 +45,12 @@ class VideoEngine:
                 logging.warning(f"⚠️ Skipping Scene {i+1}: Duration too short ({scene.duration}s).")
                 continue
 
-            # Subtitle styling
+            # Subtitle styling with triple-escaping for commas to survive the FFmpeg filter-complex parser
+            # In FFmpeg, commas separate filters, so we must escape them inside the force_style value.
             style = (
                 f"FontName={font_name},FontSize={font_size},PrimaryColour=&H00FFFFFF,OutlineColour=&H000000,"
                 f"BorderStyle=1,Outline=1.0,Shadow=0.5,Alignment=2,MarginV={margin_v},Bold=1"
-            )
+            ).replace(",", "\\\\,")
             
             # Robust path escaping for subtitles filter (Critical for Linux/Ubuntu)
             subs_path = os.path.abspath(scene.subs_path)
@@ -57,7 +58,7 @@ class VideoEngine:
                 safe_subs_path = subs_path.replace("\\", "/").replace(":", "\\:")
             else:
                 # On Linux, colons in filter paths must be escaped, though rare in absolute paths
-                # But single quotes are the real killer.
+                # and single quotes are the real killer.
                 safe_subs_path = subs_path.replace("'", "'\\\\\\''")
             
             duration = scene.duration 
