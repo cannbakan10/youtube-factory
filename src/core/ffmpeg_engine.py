@@ -175,24 +175,7 @@ class VideoEngine:
         interleaved = "".join([f"{v}{a}" for v, a in zip(v_seq, a_seq)])
         filter_complex_parts.append(f"{interleaved}concat=n={len(v_seq)}:v=1:a=1[v_full][a_narrative];")
 
-        # --- LOGO OVERLAY (Branding) ---
         final_video_label = "[v_full]"
-        logo_path = os.path.join(self.project_root, "assets", "branding", "logo.png")
-        if os.path.exists(logo_path):
-            input_args.extend(["-i", logo_path])
-            logo_in = current_input_idx
-            current_input_idx += 1
-            
-            logo_size = int(width * 0.15) if not is_long else int(width * 0.08)
-            overlay_x = width - logo_size - 40
-            overlay_y = 60 # Safe zone
-            
-            filter_complex_parts.append(
-                f"[{logo_in}:v]scale={logo_size}:{logo_size},format=rgba,colorchannelmixer=aa=0.7[v_logo];"
-                f"[v_full][v_logo]overlay=x={overlay_x}:y={overlay_y}[v_branded];"
-            )
-            final_video_label = "[v_branded]"
-
         final_audio_label = "[a_narrative]"
         
         if bg_music_path and os.path.exists(bg_music_path):

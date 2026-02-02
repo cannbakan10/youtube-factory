@@ -75,10 +75,6 @@ class YoutubeFactory:
         self.pixabay = PixabayService(output_dir=cache_dir)
         self.engine = VideoEngine()
 
-        # 0. Global Assets (Branding)
-        print("🏛️ [Factory]: Verifying Branding Assets...", flush=True)
-        self.branding.generate_logo(channel_name="Stream Global")
-        
         # 1. Research
         print(f"🔍 Gathering inspiration and research...", flush=True)
         research_data = self.researcher.research(topic)
