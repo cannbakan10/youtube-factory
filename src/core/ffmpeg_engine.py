@@ -217,9 +217,11 @@ class VideoEngine:
 
         logging.info(f"🎬 Factory V8.5 (Pro-Mix) starting render for {valid_scenes_count} scenes...")
         try:
-            result = subprocess.run(cmd, capture_output=True, text=True)
+            # Enhanced: Stream FFmpeg output to console for real-time progress instead of capturing everything
+            # This is much better for GitHub Actions so you can see it working.
+            result = subprocess.run(cmd, capture_output=False)
             if result.returncode != 0:
-                logging.error(f"❌ FFmpeg Error: {result.stderr}")
+                logging.error(f"❌ FFmpeg Render failed.")
                 debug_file = os.path.join(self.output_dir, "ffmpeg_error.txt")
                 with open(debug_file, "w") as f:
                     f.write(f"ERROR: {result.stderr}\n\nCOMMAND:\n{' '.join(cmd)}")
