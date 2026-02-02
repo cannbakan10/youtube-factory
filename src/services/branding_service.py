@@ -19,7 +19,6 @@ warnings.filterwarnings("ignore", category=NotOpenSSLWarning)
 from dotenv import load_dotenv
 
 import os
-import fal_client
 import requests
 import uuid
 import logging
