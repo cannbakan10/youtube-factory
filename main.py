@@ -104,7 +104,7 @@ class YoutubeFactory:
             import random
             orientation = "landscape" if video_type == "long" else "portrait"
             for i, scene in enumerate(blueprint.scenes):
-                print(f"   🎥 Scene {i+1}: Processing...")
+                print(f"   🎥 Scene {i+1}: Processing...", flush=True)
                 
                 # Randomize keyword order for variety
                 random.shuffle(scene.keywords)
@@ -112,21 +112,21 @@ class YoutubeFactory:
                 # Stock Video Collection
                 video_path = None
                 if i % 2 == 0:
-                    print(f"      🎞️ Source: Pexels")
+                    print(f"      🎞️ Source: Pexels", flush=True)
                     video_path = self.pexels.get_video(scene.keywords, orientation=orientation)
                     if not video_path:
-                        print(f"      🔄 Pexels empty, failing over to Pixabay...")
+                        print(f"      🔄 Pexels empty, failing over to Pixabay...", flush=True)
                         video_path = self.pixabay.get_video(scene.keywords, orientation=orientation)
                 else:
-                    print(f"      🎞️ Source: Pixabay")
+                    print(f"      🎞️ Source: Pixabay", flush=True)
                     video_path = self.pixabay.get_video(scene.keywords, orientation=orientation)
                     if not video_path:
-                        print(f"      🔄 Pixabay empty, failing over to Pexels...")
+                        print(f"      🔄 Pixabay empty, failing over to Pexels...", flush=True)
                         video_path = self.pexels.get_video(scene.keywords, orientation=orientation)
                 
                 # Global Topic Fallback
                 if not video_path:
-                    print(f"      ⚠️ Scene keywords failed. Recovering with global topic: '{topic}'...")
+                    print(f"      ⚠️ Scene keywords failed. Recovering with global topic: '{topic}'...", flush=True)
                     video_path = self.pexels.get_video([topic], orientation=orientation)
                 
                 scene.video_path = video_path
@@ -134,7 +134,7 @@ class YoutubeFactory:
                 # Narration & Subtitles
                 audio, subs, dur = self.tts.generate_audio_with_subtitles(scene.text, lang)
                 if not audio:
-                    print(f"      ❌ Narration failed for {lang}! Skipping scene.")
+                    print(f"      ❌ Narration failed for {lang}! Skipping scene.", flush=True)
                     continue
                     
                 scene.audio_path = audio
@@ -143,7 +143,7 @@ class YoutubeFactory:
                 valid_scenes.append(scene)
 
             if not valid_scenes:
-                print(f"❌ No valid scenes generated for {lang}. Skipping.")
+                print(f"❌ No valid scenes generated for {lang}. Skipping.", flush=True)
                 continue
                 
             blueprint.scenes = valid_scenes
