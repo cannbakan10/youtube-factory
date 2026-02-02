@@ -214,7 +214,7 @@ class VideoEngine:
             final_output
         ]
 
-        logging.info(f"🎬 Factory V8.5 (Pro-Mix) starting render for {valid_scenes_count} scenes...")
+        logging.info(f"🎬 Factory V8.6 (Pro-Mix) starting render for {valid_scenes_count} scenes...")
         try:
             # Enhanced: Stream FFmpeg output to console for real-time progress instead of capturing everything
             # This is much better for GitHub Actions so you can see it working.
