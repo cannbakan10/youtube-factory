@@ -32,8 +32,8 @@ class VideoEngine:
 
         current_input_idx = 0
         
-        # Professional font selection (Standard fonts for Linux/GitHub Runners)
-        font_name = "DejaVu Sans" if os.name != 'nt' else "Arial"
+        # Professional font selection (Arial/Sans)
+        font_name = "sans" if os.name != 'nt' else "Arial"
         
         valid_scenes_count = 0
         for i, scene in enumerate(blueprint.scenes):
@@ -41,27 +41,23 @@ class VideoEngine:
                 logging.warning(f"⚠️ Skipping Scene {i+1}: Missing audio file.")
                 continue
             
-            if scene.duration <= 0.1:
-                logging.warning(f"⚠️ Skipping Scene {i+1}: Duration too short ({scene.duration}s).")
-                continue
-
-            # Subtitle styling with triple-escaping for commas to survive the FFmpeg filter-complex parser
-            # In FFmpeg, commas separate filters, so we must escape them inside the force_style value.
+            # Subtitle styling
             style = (
                 f"FontName={font_name},FontSize={font_size},PrimaryColour=&H00FFFFFF,OutlineColour=&H000000,"
                 f"BorderStyle=1,Outline=1.0,Shadow=0.5,Alignment=2,MarginV={margin_v},Bold=1"
-            ).replace(",", "\\,")
+            )
             
-            # Robust path escaping for subtitles filter (Critical for Linux/Ubuntu)
             subs_path = os.path.abspath(scene.subs_path)
             if os.name == 'nt':
-                safe_subs_path = subs_path.replace("\\", "/").replace(":", "\\:")
+                subs_path = subs_path.replace("\\", "/").replace(":", "\\:")
             else:
-                # On Linux, colons in filter paths must be escaped, though rare in absolute paths
-                # and single quotes are the real killer.
-                safe_subs_path = subs_path.replace("'", "'\\\\\\''")
+                subs_path = subs_path.replace("'", "'\\\\\\''")
             
             duration = scene.duration 
+            
+            # Robust path escaping for subtitles filter
+            # FFmpeg on Mac/Linux needs extra care with single quotes and colons
+            safe_subs_path = subs_path.replace("'", "'\\\\\\''")
             
             # Scene Inputs: Video (LOOPED), Narrative Audio, SFX (Optional)
             v_in = None
@@ -81,13 +77,14 @@ class VideoEngine:
                 current_input_idx += 1
             
             # --- VIDEO FILTERING ---
+            # Cinematic Color Grade: Boost pop and clarity to prevent "dark screens"
             v_filters = [
                 "fps=30",
                 f"scale=w={width}:h={height}:force_original_aspect_ratio=increase",
                 f"crop={width}:{height}",
                 "setsar=1",
-                "eq=brightness=0.04:contrast=1.15:saturation=1.10", 
-                "vignette=angle=0.25:x0=w/2:y0=h/2", 
+                "eq=brightness=0.04:contrast=1.15:saturation=1.10", # Punchier visuals
+                "vignette=angle=0.25:x0=w/2:y0=h/2", # Subtle focus
                 f"trim=duration={duration}",
                 "setpts=PTS-STARTPTS",
                 f"subtitles=f='{safe_subs_path}':force_style='{style}'",
@@ -103,6 +100,7 @@ class VideoEngine:
                 )
             
             # --- AUDIO FILTERING (Narrative + SFX Mix) ---
+            # Safety: Ensure fade out duration doesn't exceed scene duration
             fade_dur = min(0.5, duration / 2)
             fade_out_st = max(0, duration - fade_dur)
             
@@ -127,15 +125,19 @@ class VideoEngine:
             logging.error("❌ Render Error: No valid scenes generated.")
             return None
 
-        # --- INTRO SUPPORT ---
+        # --- INTRO SUPPORT (Differentiated by format) ---
         intro_filename = "fixed_intro2.mp4" if not is_long else "fixed_intro.mp4"
         intro_path = os.path.join(self.project_root, "assets", "branding", intro_filename)
         has_intro = os.path.exists(intro_path)
         
+        intro_in = None
         if has_intro:
+            # Get duration and check for audio via ffprobe
+            import subprocess
             try:
                 cmd = ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "default=noprint_wrappers=1:nokey=1", intro_path]
                 intro_duration = float(subprocess.check_output(cmd).decode().strip())
+                
                 cmd_audio = ["ffprobe", "-v", "error", "-select_streams", "a", "-show_entries", "stream=codec_name", "-of", "default=noprint_wrappers=1:nokey=1", intro_path]
                 has_audio = len(subprocess.check_output(cmd_audio).decode().strip()) > 0
             except Exception:
@@ -147,10 +149,12 @@ class VideoEngine:
             current_input_idx += 1
             
             v_intro_filter = f"[{intro_in}:v]fps=30,scale=w={width}:h={height}:force_original_aspect_ratio=increase,crop={width}:{height},setsar=1,setpts=PTS-STARTPTS,format=yuv420p[v_intro];"
+            
             if has_audio:
                 a_intro_filter = f"[{intro_in}:a]aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo,asetpts=PTS-STARTPTS,volume=0.8[a_intro];"
             else:
                 a_intro_filter = f"anullsrc=channel_layout=stereo:sample_rate=44100[a_intro_raw];[a_intro_raw]atrim=duration={intro_duration},asetpts=PTS-STARTPTS[a_intro];"
+            
             filter_complex_parts.append(v_intro_filter + a_intro_filter)
 
         # Concat Scenes
@@ -172,13 +176,16 @@ class VideoEngine:
         interleaved = "".join([f"{v}{a}" for v, a in zip(v_seq, a_seq)])
         filter_complex_parts.append(f"{interleaved}concat=n={len(v_seq)}:v=1:a=1[v_full][a_narrative];")
 
-        # --- BACKGROUND MUSIC ---
+        # --- BACKGROUND MUSIC MIXING ---
         final_video_label = "[v_full]"
         final_audio_label = "[a_narrative]"
         
         if bg_music_path and os.path.exists(bg_music_path):
             input_args.extend(["-stream_loop", "-1", "-i", bg_music_path])
             bg_in = current_input_idx
+            current_input_idx += 1
+            
+            # Mix: Multi-Layer (Narr + SFX) + (BG Music at 8% shorts / 3% long)
             bg_vol = 0.03 if is_long else 0.08
             filter_complex_parts.append(
                 f"[{bg_in}:a]volume={bg_vol}[bg_low];"
@@ -186,25 +193,37 @@ class VideoEngine:
             )
             final_audio_label = "[a_final]"
 
+        filter_complex_str = "".join(filter_complex_parts)
+        if filter_complex_str.endswith(";"):
+            filter_complex_str = filter_complex_str[:-1]
+
+        # Use a script file for the filter complex to avoid "Argument list too long" errors
+        # especially for long-form videos with many scenes.
         filter_script_path = os.path.join(self.output_dir, f"filter_{video_id}.txt")
         with open(filter_script_path, "w", encoding="utf-8") as f:
-            f.write("".join(filter_complex_parts))
+            f.write(filter_complex_str)
 
         cmd = [
             "ffmpeg", "-y", "-v", "error",
             *input_args,
             "-filter_complex_script", filter_script_path,
-            "-map", final_video_label, "-map", final_audio_label,
+            "-map", final_video_label,
+            "-map", final_audio_label,
             "-c:v", "libx264", "-preset", "ultrafast", "-crf", "22",
-            "-pix_fmt", "yuv420p", "-shortest", final_output
+            "-pix_fmt", "yuv420p",
+            "-shortest", 
+            final_output
         ]
 
-        logging.info(f"🎬 Factory V8.5 starting render: {final_output}")
+        logging.info(f"🎬 Factory V8.5 (Pro-Mix) starting render for {valid_scenes_count} scenes...")
         try:
-            # Using run with check=True to raise exception on failure
-            # Added more diagnostic info by NOT capturing output, so it streams to console
-            result = subprocess.run(cmd, capture_output=False)
+            result = subprocess.run(cmd, capture_output=True, text=True)
             if result.returncode != 0:
+                logging.error(f"❌ FFmpeg Error: {result.stderr}")
+                debug_file = os.path.join(self.output_dir, "ffmpeg_error.txt")
+                with open(debug_file, "w") as f:
+                    f.write(f"ERROR: {result.stderr}\n\nCOMMAND:\n{' '.join(cmd)}")
+                logging.info(f"📁 Full command logged to: {debug_file}")
                 return None
             return final_output
         except Exception as e:
