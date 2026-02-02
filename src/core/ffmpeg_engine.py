@@ -12,7 +12,7 @@ class VideoEngine:
 
     def render(self, blueprint, language="en", bg_music_path=None, video_type="shorts"):
         """
-        Stream Global Ultra-Flow Engine v8.5 (Pro-Mix + Long Form):
+        Stream Global Ultra-Flow Engine v8.6 (Pro-Mix + Long Form):
         - Multi-layer audio mixing (Narrative + Music + SFX).
         - Supports Shorts (9:16) and Long Form (16:9).
         - Dynamic Typography & Safe Zones.
