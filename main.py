@@ -27,7 +27,6 @@ from src.services.pexels_service import PexelsService
 from src.services.pixabay_service import PixabayService
 from src.services.tts_service import TTSService
 from src.services.youtube_service import YouTubeService
-from src.services.branding_service import BrandingService
 from src.core.ffmpeg_engine import VideoEngine
 from src.agents.trend_agent import TrendAgent
 
@@ -43,7 +42,6 @@ class YoutubeFactory:
         self.researcher = ResearchAgent()
         self.scriptwriter = ScriptWriter()
         self.trend_agent = TrendAgent()
-        self.branding = BrandingService() # Flawless Branding + AI Video
         self.youtube_service = None 
 
     def run(self, topic, languages=["en"], auto_upload=False, mode="info", video_type="shorts"):

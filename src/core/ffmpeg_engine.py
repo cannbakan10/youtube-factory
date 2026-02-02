@@ -50,7 +50,7 @@ class VideoEngine:
             style = (
                 f"FontName={font_name},FontSize={font_size},PrimaryColour=&H00FFFFFF,OutlineColour=&H000000,"
                 f"BorderStyle=1,Outline=1.0,Shadow=0.5,Alignment=2,MarginV={margin_v},Bold=1"
-            ).replace(",", "\\\\,")
+            ).replace(",", "\\,")
             
             # Robust path escaping for subtitles filter (Critical for Linux/Ubuntu)
             subs_path = os.path.abspath(scene.subs_path)
