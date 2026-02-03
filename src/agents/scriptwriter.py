@@ -195,7 +195,13 @@ class ScriptWriter:
         REQUIREMENTS:
         1. Break into scenes (each {scene_duration} long).
         2. CLEAN TEXT: ONLY include the EXACT sentence to be spoken. No brackets, no notes.
-        3. VISUALS: Match keywords to narrative.
+        
+        3. VISUAL INTELLIGENCE (KEYWORDS):
+           - You MUST generate 3-5 specific visual keywords in ENGLISH for each scene.
+           - STRIKE RULE: You MUST include the main TOPIC ("{topic}") in every scene's keyword list to maintain context.
+           - BE SPECIFIC: If the topic is Japan, use "Japan Tokyo street" not just "City street". 
+           - Avoid abstract terms. Use concrete physical objects and actions.
+           
         4. SFX: English prompts for sound effects.
         5. METADATA: SEO-friendly Title, Description, Tags in {lang_name}.
         
@@ -208,7 +214,7 @@ class ScriptWriter:
           "scenes": [
             {{
               "text": "ONLY SPOKEN TEXT",
-              "keywords": ["keywords"],
+              "keywords": ["specific", "contextual", "keywords", "including", "topic"],
               "sfx_prompt": "sfx",
               "is_trailer": false
             }}

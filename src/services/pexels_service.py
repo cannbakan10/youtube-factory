@@ -22,19 +22,19 @@ class PexelsService:
             return None
 
         keywords = query if isinstance(query, list) else query.split()
+        if not keywords: keywords = ["cinematic"]
+        
+        # Smart Progressive Search: Try specific first, then relax slightly, but NEVER go generic
         search_attempts = [
-            " ".join(keywords), # Attempt 1: Full query
-            keywords[0] if keywords else "cinematic", # Attempt 2: Primary keyword
-            "cinematic background", # Attempt 3: Genre fallback
-            "abstract cinematic" # Attempt 4: Ultimate safety fallback
+            " ".join(keywords),            # Full specific query
+            " ".join(keywords[:3]),         # First 3 keywords (Contextual core)
+            keywords[0] + " " + keywords[-1] if len(keywords) > 1 else keywords[0], # Bookends
+            keywords[0]                     # Primary subject only
         ]
 
         for attempt in search_attempts:
-            # Quality & Context Refinement
-            refined_query = f"{attempt} cinematic high quality"
-            
             headers = {"Authorization": self.api_key}
-            params = {"query": refined_query, "per_page": 15, "orientation": orientation}
+            params = {"query": attempt, "per_page": 15, "orientation": orientation}
             
             try:
                 response = requests.get(self.base_url, headers=headers, params=params)

@@ -23,12 +23,17 @@ class PixabayService:
             return None
 
         keywords = query if isinstance(query, list) else query.split()
+        if not keywords: keywords = ["cinematic"]
+        
+        # Smart Progressive Search: Focus on context, avoid random nature/tech fallbacks
         search_attempts = [
-            " ".join(keywords), # Attempt 1: Full query
-            keywords[0] if keywords else "cinematic", # Attempt 2: Primary keyword
-            "nature cinematic", # Attempt 3: Genre fallback
-            "technology drone" # Attempt 4: Safety fallback
+            " ".join(keywords),            # Full specific query
+            " ".join(keywords[:3]),         # Contextual core
+            keywords[0]                     # Subject only
         ]
+        
+        # Remove any leading/trailing commas or dots that AI might add
+        search_attempts = [a.replace(",", "").replace(".", "").strip() for a in search_attempts]
 
         for attempt in search_attempts:
             # Refine query based on orientation
