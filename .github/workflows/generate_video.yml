@@ -48,6 +48,8 @@ on:
         options:
         - standard
         - ambient
+        - viral
+        - viral_remix
       ambient_type:
         description: 'Ambient Türü (Sadece Ambient Modu)'
         required: false
@@ -68,6 +70,20 @@ on:
         description: 'Ambient Süresi (Dakika)'
         required: false
         default: '60'
+      viral_category:
+        description: 'Viral Kategori (Sadece Viral/Remix Modu)'
+        required: false
+        default: 'facts'
+        type: choice
+        options:
+        - facts
+        - science
+        - history
+        - psychology
+        - nature
+        - tech
+        - mystery
+        - lifestyle
       upload:
         description: 'YouTube yükleme'
         type: boolean
@@ -126,6 +142,12 @@ jobs:
         if [[ "${{ github.event.inputs.workflow_mode }}" == "ambient" ]]; then
           echo "🎧 STARTING AMBIENT PRODUCTION: ${{ github.event.inputs.ambient_type }} (${{ github.event.inputs.ambient_duration }} min)"
           python main.py --ambient "${{ github.event.inputs.ambient_type }}" --ambient-duration "${{ github.event.inputs.ambient_duration }}" --type "${{ github.event.inputs.video_type }}" $UPLOAD_FLAG
+        elif [[ "${{ github.event.inputs.workflow_mode }}" == "viral" ]]; then
+          echo "🔥 STARTING VIRAL ANALYSIS & AUTO-PRODUCTION: ${{ github.event.inputs.viral_category }}"
+          python main.py --viral "${{ github.event.inputs.viral_category }}" --langs "${{ github.event.inputs.langs }}" --type "${{ github.event.inputs.video_type }}" $UPLOAD_FLAG
+        elif [[ "${{ github.event.inputs.workflow_mode }}" == "viral_remix" ]]; then
+          echo "🧪 STARTING VIRAL REMIX & AUTO-PRODUCTION: ${{ github.event.inputs.viral_category }}"
+          python main.py --viral-remix "${{ github.event.inputs.viral_category }}" --langs "${{ github.event.inputs.langs }}" --type "${{ github.event.inputs.video_type }}" $UPLOAD_FLAG
         elif [[ "${{ github.event.inputs.list_trends }}" == "true" ]]; then
           python main.py --list-trends
         else

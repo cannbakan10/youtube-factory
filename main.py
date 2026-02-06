@@ -433,9 +433,8 @@ Examples:
             logger.error("ViralAnalyzer is unavailable. Check YOUTUBE_API_KEY or GEMINI_API_KEY.")
             sys.exit(1)
 
-        if args.upload and not args.produce_remix:
-            logger.error("--upload in viral-remix mode requires --produce-remix N.")
-            sys.exit(1)
+        # Auto-selection if upload is True but no index provided
+        should_auto_produce = args.upload and not args.produce_remix
 
         category = args.viral_remix if args.viral_remix in VIRAL_CATEGORIES else "facts"
         logger.info(f"🧪 VIRAL REMIX: Scanning '{category}' in {args.region}...")
@@ -456,12 +455,12 @@ Examples:
                 json.dump(remix_candidates, f, indent=2, ensure_ascii=False)
             logger.info(f"Remix list saved: {out_file}")
 
-        if args.produce_remix and remix_candidates:
-            remix_index = args.produce_remix - 1
+        if (args.produce_remix or should_auto_produce) and remix_candidates:
+            remix_index = (args.produce_remix - 1) if args.produce_remix else 0
             if 0 <= remix_index < len(remix_candidates):
                 selected = remix_candidates[remix_index]
                 topic = args.remix_topic.strip() if args.remix_topic else selected["editable_topic"]
-                logger.info(f"Producing remix #{args.produce_remix}: {topic}")
+                logger.info(f"Producing remix {'#' + str(args.produce_remix) if args.produce_remix else 'AUTO'}: {topic}")
                 production_id = factory.run(
                     topic=topic,
                     languages=args.langs.split(","),
@@ -476,7 +475,7 @@ Examples:
             else:
                 logger.error(f"Invalid remix number. Choose between 1 and {len(remix_candidates)}")
                 sys.exit(1)
-        elif args.produce_remix:
+        elif args.produce_remix or should_auto_produce:
             logger.error("No remix candidates generated to produce from.")
             sys.exit(1)
 
@@ -503,9 +502,10 @@ Examples:
         # Print ideas
         factory.viral_analyzer.print_ideas(ideas)
 
-        # Auto-produce if requested
-        if args.produce and ideas:
-            idea_index = args.produce - 1
+        # Auto-produce if requested or if upload is True without N
+        should_auto_viral = args.upload and not args.produce
+        if (args.produce or should_auto_viral) and ideas:
+            idea_index = (args.produce - 1) if args.produce else 0
             if 0 <= idea_index < len(ideas):
                 selected_idea = ideas[idea_index]
                 topic = factory.viral_analyzer.get_idea_as_topic(selected_idea)
