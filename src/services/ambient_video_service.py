@@ -372,8 +372,14 @@ class AmbientVideoService:
     def _fallback_video_lavfi(self, ambient_type: str, width: int, height: int, bg_color: str) -> str:
         if ambient_type == "fireplace":
             return (
-                f"color=c={bg_color}:s={width}x{height}:r=15,"
-                "noise=alls=28:allf=t+u,eq=brightness=0.05:contrast=1.22:saturation=1.35"
+                f"life=s={width}x{height}:rate=15:ratio=0.62:mold=14,"
+                "format=gray,"
+                "boxblur=2:1,"
+                "lutrgb="
+                "r='if(gt(val,18),min(255,val*2.2),0)':"
+                "g='if(gt(val,18),min(255,val*1.2),0)':"
+                "b='if(gt(val,18),min(255,val*0.25),0)',"
+                "vignette=angle=0.35"
             )
         if ambient_type in {"sleep", "rain", "ocean_sleep"}:
             return (
@@ -393,7 +399,7 @@ class AmbientVideoService:
         Generates a short procedural ambient loop clip locally.
         This enables very fast 1-hour output via stream copy looping.
         """
-        output_path = os.path.join(self.cache_dir, f"ambient_loop_{ambient_type}_{width}x{height}_v2.mp4")
+        output_path = os.path.join(self.cache_dir, f"ambient_loop_{ambient_type}_{width}x{height}_v3.mp4")
         if os.path.exists(output_path):
             return output_path
 
