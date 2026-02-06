@@ -84,10 +84,6 @@ on:
         - tech
         - mystery
         - lifestyle
-      upload:
-        description: 'YouTube yükleme'
-        type: boolean
-        default: true
 
 jobs:
   generate-and-upload:
@@ -113,7 +109,6 @@ jobs:
         pip install -r requirements.txt
 
     - name: Set up Credentials
-      if: ${{ fromJSON(github.event.inputs.upload) }}
       run: |
         echo "${{ secrets.CLIENT_SECRETS_JSON }}" > client_secrets.json
         echo "${{ secrets.TOKEN_PICKLE_BASE64 }}" | base64 -d > token.pickle
@@ -131,12 +126,9 @@ jobs:
         PYTHONUNBUFFERED: 1
       run: |
         BULK_FLAG=""
-        UPLOAD_FLAG=""
+        UPLOAD_FLAG="--upload"
         if [[ "${{ github.event.inputs.bulk }}" == "true" ]]; then
           BULK_FLAG="--bulk"
-        fi
-        if [[ "${{ github.event.inputs.upload }}" == "true" ]]; then
-          UPLOAD_FLAG="--upload"
         fi
 
         if [[ "${{ github.event.inputs.workflow_mode }}" == "ambient" ]]; then
