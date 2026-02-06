@@ -60,6 +60,10 @@ on:
         - ocean_sleep
         - white_noise
         - brown_noise
+        - cozy_library
+        - space_ambience
+        - cyberpunk_city
+        - forest_walk
       ambient_duration:
         description: 'Ambient Süresi (Dakika)'
         required: false

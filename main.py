@@ -335,8 +335,16 @@ def print_viral_help():
     for cat in VIRAL_CATEGORIES:
         print(f"  • {cat}")
     print("\nAmbient Türleri:")
-    for ambient_type in AMBIENT_TYPES:
-        print(f"  • {ambient_type}")
+    print("  • fireplace     - Huzurlu Şömine")
+    print("  • sleep         - Derin Uyku Manzaraları")
+    print("  • rain          - Gece Yağmuru")
+    print("  • ocean_sleep   - Okyanus Dalgaları")
+    print("  • cozy_library  - Kitaplık & Yağmur (Popüler!)")
+    print("  • space_ambience- Uzay Yolculuğu (Sci-Fi)")
+    print("  • cyberpunk_city- Neon Şehir & Yağmur")
+    print("  • forest_walk   - Orman Yürüyüşü & Nehir")
+    print("  • white_noise   - Beyaz Gürültü")
+    print("  • brown_noise   - Kahverengi Gürültü")
     print("\nÖrnekler:")
     print("  python main.py --viral facts              # Fact videoları analiz et")
     print("  python main.py --viral science --langs tr # Türkçe bilim fikirleri")
