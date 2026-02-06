@@ -105,7 +105,7 @@ class ScriptWriter:
 
         return None
 
-    def generate_narrative(self, research_data, topic, language="en", mode="info", video_type="shorts"):
+    def generate_narrative(self, research_data, topic, language="en", mode="info", video_type="shorts", style_context=None):
         """
         Step 1: Create a dramatic narrative.
         """
@@ -115,10 +115,12 @@ class ScriptWriter:
         duration_match = re.search(r'(\d+)\s*(dakika|minute|dk|min)', topic.lower())
         target_minutes = int(duration_match.group(1)) if duration_match else (8 if is_long else 1)
         target_word_count = target_minutes * 150
+        
+        extra_style = f"\nSTYLE CONTEXT: {style_context}\n" if style_context else ""
 
         prompt = self._build_narrative_prompt(
             research_data, topic, language, lang_name, mode, is_long,
-            target_minutes, target_word_count
+            target_minutes, target_word_count, style_context
         )
 
         try:
@@ -136,8 +138,9 @@ class ScriptWriter:
                 logger.error(f"OpenAI narrative generation also failed: {oe}")
                 return None
 
-    def _build_narrative_prompt(self, research_data, topic, language, lang_name, mode, is_long, target_minutes, target_word_count):
+    def _build_narrative_prompt(self, research_data, topic, language, lang_name, mode, is_long, target_minutes, target_word_count, style_context=None):
         """Build the narrative prompt based on mode and video type."""
+        extra_style = f"\nSTYLE CONTEXT / VIRAL STYLE TO REPLICATE:\n{style_context}\n" if style_context else ""
         if is_long:
             if language == "tr":
                 structure_rule = "SENTENCE STRUCTURE (Turkish): Standard KURALLI sentences only."
@@ -157,6 +160,7 @@ class ScriptWriter:
             return f"""
             Using the provided research data, write a DEEP and ENGAGING documentary-style narration script.
             Everything MUST be in {lang_name}.
+            {extra_style}
 
             RESEARCH DATA: {research_data}
             TOPIC: {topic}
@@ -178,6 +182,7 @@ class ScriptWriter:
             return f"""
             Using the provided research about REAL terrifying events, write a 60-second narration.
             Everything MUST be in {lang_name}.
+            {extra_style}
 
             STORYTELLING RULES:
             - Start with: "{hook_start}"
@@ -190,6 +195,7 @@ class ScriptWriter:
             return f"""
             Using the following research data, write an exciting narration script for YouTube Shorts.
             Entirely in {lang_name}.
+            {extra_style}
 
             TOPIC: {topic}
 

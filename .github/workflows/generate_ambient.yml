@@ -35,6 +35,14 @@ on:
         options:
         - long
         - shorts
+      ambient_source:
+        description: 'Görsel kaynağı'
+        required: true
+        default: 'api'
+        type: choice
+        options:
+        - api
+        - auto
       upload:
         description: 'YouTube yükleme'
         type: boolean
@@ -89,6 +97,7 @@ jobs:
         python main.py \
           --ambient "${{ github.event.inputs.ambient_type }}" \
           --ambient-duration "${{ github.event.inputs.duration_minutes }}" \
+          --ambient-source "${{ github.event.inputs.ambient_source }}" \
           --langs "${{ github.event.inputs.langs }}" \
           --type "${{ github.event.inputs.video_type }}" \
           $UPLOAD_FLAG

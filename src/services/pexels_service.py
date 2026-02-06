@@ -1,6 +1,15 @@
 import requests
 import os
 import uuid
+from src.utils.logger import get_logger
+from src.utils.retry import retry_with_backoff, APIRateLimiters
+
+logger = get_logger(__name__)
+
+# Constants
+REQUEST_TIMEOUT = 30  # seconds
+DOWNLOAD_TIMEOUT = 120  # seconds for video downloads
+
 
 class PexelsService:
     def __init__(self, output_dir=None):
@@ -19,51 +28,78 @@ class PexelsService:
     def get_video(self, query, orientation="portrait"):
         """Fetches a video from Pexels with smart retries and generic fallbacks."""
         if not self.api_key:
+            logger.warning("Pexels API key not configured")
             return None
 
         keywords = query if isinstance(query, list) else query.split()
-        if not keywords: keywords = ["cinematic"]
-        
+        if not keywords:
+            keywords = ["cinematic"]
+
         # Smart Progressive Search: Try specific first, then relax slightly, but NEVER go generic
         search_attempts = [
-            " ".join(keywords),            # Full specific query
-            " ".join(keywords[:3]),         # First 3 keywords (Contextual core)
-            keywords[0] + " " + keywords[-1] if len(keywords) > 1 else keywords[0], # Bookends
-            keywords[0]                     # Primary subject only
+            " ".join(keywords),  # Full specific query
+            " ".join(keywords[:3]),  # First 3 keywords (Contextual core)
+            keywords[0] + " " + keywords[-1] if len(keywords) > 1 else keywords[0],  # Bookends
+            keywords[0]  # Primary subject only
         ]
 
         for attempt in search_attempts:
-            headers = {"Authorization": self.api_key}
-            params = {"query": attempt, "per_page": 15, "orientation": orientation}
-            
             try:
-                response = requests.get(self.base_url, headers=headers, params=params)
-                data = response.json()
-                
-                if data.get('hits') or data.get('videos'):
-                    import random
-                    videos_list = data.get('videos') or data.get('hits')
-                    video_data = random.choice(videos_list)
-                    video_files = video_data.get('video_files') or [video_data.get('video_files')]
-                    
-                    # Sort by width descending to get best quality
-                    sorted_files = sorted(video_files, key=lambda x: x.get('width', 0) or 0, reverse=True)
-                    if not sorted_files: continue
-                    
-                    video_url = sorted_files[0]['link']
-                    quality = f"{sorted_files[0].get('width') or '?' }x{sorted_files[0].get('height') or '?'}"
-
-                    filename = f"{uuid.uuid4()}.mp4"
-                    filepath = os.path.join(self.cache_dir, filename)
-                    
-                    print(f"      📥 Downloading clip ({quality}): {video_url[:50]}...")
-                    with requests.get(video_url, stream=True) as r:
-                        r.raise_for_status()
-                        with open(filepath, 'wb') as f:
-                            for chunk in r.iter_content(chunk_size=8192):
-                                f.write(chunk)
-                    return filepath
+                result = self._search_and_download(attempt, orientation)
+                if result:
+                    return result
             except Exception as e:
-                print(f"      ⚠️ Pexels Attempt Failed ({attempt}): {e}")
-        
+                logger.warning(f"Pexels attempt failed ({attempt}): {e}")
+
+        logger.error(f"All Pexels search attempts failed for: {keywords}")
         return None
+
+    @retry_with_backoff(max_retries=2, base_delay=2.0, exceptions=(requests.RequestException,))
+    def _search_and_download(self, query, orientation):
+        """Search and download with retry support."""
+        # Rate limiting
+        APIRateLimiters.pexels.wait()
+
+        headers = {"Authorization": self.api_key}
+        params = {"query": query, "per_page": 15, "orientation": orientation}
+
+        response = requests.get(
+            self.base_url,
+            headers=headers,
+            params=params,
+            timeout=REQUEST_TIMEOUT
+        )
+        response.raise_for_status()
+        data = response.json()
+
+        if data.get('hits') or data.get('videos'):
+            import random
+            videos_list = data.get('videos') or data.get('hits')
+            video_data = random.choice(videos_list)
+            video_files = video_data.get('video_files') or [video_data.get('video_files')]
+
+            # Sort by width descending to get best quality
+            sorted_files = sorted(video_files, key=lambda x: x.get('width', 0) or 0, reverse=True)
+            if not sorted_files:
+                return None
+
+            video_url = sorted_files[0]['link']
+            quality = f"{sorted_files[0].get('width') or '?'}x{sorted_files[0].get('height') or '?'}"
+
+            filename = f"{uuid.uuid4()}.mp4"
+            filepath = os.path.join(self.cache_dir, filename)
+
+            logger.info(f"Downloading clip ({quality}): {video_url[:50]}...")
+            self._download_file(video_url, filepath)
+            return filepath
+
+        return None
+
+    @retry_with_backoff(max_retries=2, base_delay=1.0, exceptions=(requests.RequestException,))
+    def _download_file(self, url, filepath):
+        """Download file with retry support."""
+        with requests.get(url, stream=True, timeout=DOWNLOAD_TIMEOUT) as r:
+            r.raise_for_status()
+            with open(filepath, 'wb') as f:
+                for chunk in r.iter_content(chunk_size=8192):
+                    f.write(chunk)

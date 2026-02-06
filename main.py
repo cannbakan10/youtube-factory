@@ -71,7 +71,7 @@ class YoutubeFactory:
             logger.warning(f"{name} disabled: {e}")
             return None
 
-    def run(self, topic, languages=None, auto_upload=False, mode="info", video_type="shorts"):
+    def run(self, topic, languages=None, auto_upload=False, mode="info", video_type="shorts", style_context=None):
         if languages is None:
             languages = ["en"]
 
@@ -122,7 +122,7 @@ class YoutubeFactory:
             self.tts.set_voice(language=lang)
 
             # 2. Script & Blueprint
-            narrative = self.scriptwriter.generate_narrative(research_data, topic, language=lang, mode=mode, video_type=video_type)
+            narrative = self.scriptwriter.generate_narrative(research_data, topic, language=lang, mode=mode, video_type=video_type, style_context=style_context)
             if not narrative:
                 logger.error(f"Failed to generate narrative for {lang}. Skipping.")
                 continue
@@ -273,13 +273,16 @@ class YoutubeFactory:
                     if not self.youtube_service:
                         self.youtube_service = YouTubeService()
 
-                    self.youtube_service.upload_video(
+                    upload_id = self.youtube_service.upload_video(
                         dest_path,
                         title,
                         desc,
                         tags,
                         video_type=video_type,
                     )
+                    if not upload_id:
+                        logger.error(f"Upload failed for {lang} ({dest_path})")
+                        return None
             else:
                 logger.error(f"Render failed: {lang}")
 
@@ -294,6 +297,7 @@ class YoutubeFactory:
             duration_minutes=duration_minutes,
             video_type=video_type,
             language=language,
+            source_mode=getattr(self, "ambient_source_mode", "auto"),
         )
         if not result:
             logger.error("Ambient video generation failed.")
@@ -305,13 +309,16 @@ class YoutubeFactory:
             if not self.youtube_service:
                 self.youtube_service = YouTubeService()
 
-            self.youtube_service.upload_video(
+            upload_id = self.youtube_service.upload_video(
                 result["file_path"],
                 result["title"],
                 result["description"],
                 result.get("tags", []),
                 video_type=video_type,
             )
+            if not upload_id:
+                logger.error("Ambient video upload failed.")
+                return None
 
         return result
 
@@ -364,6 +371,8 @@ Examples:
     parser.add_argument("--type", type=str, default="shorts", choices=["shorts", "long"], help="Video format")
     parser.add_argument("--ambient", type=str, choices=AMBIENT_TYPES, help="Generate long ambient videos")
     parser.add_argument("--ambient-duration", type=int, default=60, help="Ambient video duration in minutes")
+    parser.add_argument("--ambient-source", type=str, default="auto", choices=["auto", "api"],
+                        help="Ambient video source mode: auto (fallback allowed) or api (strict API footage)")
 
     # Trend options
     parser.add_argument("--list-trends", action="store_true", help="List trending topics")
@@ -396,20 +405,28 @@ Examples:
         if "--type" not in sys.argv:
             ambient_video_type = "long"
 
+        factory.ambient_source_mode = args.ambient_source
+
         logger.info(f"🎧 AMBIENT MODE: {args.ambient} ({args.ambient_duration} min)")
-        factory.run_ambient(
+        ambient_result = factory.run_ambient(
             ambient_type=args.ambient,
             duration_minutes=args.ambient_duration,
             video_type=ambient_video_type,
             auto_upload=args.upload,
             language=args.langs.split(",")[0].strip().lower(),
         )
+        if not ambient_result:
+            sys.exit(1)
         sys.exit(0)
 
     # Viral Remix Mode
     if args.viral_remix:
         if not factory.viral_analyzer:
             logger.error("ViralAnalyzer is unavailable. Check YOUTUBE_API_KEY or GEMINI_API_KEY.")
+            sys.exit(1)
+
+        if args.upload and not args.produce_remix:
+            logger.error("--upload in viral-remix mode requires --produce-remix N.")
             sys.exit(1)
 
         category = args.viral_remix if args.viral_remix in VIRAL_CATEGORIES else "facts"
@@ -437,17 +454,23 @@ Examples:
                 selected = remix_candidates[remix_index]
                 topic = args.remix_topic.strip() if args.remix_topic else selected["editable_topic"]
                 logger.info(f"Producing remix #{args.produce_remix}: {topic}")
-                factory.run(
+                production_id = factory.run(
                     topic=topic,
                     languages=args.langs.split(","),
                     auto_upload=args.upload,
                     mode=args.mode,
-                    video_type=args.type
+                    video_type=args.type,
+                    style_context=selected.get("style_context", "")
                 )
+                if not production_id:
+                    logger.error("Remix production/upload failed.")
+                    sys.exit(1)
             else:
                 logger.error(f"Invalid remix number. Choose between 1 and {len(remix_candidates)}")
+                sys.exit(1)
         elif args.produce_remix:
             logger.error("No remix candidates generated to produce from.")
+            sys.exit(1)
 
         sys.exit(0)
 
@@ -486,7 +509,8 @@ Examples:
                     languages=args.langs.split(","),
                     auto_upload=args.upload,
                     mode=args.mode,
-                    video_type=args.type
+                    video_type=args.type,
+                    style_context=selected_idea.style_context
                 )
             else:
                 logger.error(f"Invalid idea number. Choose between 1 and {len(ideas)}")

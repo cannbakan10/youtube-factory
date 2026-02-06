@@ -56,6 +56,7 @@ class VideoIdea:
     target_audience: str
     recommended_hook: str
     estimated_potential: str  # "High", "Medium", "Low"
+    style_context: str = ""
 
 
 class ViralAnalyzer:
@@ -70,14 +71,14 @@ class ViralAnalyzer:
 
     # Popular Shorts categories/search terms
     VIRAL_CATEGORIES = {
-        "facts": ["amazing facts", "did you know", "mind blowing facts", "unbelievable facts"],
-        "science": ["science experiments", "physics tricks", "chemistry magic", "space facts"],
-        "history": ["history facts", "ancient mysteries", "historical events", "forgotten history"],
-        "psychology": ["psychology facts", "mind tricks", "human behavior", "brain facts"],
-        "nature": ["nature documentary", "animal facts", "wildlife", "ocean mysteries"],
-        "tech": ["tech facts", "AI news", "future technology", "gadget reviews"],
-        "mystery": ["unsolved mysteries", "conspiracy theories", "paranormal", "creepy facts"],
-        "lifestyle": ["life hacks", "productivity tips", "motivation", "success stories"],
+        "facts": ["shocking facts", "rare facts", "did you know", "unbelievable clips"],
+        "science": ["science experiments", "space mysteries", "quantum physics facts", "future world"],
+        "history": ["unfiltered history", "ancient mysteries", "historical secrets", "war stories"],
+        "psychology": ["dark psychology", "mind tricks", "social engineering", "human behavior"],
+        "nature": ["nature documentary", "animal facts", "terrifying nature", "deep sea"],
+        "tech": ["future tech", "AI breakthrough", "hidden gadgets", "tech news"],
+        "mystery": ["unsolved mysteries", "missing people", "paranormal investigation", "true crime shorts"],
+        "lifestyle": ["productivity", "millionaire mindset", "life hacks", "satisfying"],
     }
 
     def __init__(self):
@@ -95,6 +96,29 @@ class ViralAnalyzer:
         self.gemini_key = os.getenv("GEMINI_API_KEY", "").strip().replace('"', '').replace("'", "")
         self.gemini_client = genai.Client(api_key=self.gemini_key) if self.gemini_key else None
         self.model = "gemini-2.0-flash"
+
+    def _extract_json(self, text: str) -> Optional[dict]:
+        """Resilient JSON extraction from AI response."""
+        if not text:
+            return None
+            
+        # Try to find json block
+        match = re.search(r'```json\s*(.*?)\s*```', text, re.DOTALL)
+        if match:
+            try:
+                return json.loads(match.group(1))
+            except Exception:
+                pass
+                
+        # Try to find anything between { and }
+        match = re.search(r'(\{.*\})', text, re.DOTALL)
+        if match:
+            try:
+                return json.loads(match.group(1))
+            except Exception:
+                pass
+                
+        return None
 
     def analyze_trending(
         self,
@@ -174,7 +198,7 @@ class ViralAnalyzer:
             order="viewCount",
             regionCode=region,
             maxResults=max_results,
-            publishedAfter="2024-01-01T00:00:00Z"  # Recent videos only
+            publishedAfter="2025-06-01T00:00:00Z"  # Focus on very recent/trending videos
         ).execute()
 
         video_ids = [item['id']['videoId'] for item in search_response.get('items', [])]
@@ -268,7 +292,8 @@ class ViralAnalyzer:
             "why_it_works": "Why the original went viral and why yours will too",
             "target_audience": "Who will watch this",
             "recommended_hook": "The first 3 seconds hook in {lang_name}",
-            "estimated_potential": "High/Medium/Low based on topic freshness"
+            "estimated_potential": "High/Medium/Low based on topic freshness",
+            "style_context": "Describe the vibe, pacing, and narrative style to replicate"
         }}
         """
 
@@ -278,8 +303,11 @@ class ViralAnalyzer:
             config={'response_mime_type': 'application/json'}
         )
 
+        data = self._extract_json(response.text)
+        if not data:
+            return None
+
         try:
-            data = json.loads(response.text)
             return VideoIdea(
                 original_video=video,
                 suggested_topic=data.get('suggested_topic', ''),
@@ -287,10 +315,11 @@ class ViralAnalyzer:
                 why_it_works=data.get('why_it_works', ''),
                 target_audience=data.get('target_audience', ''),
                 recommended_hook=data.get('recommended_hook', ''),
-                estimated_potential=data.get('estimated_potential', 'Medium')
+                estimated_potential=data.get('estimated_potential', 'Medium'),
+                style_context=data.get('style_context', '')
             )
-        except json.JSONDecodeError as e:
-            logger.error(f"Failed to parse AI response: {e}")
+        except Exception as e:
+            logger.error(f"Failed to create VideoIdea: {e}")
             return None
 
     @retry_with_backoff(max_retries=2, base_delay=2.0)
@@ -426,7 +455,7 @@ class ViralAnalyzer:
         candidates = []
 
         for video in videos:
-            editable_topic, swap_hint = self._build_editable_topic(video.title)
+            editable_topic, swap_hint, style_context = self._build_editable_topic(video.title)
             candidates.append(
                 {
                     "video_id": video.video_id,
@@ -434,6 +463,7 @@ class ViralAnalyzer:
                     "original_title": video.title,
                     "editable_topic": editable_topic,
                     "swap_hint": swap_hint,
+                    "style_context": style_context,
                     "channel": video.channel,
                     "view_count": video.view_count,
                     "view_count_formatted": video.view_count_formatted,
@@ -453,13 +483,14 @@ class ViralAnalyzer:
         APIRateLimiters.gemini.wait()
         prompt = f"""
         Generate {max_results} realistic viral English YouTube Shorts titles for the '{category}' category.
-        For each title, provide an editable topic with only 1-2 words changed.
+        For each title, provide an editable topic with only 1-2 words changed AND a style context.
         Return strict JSON array:
         [
           {{
             "original_title": "...",
             "editable_topic": "...",
-            "swap_hint": "word1 -> word2"
+            "swap_hint": "word1 -> word2",
+            "style_context": "Describe the pacing and tone"
           }}
         ]
         """
@@ -468,7 +499,10 @@ class ViralAnalyzer:
             contents=prompt,
             config={"response_mime_type": "application/json"},
         )
-        data = json.loads(response.text)
+        data = self._extract_json(response.text)
+        if not data:
+            return []
+            
         candidates = []
         for idx, item in enumerate(data, 1):
             candidates.append(
@@ -478,6 +512,7 @@ class ViralAnalyzer:
                     "original_title": item.get("original_title", ""),
                     "editable_topic": item.get("editable_topic", ""),
                     "swap_hint": item.get("swap_hint", "Manual swap"),
+                    "style_context": item.get("style_context", ""),
                     "channel": "AI Trend Simulation",
                     "view_count": 0,
                     "view_count_formatted": "-",
@@ -505,13 +540,14 @@ class ViralAnalyzer:
             print(f"   Swap hint: {item['swap_hint']}")
             print(f"   URL: {item['youtube_url']}\n")
 
-    def _build_editable_topic(self, title: str) -> Tuple[str, str]:
+    def _build_editable_topic(self, title: str) -> Tuple[str, str, str]:
         if self.gemini_client:
             try:
                 return self._ai_remix_title(title)
             except Exception as e:
                 logger.warning(f"AI remix title failed, using fallback: {e}")
-        return self._simple_remix_title(title)
+        topic, hint = self._simple_remix_title(title)
+        return topic, hint, ""
 
     @retry_with_backoff(max_retries=2, base_delay=2.0)
     def _ai_remix_title(self, title: str) -> Tuple[str, str]:
@@ -529,7 +565,8 @@ class ViralAnalyzer:
         Return JSON:
         {{
           "editable_topic": "new title",
-          "swap_hint": "word1 -> new1, word2 -> new2"
+          "swap_hint": "word1 -> new1, word2 -> new2",
+          "style_context": "Describe the pacing, tone, and hook style based on the original title"
         }}
         """
 
@@ -538,12 +575,17 @@ class ViralAnalyzer:
             contents=prompt,
             config={"response_mime_type": "application/json"}
         )
-        data = json.loads(response.text)
+        data = self._extract_json(response.text)
+        if not data:
+            raise ValueError("Failed to extract JSON from Gemini remix response")
+            
         editable = data.get("editable_topic", "").strip()
         hint = data.get("swap_hint", "").strip()
+        style = data.get("style_context", "").strip()
+        
         if not editable:
             raise ValueError("Empty editable_topic from Gemini")
-        return editable, hint or "Manual 1-2 word swap"
+        return editable, hint or "Manual 1-2 word swap", style
 
     def _simple_remix_title(self, title: str) -> Tuple[str, str]:
         replacements = {

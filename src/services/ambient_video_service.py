@@ -2,7 +2,11 @@ import json
 import os
 import subprocess
 import time
+import tempfile
 from typing import Dict, Optional, Tuple
+
+import numpy as np
+from PIL import Image
 
 from src.services.pexels_service import PexelsService
 from src.services.pixabay_service import PixabayService
@@ -22,12 +26,16 @@ class AmbientVideoService:
                 "Perfect for reading, focus, and sleep."
             ),
             "tags": ["fireplace", "cozy ambience", "relaxing", "sleep", "study"],
-            "video_keywords": ["cozy fireplace", "fireplace close up", "burning fire"],
-            "audio_queries": ["fireplace crackling ambience", "fire crackling", "cozy fire sound"],
+            "video_keywords": ["steady fireplace burning", "static fireplace long take", "calm fire burning", "fireplace no people"],
+            "audio_queries": ["fireplace crackling ambience", "fire crackling slow", "cinematic fire sounds"],
             "fallback_audio": [
                 "assets/templates/music/nature_1.mp3",
                 "assets/templates/music/documentary_1.mp3",
                 "assets/templates/bg_music.mp3",
+            ],
+            "fallback_video": [
+                "assets/templates/fireplace.mp4",
+                "assets/templates/fireplace_loop.mp4",
             ],
             "fallback_noise_color": "brown",
             "fallback_bg_color": "0x2B1208",
@@ -45,6 +53,7 @@ class AmbientVideoService:
                 "assets/templates/music/emotional_1.mp3",
                 "assets/templates/music/nature_2.mp3",
             ],
+            "fallback_video": [],
             "fallback_noise_color": "pink",
             "fallback_bg_color": "0x04080F",
         },
@@ -60,6 +69,7 @@ class AmbientVideoService:
                 "assets/templates/music/nature_3.mp3",
                 "assets/templates/music/nature_4.mp3",
             ],
+            "fallback_video": [],
             "fallback_noise_color": "pink",
             "fallback_bg_color": "0x0A1421",
         },
@@ -75,6 +85,7 @@ class AmbientVideoService:
                 "assets/templates/music/nature_5.mp3",
                 "assets/templates/music/emotional_2.mp3",
             ],
+            "fallback_video": [],
             "fallback_noise_color": "brown",
             "fallback_bg_color": "0x061328",
         },
@@ -87,6 +98,7 @@ class AmbientVideoService:
             "video_keywords": ["dark relaxing gradient", "abstract calm background", "night ambience"],
             "audio_queries": [],
             "fallback_audio": [],
+            "fallback_video": [],
             "fallback_noise_color": "brown",
             "fallback_bg_color": "0x050505",
         },
@@ -99,6 +111,7 @@ class AmbientVideoService:
             "video_keywords": ["minimal ambient background", "calm abstract texture", "night minimal"],
             "audio_queries": [],
             "fallback_audio": [],
+            "fallback_video": [],
             "fallback_noise_color": "white",
             "fallback_bg_color": "0x0A0A0A",
         },
@@ -123,6 +136,7 @@ class AmbientVideoService:
         duration_minutes: int = 60,
         video_type: str = "long",
         language: str = "en",
+        source_mode: str = "auto",
     ) -> Optional[Dict[str, object]]:
         preset = self.AMBIENT_PRESETS.get(ambient_type)
         if not preset:
@@ -152,8 +166,17 @@ class AmbientVideoService:
         video_source = self._resolve_video_source(
             ambient_type=ambient_type,
             keywords=list(preset["video_keywords"]),  # type: ignore[arg-type]
+            fallback_video_paths=list(preset.get("fallback_video", [])),  # type: ignore[arg-type]
             orientation=orientation,
+            source_mode=source_mode,
         )
+        if source_mode == "api" and not video_source:
+            logger.error(
+                f"No valid API video found for ambient_type={ambient_type}. "
+                "Try different keywords or ensure Pexels/Pixabay keys are valid."
+            )
+            return None
+
         if not video_source:
             video_source = self._generate_procedural_loop_clip(
                 ambient_type=ambient_type,
@@ -204,25 +227,44 @@ class AmbientVideoService:
         logger.info(f"Ambient video ready: {output_path}")
         return metadata
 
-    def _resolve_video_source(self, ambient_type: str, keywords, orientation: str) -> Optional[str]:
+    def _resolve_video_source(
+        self,
+        ambient_type: str,
+        keywords,
+        fallback_video_paths,
+        orientation: str,
+        source_mode: str,
+    ) -> Optional[str]:
         if os.getenv("AMBIENT_OFFLINE") == "1":
             logger.info("AMBIENT_OFFLINE=1, skipping remote video lookup.")
+        else:
+            if keywords:
+                try:
+                    video = self.pexels.get_video(keywords, orientation=orientation)
+                    if video and self._is_valid_ambient_video(video, ambient_type):
+                        return video
+                    if video:
+                        logger.warning(f"Rejected non-matching ambient clip (Pexels): {video}")
+                except Exception as e:
+                    logger.warning(f"Pexels ambient fetch failed: {e}")
+
+                try:
+                    video = self.pixabay.get_video(keywords, orientation=orientation)
+                    if video and self._is_valid_ambient_video(video, ambient_type):
+                        return video
+                    if video:
+                        logger.warning(f"Rejected non-matching ambient clip (Pixabay): {video}")
+                except Exception as e:
+                    logger.warning(f"Pixabay ambient fetch failed: {e}")
+
+        if source_mode == "api":
             return None
 
-        if keywords:
-            try:
-                video = self.pexels.get_video(keywords, orientation=orientation)
-                if video:
-                    return video
-            except Exception as e:
-                logger.warning(f"Pexels ambient fetch failed: {e}")
-
-            try:
-                video = self.pixabay.get_video(keywords, orientation=orientation)
-                if video:
-                    return video
-            except Exception as e:
-                logger.warning(f"Pixabay ambient fetch failed: {e}")
+        for rel_path in fallback_video_paths or []:
+            abs_path = os.path.join(self.project_root, str(rel_path))
+            if os.path.exists(abs_path):
+                logger.info(f"Using local fallback ambient video: {abs_path}")
+                return abs_path
 
         logger.warning("Ambient video source not found, using color background fallback")
         return None
@@ -387,6 +429,54 @@ class AmbientVideoService:
                 "noise=alls=10:allf=t+u,eq=brightness=-0.02:contrast=1.05:saturation=0.85"
             )
         return f"color=c={bg_color}:s={width}x{height}:r=15"
+
+    def _is_valid_ambient_video(self, video_path: str, ambient_type: str) -> bool:
+        if ambient_type != "fireplace":
+            return True
+        return self._looks_like_fire(video_path)
+
+    def _looks_like_fire(self, video_path: str) -> bool:
+        """Heuristic fire detection to avoid unrelated clips in fireplace mode."""
+        try:
+            with tempfile.NamedTemporaryFile(suffix=".jpg", delete=False) as tmp:
+                frame_path = tmp.name
+
+            cmd = [
+                "ffmpeg",
+                "-y",
+                "-v",
+                "error",
+                "-ss",
+                "1.5",
+                "-i",
+                video_path,
+                "-frames:v",
+                "1",
+                frame_path,
+            ]
+            result = subprocess.run(cmd, capture_output=True, text=True)
+            if result.returncode != 0 or not os.path.exists(frame_path):
+                return False
+
+            img = Image.open(frame_path).convert("RGB").resize((320, 180))
+            arr = np.array(img).astype(np.float32)
+            rch, gch, bch = arr[:, :, 0], arr[:, :, 1], arr[:, :, 2]
+            lum = 0.2126 * rch + 0.7152 * gch + 0.0722 * bch
+
+            warm_mask = (rch > 120) & (gch > 45) & (bch < 130) & (rch > gch * 1.05)
+            warm_ratio = float(warm_mask.mean())
+            dark_ratio = float((lum < 55).mean())
+            lum_var = float(lum.var())
+
+            return warm_ratio >= 0.03 and dark_ratio >= 0.12 and lum_var >= 400.0
+        except Exception:
+            return False
+        finally:
+            try:
+                if "frame_path" in locals() and os.path.exists(frame_path):
+                    os.remove(frame_path)
+            except Exception:
+                pass
 
     def _generate_procedural_loop_clip(
         self,
