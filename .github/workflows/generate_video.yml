@@ -61,11 +61,39 @@ on:
         - rain
         - ocean_sleep
         - white_noise
-        - brown_noise
-        - cozy_library
-        - space_ambience
-        - cyberpunk_city
-        - forest_walk
+        - rainy_tokyo
+        - snowy_cabin
+        - underwater_reef
+        - zen_garden
+        - space_station
+        - medieval_tavern
+        - ghibli_meadow
+        - dark_academia
+        - train_ride
+        - airplane_cabin
+        - tropical_beach
+        - thunderstorm
+        - coffee_shop
+        - autumn_forest
+        - lighthouse_storm
+        - minecraft_world
+        - mayan_jungle
+        - mars_colony
+        - speakeasy_jazz
+        - grand_canyon
+        - victorian_study
+        - steampunk_workshop
+        - arctic_expedition
+        - bamboo_forest
+        - lavender_fields
+        - secret_waterfall
+        - moonlit_lake
+        - harry_potter_vibes
+        - attic_rain
+        - vintage_train
+        - scifi_lab
+        - prairie_sunset
+        - cathedral_meditation
       ambient_duration:
         description: 'Ambient Süresi (Dakika)'
         required: false

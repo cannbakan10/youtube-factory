@@ -21,143 +21,315 @@ class AmbientVideoService:
     AMBIENT_PRESETS: Dict[str, Dict[str, object]] = {
         "fireplace": {
             "title": "1 Hour Cozy Fireplace Ambience",
-            "description": (
-                "Relax with one hour of cozy fireplace visuals and calm ambience. "
-                "Perfect for reading, focus, and sleep."
-            ),
+            "description": "Relax with one hour of cozy fireplace visuals and calm ambience.",
             "tags": ["fireplace", "cozy ambience", "relaxing", "sleep", "study"],
-            "video_keywords": ["steady fireplace burning", "static fireplace long take", "calm fire burning", "fireplace no people"],
-            "audio_queries": ["fireplace crackling ambience", "fire crackling slow", "cinematic fire sounds"],
-            "fallback_audio": [
-                "assets/templates/music/nature_1.mp3",
-                "assets/templates/music/documentary_1.mp3",
-                "assets/templates/bg_music.mp3",
-            ],
-            "fallback_video": [
-                "assets/templates/fireplace.mp4",
-                "assets/templates/fireplace_loop.mp4",
-            ],
-            "fallback_noise_color": "brown",
+            "video_keywords": ["steady fireplace burning", "static fireplace long take", "calm fire burning"],
+            "audio_queries": ["fireplace crackling ambience", "fire crackling slow"],
+            "fallback_audio": ["assets/templates/music/nature_1.mp3"],
+            "fallback_video": ["assets/templates/fireplace.mp4"],
             "fallback_bg_color": "0x2B1208",
         },
         "sleep": {
             "title": "1 Hour Deep Sleep Soundscape",
-            "description": (
-                "One hour of soft sleep ambience to help you relax and fall asleep faster. "
-                "No narration, no interruptions."
-            ),
+            "description": "One hour of soft sleep ambience to help you relax and fall asleep faster.",
             "tags": ["sleep sounds", "deep sleep", "white noise", "rain", "relax"],
             "video_keywords": ["night sky stars timelapse", "moon clouds", "calm night ocean"],
-            "audio_queries": ["sleep rain ambience", "deep sleep white noise", "ocean sleep sound"],
-            "fallback_audio": [
-                "assets/templates/music/emotional_1.mp3",
-                "assets/templates/music/nature_2.mp3",
-            ],
-            "fallback_video": [],
-            "fallback_noise_color": "pink",
+            "audio_queries": ["sleep rain ambience", "deep sleep white noise"],
+            "fallback_audio": ["assets/templates/music/nature_2.mp3"],
             "fallback_bg_color": "0x04080F",
         },
         "rain": {
             "title": "1 Hour Rainy Night Ambience",
-            "description": (
-                "Steady rain ambience for sleep, deep focus, and relaxation."
-            ),
-            "tags": ["rain sounds", "sleep rain", "focus ambience", "night rain", "relax"],
+            "description": "Steady rain ambience for sleep, deep focus, and relaxation.",
+            "tags": ["rain sounds", "sleep rain", "focus ambience", "night rain"],
             "video_keywords": ["rain window night", "rainy city night", "rain drops glass"],
-            "audio_queries": ["rain ambience sleep", "night rain sound", "rain white noise"],
-            "fallback_audio": [
-                "assets/templates/music/nature_3.mp3",
-                "assets/templates/music/nature_4.mp3",
-            ],
-            "fallback_video": [],
-            "fallback_noise_color": "pink",
+            "audio_queries": ["rain ambience sleep", "night rain sound"],
+            "fallback_audio": ["assets/templates/music/nature_3.mp3"],
             "fallback_bg_color": "0x0A1421",
         },
         "ocean_sleep": {
             "title": "1 Hour Ocean Waves for Deep Sleep",
-            "description": (
-                "Calm ocean waves and relaxing visuals to help you fall asleep."
-            ),
-            "tags": ["ocean waves", "deep sleep", "night ocean", "relaxing sounds", "sleep ambience"],
+            "description": "Calm ocean waves and relaxing visuals to help you fall asleep.",
+            "tags": ["ocean waves", "deep sleep", "night ocean", "relaxing sounds"],
             "video_keywords": ["calm ocean night", "moonlight sea", "gentle waves beach"],
-            "audio_queries": ["ocean waves sleep", "calm sea ambience", "night beach sound"],
-            "fallback_audio": [
-                "assets/templates/music/nature_5.mp3",
-                "assets/templates/music/emotional_2.mp3",
-            ],
-            "fallback_video": [],
-            "fallback_noise_color": "brown",
+            "audio_queries": ["ocean waves sleep", "calm sea ambience"],
+            "fallback_audio": ["assets/templates/music/nature_5.mp3"],
             "fallback_bg_color": "0x061328",
-        },
-        "brown_noise": {
-            "title": "1 Hour Brown Noise for Sleep",
-            "description": (
-                "Consistent low-frequency brown noise for better sleep and relaxation."
-            ),
-            "tags": ["brown noise", "sleep sound", "noise therapy", "deep sleep", "focus"],
-            "video_keywords": ["dark relaxing gradient", "abstract calm background", "night ambience"],
-            "audio_queries": [],
-            "fallback_audio": [],
-            "fallback_video": [],
-            "fallback_noise_color": "brown",
-            "fallback_bg_color": "0x050505",
         },
         "white_noise": {
             "title": "1 Hour White Noise for Better Sleep",
-            "description": (
-                "Smooth white noise to mask distractions and help with sleep."
-            ),
-            "tags": ["white noise", "sleep aid", "noise blocker", "calm", "study"],
-            "video_keywords": ["minimal ambient background", "calm abstract texture", "night minimal"],
-            "audio_queries": [],
+            "description": "Smooth white noise to mask distractions and help with deep sleep.",
+            "tags": ["white noise", "sleep sounds", "insomnia relief", "fan noise"],
+            "video_keywords": ["static noise visual", "blur lights"],
+            "audio_queries": ["pure white noise"],
             "fallback_audio": [],
-            "fallback_video": [],
+            "source": "noise",
             "fallback_noise_color": "white",
             "fallback_bg_color": "0x0A0A0A",
         },
-        "cozy_library": {
-            "title": "1 Hour Cozy Library & Rain Ambience",
-            "description": "Imagine studying or relaxing in a quiet, cozy library with soft rain outside.",
-            "tags": ["library ambience", "study music", "cozy library", "rain on window", "dark academia"],
-            "video_keywords": ["cozy library interior", "old books fireplace", "library rain window"],
-            "audio_queries": ["library ambience rain", "soft study background sound", "pages turning fireplace"],
-            "fallback_audio": ["assets/templates/music/lofi_1.mp3"],
-            "fallback_video": [],
-            "fallback_noise_color": "brown",
+        "rainy_tokyo": {
+            "title": "1 Hour Rainy Night in Tokyo",
+            "description": "Experience the peaceful atmosphere of Tokyo streets on a rainy night.",
+            "tags": ["tokyo rain", "rainy night", "city ambience", "neon rain", "lofi"],
+            "video_keywords": ["tokyo rain night", "shibuya rain", "neon city rain"],
+            "audio_queries": ["city rain night", "tokyo street rain"],
+            "fallback_bg_color": "0x0A0F1E",
+        },
+        "snowy_cabin": {
+            "title": "Cozy Snowy Cabin & Blizzard Ambience",
+            "description": "Warm up inside a cozy cabin while a blizzard rages outside.",
+            "tags": ["snowy cabin", "blizzard sounds", "winter ambience", "cozy winter"],
+            "video_keywords": ["snowy cabin window", "winter blizzard forest"],
+            "audio_queries": ["blizzard wind sounds", "snowstorm howling wind"],
+            "fallback_bg_color": "0xF0F8FF",
+        },
+        "underwater_reef": {
+            "title": "Deep Sea Underwater Relaxation",
+            "description": "Explore the peaceful depths of the ocean with coral reefs.",
+            "tags": ["underwater", "ocean floor", "deep sea", "coral reef"],
+            "video_keywords": ["underwater coral reef", "ocean floor fish"],
+            "audio_queries": ["underwater bubbles", "deep ocean drone"],
+            "fallback_bg_color": "0x001F3F",
+        },
+        "zen_garden": {
+            "title": "Japanese Zen Garden & Water Fountain",
+            "description": "Achieve inner peace with the sounds of a traditional Zen garden.",
+            "tags": ["zen garden", "meditation", "japanese garden", "water fountain"],
+            "video_keywords": ["japanese zen garden", "bamboo water fountain"],
+            "audio_queries": ["bamboo water drip", "japanese garden ambience"],
+            "fallback_bg_color": "0x1A2A1A",
+        },
+        "space_station": {
+            "title": "Futuristic Space Station Ambience",
+            "description": "Relax in a high-tech space station orbiting a distant planet.",
+            "tags": ["space station", "sci-fi ambience", "spaceship drone", "future space"],
+            "video_keywords": ["sci-fi ship interior", "space station window"],
+            "audio_queries": ["spaceship engine drone", "sci-fi computer room"],
+            "fallback_bg_color": "0x000000",
+        },
+        "medieval_tavern": {
+            "title": "Cozy Medieval Tavern & Fireplace",
+            "description": "Step into a bustling fantasy tavern with a warm fire.",
+            "tags": ["medieval tavern", "fantasy ambience", "inn fireplace", "dnd"],
+            "video_keywords": ["medieval inn interior", "fantasy tavern fire"],
+            "audio_queries": ["tavern atmosphere", "medieval crowd chatter"],
+            "fallback_bg_color": "0x2C1A0F",
+        },
+        "ghibli_meadow": {
+            "title": "Peaceful Ghibli-Style Meadow & Clouds",
+            "description": "Relax in a beautiful, wind-swept meadow with moving clouds.",
+            "tags": ["ghibli vibes", "anime meadow", "peaceful nature", "studio ghibli"],
+            "video_keywords": ["windy grass field", "moving clouds meadow"],
+            "audio_queries": ["wind in grass", "summer meadow birds"],
+            "fallback_bg_color": "0x7CFC00",
+        },
+        "dark_academia": {
+            "title": "Dark Academia Library & Study Ambience",
+            "description": "The perfect atmosphere for intense studying and classical thought.",
+            "tags": ["dark academia", "library ambience", "vocaloid study", "secret history"],
+            "video_keywords": ["dark library books", "classical study room"],
+            "audio_queries": ["library silence pencil writing", "muffled classical music"],
             "fallback_bg_color": "0x1A0F0A",
         },
-        "space_ambience": {
-            "title": "1 Hour Deep Space Travel Ambience",
-            "description": "Embark on a journey through the stars with deep space drones and celestial visuals.",
-            "tags": ["space ambience", "starship engine", "deep space", "sci-fi sleep", "cosmic"],
-            "video_keywords": ["starship window", "deep space nebula", "planet view from space"],
-            "audio_queries": ["spaceship engine drone", "deep space frequency", "cosmic white noise"],
-            "fallback_audio": ["assets/templates/music/cinematic_1.mp3"],
-            "fallback_video": [],
-            "fallback_noise_color": "brown",
-            "fallback_bg_color": "0x00020A",
+        "train_ride": {
+            "title": "Relaxing Train Ride Through Swiss Alps",
+            "description": "A long, peaceful train journey with snowy mountains passing by.",
+            "tags": ["train ride", "window view", "railway ambience", "travel travel"],
+            "video_keywords": ["train window view", "swiss alps train"],
+            "audio_queries": ["train tracks sound", "railway rhythmic sound"],
+            "fallback_bg_color": "0x333333",
         },
-        "cyberpunk_city": {
-            "title": "1 Hour Cyberpunk City Rain Ambience",
-            "description": "Neon lights, rainy streets, and the hum of a futuristic city.",
-            "tags": ["cyberpunk ambience", "lofi city", "rainy neon city", "blade runner vibe", "futuristic sleep"],
-            "video_keywords": ["neon city rain night", "cyberpunk street lo-fi", "futuristic city window"],
-            "audio_queries": ["cyberpunk city rain ambience", "futuristic street hum", "neon city lo-fi loop"],
-            "fallback_audio": ["assets/templates/music/lofi_2.mp3"],
-            "fallback_video": [],
-            "fallback_noise_color": "pink",
-            "fallback_bg_color": "0x0B001F",
+        "airplane_cabin": {
+            "title": "Airplane Cabin White Noise for Focus",
+            "description": "Sleep or focus with the steady, comforting hum of an airplane cabin.",
+            "tags": ["airplane sleep", "cabin noise", "jet engine drone", "focus"],
+            "video_keywords": ["airplane cabin night", "plane wing night"],
+            "audio_queries": ["airplane cabin hum", "jet engine drone"],
+            "fallback_bg_color": "0x050510",
         },
-        "forest_walk": {
-            "title": "1 Hour Peaceful Forest & River Ambience",
-            "description": "Relaxing sounds of a deep forest, chirping birds, and a gentle river flow.",
-            "tags": ["forest ambience", "nature sounds", "river flow sleep", "birds chirping", "meditation"],
-            "video_keywords": ["sunlight forest stream", "gentle river flow forest", "wind in trees 4k"],
-            "audio_queries": ["deep forest ambience birds", "gentle river sound", "forest wind sleep"],
-            "fallback_audio": ["assets/templates/music/nature_1.mp3"],
-            "fallback_video": [],
-            "fallback_noise_color": "brown",
-            "fallback_bg_color": "0x0E2410",
+        "tropical_beach": {
+            "title": "Tropical Beach Sunset & Waves",
+            "description": "Unwind with the sound of gentle waves on a white sand beach.",
+            "tags": ["tropical beach", "ocean waves", "sunset relaxation", "beach sleep"],
+            "video_keywords": ["tropical beach sunset", "ocean waves sand"],
+            "audio_queries": ["gentle ocean waves", "beach surf sounds"],
+            "fallback_bg_color": "0xFF8C00",
+        },
+        "thunderstorm": {
+            "title": "Heavy Thunderstorm & Rain on Tin Roof",
+            "description": "Perfect for deep sleep: a powerful thunderstorm and rain.",
+            "tags": ["thunderstorm", "heavy rain", "lightning sounds", "sleep rain"],
+            "video_keywords": ["lightning storm night", "thunder rain"],
+            "audio_queries": ["heavy thunderstorm", "rolling thunder"],
+            "fallback_bg_color": "0x000000",
+        },
+        "coffee_shop": {
+            "title": "Rainy Coffee Shop & Soft Jazz",
+            "description": "Enjoy the vibe of a busy coffee shop with rain outside.",
+            "tags": ["coffee shop ambience", "jazz music", "study café", "rainy café"],
+            "video_keywords": ["coffee shop interior rain", "barista making coffee"],
+            "audio_queries": ["coffee shop chatter", "soft barista sounds"],
+            "fallback_bg_color": "0x3E2723",
+        },
+        "autumn_forest": {
+            "title": "Golden Autumn Forest Walk",
+            "description": "Walking through a peaceful forest with falling golden leaves.",
+            "tags": ["autumn forest", "fall ambience", "forest walk", "nature"],
+            "video_keywords": ["autumn forest yellow leaves", "falling leaves forest"],
+            "audio_queries": ["forest wind birds", "crunching leaves walk"],
+            "fallback_bg_color": "0xD2691E",
+        },
+        "lighthouse_storm": {
+            "title": "Lone Lighthouse During a Coastal Storm",
+            "description": "Hear the crashing waves and the signal of a lone lighthouse.",
+            "tags": ["lighthouse", "stormy sea", "coastal ambience", "heavy waves"],
+            "video_keywords": ["lighthouse storm", "crashing waves rocks"],
+            "audio_queries": ["heavy sea waves", "lighthouse foghorn"],
+            "fallback_bg_color": "0x101A2A",
+        },
+        "minecraft_world": {
+            "title": "Calm Minecraft Landscape & Music",
+            "description": "Nostalgic and peaceful blocks, animals, and sunsets.",
+            "tags": ["minecraft", "calm music", "blocky world", "gaming ambience"],
+            "video_keywords": ["minecraft landscape sunset", "low poly nature"],
+            "audio_queries": ["minecraft c418 style", "pixel world music"],
+            "fallback_bg_color": "0x87CEEB",
+        },
+        "mayan_jungle": {
+            "title": "Ancient Mayan Temple & Jungle Rain",
+            "description": "Lost in time: the sounds of a deep jungle and ruins.",
+            "tags": ["mayan temple", "jungle sounds", "tropical rain", "forest"],
+            "video_keywords": ["mayan temple jungle", "rainforest temple"],
+            "audio_queries": ["jungle birds monkeys", "heavy tropical rain"],
+            "fallback_bg_color": "0x1A2A0F",
+        },
+        "mars_colony": {
+            "title": "Living on Mars: Red Planet Ambience",
+            "description": "Dust storms and the low hum of a Martian dome colony.",
+            "tags": ["mars ambience", "red planet", "space colony", "sci-fi sleep"],
+            "video_keywords": ["mars surface dust", "martian base interior"],
+            "audio_queries": ["martian wind storm", "base life support hum"],
+            "fallback_bg_color": "0x4E0000",
+        },
+        "speakeasy_jazz": {
+            "title": "1920s Speakeasy & Smoky Jazz Lounge",
+            "description": "Travel back to the roaring 20s with soulful jazz.",
+            "tags": ["speakeasy", "1920s jazz", "vintage lounge", "smoky bar"],
+            "video_keywords": ["vintage jazz bar", "smoky lounge 1920s"],
+            "audio_queries": ["roaring 20s jazz", "bar chatter jazz"],
+            "fallback_bg_color": "0x1A0A05",
+        },
+        "grand_canyon": {
+            "title": "Grand Canyon Winds & Desert Night",
+            "description": "The sweeping sounds of the desert and ancient canyons.",
+            "tags": ["grand canyon", "desert winds", "nature sounds", "canyon sleep"],
+            "video_keywords": ["grand canyon sunset", "desert canyon night"],
+            "audio_queries": ["desert wind howling", "canyon echoes"],
+            "fallback_bg_color": "0xB04A00",
+        },
+        "victorian_study": {
+            "title": "Victorian Study & Clock Ticking",
+            "description": "A refined atmosphere for focus with clocks and old book smells.",
+            "tags": ["victorian", "study focus", "clock ticking", "old room"],
+            "video_keywords": ["victorian library", "old desk candle", "clock gears"],
+            "audio_queries": ["grandfather clock ticking", "quill writing sound"],
+            "fallback_bg_color": "0x2D1A05",
+        },
+        "steampunk_workshop": {
+            "title": "Steampunk Workshop & Steam Whistles",
+            "description": "The busy, industrial sounds of gears, steam, and brass.",
+            "tags": ["steampunk", "workshop ambience", "industrial", "gears sounds"],
+            "video_keywords": ["steampunk gears", "steam engine factory", "brass lab"],
+            "audio_queries": ["steam whistle release", "metal gear grinding"],
+            "fallback_bg_color": "0x3E2723",
+        },
+        "arctic_expedition": {
+            "title": "Arctic Expedition Tent & Howling Wind",
+            "description": "Survival mode: The sounds of an arctic tent in a frozen tundra.",
+            "tags": ["arctic", "winter storm", "survival ambience", "ice wind"],
+            "video_keywords": ["arctic tundra snow", "tent in snowstorm"],
+            "audio_queries": ["extreme arctic wind", "snow crunching"],
+            "fallback_bg_color": "0xE0F7FA",
+        },
+        "bamboo_forest": {
+            "title": "Bamboo Forest Breeze & Wind Chimes",
+            "description": "The tall stalks of bamboo knocking against each other in the wind.",
+            "tags": ["bamboo forest", "wind chimes", "japanese nature", "zen relax"],
+            "video_keywords": ["bamboo forest path", "bamboo leaves wind"],
+            "audio_queries": ["bamboo stalks hitting", "soft metal wind chimes"],
+            "fallback_bg_color": "0x1B3022",
+        },
+        "lavender_fields": {
+            "title": "Lavender Fields in France & Gentle Breeze",
+            "description": "A sea of purple with the sound of distant bees and soft wind.",
+            "tags": ["lavender", "france nature", "floral ambience", "summer breeze"],
+            "video_keywords": ["lavender fields sunset", "provence france nature"],
+            "audio_queries": ["soft summer wind", "distant honey bees"],
+            "fallback_bg_color": "0x673AB7",
+        },
+        "secret_waterfall": {
+            "title": "Hidden Jungle Waterfall & Tropical Birds",
+            "description": "A paradise found: a powerful but soothing waterfall in the jungle.",
+            "tags": ["waterfall", "jungle nature", "tropical paradise", "white noise water"],
+            "video_keywords": ["tropical waterfall jungle", "hidden oasis water"],
+            "audio_queries": ["heavy waterfall roar", "tropical forest birds"],
+            "fallback_bg_color": "0x004D40",
+        },
+        "moonlit_lake": {
+            "title": "Moonlit Lake & Night Crickets",
+            "description": "Peaceful reflection on a lake under the full moon.",
+            "tags": ["moonlight", "lake ambience", "crickets night", "peaceful sleep"],
+            "video_keywords": ["moonlight lake reflection", "night water ripples"],
+            "audio_queries": ["night lake crickets", "soft water lapping"],
+            "fallback_bg_color": "0x0D1B2A",
+        },
+        "harry_potter_vibes": {
+            "title": "Wizarding School Library & Magic Potions",
+            "description": "Feel the magic in the air with bubbling cauldrons and flying books.",
+            "tags": ["wizarding world", "magic library", "fantasy study", "potions"],
+            "video_keywords": ["magic library flying books", "medieval stone room candle"],
+            "audio_queries": ["bubbling potion cauldron", "magic spell sparkles"],
+            "fallback_bg_color": "0x1A0A2A",
+        },
+        "attic_rain": {
+            "title": "Cozy Attic & Rain on a Tin Roof",
+            "description": "The best place to sleep: a small attic with heavy rain right above you.",
+            "tags": ["attic rain", "tin roof rain", "cozy attic", "heavy rain sleep"],
+            "video_keywords": ["attic window rain", "cozy bedroom roof"],
+            "audio_queries": ["heavy rain on tin roof", "soft attic wind"],
+            "fallback_bg_color": "0x263238",
+        },
+        "vintage_train": {
+            "title": "1940s Steam Train Across the Countryside",
+            "description": "The rhythmic chugging of a vintage steam engine.",
+            "tags": ["steam train", "vintage railway", "countryside ride", "train chuffing"],
+            "video_keywords": ["steam train smoke", "vintage train interior"],
+            "audio_queries": ["steam engine chuffing", "train whistle distant"],
+            "fallback_bg_color": "0x212121",
+        },
+        "scifi_lab": {
+            "title": "Advanced Sci-Fi Lab & Data Processing",
+            "description": "The sound of progress: holograms, data streams, and cold fans.",
+            "tags": ["scifi lab", "data processing", "cyberpunk tech", "high tech"],
+            "video_keywords": ["holographic data", "scientific lab drones"],
+            "audio_queries": ["computer server room", "hologram hum"],
+            "fallback_bg_color": "0x001219",
+        },
+        "prairie_sunset": {
+            "title": "Endless Prairie & Golden Hour Wind",
+            "description": "The sweeping winds of the Great Plains under a golden sky.",
+            "tags": ["prairie", "golden hour", "nature wind", "grasslands"],
+            "video_keywords": ["prairie grass wind", "sunset over field"],
+            "audio_queries": ["prairie wind grass", "distant coyote howl"],
+            "fallback_bg_color": "0xE6B422",
+        },
+        "cathedral_meditation": {
+            "title": "Grand Cathedral & Holy Echoes",
+            "description": "Massive stone echoes and the peaceful silence of an ancient church.",
+            "tags": ["cathedral", "church ambience", "echoes", "spiritual relax"],
+            "video_keywords": ["gothic cathedral interior", "stained glass light"],
+            "audio_queries": ["church hall echoes", "distant organ pipe"],
+            "fallback_bg_color": "0x1B1B1B",
         },
     }
 
@@ -207,14 +379,16 @@ class AmbientVideoService:
             f"Creating ambient video type={ambient_type} duration={duration_minutes}m format={video_type}"
         )
 
-        video_source = self._resolve_video_source(
+        # MULTI-CLIP LOGIC: Fetch multiple videos to avoid repetition
+        video_sources = self._resolve_multiple_video_sources(
             ambient_type=ambient_type,
             keywords=list(preset["video_keywords"]),  # type: ignore[arg-type]
             fallback_video_paths=list(preset.get("fallback_video", [])),  # type: ignore[arg-type]
             orientation=orientation,
             source_mode=source_mode,
+            count=8 if is_long else 3,
         )
-        if source_mode == "api" and not video_source:
+        if source_mode == "api" and not video_sources:
             logger.error(
                 f"No valid API video found for ambient_type={ambient_type}. "
                 "Try different keywords or ensure Pexels/Pixabay keys are valid."
@@ -239,7 +413,7 @@ class AmbientVideoService:
             width=width,
             height=height,
             bg_color=str(preset["fallback_bg_color"]),
-            video_source=video_source,
+            video_sources=video_sources,
             audio_source=audio_source,
             audio_mode=audio_mode,
             ambient_type=ambient_type,
@@ -271,6 +445,50 @@ class AmbientVideoService:
         logger.info(f"Ambient video ready: {output_path}")
         return metadata
 
+    def _resolve_multiple_video_sources(
+        self,
+        ambient_type: str,
+        keywords,
+        fallback_video_paths,
+        orientation: str,
+        source_mode: str,
+        count: int = 5,
+    ) -> List[str]:
+        """Resolves multiple video sources for a more diverse long-form video."""
+        sources = []
+        if os.getenv("AMBIENT_OFFLINE") == "1":
+            logger.info("AMBIENT_OFFLINE=1, skipping remote video lookup.")
+        else:
+            if keywords:
+                try:
+                    # Try Pexels multi
+                    sources = self.pexels.get_multiple_videos(keywords, count=count, orientation=orientation)
+                    if sources:
+                        logger.info(f"Found {len(sources)} unique clips from Pexels for {ambient_type}")
+                        return sources
+                except Exception as e:
+                    logger.warning(f"Pexels multi-fetch failed: {e}")
+
+                try:
+                    # Try Pixabay multi
+                    sources = self.pixabay.get_multiple_videos(keywords, count=count, orientation=orientation)
+                    if sources:
+                        logger.info(f"Found {len(sources)} unique clips from Pixabay for {ambient_type}")
+                        return sources
+                except Exception as e:
+                    logger.warning(f"Pixabay multi-fetch failed: {e}")
+
+        if source_mode == "api" and not sources:
+            return []
+
+        # Try fallback local files
+        for rel_path in fallback_video_paths or []:
+            abs_path = os.path.join(self.project_root, str(rel_path))
+            if os.path.exists(abs_path):
+                sources.append(abs_path)
+        
+        return sources
+
     def _resolve_video_source(
         self,
         ambient_type: str,
@@ -279,39 +497,9 @@ class AmbientVideoService:
         orientation: str,
         source_mode: str,
     ) -> Optional[str]:
-        if os.getenv("AMBIENT_OFFLINE") == "1":
-            logger.info("AMBIENT_OFFLINE=1, skipping remote video lookup.")
-        else:
-            if keywords:
-                try:
-                    video = self.pexels.get_video(keywords, orientation=orientation)
-                    if video and self._is_valid_ambient_video(video, ambient_type):
-                        return video
-                    if video:
-                        logger.warning(f"Rejected non-matching ambient clip (Pexels): {video}")
-                except Exception as e:
-                    logger.warning(f"Pexels ambient fetch failed: {e}")
-
-                try:
-                    video = self.pixabay.get_video(keywords, orientation=orientation)
-                    if video and self._is_valid_ambient_video(video, ambient_type):
-                        return video
-                    if video:
-                        logger.warning(f"Rejected non-matching ambient clip (Pixabay): {video}")
-                except Exception as e:
-                    logger.warning(f"Pixabay ambient fetch failed: {e}")
-
-        if source_mode == "api":
-            return None
-
-        for rel_path in fallback_video_paths or []:
-            abs_path = os.path.join(self.project_root, str(rel_path))
-            if os.path.exists(abs_path):
-                logger.info(f"Using local fallback ambient video: {abs_path}")
-                return abs_path
-
-        logger.warning("Ambient video source not found, using color background fallback")
-        return None
+        """Original single source method, now uses the multi-source version under the hood."""
+        sources = self._resolve_multiple_video_sources(ambient_type, keywords, fallback_video_paths, orientation, source_mode, count=1)
+        return sources[0] if sources else None
 
     def _resolve_audio_source(
         self,
@@ -349,28 +537,24 @@ class AmbientVideoService:
         width: int,
         height: int,
         bg_color: str,
-        video_source: Optional[str],
+        video_sources: List[str],
         audio_source: Optional[str],
         audio_mode: str,
         ambient_type: str,
     ) -> bool:
-        # Fast path: if both streams are file-based, remux/copy video first for much faster long exports.
-        if (
-            video_source
-            and audio_source
-            and audio_mode == "file"
-            and os.path.exists(video_source)
-            and os.path.exists(audio_source)
-        ):
-            if self._try_fast_mux_render(output_path, duration_seconds, video_source, audio_source):
-                return True
-
         input_args = []
-        video_input_idx = 0
-        audio_input_idx = 1
-
-        if video_source and os.path.exists(video_source):
-            input_args.extend(["-stream_loop", "-1", "-i", video_source])
+        
+        # 1. Handle Multiple Video Inputs
+        if video_sources:
+            # Create a concat file for ffmpeg
+            concat_path = os.path.join(os.path.dirname(output_path), "concat_list.txt")
+            with open(concat_path, "w", encoding="utf-8") as f:
+                for vs in video_sources:
+                    if os.path.exists(vs):
+                        f.write(f"file '{vs}'\n")
+            
+            # Use concat demuxer with looping
+            input_args.extend(["-f", "concat", "-safe", "0", "-stream_loop", "-1", "-i", concat_path])
         else:
             fallback_lavfi = self._fallback_video_lavfi(
                 ambient_type=ambient_type,
@@ -378,81 +562,43 @@ class AmbientVideoService:
                 height=height,
                 bg_color=bg_color,
             )
-            input_args.extend(
-                [
-                    "-f",
-                    "lavfi",
-                    "-i",
-                    fallback_lavfi,
-                ]
-            )
+            input_args.extend(["-f", "lavfi", "-i", fallback_lavfi])
 
+        # 2. Handle Audio
         if audio_mode == "file" and audio_source and os.path.exists(audio_source):
             input_args.extend(["-stream_loop", "-1", "-i", audio_source])
         elif audio_mode == "noise" and audio_source:
-            input_args.extend(
-                [
-                    "-f",
-                    "lavfi",
-                    "-i",
-                    f"anoisesrc=color={audio_source}:sample_rate=44100:amplitude=0.08",
-                ]
-            )
+            input_args.extend(["-f", "lavfi", "-i", f"anoisesrc=color={audio_source}:sample_rate=44100:amplitude=0.08"])
         else:
-            input_args.extend(
-                [
-                    "-f",
-                    "lavfi",
-                    "-i",
-                    "anullsrc=channel_layout=stereo:sample_rate=44100",
-                ]
-            )
+            input_args.extend(["-f", "lavfi", "-i", "anullsrc=channel_layout=stereo:sample_rate=44100"])
 
         filter_complex = (
-            f"[{video_input_idx}:v]fps=15,"
+            "[0:v]fps=15,setsar=1,"
             f"scale=w={width}:h={height}:force_original_aspect_ratio=increase,"
-            f"crop={width}:{height},setsar=1,format=yuv420p[vout];"
-            f"[{audio_input_idx}:a]atrim=duration={duration_seconds},"
+            f"crop={width}:{height},format=yuv420p[vout];"
+            f"[1:a]atrim=duration={duration_seconds},"
             "asetpts=PTS-STARTPTS,aformat=sample_fmts=fltp:channel_layouts=stereo,volume=1.0[aout]"
         )
 
         cmd = [
-            "ffmpeg",
-            "-y",
-            "-v",
-            "error",
+            "ffmpeg", "-y", "-v", "error",
             *input_args,
-            "-filter_complex",
-            filter_complex,
-            "-map",
-            "[vout]",
-            "-map",
-            "[aout]",
-            "-t",
-            str(duration_seconds),
-            "-c:v",
-            "libx264",
-            "-preset",
-            "ultrafast",
-            "-crf",
-            "28",
-            "-c:a",
-            "aac",
-            "-b:a",
-            "128k",
-            "-pix_fmt",
-            "yuv420p",
-            output_path,
+            "-filter_complex", filter_complex,
+            "-map", "[vout]", "-map", "[aout]",
+            "-t", str(duration_seconds),
+            "-c:v", "libx264", "-preset", "ultrafast", "-crf", "28",
+            "-c:a", "aac", "-b:a", "128k", "-pix_fmt", "yuv420p",
+            output_path
         ]
 
         try:
             result = subprocess.run(cmd, capture_output=True, text=True)
             if result.returncode != 0:
-                logger.error(f"Ambient render failed: {result.stderr[:500]}")
+                logger.error(f"Render failed: {result.stderr}")
                 return False
             return True
         except Exception as e:
-            logger.error(f"Ambient render crashed: {e}")
+            logger.error(f"Render crashed: {e}")
             return False
 
     def _fallback_video_lavfi(self, ambient_type: str, width: int, height: int, bg_color: str) -> str:

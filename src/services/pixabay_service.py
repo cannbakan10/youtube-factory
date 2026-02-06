@@ -57,6 +57,61 @@ class PixabayService:
         logger.error(f"All Pixabay search attempts failed for: {keywords}")
         return None
 
+    def get_multiple_videos(self, query, count=5, orientation="portrait"):
+        """Fetches multiple videos from Pixabay."""
+        if not self.api_key:
+            return []
+
+        keywords = query if isinstance(query, list) else query.split()
+        search_query = " ".join(keywords) if keywords else "cinematic"
+        if orientation == "portrait":
+            search_query += " vertical"
+        else:
+            search_query += " landscape"
+
+        params = {
+            "key": self.api_key,
+            "q": search_query[:95],
+            "video_type": "film",
+            "per_page": 20,
+            "safesearch": "true"
+        }
+
+        try:
+            APIRateLimiters.pixabay.wait()
+            response = requests.get(self.video_url, params=params, timeout=REQUEST_TIMEOUT)
+            response.raise_for_status()
+            data = response.json()
+            
+            hits = data.get('hits', [])
+            if not hits:
+                return []
+
+            import random
+            random.shuffle(hits)
+            
+            downloaded_paths = []
+            for hit in hits[:count]:
+                videos = hit.get('videos', {})
+                best_video = videos.get('large') or videos.get('medium')
+                if not best_video or not best_video.get('url'): continue
+                
+                video_url = best_video['url']
+                filename = f"pixabay_{uuid.uuid4()}.mp4"
+                filepath = os.path.join(self.cache_dir, filename)
+                
+                try:
+                    self._download_file(video_url, filepath)
+                    downloaded_paths.append(filepath)
+                except Exception as de:
+                    logger.warning(f"Failed to download multi-clip from Pixabay: {de}")
+                    
+            return downloaded_paths
+
+        except Exception as e:
+            logger.warning(f"Pixabay multi-fetch failed: {e}")
+            return []
+
     @retry_with_backoff(max_retries=2, base_delay=2.0, exceptions=(requests.RequestException,))
     def _search_and_download_video(self, query, orientation):
         """Search and download video with retry support."""

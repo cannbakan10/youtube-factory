@@ -54,6 +54,53 @@ class PexelsService:
         logger.error(f"All Pexels search attempts failed for: {keywords}")
         return None
 
+    def get_multiple_videos(self, query, count=5, orientation="portrait"):
+        """Fetches multiple videos from Pexels for better variety in long productions."""
+        if not self.api_key:
+            return []
+
+        keywords = query if isinstance(query, list) else query.split()
+        search_query = " ".join(keywords) if keywords else "cinematic"
+        
+        headers = {"Authorization": self.api_key}
+        params = {"query": search_query, "per_page": 20, "orientation": orientation}
+
+        try:
+            APIRateLimiters.pexels.wait()
+            response = requests.get(self.base_url, headers=headers, params=params, timeout=REQUEST_TIMEOUT)
+            response.raise_for_status()
+            data = response.json()
+            
+            videos_list = data.get('videos', [])
+            if not videos_list:
+                return []
+
+            import random
+            random.shuffle(videos_list)
+            
+            downloaded_paths = []
+            for video_data in videos_list[:count]:
+                video_files = video_data.get('video_files', [])
+                if not video_files: continue
+                
+                sorted_files = sorted(video_files, key=lambda x: x.get('width', 0) or 0, reverse=True)
+                video_url = sorted_files[0]['link']
+                
+                filename = f"pexels_{uuid.uuid4()}.mp4"
+                filepath = os.path.join(self.cache_dir, filename)
+                
+                try:
+                    self._download_file(video_url, filepath)
+                    downloaded_paths.append(filepath)
+                except Exception as de:
+                    logger.warning(f"Failed to download multi-clip from Pexels: {de}")
+                    
+            return downloaded_paths
+
+        except Exception as e:
+            logger.warning(f"Pexels multi-fetch failed: {e}")
+            return []
+
     @retry_with_backoff(max_retries=2, base_delay=2.0, exceptions=(requests.RequestException,))
     def _search_and_download(self, query, orientation):
         """Search and download with retry support."""
