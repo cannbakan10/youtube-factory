@@ -187,6 +187,10 @@ class ViralAnalyzer:
     @retry_with_backoff(max_retries=2, base_delay=2.0)
     def _search_youtube(self, query: str, region: str, max_results: int) -> List[ViralVideo]:
         """Search YouTube for Shorts."""
+        if not self.youtube:
+            logger.warning("YouTube API client not initialized. Cannot fetch viral videos.")
+            return []
+            
         logger.info(f"Searching YouTube: '{query}' in {region}")
 
         # Search for videos

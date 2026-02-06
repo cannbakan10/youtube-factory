@@ -429,8 +429,16 @@ Examples:
 
     # Viral Remix Mode
     if args.viral_remix:
+        # Strict health check for viral mode
+        if not os.getenv("YOUTUBE_API_KEY"):
+            logger.error("❌ YOUTUBE_API_KEY is missing from environment secrets. Viral Remix requires this.")
+            sys.exit(1)
+        if not os.getenv("GEMINI_API_KEY"):
+            logger.error("❌ GEMINI_API_KEY is missing. Required for trend analysis.")
+            sys.exit(1)
+
         if not factory.viral_analyzer:
-            logger.error("ViralAnalyzer is unavailable. Check YOUTUBE_API_KEY or GEMINI_API_KEY.")
+            logger.error("ViralAnalyzer is unavailable. Check API keys.")
             sys.exit(1)
 
         # Auto-selection if upload is True but no index provided
@@ -439,12 +447,16 @@ Examples:
         category = args.viral_remix if args.viral_remix in VIRAL_CATEGORIES else "facts"
         logger.info(f"🧪 VIRAL REMIX: Scanning '{category}' in {args.region}...")
 
-        remix_candidates = factory.viral_analyzer.get_remix_candidates(
-            category=category,
-            region=args.region,
-            max_results=12
-        )
-        factory.viral_analyzer.print_remix_candidates(remix_candidates)
+        try:
+            remix_candidates = factory.viral_analyzer.get_remix_candidates(
+                category=category,
+                region=args.region,
+                max_results=12
+            )
+            factory.viral_analyzer.print_remix_candidates(remix_candidates)
+        except Exception as e:
+            logger.error(f"Failed to fetch remix candidates: {e}")
+            remix_candidates = []
 
         if args.save_remix and remix_candidates:
             project_root = os.path.dirname(os.path.abspath(__file__))
@@ -483,8 +495,13 @@ Examples:
 
     # Viral Analysis Mode
     if args.viral:
+        # Strict health check for viral mode
+        if not os.getenv("YOUTUBE_API_KEY"):
+            logger.error("❌ YOUTUBE_API_KEY is missing from environment secrets. Viral Analysis requires this.")
+            sys.exit(1)
+
         if not factory.viral_analyzer:
-            logger.error("ViralAnalyzer is unavailable. Check YOUTUBE_API_KEY or GEMINI_API_KEY.")
+            logger.error("ViralAnalyzer is unavailable. Check API keys.")
             sys.exit(1)
 
         category = args.viral if args.viral in VIRAL_CATEGORIES else "facts"

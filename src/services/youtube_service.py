@@ -15,15 +15,24 @@ class YouTubeService:
         self.token_file = os.path.join(self.project_root, "token.pickle")
         print(f"   🔍 [YouTube]: Checking client_secrets at: {self.client_secrets_file}")
         print(f"   🔍 [YouTube]: Checking token at: {self.token_file}")
+        
+        self.allow_interactive = not (os.getenv("GITHUB_ACTIONS") or os.getenv("CI"))
         self.credentials = self._authenticate()
         self.youtube = build("youtube", "v3", credentials=self.credentials) if self.credentials else None
+        
+        if not self.youtube:
+            print("   ⚠️ [YouTube]: Service initialized WITHOUT upload capability (No valid credentials).")
 
     def _authenticate(self):
         creds = None
         if os.path.exists(self.token_file):
             print(f"   🔑 [YouTube]: Loading credentials from {self.token_file}")
-            with open(self.token_file, "rb") as token:
-                creds = pickle.load(token)
+            try:
+                with open(self.token_file, "rb") as token:
+                    creds = pickle.load(token)
+            except Exception as e:
+                print(f"   ⚠️ [YouTube]: Failed to load token.pickle: {e}")
+                creds = None
         
         # If there are no (valid) credentials available
         if not creds or not creds.valid:
@@ -36,10 +45,9 @@ class YouTubeService:
                     creds = None
             
             if not creds:
-                if os.getenv("GITHUB_ACTIONS"):
-                    print("   ❌ [YouTube ERROR]: Valid 'token.pickle' not found in GitHub Actions environment.")
-                    print("      Authentication cannot be performed interactively in CI/CD.")
-                    print("      Please generate a fresh 'token.pickle' locally and update the GITHUB SECRET.")
+                if not self.allow_interactive:
+                    print("   ❌ [YouTube ERROR]: Valid 'token.pickle' not found or invalid in CI environment.")
+                    print("      Authentication cannot be performed interactively. Skipped.")
                     return None
                 else:
                     print("   🌐 [YouTube]: Starting local authentication flow...")
