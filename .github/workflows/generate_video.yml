@@ -110,8 +110,20 @@ jobs:
 
     - name: Set up Credentials
       run: |
-        echo "${{ secrets.CLIENT_SECRETS_JSON }}" > client_secrets.json
-        echo "${{ secrets.TOKEN_PICKLE_BASE64 }}" | base64 -d > token.pickle
+        if [ -n "${{ secrets.CLIENT_SECRETS_JSON }}" ]; then
+          echo "${{ secrets.CLIENT_SECRETS_JSON }}" > client_secrets.json
+          echo "✅ client_secrets.json created"
+        else
+          echo "⚠️ CLIENT_SECRETS_JSON secret is MISSING"
+        fi
+        
+        if [ -n "${{ secrets.TOKEN_PICKLE_BASE64 }}" ]; then
+          printf "%s" "${{ secrets.TOKEN_PICKLE_BASE64 }}" | base64 -d > token.pickle
+          echo "✅ token.pickle created"
+        else
+          echo "⚠️ TOKEN_PICKLE_BASE64 secret is MISSING"
+        fi
+        ls -l *.json *.pickle || true
       shell: bash
 
     - name: Run Factory

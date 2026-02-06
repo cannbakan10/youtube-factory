@@ -13,6 +13,8 @@ class YouTubeService:
         self.project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
         self.client_secrets_file = os.path.join(self.project_root, "client_secrets.json")
         self.token_file = os.path.join(self.project_root, "token.pickle")
+        print(f"   🔍 [YouTube]: Checking client_secrets at: {self.client_secrets_file}")
+        print(f"   🔍 [YouTube]: Checking token at: {self.token_file}")
         self.credentials = self._authenticate()
         self.youtube = build("youtube", "v3", credentials=self.credentials) if self.credentials else None
 
