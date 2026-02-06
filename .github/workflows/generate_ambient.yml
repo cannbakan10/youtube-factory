@@ -1,42 +1,49 @@
-name: Stream Global Horror Story Factory
+name: Stream Global Ambient Factory
 
 on:
   workflow_dispatch:
     inputs:
-      topic:
-        description: 'Korku Hikayesi Teması (Type "trend" for viral mystery)'
+      ambient_type:
+        description: 'Ambient Türü'
         required: true
-        default: 'trend'
-      langs:
-        description: 'Diller'
-        required: true
-        default: 'tr'
+        default: 'sleep'
         type: choice
         options:
-        - tr
+        - sleep
+        - fireplace
+        - rain
+        - ocean_sleep
+        - brown_noise
+        - white_noise
+      duration_minutes:
+        description: 'Süre (dakika)'
+        required: true
+        default: '60'
+      langs:
+        description: 'Dil'
+        required: true
+        default: 'en'
+        type: choice
+        options:
         - en
-        - en,tr
-      list_trends:
-        description: 'Sadece trendleri listele'
-        type: boolean
-        default: false
+        - tr
       video_type:
         description: 'Video Formatı'
         required: true
-        default: 'shorts'
+        default: 'long'
         type: choice
         options:
-        - shorts
         - long
+        - shorts
       upload:
         description: 'YouTube yükleme'
         type: boolean
-        default: true
+        default: false
 
 jobs:
-  generate-and-upload:
+  generate-ambient:
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout Code
       uses: actions/checkout@v3
@@ -63,7 +70,7 @@ jobs:
         echo "${{ secrets.TOKEN_PICKLE_BASE64 }}" | base64 -d > token.pickle
       shell: bash
 
-    - name: Run Horror Factory
+    - name: Run Ambient Factory
       env:
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -79,8 +86,9 @@ jobs:
           UPLOAD_FLAG="--upload"
         fi
 
-        if [[ "${{ github.event.inputs.list_trends }}" == "true" ]]; then
-          python main.py --list-trends
-        else
-          python main.py --topic "${{ github.event.inputs.topic }}" --langs "${{ github.event.inputs.langs }}" --mode horror --type "${{ github.event.inputs.video_type }}" $UPLOAD_FLAG
-        fi
+        python main.py \
+          --ambient "${{ github.event.inputs.ambient_type }}" \
+          --ambient-duration "${{ github.event.inputs.duration_minutes }}" \
+          --langs "${{ github.event.inputs.langs }}" \
+          --type "${{ github.event.inputs.video_type }}" \
+          $UPLOAD_FLAG

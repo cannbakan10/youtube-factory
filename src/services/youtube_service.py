@@ -14,7 +14,7 @@ class YouTubeService:
         self.client_secrets_file = os.path.join(self.project_root, "client_secrets.json")
         self.token_file = os.path.join(self.project_root, "token.pickle")
         self.credentials = self._authenticate()
-        self.youtube = build("youtube", "v3", credentials=self.credentials)
+        self.youtube = build("youtube", "v3", credentials=self.credentials) if self.credentials else None
 
     def _authenticate(self):
         creds = None
@@ -51,21 +51,30 @@ class YouTubeService:
                     pickle.dump(creds, token)
         return creds
 
-    def upload_video(self, file_path, title, description, tags=None):
+    def upload_video(self, file_path, title, description, tags=None, video_type="shorts"):
         """
         Uploads a video to YouTube with error handling for quota and limits.
         """
-        if not self.credentials:
+        if not self.credentials or not self.youtube:
             print("   ⚠️ [YouTube]: Upload skipped (No credentials).")
             return None
 
         print(f"🚀 [YouTube]: Starting upload for {title}...")
+
+        is_shorts = video_type == "shorts"
+        upload_title = f"{title} #Shorts" if is_shorts else title
+        upload_description = (
+            f"{description}\n\n#Shorts #Viral #Knowledge"
+            if is_shorts
+            else description
+        )
+        upload_tags = tags or (["shorts", "viral", "knowledge"] if is_shorts else ["longform", "ambient", "education"])
         
         body = {
             "snippet": {
-                "title": f"{title} #Shorts",
-                "description": f"{description}\n\n#Shorts #Viral #Knowledge",
-                "tags": tags or ["shorts", "viral", "knowledge"],
+                "title": upload_title,
+                "description": upload_description,
+                "tags": upload_tags,
                 "categoryId": "27" # Education
             },
             "status": {

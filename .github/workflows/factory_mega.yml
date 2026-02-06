@@ -1,0 +1,212 @@
+name: Stream Global Mega Factory
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Çalışma modu'
+        required: true
+        default: 'standard'
+        type: choice
+        options:
+        - standard
+        - horror
+        - ambient
+        - viral
+        - viral_remix
+        - list_trends
+      topic:
+        description: 'Konu (standard/horror için)'
+        required: false
+        default: 'trend'
+      langs:
+        description: 'Diller'
+        required: true
+        default: 'en'
+        type: choice
+        options:
+        - tr
+        - en
+        - en,tr
+      video_type:
+        description: 'Video Formatı'
+        required: true
+        default: 'shorts'
+        type: choice
+        options:
+        - shorts
+        - long
+      upload:
+        description: 'YouTube yükleme'
+        type: boolean
+        default: false
+      list_trends:
+        description: 'standard/horror modunda sadece trend listele'
+        type: boolean
+        default: false
+      bulk:
+        description: 'standard/horror modunda BULK üretim'
+        type: boolean
+        default: false
+      category:
+        description: 'viral/viral_remix kategorisi'
+        required: false
+        default: 'facts'
+        type: choice
+        options:
+        - facts
+        - science
+        - history
+        - psychology
+        - nature
+        - tech
+        - mystery
+        - lifestyle
+      region:
+        description: 'Bölge (US, TR, GB...)'
+        required: false
+        default: 'US'
+      produce:
+        description: 'viral modunda üretilecek sıra no (opsiyonel)'
+        required: false
+        default: ''
+      ambient_type:
+        description: 'ambient modu tipi'
+        required: false
+        default: 'sleep'
+        type: choice
+        options:
+        - sleep
+        - fireplace
+        - rain
+        - ocean_sleep
+        - brown_noise
+        - white_noise
+      ambient_duration:
+        description: 'ambient süre (dakika)'
+        required: false
+        default: '60'
+      save_remix:
+        description: 'viral_remix listesini JSON kaydet'
+        type: boolean
+        default: true
+      produce_remix:
+        description: 'viral_remix modunda üretilecek sıra no (opsiyonel)'
+        required: false
+        default: ''
+      remix_topic:
+        description: 'viral_remix için manuel topic override'
+        required: false
+        default: ''
+
+jobs:
+  mega-factory:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install FFmpeg
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y ffmpeg
+
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Set up Credentials
+      if: ${{ github.event.inputs.upload == 'true' }}
+      run: |
+        echo "${{ secrets.CLIENT_SECRETS_JSON }}" > client_secrets.json
+        echo "${{ secrets.TOKEN_PICKLE_BASE64 }}" | base64 -d > token.pickle
+      shell: bash
+
+    - name: Run Mega Factory
+      env:
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+        PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+        TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+        ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+        YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        PYTHONUNBUFFERED: 1
+      run: |
+        MODE="${{ github.event.inputs.mode }}"
+        CMD=(python main.py)
+
+        case "$MODE" in
+          standard)
+            if [[ "${{ github.event.inputs.list_trends }}" == "true" ]]; then
+              CMD+=(--list-trends)
+            else
+              CMD+=(--topic "${{ github.event.inputs.topic }}")
+              if [[ "${{ github.event.inputs.bulk }}" == "true" ]]; then
+                CMD+=(--bulk)
+              fi
+            fi
+            ;;
+          horror)
+            if [[ "${{ github.event.inputs.list_trends }}" == "true" ]]; then
+              CMD+=(--list-trends)
+            else
+              CMD+=(--topic "${{ github.event.inputs.topic }}" --mode horror)
+              if [[ "${{ github.event.inputs.bulk }}" == "true" ]]; then
+                CMD+=(--bulk)
+              fi
+            fi
+            ;;
+          ambient)
+            CMD+=(
+              --ambient "${{ github.event.inputs.ambient_type }}"
+              --ambient-duration "${{ github.event.inputs.ambient_duration }}"
+            )
+            ;;
+          viral)
+            CMD+=(--viral "${{ github.event.inputs.category }}")
+            if [[ -n "${{ github.event.inputs.produce }}" ]]; then
+              CMD+=(--produce "${{ github.event.inputs.produce }}")
+            fi
+            ;;
+          viral_remix)
+            CMD+=(--viral-remix "${{ github.event.inputs.category }}")
+            if [[ "${{ github.event.inputs.save_remix }}" == "true" ]]; then
+              CMD+=(--save-remix)
+            fi
+            if [[ -n "${{ github.event.inputs.produce_remix }}" ]]; then
+              CMD+=(--produce-remix "${{ github.event.inputs.produce_remix }}")
+            fi
+            if [[ -n "${{ github.event.inputs.remix_topic }}" ]]; then
+              CMD+=(--remix-topic "${{ github.event.inputs.remix_topic }}")
+            fi
+            ;;
+          list_trends)
+            CMD+=(--list-trends)
+            ;;
+          *)
+            echo "Unknown mode: $MODE"
+            exit 1
+            ;;
+        esac
+
+        if [[ "$MODE" != "list_trends" ]]; then
+          CMD+=(--langs "${{ github.event.inputs.langs }}" --type "${{ github.event.inputs.video_type }}")
+        fi
+        CMD+=(--region "${{ github.event.inputs.region }}")
+
+        if [[ "${{ github.event.inputs.upload }}" == "true" ]]; then
+          CMD+=(--upload)
+        fi
+
+        printf 'Running command:'
+        printf ' %q' "${CMD[@]}"
+        echo
+        "${CMD[@]}"

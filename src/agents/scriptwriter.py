@@ -1,10 +1,16 @@
 import os
 import json
+import re
 from typing import List, Optional
 from pydantic import BaseModel
 from google import genai
 from google.genai import types
 from openai import OpenAI
+from src.utils.logger import get_logger
+from src.utils.retry import retry_with_backoff, APIRateLimiters
+
+logger = get_logger(__name__)
+
 
 class SceneBlueprint(BaseModel):
     text: str
@@ -17,6 +23,7 @@ class SceneBlueprint(BaseModel):
     duration: float = 0.0
     is_trailer: bool = False
 
+
 class VideoBlueprint(BaseModel):
     video_id: str
     metadata: dict
@@ -24,19 +31,20 @@ class VideoBlueprint(BaseModel):
     music_path: str = ""
     scenes: List[SceneBlueprint]
 
+
 class ScriptWriter:
     def __init__(self):
         self.gemini_key = os.getenv("GEMINI_API_KEY")
         self.openai_key = os.getenv("OPENAI_API_KEY")
-        self.client = genai.Client(api_key=self.gemini_key)
+        self.client = genai.Client(api_key=self.gemini_key) if self.gemini_key else None
         self.oa_client = OpenAI(api_key=self.openai_key) if self.openai_key else None
         self.model = "gemini-2.0-flash"
         self.oa_model = "gpt-4o-mini"
 
     def _clean_text(self, text, language="en"):
         """Removes AI trash, stage directions, and common unwanted markers."""
-        import re
-        if not text: return ""
+        if not text:
+            return ""
         # Remove markdown headers like ### or ##
         text = re.sub(r'#+\s*', '', text)
         # Remove stage directions like [Enerjik giriş], (15 seconds), [INTRO]
@@ -44,50 +52,57 @@ class ScriptWriter:
         text = re.sub(r'\(.*?\)', '', text)
         # Remove timestamps like 0:15, 01:20
         text = re.sub(r'\d{1,2}:\d{2}', '', text)
-        
+
         # --- PRO FILTER: Remove intro/logo stage directions that sometimes leak ---
         text = re.sub(r'(?i)kısa müzik|kanal logosu|introdan sonra|fragman|hook|abone ol|like atın', '', text)
-        
+
         # Remove meta-commentary
         text = re.sub(r'(?i)(\d+)\s*(dakika|kelime|dk|min|word).*?(video|anlatım|script|hazır).*?(yap|yaz|oluştur|hazır).*?(cağız|ceğiz|acağız|eceğiz|adım|dım|dık|dik)?', '', text)
         text = re.sub(r'(?i)(bu|için|toplam|yaklaşık)\s+\d+\s*(dakika|kelime|dk|min|word).*?(video|anlatım|script)', '', text)
         text = re.sub(r'(?i)(işte|burada|aşağıda)\s+\d+\s*(dakika|kelime).*?(metin|script)', '', text)
-        
+
         # Remove common prefixes
         if language == "tr":
             prefixes = ["ANLATICI:", "SAHNE:", "GİRİŞ:", "SONUÇ:", "NARRATOR:", "SCENE:", "BAŞLIK:"]
         else:
             prefixes = ["NARRATOR:", "SCENE:", "INTRO:", "OUTRO:", "CHAPTER:", "TITLE:"]
-            
+
         for p in prefixes:
             text = text.replace(p, "")
-            
+
         # Remove bold/italic markers
         text = text.replace("**", "").replace("__", "").replace("*", "").replace("_", "")
-        
+
         # Final cleanup for punctuation and spaces
         text = re.sub(r'\s+', ' ', text)
         return text.strip()
 
     def _extract_json(self, text):
         """Resilient JSON extraction from AI response (handles markdown blocks)."""
-        import re
-        if not text: return None
+        if not text:
+            return None
         try:
             # Try direct parse
             return json.loads(text.strip())
-        except:
-            # Try to find json block
-            match = re.search(r'```json\s*(.*?)\s*```', text, re.DOTALL)
-            if match:
-                try: return json.loads(match.group(1))
-                except: pass
-            
-            # Try to find anything between { and }
-            match = re.search(r'(\{.*\})', text, re.DOTALL)
-            if match:
-                try: return json.loads(match.group(1))
-                except: pass
+        except Exception:
+            pass
+
+        # Try to find json block
+        match = re.search(r'```json\s*(.*?)\s*```', text, re.DOTALL)
+        if match:
+            try:
+                return json.loads(match.group(1))
+            except Exception:
+                pass
+
+        # Try to find anything between { and }
+        match = re.search(r'(\{.*\})', text, re.DOTALL)
+        if match:
+            try:
+                return json.loads(match.group(1))
+            except Exception:
+                pass
+
         return None
 
     def generate_narrative(self, research_data, topic, language="en", mode="info", video_type="shorts"):
@@ -96,12 +111,33 @@ class ScriptWriter:
         """
         lang_name = "English" if language == "en" else "Turkish"
         is_long = video_type == "long"
-        
-        import re
+
         duration_match = re.search(r'(\d+)\s*(dakika|minute|dk|min)', topic.lower())
         target_minutes = int(duration_match.group(1)) if duration_match else (8 if is_long else 1)
         target_word_count = target_minutes * 150
-        
+
+        prompt = self._build_narrative_prompt(
+            research_data, topic, language, lang_name, mode, is_long,
+            target_minutes, target_word_count
+        )
+
+        try:
+            narrative = self._generate_narrative_gemini(prompt, language)
+            return narrative
+        except Exception as e:
+            logger.warning(f"Gemini narrative generation failed: {e}")
+            if not self.oa_client:
+                logger.error("OpenAI client not configured. Cannot generate narrative.")
+                return None
+            try:
+                narrative = self._generate_narrative_openai(prompt, language)
+                return narrative
+            except Exception as oe:
+                logger.error(f"OpenAI narrative generation also failed: {oe}")
+                return None
+
+    def _build_narrative_prompt(self, research_data, topic, language, lang_name, mode, is_long, target_minutes, target_word_count):
+        """Build the narrative prompt based on mode and video type."""
         if is_long:
             if language == "tr":
                 structure_rule = "SENTENCE STRUCTURE (Turkish): Standard KURALLI sentences only."
@@ -118,17 +154,17 @@ class ScriptWriter:
                   3. USE natural transitions.
                 """
 
-            prompt = f"""
+            return f"""
             Using the provided research data, write a DEEP and ENGAGING documentary-style narration script.
             Everything MUST be in {lang_name}.
-            
+
             RESEARCH DATA: {research_data}
             TOPIC: {topic}
-            
+
             PRODUCTION SPECIFICATIONS:
             - TARGET PACING: {target_minutes} minutes
             - WORD COUNT TARGET: {target_word_count} words
-            
+
             STRUCTURE & STYLE RULES:
             - 🎞️ TRAILER/HOOK (FIRST 15 SECONDS): Start with a fast-paced, gripping summary.
             - CONTINUOUS NARRATIVE: Avoid numbered lists.
@@ -139,10 +175,10 @@ class ScriptWriter:
             """
         elif mode == "horror":
             hook_start = "Bunun gerçekten yaşandığını biliyor muydunuz?" if language == "tr" else "Did you know this actually happened?"
-            prompt = f"""
+            return f"""
             Using the provided research about REAL terrifying events, write a 60-second narration.
             Everything MUST be in {lang_name}.
-            
+
             STORYTELLING RULES:
             - Start with: "{hook_start}"
             - NO INTRO: Start DIRECTLY with the story.
@@ -151,12 +187,12 @@ class ScriptWriter:
             """
         else:
             climax_lead_in = "Gelelim en çarpıcı noktaya..." if language == "tr" else "Now for the most striking part..."
-            prompt = f"""
+            return f"""
             Using the following research data, write an exciting narration script for YouTube Shorts.
             Entirely in {lang_name}.
-            
+
             TOPIC: {topic}
-            
+
             STRUCTURE & PACING RULES:
             - 🎞️ ACT 1: FRAGMAN / HOOK (MANDATORY): Start with a unique hook directly related to "{topic}".
             - 🎬 ACT 2: INTRO TRANSITION: Naturally lead into a short pause for the branding intro.
@@ -166,14 +202,28 @@ class ScriptWriter:
             - Language: STRICTLY {lang_name} only.
             - ⚠️ WARNING: DO NOT include meta-labels like [Kısa Müzik] or [Logo].
             """
-        
-        try:
-            response = self.client.models.generate_content(model=self.model, contents=prompt)
-            return self._clean_text(response.text.strip(), language=language)
-        except Exception as e:
-            if not self.oa_client: return None
-            oa_response = self.oa_client.chat.completions.create(model=self.oa_model, messages=[{"role": "user", "content": prompt}])
-            return self._clean_text(oa_response.choices[0].message.content.strip(), language=language)
+
+    @retry_with_backoff(max_retries=2, base_delay=2.0)
+    def _generate_narrative_gemini(self, prompt, language):
+        """Generate narrative using Gemini with retry support."""
+        if not self.client:
+            raise ValueError("Gemini client not configured")
+        APIRateLimiters.gemini.wait()
+        logger.info("Generating narrative with Gemini...")
+
+        response = self.client.models.generate_content(model=self.model, contents=prompt)
+        return self._clean_text(response.text.strip(), language=language)
+
+    @retry_with_backoff(max_retries=2, base_delay=2.0)
+    def _generate_narrative_openai(self, prompt, language):
+        """Generate narrative using OpenAI with retry support."""
+        logger.info("Generating narrative with OpenAI fallback...")
+
+        oa_response = self.oa_client.chat.completions.create(
+            model=self.oa_model,
+            messages=[{"role": "user", "content": prompt}]
+        )
+        return self._clean_text(oa_response.choices[0].message.content.strip(), language=language)
 
     def generate_blueprint(self, narrative, topic, language="en", mode="info", video_type="shorts") -> VideoBlueprint:
         """
@@ -183,28 +233,28 @@ class ScriptWriter:
         is_long = video_type == "long"
         scene_duration = "6.0 - 10.0 seconds" if is_long else "3.5 - 5.0 seconds"
         orientation = "LANDSCAPE (16:9)" if is_long else "PORTRAIT (9:16)"
-        
+
         prompt = f"""
         Using the provided {lang_name} narration, create a video production blueprint for a {orientation} video.
-        
+
         STYLE: Documentary
         FORMAT: {video_type.upper()}
         NARRATION: {narrative}
         TOPIC: {topic}
-        
+
         REQUIREMENTS:
         1. Break into scenes (each {scene_duration} long).
         2. CLEAN TEXT: ONLY include the EXACT sentence to be spoken. No brackets, no notes.
-        
+
         3. VISUAL INTELLIGENCE (KEYWORDS):
            - You MUST generate 3-5 specific visual keywords in ENGLISH for each scene.
            - STRIKE RULE: You MUST include the main TOPIC ("{topic}") in every scene's keyword list to maintain context.
-           - BE SPECIFIC: If the topic is Japan, use "Japan Tokyo street" not just "City street". 
+           - BE SPECIFIC: If the topic is Japan, use "Japan Tokyo street" not just "City street".
            - Avoid abstract terms. Use concrete physical objects and actions.
-           
+
         4. SFX: English prompts for sound effects.
         5. METADATA: SEO-friendly Title, Description, Tags in {lang_name}.
-        
+
         JSON OUTPUT FORMAT:
         {{
           "video_id": "unique_id",
@@ -221,22 +271,54 @@ class ScriptWriter:
           ]
         }}
         """
-        
+
         try:
-            response = self.client.models.generate_content(
-                model=self.model, contents=prompt, config={'response_mime_type': 'application/json'}
-            )
-            data = self._extract_json(response.text)
+            data = self._generate_blueprint_gemini(prompt)
         except Exception as e:
-            if not self.oa_client: return None
-            oa_response = self.oa_client.chat.completions.create(
-                model=self.oa_model, messages=[{"role": "user", "content": prompt}], response_format={ "type": "json_object" }
-            )
-            data = self._extract_json(oa_response.choices[0].message.content)
-            
+            logger.warning(f"Gemini blueprint generation failed: {e}")
+            if not self.oa_client:
+                logger.error("OpenAI client not configured. Cannot generate blueprint.")
+                return None
+            try:
+                data = self._generate_blueprint_openai(prompt)
+            except Exception as oe:
+                logger.error(f"OpenAI blueprint generation also failed: {oe}")
+                return None
+
         if data:
             for i, scene in enumerate(data.get('scenes', [])):
                 scene['text'] = self._clean_text(scene.get('text', ''), language=language)
-                if i == 0: scene['is_trailer'] = True
+                if i == 0:
+                    scene['is_trailer'] = True
+            logger.info(f"Blueprint generated with {len(data.get('scenes', []))} scenes")
             return VideoBlueprint(**data)
+
+        logger.error("Failed to extract valid JSON from blueprint response")
         return None
+
+    @retry_with_backoff(max_retries=2, base_delay=2.0)
+    def _generate_blueprint_gemini(self, prompt):
+        """Generate blueprint using Gemini with retry support."""
+        if not self.client:
+            raise ValueError("Gemini client not configured")
+        APIRateLimiters.gemini.wait()
+        logger.info("Generating blueprint with Gemini...")
+
+        response = self.client.models.generate_content(
+            model=self.model,
+            contents=prompt,
+            config={'response_mime_type': 'application/json'}
+        )
+        return self._extract_json(response.text)
+
+    @retry_with_backoff(max_retries=2, base_delay=2.0)
+    def _generate_blueprint_openai(self, prompt):
+        """Generate blueprint using OpenAI with retry support."""
+        logger.info("Generating blueprint with OpenAI fallback...")
+
+        oa_response = self.oa_client.chat.completions.create(
+            model=self.oa_model,
+            messages=[{"role": "user", "content": prompt}],
+            response_format={"type": "json_object"}
+        )
+        return self._extract_json(oa_response.choices[0].message.content)

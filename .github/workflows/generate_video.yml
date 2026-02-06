@@ -32,6 +32,10 @@ on:
         options:
         - shorts
         - long
+      upload:
+        description: 'YouTube yükleme'
+        type: boolean
+        default: true
 
 jobs:
   generate-and-upload:
@@ -57,6 +61,7 @@ jobs:
         pip install -r requirements.txt
 
     - name: Set up Credentials
+      if: ${{ github.event.inputs.upload == 'true' }}
       run: |
         echo "${{ secrets.CLIENT_SECRETS_JSON }}" > client_secrets.json
         echo "${{ secrets.TOKEN_PICKLE_BASE64 }}" | base64 -d > token.pickle
@@ -70,15 +75,20 @@ jobs:
         PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
         TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
         ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+        YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         PYTHONUNBUFFERED: 1
       run: |
         BULK_FLAG=""
+        UPLOAD_FLAG=""
         if [[ "${{ github.event.inputs.bulk }}" == "true" ]]; then
           BULK_FLAG="--bulk"
+        fi
+        if [[ "${{ github.event.inputs.upload }}" == "true" ]]; then
+          UPLOAD_FLAG="--upload"
         fi
 
         if [[ "${{ github.event.inputs.list_trends }}" == "true" ]]; then
           python main.py --list-trends
         else
-          python main.py --topic "${{ github.event.inputs.topic }}" --langs "${{ github.event.inputs.langs }}" --type "${{ github.event.inputs.video_type }}" --upload $BULK_FLAG
+          python main.py --topic "${{ github.event.inputs.topic }}" --langs "${{ github.event.inputs.langs }}" --type "${{ github.event.inputs.video_type }}" $UPLOAD_FLAG $BULK_FLAG
         fi
