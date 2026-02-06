@@ -32,6 +32,38 @@ on:
         options:
         - shorts
         - long
+      mode:
+        description: 'İçerik Modu (Standart İçerikler)'
+        required: true
+        default: 'info'
+        type: choice
+        options:
+        - info
+        - horror
+      workflow_mode:
+        description: 'Workflow Modu'
+        required: true
+        default: 'standard'
+        type: choice
+        options:
+        - standard
+        - ambient
+      ambient_type:
+        description: 'Ambient Türü (Sadece Ambient Modu)'
+        required: false
+        default: 'fireplace'
+        type: choice
+        options:
+        - fireplace
+        - sleep
+        - rain
+        - ocean_sleep
+        - white_noise
+        - brown_noise
+      ambient_duration:
+        description: 'Ambient Süresi (Dakika)'
+        required: false
+        default: '60'
       upload:
         description: 'YouTube yükleme'
         type: boolean
@@ -87,8 +119,12 @@ jobs:
           UPLOAD_FLAG="--upload"
         fi
 
-        if [[ "${{ github.event.inputs.list_trends }}" == "true" ]]; then
+        if [[ "${{ github.event.inputs.workflow_mode }}" == "ambient" ]]; then
+          echo "🎧 STARTING AMBIENT PRODUCTION: ${{ github.event.inputs.ambient_type }} (${{ github.event.inputs.ambient_duration }} min)"
+          python main.py --ambient "${{ github.event.inputs.ambient_type }}" --ambient-duration "${{ github.event.inputs.ambient_duration }}" --type "${{ github.event.inputs.video_type }}" $UPLOAD_FLAG
+        elif [[ "${{ github.event.inputs.list_trends }}" == "true" ]]; then
           python main.py --list-trends
         else
-          python main.py --topic "${{ github.event.inputs.topic }}" --langs "${{ github.event.inputs.langs }}" --type "${{ github.event.inputs.video_type }}" $UPLOAD_FLAG $BULK_FLAG
+          echo "🚀 STARTING STANDARD PRODUCTION: ${{ github.event.inputs.topic }} (Mode: ${{ github.event.inputs.mode }})"
+          python main.py --topic "${{ github.event.inputs.topic }}" --langs "${{ github.event.inputs.langs }}" --type "${{ github.event.inputs.video_type }}" --mode "${{ github.event.inputs.mode }}" $UPLOAD_FLAG $BULK_FLAG
         fi
