@@ -3,7 +3,7 @@ import os
 import subprocess
 import time
 import tempfile
-from typing import Dict, Optional, Tuple
+from typing import Dict, List, Optional, Tuple
 
 import numpy as np
 from PIL import Image
