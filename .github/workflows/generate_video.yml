@@ -33,13 +33,15 @@ on:
         - shorts
         - long
       mode:
-        description: 'İçerik Modu (Standart İçerikler)'
+        description: 'İçerik Modu'
         required: true
         default: 'info'
         type: choice
         options:
         - info
         - horror
+        - quiz
+        - reddit
       workflow_mode:
         description: 'Workflow Modu'
         required: true

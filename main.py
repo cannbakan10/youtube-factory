@@ -95,7 +95,8 @@ class YoutubeFactory:
         os.makedirs(cache_dir, exist_ok=True)
         os.makedirs(base_dir, exist_ok=True)
 
-        mode_title = "HORROR STORY MODE" if mode == "horror" else "INFO MODE"
+        mode_titles = {"horror": "HORROR STORY MODE", "quiz": "QUIZ MODE", "reddit": "REDDIT STORIES MODE"}
+        mode_title = mode_titles.get(mode, "INFO MODE")
         type_title = "LONG FORM" if video_type == "long" else "SHORTS"
         logger.info(f"FACTORY STARTING ({mode_title} - {type_title}): {topic}")
         logger.info("V8.7 - VIRAL ANALYZER EDITION")
@@ -195,6 +196,10 @@ class YoutubeFactory:
 
                     if mode == "horror":
                         theme_keywords = ["horror", "tension", "mystery"]
+                    elif mode == "quiz":
+                        theme_keywords = ["upbeat", "game", "fun", "quiz", "energetic"]
+                    elif mode == "reddit":
+                        theme_keywords = ["emotional", "lofi", "chill", "story"]
                     elif mode == "info":
                         # Further specialize based on topic keywords
                         topic_lower = topic.lower()
@@ -253,6 +258,16 @@ class YoutubeFactory:
                     desc = re.sub(r'(?i)shorts?', '', desc).strip()
                     tags = [re.sub(r'(?i)shorts?', '', str(t)).strip() for t in tags if t]
                     tags = [t for t in tags if t]  # Remove empty
+
+                # Ensure minimum 5 tags
+                if len(tags) < 5:
+                    topic_words = [w.strip() for w in topic.split() if len(w.strip()) > 2]
+                    fallback_tags = topic_words + [topic, lang]
+                    for ft in fallback_tags:
+                        if ft and ft not in tags:
+                            tags.append(ft)
+                        if len(tags) >= 5:
+                            break
 
                 # Save Metadata
                 meta_file = os.path.join(lang_dir, "metadata.json")
@@ -375,7 +390,7 @@ Examples:
     parser.add_argument("--topic", type=str, help="Video topic (use 'trend' for auto-discovery)")
     parser.add_argument("--langs", type=str, default="en", help="Languages (comma-separated): en,tr")
     parser.add_argument("--upload", action="store_true", help="Auto-upload to YouTube")
-    parser.add_argument("--mode", type=str, default="info", choices=["info", "horror"], help="Content mode")
+    parser.add_argument("--mode", type=str, default="info", choices=["info", "horror", "quiz", "reddit"], help="Content mode")
     parser.add_argument("--type", type=str, default="shorts", choices=["shorts", "long"], help="Video format")
     parser.add_argument("--ambient", type=str, choices=AMBIENT_TYPES, help="Generate long ambient videos")
     parser.add_argument("--ambient-duration", type=int, default=60, help="Ambient video duration in minutes")

@@ -97,11 +97,17 @@ class ViralAnalyzer:
         self.gemini_client = genai.Client(api_key=self.gemini_key) if self.gemini_key else None
         self.model = "gemini-2.0-flash"
 
-    def _extract_json(self, text: str) -> Optional[dict]:
+    def _extract_json(self, text: str):
         """Resilient JSON extraction from AI response."""
         if not text:
             return None
-            
+
+        # Try direct parse first (handles both objects and arrays)
+        try:
+            return json.loads(text.strip())
+        except Exception:
+            pass
+
         # Try to find json block
         match = re.search(r'```json\s*(.*?)\s*```', text, re.DOTALL)
         if match:
@@ -109,15 +115,23 @@ class ViralAnalyzer:
                 return json.loads(match.group(1))
             except Exception:
                 pass
-                
-        # Try to find anything between { and }
+
+        # Try to find anything between [ and ] (JSON array)
+        match = re.search(r'(\[.*\])', text, re.DOTALL)
+        if match:
+            try:
+                return json.loads(match.group(1))
+            except Exception:
+                pass
+
+        # Try to find anything between { and } (JSON object)
         match = re.search(r'(\{.*\})', text, re.DOTALL)
         if match:
             try:
                 return json.loads(match.group(1))
             except Exception:
                 pass
-                
+
         return None
 
     def analyze_trending(
@@ -368,7 +382,10 @@ class ViralAnalyzer:
         )
 
         try:
-            data = json.loads(response.text)
+            data = self._extract_json(response.text)
+            if not data or not isinstance(data, list):
+                logger.error("AI response did not return a valid JSON array")
+                return []
             ideas = []
 
             for item in data:
@@ -394,14 +411,15 @@ class ViralAnalyzer:
                     why_it_works=item.get('why_it_works', ''),
                     target_audience=item.get('target_audience', ''),
                     recommended_hook=item.get('recommended_hook', ''),
-                    estimated_potential=item.get('estimated_potential', 'Medium')
+                    estimated_potential=item.get('estimated_potential', 'Medium'),
+                    style_context=item.get('style_context', '')
                 )
                 ideas.append(idea)
 
             logger.info(f"Generated {len(ideas)} AI-based ideas")
             return ideas
 
-        except json.JSONDecodeError as e:
+        except Exception as e:
             logger.error(f"Failed to parse AI response: {e}")
             return []
 
@@ -554,7 +572,7 @@ class ViralAnalyzer:
         return topic, hint, ""
 
     @retry_with_backoff(max_retries=2, base_delay=2.0)
-    def _ai_remix_title(self, title: str) -> Tuple[str, str]:
+    def _ai_remix_title(self, title: str) -> Tuple[str, str, str]:
         APIRateLimiters.gemini.wait()
 
         prompt = f"""

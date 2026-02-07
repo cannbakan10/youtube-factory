@@ -11,6 +11,8 @@ on:
         options:
         - standard
         - horror
+        - quiz
+        - reddit
         - ambient
         - viral
         - viral_remix
@@ -162,6 +164,18 @@ jobs:
               if [[ "${{ github.event.inputs.bulk }}" == "true" ]]; then
                 CMD+=(--bulk)
               fi
+            fi
+            ;;
+          quiz)
+            CMD+=(--topic "${{ github.event.inputs.topic }}" --mode quiz)
+            if [[ "${{ github.event.inputs.bulk }}" == "true" ]]; then
+              CMD+=(--bulk)
+            fi
+            ;;
+          reddit)
+            CMD+=(--topic "${{ github.event.inputs.topic }}" --mode reddit)
+            if [[ "${{ github.event.inputs.bulk }}" == "true" ]]; then
+              CMD+=(--bulk)
             fi
             ;;
           ambient)
