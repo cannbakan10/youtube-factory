@@ -254,6 +254,16 @@ class YoutubeFactory:
                     tags = [re.sub(r'(?i)shorts?', '', str(t)).strip() for t in tags if t]
                     tags = [t for t in tags if t]  # Remove empty
 
+                # Ensure minimum 5 tags
+                if len(tags) < 5:
+                    topic_words = [w.strip() for w in topic.split() if len(w.strip()) > 2]
+                    fallback_tags = topic_words + [topic, lang]
+                    for ft in fallback_tags:
+                        if ft and ft not in tags:
+                            tags.append(ft)
+                        if len(tags) >= 5:
+                            break
+
                 # Save Metadata
                 meta_file = os.path.join(lang_dir, "metadata.json")
 
