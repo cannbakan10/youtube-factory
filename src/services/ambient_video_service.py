@@ -395,13 +395,15 @@ class AmbientVideoService:
             )
             return None
 
-        if not video_source:
-            video_source = self._generate_procedural_loop_clip(
+        if not video_sources:
+            procedural_clip = self._generate_procedural_loop_clip(
                 ambient_type=ambient_type,
                 width=width,
                 height=height,
                 bg_color=str(preset["fallback_bg_color"]),
             )
+            if procedural_clip:
+                video_sources = [procedural_clip]
         audio_source, audio_mode = self._resolve_audio_source(
             preset=preset,
             duration_seconds=duration_seconds,
