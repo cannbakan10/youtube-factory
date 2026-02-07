@@ -190,6 +190,73 @@ class ScriptWriter:
             - Word count: ~110-130 words.
             - Language: STRICTLY {lang_name} only.
             """
+        elif mode == "quiz":
+            if language == "tr":
+                pause_phrase = "Düşün bakalım... Üç... İki... Bir..."
+                cta = "Kaç doğru bildin? Yorumlara yaz ve abone olmayı unutma!"
+            else:
+                pause_phrase = "Think about it... Three... Two... One..."
+                cta = "How many did you get right? Comment below and subscribe!"
+
+            quiz_count = 7 if is_long else 4
+
+            return f"""
+            Create a fun and engaging QUIZ video script about "{topic}".
+            Everything MUST be in {lang_name}.
+            {extra_style}
+
+            RESEARCH DATA: {research_data}
+
+            QUIZ FORMAT RULES:
+            - Generate exactly {quiz_count} quiz questions about "{topic}".
+            - Each question MUST follow this EXACT spoken pattern:
+              1. Ask the question clearly.
+              2. Say EXACTLY: "{pause_phrase}"
+              3. Reveal the answer with a fun fact explanation (1-2 sentences).
+            - HOOK: Start with an exciting intro like "Test your knowledge!" or "How well do you know {topic}?"
+            - ENDING: Finish with "{cta}"
+            - Questions should go from easy to hard.
+            - Make questions surprising and fun, not boring textbook trivia.
+            - STRICTLY NARRATION ONLY: No brackets, no labels, no meta-text.
+            - Language: STRICTLY {lang_name} only.
+            - Word count: ~{target_word_count} words.
+            """
+        elif mode == "reddit":
+            if language == "tr":
+                hook_options = [
+                    "Reddit'te bir kullanıcı şunu yazdı...",
+                    "Bu hikayeyi okuyunca çenemi yerden topladım...",
+                    "İnternette okuduğum en çılgın gerçek hikaye...",
+                ]
+                cta = "Bu hikaye hakkında ne düşünüyorsun? Yorumlara yaz!"
+            else:
+                hook_options = [
+                    "A Reddit user posted this and it blew up...",
+                    "This story will leave you speechless...",
+                    "The craziest true story I've ever read online...",
+                ]
+                cta = "What do you think about this story? Comment below!"
+
+            return f"""
+            Write a gripping, emotional STORYTELLING narration based on a Reddit-style true story.
+            Everything MUST be in {lang_name}.
+            {extra_style}
+
+            TOPIC/THEME: {topic}
+            RESEARCH DATA: {research_data}
+
+            REDDIT STORY RULES:
+            - HOOK: Start with one of these styles: {', '.join(f'"{h}"' for h in hook_options)}
+            - Write as if narrating a real person's experience. Use first or third person.
+            - Build TENSION: Start calm, escalate drama, deliver a twist or emotional climax.
+            - Keep it conversational and raw - like someone telling a story to a friend.
+            - Include realistic details that make it feel authentic.
+            - NO lists, NO bullet points. Pure continuous storytelling.
+            - ENDING: Wrap with reflection + "{cta}"
+            - STRICTLY NARRATION ONLY: No brackets, no labels, no meta-text.
+            - Language: STRICTLY {lang_name} only.
+            - Word count: ~{target_word_count} words.
+            """
         else:
             climax_lead_in = "Gelelim en çarpıcı noktaya..." if language == "tr" else "Now for the most striking part..."
             return f"""
@@ -240,10 +307,38 @@ class ScriptWriter:
         scene_duration = "6.0 - 10.0 seconds" if is_long else "3.5 - 5.0 seconds"
         orientation = "LANDSCAPE (16:9)" if is_long else "PORTRAIT (9:16)"
 
+        # Mode-specific visual keyword strategy
+        if mode == "quiz":
+            visual_strategy = f"""
+        3. VISUAL INTELLIGENCE (KEYWORDS):
+           - You MUST generate 3-5 specific visual keywords in ENGLISH for each scene.
+           - For QUESTION scenes: Use keywords related to the question subject (e.g., "world map countries", "solar system planets").
+           - For ANSWER/REVEAL scenes: Use keywords showing the answer visually (e.g., "Sweden flag landscape", "Jupiter close up space").
+           - STRIKE RULE: Include "{topic}" in every scene's keyword list.
+           - Use vivid, concrete imagery. Avoid abstract terms."""
+        elif mode == "reddit":
+            visual_strategy = f"""
+        3. VISUAL INTELLIGENCE (KEYWORDS):
+           - You MUST generate 3-5 specific visual keywords in ENGLISH for each scene.
+           - Use CINEMATIC and EMOTIONAL visuals: "person walking alone city night", "dramatic sunset ocean".
+           - For tense moments: "dark hallway", "rain window night", "empty road fog".
+           - For emotional moments: "sunrise hope", "people hugging", "happy ending celebration".
+           - Mix in satisfying/gameplay background keywords: "minecraft parkour", "subway surfers gameplay", "satisfying slime".
+           - STRIKE RULE: Include "{topic}" in every scene's keyword list."""
+        else:
+            visual_strategy = f"""
+        3. VISUAL INTELLIGENCE (KEYWORDS):
+           - You MUST generate 3-5 specific visual keywords in ENGLISH for each scene.
+           - STRIKE RULE: You MUST include the main TOPIC ("{topic}") in every scene's keyword list to maintain context.
+           - BE SPECIFIC: If the topic is Japan, use "Japan Tokyo street" not just "City street".
+           - Avoid abstract terms. Use concrete physical objects and actions."""
+
+        style_label = {"quiz": "Quiz / Trivia", "reddit": "Reddit Story / Emotional Narrative"}.get(mode, "Documentary")
+
         prompt = f"""
         Using the provided {lang_name} narration, create a video production blueprint for a {orientation} video.
 
-        STYLE: Documentary
+        STYLE: {style_label}
         FORMAT: {video_type.upper()}
         NARRATION: {narrative}
         TOPIC: {topic}
@@ -251,12 +346,7 @@ class ScriptWriter:
         REQUIREMENTS:
         1. Break into scenes (each {scene_duration} long).
         2. CLEAN TEXT: ONLY include the EXACT sentence to be spoken. No brackets, no notes.
-
-        3. VISUAL INTELLIGENCE (KEYWORDS):
-           - You MUST generate 3-5 specific visual keywords in ENGLISH for each scene.
-           - STRIKE RULE: You MUST include the main TOPIC ("{topic}") in every scene's keyword list to maintain context.
-           - BE SPECIFIC: If the topic is Japan, use "Japan Tokyo street" not just "City street".
-           - Avoid abstract terms. Use concrete physical objects and actions.
+        {visual_strategy}
 
         4. SFX: English prompts for sound effects.
         5. METADATA:
