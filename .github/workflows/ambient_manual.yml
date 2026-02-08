@@ -1,0 +1,51 @@
+name: Manual Ambient Video Generation
+
+on:
+  workflow_dispatch:
+    inputs:
+      ambient_type:
+        description: 'Ambient türü (fireplace, rain, sleep, ocean_sleep, vb.)'
+        required: true
+        default: 'fireplace'
+      duration:
+        description: 'Süre (Dakika cinsinden - Örn: 180)'
+        required: true
+        default: '180'
+
+jobs:
+  generate-ambient:
+    runs-on: ubuntu-latest
+    timeout-minutes: 600 # Long videos need lots of time
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Ambient Production
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          TOKEN_PICKLE_BASE64: ${{ secrets.TOKEN_PICKLE_BASE64 }}
+          CLIENT_SECRETS_JSON: ${{ secrets.CLIENT_SECRETS_JSON }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: |
+          echo '${{ secrets.CLIENT_SECRETS_JSON }}' > client_secrets.json
+          python main.py --ambient ${{ github.event.inputs.ambient_type }} --ambient-duration ${{ github.event.inputs.duration }} --type long --upload
