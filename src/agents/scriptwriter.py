@@ -56,10 +56,9 @@ class ScriptWriter:
         # --- PRO FILTER: Remove intro/logo stage directions that sometimes leak ---
         text = re.sub(r'(?i)kısa müzik|kanal logosu|introdan sonra|fragman|hook|abone ol|like atın', '', text)
 
-        # Remove meta-commentary
-        text = re.sub(r'(?i)(\d+)\s*(dakika|kelime|dk|min|word).*?(video|anlatım|script|hazır).*?(yap|yaz|oluştur|hazır).*?(cağız|ceğiz|acağız|eceğiz|adım|dım|dık|dik)?', '', text)
-        text = re.sub(r'(?i)(bu|için|toplam|yaklaşık)\s+\d+\s*(dakika|kelime|dk|min|word).*?(video|anlatım|script)', '', text)
-        text = re.sub(r'(?i)(işte|burada|aşağıda)\s+\d+\s*(dakika|kelime).*?(metin|script)', '', text)
+        # Remove meta-commentary (Be careful not to remove actual script content)
+        text = re.sub(r'(?i)\[Video içeriği.*?\]', '', text)
+        text = re.sub(r'(?i)\[Hazırlanan metin.*?\]', '', text)
 
         # Remove common prefixes
         if language == "tr":
@@ -112,9 +111,9 @@ class ScriptWriter:
         lang_name = "English" if language == "en" else "Turkish"
         is_long = video_type == "long"
 
-        duration_match = re.search(r'(\d+)\s*(dakika|minute|dk|min)', topic.lower())
-        target_minutes = int(duration_match.group(1)) if duration_match else (8 if is_long else 1)
-        target_word_count = target_minutes * 150
+        duration_match = re.search(r'(\d+)\s*(?:dakika|minute|dk|min|dakikalık|minutelık)', topic.lower())
+        target_minutes = int(duration_match.group(1)) if duration_match else (10 if is_long else 1)
+        target_word_count = target_minutes * 140 # Average narration speed
         
         extra_style = f"\nSTYLE CONTEXT: {style_context}\n" if style_context else ""
 
@@ -158,7 +157,10 @@ class ScriptWriter:
                 """
 
             return f"""
-            Using the provided research data, write a DEEP and ENGAGING documentary-style narration script.
+            Using the provided research data, write an EXHAUSTIVE and DEEP documentary-style narration script.
+            This is for a VERY LONG video ({target_minutes} minutes). 
+            You must provide at least {target_word_count} words of high-quality narration.
+            
             Everything MUST be in {lang_name}.
             {extra_style}
 
@@ -166,16 +168,19 @@ class ScriptWriter:
             TOPIC: {topic}
 
             PRODUCTION SPECIFICATIONS:
-            - TARGET PACING: {target_minutes} minutes
-            - WORD COUNT TARGET: {target_word_count} words
+            - TARGET DURATION: {target_minutes} minutes
+            - WORD COUNT TARGET: {target_word_count} words (STRICT MINIMUM)
+            - MUST COVER: History, Geography, Culture, Economy, Gastronomy, and Modern Life of {topic.split()[-1]}.
 
             STRUCTURE & STYLE RULES:
-            - 🎞️ TRAILER/HOOK (FIRST 15 SECONDS): Start with a fast-paced, gripping summary.
-            - CONTINUOUS NARRATIVE: Avoid numbered lists.
-            - INTRO: High-energy hook. Start DIRECTLY with the topic after the trailer.
+            - 🎞️ TRAILER/HOOK (FIRST 30 SECONDS): Start with an epic summary of what many people don't know.
+            - DEEP DIVE: Divide the script into clear thematic sections (Introduction, History, Culture, etc.).
+            - CONTINUOUS NARRATIVE: Avoid numbered lists. Use smooth transitions between topics.
             - ⚠️ NO TIME REVEAL & NO META-COMMENTARY: {meta_avoid}
-            - STRICTLY NARRATION ONLY: Include ONLY spoken words. No meta-talk.
+            - STRICTLY NARRATION ONLY: Include ONLY spoken words. No scene descriptions or labels.
             - Language: STRICTLY {lang_name} only.
+            
+            FAILURE TO REACH {target_word_count} WORDS WILL RESULT IN PRODUCTION FAILURE. BE DETAILED.
             """
         elif mode == "horror":
             hook_start = "Bunun gerçekten yaşandığını biliyor muydunuz?" if language == "tr" else "Did you know this actually happened?"
