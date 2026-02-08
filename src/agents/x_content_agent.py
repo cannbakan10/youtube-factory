@@ -26,11 +26,11 @@ class XContentAgent:
         self.history_file = os.path.join(self.data_dir, "x_history.json")
 
     def generate_daily_plan(self):
-        """Generates 1 high-quality post for the day following the 'Vay Be' strategy."""
-        logger.info("Generating daily plan for X (Vay Be Strategy)...")
+        """Generates 1 high-quality, media-rich post for the day."""
+        logger.info("Generating daily plan for X (Always Media Strategy)...")
         
-        # Select type based on strategy: ~70% Text/Emoji, ~30% Image
-        post_type = "image" if random.random() < 0.3 else "text"
+        # Strategy Update: Always try to be media-rich (image/video) for maximum engagement
+        post_type = "image"
         
         # Categorize to ensure variety
         categories = ["bilim", "tarih", "uzay", "doğa", "hayvanlar", "teknoloji", "psikoloji"]
@@ -53,13 +53,12 @@ class XContentAgent:
         4. SORU: Postun sonuna mutlaka etkileşim artıracak bir soru ekle (Örn: Sizce bu mümkün mü?, En çok hangisine şaşırdınız?).
         5. HASHTAG: Maksimum 2-3 tane hashtag kullan. #VayBeBilgi etiketi SABİT olsun, diğeri konuya özel olsun (Örn: #uzay, #tarih).
         6. ÇEŞİTLİLİK: Daha önceki postlarla aynı cümle yapılarını kullanma.
-        7. İÇERİK TÜRÜ: Bu post bir '{post_type}' postu olacak.
         
         FORMAT (JSON):
         {{
-          "type": "{post_type}",
+          "type": "image",
           "text": "Post metni...",
-          "keywords": ["görsel aramak için 2-3 ingilizce kelime"],
+          "keywords": ["görsel aramak için 2-3 adet ingilizce anahtar kelime"],
           "scheduled_time": "12:00"
         }}
         
