@@ -418,6 +418,7 @@ Examples:
     parser.add_argument("--save-remix", action="store_true", help="Save remix candidates as JSON")
     parser.add_argument("--viral-help", action="store_true", help="Show viral analyzer help")
     parser.add_argument("--x-auto", action="store_true", help="Run daily X (Twitter) automation")
+    parser.add_argument("--x-force", action="store_true", help="Force X automation even if it's not the scheduled time")
     parser.add_argument("--x-plan", action="store_true", help="Force generate a new daily plan for X")
 
 
@@ -439,8 +440,8 @@ Examples:
         if args.x_plan:
             factory.x_agent.generate_daily_plan()
             
-        logger.info("Running X Daily Automation...")
-        factory.x_agent.run_scheduled_tasks()
+        logger.info(f"Running X Daily Automation (Force: {args.x_force})...")
+        factory.x_agent.run_scheduled_tasks(force=args.x_force)
         sys.exit(0)
 
 

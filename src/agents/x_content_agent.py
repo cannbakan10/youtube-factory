@@ -102,8 +102,8 @@ class XContentAgent:
                     return True
         return False
 
-    def run_scheduled_tasks(self):
-        """Checks the plan and executes posts if it's time."""
+    def run_scheduled_tasks(self, force=False):
+        """Checks the plan and executes posts if it's time or if forced."""
         if not os.path.exists(self.plan_file):
             plan = self.generate_daily_plan()
             if not plan: return
@@ -111,21 +111,24 @@ class XContentAgent:
             with open(self.plan_file, "r", encoding="utf-8") as f:
                 plan = json.loads(f.read())
         
-        # Current TR time handling (approximate or just system time)
+        # Current time in UTC (GitHub default)
         current_time = datetime.now().strftime("%H:%M")
+        logger.info(f"Checking schedule... Current time: {current_time}, Plan time: {plan[0].get('scheduled_time')}")
         
         for post in plan:
             if post.get("posted", False):
                 continue
                 
             plan_time = post["scheduled_time"]
-            # Trigger if we are within the scheduled window (e.g., 12:00 to 23:59 for only 1 post/day)
-            if current_time >= plan_time:
+            # Trigger if we are within the scheduled window OR if it's a manual force run
+            if force or current_time >= plan_time:
                 success = self.execute_post(post)
                 if success:
                     post["posted"] = True
                     self._save_plan(plan)
                     self._log_history(post)
+                else:
+                    logger.error("Execution failed. Check API logs.")
     
     def execute_post(self, post):
         """Executes a single post with media support or just text."""
@@ -138,14 +141,19 @@ class XContentAgent:
         keywords = post.get("keywords", ["interesting"])
         
         if post["type"] == "image":
-            media_path = self.pexels.get_image(keywords)
-            if not media_path:
-                media_path = self.pixabay.get_image(keywords)
-            
-            if media_path:
-                return self.twitter.post_with_media(post["text"], media_path)
-            else:
-                return self.twitter.post_text(post["text"])
+            # Try to get image
+            try:
+                media_path = self.pexels.get_image(keywords)
+                if not media_path:
+                    media_path = self.pixabay.get_image(keywords)
+                
+                if media_path:
+                    logger.info(f"Attempting to post with media: {media_path}")
+                    result = self.twitter.post_with_media(post["text"], media_path)
+                    if result: return result
+                    logger.warning("Media post failed (likely API tier), falling back to text only.")
+            except Exception as e:
+                logger.warning(f"Media handling failed: {e}. Falling back to text.")
             
         elif post["type"] == "video":
             # Keeping it simple for manual/rare use as per strategy

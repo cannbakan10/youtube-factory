@@ -35,7 +35,7 @@ jobs:
           X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
           X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
         run: |
-          python main.py --x-auto
+          python main.py --x-auto --x-force
           
       - name: Commit and Push History (Optional)
         run: |
