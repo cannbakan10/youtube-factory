@@ -25,18 +25,21 @@ class XContentAgent:
         self.plan_file = os.path.join(self.data_dir, "x_daily_plan.json")
         self.history_file = os.path.join(self.data_dir, "x_history.json")
 
-    def generate_daily_plan(self):
+    def generate_daily_plan(self, custom_topic=None):
         """Generates 1 high-quality, media-rich post for the day."""
-        logger.info("Generating daily plan for X (Always Media Strategy)...")
+        logger.info(f"Generating daily plan for X (Topic: {custom_topic or 'Auto Trend'})...")
         
         # Strategy Update: Always try to be media-rich (image/video) for maximum engagement
         post_type = "image"
         
-        # Categorize to ensure variety
-        categories = ["bilim", "tarih", "uzay", "doğa", "hayvanlar", "teknoloji", "psikoloji"]
-        selected_category = random.choice(categories)
-        
-        topic = f"{selected_category} hakkında inanılmaz, duyulmamış, şaşırtıcı ve 'Vay Be' dedirtecek bir gerçek"
+        if custom_topic:
+            topic = custom_topic
+        else:
+            # Categorize to ensure variety
+            categories = ["bilim", "tarih", "uzay", "doğa", "hayvanlar", "teknoloji", "psikoloji"]
+            selected_category = random.choice(categories)
+            topic = f"{selected_category} hakkında inanılmaz, duyulmamış, şaşırtıcı ve 'Vay Be' dedirtecek bir gerçek"
+            
         research_data = self.researcher.research(topic)
         
         prompt = f"""

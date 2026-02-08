@@ -420,6 +420,7 @@ Examples:
     parser.add_argument("--x-auto", action="store_true", help="Run daily X (Twitter) automation")
     parser.add_argument("--x-force", action="store_true", help="Force X automation even if it's not the scheduled time")
     parser.add_argument("--x-plan", action="store_true", help="Force generate a new daily plan for X")
+    parser.add_argument("--x-topic", type=str, help="Custom topic for X post generation")
 
 
     args = parser.parse_args()
@@ -437,8 +438,8 @@ Examples:
             logger.error("XContentAgent is unavailable. Check X API keys.")
             sys.exit(1)
         
-        if args.x_plan:
-            factory.x_agent.generate_daily_plan()
+        if args.x_plan or args.x_topic:
+            factory.x_agent.generate_daily_plan(custom_topic=args.x_topic)
             
         logger.info(f"Running X Daily Automation (Force: {args.x_force})...")
         factory.x_agent.run_scheduled_tasks(force=args.x_force)

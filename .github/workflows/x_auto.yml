@@ -5,6 +5,11 @@ on:
     # Runs at 09:00 UTC (12:00 TR Time) every day
     - cron: '0 9 * * *'
   workflow_dispatch: # Allows manual trigger from GitHub UI
+    inputs:
+      topic:
+        description: 'Özel bir konu girin (Boş bırakırsanız otomatik seçer)'
+        required: false
+        default: ''
 
 jobs:
   post-to-x:
@@ -35,7 +40,7 @@ jobs:
           X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
           X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
         run: |
-          python main.py --x-auto --x-force
+          python main.py --x-auto --x-force --x-topic "${{ github.event.inputs.topic }}"
           
       - name: Commit and Push History (Optional)
         run: |
