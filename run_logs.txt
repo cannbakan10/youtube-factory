@@ -1,0 +1,425 @@
+post-to-x	Set up job	﻿2026-02-08T14:36:45.0873340Z Current runner version: '2.331.0'
+post-to-x	Set up job	2026-02-08T14:36:45.0951565Z ##[group]Runner Image Provisioner
+post-to-x	Set up job	2026-02-08T14:36:45.0953359Z Hosted Compute Agent
+post-to-x	Set up job	2026-02-08T14:36:45.0954387Z Version: 20260123.484
+post-to-x	Set up job	2026-02-08T14:36:45.0955394Z Commit: 6bd6555ca37d84114959e1c76d2c01448ff61c5d
+post-to-x	Set up job	2026-02-08T14:36:45.0956732Z Build Date: 2026-01-23T19:41:17Z
+post-to-x	Set up job	2026-02-08T14:36:45.0957906Z Worker ID: {d570eef1-f41d-447a-a808-0e84fbeae570}
+post-to-x	Set up job	2026-02-08T14:36:45.0959193Z Azure Region: eastus2
+post-to-x	Set up job	2026-02-08T14:36:45.0980681Z ##[endgroup]
+post-to-x	Set up job	2026-02-08T14:36:45.0983738Z ##[group]Operating System
+post-to-x	Set up job	2026-02-08T14:36:45.0984864Z Ubuntu
+post-to-x	Set up job	2026-02-08T14:36:45.0985770Z 24.04.3
+post-to-x	Set up job	2026-02-08T14:36:45.0986778Z LTS
+post-to-x	Set up job	2026-02-08T14:36:45.0987620Z ##[endgroup]
+post-to-x	Set up job	2026-02-08T14:36:45.0988667Z ##[group]Runner Image
+post-to-x	Set up job	2026-02-08T14:36:45.0989687Z Image: ubuntu-24.04
+post-to-x	Set up job	2026-02-08T14:36:45.0991031Z Version: 20260201.15.1
+post-to-x	Set up job	2026-02-08T14:36:45.0993155Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260201.15/images/ubuntu/Ubuntu2404-Readme.md
+post-to-x	Set up job	2026-02-08T14:36:45.0996221Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260201.15
+post-to-x	Set up job	2026-02-08T14:36:45.0997999Z ##[endgroup]
+post-to-x	Set up job	2026-02-08T14:36:45.1007745Z ##[group]GITHUB_TOKEN Permissions
+post-to-x	Set up job	2026-02-08T14:36:45.1030044Z Contents: read
+post-to-x	Set up job	2026-02-08T14:36:45.1031565Z Metadata: read
+post-to-x	Set up job	2026-02-08T14:36:45.1032586Z Packages: read
+post-to-x	Set up job	2026-02-08T14:36:45.1033547Z ##[endgroup]
+post-to-x	Set up job	2026-02-08T14:36:45.1037173Z Secret source: Actions
+post-to-x	Set up job	2026-02-08T14:36:45.1038827Z Prepare workflow directory
+post-to-x	Set up job	2026-02-08T14:36:45.2064858Z Prepare all required actions
+post-to-x	Set up job	2026-02-08T14:36:45.2183105Z Getting action download info
+post-to-x	Set up job	2026-02-08T14:36:45.5244374Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+post-to-x	Set up job	2026-02-08T14:36:45.6407155Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+post-to-x	Set up job	2026-02-08T14:36:45.8332736Z Complete job name: post-to-x
+post-to-x	Checkout Repository	﻿2026-02-08T14:36:45.9019959Z ##[group]Run actions/checkout@v4
+post-to-x	Checkout Repository	2026-02-08T14:36:45.9021338Z with:
+post-to-x	Checkout Repository	2026-02-08T14:36:45.9021926Z   repository: StrongPartners/stream-global-factory
+post-to-x	Checkout Repository	2026-02-08T14:36:45.9022747Z   token: ***
+post-to-x	Checkout Repository	2026-02-08T14:36:45.9023193Z   ssh-strict: true
+post-to-x	Checkout Repository	2026-02-08T14:36:45.9023672Z   ssh-user: git
+post-to-x	Checkout Repository	2026-02-08T14:36:45.9024148Z   persist-credentials: true
+post-to-x	Checkout Repository	2026-02-08T14:36:45.9024660Z   clean: true
+post-to-x	Checkout Repository	2026-02-08T14:36:45.9025126Z   sparse-checkout-cone-mode: true
+post-to-x	Checkout Repository	2026-02-08T14:36:45.9025703Z   fetch-depth: 1
+post-to-x	Checkout Repository	2026-02-08T14:36:45.9026156Z   fetch-tags: false
+post-to-x	Checkout Repository	2026-02-08T14:36:45.9026614Z   show-progress: true
+post-to-x	Checkout Repository	2026-02-08T14:36:45.9027077Z   lfs: false
+post-to-x	Checkout Repository	2026-02-08T14:36:45.9027504Z   submodules: false
+post-to-x	Checkout Repository	2026-02-08T14:36:45.9027965Z   set-safe-directory: true
+post-to-x	Checkout Repository	2026-02-08T14:36:45.9028667Z ##[endgroup]
+post-to-x	Checkout Repository	2026-02-08T14:36:46.0314030Z Syncing repository: StrongPartners/stream-global-factory
+post-to-x	Checkout Repository	2026-02-08T14:36:46.0317317Z ##[group]Getting Git version info
+post-to-x	Checkout Repository	2026-02-08T14:36:46.0318841Z Working directory is '/home/runner/work/stream-global-factory/stream-global-factory'
+post-to-x	Checkout Repository	2026-02-08T14:36:46.0321325Z [command]/usr/bin/git version
+post-to-x	Checkout Repository	2026-02-08T14:36:46.0323336Z git version 2.52.0
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1137275Z ##[endgroup]
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1143575Z Temporarily overriding HOME='/home/runner/work/_temp/34afd319-cbcb-41cf-8099-cd234630838f' before making global git config changes
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1145970Z Adding repository directory to the temporary git global config as a safe directory
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1148059Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/stream-global-factory/stream-global-factory
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1150188Z Deleting the contents of '/home/runner/work/stream-global-factory/stream-global-factory'
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1152396Z ##[group]Initializing the repository
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1153812Z [command]/usr/bin/git init /home/runner/work/stream-global-factory/stream-global-factory
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1155551Z hint: Using 'master' as the name for the initial branch. This default branch name
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1157223Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1159179Z hint: to use in all of your new repositories, which will suppress this warning,
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1160744Z hint: call:
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1161442Z hint:
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1162296Z hint: 	git config --global init.defaultBranch <name>
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1163327Z hint:
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1164375Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1166013Z hint: 'development'. The just-created branch can be renamed via this command:
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1167309Z hint:
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1168007Z hint: 	git branch -m <name>
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1168784Z hint:
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1170073Z hint: Disable this message with "git config set advice.defaultBranchName false"
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1172393Z Initialized empty Git repository in /home/runner/work/stream-global-factory/stream-global-factory/.git/
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1175574Z [command]/usr/bin/git remote add origin https://github.com/StrongPartners/stream-global-factory
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1178484Z ##[endgroup]
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1179842Z ##[group]Disabling automatic garbage collection
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1181273Z [command]/usr/bin/git config --local gc.auto 0
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1183578Z ##[endgroup]
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1184925Z ##[group]Setting up auth
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1186101Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1189824Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1304060Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1349031Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1644405Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+post-to-x	Checkout Repository	2026-02-08T14:36:46.1694738Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+post-to-x	Checkout Repository	2026-02-08T14:36:46.2005949Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+post-to-x	Checkout Repository	2026-02-08T14:36:46.2072882Z ##[endgroup]
+post-to-x	Checkout Repository	2026-02-08T14:36:46.2074381Z ##[group]Fetching the repository
+post-to-x	Checkout Repository	2026-02-08T14:36:46.2076758Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +c221568e56054e607898b1d3e3a6cd6e4adad308:refs/remotes/origin/main
+post-to-x	Checkout Repository	2026-02-08T14:36:49.6303214Z From https://github.com/StrongPartners/stream-global-factory
+post-to-x	Checkout Repository	2026-02-08T14:36:49.6305678Z  * [new ref]         c221568e56054e607898b1d3e3a6cd6e4adad308 -> origin/main
+post-to-x	Checkout Repository	2026-02-08T14:36:49.6341093Z ##[endgroup]
+post-to-x	Checkout Repository	2026-02-08T14:36:49.6343085Z ##[group]Determining the checkout info
+post-to-x	Checkout Repository	2026-02-08T14:36:49.6345304Z ##[endgroup]
+post-to-x	Checkout Repository	2026-02-08T14:36:49.6355541Z [command]/usr/bin/git sparse-checkout disable
+post-to-x	Checkout Repository	2026-02-08T14:36:49.6395259Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+post-to-x	Checkout Repository	2026-02-08T14:36:49.6427263Z ##[group]Checking out the ref
+post-to-x	Checkout Repository	2026-02-08T14:36:49.6433200Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+post-to-x	Checkout Repository	2026-02-08T14:36:50.3019204Z Switched to a new branch 'main'
+post-to-x	Checkout Repository	2026-02-08T14:36:50.3025182Z branch 'main' set up to track 'origin/main'.
+post-to-x	Checkout Repository	2026-02-08T14:36:50.3084684Z ##[endgroup]
+post-to-x	Checkout Repository	2026-02-08T14:36:50.3125255Z [command]/usr/bin/git log -1 --format=%H
+post-to-x	Checkout Repository	2026-02-08T14:36:50.3149252Z c221568e56054e607898b1d3e3a6cd6e4adad308
+post-to-x	Set up Python	﻿2026-02-08T14:36:50.3396429Z ##[group]Run actions/setup-python@v5
+post-to-x	Set up Python	2026-02-08T14:36:50.3396896Z with:
+post-to-x	Set up Python	2026-02-08T14:36:50.3397181Z   python-version: 3.10
+post-to-x	Set up Python	2026-02-08T14:36:50.3397514Z   check-latest: false
+post-to-x	Set up Python	2026-02-08T14:36:50.3397967Z   token: ***
+post-to-x	Set up Python	2026-02-08T14:36:50.3398272Z   update-environment: true
+post-to-x	Set up Python	2026-02-08T14:36:50.3398619Z   allow-prereleases: false
+post-to-x	Set up Python	2026-02-08T14:36:50.3399155Z   freethreaded: false
+post-to-x	Set up Python	2026-02-08T14:36:50.3399452Z ##[endgroup]
+post-to-x	Set up Python	2026-02-08T14:36:50.5185840Z ##[group]Installed versions
+post-to-x	Set up Python	2026-02-08T14:36:50.5312589Z Successfully set up CPython (3.10.19)
+post-to-x	Set up Python	2026-02-08T14:36:50.5315008Z ##[endgroup]
+post-to-x	Install Dependencies	﻿2026-02-08T14:36:50.5439337Z ##[group]Run python -m pip install --upgrade pip
+post-to-x	Install Dependencies	2026-02-08T14:36:50.5439922Z [36;1mpython -m pip install --upgrade pip[0m
+post-to-x	Install Dependencies	2026-02-08T14:36:50.5440575Z [36;1mpip install -r requirements.txt[0m
+post-to-x	Install Dependencies	2026-02-08T14:36:50.5487829Z shell: /usr/bin/bash -e {0}
+post-to-x	Install Dependencies	2026-02-08T14:36:50.5488209Z env:
+post-to-x	Install Dependencies	2026-02-08T14:36:50.5488533Z   pythonLocation: /opt/hostedtoolcache/Python/3.10.19/x64
+post-to-x	Install Dependencies	2026-02-08T14:36:50.5489031Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.10.19/x64/lib/pkgconfig
+post-to-x	Install Dependencies	2026-02-08T14:36:50.5489540Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.10.19/x64
+post-to-x	Install Dependencies	2026-02-08T14:36:50.5489981Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.10.19/x64
+post-to-x	Install Dependencies	2026-02-08T14:36:50.5490796Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.10.19/x64
+post-to-x	Install Dependencies	2026-02-08T14:36:50.5491277Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.10.19/x64/lib
+post-to-x	Install Dependencies	2026-02-08T14:36:50.5491645Z ##[endgroup]
+post-to-x	Install Dependencies	2026-02-08T14:36:51.3920790Z Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages (26.0)
+post-to-x	Install Dependencies	2026-02-08T14:36:51.5054807Z Collecting pip
+post-to-x	Install Dependencies	2026-02-08T14:36:51.5726722Z   Downloading pip-26.0.1-py3-none-any.whl.metadata (4.7 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:51.5874100Z Downloading pip-26.0.1-py3-none-any.whl (1.8 MB)
+post-to-x	Install Dependencies	2026-02-08T14:36:51.6983915Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 19.2 MB/s  0:00:00
+post-to-x	Install Dependencies	2026-02-08T14:36:51.7246362Z Installing collected packages: pip
+post-to-x	Install Dependencies	2026-02-08T14:36:51.7247596Z   Attempting uninstall: pip
+post-to-x	Install Dependencies	2026-02-08T14:36:51.7254480Z     Found existing installation: pip 26.0
+post-to-x	Install Dependencies	2026-02-08T14:36:51.7876873Z     Uninstalling pip-26.0:
+post-to-x	Install Dependencies	2026-02-08T14:36:51.7947978Z       Successfully uninstalled pip-26.0
+post-to-x	Install Dependencies	2026-02-08T14:36:52.6064911Z Successfully installed pip-26.0.1
+post-to-x	Install Dependencies	2026-02-08T14:36:53.1894453Z Collecting google-genai (from -r requirements.txt (line 1))
+post-to-x	Install Dependencies	2026-02-08T14:36:53.2563942Z   Downloading google_genai-1.62.0-py3-none-any.whl.metadata (53 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:53.2903007Z Collecting google-generativeai (from -r requirements.txt (line 2))
+post-to-x	Install Dependencies	2026-02-08T14:36:53.2977099Z   Downloading google_generativeai-0.8.6-py3-none-any.whl.metadata (3.9 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:53.3999364Z Collecting openai (from -r requirements.txt (line 3))
+post-to-x	Install Dependencies	2026-02-08T14:36:53.4083092Z   Downloading openai-2.17.0-py3-none-any.whl.metadata (29 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:53.4560650Z Collecting elevenlabs (from -r requirements.txt (line 4))
+post-to-x	Install Dependencies	2026-02-08T14:36:53.4650012Z   Downloading elevenlabs-2.34.0-py3-none-any.whl.metadata (9.2 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:53.4908214Z Collecting tavily-python (from -r requirements.txt (line 5))
+post-to-x	Install Dependencies	2026-02-08T14:36:53.4993468Z   Downloading tavily_python-0.7.21-py3-none-any.whl.metadata (9.0 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:53.5334992Z Collecting requests (from -r requirements.txt (line 6))
+post-to-x	Install Dependencies	2026-02-08T14:36:53.5413794Z   Downloading requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:53.5664813Z Collecting python-dotenv (from -r requirements.txt (line 7))
+post-to-x	Install Dependencies	2026-02-08T14:36:53.5750884Z   Downloading python_dotenv-1.2.1-py3-none-any.whl.metadata (25 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:53.6455419Z Collecting google-api-python-client (from -r requirements.txt (line 8))
+post-to-x	Install Dependencies	2026-02-08T14:36:53.6547714Z   Downloading google_api_python_client-2.189.0-py3-none-any.whl.metadata (7.0 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:53.6751856Z Collecting google-auth-oauthlib (from -r requirements.txt (line 9))
+post-to-x	Install Dependencies	2026-02-08T14:36:53.6831601Z   Downloading google_auth_oauthlib-1.2.4-py3-none-any.whl.metadata (3.1 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:53.7012724Z Collecting google-auth-httplib2 (from -r requirements.txt (line 10))
+post-to-x	Install Dependencies	2026-02-08T14:36:53.7101508Z   Downloading google_auth_httplib2-0.3.0-py3-none-any.whl.metadata (3.1 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:53.7311516Z Collecting ffmpeg-python (from -r requirements.txt (line 11))
+post-to-x	Install Dependencies	2026-02-08T14:36:53.7392228Z   Downloading ffmpeg_python-0.2.0-py3-none-any.whl.metadata (1.7 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:53.7847790Z Collecting duckduckgo-search (from -r requirements.txt (line 12))
+post-to-x	Install Dependencies	2026-02-08T14:36:53.7944181Z   Downloading duckduckgo_search-8.1.1-py3-none-any.whl.metadata (16 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:53.9592570Z Collecting pydantic (from -r requirements.txt (line 13))
+post-to-x	Install Dependencies	2026-02-08T14:36:53.9674020Z   Downloading pydantic-2.12.5-py3-none-any.whl.metadata (90 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:54.2895163Z Collecting numpy (from -r requirements.txt (line 14))
+post-to-x	Install Dependencies	2026-02-08T14:36:54.2972423Z   Downloading numpy-2.2.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (62 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:54.5256721Z Collecting Pillow (from -r requirements.txt (line 15))
+post-to-x	Install Dependencies	2026-02-08T14:36:54.5333889Z   Downloading pillow-12.1.0-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (8.8 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:54.5566406Z Collecting imageio-ffmpeg (from -r requirements.txt (line 16))
+post-to-x	Install Dependencies	2026-02-08T14:36:54.5656310Z   Downloading imageio_ffmpeg-0.6.0-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:54.6055060Z Collecting python-telegram-bot (from -r requirements.txt (line 17))
+post-to-x	Install Dependencies	2026-02-08T14:36:54.6131309Z   Downloading python_telegram_bot-22.6-py3-none-any.whl.metadata (17 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:54.6407293Z Collecting tweepy (from -r requirements.txt (line 18))
+post-to-x	Install Dependencies	2026-02-08T14:36:54.6497403Z   Downloading tweepy-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:54.6748806Z Collecting anyio<5.0.0,>=4.8.0 (from google-genai->-r requirements.txt (line 1))
+post-to-x	Install Dependencies	2026-02-08T14:36:54.6829857Z   Downloading anyio-4.12.1-py3-none-any.whl.metadata (4.3 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:54.7229239Z Collecting google-auth<3.0.0,>=2.47.0 (from google-auth[requests]<3.0.0,>=2.47.0->google-genai->-r requirements.txt (line 1))
+post-to-x	Install Dependencies	2026-02-08T14:36:54.7309217Z   Downloading google_auth-2.48.0-py3-none-any.whl.metadata (6.2 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:54.7636009Z Collecting httpx<1.0.0,>=0.28.1 (from google-genai->-r requirements.txt (line 1))
+post-to-x	Install Dependencies	2026-02-08T14:36:54.7711339Z   Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:54.8053276Z Collecting tenacity<9.2.0,>=8.2.3 (from google-genai->-r requirements.txt (line 1))
+post-to-x	Install Dependencies	2026-02-08T14:36:54.8127467Z   Downloading tenacity-9.1.4-py3-none-any.whl.metadata (1.2 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:54.9280652Z Collecting websockets<15.1.0,>=13.0.0 (from google-genai->-r requirements.txt (line 1))
+post-to-x	Install Dependencies	2026-02-08T14:36:54.9365557Z   Downloading websockets-15.0.1-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.8 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:54.9581478Z Collecting typing-extensions<5.0.0,>=4.11.0 (from google-genai->-r requirements.txt (line 1))
+post-to-x	Install Dependencies	2026-02-08T14:36:54.9691018Z   Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:54.9851146Z Collecting distro<2,>=1.7.0 (from google-genai->-r requirements.txt (line 1))
+post-to-x	Install Dependencies	2026-02-08T14:36:54.9924267Z   Downloading distro-1.9.0-py3-none-any.whl.metadata (6.8 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:55.0071886Z Collecting sniffio (from google-genai->-r requirements.txt (line 1))
+post-to-x	Install Dependencies	2026-02-08T14:36:55.0150572Z   Downloading sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:55.1501094Z Collecting charset_normalizer<4,>=2 (from requests->-r requirements.txt (line 6))
+post-to-x	Install Dependencies	2026-02-08T14:36:55.1602441Z   Downloading charset_normalizer-3.4.4-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (37 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:55.1798506Z Collecting idna<4,>=2.5 (from requests->-r requirements.txt (line 6))
+post-to-x	Install Dependencies	2026-02-08T14:36:55.1875873Z   Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:55.2212076Z Collecting urllib3<3,>=1.21.1 (from requests->-r requirements.txt (line 6))
+post-to-x	Install Dependencies	2026-02-08T14:36:55.2289718Z   Downloading urllib3-2.6.3-py3-none-any.whl.metadata (6.9 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:55.2549666Z Collecting certifi>=2017.4.17 (from requests->-r requirements.txt (line 6))
+post-to-x	Install Dependencies	2026-02-08T14:36:55.2628081Z   Downloading certifi-2026.1.4-py3-none-any.whl.metadata (2.5 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:55.2777952Z Collecting annotated-types>=0.6.0 (from pydantic->-r requirements.txt (line 13))
+post-to-x	Install Dependencies	2026-02-08T14:36:55.2854364Z   Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:56.1089572Z Collecting pydantic-core==2.41.5 (from pydantic->-r requirements.txt (line 13))
+post-to-x	Install Dependencies	2026-02-08T14:36:56.1166766Z   Downloading pydantic_core-2.41.5-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.3 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:56.1349895Z Collecting typing-inspection>=0.4.2 (from pydantic->-r requirements.txt (line 13))
+post-to-x	Install Dependencies	2026-02-08T14:36:56.1417655Z   Downloading typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:56.1670564Z Collecting exceptiongroup>=1.0.2 (from anyio<5.0.0,>=4.8.0->google-genai->-r requirements.txt (line 1))
+post-to-x	Install Dependencies	2026-02-08T14:36:56.1751105Z   Downloading exceptiongroup-1.3.1-py3-none-any.whl.metadata (6.7 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:56.2058893Z Collecting pyasn1-modules>=0.2.1 (from google-auth<3.0.0,>=2.47.0->google-auth[requests]<3.0.0,>=2.47.0->google-genai->-r requirements.txt (line 1))
+post-to-x	Install Dependencies	2026-02-08T14:36:56.2134066Z   Downloading pyasn1_modules-0.4.2-py3-none-any.whl.metadata (3.5 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:56.4889793Z Collecting cryptography>=38.0.3 (from google-auth<3.0.0,>=2.47.0->google-auth[requests]<3.0.0,>=2.47.0->google-genai->-r requirements.txt (line 1))
+post-to-x	Install Dependencies	2026-02-08T14:36:56.4968652Z   Downloading cryptography-46.0.4-cp38-abi3-manylinux_2_34_x86_64.whl.metadata (5.7 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:56.5210846Z Collecting rsa<5,>=3.1.4 (from google-auth<3.0.0,>=2.47.0->google-auth[requests]<3.0.0,>=2.47.0->google-genai->-r requirements.txt (line 1))
+post-to-x	Install Dependencies	2026-02-08T14:36:56.5283984Z   Downloading rsa-4.9.1-py3-none-any.whl.metadata (5.6 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:56.5564808Z Collecting httpcore==1.* (from httpx<1.0.0,>=0.28.1->google-genai->-r requirements.txt (line 1))
+post-to-x	Install Dependencies	2026-02-08T14:36:56.5639382Z   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:56.5809029Z Collecting h11>=0.16 (from httpcore==1.*->httpx<1.0.0,>=0.28.1->google-genai->-r requirements.txt (line 1))
+post-to-x	Install Dependencies	2026-02-08T14:36:56.5881698Z   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:56.6175264Z Collecting pyasn1>=0.1.3 (from rsa<5,>=3.1.4->google-auth<3.0.0,>=2.47.0->google-auth[requests]<3.0.0,>=2.47.0->google-genai->-r requirements.txt (line 1))
+post-to-x	Install Dependencies	2026-02-08T14:36:56.6248800Z   Downloading pyasn1-0.6.2-py3-none-any.whl.metadata (8.4 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:56.6496758Z Collecting google-ai-generativelanguage==0.6.15 (from google-generativeai->-r requirements.txt (line 2))
+post-to-x	Install Dependencies	2026-02-08T14:36:56.6569029Z   Downloading google_ai_generativelanguage-0.6.15-py3-none-any.whl.metadata (5.7 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:56.6987781Z Collecting google-api-core (from google-generativeai->-r requirements.txt (line 2))
+post-to-x	Install Dependencies	2026-02-08T14:36:56.7065722Z   Downloading google_api_core-2.29.0-py3-none-any.whl.metadata (3.3 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:56.9005260Z Collecting protobuf (from google-generativeai->-r requirements.txt (line 2))
+post-to-x	Install Dependencies	2026-02-08T14:36:56.9082921Z   Downloading protobuf-6.33.5-cp39-abi3-manylinux2014_x86_64.whl.metadata (593 bytes)
+post-to-x	Install Dependencies	2026-02-08T14:36:56.9496229Z Collecting tqdm (from google-generativeai->-r requirements.txt (line 2))
+post-to-x	Install Dependencies	2026-02-08T14:36:56.9572608Z   Downloading tqdm-4.67.3-py3-none-any.whl.metadata (57 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:57.0361760Z Collecting proto-plus<2.0.0dev,>=1.22.3 (from google-ai-generativelanguage==0.6.15->google-generativeai->-r requirements.txt (line 2))
+post-to-x	Install Dependencies	2026-02-08T14:36:57.0448545Z   Downloading proto_plus-1.27.1-py3-none-any.whl.metadata (2.2 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:57.0779035Z Collecting protobuf (from google-generativeai->-r requirements.txt (line 2))
+post-to-x	Install Dependencies	2026-02-08T14:36:57.0855798Z   Downloading protobuf-5.29.6-cp38-abi3-manylinux2014_x86_64.whl.metadata (592 bytes)
+post-to-x	Install Dependencies	2026-02-08T14:36:57.1100823Z Collecting googleapis-common-protos<2.0.0,>=1.56.2 (from google-api-core->google-generativeai->-r requirements.txt (line 2))
+post-to-x	Install Dependencies	2026-02-08T14:36:57.1174266Z   Downloading googleapis_common_protos-1.72.0-py3-none-any.whl.metadata (9.4 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:57.8179346Z Collecting grpcio<2.0.0,>=1.33.2 (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-ai-generativelanguage==0.6.15->google-generativeai->-r requirements.txt (line 2))
+post-to-x	Install Dependencies	2026-02-08T14:36:57.8263004Z   Downloading grpcio-1.78.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (3.8 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:57.8689820Z Collecting grpcio-status<2.0.0,>=1.33.2 (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-ai-generativelanguage==0.6.15->google-generativeai->-r requirements.txt (line 2))
+post-to-x	Install Dependencies	2026-02-08T14:36:57.8766261Z   Downloading grpcio_status-1.78.0-py3-none-any.whl.metadata (1.3 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:57.8991035Z INFO: pip is looking at multiple versions of grpcio-status to determine which version is compatible with other requirements. This could take a while.
+post-to-x	Install Dependencies	2026-02-08T14:36:57.9078268Z   Downloading grpcio_status-1.76.0-py3-none-any.whl.metadata (1.1 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:57.9192801Z   Downloading grpcio_status-1.75.1-py3-none-any.whl.metadata (1.1 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:57.9307367Z   Downloading grpcio_status-1.75.0-py3-none-any.whl.metadata (1.1 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:57.9421964Z   Downloading grpcio_status-1.74.0-py3-none-any.whl.metadata (1.1 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:57.9535833Z   Downloading grpcio_status-1.73.1-py3-none-any.whl.metadata (1.1 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:57.9782399Z   Downloading grpcio_status-1.73.0-py3-none-any.whl.metadata (1.1 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:57.9901265Z   Downloading grpcio_status-1.72.2-py3-none-any.whl.metadata (1.1 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:57.9938041Z INFO: pip is still looking at multiple versions of grpcio-status to determine which version is compatible with other requirements. This could take a while.
+post-to-x	Install Dependencies	2026-02-08T14:36:58.0021440Z   Downloading grpcio_status-1.72.1-py3-none-any.whl.metadata (1.1 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:58.0141924Z   Downloading grpcio_status-1.71.2-py3-none-any.whl.metadata (1.1 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:58.2730068Z Collecting jiter<1,>=0.10.0 (from openai->-r requirements.txt (line 3))
+post-to-x	Install Dependencies	2026-02-08T14:36:58.2822875Z   Downloading jiter-0.13.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.2 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:58.3755200Z Collecting tiktoken>=0.5.1 (from tavily-python->-r requirements.txt (line 5))
+post-to-x	Install Dependencies	2026-02-08T14:36:58.3829723Z   Downloading tiktoken-0.12.0-cp310-cp310-manylinux_2_28_x86_64.whl.metadata (6.7 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:58.4046116Z Collecting httplib2<1.0.0,>=0.19.0 (from google-api-python-client->-r requirements.txt (line 8))
+post-to-x	Install Dependencies	2026-02-08T14:36:58.4119641Z   Downloading httplib2-0.31.2-py3-none-any.whl.metadata (2.2 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:58.4325891Z Collecting uritemplate<5,>=3.0.1 (from google-api-python-client->-r requirements.txt (line 8))
+post-to-x	Install Dependencies	2026-02-08T14:36:58.4401705Z   Downloading uritemplate-4.2.0-py3-none-any.whl.metadata (2.6 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:58.4743251Z Collecting pyparsing<4,>=3.1 (from httplib2<1.0.0,>=0.19.0->google-api-python-client->-r requirements.txt (line 8))
+post-to-x	Install Dependencies	2026-02-08T14:36:58.4818948Z   Downloading pyparsing-3.3.2-py3-none-any.whl.metadata (5.8 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:58.5028902Z Collecting requests-oauthlib>=0.7.0 (from google-auth-oauthlib->-r requirements.txt (line 9))
+post-to-x	Install Dependencies	2026-02-08T14:36:58.5104604Z   Downloading requests_oauthlib-2.0.0-py2.py3-none-any.whl.metadata (11 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:58.5286365Z Collecting future (from ffmpeg-python->-r requirements.txt (line 11))
+post-to-x	Install Dependencies	2026-02-08T14:36:58.5360240Z   Downloading future-1.0.0-py3-none-any.whl.metadata (4.0 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:58.5574364Z Collecting click>=8.1.8 (from duckduckgo-search->-r requirements.txt (line 12))
+post-to-x	Install Dependencies	2026-02-08T14:36:58.5648797Z   Downloading click-8.3.1-py3-none-any.whl.metadata (2.6 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:58.5912847Z Collecting primp>=0.15.0 (from duckduckgo-search->-r requirements.txt (line 12))
+post-to-x	Install Dependencies	2026-02-08T14:36:58.6001066Z   Downloading primp-0.15.0-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (13 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:58.8279428Z Collecting lxml>=5.3.0 (from duckduckgo-search->-r requirements.txt (line 12))
+post-to-x	Install Dependencies	2026-02-08T14:36:58.8358241Z   Downloading lxml-6.0.2-cp310-cp310-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl.metadata (3.6 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:58.8608911Z Collecting oauthlib<4,>=3.2.0 (from tweepy->-r requirements.txt (line 18))
+post-to-x	Install Dependencies	2026-02-08T14:36:58.8687335Z   Downloading oauthlib-3.3.1-py3-none-any.whl.metadata (7.9 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:59.0109320Z Collecting cffi>=2.0.0 (from cryptography>=38.0.3->google-auth<3.0.0,>=2.47.0->google-auth[requests]<3.0.0,>=2.47.0->google-genai->-r requirements.txt (line 1))
+post-to-x	Install Dependencies	2026-02-08T14:36:59.0186160Z   Downloading cffi-2.0.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.6 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:59.0401511Z Collecting pycparser (from cffi>=2.0.0->cryptography>=38.0.3->google-auth<3.0.0,>=2.47.0->google-auth[requests]<3.0.0,>=2.47.0->google-genai->-r requirements.txt (line 1))
+post-to-x	Install Dependencies	2026-02-08T14:36:59.0476928Z   Downloading pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:59.5757686Z Collecting regex>=2022.1.18 (from tiktoken>=0.5.1->tavily-python->-r requirements.txt (line 5))
+post-to-x	Install Dependencies	2026-02-08T14:36:59.5838586Z   Downloading regex-2026.1.15-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:59.6122116Z Downloading google_genai-1.62.0-py3-none-any.whl (724 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:59.6771693Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 724.2/724.2 kB 12.3 MB/s  0:00:00
+post-to-x	Install Dependencies	2026-02-08T14:36:59.6843673Z Downloading requests-2.32.5-py3-none-any.whl (64 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:59.6954959Z Downloading pydantic-2.12.5-py3-none-any.whl (463 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:59.7337686Z Downloading pydantic_core-2.41.5-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+post-to-x	Install Dependencies	2026-02-08T14:36:59.8128578Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 27.6 MB/s  0:00:00
+post-to-x	Install Dependencies	2026-02-08T14:36:59.8204173Z Downloading anyio-4.12.1-py3-none-any.whl (113 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:59.8311950Z Downloading charset_normalizer-3.4.4-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (153 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:59.8421228Z Downloading distro-1.9.0-py3-none-any.whl (20 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:59.8520249Z Downloading google_auth-2.48.0-py3-none-any.whl (236 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:59.8671447Z Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:59.8771396Z Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:59.8868963Z Downloading idna-3.11-py3-none-any.whl (71 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:59.8971528Z Downloading rsa-4.9.1-py3-none-any.whl (34 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:59.9070934Z Downloading tenacity-9.1.4-py3-none-any.whl (28 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:59.9169333Z Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:59.9281925Z Downloading urllib3-2.6.3-py3-none-any.whl (131 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:59.9399663Z Downloading websockets-15.0.1-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (181 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:59.9517070Z Downloading google_generativeai-0.8.6-py3-none-any.whl (155 kB)
+post-to-x	Install Dependencies	2026-02-08T14:36:59.9634950Z Downloading google_ai_generativelanguage-0.6.15-py3-none-any.whl (1.3 MB)
+post-to-x	Install Dependencies	2026-02-08T14:36:59.9972351Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 42.1 MB/s  0:00:00
+post-to-x	Install Dependencies	2026-02-08T14:37:00.0047604Z Downloading google_api_core-2.29.0-py3-none-any.whl (173 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.0161788Z Downloading googleapis_common_protos-1.72.0-py3-none-any.whl (297 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.0307544Z Downloading grpcio-1.78.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (6.7 MB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.1297479Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.7/6.7 MB 68.5 MB/s  0:00:00
+post-to-x	Install Dependencies	2026-02-08T14:37:00.1372260Z Downloading grpcio_status-1.71.2-py3-none-any.whl (14 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.1508031Z Downloading proto_plus-1.27.1-py3-none-any.whl (50 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.1610815Z Downloading protobuf-5.29.6-cp38-abi3-manylinux2014_x86_64.whl (320 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.1729510Z Downloading openai-2.17.0-py3-none-any.whl (1.1 MB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.1878418Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 71.0 MB/s  0:00:00
+post-to-x	Install Dependencies	2026-02-08T14:37:00.1953934Z Downloading jiter-0.13.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (362 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.2096031Z Downloading elevenlabs-2.34.0-py3-none-any.whl (1.2 MB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.2246009Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 81.3 MB/s  0:00:00
+post-to-x	Install Dependencies	2026-02-08T14:37:00.2341259Z Downloading tavily_python-0.7.21-py3-none-any.whl (17 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.2437963Z Downloading python_dotenv-1.2.1-py3-none-any.whl (21 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.2535406Z Downloading google_api_python_client-2.189.0-py3-none-any.whl (14.5 MB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.3552430Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.5/14.5 MB 146.1 MB/s  0:00:00
+post-to-x	Install Dependencies	2026-02-08T14:37:00.3627321Z Downloading google_auth_httplib2-0.3.0-py3-none-any.whl (9.5 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.3724301Z Downloading httplib2-0.31.2-py3-none-any.whl (91 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.3827795Z Downloading pyparsing-3.3.2-py3-none-any.whl (122 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.3927049Z Downloading uritemplate-4.2.0-py3-none-any.whl (11 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.4026860Z Downloading google_auth_oauthlib-1.2.4-py3-none-any.whl (19 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.4122735Z Downloading ffmpeg_python-0.2.0-py3-none-any.whl (25 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.4229508Z Downloading duckduckgo_search-8.1.1-py3-none-any.whl (18 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.4329529Z Downloading numpy-2.2.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.8 MB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.5113792Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.8/16.8 MB 220.1 MB/s  0:00:00
+post-to-x	Install Dependencies	2026-02-08T14:37:00.5195015Z Downloading pillow-12.1.0-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (7.0 MB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.5626723Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.0/7.0 MB 170.1 MB/s  0:00:00
+post-to-x	Install Dependencies	2026-02-08T14:37:00.5710115Z Downloading imageio_ffmpeg-0.6.0-py3-none-manylinux2014_x86_64.whl (29.5 MB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.7369419Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 29.5/29.5 MB 185.0 MB/s  0:00:00
+post-to-x	Install Dependencies	2026-02-08T14:37:00.7449181Z Downloading python_telegram_bot-22.6-py3-none-any.whl (737 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.7516494Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 737.3/737.3 kB 114.4 MB/s  0:00:00
+post-to-x	Install Dependencies	2026-02-08T14:37:00.7589957Z Downloading tweepy-4.16.0-py3-none-any.whl (98 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.7689319Z Downloading oauthlib-3.3.1-py3-none-any.whl (160 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.7790924Z Downloading requests_oauthlib-2.0.0-py2.py3-none-any.whl (24 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.7885725Z Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.7981583Z Downloading certifi-2026.1.4-py3-none-any.whl (152 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.8103022Z Downloading click-8.3.1-py3-none-any.whl (108 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.8209254Z Downloading cryptography-46.0.4-cp38-abi3-manylinux_2_34_x86_64.whl (4.5 MB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.8461405Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.5/4.5 MB 214.5 MB/s  0:00:00
+post-to-x	Install Dependencies	2026-02-08T14:37:00.8531825Z Downloading cffi-2.0.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (216 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.8639838Z Downloading exceptiongroup-1.3.1-py3-none-any.whl (16 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.8735618Z Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.8834648Z Downloading lxml-6.0.2-cp310-cp310-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (5.3 MB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.9182096Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.3/5.3 MB 161.1 MB/s  0:00:00
+post-to-x	Install Dependencies	2026-02-08T14:37:00.9336179Z Downloading primp-0.15.0-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.3 MB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.9516467Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.3/3.3 MB 200.6 MB/s  0:00:00
+post-to-x	Install Dependencies	2026-02-08T14:37:00.9592797Z Downloading pyasn1-0.6.2-py3-none-any.whl (83 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.9692345Z Downloading pyasn1_modules-0.4.2-py3-none-any.whl (181 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.9884010Z Downloading tiktoken-0.12.0-cp310-cp310-manylinux_2_28_x86_64.whl (1.2 MB)
+post-to-x	Install Dependencies	2026-02-08T14:37:00.9983702Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 141.5 MB/s  0:00:00
+post-to-x	Install Dependencies	2026-02-08T14:37:01.0068485Z Downloading regex-2026.1.15-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (791 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:01.0143711Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 791.8/791.8 kB 118.1 MB/s  0:00:00
+post-to-x	Install Dependencies	2026-02-08T14:37:01.0223884Z Downloading tqdm-4.67.3-py3-none-any.whl (78 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:01.0327456Z Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:01.0427250Z Downloading future-1.0.0-py3-none-any.whl (491 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:01.0543930Z Downloading pycparser-3.0-py3-none-any.whl (48 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:01.0649977Z Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+post-to-x	Install Dependencies	2026-02-08T14:37:01.3641309Z Installing collected packages: websockets, urllib3, uritemplate, typing-extensions, tqdm, tenacity, sniffio, regex, python-dotenv, pyparsing, pycparser, pyasn1, protobuf, primp, Pillow, oauthlib, numpy, lxml, jiter, imageio-ffmpeg, idna, h11, future, distro, click, charset_normalizer, certifi, annotated-types, typing-inspection, rsa, requests, pydantic-core, pyasn1-modules, proto-plus, httplib2, httpcore, grpcio, googleapis-common-protos, ffmpeg-python, exceptiongroup, duckduckgo-search, cffi, tiktoken, requests-oauthlib, pydantic, grpcio-status, cryptography, anyio, tweepy, httpx, google-auth, tavily-python, python-telegram-bot, openai, google-auth-oauthlib, google-auth-httplib2, google-api-core, elevenlabs, google-genai, google-api-python-client, google-ai-generativelanguage, google-generativeai
+post-to-x	Install Dependencies	2026-02-08T14:37:10.2558257Z 
+post-to-x	Install Dependencies	2026-02-08T14:37:10.2650664Z Successfully installed Pillow-12.1.0 annotated-types-0.7.0 anyio-4.12.1 certifi-2026.1.4 cffi-2.0.0 charset_normalizer-3.4.4 click-8.3.1 cryptography-46.0.4 distro-1.9.0 duckduckgo-search-8.1.1 elevenlabs-2.34.0 exceptiongroup-1.3.1 ffmpeg-python-0.2.0 future-1.0.0 google-ai-generativelanguage-0.6.15 google-api-core-2.29.0 google-api-python-client-2.189.0 google-auth-2.48.0 google-auth-httplib2-0.3.0 google-auth-oauthlib-1.2.4 google-genai-1.62.0 google-generativeai-0.8.6 googleapis-common-protos-1.72.0 grpcio-1.78.0 grpcio-status-1.71.2 h11-0.16.0 httpcore-1.0.9 httplib2-0.31.2 httpx-0.28.1 idna-3.11 imageio-ffmpeg-0.6.0 jiter-0.13.0 lxml-6.0.2 numpy-2.2.6 oauthlib-3.3.1 openai-2.17.0 primp-0.15.0 proto-plus-1.27.1 protobuf-5.29.6 pyasn1-0.6.2 pyasn1-modules-0.4.2 pycparser-3.0 pydantic-2.12.5 pydantic-core-2.41.5 pyparsing-3.3.2 python-dotenv-1.2.1 python-telegram-bot-22.6 regex-2026.1.15 requests-2.32.5 requests-oauthlib-2.0.0 rsa-4.9.1 sniffio-1.3.1 tavily-python-0.7.21 tenacity-9.1.4 tiktoken-0.12.0 tqdm-4.67.3 tweepy-4.16.0 typing-extensions-4.15.0 typing-inspection-0.4.2 uritemplate-4.2.0 urllib3-2.6.3 websockets-15.0.1
+post-to-x	Run X Automation	﻿2026-02-08T14:37:11.0861361Z ##[group]Run python main.py --x-auto --x-force
+post-to-x	Run X Automation	2026-02-08T14:37:11.0861784Z [36;1mpython main.py --x-auto --x-force[0m
+post-to-x	Run X Automation	2026-02-08T14:37:11.0895368Z shell: /usr/bin/bash -e {0}
+post-to-x	Run X Automation	2026-02-08T14:37:11.0895626Z env:
+post-to-x	Run X Automation	2026-02-08T14:37:11.0895897Z   pythonLocation: /opt/hostedtoolcache/Python/3.10.19/x64
+post-to-x	Run X Automation	2026-02-08T14:37:11.0896361Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.10.19/x64/lib/pkgconfig
+post-to-x	Run X Automation	2026-02-08T14:37:11.0896981Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.10.19/x64
+post-to-x	Run X Automation	2026-02-08T14:37:11.0897385Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.10.19/x64
+post-to-x	Run X Automation	2026-02-08T14:37:11.0897775Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.10.19/x64
+post-to-x	Run X Automation	2026-02-08T14:37:11.0898185Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.10.19/x64/lib
+post-to-x	Run X Automation	2026-02-08T14:37:11.0898671Z   GEMINI_API_KEY: ***
+post-to-x	Run X Automation	2026-02-08T14:37:11.0898982Z   TAVILY_API_KEY: ***
+post-to-x	Run X Automation	
+post-to-x	Run X Automation	2026-02-08T14:37:11.0899355Z   PEXELS_API_KEY: ***
+post-to-x	Run X Automation	
+post-to-x	Run X Automation	2026-02-08T14:37:11.0899623Z   PIXABAY_API_KEY: ***
+post-to-x	Run X Automation	2026-02-08T14:37:11.0899857Z   X_API_KEY: ***
+post-to-x	Run X Automation	2026-02-08T14:37:11.0900209Z   X_API_SECRET: ***
+post-to-x	Run X Automation	2026-02-08T14:37:11.0900807Z   X_ACCESS_TOKEN: ***
+post-to-x	Run X Automation	2026-02-08T14:37:11.0901153Z   X_ACCESS_TOKEN_SECRET: ***
+post-to-x	Run X Automation	2026-02-08T14:37:11.0901765Z   X_BEARER_TOKEN: ***
+post-to-x	Run X Automation	2026-02-08T14:37:11.0901974Z ##[endgroup]
+post-to-x	Run X Automation	2026-02-08T14:37:12.9853527Z /opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/google/api_core/_python_version_support.py:275: FutureWarning: You are using a Python version (3.10.19) which Google will stop supporting in new releases of google.api_core once it reaches its end of life (2026-10-04). Please upgrade to the latest Python version, or at least Python 3.11, to continue receiving updates for google.api_core past that date.
+post-to-x	Run X Automation	2026-02-08T14:37:12.9857513Z   warnings.warn(message, FutureWarning)
+post-to-x	Run X Automation	2026-02-08T14:37:13.3196034Z ⚠️  [main] Missing API keys: ELEVENLABS_API_KEY
+post-to-x	Run X Automation	2026-02-08T14:37:13.5487895Z ℹ️  [src.services.twitter_service] X (Twitter) Service Authenticated successfully.
+post-to-x	Run X Automation	2026-02-08T14:37:13.5494537Z ℹ️  [main] Running X Daily Automation (Force: True)...
+post-to-x	Run X Automation	2026-02-08T14:37:13.5495521Z ℹ️  [src.agents.x_content_agent] Checking schedule... Current time: 14:37, Plan time: 12:00
+post-to-x	Commit and Push History (Optional)	﻿2026-02-08T14:37:13.8018785Z ##[group]Run git config --global user.name "X-Bot"
+post-to-x	Commit and Push History (Optional)	2026-02-08T14:37:13.8019211Z [36;1mgit config --global user.name "X-Bot"[0m
+post-to-x	Commit and Push History (Optional)	2026-02-08T14:37:13.8019557Z [36;1mgit config --global user.email "bot@x.com"[0m
+post-to-x	Commit and Push History (Optional)	2026-02-08T14:37:13.8019872Z [36;1mgit add data/*.json[0m
+post-to-x	Commit and Push History (Optional)	2026-02-08T14:37:13.8020712Z [36;1mgit commit -m "Update X daily plan and history [skip ci]" || echo "No changes to commit"[0m
+post-to-x	Commit and Push History (Optional)	2026-02-08T14:37:13.8021296Z [36;1mgit push || echo "No changes to push"[0m
+post-to-x	Commit and Push History (Optional)	2026-02-08T14:37:13.8053191Z shell: /usr/bin/bash -e {0}
+post-to-x	Commit and Push History (Optional)	2026-02-08T14:37:13.8053451Z env:
+post-to-x	Commit and Push History (Optional)	2026-02-08T14:37:13.8053719Z   pythonLocation: /opt/hostedtoolcache/Python/3.10.19/x64
+post-to-x	Commit and Push History (Optional)	2026-02-08T14:37:13.8054167Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.10.19/x64/lib/pkgconfig
+post-to-x	Commit and Push History (Optional)	2026-02-08T14:37:13.8054600Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.10.19/x64
+post-to-x	Commit and Push History (Optional)	2026-02-08T14:37:13.8054979Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.10.19/x64
+post-to-x	Commit and Push History (Optional)	2026-02-08T14:37:13.8055358Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.10.19/x64
+post-to-x	Commit and Push History (Optional)	2026-02-08T14:37:13.8055776Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.10.19/x64/lib
+post-to-x	Commit and Push History (Optional)	2026-02-08T14:37:13.8056096Z ##[endgroup]
+post-to-x	Commit and Push History (Optional)	2026-02-08T14:37:14.0629784Z On branch main
+post-to-x	Commit and Push History (Optional)	2026-02-08T14:37:14.0634525Z Your branch is up to date with 'origin/main'.
+post-to-x	Commit and Push History (Optional)	2026-02-08T14:37:14.0644089Z 
+post-to-x	Commit and Push History (Optional)	2026-02-08T14:37:14.0644412Z nothing to commit, working tree clean
+post-to-x	Commit and Push History (Optional)	2026-02-08T14:37:14.0644911Z No changes to commit
+post-to-x	Commit and Push History (Optional)	2026-02-08T14:37:14.1809898Z remote: Write access to repository not granted.
+post-to-x	Commit and Push History (Optional)	2026-02-08T14:37:14.1814907Z fatal: unable to access 'https://github.com/StrongPartners/stream-global-factory/': The requested URL returned error: 403
+post-to-x	Commit and Push History (Optional)	2026-02-08T14:37:14.1834435Z No changes to push
+post-to-x	Post Set up Python	﻿2026-02-08T14:37:14.1904034Z Post job cleanup.
+post-to-x	Post Checkout Repository	﻿2026-02-08T14:37:14.3592029Z Post job cleanup.
+post-to-x	Post Checkout Repository	2026-02-08T14:37:14.4589206Z [command]/usr/bin/git version
+post-to-x	Post Checkout Repository	2026-02-08T14:37:14.4630936Z git version 2.52.0
+post-to-x	Post Checkout Repository	2026-02-08T14:37:14.4673079Z Copying '/home/runner/.gitconfig' to '/home/runner/work/_temp/a245fbc8-7dfd-41ba-87f5-16688968455e/.gitconfig'
+post-to-x	Post Checkout Repository	2026-02-08T14:37:14.4684745Z Temporarily overriding HOME='/home/runner/work/_temp/a245fbc8-7dfd-41ba-87f5-16688968455e' before making global git config changes
+post-to-x	Post Checkout Repository	2026-02-08T14:37:14.4688027Z Adding repository directory to the temporary git global config as a safe directory
+post-to-x	Post Checkout Repository	2026-02-08T14:37:14.4692198Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/stream-global-factory/stream-global-factory
+post-to-x	Post Checkout Repository	2026-02-08T14:37:14.4737711Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+post-to-x	Post Checkout Repository	2026-02-08T14:37:14.4775848Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+post-to-x	Post Checkout Repository	2026-02-08T14:37:14.5028614Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+post-to-x	Post Checkout Repository	2026-02-08T14:37:14.5054143Z http.https://github.com/.extraheader
+post-to-x	Post Checkout Repository	2026-02-08T14:37:14.5070179Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+post-to-x	Post Checkout Repository	2026-02-08T14:37:14.5106678Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+post-to-x	Post Checkout Repository	2026-02-08T14:37:14.5354166Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+post-to-x	Post Checkout Repository	2026-02-08T14:37:14.5390694Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+post-to-x	Complete job	﻿2026-02-08T14:37:14.5743567Z Cleaning up orphan processes

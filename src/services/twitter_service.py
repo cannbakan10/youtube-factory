@@ -50,6 +50,7 @@ class TwitterService:
             return response.data['id']
         except Exception as e:
             logger.error(f"Error posting text tweet: {e}")
+            print(f"DEBUG: Text post failed with error: {e}")
             return None
 
     def post_with_media(self, text: str, media_path: str):
@@ -69,6 +70,7 @@ class TwitterService:
             return response.data['id']
         except Exception as e:
             logger.error(f"Error posting media tweet: {e}")
+            print(f"DEBUG: Media post failed with error: {e}")
             return None
 
     def post_thread(self, tweets: list):
