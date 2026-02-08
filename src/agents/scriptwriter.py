@@ -304,7 +304,7 @@ class ScriptWriter:
         """
         lang_name = "English" if language == "en" else "Turkish"
         is_long = video_type == "long"
-        scene_duration = "6.0 - 10.0 seconds" if is_long else "3.5 - 5.0 seconds"
+        scene_duration = "12.0 - 20.0 seconds" if is_long else "3.5 - 5.0 seconds"
         orientation = "LANDSCAPE (16:9)" if is_long else "PORTRAIT (9:16)"
 
         # Mode-specific visual keyword strategy
@@ -369,6 +369,8 @@ class ScriptWriter:
             }}
           ]
         }}
+        
+        IMPORTANT: For long-form videos, ensure the JSON structure is complete and not truncated. Focus on high-impact scenes that accurately cover the narrative.
         """
 
         try:

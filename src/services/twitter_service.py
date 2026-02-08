@@ -18,7 +18,10 @@ class TwitterService:
         self.auth = None
         self.api_v1 = None
 
-        self._authenticate()
+        if all([self.api_key, self.api_secret, self.access_token, self.access_token_secret]):
+            self._authenticate()
+        else:
+            logger.warning("X (Twitter) credentials missing. Twitter scaling disabled.")
 
     def _authenticate(self):
         try:
