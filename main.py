@@ -40,6 +40,7 @@ from src.core.ffmpeg_engine import VideoEngine
 from src.agents.trend_agent import TrendAgent
 from src.agents.viral_analyzer import ViralAnalyzer
 from src.agents.x_content_agent import XContentAgent
+from src.agents.youtube_content_agent import YouTubeContentAgent
 
 
 load_dotenv()
@@ -65,6 +66,7 @@ class YoutubeFactory:
         self.viral_analyzer = self._safe_init(ViralAnalyzer, "ViralAnalyzer")
         self.branding = self._safe_init(BrandingService, "BrandingService")
         self.x_agent = self._safe_init(XContentAgent, "XContentAgent", factory_instance=self)
+        self.youtube_agent = self._safe_init(YouTubeContentAgent, "YouTubeContentAgent", factory_instance=self)
         self.youtube_service = None
 
 
@@ -421,6 +423,8 @@ Examples:
     parser.add_argument("--x-force", action="store_true", help="Force X automation even if it's not the scheduled time")
     parser.add_argument("--x-plan", action="store_true", help="Force generate a new daily plan for X")
     parser.add_argument("--x-topic", type=str, help="Custom topic for X post generation")
+    parser.add_argument("--youtube-auto", action="store_true", help="Run daily trending YouTube Shorts automation")
+    parser.add_argument("--region", type=str, default="USA", help="Region for trending topic discovery (USA, Turkey, etc.)")
 
 
     args = parser.parse_args()
@@ -443,6 +447,16 @@ Examples:
             
         logger.info(f"Running X Daily Automation (Force: {args.x_force})...")
         factory.x_agent.run_scheduled_tasks(force=args.x_force)
+        sys.exit(0)
+
+    # YouTube Automation Mode
+    if args.youtube_auto:
+        if not factory.youtube_agent:
+            logger.error("YouTubeContentAgent is unavailable.")
+            sys.exit(1)
+            
+        logger.info(f"Running YouTube Daily Automation (Region: {args.region})...")
+        factory.youtube_agent.run_daily_automation(region=args.region)
         sys.exit(0)
 
 

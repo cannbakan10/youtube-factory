@@ -12,6 +12,13 @@ class YouTubeService:
         # Determine project root relative to this file
         self.project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
         self.client_secrets_file = os.path.join(self.project_root, "client_secrets.json")
+        
+        # Load client_secrets from env if in CI
+        env_secrets = os.getenv("CLIENT_SECRETS_JSON")
+        if env_secrets and not os.path.exists(self.client_secrets_file):
+            with open(self.client_secrets_file, "w") as f:
+                f.write(env_secrets)
+                
         self.token_file = os.path.join(self.project_root, "token.pickle")
         print(f"   🔍 [YouTube]: Checking client_secrets at: {self.client_secrets_file}")
         print(f"   🔍 [YouTube]: Checking token at: {self.token_file}")
@@ -25,7 +32,18 @@ class YouTubeService:
 
     def _authenticate(self):
         creds = None
-        if os.path.exists(self.token_file):
+        # Try loading from base64 env var first (for CI/CD)
+        token_base64 = os.getenv("TOKEN_PICKLE_BASE64")
+        if token_base64:
+            try:
+                import base64
+                print("   🔑 [YouTube]: Loading credentials from TOKEN_PICKLE_BASE64 env...")
+                decoded_token = base64.b64decode(token_base64)
+                creds = pickle.loads(decoded_token)
+            except Exception as e:
+                print(f"   ⚠️ [YouTube]: Failed to load token from base64 env: {e}")
+
+        if not creds and os.path.exists(self.token_file):
             print(f"   🔑 [YouTube]: Loading credentials from {self.token_file}")
             try:
                 with open(self.token_file, "rb") as token:
