@@ -137,33 +137,30 @@ class XContentAgent:
         if post["type"] == "text":
             return self.twitter.post_text(post["text"])
         
+        # Try media if type is image or video
         media_path = None
         keywords = post.get("keywords", ["interesting"])
         
-        if post["type"] == "image":
-            # Try to get image
-            try:
+        try:
+            if post["type"] == "image":
                 media_path = self.pexels.get_image(keywords)
                 if not media_path:
                     media_path = self.pixabay.get_image(keywords)
-                
-                if media_path:
-                    logger.info(f"Attempting to post with media: {media_path}")
-                    result = self.twitter.post_with_media(post["text"], media_path)
-                    if result: return result
-                    logger.warning("Media post failed (likely API tier), falling back to text only.")
-            except Exception as e:
-                logger.warning(f"Media handling failed: {e}. Falling back to text.")
-            
-        elif post["type"] == "video":
-            # Keeping it simple for manual/rare use as per strategy
-            media_path = self.pexels.get_video(keywords, orientation="portrait")
+            elif post["type"] == "video":
+                media_path = self.pexels.get_video(keywords, orientation="portrait")
+
             if media_path:
-                return self.twitter.post_with_media(post["text"], media_path)
-            else:
-                return self.twitter.post_text(post["text"])
+                logger.info(f"Attempting to post with media: {media_path}")
+                result = self.twitter.post_with_media(post["text"], media_path)
+                if result: 
+                    return result
+                logger.warning("Media post failed (likely API tier), falling back to text only.")
+        except Exception as e:
+            logger.warning(f"Media handling failed: {e}. Falling back to text.")
         
-        return False
+        # Ultimate fallback for all types
+        logger.info("Posting as text-only tweet...")
+        return self.twitter.post_text(post["text"])
 
     def _save_plan(self, plan):
         with open(self.plan_file, "w", encoding="utf-8") as f:
