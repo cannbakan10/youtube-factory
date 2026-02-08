@@ -62,7 +62,7 @@ class XContentAgent:
           "type": "image",
           "text": "Post metni...",
           "keywords": ["görsel aramak için 2-3 adet ingilizce anahtar kelime"],
-          "scheduled_time": "12:00"
+          "scheduled_time": "08:00"
         }}
         
         Sadece JSON objesini döndür (liste değil).
