@@ -3,7 +3,7 @@ import os
 import subprocess
 import time
 import tempfile
-from typing import Dict, Optional, Tuple
+from typing import Dict, Optional, Tuple, List
 
 import numpy as np
 from PIL import Image
@@ -395,13 +395,15 @@ class AmbientVideoService:
             )
             return None
 
-        if not video_source:
-            video_source = self._generate_procedural_loop_clip(
+        if not video_sources:
+            fallback_clip = self._generate_procedural_loop_clip(
                 ambient_type=ambient_type,
                 width=width,
                 height=height,
                 bg_color=str(preset["fallback_bg_color"]),
             )
+            if fallback_clip:
+                video_sources = [fallback_clip]
         audio_source, audio_mode = self._resolve_audio_source(
             preset=preset,
             duration_seconds=duration_seconds,

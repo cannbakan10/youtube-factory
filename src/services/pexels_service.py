@@ -17,6 +17,7 @@ class PexelsService:
         raw_key = os.getenv("PEXELS_API_KEY", "")
         self.api_key = raw_key.strip().replace('"', '').replace("'", "")
         self.base_url = "https://api.pexels.com/v1/videos/search"
+        self.image_url = "https://api.pexels.com/v1/search"
         if output_dir:
             self.cache_dir = output_dir
         else:
@@ -52,6 +53,34 @@ class PexelsService:
                 logger.warning(f"Pexels attempt failed ({attempt}): {e}")
 
         logger.error(f"All Pexels search attempts failed for: {keywords}")
+        return None
+
+    def get_image(self, query, orientation="landscape"):
+        """Fetches an image from Pexels with smart retries."""
+        if not self.api_key:
+            logger.warning("Pexels API key not configured")
+            return None
+
+        keywords = query if isinstance(query, list) else query.split()
+        search_query = " ".join(keywords) if keywords else "cinematic"
+
+        try:
+            APIRateLimiters.pexels.wait()
+            headers = {"Authorization": self.api_key}
+            params = {"query": search_query, "per_page": 1, "orientation": orientation}
+            response = requests.get(self.image_url, headers=headers, params=params, timeout=REQUEST_TIMEOUT)
+            response.raise_for_status()
+            data = response.json()
+
+            if data.get('photos'):
+                photo = data['photos'][0]
+                image_url = photo['src']['large2x']
+                filename = f"pexels_img_{uuid.uuid4()}.jpg"
+                filepath = os.path.join(self.cache_dir, filename)
+                self._download_file(image_url, filepath)
+                return filepath
+        except Exception as e:
+            logger.warning(f"Pexels image fetch failed: {e}")
         return None
 
     def get_multiple_videos(self, query, count=5, orientation="portrait"):

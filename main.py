@@ -39,6 +39,8 @@ from src.services.ambient_video_service import AmbientVideoService
 from src.core.ffmpeg_engine import VideoEngine
 from src.agents.trend_agent import TrendAgent
 from src.agents.viral_analyzer import ViralAnalyzer
+from src.agents.x_content_agent import XContentAgent
+
 
 load_dotenv()
 
@@ -62,14 +64,17 @@ class YoutubeFactory:
         self.trend_agent = self._safe_init(TrendAgent, "TrendAgent")
         self.viral_analyzer = self._safe_init(ViralAnalyzer, "ViralAnalyzer")
         self.branding = self._safe_init(BrandingService, "BrandingService")
+        self.x_agent = self._safe_init(XContentAgent, "XContentAgent", factory_instance=self)
         self.youtube_service = None
 
-    def _safe_init(self, cls, name):
+
+    def _safe_init(self, cls, name, **kwargs):
         try:
-            return cls()
+            return cls(**kwargs)
         except Exception as e:
             logger.warning(f"{name} disabled: {e}")
             return None
+
 
     def run(self, topic, languages=None, auto_upload=False, mode="info", video_type="shorts", style_context=None):
         if languages is None:
@@ -397,6 +402,9 @@ Examples:
     parser.add_argument("--remix-topic", type=str, help="Manual topic override for --produce-remix")
     parser.add_argument("--save-remix", action="store_true", help="Save remix candidates as JSON")
     parser.add_argument("--viral-help", action="store_true", help="Show viral analyzer help")
+    parser.add_argument("--x-auto", action="store_true", help="Run daily X (Twitter) automation")
+    parser.add_argument("--x-plan", action="store_true", help="Force generate a new daily plan for X")
+
 
     args = parser.parse_args()
 
@@ -406,6 +414,20 @@ Examples:
         sys.exit(0)
 
     factory = YoutubeFactory()
+
+    # X Automation Mode
+    if args.x_auto:
+        if not factory.x_agent:
+            logger.error("XContentAgent is unavailable. Check X API keys.")
+            sys.exit(1)
+        
+        if args.x_plan:
+            factory.x_agent.generate_daily_plan()
+            
+        logger.info("Running X Daily Automation...")
+        factory.x_agent.run_scheduled_tasks()
+        sys.exit(0)
+
 
     # Ambient Mode
     if args.ambient:

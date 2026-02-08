@@ -17,6 +17,7 @@ class PixabayService:
         raw_key = os.getenv("PIXABAY_API_KEY", "")
         self.api_key = raw_key.strip().replace('"', '').replace("'", "")
         self.video_url = "https://pixabay.com/api/videos/"
+        self.image_url = "https://pixabay.com/api/"
         self.music_url = "https://pixabay.com/api/music/"  # For SFX and Background Music
 
         if output_dir:
@@ -55,6 +56,42 @@ class PixabayService:
                 logger.warning(f"Pixabay attempt failed ({attempt}): {e}")
 
         logger.error(f"All Pixabay search attempts failed for: {keywords}")
+        return None
+
+    def get_image(self, query):
+        """Fetches an image from Pixabay."""
+        if not self.api_key:
+            logger.warning("Pixabay API key not configured")
+            return None
+
+        keywords = query if isinstance(query, list) else query.split()
+        search_query = " ".join(keywords) if keywords else "cinematic"
+
+        params = {
+            "key": self.api_key,
+            "q": search_query[:95],
+            "image_type": "photo",
+            "per_page": 3,
+            "safesearch": "true"
+        }
+
+        try:
+            APIRateLimiters.pixabay.wait()
+            response = requests.get(self.image_url, params=params, timeout=REQUEST_TIMEOUT)
+            response.raise_for_status()
+            data = response.json()
+
+            if data.get('hits'):
+                import random
+                hit = random.choice(data['hits'])
+                image_url = hit.get('largeImageURL') or hit.get('webformatURL')
+                if image_url:
+                    filename = f"pixabay_img_{uuid.uuid4()}.jpg"
+                    filepath = os.path.join(self.cache_dir, filename)
+                    self._download_file(image_url, filepath)
+                    return filepath
+        except Exception as e:
+            logger.warning(f"Pixabay image fetch failed: {e}")
         return None
 
     def get_multiple_videos(self, query, count=5, orientation="portrait"):
