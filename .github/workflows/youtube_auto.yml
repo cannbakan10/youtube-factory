@@ -2,8 +2,8 @@ name: YouTube Daily Trending Shorts
 
 on:
   schedule:
-    # Runs at 10:00 UTC (13:00 TR Time) every day
-    - cron: '0 10 * * *'
+    # Runs every hour (24 times a day)
+    - cron: '0 * * * *'
   workflow_dispatch: # Allows manual trigger
 
 jobs:
@@ -33,6 +33,7 @@ jobs:
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
           TOKEN_PICKLE_BASE64: ${{ secrets.TOKEN_PICKLE_BASE64 }}
           CLIENT_SECRETS_JSON: ${{ secrets.CLIENT_SECRETS_JSON }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: |
           # Create client_secrets.json from secret
           echo '${{ secrets.CLIENT_SECRETS_JSON }}' > client_secrets.json

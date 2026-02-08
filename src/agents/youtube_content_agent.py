@@ -24,8 +24,8 @@ class YouTubeContentAgent:
             logger.error("No trending topics found for YouTube.")
             return False
             
-        # 2. Select the first trending topic (or randomize)
-        selected = trends[0]
+        # 2. Select a random trending topic from the top results to avoid repetition
+        selected = random.choice(trends)
         topic = selected["topic"]
         lang = selected.get("language", "en")
         
