@@ -424,7 +424,6 @@ Examples:
     parser.add_argument("--x-plan", action="store_true", help="Force generate a new daily plan for X")
     parser.add_argument("--x-topic", type=str, help="Custom topic for X post generation")
     parser.add_argument("--youtube-auto", action="store_true", help="Run daily trending YouTube Shorts automation")
-    parser.add_argument("--region", type=str, default="USA", help="Region for trending topic discovery (USA, Turkey, etc.)")
 
 
     args = parser.parse_args()
