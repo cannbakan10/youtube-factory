@@ -444,7 +444,8 @@ Examples:
             logger.error("XContentAgent is unavailable. Check X API keys.")
             sys.exit(1)
         
-        if args.x_plan or args.x_topic:
+        # If x_plan is requested OR a topic is provided (ensure it's not just an empty string from GitHub)
+        if args.x_plan or (args.x_topic and args.x_topic.strip()):
             factory.x_agent.generate_daily_plan(custom_topic=args.x_topic)
             
         logger.info(f"Running X Daily Automation (Force: {args.x_force})...")

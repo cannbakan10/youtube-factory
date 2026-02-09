@@ -36,9 +36,9 @@ class XContentAgent:
             topic = custom_topic
         else:
             # Categorize to ensure variety
-            categories = ["bilim", "tarih", "uzay", "doğa", "hayvanlar", "teknoloji", "psikoloji"]
+            categories = ["bilim", "tarih", "uzay", "doğa", "hayvanlar", "teknoloji", "psikoloji", "sanat", "coğrafya", "arkeoloji", "denizaltı"]
             selected_category = random.choice(categories)
-            topic = f"{selected_category} hakkında inanılmaz, duyulmamış, şaşırtıcı ve 'Vay Be' dedirtecek bir gerçek"
+            topic = f"{selected_category} hakkında bilinmeyen, çok şaşırtıcı, 'yok artık' dedirtecek ilginç bir bilgi"
             
         research_data = self.researcher.research(topic)
         
@@ -55,7 +55,7 @@ class XContentAgent:
         3. BAŞLIK: İlgi çekici bir emoji ile başla (Örn: 🧠 BUNLARI BİLİYOR MUYDUNUZ?, 🌌 ŞAŞIRTICI GERÇEK:).
         4. SORU: Postun sonuna mutlaka etkileşim artıracak bir soru ekle (Örn: Sizce bu mümkün mü?, En çok hangisine şaşırdınız?).
         5. HASHTAG: Maksimum 2-3 tane hashtag kullan. #VayBeBilgi etiketi SABİT olsun, diğeri konuya özel olsun (Örn: #uzay, #tarih).
-        6. ÇEŞİTLİLİK: Daha önceki postlarla aynı cümle yapılarını kullanma.
+        6. ÇEŞİTLİLİK: Daha önceki postlarla aynı cümle yapılarını kullanma. ASLA "Satürn" hakkında bilgi verme; bu konu çok kez işlendi, farklı bir gezegen veya tamamen farklı bir konu seç.
         
         FORMAT (JSON):
         {{
@@ -96,12 +96,36 @@ class XContentAgent:
     def _is_repeated(self, text):
         if not os.path.exists(self.history_file):
             return False
+        
+        # Clean text for comparison
+        def clean(t):
+            return "".join(c for i, c in enumerate(t.lower()) if c.isalnum() or c.isspace()).strip()
+
+        clean_text = clean(text)
+        
+        # Hard Blacklist for "Saturn" and its common variations in Turkish
+        blacklist = ["saturn", "satürn", "halkalı gezegen"]
+        if any(word in clean_text for word in blacklist):
+            logger.warning(f"Post contains blacklisted word: {clean_text}")
+            return True
+        
         with open(self.history_file, "r", encoding="utf-8") as f:
-            history = json.loads(f.read())
-            # Check if text is 80% similar to anything in history
+            try:
+                history = json.loads(f.read())
+            except:
+                return False
+                
             for old_post in history:
-                if text[:50] in old_post.get("text", ""):
+                old_text = old_post.get("text", "")
+                if not old_text: continue
+                
+                # Check for 60% substring match
+                clean_old = clean(old_text)
+                if len(clean_text) > 20 and clean_text[:20] in clean_old:
                     return True
+                if len(clean_old) > 20 and clean_old[:20] in clean_text:
+                    return True
+                    
         return False
 
     def run_scheduled_tasks(self, force=False):
@@ -112,6 +136,12 @@ class XContentAgent:
         else:
             with open(self.plan_file, "r", encoding="utf-8") as f:
                 plan = json.loads(f.read())
+            
+            # If everything in the current plan is already posted, generate a NEW one
+            if all(post.get("posted", False) for post in plan):
+                logger.info("Current plan is fully executed. Generating fresh content...")
+                plan = self.generate_daily_plan()
+                if not plan: return
         
         # Current time in UTC (GitHub default)
         current_time = datetime.now().strftime("%H:%M")
