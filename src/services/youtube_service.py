@@ -8,7 +8,7 @@ from googleapiclient.http import MediaFileUpload
 
 class YouTubeService:
     def __init__(self):
-        self.scopes = ["https://www.googleapis.com/auth/youtube.upload"]
+        self.scopes = ["https://www.googleapis.com/auth/youtube", "https://www.googleapis.com/auth/youtube.upload"]
         # Determine project root relative to this file
         self.project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
         self.client_secrets_file = os.path.join(self.project_root, "client_secrets.json")
