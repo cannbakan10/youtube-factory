@@ -1,7 +1,8 @@
 """
 ASMR Shorts Content Agent
 Produces daily no-voice, no-text, satisfying/relaxing ASMR Shorts.
-Sources video clips from Pexels/Pixabay, adds category-specific audio, uploads to YouTube.
+Sources video clips from Mixkit, Coverr, Pexels, and Pixabay.
+Adds category-specific audio, uploads to YouTube.
 """
 import os
 import json
@@ -14,6 +15,9 @@ from typing import Optional, List, Dict
 
 from src.services.pexels_service import PexelsService
 from src.services.pixabay_service import PixabayService
+from src.services.mixkit_service import MixkitService
+from src.services.coverr_service import CoverrService
+from src.services.vecteezy_service import VecteezyService
 from src.services.youtube_service import YouTubeService
 from src.utils.logger import get_logger
 
@@ -36,6 +40,7 @@ ASMR_CATEGORIES = [
             "sand cutting close up",
             "sand mold satisfying",
         ],
+        "mixkit_keywords": ["sand", "sand-castle", "beach-sand", "colored-sand"],
         "audio_keywords": [
             "sand crunching ASMR",
             "sand cutting sound",
@@ -60,6 +65,7 @@ ASMR_CATEGORIES = [
             "colorful soap slicing",
             "soap shaving satisfying",
         ],
+        "mixkit_keywords": ["soap", "soap-making", "hand-washing", "soap-bubbles"],
         "audio_keywords": [
             "soap cutting crunchy sound",
             "ASMR cutting crispy",
@@ -84,6 +90,7 @@ ASMR_CATEGORIES = [
             "water splash slow motion",
             "droplet falling water",
         ],
+        "mixkit_keywords": ["water-drops", "rain", "water-splash", "dripping"],
         "audio_keywords": [
             "water drops ASMR relaxing",
             "rain drops gentle sound",
@@ -108,6 +115,7 @@ ASMR_CATEGORIES = [
             "fireplace burning log",
             "fire embers glowing",
         ],
+        "mixkit_keywords": ["fire", "campfire", "candle", "flames", "fireplace"],
         "audio_keywords": [
             "fire crackling ASMR",
             "campfire crackling wood",
@@ -132,6 +140,7 @@ ASMR_CATEGORIES = [
             "butterfly wings close up",
             "plant growing timelapse",
         ],
+        "mixkit_keywords": ["flowers", "nature-close-up", "plants", "butterfly", "dew"],
         "audio_keywords": [
             "nature sounds birds chirping",
             "gentle wind leaves rustling",
@@ -156,6 +165,7 @@ ASMR_CATEGORIES = [
             "waves crashing rocks close",
             "crystal clear ocean water",
         ],
+        "mixkit_keywords": ["ocean-waves", "sea", "beach-waves", "waves-crashing"],
         "audio_keywords": [
             "ocean waves ASMR relaxing",
             "beach waves gentle rolling",
@@ -180,6 +190,7 @@ ASMR_CATEGORIES = [
             "heavy rain window pane",
             "rain streaks on glass",
         ],
+        "mixkit_keywords": ["rain", "rainy", "rain-drops", "storm", "rainy-window"],
         "audio_keywords": [
             "rain on window ASMR",
             "heavy rain sounds sleep",
@@ -204,6 +215,7 @@ ASMR_CATEGORIES = [
             "clear slime bubbles",
             "glitter slime satisfying",
         ],
+        "mixkit_keywords": ["slime", "gooey", "jelly", "sticky", "gel"],
         "audio_keywords": [
             "slime ASMR squishing",
             "slime sounds satisfying",
@@ -228,6 +240,7 @@ ASMR_CATEGORIES = [
             "paint pouring satisfying",
             "ink in water close up",
         ],
+        "mixkit_keywords": ["paint", "painting", "art-supplies", "ink", "acrylic", "color-mixing"],
         "audio_keywords": [
             "paint mixing ASMR",
             "liquid pouring ASMR",
@@ -252,6 +265,7 @@ ASMR_CATEGORIES = [
             "sunrise clouds colorful",
             "aerial clouds flying above",
         ],
+        "mixkit_keywords": ["clouds", "sky", "sunset", "sunrise", "timelapse-clouds"],
         "audio_keywords": [
             "wind ambience calm soft",
             "atmospheric drone ambient",
@@ -276,6 +290,7 @@ ASMR_CATEGORIES = [
             "underwater bubbles rising close",
             "scuba diving reef colorful",
         ],
+        "mixkit_keywords": ["underwater", "fish", "coral-reef", "ocean-floor", "diving"],
         "audio_keywords": [
             "underwater ambience bubbles",
             "deep ocean sounds ASMR",
@@ -300,6 +315,7 @@ ASMR_CATEGORIES = [
             "winter snowfall forest calm",
             "snow covered trees peaceful",
         ],
+        "mixkit_keywords": ["snow", "snowfall", "winter-snow", "blizzard", "snowflakes"],
         "audio_keywords": [
             "winter wind soft gentle",
             "snow falling silence calm",
@@ -324,6 +340,7 @@ ASMR_CATEGORIES = [
             "ice cream scooping close",
             "cooking satisfying close up",
         ],
+        "mixkit_keywords": ["cooking", "food-preparation", "baking", "cutting-food", "chocolate"],
         "audio_keywords": [
             "food cutting ASMR crunchy",
             "satisfying crunch food ASMR",
@@ -348,6 +365,7 @@ ASMR_CATEGORIES = [
             "lava meeting ocean steam",
             "magma flowing close up",
         ],
+        "mixkit_keywords": ["lava", "volcano", "molten", "eruption"],
         "audio_keywords": [
             "lava bubbling rumble sound",
             "volcanic deep rumble ambience",
@@ -372,6 +390,7 @@ ASMR_CATEGORIES = [
             "galaxy nebula space",
             "night sky stars rotating",
         ],
+        "mixkit_keywords": ["stars", "night-sky", "milky-way", "aurora", "galaxy"],
         "audio_keywords": [
             "space ambient drone calm",
             "cosmic ambient music",
@@ -402,6 +421,10 @@ class ASMRContentAgent:
         os.makedirs(self.cache_dir, exist_ok=True)
 
         self.history_file = os.path.join(self.data_dir, "asmr_history.json")
+        # 5 video sources: Mixkit (best for satisfying), Coverr, Vecteezy, Pexels, Pixabay
+        self.mixkit = MixkitService(output_dir=self.cache_dir)
+        self.coverr = CoverrService(output_dir=self.cache_dir)
+        self.vecteezy = VecteezyService(output_dir=self.cache_dir)
         self.pexels = PexelsService(output_dir=self.cache_dir)
         self.pixabay = PixabayService(output_dir=self.cache_dir)
 
@@ -456,7 +479,7 @@ class ASMRContentAgent:
         """Produces a single ASMR short: multiple video clips + matching audio → rendered MP4."""
 
         # 1. Find MULTIPLE video clips (to fill 50-59 seconds)
-        video_clips = self._find_multiple_videos(category["video_keywords"])
+        video_clips = self._find_multiple_videos(category)
         if not video_clips:
             logger.error(f"No videos found for category: {category['id']}")
             return None
@@ -506,23 +529,60 @@ class ASMRContentAgent:
             "category_id": category["id"],
         }
 
-    def _find_multiple_videos(self, keywords: List[str]) -> List[str]:
-        """Find multiple portrait video clips from Pexels/Pixabay for variety."""
+    def _find_multiple_videos(self, category: Dict) -> List[str]:
+        """Find multiple video clips from all 4 sources for maximum variety."""
         all_clips = []
+        keywords = category["video_keywords"]
+        mixkit_keywords = category.get("mixkit_keywords", [])
 
-        # Try Pexels first - get multiple clips
-        for kw in keywords[:3]:  # Use first 3 keyword variations
+        # 1. Mixkit FIRST — best source for satisfying/ASMR content (free, no API key)
+        if mixkit_keywords:
             try:
-                clips = self.pexels.get_multiple_videos([kw], count=3, orientation="portrait")
+                clips = self.mixkit.get_multiple_videos(mixkit_keywords, count=5)
                 if clips:
                     all_clips.extend(clips)
-                    logger.info(f"Pexels: {len(clips)} clips for '{kw}'")
-                    if len(all_clips) >= 5:
-                        break
+                    logger.info(f"Mixkit: {len(clips)} clips found")
             except Exception as e:
-                logger.warning(f"Pexels multi-fetch failed for '{kw}': {e}")
+                logger.warning(f"Mixkit search failed: {e}")
 
-        # If not enough, try Pixabay
+        # 2. Coverr — good free stock videos (needs API key)
+        if len(all_clips) < 5 and self.coverr.available:
+            for kw in keywords[:2]:
+                try:
+                    clips = self.coverr.get_multiple_videos([kw], count=3)
+                    if clips:
+                        all_clips.extend(clips)
+                        logger.info(f"Coverr: {len(clips)} clips for '{kw}'")
+                        if len(all_clips) >= 5:
+                            break
+                except Exception as e:
+                    logger.warning(f"Coverr search failed: {e}")
+
+        # 3. Vecteezy — large free stock library
+        if len(all_clips) < 5:
+            vecteezy_keywords = [keywords[0].split()[0]]  # Use first keyword
+            try:
+                clips = self.vecteezy.get_multiple_videos(vecteezy_keywords, count=3)
+                if clips:
+                    all_clips.extend(clips)
+                    logger.info(f"Vecteezy: {len(clips)} clips found")
+            except Exception as e:
+                logger.warning(f"Vecteezy search failed: {e}")
+
+        # 4. Pexels — large library
+        if len(all_clips) < 5:
+            for kw in keywords[:3]:
+                try:
+                    clips = self.pexels.get_multiple_videos([kw], count=3, orientation="portrait")
+                    if clips:
+                        all_clips.extend(clips)
+                        logger.info(f"Pexels: {len(clips)} clips for '{kw}'")
+                        if len(all_clips) >= 5:
+                            break
+                except Exception as e:
+                    logger.warning(f"Pexels search failed for '{kw}': {e}")
+
+        # 5. Pixabay — fallback
         if len(all_clips) < 3:
             for kw in keywords[:3]:
                 try:
@@ -533,9 +593,9 @@ class ASMRContentAgent:
                         if len(all_clips) >= 5:
                             break
                 except Exception as e:
-                    logger.warning(f"Pixabay multi-fetch failed for '{kw}': {e}")
+                    logger.warning(f"Pixabay search failed for '{kw}': {e}")
 
-        # Fallback: single video search
+        # 6. Last resort: single video from any source
         if not all_clips:
             for kw in keywords:
                 try:
@@ -545,7 +605,6 @@ class ASMRContentAgent:
                         break
                 except Exception:
                     pass
-
             if not all_clips:
                 for kw in keywords:
                     try:
@@ -556,7 +615,7 @@ class ASMRContentAgent:
                     except Exception:
                         pass
 
-        # Remove duplicates while preserving order
+        # Remove duplicates
         seen = set()
         unique = []
         for clip in all_clips:
@@ -564,7 +623,8 @@ class ASMRContentAgent:
                 seen.add(clip)
                 unique.append(clip)
 
-        return unique[:8]  # Max 8 clips
+        logger.info(f"Total unique clips: {len(unique)} from all sources")
+        return unique[:8]
 
     def _find_audio(self, keywords: List[str]) -> Optional[str]:
         """Find category-specific audio from Pixabay."""
