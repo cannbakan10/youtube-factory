@@ -13,11 +13,8 @@ import uuid
 from datetime import datetime
 from typing import Optional, List, Dict
 
-from src.services.pexels_service import PexelsService
-from src.services.pixabay_service import PixabayService
 from src.services.mixkit_service import MixkitService
-from src.services.coverr_service import CoverrService
-from src.services.vecteezy_service import VecteezyService
+from src.services.pixabay_service import PixabayService
 from src.services.youtube_service import YouTubeService
 from src.utils.logger import get_logger
 
@@ -421,12 +418,9 @@ class ASMRContentAgent:
         os.makedirs(self.cache_dir, exist_ok=True)
 
         self.history_file = os.path.join(self.data_dir, "asmr_history.json")
-        # 5 video sources: Mixkit (best for satisfying), Coverr, Vecteezy, Pexels, Pixabay
+        # Video: Mixkit only | Audio: Pixabay
         self.mixkit = MixkitService(output_dir=self.cache_dir)
-        self.coverr = CoverrService(output_dir=self.cache_dir)
-        self.vecteezy = VecteezyService(output_dir=self.cache_dir)
-        self.pexels = PexelsService(output_dir=self.cache_dir)
-        self.pixabay = PixabayService(output_dir=self.cache_dir)
+        self.pixabay = PixabayService(output_dir=self.cache_dir)  # Audio only
 
     def run_daily_automation(self, count: int = 5):
         """Main entry point: Produces and uploads `count` ASMR shorts."""
@@ -530,101 +524,22 @@ class ASMRContentAgent:
         }
 
     def _find_multiple_videos(self, category: Dict) -> List[str]:
-        """Find multiple video clips from all 4 sources for maximum variety."""
-        all_clips = []
-        keywords = category["video_keywords"]
+        """Find multiple video clips from Mixkit."""
         mixkit_keywords = category.get("mixkit_keywords", [])
 
-        # 1. Mixkit FIRST — best source for satisfying/ASMR content (free, no API key)
-        if mixkit_keywords:
-            try:
-                clips = self.mixkit.get_multiple_videos(mixkit_keywords, count=5)
-                if clips:
-                    all_clips.extend(clips)
-                    logger.info(f"Mixkit: {len(clips)} clips found")
-            except Exception as e:
-                logger.warning(f"Mixkit search failed: {e}")
+        if not mixkit_keywords:
+            logger.error(f"No mixkit_keywords for category: {category['id']}")
+            return []
 
-        # 2. Coverr — good free stock videos (needs API key)
-        if len(all_clips) < 5 and self.coverr.available:
-            for kw in keywords[:2]:
-                try:
-                    clips = self.coverr.get_multiple_videos([kw], count=3)
-                    if clips:
-                        all_clips.extend(clips)
-                        logger.info(f"Coverr: {len(clips)} clips for '{kw}'")
-                        if len(all_clips) >= 5:
-                            break
-                except Exception as e:
-                    logger.warning(f"Coverr search failed: {e}")
+        try:
+            clips = self.mixkit.get_multiple_videos(mixkit_keywords, count=8)
+            if clips:
+                logger.info(f"Mixkit: {len(clips)} clips found for {category['id']}")
+                return clips
+        except Exception as e:
+            logger.warning(f"Mixkit search failed: {e}")
 
-        # 3. Vecteezy — large free stock library
-        if len(all_clips) < 5:
-            vecteezy_keywords = [keywords[0].split()[0]]  # Use first keyword
-            try:
-                clips = self.vecteezy.get_multiple_videos(vecteezy_keywords, count=3)
-                if clips:
-                    all_clips.extend(clips)
-                    logger.info(f"Vecteezy: {len(clips)} clips found")
-            except Exception as e:
-                logger.warning(f"Vecteezy search failed: {e}")
-
-        # 4. Pexels — large library
-        if len(all_clips) < 5:
-            for kw in keywords[:3]:
-                try:
-                    clips = self.pexels.get_multiple_videos([kw], count=3, orientation="portrait")
-                    if clips:
-                        all_clips.extend(clips)
-                        logger.info(f"Pexels: {len(clips)} clips for '{kw}'")
-                        if len(all_clips) >= 5:
-                            break
-                except Exception as e:
-                    logger.warning(f"Pexels search failed for '{kw}': {e}")
-
-        # 5. Pixabay — fallback
-        if len(all_clips) < 3:
-            for kw in keywords[:3]:
-                try:
-                    clips = self.pixabay.get_multiple_videos([kw], count=3, orientation="portrait")
-                    if clips:
-                        all_clips.extend(clips)
-                        logger.info(f"Pixabay: {len(clips)} clips for '{kw}'")
-                        if len(all_clips) >= 5:
-                            break
-                except Exception as e:
-                    logger.warning(f"Pixabay search failed for '{kw}': {e}")
-
-        # 6. Last resort: single video from any source
-        if not all_clips:
-            for kw in keywords:
-                try:
-                    path = self.pexels.get_video([kw], orientation="portrait")
-                    if path:
-                        all_clips.append(path)
-                        break
-                except Exception:
-                    pass
-            if not all_clips:
-                for kw in keywords:
-                    try:
-                        path = self.pixabay.get_video([kw], orientation="portrait")
-                        if path:
-                            all_clips.append(path)
-                            break
-                    except Exception:
-                        pass
-
-        # Remove duplicates
-        seen = set()
-        unique = []
-        for clip in all_clips:
-            if clip not in seen:
-                seen.add(clip)
-                unique.append(clip)
-
-        logger.info(f"Total unique clips: {len(unique)} from all sources")
-        return unique[:8]
+        return []
 
     def _find_audio(self, keywords: List[str]) -> Optional[str]:
         """Find category-specific audio from Pixabay."""
