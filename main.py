@@ -42,6 +42,8 @@ from src.agents.viral_analyzer import ViralAnalyzer
 from src.agents.x_content_agent import XContentAgent
 from src.agents.youtube_content_agent import YouTubeContentAgent
 from src.agents.country_content_agent import CountryContentAgent
+from src.services.livestream_service import LivestreamService, LIVESTREAM_PRESETS
+from src.agents.asmr_content_agent import ASMRContentAgent
 
 
 load_dotenv()
@@ -52,6 +54,7 @@ BULK_MODE_COOLDOWN = 30  # seconds between bulk video productions
 # Available viral categories for --viral command
 VIRAL_CATEGORIES = ["facts", "science", "history", "psychology", "nature", "tech", "mystery", "lifestyle"]
 AMBIENT_TYPES = list(AmbientVideoService.AMBIENT_PRESETS.keys())
+LIVESTREAM_TYPES = list(LIVESTREAM_PRESETS.keys())
 
 
 class YoutubeFactory:
@@ -427,6 +430,15 @@ Examples:
     parser.add_argument("--x-topic", type=str, help="Custom topic for X post generation")
     parser.add_argument("--youtube-auto", action="store_true", help="Run daily trending YouTube Shorts automation")
     parser.add_argument("--country-auto", action="store_true", help="Run daily country documentary automation")
+    parser.add_argument("--asmr-auto", action="store_true", help="Run daily ASMR Shorts automation")
+    parser.add_argument("--asmr-count", type=int, default=5, help="Number of ASMR shorts to produce (default: 5)")
+
+    # Livestream options
+    parser.add_argument("--livestream", type=str, choices=LIVESTREAM_TYPES, help="Start a 24/7 YouTube Live Stream")
+    parser.add_argument("--livestream-list", action="store_true", help="List available livestream presets")
+    parser.add_argument("--livestream-info", type=str, choices=LIVESTREAM_TYPES, help="Show stream metadata for copy-paste")
+    parser.add_argument("--livestream-prepare", type=str, choices=LIVESTREAM_TYPES, help="Only prepare loop video, don't stream")
+    parser.add_argument("--loop-duration", type=int, default=30, help="Duration of the loop video in minutes (default: 30)")
 
 
     args = parser.parse_args()
@@ -437,6 +449,60 @@ Examples:
         sys.exit(0)
 
     factory = YoutubeFactory()
+
+    # Livestream List
+    if args.livestream_list:
+        LivestreamService.print_presets()
+        sys.exit(0)
+
+    # Livestream Info (show metadata for copy-paste into YouTube Studio)
+    if args.livestream_info:
+        service = LivestreamService(project_root=os.path.dirname(os.path.abspath(__file__)))
+        info = service.get_stream_info(args.livestream_info)
+        if info:
+            print("\n" + "=" * 60)
+            print(f"📡 STREAM INFO: {args.livestream_info}")
+            print("=" * 60)
+            print(f"\n📌 TITLE:\n{info['title']}")
+            print(f"\n📝 DESCRIPTION:\n{info['description']}")
+            print(f"\n🏷️  TAGS:\n{', '.join(info['tags'])}")
+            print("\n" + "=" * 60)
+        sys.exit(0)
+
+    # Livestream Prepare Only
+    if args.livestream_prepare:
+        service = LivestreamService(project_root=os.path.dirname(os.path.abspath(__file__)))
+        loop_path = service.prepare_loop_video(args.livestream_prepare, duration_minutes=args.loop_duration)
+        if loop_path:
+            logger.info(f"Loop video ready: {loop_path}")
+        else:
+            logger.error("Failed to prepare loop video.")
+            sys.exit(1)
+        sys.exit(0)
+
+    # Livestream Start
+    if args.livestream:
+        service = LivestreamService(project_root=os.path.dirname(os.path.abspath(__file__)))
+        logger.info(f"🔴 LIVESTREAM MODE: {args.livestream}")
+
+        # Show stream info
+        info = service.get_stream_info(args.livestream)
+        if info:
+            print("\n" + "=" * 60)
+            print("📋 Copy this info to YouTube Studio → Go Live:")
+            print(f"   Title: {info['title']}")
+            print("=" * 60 + "\n")
+
+        service.stream_with_auto_restart(args.livestream)
+        sys.exit(0)
+
+    # ASMR Automation Mode
+    if args.asmr_auto:
+        logger.info(f"🎬 ASMR AUTOMATION MODE: {args.asmr_count} shorts")
+        asmr_agent = ASMRContentAgent()
+        success = asmr_agent.run_daily_automation(count=args.asmr_count)
+        logger.info(f"ASMR automation completed: {success} shorts produced.")
+        sys.exit(0)
 
     # X Automation Mode
     if args.x_auto:
