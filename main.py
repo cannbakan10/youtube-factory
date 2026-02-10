@@ -43,7 +43,6 @@ from src.agents.x_content_agent import XContentAgent
 from src.agents.youtube_content_agent import YouTubeContentAgent
 from src.agents.country_content_agent import CountryContentAgent
 from src.services.livestream_service import LivestreamService, LIVESTREAM_PRESETS
-from src.agents.asmr_content_agent import ASMRContentAgent
 
 
 load_dotenv()
@@ -430,8 +429,6 @@ Examples:
     parser.add_argument("--x-topic", type=str, help="Custom topic for X post generation")
     parser.add_argument("--youtube-auto", action="store_true", help="Run daily trending YouTube Shorts automation")
     parser.add_argument("--country-auto", action="store_true", help="Run daily country documentary automation")
-    parser.add_argument("--asmr-auto", action="store_true", help="Run daily ASMR Shorts automation")
-    parser.add_argument("--asmr-count", type=int, default=5, help="Number of ASMR shorts to produce (default: 5)")
 
     # Livestream options
     parser.add_argument("--livestream", type=str, choices=LIVESTREAM_TYPES, help="Start a 24/7 YouTube Live Stream")
@@ -494,14 +491,6 @@ Examples:
             print("=" * 60 + "\n")
 
         service.stream_with_auto_restart(args.livestream)
-        sys.exit(0)
-
-    # ASMR Automation Mode
-    if args.asmr_auto:
-        logger.info(f"🎬 ASMR AUTOMATION MODE: {args.asmr_count} shorts")
-        asmr_agent = ASMRContentAgent()
-        success = asmr_agent.run_daily_automation(count=args.asmr_count)
-        logger.info(f"ASMR automation completed: {success} shorts produced.")
         sys.exit(0)
 
     # X Automation Mode
