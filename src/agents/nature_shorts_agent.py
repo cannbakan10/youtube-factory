@@ -557,19 +557,69 @@ class NatureShortsAgent:
             return False
 
     def _fetch_ambient_audio(self, category: str, preset: Dict) -> Optional[str]:
-        """Fetch ambient audio from Pixabay Music API matching the category."""
-        audio_queries = preset.get("audio_queries", [])
-        if not audio_queries:
-            audio_queries = [category]
+        """
+        Generate ambient audio matching the category using FFmpeg's noise generators.
 
-        for query in audio_queries:
-            try:
-                audio_path = self.pixabay.get_audio(query, category="ambient")
-                if audio_path and os.path.exists(audio_path):
-                    logger.info(f"  🎵 Audio found for query: '{query}'")
-                    return audio_path
-            except Exception as e:
-                logger.warning(f"  Audio fetch failed for '{query}': {e}")
+        Each category gets a tailored noise profile:
+        - rain/thunderstorm → brown noise (low rumble, like rain)
+        - ocean/waterfall/river → pink noise (balanced, like water)
+        - fireplace → brown noise with crackle-like filtering
+        - forest/snow/aurora/sunset → pink noise (gentle)
+        - underwater → brown noise (deep, muffled)
+        """
+        # Category → noise profile mapping
+        noise_profiles = {
+            "rain":         {"color": "brown", "amplitude": "0.6", "bandpass": "200:2000"},
+            "thunderstorm": {"color": "brown", "amplitude": "0.7", "bandpass": "80:1500"},
+            "ocean":        {"color": "pink",  "amplitude": "0.5", "bandpass": "100:3000"},
+            "waterfall":    {"color": "white", "amplitude": "0.4", "bandpass": "300:5000"},
+            "river":        {"color": "pink",  "amplitude": "0.4", "bandpass": "200:4000"},
+            "fireplace":    {"color": "brown", "amplitude": "0.5", "bandpass": "150:3000"},
+            "forest":       {"color": "pink",  "amplitude": "0.3", "bandpass": "200:6000"},
+            "snow":         {"color": "pink",  "amplitude": "0.25", "bandpass": "100:2000"},
+            "aurora":       {"color": "pink",  "amplitude": "0.2", "bandpass": "80:2000"},
+            "sunset":       {"color": "pink",  "amplitude": "0.25", "bandpass": "100:3000"},
+            "underwater":   {"color": "brown", "amplitude": "0.5", "bandpass": "50:1000"},
+        }
+
+        profile = noise_profiles.get(category, {"color": "brown", "amplitude": "0.4", "bandpass": "100:3000"})
+
+        audio_filename = f"ambient_{category}_{uuid.uuid4()}.wav"
+        audio_path = os.path.join(self.cache_dir, audio_filename)
+
+        # Parse bandpass frequencies
+        low_freq, high_freq = profile["bandpass"].split(":")
+
+        # Generate ambient noise with FFmpeg
+        # anoisesrc generates noise, then bandpass filter shapes it to sound natural
+        filter_str = (
+            f"anoisesrc=d={TARGET_SHORTS_DURATION + 5}:c={profile['color']}"
+            f":r=48000:a={profile['amplitude']},"
+            f"bandpass=f={(int(low_freq) + int(high_freq)) // 2}"
+            f":width_type=h:w={int(high_freq) - int(low_freq)},"
+            f"afade=t=in:d=2,afade=t=out:st={TARGET_SHORTS_DURATION - 2}:d=2"
+        )
+
+        cmd = [
+            "ffmpeg", "-y", "-v", "warning",
+            "-f", "lavfi",
+            "-i", filter_str,
+            "-t", str(TARGET_SHORTS_DURATION + 2),
+            "-c:a", "pcm_s16le",
+            "-ar", "48000",
+            "-ac", "2",
+            audio_path,
+        ]
+
+        try:
+            result = subprocess.run(cmd, capture_output=True, text=True)
+            if result.returncode == 0 and os.path.exists(audio_path):
+                logger.info(f"  🎵 Generated {profile['color']} noise ambient for '{category}'")
+                return audio_path
+            else:
+                logger.warning(f"  FFmpeg noise generation failed: {result.stderr}")
+        except Exception as e:
+            logger.warning(f"  Ambient noise generation failed: {e}")
 
         return None
 
@@ -616,7 +666,6 @@ class NatureShortsAgent:
             )
         else:
             loop_count = 0  # no loop needed, just trim
-            # If source is very long, cap at target
             logger.info(f"  📐 Source: {source_duration:.0f}s → Trimming to {target_duration}s")
 
         logger.info(f"  📐 Converting to 9:16 | Target: {target_duration}s")
@@ -629,16 +678,19 @@ class NatureShortsAgent:
             "format=yuv420p"
         )
 
-        # Build FFmpeg command
+        has_original_audio = self._has_audio_track(input_path)
+        has_external_audio = external_audio and os.path.exists(external_audio)
+
+        # Build FFmpeg command — all inputs FIRST, then filters/outputs
         cmd = ["ffmpeg", "-y", "-v", "warning"]
 
-        # Input: loop if needed
+        # INPUT 0: Video (with optional loop)
         if loop_count > 0:
             cmd.extend(["-stream_loop", str(loop_count)])
         cmd.extend(["-i", input_path])
 
-        # External audio input (if video has no audio)
-        if external_audio and os.path.exists(external_audio):
+        # INPUT 1: External audio (if needed)
+        if has_external_audio:
             cmd.extend(["-stream_loop", "-1", "-i", external_audio])
 
         # Duration limit
@@ -656,16 +708,16 @@ class NatureShortsAgent:
         ])
 
         # Audio handling
-        if external_audio and os.path.exists(external_audio):
+        if has_external_audio:
             # Use external audio (from second input)
             cmd.extend([
-                "-map", "0:v:0",     # video from first input
-                "-map", "1:a:0",     # audio from second input
+                "-map", "0:v:0",
+                "-map", "1:a:0",
                 "-c:a", "aac",
                 "-b:a", "192k",
                 "-ar", "48000",
             ])
-        elif self._has_audio_track(input_path):
+        elif has_original_audio:
             # Keep original audio
             cmd.extend([
                 "-c:a", "aac",
@@ -673,15 +725,7 @@ class NatureShortsAgent:
                 "-ar", "48000",
             ])
         else:
-            # No audio at all — generate silent audio track
-            # (YouTube processes better with an audio stream)
-            cmd.extend([
-                "-f", "lavfi", "-i", "anullsrc=channel_layout=stereo:sample_rate=48000",
-            ])
-            # Need to re-add duration and mappings
-            # Actually, let's just add -an for no audio
-            # But some YouTube processing works better with audio
-            # Let's keep it simple with -an
+            # No audio available — skip audio stream
             cmd.extend(["-an"])
 
         cmd.extend([
