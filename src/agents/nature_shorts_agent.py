@@ -39,6 +39,7 @@ NATURE_SHORTS_CATEGORIES: Dict[str, Dict] = {
             "rain on water", "pouring rain", "rain puddle",
             "rain street", "rain forest", "rain leaves",
         ],
+        "audio_queries": ["rain", "heavy rain", "rain ambience", "rain sounds"],
         "title_templates": [
             "Fall Asleep in {n} Minutes with Heavy Rain Sounds 🌧️",
             "Experience Deep Sleep: Rain Sounds for Relaxation 🌧️",
@@ -60,6 +61,7 @@ NATURE_SHORTS_CATEGORIES: Dict[str, Dict] = {
             "thunderstorm", "lightning storm", "thunder rain",
             "storm clouds", "lightning night", "thunder",
         ],
+        "audio_queries": ["thunderstorm", "thunder", "storm rain", "thunder rain"],
         "title_templates": [
             "Powerful Thunderstorm for Deep Sleep ⛈️⚡",
             "Thunder & Lightning — Fall Asleep Instantly ⛈️",
@@ -81,6 +83,7 @@ NATURE_SHORTS_CATEGORIES: Dict[str, Dict] = {
             "waves crashing", "ocean sunset", "beach waves",
             "sea shore", "ocean night",
         ],
+        "audio_queries": ["ocean waves", "sea waves", "ocean", "beach waves"],
         "title_templates": [
             "Ocean Waves for Deep Sleep & Meditation 🌊💤",
             "Calming Ocean Sounds — Fall Asleep in Minutes 🌊",
@@ -100,6 +103,7 @@ NATURE_SHORTS_CATEGORIES: Dict[str, Dict] = {
             "waterfall", "waterfall forest", "waterfall tropical",
             "waterfall rocks", "cascade water", "jungle waterfall",
         ],
+        "audio_queries": ["waterfall", "water stream", "flowing water", "waterfall nature"],
         "title_templates": [
             "Hidden Waterfall — Pure Nature Sounds 🏞️💧",
             "Relaxing Waterfall for Deep Sleep & Focus 🏞️",
@@ -118,6 +122,7 @@ NATURE_SHORTS_CATEGORIES: Dict[str, Dict] = {
             "river stream", "river forest", "creek water",
             "flowing water", "mountain stream", "babbling brook",
         ],
+        "audio_queries": ["river", "stream water", "creek", "flowing water"],
         "title_templates": [
             "Gentle River Sounds for Sleep & Study 🏞️📚",
             "Forest Stream — Pure Nature Relaxation 🌲💧",
@@ -137,6 +142,7 @@ NATURE_SHORTS_CATEGORIES: Dict[str, Dict] = {
             "fireplace", "fire burning", "campfire",
             "bonfire night", "fire flames", "cozy fireplace",
         ],
+        "audio_queries": ["fireplace", "crackling fire", "campfire", "fire burning"],
         "title_templates": [
             "Cozy Fireplace Crackling — Instant Relaxation 🔥",
             "Campfire Sounds for Deep Sleep 🔥💤",
@@ -157,6 +163,7 @@ NATURE_SHORTS_CATEGORIES: Dict[str, Dict] = {
             "forest trees", "forest path", "green forest",
             "forest morning", "forest fog",
         ],
+        "audio_queries": ["forest", "forest birds", "forest ambience", "nature forest"],
         "title_templates": [
             "Peaceful Forest Walk — Nature Sounds 🌲🌿",
             "Forest Birds & Wind — Pure Relaxation 🌲🐦",
@@ -177,6 +184,7 @@ NATURE_SHORTS_CATEGORIES: Dict[str, Dict] = {
             "snowfall", "snow falling", "winter snow",
             "snowy forest", "blizzard", "snow landscape",
         ],
+        "audio_queries": ["blizzard", "wind snow", "winter wind", "snowstorm"],
         "title_templates": [
             "Gentle Snowfall — Winter Calm & Peace ❄️💤",
             "Snowy Forest — Deep Sleep Sounds ❄️🌲",
@@ -197,6 +205,7 @@ NATURE_SHORTS_CATEGORIES: Dict[str, Dict] = {
             "night sky stars", "milky way timelapse",
             "starry sky", "galaxy night",
         ],
+        "audio_queries": ["night ambience", "wind calm", "space ambient", "night sounds"],
         "title_templates": [
             "Aurora Borealis — Mesmerizing Night Sky ✨🌌",
             "Northern Lights & Calm Music 🌌💤",
@@ -215,6 +224,7 @@ NATURE_SHORTS_CATEGORIES: Dict[str, Dict] = {
             "sunset timelapse", "sunrise", "golden hour",
             "sunset clouds", "sunset ocean", "sunset mountains",
         ],
+        "audio_queries": ["sunset", "calm nature", "peaceful", "evening ambience"],
         "title_templates": [
             "Breathtaking Sunset — Pure Calm 🌅",
             "Golden Hour Timelapse — Nature Beauty 🌅✨",
@@ -233,6 +243,7 @@ NATURE_SHORTS_CATEGORIES: Dict[str, Dict] = {
             "underwater", "coral reef", "ocean floor",
             "fish underwater", "deep sea", "underwater bubbles",
         ],
+        "audio_queries": ["underwater", "bubbles", "deep ocean", "underwater ambience"],
         "title_templates": [
             "Underwater World — Deep Ocean Calm 🐠🌊",
             "Coral Reef — Mesmerizing Ocean Life 🐠",
@@ -248,8 +259,9 @@ NATURE_SHORTS_CATEGORIES: Dict[str, Dict] = {
     },
 }
 
-# Maximum video duration for Shorts (YouTube limit)
-MAX_SHORTS_DURATION = 59  # seconds
+# Target duration for Shorts (YouTube allows up to 3 min, we target 60s)
+TARGET_SHORTS_DURATION = 60  # seconds
+MAX_SHORTS_DURATION = 180  # YouTube Shorts max (3 minutes)
 
 
 class NatureShortsAgent:
@@ -314,19 +326,31 @@ class NatureShortsAgent:
             logger.error(f"No suitable video found for category '{category}'")
             return None
 
-        # 2. Convert to 9:16 vertical Shorts format
+        # 2. Fetch ambient audio if video has no sound
+        audio_path = None
+        if not self._has_audio_track(video_path):
+            logger.info("  🔇 Video has no audio — fetching ambient sound...")
+            audio_path = self._fetch_ambient_audio(category, preset)
+            if audio_path:
+                logger.info(f"  🔊 Ambient audio found!")
+            else:
+                logger.warning("  ⚠️ No ambient audio found, video will have no sound")
+        else:
+            logger.info("  🔊 Video has original audio")
+
+        # 3. Convert to 9:16 vertical Shorts format (loop to 60s + add audio)
         timestamp = int(time.time())
         production_id = f"nature_shorts_{category}_{timestamp}"
         out_dir = os.path.join(self.productions_dir, production_id)
         os.makedirs(out_dir, exist_ok=True)
 
         output_path = os.path.join(out_dir, f"{production_id}.mp4")
-        success = self._convert_to_shorts(video_path, output_path)
+        success = self._convert_to_shorts(video_path, output_path, audio_path)
         if not success:
             logger.error("Failed to convert video to Shorts format")
             return None
 
-        # 3. Generate SEO metadata
+        # 4. Generate SEO metadata
         metadata = self._generate_metadata(category, preset, output_path, production_id)
 
         # Save metadata
@@ -337,7 +361,7 @@ class NatureShortsAgent:
         logger.info(f"✅ Nature Short ready: {output_path}")
         logger.info(f"   Title: {metadata['title']}")
 
-        # 4. Upload if requested
+        # 5. Upload if requested
         if auto_upload:
             upload_id = self._upload_to_youtube(metadata)
             if upload_id:
@@ -515,75 +539,156 @@ class NatureShortsAgent:
         return None
 
     # ──────────────────────────────────────────────────────
-    # VIDEO CONVERSION (→ 9:16 Shorts)
+    # AUDIO FETCHING
     # ──────────────────────────────────────────────────────
 
-    def _convert_to_shorts(self, input_path: str, output_path: str) -> bool:
+    def _has_audio_track(self, video_path: str) -> bool:
+        """Check if a video file contains an audio stream."""
+        try:
+            cmd = [
+                "ffprobe", "-v", "error",
+                "-select_streams", "a",
+                "-show_entries", "stream=codec_type",
+                "-of", "csv=p=0", video_path,
+            ]
+            result = subprocess.run(cmd, capture_output=True, text=True)
+            return bool(result.stdout.strip())
+        except Exception:
+            return False
+
+    def _fetch_ambient_audio(self, category: str, preset: Dict) -> Optional[str]:
+        """Fetch ambient audio from Pixabay Music API matching the category."""
+        audio_queries = preset.get("audio_queries", [])
+        if not audio_queries:
+            audio_queries = [category]
+
+        for query in audio_queries:
+            try:
+                audio_path = self.pixabay.get_audio(query, category="ambient")
+                if audio_path and os.path.exists(audio_path):
+                    logger.info(f"  🎵 Audio found for query: '{query}'")
+                    return audio_path
+            except Exception as e:
+                logger.warning(f"  Audio fetch failed for '{query}': {e}")
+
+        return None
+
+    # ──────────────────────────────────────────────────────
+    # VIDEO CONVERSION (→ 9:16 Shorts, 60s, with audio)
+    # ──────────────────────────────────────────────────────
+
+    def _convert_to_shorts(
+        self,
+        input_path: str,
+        output_path: str,
+        external_audio: Optional[str] = None,
+    ) -> bool:
         """
         Convert any video to 9:16 vertical Shorts format.
 
+        - Loops short clips to reach ~60 seconds
         - Crops/scales to 1080x1920
-        - Keeps original audio (the natural sounds ARE the content)
-        - Limits duration to 59 seconds max
+        - If video has audio → keeps original audio
+        - If video has NO audio → mixes in external ambient audio
         - High quality encoding for YouTube
         """
-        # Get source info
+        # Get source duration
         probe_cmd = [
             "ffprobe", "-v", "error",
-            "-show_entries", "stream=width,height,duration",
             "-show_entries", "format=duration",
-            "-of", "json", input_path,
+            "-of", "csv=p=0", input_path,
         ]
         probe = subprocess.run(probe_cmd, capture_output=True, text=True)
         if probe.returncode != 0:
             logger.error(f"FFprobe failed: {probe.stderr}")
             return False
 
-        probe_data = json.loads(probe.stdout)
+        source_duration = float(probe.stdout.strip() or "30")
 
-        # Get duration
-        duration = None
-        if probe_data.get("format", {}).get("duration"):
-            duration = float(probe_data["format"]["duration"])
-        if not duration:
-            for stream in probe_data.get("streams", []):
-                if stream.get("duration"):
-                    duration = float(stream["duration"])
-                    break
+        # Target: 60 seconds. If source is shorter, we'll loop it.
+        target_duration = TARGET_SHORTS_DURATION  # 60 seconds
 
-        # Cap at 59 seconds for Shorts
-        target_duration = min(duration or 59, MAX_SHORTS_DURATION)
+        # Calculate loop count needed
+        if source_duration < target_duration:
+            loop_count = int(target_duration / source_duration) + 1
+            logger.info(
+                f"  📐 Source: {source_duration:.0f}s → Looping {loop_count}x to reach {target_duration}s"
+            )
+        else:
+            loop_count = 0  # no loop needed, just trim
+            # If source is very long, cap at target
+            logger.info(f"  📐 Source: {source_duration:.0f}s → Trimming to {target_duration}s")
 
-        logger.info(f"  📐 Converting to 9:16 | Duration: {target_duration:.1f}s")
+        logger.info(f"  📐 Converting to 9:16 | Target: {target_duration}s")
 
-        # Build FFmpeg command
-        # The filter:
-        #   1. Scale so shortest side fills 1080x1920
-        #   2. Crop center to exactly 1080x1920
-        #   3. Keep original audio as-is
-
-        filter_complex = (
+        # Video filter: scale + crop to 1080x1920
+        vf = (
             "scale=w=1080:h=1920:force_original_aspect_ratio=increase,"
             "crop=1080:1920,"
             "setsar=1,"
             "format=yuv420p"
         )
 
-        cmd = [
-            "ffmpeg", "-y", "-v", "warning",
-            "-i", input_path,
-            "-t", str(target_duration),
-            "-vf", filter_complex,
+        # Build FFmpeg command
+        cmd = ["ffmpeg", "-y", "-v", "warning"]
+
+        # Input: loop if needed
+        if loop_count > 0:
+            cmd.extend(["-stream_loop", str(loop_count)])
+        cmd.extend(["-i", input_path])
+
+        # External audio input (if video has no audio)
+        if external_audio and os.path.exists(external_audio):
+            cmd.extend(["-stream_loop", "-1", "-i", external_audio])
+
+        # Duration limit
+        cmd.extend(["-t", str(target_duration)])
+
+        # Video filter
+        cmd.extend(["-vf", vf])
+
+        # Video encoding
+        cmd.extend([
             "-c:v", "libx264",
             "-preset", "medium",
-            "-crf", "20",           # High quality for YouTube
-            "-c:a", "aac",
-            "-b:a", "192k",        # High quality audio (sounds ARE the content)
-            "-ar", "48000",
+            "-crf", "20",
             "-pix_fmt", "yuv420p",
+        ])
+
+        # Audio handling
+        if external_audio and os.path.exists(external_audio):
+            # Use external audio (from second input)
+            cmd.extend([
+                "-map", "0:v:0",     # video from first input
+                "-map", "1:a:0",     # audio from second input
+                "-c:a", "aac",
+                "-b:a", "192k",
+                "-ar", "48000",
+            ])
+        elif self._has_audio_track(input_path):
+            # Keep original audio
+            cmd.extend([
+                "-c:a", "aac",
+                "-b:a", "192k",
+                "-ar", "48000",
+            ])
+        else:
+            # No audio at all — generate silent audio track
+            # (YouTube processes better with an audio stream)
+            cmd.extend([
+                "-f", "lavfi", "-i", "anullsrc=channel_layout=stereo:sample_rate=48000",
+            ])
+            # Need to re-add duration and mappings
+            # Actually, let's just add -an for no audio
+            # But some YouTube processing works better with audio
+            # Let's keep it simple with -an
+            cmd.extend(["-an"])
+
+        cmd.extend([
             "-movflags", "+faststart",
+            "-shortest",
             output_path,
-        ]
+        ])
 
         result = subprocess.run(cmd, capture_output=True, text=True)
         if result.returncode != 0:
@@ -593,7 +698,18 @@ class NatureShortsAgent:
         # Verify output
         if os.path.exists(output_path):
             size_mb = os.path.getsize(output_path) / (1024 * 1024)
-            logger.info(f"  ✅ Converted: {size_mb:.1f} MB")
+            # Verify actual duration
+            dur_probe = subprocess.run(
+                ["ffprobe", "-v", "error", "-show_entries", "format=duration",
+                 "-of", "csv=p=0", output_path],
+                capture_output=True, text=True,
+            )
+            actual_dur = float(dur_probe.stdout.strip() or "0")
+            has_audio = self._has_audio_track(output_path)
+            logger.info(
+                f"  ✅ Converted: {size_mb:.1f} MB | "
+                f"{actual_dur:.0f}s | Audio: {'✅' if has_audio else '❌'}"
+            )
             return True
 
         return False
