@@ -740,7 +740,7 @@ Output JSON:"""
         logger.info(f"  ☁️ Uploading to YouTube: {metadata['title']}")
 
         upload_id = self.youtube_service.upload_video(
-            video_path=metadata["file_path"],
+            file_path=metadata["file_path"],
             title=metadata["title"],
             description=metadata["description"],
             tags=metadata["tags"],
