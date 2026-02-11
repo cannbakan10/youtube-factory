@@ -42,6 +42,7 @@ from src.agents.viral_analyzer import ViralAnalyzer
 from src.agents.x_content_agent import XContentAgent
 from src.agents.youtube_content_agent import YouTubeContentAgent
 from src.agents.country_content_agent import LongFormContentAgent
+from src.agents.nature_shorts_agent import NatureShortsAgent, NATURE_SHORTS_CATEGORIES
 from src.services.livestream_service import LivestreamService, LIVESTREAM_PRESETS
 
 
@@ -54,6 +55,7 @@ BULK_MODE_COOLDOWN = 30  # seconds between bulk video productions
 VIRAL_CATEGORIES = ["facts", "science", "history", "psychology", "nature", "tech", "mystery", "lifestyle"]
 AMBIENT_TYPES = list(AmbientVideoService.AMBIENT_PRESETS.keys())
 LIVESTREAM_TYPES = list(LIVESTREAM_PRESETS.keys())
+NATURE_SHORTS_TYPES = list(NATURE_SHORTS_CATEGORIES.keys())
 
 
 class YoutubeFactory:
@@ -71,6 +73,7 @@ class YoutubeFactory:
         self.x_agent = self._safe_init(XContentAgent, "XContentAgent", factory_instance=self)
         self.youtube_agent = self._safe_init(YouTubeContentAgent, "YouTubeContentAgent", factory_instance=self)
         self.longform_agent = self._safe_init(LongFormContentAgent, "LongFormContentAgent", factory_instance=self)
+        self.nature_shorts_agent = self._safe_init(NatureShortsAgent, "NatureShortsAgent", factory_instance=self)
         self.youtube_service = None
 
 
@@ -371,6 +374,9 @@ def print_viral_help():
     print("  • forest_walk   - Orman Yürüyüşü & Nehir")
     print("  • white_noise   - Beyaz Gürültü")
     print("  • brown_noise   - Kahverengi Gürültü")
+    print("\nDoğa Shorts Kategorileri:")
+    for cat in NATURE_SHORTS_TYPES:
+        print(f"  • {cat}")
     print("\nÖrnekler:")
     print("  python main.py --viral facts              # Fact videoları analiz et")
     print("  python main.py --viral science --langs tr # Türkçe bilim fikirleri")
@@ -378,6 +384,8 @@ def print_viral_help():
     print("  python main.py --viral --produce 1        # 1. fikri direkt üret")
     print("  python main.py --viral-remix facts --region US --produce-remix 2")
     print("  python main.py --ambient sleep --ambient-duration 60 --type long")
+    print("  python main.py --nature-shorts rain       # Yağmur Shorts üret")
+    print("  python main.py --nature-shorts-auto --upload  # 3 doğa shorts üret & yükle")
     print("\nBölgeler: US, TR, GB, DE, FR, JP, BR, IN, etc.")
     print("=" * 60 + "\n")
 
@@ -429,6 +437,15 @@ Examples:
     parser.add_argument("--x-topic", type=str, help="Custom topic for X post generation")
     parser.add_argument("--youtube-auto", action="store_true", help="Run daily trending YouTube Shorts automation")
     parser.add_argument("--longform-auto", action="store_true", help="Run daily trending long-form documentary automation")
+
+    # Nature Shorts options
+    parser.add_argument("--nature-shorts", type=str, nargs="?", const="random",
+                        choices=["random"] + NATURE_SHORTS_TYPES,
+                        help=f"Create nature/ambient YouTube Shorts. Categories: {', '.join(NATURE_SHORTS_TYPES)}")
+    parser.add_argument("--nature-shorts-count", type=int, default=3,
+                        help="Number of nature shorts to create in daily mode (default: 3)")
+    parser.add_argument("--nature-shorts-auto", action="store_true",
+                        help="Run daily nature shorts automation (creates multiple shorts)")
 
     # Livestream options
     parser.add_argument("--livestream", type=str, choices=LIVESTREAM_TYPES, help="Start a 24/7 YouTube Live Stream")
@@ -527,6 +544,40 @@ Examples:
         factory.longform_agent.run_automation(region=args.region)
         sys.exit(0)
 
+
+    # Nature Shorts Mode
+    if args.nature_shorts:
+        if not factory.nature_shorts_agent:
+            logger.error("NatureShortsAgent is unavailable.")
+            sys.exit(1)
+
+        category = args.nature_shorts if args.nature_shorts != "random" else None
+        logger.info(f"🌿 NATURE SHORTS MODE: {args.nature_shorts}")
+        result = factory.nature_shorts_agent.create_short(
+            category=category,
+            auto_upload=args.upload,
+        )
+        if not result:
+            logger.error("Nature short creation failed.")
+            sys.exit(1)
+        sys.exit(0)
+
+    # Nature Shorts Daily Automation
+    if args.nature_shorts_auto:
+        if not factory.nature_shorts_agent:
+            logger.error("NatureShortsAgent is unavailable.")
+            sys.exit(1)
+
+        logger.info(f"🌿 NATURE SHORTS DAILY: Creating {args.nature_shorts_count} shorts...")
+        results = factory.nature_shorts_agent.run_daily_automation(
+            count=args.nature_shorts_count,
+            auto_upload=args.upload,
+        )
+        if not results:
+            logger.error("Nature shorts daily automation produced no results.")
+            sys.exit(1)
+        logger.info(f"✅ Created {len(results)} nature shorts!")
+        sys.exit(0)
 
     # Ambient Mode
     if args.ambient:
