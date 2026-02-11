@@ -1,15 +1,20 @@
-name: Country Documentary Automation
+name: Daily Trending Long-Form Documentaries
 
 on:
   schedule:
     # Runs every 2 hours and 24 mins to reach ~10 videos a day
     - cron: '24 */2 * * *'
-  workflow_dispatch: # Allows manual trigger
+  workflow_dispatch:
+    inputs:
+      region:
+        description: 'Trend bölgesi (USA, UK, TR, vb.)'
+        required: false
+        default: 'USA'
 
 jobs:
   produce-documentary:
     runs-on: ubuntu-latest
-    timeout-minutes: 360 # Long videos take longer to render
+    timeout-minutes: 360
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -29,7 +34,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run Country Automation
+      - name: Run Long-Form Trending Automation
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -41,6 +46,14 @@ jobs:
           CLIENT_SECRETS_JSON: ${{ secrets.CLIENT_SECRETS_JSON }}
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: |
-          # Create client_secrets.json from secret
           echo '${{ secrets.CLIENT_SECRETS_JSON }}' > client_secrets.json
-          python main.py --country-auto
+          REGION="${{ github.event.inputs.region }}"
+          python main.py --longform-auto --region "${REGION:-USA}"
+
+      - name: Commit History
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add data/ || true
+          git diff --staged --quiet || git commit -m "Update longform history [skip ci]"
+          git push || true

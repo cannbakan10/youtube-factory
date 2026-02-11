@@ -41,7 +41,7 @@ from src.agents.trend_agent import TrendAgent
 from src.agents.viral_analyzer import ViralAnalyzer
 from src.agents.x_content_agent import XContentAgent
 from src.agents.youtube_content_agent import YouTubeContentAgent
-from src.agents.country_content_agent import CountryContentAgent
+from src.agents.country_content_agent import LongFormContentAgent
 from src.services.livestream_service import LivestreamService, LIVESTREAM_PRESETS
 
 
@@ -70,7 +70,7 @@ class YoutubeFactory:
         self.branding = self._safe_init(BrandingService, "BrandingService")
         self.x_agent = self._safe_init(XContentAgent, "XContentAgent", factory_instance=self)
         self.youtube_agent = self._safe_init(YouTubeContentAgent, "YouTubeContentAgent", factory_instance=self)
-        self.country_agent = self._safe_init(CountryContentAgent, "CountryContentAgent", factory_instance=self)
+        self.longform_agent = self._safe_init(LongFormContentAgent, "LongFormContentAgent", factory_instance=self)
         self.youtube_service = None
 
 
@@ -428,7 +428,7 @@ Examples:
     parser.add_argument("--x-plan", action="store_true", help="Force generate a new daily plan for X")
     parser.add_argument("--x-topic", type=str, help="Custom topic for X post generation")
     parser.add_argument("--youtube-auto", action="store_true", help="Run daily trending YouTube Shorts automation")
-    parser.add_argument("--country-auto", action="store_true", help="Run daily country documentary automation")
+    parser.add_argument("--longform-auto", action="store_true", help="Run daily trending long-form documentary automation")
 
     # Livestream options
     parser.add_argument("--livestream", type=str, choices=LIVESTREAM_TYPES, help="Start a 24/7 YouTube Live Stream")
@@ -517,14 +517,14 @@ Examples:
         factory.youtube_agent.run_daily_automation(region=args.region)
         sys.exit(0)
 
-    # Country Automation Mode
-    if args.country_auto:
-        if not factory.country_agent:
-            logger.error("CountryContentAgent is unavailable.")
+    # Long-Form Trending Automation Mode
+    if args.longform_auto:
+        if not factory.longform_agent:
+            logger.error("LongFormContentAgent is unavailable.")
             sys.exit(1)
             
-        logger.info("Running Country Documentary Automation...")
-        factory.country_agent.run_automation()
+        logger.info(f"Running Long-Form Trending Automation (Region: {args.region})...")
+        factory.longform_agent.run_automation(region=args.region)
         sys.exit(0)
 
 
