@@ -617,7 +617,7 @@ Examples:
         logger.info("🎬 Executing Daily Content Plan...")
 
         # Check if plan exists
-        plan_path = os.path.join(factory.project_root, "data", "daily_plan.json")
+        plan_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "daily_plan.json")
         if not os.path.exists(plan_path):
             logger.error("No daily plan found. Run --nightly first.")
             sys.exit(1)
