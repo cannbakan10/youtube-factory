@@ -16,7 +16,8 @@
         "historyfacts"
       ],
       "inspired_by": "General history fact trend",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "failed"
     },
     {
       "title": "Secret Language of Animals EXPLAINED!",
@@ -33,7 +34,8 @@
         "animal"
       ],
       "inspired_by": "Animal documentary trends",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "failed"
     },
     {
       "title": "Insane Geography Facts That'll Shock You!",
@@ -172,5 +174,14 @@
   ],
   "generated_at": "2026-02-13T21:46:21.899367",
   "trending_count": 0,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-02-13T22:03:01.952962",
+  "results": {
+    "shorts_produced": 0,
+    "longform_produced": 0,
+    "errors": [
+      "Short 'Mind-Blowing Coincidence in Hi' failed",
+      "Short 'Secret Language of Animals EXP' failed"
+    ]
+  }
 }
