@@ -1,6 +1,9 @@
 {
   "used_video_ids": [
-    "85526"
+    "85526",
+    "45551",
+    "201671",
+    "328740"
   ],
   "daily": {},
   "productions": [
@@ -9,6 +12,27 @@
       "title": "\ud83c\udf27\ufe0fRain for Sleep & Calm - ASMR Relaxing Sounds \ud83e\uddd8",
       "production_id": "nature_shorts_rain_1770846647",
       "created_at": "2026-02-11 23:50:57",
+      "youtube_id": null
+    },
+    {
+      "category": "rain",
+      "title": "Rain Sounds for Deep Sleep \u2614 Calm & Relaxing ASMR",
+      "production_id": "nature_shorts_rain_1770847890",
+      "created_at": "2026-02-12 00:11:49",
+      "youtube_id": null
+    },
+    {
+      "category": "thunderstorm",
+      "title": "\u26c8\ufe0f Sleepy Storm: ASMR Thunder for Deep Relaxation & Calm \ud83d\ude34",
+      "production_id": "nature_shorts_thunderstorm_1770848197",
+      "created_at": "2026-02-12 00:16:57",
+      "youtube_id": null
+    },
+    {
+      "category": "sunset",
+      "title": "Sunset Serenity: Calm Sleep Aid \u2728\ud83c\udf05 No Music",
+      "production_id": "nature_shorts_sunset_1770848231",
+      "created_at": "2026-02-12 00:17:26",
       "youtube_id": null
     }
   ]

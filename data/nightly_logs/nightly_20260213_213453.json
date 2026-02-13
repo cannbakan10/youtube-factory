@@ -1,0 +1,27 @@
+{
+  "timestamp": "2026-02-13T21:29:02.448322",
+  "dry_run": false,
+  "cleanup": {
+    "deleted": 196,
+    "failed": 73,
+    "kept": 164
+  },
+  "trending": {
+    "found": 0,
+    "top_5": []
+  },
+  "plan": {
+    "shorts_planned": 4,
+    "longform_planned": 2,
+    "shorts": [
+      "Rare Gem Discovered Under Football Field!",
+      "Craziest Thing You Can Buy Online for $1!",
+      "Mind-Blowing Trick With a Deck of Cards!",
+      "Strange Animal Behavior Explained (Creepy!)"
+    ],
+    "longform": [
+      "The Hidden History of Lost Cities in America",
+      "The Dark Side of Artificial Intelligence (Dangers)"
+    ]
+  }
+}

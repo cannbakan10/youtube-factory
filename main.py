@@ -46,6 +46,7 @@ from src.agents.nature_shorts_agent import NatureShortsAgent, NATURE_SHORTS_CATE
 from src.services.tiktok_service import TikTokService
 from src.agents.tiktok_agent import TikTokAgent
 from src.agents.youtube_analytics_agent import YouTubeAnalyticsAgent
+from src.agents.nightly_brain_agent import NightlyBrainAgent
 from src.services.livestream_service import LivestreamService, LIVESTREAM_PRESETS
 
 
@@ -471,6 +472,18 @@ Examples:
     parser.add_argument("--analytics-delete-confirm", action="store_true",
                         help="Actually delete underperforming videos (DESTRUCTIVE!)")
 
+    # Nightly Brain options
+    parser.add_argument("--nightly", action="store_true",
+                        help="Run nightly brain: cleanup + trends + plan (LIVE mode)")
+    parser.add_argument("--nightly-dry", action="store_true",
+                        help="Run nightly brain in dry-run mode (no deletions)")
+    parser.add_argument("--execute-plan", action="store_true",
+                        help="Execute today's content plan (produce & upload)")
+    parser.add_argument("--plan-shorts", type=int, default=2,
+                        help="Number of shorts to produce from plan (default: 2)")
+    parser.add_argument("--plan-longform", type=int, default=0,
+                        help="Number of longform to produce from plan (default: 0)")
+
     # Livestream options
     parser.add_argument("--livestream", type=str, choices=LIVESTREAM_TYPES, help="Start a 24/7 YouTube Live Stream")
     parser.add_argument("--livestream-list", action="store_true", help="List available livestream presets")
@@ -573,6 +586,57 @@ Examples:
                 print("\n⚠️ To actually delete, run: python main.py --analytics-delete-confirm")
             else:
                 print("\n✅ No videos qualify for deletion!")
+
+        sys.exit(0)
+
+    # Nightly Brain Mode
+    if args.nightly or args.nightly_dry:
+        logger.info("🧠 Nightly Brain Agent Starting...")
+
+        try:
+            yt_service = YouTubeService()
+            if not yt_service.youtube:
+                logger.error("YouTube service not available. Check credentials.")
+                sys.exit(1)
+            brain = NightlyBrainAgent(youtube_service=yt_service)
+        except Exception as e:
+            logger.error(f"Failed to initialize Nightly Brain: {e}")
+            sys.exit(1)
+
+        dry_run = args.nightly_dry
+        result = brain.run_nightly(dry_run=dry_run)
+
+        if result.get("error"):
+            logger.error(f"Nightly brain failed: {result['error']}")
+            sys.exit(1)
+
+        sys.exit(0)
+
+    # Execute Daily Plan Mode
+    if args.execute_plan:
+        logger.info("🎬 Executing Daily Content Plan...")
+
+        # Check if plan exists
+        plan_path = os.path.join(factory.project_root, "data", "daily_plan.json")
+        if not os.path.exists(plan_path):
+            logger.error("No daily plan found. Run --nightly first.")
+            sys.exit(1)
+
+        try:
+            yt_service = YouTubeService()
+            brain = NightlyBrainAgent(youtube_service=yt_service)
+            result = brain.execute_plan(
+                factory_instance=factory,
+                max_shorts=args.plan_shorts,
+                max_longform=args.plan_longform
+            )
+            if result.get("error"):
+                logger.error(f"Plan execution failed: {result['error']}")
+                sys.exit(1)
+            logger.info(f"✅ Plan executed: {result}")
+        except Exception as e:
+            logger.error(f"Plan execution error: {e}")
+            sys.exit(1)
 
         sys.exit(0)
 

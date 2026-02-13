@@ -1,0 +1,53 @@
+{
+  "timestamp": "2026-02-13T21:28:14.488993",
+  "dry_run": true,
+  "cleanup": {
+    "deleted": 272,
+    "failed": 0,
+    "kept": 161
+  },
+  "trending": {
+    "found": 82,
+    "top_5": [
+      {
+        "title": "Guess What Age Punched You",
+        "views": 56963518,
+        "category": "Entertainment"
+      },
+      {
+        "title": "Hero Woman Saves Officer Mid-Fight",
+        "views": 22968913,
+        "category": "Entertainment"
+      },
+      {
+        "title": "Real life giants? 😂",
+        "views": 15828668,
+        "category": "Entertainment"
+      },
+      {
+        "title": "LOAD IT UP LIKE THIS 🤣 #viral #explore #fyp #xaelameme",
+        "views": 14152144,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "pride comes before flop",
+        "views": 13348444,
+        "category": "Sports"
+      }
+    ]
+  },
+  "plan": {
+    "shorts_planned": 4,
+    "longform_planned": 2,
+    "shorts": [
+      "Giants Among Us: The Science of Gigantism",
+      "Ancient Ice Cream Secrets REVEALED!",
+      "PC Cooling taken to EXTREME levels",
+      "Mind-Bending Bathroom Designs"
+    ],
+    "longform": [
+      "Schindler's List: Uncovering the True Stories of S",
+      "The Untold Story of Bumpy Johnson: Harlem's Godfat"
+    ]
+  }
+}

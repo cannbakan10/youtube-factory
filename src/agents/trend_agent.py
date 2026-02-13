@@ -19,7 +19,7 @@ class TrendAgent:
         self.client = genai.Client(api_key=self.gemini_key) if self.gemini_key else None
         self.model = "gemini-2.0-flash"
 
-    def get_trending_topics(self, region="Turkey", category="General", count=5) -> List[dict]:
+    def get_trending_topics(self, region="USA", category="General", count=5) -> List[dict]:
         """
         Uses Gemini's real-time knowledge (search enabled) to find viral/trending topics.
         """
@@ -48,9 +48,11 @@ class TrendAgent:
         - Viral mysteries
         - Trending technology/AI news
 
+        ALL content must be in ENGLISH. This is for a US audience.
+
         OUTPUT FORMAT (Strict JSON):
         [
-            {{"topic": "Short Topic Title", "reason": "Why it is trending", "language": "tr"}},
+            {{"topic": "Short Topic Title", "reason": "Why it is trending", "language": "en"}},
             ...
         ]
         """

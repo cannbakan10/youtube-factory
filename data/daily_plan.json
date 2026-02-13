@@ -1,0 +1,102 @@
+{
+  "date": "2024-02-29",
+  "shorts": [
+    {
+      "title": "Rare Gem Discovered Under Football Field!",
+      "topic": "A construction crew found an enormous and incredibly rare gemstone buried during the construction of a football field. Focus on the potential value, scientific significance, and geological conditions that led to its formation.",
+      "hook": "Giant GEM found under football field!",
+      "tags": [
+        "gemstone",
+        "discovery",
+        "geology",
+        "rare",
+        "football field",
+        "science"
+      ],
+      "inspired_by": "Trending news about unusual discoveries.",
+      "estimated_views": "high"
+    },
+    {
+      "title": "Craziest Thing You Can Buy Online for $1!",
+      "topic": "Showcase a genuinely surprising and useful item you can purchase online for approximately $1 USD. Emphasize the cost-effectiveness and utility of the product, comparing it to more expensive alternatives. Make sure to link to this item in the description.",
+      "hook": "$1 item on Amazon blew my mind!",
+      "tags": [
+        "cheap",
+        "bargain",
+        "online shopping",
+        "dollar store",
+        "amazing",
+        "amazon"
+      ],
+      "inspired_by": "Trending product review videos.",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "Mind-Blowing Trick With a Deck of Cards!",
+      "topic": "Perform a quick, visually impressive card trick that is easy to follow but appears complex. Explain the secret of the trick clearly and concisely, encouraging viewers to try it themselves. Include slow-motion segments.",
+      "hook": "Impossible card trick REVEALED!",
+      "tags": [
+        "card trick",
+        "magic",
+        "illusion",
+        "tutorial",
+        "playing cards",
+        "sleight of hand"
+      ],
+      "inspired_by": "Trending magic trick reveals.",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "Strange Animal Behavior Explained (Creepy!)",
+      "topic": "Focus on a bizarre and unexplained animal behavior, such as a mass migration event or unusual feeding habit. Offer several possible scientific explanations, but leave room for speculation and mystery. Use compelling visuals.",
+      "hook": "Animals are acting REALLY strange...",
+      "tags": [
+        "animal behavior",
+        "mystery",
+        "science",
+        "nature",
+        "unexplained",
+        "wildlife",
+        "strange"
+      ],
+      "inspired_by": "Trending videos about mysterious phenomena.",
+      "estimated_views": "high"
+    }
+  ],
+  "longform": [
+    {
+      "title": "The Hidden History of Lost Cities in America",
+      "topic": "Investigate the history and legends surrounding abandoned or lost cities within the United States, covering topics like Roanoke, Cahokia, and other lesser-known settlements. Explore possible reasons for their abandonment and the impact these losses had on the areas.",
+      "outline": "1. Introduction to the concept of lost cities. 2. History of Roanoke. 3. History of Cahokia. 4. Other lesser-known lost settlements. 5. Theories about their abandonment. 6. Conclusion: lessons learned and ongoing research.",
+      "tags": [
+        "lost cities",
+        "history",
+        "America",
+        "Roanoke",
+        "Cahokia",
+        "archaeology"
+      ],
+      "inspired_by": "Trending documentaries about historical mysteries.",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "The Dark Side of Artificial Intelligence (Dangers)",
+      "topic": "Explore the potential negative consequences and ethical concerns surrounding the rapid development of artificial intelligence. Examine topics like job displacement, algorithmic bias, autonomous weapons, and the potential for misuse of AI technology.",
+      "outline": "1. Introduction to AI and its advancements. 2. Job displacement and economic impact. 3. Algorithmic bias and discrimination. 4. Autonomous weapons and the future of warfare. 5. Privacy concerns and data security. 6. Conclusion: Responsible development and ethical considerations.",
+      "tags": [
+        "artificial intelligence",
+        "AI",
+        "ethics",
+        "technology",
+        "future",
+        "dangers",
+        "automation"
+      ],
+      "inspired_by": "Trending discussions about the future of technology.",
+      "estimated_views": "high"
+    }
+  ],
+  "generated_at": "2026-02-13T21:34:53.496710",
+  "trending_count": 0,
+  "status": "pending"
+}
