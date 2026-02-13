@@ -2,8 +2,8 @@ name: YouTube Daily Trending Shorts
 
 on:
   schedule:
-    # Runs every hour (24 times a day)
-    - cron: '0 * * * *'
+    # Runs every 4 hours (6 times a day)
+    - cron: '0 0,4,8,12,16,20 * * *'
   workflow_dispatch: # Allows manual trigger
 
 jobs:

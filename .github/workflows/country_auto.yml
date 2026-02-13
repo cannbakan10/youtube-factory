@@ -2,8 +2,8 @@ name: Daily Trending Long-Form Documentaries
 
 on:
   schedule:
-    # Runs every 2 hours and 24 mins to reach ~10 videos a day
-    - cron: '24 */2 * * *'
+    # Runs 3 times a day: 08:00, 14:00, 20:00 UTC (günde 3 video)
+    - cron: '0 8,14,20 * * *'
   workflow_dispatch:
     inputs:
       region:
