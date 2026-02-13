@@ -630,15 +630,17 @@ Examples:
         logger.info(f"   📂 File: {result['file_path']}")
 
         # Upload if --upload flag is set
-        if args.upload and factory.yt_service:
+        if args.upload:
             logger.info("📤 Uploading to YouTube...")
             try:
-                video_id = factory.yt_service.upload_video(
-                    video_path=result["file_path"],
+                if not factory.youtube_service:
+                    factory.youtube_service = YouTubeService()
+                video_id = factory.youtube_service.upload_video(
+                    file_path=result["file_path"],
                     title=result["title"],
                     description=result["description"],
                     tags=result["tags"],
-                    category_id="22",  # People & Blogs
+                    video_type="long",
                 )
                 if video_id:
                     logger.info(f"✅ Uploaded: https://youtube.com/watch?v={video_id}")

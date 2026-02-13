@@ -81,13 +81,19 @@ class YouTubeService:
 
     def upload_video(self, file_path, title, description, tags=None, video_type="shorts"):
         """
-        Uploads a video to YouTube with error handling for quota and limits.
+        Uploads a video to YouTube with chunked resumable upload.
+        Handles large files (10+ GB) with proper chunk sizes and retry logic.
         """
         if not self.credentials or not self.youtube:
             print("   ⚠️ [YouTube]: Upload skipped (No credentials).")
             return None
 
         print(f"🚀 [YouTube]: Starting upload for {title}...")
+
+        # Get file size for progress tracking
+        file_size = os.path.getsize(file_path)
+        file_size_gb = file_size / (1024**3)
+        print(f"   📦 File size: {file_size_gb:.2f} GB")
 
         is_shorts = video_type == "shorts"
         upload_title = f"{title} #Shorts" if is_shorts else title
@@ -111,19 +117,43 @@ class YouTubeService:
             }
         }
 
+        # Chunk size: 50MB for large files, -1 for small files
+        chunk_size = 50 * 1024 * 1024 if file_size > 100 * 1024 * 1024 else -1
+
         try:
-            # Call the API's videos.insert method to create and upload the video.
             insert_request = self.youtube.videos().insert(
                 part="snippet,status",
                 body=body,
-                media_body=MediaFileUpload(file_path, chunksize=-1, resumable=True)
+                media_body=MediaFileUpload(
+                    file_path,
+                    chunksize=chunk_size,
+                    resumable=True,
+                )
             )
 
             response = None
+            retry_count = 0
+            max_retries = 10
+
             while response is None:
-                status, response = insert_request.next_chunk()
-                if status:
-                    print(f"   📊 Upload Progress: {int(status.progress() * 100)}%")
+                try:
+                    status, response = insert_request.next_chunk()
+                    if status:
+                        pct = int(status.progress() * 100)
+                        uploaded_gb = (status.progress() * file_size) / (1024**3)
+                        print(f"   📊 Upload: {pct}% ({uploaded_gb:.1f}/{file_size_gb:.1f} GB)")
+                    retry_count = 0  # Reset on success
+                except Exception as chunk_err:
+                    error_str = str(chunk_err)
+                    if "quotaExceeded" in error_str or "uploadLimitExceeded" in error_str:
+                        raise chunk_err  # Don't retry quota errors
+                    retry_count += 1
+                    if retry_count > max_retries:
+                        raise chunk_err
+                    import time as _time
+                    wait = min(2 ** retry_count, 60)
+                    print(f"   ⚠️ Chunk error, retry {retry_count}/{max_retries} in {wait}s...")
+                    _time.sleep(wait)
 
             video_id = response.get("id")
             print(f"✅ [YouTube]: Video uploaded successfully! ID: {video_id}")
@@ -133,12 +163,11 @@ class YouTubeService:
             print(f"\n❌ [YouTube ERROR]: Upload failed.")
             error_str = str(e)
             if "uploadLimitExceeded" in error_str:
-                print("   ⚠️ DURUM: YouTube günlük video yükleme sınırına takıldınız.")
-                print("   💡 NEDEN: Yeni veya doğrulanmamış kanalların günlük Shorts yükleme limiti düşüktür.")
-                print("   ✅ ÇÖZÜM: 24 saat beklemeniz veya kanalınızı telefonla doğrulamanız gerekir.")
+                print("   ⚠️ Daily upload limit reached.")
+                print("   ✅ FIX: Wait 24 hours or verify your channel with phone.")
             elif "quotaExceeded" in error_str:
-                print("   ⚠️ DURUM: Google Cloud API kotası doldu.")
-                print("   ✅ ÇÖZÜM: Yarın tekrar deneyin veya Google Cloud Console'dan ek kota isteyin.")
+                print("   ⚠️ YouTube API daily quota exceeded.")
+                print("   ✅ FIX: Quota resets at midnight Pacific Time (~08:00 UTC / 11:00 Turkey).")
             else:
-                print(f"   ⚠️ HATA DETAYI: {error_str}")
+                print(f"   ⚠️ ERROR: {error_str}")
             return None

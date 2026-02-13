@@ -1,0 +1,19 @@
+[2026-02-14 00:39:23] ============================================================
+[2026-02-14 00:39:23] 📤 AUTO-RETRY UPLOAD — Fireplace 8H
+[2026-02-14 00:39:23]    Will retry every 30 min until quota resets
+[2026-02-14 00:39:23]    Quota resets ~08:00 UTC (11:00 Turkey)
+[2026-02-14 00:39:23] ============================================================
+[2026-02-14 00:39:23] 📦 File: 14.92 GB
+[2026-02-14 00:39:23] 
+🔄 Attempt 1/12
+   🔍 [YouTube]: Checking client_secrets at: /Users/sergenbakan/Youtuber/youtube-factory/client_secrets.json
+   🔍 [YouTube]: Checking token at: /Users/sergenbakan/Youtuber/youtube-factory/token.pickle
+   🔑 [YouTube]: Loading credentials from /Users/sergenbakan/Youtuber/youtube-factory/token.pickle
+🚀 [YouTube]: Starting upload for 🔥 8 Hours Cozy Fireplace Ambience | Crackling Fire Sounds for Sleep, Study & Relaxation...
+   📦 File size: 14.92 GB
+
+❌ [YouTube ERROR]: Upload failed.
+   ⚠️ YouTube API daily quota exceeded.
+   ✅ FIX: Quota resets at midnight Pacific Time (~08:00 UTC / 11:00 Turkey).
+[2026-02-14 00:39:24] ⚠️ Upload returned None (likely quota). Waiting 30 min...
+[2026-02-14 00:39:24] ⏰ Next attempt at 01:09
