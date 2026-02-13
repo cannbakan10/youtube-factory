@@ -1,0 +1,31 @@
+{
+  "timestamp": "2026-02-13T21:51:52.229109",
+  "dry_run": false,
+  "cleanup": {
+    "deleted": 0,
+    "failed": 0,
+    "kept": 0
+  },
+  "trending": {
+    "found": 0,
+    "top_5": []
+  },
+  "plan": {
+    "shorts_planned": 8,
+    "longform_planned": 2,
+    "shorts": [
+      "Craziest Historical Coincidences!",
+      "Insane Animal Survival Tactics!",
+      "Mind-Bending Optical Illusions!",
+      "Strangest Laws Around the World!",
+      "Foods You're Eating WRONG!",
+      "Little-Known Space Facts!",
+      "Random Facts That Will Blow Your Mind!",
+      "Crazy Sports Records!"
+    ],
+    "longform": [
+      "The Untold Story of Area 51",
+      "The Science Behind Deja Vu"
+    ]
+  }
+}

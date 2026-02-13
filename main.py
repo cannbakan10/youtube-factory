@@ -484,6 +484,18 @@ Examples:
     parser.add_argument("--plan-longform", type=int, default=0,
                         help="Number of longform to produce from plan (default: 0)")
 
+    # Fast Loop options (turn short clip into hours-long video)
+    parser.add_argument("--loop-video", type=str,
+                        help="Input video file to loop (e.g. 8 second 4K clip)")
+    parser.add_argument("--loop-hours", type=float, default=8.0,
+                        help="Target duration in hours (default: 8)")
+    parser.add_argument("--loop-audio", type=str, default=None,
+                        help="Optional audio file to overlay on looped video")
+    parser.add_argument("--loop-title", type=str, default=None,
+                        help="Video title for upload")
+    parser.add_argument("--loop-tags", type=str, default=None,
+                        help="Comma-separated tags for the video")
+
     # Livestream options
     parser.add_argument("--livestream", type=str, choices=LIVESTREAM_TYPES, help="Start a 24/7 YouTube Live Stream")
     parser.add_argument("--livestream-list", action="store_true", help="List available livestream presets")
@@ -586,6 +598,52 @@ Examples:
                 print("\n⚠️ To actually delete, run: python main.py --analytics-delete-confirm")
             else:
                 print("\n✅ No videos qualify for deletion!")
+
+        sys.exit(0)
+
+    # Fast Loop Mode — Turn short clip into hours-long video
+    if args.loop_video:
+        logger.info(f"🔄 Fast Loop Mode: {args.loop_video} → {args.loop_hours}h")
+
+        from src.services.ambient_video_service import AmbientVideoService
+        project_root = os.path.dirname(os.path.abspath(__file__))
+        ambient = AmbientVideoService(project_root=project_root)
+
+        tags = args.loop_tags.split(",") if args.loop_tags else None
+
+        result = ambient.loop_video(
+            input_video=args.loop_video,
+            duration_hours=args.loop_hours,
+            audio_file=args.loop_audio,
+            title=args.loop_title,
+            tags=tags,
+        )
+
+        if not result:
+            logger.error("Loop render failed!")
+            sys.exit(1)
+
+        logger.info(f"\n✅ Loop video created!")
+        logger.info(f"   📹 {result['resolution']} ({result['method']})")
+        logger.info(f"   ⏱️ Render time: {result['render_time_seconds']}s")
+        logger.info(f"   📦 Size: {result['file_size_gb']} GB")
+        logger.info(f"   📂 File: {result['file_path']}")
+
+        # Upload if --upload flag is set
+        if args.upload and factory.yt_service:
+            logger.info("📤 Uploading to YouTube...")
+            try:
+                video_id = factory.yt_service.upload_video(
+                    video_path=result["file_path"],
+                    title=result["title"],
+                    description=result["description"],
+                    tags=result["tags"],
+                    category_id="22",  # People & Blogs
+                )
+                if video_id:
+                    logger.info(f"✅ Uploaded: https://youtube.com/watch?v={video_id}")
+            except Exception as e:
+                logger.error(f"Upload failed: {e}")
 
         sys.exit(0)
 

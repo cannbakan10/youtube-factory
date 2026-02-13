@@ -1,187 +1,150 @@
 {
-  "date": "2024-07-04",
+  "date": "2024-03-16",
   "shorts": [
     {
-      "title": "Mind-Blowing Coincidence in History!",
-      "topic": "A short video exploring a surprising historical coincidence, presented in a visually engaging way.",
-      "hook": "Did you know this crazy historical coincidence?",
+      "title": "Craziest Historical Coincidences!",
+      "topic": "Highlight 3 mind-blowing historical coincidences with impactful visuals. Each should be under 15 seconds. Use a countdown timer for each coincidence reveal.",
+      "hook": "Wait till you hear this...",
       "tags": [
         "history",
         "coincidence",
         "facts",
-        "historicalfacts",
-        "amazing",
-        "didyouknow",
-        "shorts",
-        "historyfacts"
+        "weird history",
+        "mindblowing"
       ],
-      "inspired_by": "General history fact trend",
-      "estimated_views": "high",
-      "status": "failed"
-    },
-    {
-      "title": "Secret Language of Animals EXPLAINED!",
-      "topic": "A quick overview of how animals communicate, focusing on a specific fascinating example (e.g., whale songs).",
-      "hook": "Animals have a secret language!",
-      "tags": [
-        "animals",
-        "communication",
-        "science",
-        "nature",
-        "wildlife",
-        "animalfacts",
-        "shorts",
-        "animal"
-      ],
-      "inspired_by": "Animal documentary trends",
-      "estimated_views": "medium",
-      "status": "failed"
-    },
-    {
-      "title": "Insane Geography Facts That'll Shock You!",
-      "topic": "Presenting a surprising geographical fact with visual aids and concise explanation.",
-      "hook": "This geography fact will blow your mind!",
-      "tags": [
-        "geography",
-        "facts",
-        "travel",
-        "world",
-        "interesting",
-        "didyouknow",
-        "shorts",
-        "geographyfacts"
-      ],
-      "inspired_by": "Travel content trends",
-      "estimated_views": "medium"
-    },
-    {
-      "title": "Craziest Invention Fails Ever!",
-      "topic": "Showcasing a few hilarious or disastrous invention failures throughout history with images and narration.",
-      "hook": "These inventions were a TOTAL flop!",
-      "tags": [
-        "invention",
-        "fail",
-        "funny",
-        "history",
-        "technology",
-        "inventions",
-        "shorts",
-        "inventionfails"
-      ],
-      "inspired_by": "Tech fail videos",
-      "estimated_views": "medium"
-    },
-    {
-      "title": "The REAL Reason Rome Fell!",
-      "topic": "A simplified and engaging explanation of a key factor in the fall of the Roman Empire.",
-      "hook": "The fall of Rome: it's not what you think!",
-      "tags": [
-        "rome",
-        "history",
-        "ancienthistory",
-        "romanempire",
-        "facts",
-        "didyouknow",
-        "shorts",
-        "historyfacts"
-      ],
-      "inspired_by": "Historical conspiracy trend",
+      "inspired_by": "General trend of history-related content",
       "estimated_views": "high"
     },
     {
-      "title": "Space Fact That Will Keep You Up At Night",
-      "topic": "Share a scary or mind-blowing space fact (e.g. size of the universe, black holes)",
-      "hook": "This space fact is terrifying!",
+      "title": "Insane Animal Survival Tactics!",
+      "topic": "Showcase three unique and bizarre animal survival tactics. Include footage of the animals in action. Overlay text explaining the tactic.",
+      "hook": "You won't believe how this animal survives...",
+      "tags": [
+        "animals",
+        "survival",
+        "nature",
+        "wildlife",
+        "amazing animals"
+      ],
+      "inspired_by": "Trending nature documentaries",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "Mind-Bending Optical Illusions!",
+      "topic": "Present a series of optical illusions (3-4) that mess with viewers' minds. Ask a question that prompts a response in the comments.",
+      "hook": "Is your brain working correctly?",
+      "tags": [
+        "optical illusion",
+        "illusion",
+        "brain teaser",
+        "mind trick",
+        "visual trick"
+      ],
+      "inspired_by": "Popularity of visual challenges",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "Strangest Laws Around the World!",
+      "topic": "Present 3 unusual laws still in effect in different countries. Use visuals related to the countries/laws.",
+      "hook": "Did you know it's illegal to...?",
+      "tags": [
+        "laws",
+        "weird laws",
+        "strange laws",
+        "countries",
+        "travel"
+      ],
+      "inspired_by": "General interest in global oddities",
+      "estimated_views": "high"
+    },
+    {
+      "title": "Foods You're Eating WRONG!",
+      "topic": "Demonstrate the 'correct' way to eat common foods that most people eat inefficiently (e.g., cupcakes, oranges, etc.).",
+      "hook": "You've been eating this wrong your whole life!",
+      "tags": [
+        "food",
+        "life hacks",
+        "eating",
+        "etiquette",
+        "food hacks"
+      ],
+      "inspired_by": "Food-related viral content",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "Little-Known Space Facts!",
+      "topic": "Share 3 surprising facts about space and astronomy. Use visuals and animations to enhance the facts.",
+      "hook": "Space is even weirder than you think...",
       "tags": [
         "space",
         "astronomy",
         "science",
-        "universe",
-        "galaxy",
-        "blackhole",
-        "shorts",
-        "spacefacts"
-      ],
-      "inspired_by": "General space exploration interest",
-      "estimated_views": "medium"
-    },
-    {
-      "title": "Hidden Secrets of the Amazon Rainforest",
-      "topic": "Briefly reveal an amazing or lesser-known fact about the Amazon rainforest.",
-      "hook": "You won't believe this about the Amazon!",
-      "tags": [
-        "amazon",
-        "rainforest",
-        "nature",
-        "environment",
-        "animals",
-        "wildlife",
-        "shorts",
-        "amazonrainforest"
-      ],
-      "inspired_by": "Environmental content",
-      "estimated_views": "medium"
-    },
-    {
-      "title": "This Country Vanished Overnight!",
-      "topic": "Explain a quick history of a country that ceased to exist, the reasons why, and show it on a map.",
-      "hook": "A country gone in a day!",
-      "tags": [
-        "history",
-        "countries",
-        "geography",
         "facts",
-        "maps",
-        "didyouknow",
-        "shorts",
-        "countryfacts"
+        "universe"
       ],
-      "inspired_by": "History and Political landscape",
-      "estimated_views": "high"
+      "inspired_by": "Renewed interest in space exploration",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "Random Facts That Will Blow Your Mind!",
+      "topic": "Present three completely random, surprising facts from various topics. Use visuals to illustrate each fact.",
+      "hook": "Prepare to have your mind blown!",
+      "tags": [
+        "random facts",
+        "facts",
+        "mind blowing",
+        "interesting",
+        "did you know"
+      ],
+      "inspired_by": "General popularity of fact compilations",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "Crazy Sports Records!",
+      "topic": "Showcase three unusual or little-known sports records. Focus on sports that are less mainstream, or obscure records from major sports.",
+      "hook": "This sports record is absolutely ridiculous...",
+      "tags": [
+        "sports",
+        "records",
+        "weird sports",
+        "sports facts",
+        "unusual"
+      ],
+      "inspired_by": "Trending sports highlights and records",
+      "estimated_views": "low"
     }
   ],
   "longform": [
     {
-      "title": "The Untold Story of Area 51: Declassified Files",
-      "topic": "A documentary exploring the history of Area 51, examining declassified documents and exploring the various theories surrounding it.",
-      "outline": "1. History of Area 51. 2. Declassified documents analysis. 3. Common theories and myths. 4. Expert interviews. 5. Conclusion: What we know and don't know.",
+      "title": "The Untold Story of Area 51",
+      "topic": "A documentary-style exploration of the history, myths, and recent developments surrounding Area 51. Focus on declassified documents and expert interviews.",
+      "outline": "1. Brief History & Location; 2. Conspiracy Theories & Alien Myths; 3. Declassified Documents Analysis; 4. Expert Interviews (historians, former employees if possible); 5. Current Status and Future Speculation",
       "tags": [
-        "area51",
-        "ufo",
-        "conspiracy",
+        "area 51",
         "aliens",
-        "secret",
-        "government"
+        "conspiracy",
+        "ufo",
+        "government secrets"
       ],
-      "inspired_by": "Conspiracy theory videos",
+      "inspired_by": "Persistent public interest in Area 51 and UFOs",
       "estimated_views": "high"
     },
     {
-      "title": "The Psychology of Conspiracy Theories: Why We Believe",
-      "topic": "An educational video exploring the psychological reasons why people are drawn to conspiracy theories, examining cognitive biases and social factors.",
-      "outline": "1. Introduction to cognitive biases. 2. The need for control and certainty. 3. Social factors influencing belief. 4. Case studies of famous conspiracies. 5. How to critically evaluate information.",
+      "title": "The Science Behind Deja Vu",
+      "topic": "A scientific exploration of the phenomenon of déjà vu. Covering various theories, neurological research, and potential causes.",
+      "outline": "1. Introduction to Déjà Vu and its prevalence; 2. Psychological Theories (memory, perception); 3. Neurological Explanations (brain function, seizures); 4. Research Studies and Findings; 5. Personal Experiences and Anecdotes; 6. Conclusion: What we know and don't know.",
       "tags": [
-        "psychology",
-        "conspiracy",
-        "theories",
-        "mind",
+        "deja vu",
         "science",
-        "belief"
+        "psychology",
+        "brain",
+        "memory"
       ],
-      "inspired_by": "Psychology analysis trends",
+      "inspired_by": "General interest in unexplained phenomena",
       "estimated_views": "medium"
     }
   ],
-  "generated_at": "2026-02-13T21:46:21.899367",
+  "generated_at": "2026-02-13T21:52:01.522707",
   "trending_count": 0,
-  "status": "in_progress",
-  "last_executed_at": "2026-02-13T22:03:01.952962",
-  "results": {
-    "shorts_produced": 0,
-    "longform_produced": 0,
-    "errors": [
-      "Short 'Mind-Blowing Coincidence in Hi' failed",
-      "Short 'Secret Language of Animals EXP' failed"
-    ]
-  }
+  "status": "pending"
 }

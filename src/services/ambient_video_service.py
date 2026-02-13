@@ -782,3 +782,187 @@ class AmbientVideoService:
         except Exception as e:
             logger.warning(f"Ambient fast mux crashed, falling back to full render: {e}")
             return False
+
+    # ══════════════════════════════════════════════════════════
+    # FAST LOOP — Turn a short clip into hours-long video
+    # No re-encoding = original quality preserved (4K stays 4K)
+    # ══════════════════════════════════════════════════════════
+
+    def loop_video(
+        self,
+        input_video: str,
+        duration_hours: float = 8.0,
+        audio_file: Optional[str] = None,
+        title: Optional[str] = None,
+        description: Optional[str] = None,
+        tags: Optional[List[str]] = None,
+    ) -> Optional[Dict[str, object]]:
+        """
+        Take a short video clip and loop it to target duration.
+        Uses -c:v copy (stream copy) = NO re-encoding = blazing fast.
+        
+        8-second clip → 8-hour video in ~30 seconds.
+        Original quality is 100% preserved (4K input = 4K output).
+        
+        Args:
+            input_video: Path to short source video (e.g. 8 seconds of fireplace)
+            duration_hours: Target duration in hours (default: 8)
+            audio_file: Optional audio file to overlay (loops to match duration)
+            title: Video title for YouTube
+            description: Video description
+            tags: Video tags
+        """
+        if not os.path.exists(input_video):
+            logger.error(f"Input video not found: {input_video}")
+            return None
+
+        duration_seconds = int(duration_hours * 3600)
+        timestamp = int(time.time())
+
+        # Get source video info
+        probe = self._probe_video(input_video)
+        if not probe:
+            logger.error("Cannot probe input video")
+            return None
+
+        src_duration = probe.get("duration", 0)
+        src_width = probe.get("width", 0)
+        src_height = probe.get("height", 0)
+        src_codec = probe.get("codec", "unknown")
+
+        logger.info(f"📹 Source: {src_width}x{src_height} {src_codec} ({src_duration:.1f}s)")
+        logger.info(f"🎯 Target: {duration_hours}h = {duration_seconds}s")
+        logger.info(f"🔄 Loops needed: ~{int(duration_seconds / max(src_duration, 1))}")
+
+        # Build production output
+        hours_str = f"{duration_hours:.0f}" if duration_hours == int(duration_hours) else f"{duration_hours:.1f}"
+        production_id = f"loop_{hours_str}h_{timestamp}"
+        out_dir = os.path.join(self.productions_dir, production_id, "en")
+        os.makedirs(out_dir, exist_ok=True)
+        output_path = os.path.join(out_dir, f"{production_id}.mp4")
+
+        # ─── BUILD FFMPEG COMMAND ───
+        cmd = ["ffmpeg", "-y", "-v", "warning", "-stats"]
+
+        # Video input — loop infinitely
+        cmd.extend(["-stream_loop", "-1", "-i", input_video])
+
+        # Audio input
+        if audio_file and os.path.exists(audio_file):
+            cmd.extend(["-stream_loop", "-1", "-i", audio_file])
+            has_audio_file = True
+        else:
+            has_audio_file = False
+
+        # Mapping
+        cmd.extend(["-map", "0:v:0"])
+        if has_audio_file:
+            cmd.extend(["-map", "1:a:0"])
+        elif probe.get("has_audio"):
+            cmd.extend(["-map", "0:a:0"])
+
+        # Duration limit
+        cmd.extend(["-t", str(duration_seconds)])
+
+        # VIDEO: Stream copy = no re-encoding = instant
+        cmd.extend(["-c:v", "copy"])
+
+        # AUDIO: Re-encode only audio (fast, small data)
+        if has_audio_file or probe.get("has_audio"):
+            cmd.extend(["-c:a", "aac", "-b:a", "192k"])
+
+        cmd.append(output_path)
+
+        logger.info(f"⚡ Fast loop render starting (stream copy, no re-encoding)...")
+        logger.info(f"   Command: {' '.join(cmd[:10])}...")
+
+        try:
+            start_time = time.time()
+            result = subprocess.run(cmd, capture_output=True, text=True)
+
+            if result.returncode != 0:
+                logger.error(f"Loop render failed: {result.stderr[:500]}")
+                return None
+
+            elapsed = time.time() - start_time
+            file_size = os.path.getsize(output_path)
+            size_gb = file_size / (1024 ** 3)
+
+            logger.info(f"✅ Done in {elapsed:.1f}s!")
+            logger.info(f"📦 Output: {size_gb:.2f} GB")
+            logger.info(f"📐 Quality: {src_width}x{src_height} (original preserved)")
+            logger.info(f"📂 File: {output_path}")
+
+        except Exception as e:
+            logger.error(f"Loop render crashed: {e}")
+            return None
+
+        # Build metadata
+        auto_title = title or f"{hours_str} Hours Loop Video"
+        auto_desc = description or (
+            f"{hours_str} hours of seamless looping ambient content.\n\n"
+            f"Resolution: {src_width}x{src_height}\n"
+            f"Duration: {hours_str} hours\n\n"
+            "Perfect for sleep, study, relaxation, and focus."
+        )
+        auto_tags = tags or [
+            "ambient", "loop", f"{hours_str} hours",
+            "sleep", "relax", "study", "focus",
+            "4K" if src_width >= 3840 else ("1080p" if src_width >= 1920 else "HD"),
+        ]
+
+        metadata = {
+            "title": auto_title,
+            "description": auto_desc,
+            "tags": auto_tags,
+            "file_path": output_path,
+            "source_video": input_video,
+            "duration_hours": duration_hours,
+            "duration_seconds": duration_seconds,
+            "resolution": f"{src_width}x{src_height}",
+            "file_size_gb": round(size_gb, 2),
+            "render_time_seconds": round(elapsed, 1),
+            "method": "stream_copy",
+        }
+
+        metadata_path = os.path.join(out_dir, "metadata.json")
+        with open(metadata_path, "w", encoding="utf-8") as f:
+            json.dump(metadata, f, indent=2, ensure_ascii=False)
+
+        return metadata
+
+    def _probe_video(self, video_path: str) -> Optional[Dict]:
+        """Get video file info using ffprobe."""
+        try:
+            cmd = [
+                "ffprobe", "-v", "quiet",
+                "-print_format", "json",
+                "-show_format", "-show_streams",
+                video_path,
+            ]
+            result = subprocess.run(cmd, capture_output=True, text=True)
+            if result.returncode != 0:
+                return None
+
+            data = json.loads(result.stdout)
+            video_stream = None
+            has_audio = False
+            for s in data.get("streams", []):
+                if s.get("codec_type") == "video" and not video_stream:
+                    video_stream = s
+                if s.get("codec_type") == "audio":
+                    has_audio = True
+
+            if not video_stream:
+                return None
+
+            return {
+                "width": int(video_stream.get("width", 0)),
+                "height": int(video_stream.get("height", 0)),
+                "codec": video_stream.get("codec_name", "unknown"),
+                "duration": float(data.get("format", {}).get("duration", 0)),
+                "has_audio": has_audio,
+            }
+        except Exception as e:
+            logger.error(f"ffprobe failed: {e}")
+            return None
