@@ -45,6 +45,7 @@ from src.agents.country_content_agent import LongFormContentAgent
 from src.agents.nature_shorts_agent import NatureShortsAgent, NATURE_SHORTS_CATEGORIES
 from src.services.tiktok_service import TikTokService
 from src.agents.tiktok_agent import TikTokAgent
+from src.agents.youtube_analytics_agent import YouTubeAnalyticsAgent
 from src.services.livestream_service import LivestreamService, LIVESTREAM_PRESETS
 
 
@@ -78,6 +79,7 @@ class YoutubeFactory:
         self.nature_shorts_agent = self._safe_init(NatureShortsAgent, "NatureShortsAgent", factory_instance=self)
         self.tiktok_service = self._safe_init(TikTokService, "TikTokService")
         self.tiktok_agent = self._safe_init(TikTokAgent, "TikTokAgent", tiktok_service=self.tiktok_service)
+        self.analytics_agent = None  # Lazy init (needs YouTube service)
         self.youtube_service = None
 
 
@@ -461,6 +463,14 @@ Examples:
     parser.add_argument("--tiktok-count", type=int, default=3,
                         help="Number of TikTok posts in daily automation (default: 3)")
 
+    # YouTube Analytics options
+    parser.add_argument("--analytics", action="store_true",
+                        help="Run full YouTube channel analytics & strategy analysis")
+    parser.add_argument("--analytics-delete", action="store_true",
+                        help="Show which underperforming videos would be deleted (dry run)")
+    parser.add_argument("--analytics-delete-confirm", action="store_true",
+                        help="Actually delete underperforming videos (DESTRUCTIVE!)")
+
     # Livestream options
     parser.add_argument("--livestream", type=str, choices=LIVESTREAM_TYPES, help="Start a 24/7 YouTube Live Stream")
     parser.add_argument("--livestream-list", action="store_true", help="List available livestream presets")
@@ -522,6 +532,48 @@ Examples:
             print("=" * 60 + "\n")
 
         service.stream_with_auto_restart(args.livestream)
+        sys.exit(0)
+
+    # YouTube Analytics Mode
+    if args.analytics or args.analytics_delete or args.analytics_delete_confirm:
+        logger.info("📊 YouTube Analytics & Strategy Tool")
+
+        # Initialize YouTube service for analytics
+        try:
+            yt_service = YouTubeService()
+            if not yt_service.youtube:
+                logger.error("YouTube service not available. Check credentials (token.pickle + client_secrets.json).")
+                sys.exit(1)
+            analytics = YouTubeAnalyticsAgent(youtube_service=yt_service)
+        except Exception as e:
+            logger.error(f"Failed to initialize YouTube Analytics: {e}")
+            sys.exit(1)
+
+        auto_delete = args.analytics_delete_confirm
+        result = analytics.run_full_analysis(auto_delete=auto_delete)
+
+        if result.get("error"):
+            logger.error(f"Analytics failed: {result['error']}")
+            sys.exit(1)
+
+        # Dry-run delete preview
+        if args.analytics_delete and not args.analytics_delete_confirm:
+            analysis = result.get("analysis", {})
+            underperformers = analysis.get("underperformers", [])
+            if underperformers:
+                print("\n🗑️ UNDERPERFORMERS (Dry Run - would be deleted):")
+                print("-" * 60)
+                for v in underperformers:
+                    if v.get("recommendation") == "DELETE":
+                        print(f"  ❌ {v['title'][:50]}")
+                        print(f"     Views: {v['views']} | Severity: {v['severity_score']}")
+                        print(f"     Reasons: {', '.join(v.get('reasons', []))}")
+                        print()
+                print(f"Total: {len([v for v in underperformers if v.get('recommendation') == 'DELETE'])} videos")
+                print("\n⚠️ To actually delete, run: python main.py --analytics-delete-confirm")
+            else:
+                print("\n✅ No videos qualify for deletion!")
+
         sys.exit(0)
 
     # X Automation Mode
