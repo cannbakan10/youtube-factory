@@ -188,8 +188,10 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "Content Engine Bot"
           git add data/daily_plan.json -f
-          git diff --staged --quiet || git commit -m "🎬 Produced content [$(date -u +%Y-%m-%d %H:%M)]"
-          git push
+          TIMESTAMP=$(date -u +'%Y-%m-%d_%H:%M')
+          git diff --staged --quiet || git commit -m "🎬 Produced content [$TIMESTAMP]"
+          git pull --rebase origin main || true
+          git push origin main
 
       - name: Skip — No Plan
         if: steps.check_plan.outputs.status != 'ready'
