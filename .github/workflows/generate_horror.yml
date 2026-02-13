@@ -4,24 +4,22 @@ on:
   workflow_dispatch:
     inputs:
       topic:
-        description: 'Korku Hikayesi Teması (Type "trend" for viral mystery)'
+        description: 'Horror Story Theme (Type "trend" for viral mystery)'
         required: true
         default: 'trend'
       langs:
-        description: 'Diller'
+        description: 'Language'
         required: true
-        default: 'tr'
+        default: 'en'
         type: choice
         options:
-        - tr
         - en
-        - en,tr
       list_trends:
-        description: 'Sadece trendleri listele'
+        description: 'List trends only'
         type: boolean
         default: false
       video_type:
-        description: 'Video Formatı'
+        description: 'Video format'
         required: true
         default: 'shorts'
         type: choice
@@ -29,7 +27,7 @@ on:
         - shorts
         - long
       upload:
-        description: 'YouTube yükleme'
+        description: 'Upload to YouTube'
         type: boolean
         default: true
 

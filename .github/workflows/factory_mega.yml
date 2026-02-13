@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'Çalışma modu'
+        description: 'Production mode'
         required: true
         default: 'standard'
         type: choice
@@ -18,20 +18,18 @@ on:
         - viral_remix
         - list_trends
       topic:
-        description: 'Konu (standard/horror için)'
+        description: 'Topic (for standard/horror mode)'
         required: false
         default: 'trend'
       langs:
-        description: 'Diller'
+        description: 'Language'
         required: true
         default: 'en'
         type: choice
         options:
-        - tr
         - en
-        - en,tr
       video_type:
-        description: 'Video Formatı'
+        description: 'Video format'
         required: true
         default: 'shorts'
         type: choice
@@ -39,19 +37,19 @@ on:
         - shorts
         - long
       upload:
-        description: 'YouTube yükleme'
+        description: 'Upload to YouTube'
         type: boolean
         default: false
       list_trends:
-        description: 'standard/horror modunda sadece trend listele'
+        description: 'List trends only (standard/horror mode)'
         type: boolean
         default: false
       bulk:
-        description: 'standard/horror modunda BULK üretim'
+        description: 'Bulk production (standard/horror mode)'
         type: boolean
         default: false
       category:
-        description: 'viral/viral_remix kategorisi'
+        description: 'Category (viral/viral_remix mode)'
         required: false
         default: 'facts'
         type: choice
@@ -65,15 +63,15 @@ on:
         - mystery
         - lifestyle
       region:
-        description: 'Bölge (US, TR, GB...)'
+        description: 'Region (US, GB, etc.)'
         required: false
         default: 'US'
       produce:
-        description: 'viral modunda üretilecek sıra no (opsiyonel)'
+        description: 'Produce item number (viral mode, optional)'
         required: false
         default: ''
       ambient_type:
-        description: 'ambient modu tipi'
+        description: 'Ambient type'
         required: false
         default: 'sleep'
         type: choice
@@ -85,19 +83,19 @@ on:
         - brown_noise
         - white_noise
       ambient_duration:
-        description: 'ambient süre (dakika)'
+        description: 'Ambient duration (minutes)'
         required: false
         default: '60'
       save_remix:
-        description: 'viral_remix listesini JSON kaydet'
+        description: 'Save remix list as JSON'
         type: boolean
         default: true
       produce_remix:
-        description: 'viral_remix modunda üretilecek sıra no (opsiyonel)'
+        description: 'Produce remix item number (optional)'
         required: false
         default: ''
       remix_topic:
-        description: 'viral_remix için manuel topic override'
+        description: 'Manual topic override for viral_remix'
         required: false
         default: ''
 

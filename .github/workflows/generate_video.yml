@@ -4,28 +4,26 @@ on:
   workflow_dispatch:
     inputs:
       topic:
-        description: 'Video Konusu (Type "trend" for auto-discovery)'
+        description: 'Video Topic (Type "trend" for auto-discovery)'
         required: true
         default: 'trend'
       langs:
-        description: 'Diller'
+        description: 'Language'
         required: true
-        default: 'tr'
+        default: 'en'
         type: choice
         options:
-        - tr
         - en
-        - en,tr
       list_trends:
-        description: 'Sadece trendleri listele'
+        description: 'List trends only'
         type: boolean
         default: false
       bulk:
-        description: 'BULK MOD (Sadece Trendler için)'
+        description: 'BULK MODE (Trends only)'
         type: boolean
         default: false
       video_type:
-        description: 'Video Formatı'
+        description: 'Video format'
         required: true
         default: 'shorts'
         type: choice
@@ -33,7 +31,7 @@ on:
         - shorts
         - long
       mode:
-        description: 'İçerik Modu'
+        description: 'Content mode'
         required: true
         default: 'info'
         type: choice
@@ -43,7 +41,7 @@ on:
         - quiz
         - reddit
       workflow_mode:
-        description: 'Workflow Modu'
+        description: 'Workflow mode'
         required: true
         default: 'standard'
         type: choice
@@ -53,7 +51,7 @@ on:
         - viral
         - viral_remix
       ambient_type:
-        description: 'Ambient Türü (Sadece Ambient Modu)'
+        description: 'Ambient Type (Ambient mode only)'
         required: false
         default: 'fireplace'
         type: choice
@@ -97,11 +95,11 @@ on:
         - prairie_sunset
         - cathedral_meditation
       ambient_duration:
-        description: 'Ambient Süresi (Dakika)'
+        description: 'Ambient Duration (Minutes)'
         required: false
         default: '60'
       viral_category:
-        description: 'Viral Kategori (Sadece Viral/Remix Modu)'
+        description: 'Viral Category (Viral/Remix mode only)'
         required: false
         default: 'facts'
         type: choice

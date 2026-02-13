@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       ambient_type:
-        description: 'Ambient Türü'
+        description: 'Ambient Type'
         required: true
         default: 'sleep'
         type: choice
@@ -16,19 +16,18 @@ on:
         - brown_noise
         - white_noise
       duration_minutes:
-        description: 'Süre (dakika)'
+        description: 'Duration (minutes)'
         required: true
         default: '60'
       langs:
-        description: 'Dil'
+        description: 'Language'
         required: true
         default: 'en'
         type: choice
         options:
         - en
-        - tr
       video_type:
-        description: 'Video Formatı'
+        description: 'Video format'
         required: true
         default: 'long'
         type: choice
@@ -36,7 +35,7 @@ on:
         - long
         - shorts
       ambient_source:
-        description: 'Görsel kaynağı'
+        description: 'Video source'
         required: true
         default: 'api'
         type: choice
@@ -44,7 +43,7 @@ on:
         - api
         - auto
       upload:
-        description: 'YouTube yükleme'
+        description: 'Upload to YouTube'
         type: boolean
         default: false
 

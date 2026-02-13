@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       ambient_type:
-        description: 'Ambient türü (fireplace, rain, sleep, ocean_sleep, vb.)'
+        description: 'Ambient type (fireplace, rain, sleep, ocean_sleep, etc.)'
         required: true
         default: 'fireplace'
       duration:
-        description: 'Süre (Dakika cinsinden - Örn: 180)'
+        description: 'Duration in minutes (e.g. 180)'
         required: true
         default: '180'
 
