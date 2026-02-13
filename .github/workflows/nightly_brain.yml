@@ -1,23 +1,36 @@
-name: Nightly Brain - Analytics & Planning
+name: "🧠 Nightly Brain — Analytics, Cleanup & Planning"
+
+# ╔══════════════════════════════════════════════════════════╗
+# ║  NIGHTLY BRAIN — The Central Intelligence System        ║
+# ║                                                         ║
+# ║  Runs every night at 23:00 UTC (02:00 Turkey)           ║
+# ║  1. Deletes underperforming & Turkish videos            ║
+# ║  2. Discovers top 100 US trending via YouTube API       ║
+# ║  3. Generates next-day content plan with Gemini AI      ║
+# ║  4. Commits plan for Content Engine to execute          ║
+# ║                                                         ║
+# ║  Budget: ~20 min/run × 30 days = 10 hrs/month           ║
+# ╚══════════════════════════════════════════════════════════╝
 
 on:
   schedule:
-    # Runs every night at 23:00 UTC (02:00 Turkey time)
-    - cron: '0 23 * * *'
+    - cron: '0 23 * * *'  # Every night 23:00 UTC
   workflow_dispatch:
     inputs:
       dry_run:
-        description: 'Dry run mode (no deletions)'
+        description: 'Dry run (no deletions, plan only)'
         required: false
         default: 'false'
         type: choice
         options:
-          - 'true'
           - 'false'
+          - 'true'
 
 jobs:
   nightly-brain:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -32,6 +45,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Setup Credentials
+        run: |
+          echo '${{ secrets.CLIENT_SECRETS_JSON }}' > client_secrets.json
+          if [ -n "${{ secrets.TOKEN_PICKLE_BASE64 }}" ]; then
+            printf "%s" "${{ secrets.TOKEN_PICKLE_BASE64 }}" | base64 -d > token.pickle
+          fi
+
       - name: Run Nightly Brain
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -44,10 +64,11 @@ jobs:
           CLIENT_SECRETS_JSON: ${{ secrets.CLIENT_SECRETS_JSON }}
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: |
-          echo '${{ secrets.CLIENT_SECRETS_JSON }}' > client_secrets.json
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            echo "🧪 DRY RUN MODE"
             python main.py --nightly-dry
           else
+            echo "🧠 LIVE MODE — Cleanup + Trends + Plan"
             python main.py --nightly
           fi
 
@@ -55,6 +76,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "Nightly Brain Bot"
-          git add data/daily_plan.json data/nightly_logs/ data/analytics/ -f
-          git diff --staged --quiet || git commit -m "🧠 Nightly Brain: cleanup + plan [$(date -u +%Y-%m-%d)]"
+          git add data/daily_plan.json data/nightly_logs/ -f
+          git diff --staged --quiet || git commit -m "🧠 Nightly: cleanup + plan [$(date -u +%Y-%m-%d)]"
           git push

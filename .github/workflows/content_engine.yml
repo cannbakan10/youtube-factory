@@ -1,0 +1,196 @@
+name: "🎬 Content Engine — Produce & Upload Videos"
+
+# ╔══════════════════════════════════════════════════════════╗
+# ║  CONTENT ENGINE — Automated Video Production            ║
+# ║                                                         ║
+# ║  Daily output: 8 Shorts + 2 Long-form = 10 videos/day  ║
+# ║  Schedule: 4 runs/day × (2 Shorts per run)              ║
+# ║            + 1 long-form run                             ║
+# ║                                                         ║
+# ║  ┌──────────┬──────────────────────────────────┐        ║
+# ║  │ Time UTC │ Action                           │        ║
+# ║  ├──────────┼──────────────────────────────────┤        ║
+# ║  │ 06:00    │ 2 Shorts (early morning US)      │        ║
+# ║  │ 10:00    │ 2 Shorts (morning US East Coast) │        ║
+# ║  │ 14:00    │ 2 Shorts (afternoon US)          │        ║
+# ║  │ 18:00    │ 2 Shorts (evening US prime time) │        ║
+# ║  │ 22:00    │ 2 Long-form (night engagement)   │        ║
+# ║  └──────────┴──────────────────────────────────┘        ║
+# ║                                                         ║
+# ║  Budget: 5 runs × ~25 min = 125 min/day                 ║
+# ║          = ~63 hrs/month out of 3,000 hrs                ║
+# ╚══════════════════════════════════════════════════════════╝
+
+on:
+  schedule:
+    # Shorts production (4 runs × 2 shorts = 8 shorts/day)
+    - cron: '0 6 * * *'    # 06:00 UTC — Early batch
+    - cron: '0 10 * * *'   # 10:00 UTC — Morning batch
+    - cron: '0 14 * * *'   # 14:00 UTC — Afternoon batch
+    - cron: '0 18 * * *'   # 18:00 UTC — Prime time batch
+
+    # Long-form production (1 run × 2 long-form = 2 long/day)
+    - cron: '0 22 * * *'   # 22:00 UTC — Night long-form batch
+
+  workflow_dispatch:
+    inputs:
+      video_type:
+        description: 'What to produce'
+        required: true
+        default: 'shorts'
+        type: choice
+        options:
+          - shorts
+          - longform
+          - both
+      count:
+        description: 'Number of videos to produce'
+        required: false
+        default: '2'
+
+jobs:
+  produce-content:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Pull Latest Plan
+        run: git pull origin main
+
+      - name: Check Daily Plan
+        id: check_plan
+        run: |
+          if [ ! -f "data/daily_plan.json" ]; then
+            echo "status=no_plan" >> $GITHUB_OUTPUT
+            echo "❌ No daily plan found. Nightly Brain must run first."
+            exit 0
+          fi
+
+          STATUS=$(python3 -c "
+          import json
+          try:
+              d = json.load(open('data/daily_plan.json'))
+              plan_status = d.get('status', 'unknown')
+              shorts = d.get('shorts', [])
+              longform = d.get('longform', [])
+              pending_shorts = sum(1 for s in shorts if s.get('status','pending') == 'pending')
+              pending_long = sum(1 for l in longform if l.get('status','pending') == 'pending')
+              print(f'plan_status={plan_status},pending_shorts={pending_shorts},pending_long={pending_long}')
+          except:
+              print('plan_status=error,pending_shorts=0,pending_long=0')
+          ")
+
+          PLAN_STATUS=$(echo $STATUS | grep -oP 'plan_status=\K[^,]+')
+          PENDING_SHORTS=$(echo $STATUS | grep -oP 'pending_shorts=\K[0-9]+')
+          PENDING_LONG=$(echo $STATUS | grep -oP 'pending_long=\K[0-9]+')
+
+          echo "pending_shorts=$PENDING_SHORTS" >> $GITHUB_OUTPUT
+          echo "pending_long=$PENDING_LONG" >> $GITHUB_OUTPUT
+
+          if [ "$PLAN_STATUS" = "completed" ]; then
+            echo "status=completed" >> $GITHUB_OUTPUT
+            echo "⏭️ Plan already fully completed"
+          elif [ "$PENDING_SHORTS" = "0" ] && [ "$PENDING_LONG" = "0" ]; then
+            echo "status=completed" >> $GITHUB_OUTPUT
+            echo "⏭️ No pending items"
+          else
+            echo "status=ready" >> $GITHUB_OUTPUT
+            echo "📋 Plan ready: $PENDING_SHORTS shorts + $PENDING_LONG longform pending"
+          fi
+
+      - name: Determine Run Type
+        id: run_type
+        if: steps.check_plan.outputs.status == 'ready'
+        run: |
+          HOUR=$(date -u +%H)
+          MANUAL_TYPE="${{ github.event.inputs.video_type }}"
+          MANUAL_COUNT="${{ github.event.inputs.count }}"
+
+          if [ -n "$MANUAL_TYPE" ]; then
+            # Manual dispatch
+            if [ "$MANUAL_TYPE" = "shorts" ]; then
+              echo "shorts_count=${MANUAL_COUNT:-2}" >> $GITHUB_OUTPUT
+              echo "longform_count=0" >> $GITHUB_OUTPUT
+            elif [ "$MANUAL_TYPE" = "longform" ]; then
+              echo "shorts_count=0" >> $GITHUB_OUTPUT
+              echo "longform_count=${MANUAL_COUNT:-2}" >> $GITHUB_OUTPUT
+            else
+              echo "shorts_count=${MANUAL_COUNT:-2}" >> $GITHUB_OUTPUT
+              echo "longform_count=1" >> $GITHUB_OUTPUT
+            fi
+          else
+            # Scheduled run — determine by hour
+            if [ "$HOUR" = "22" ]; then
+              # 22:00 UTC = Long-form batch
+              echo "shorts_count=0" >> $GITHUB_OUTPUT
+              echo "longform_count=2" >> $GITHUB_OUTPUT
+              echo "🎬 Long-form batch (22:00 UTC)"
+            else
+              # 06/10/14/18 UTC = Shorts batch
+              echo "shorts_count=2" >> $GITHUB_OUTPUT
+              echo "longform_count=0" >> $GITHUB_OUTPUT
+              echo "📹 Shorts batch ($HOUR:00 UTC)"
+            fi
+          fi
+
+      - name: Set up Python
+        if: steps.check_plan.outputs.status == 'ready'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install ffmpeg
+        if: steps.check_plan.outputs.status == 'ready'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Install Dependencies
+        if: steps.check_plan.outputs.status == 'ready'
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Setup Credentials
+        if: steps.check_plan.outputs.status == 'ready'
+        run: |
+          echo '${{ secrets.CLIENT_SECRETS_JSON }}' > client_secrets.json
+          if [ -n "${{ secrets.TOKEN_PICKLE_BASE64 }}" ]; then
+            printf "%s" "${{ secrets.TOKEN_PICKLE_BASE64 }}" | base64 -d > token.pickle
+          fi
+
+      - name: Produce Videos
+        if: steps.check_plan.outputs.status == 'ready'
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          TOKEN_PICKLE_BASE64: ${{ secrets.TOKEN_PICKLE_BASE64 }}
+          CLIENT_SECRETS_JSON: ${{ secrets.CLIENT_SECRETS_JSON }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: |
+          SHORTS=${{ steps.run_type.outputs.shorts_count }}
+          LONGFORM=${{ steps.run_type.outputs.longform_count }}
+          echo "🎬 Producing: $SHORTS shorts + $LONGFORM longform"
+          python main.py --execute-plan --plan-shorts $SHORTS --plan-longform $LONGFORM
+
+      - name: Commit Progress
+        if: steps.check_plan.outputs.status == 'ready'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "Content Engine Bot"
+          git add data/daily_plan.json -f
+          git diff --staged --quiet || git commit -m "🎬 Produced content [$(date -u +%Y-%m-%d %H:%M)]"
+          git push
+
+      - name: Skip — No Plan
+        if: steps.check_plan.outputs.status != 'ready'
+        run: echo "⏭️ No pending plan. Waiting for Nightly Brain."

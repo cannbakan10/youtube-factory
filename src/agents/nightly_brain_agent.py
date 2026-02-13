@@ -18,7 +18,15 @@ Flow:
     ├── Generate content plan for tomorrow
     └── Save plan to data/daily_plan.json
 
-  Morning workflows read daily_plan.json and produce content
+  Content Engine workflows read daily_plan.json and produce content
+
+  Daily Budget (3,000 hrs/month):
+    Nightly Brain: ~20 min/run × 30 = 10 hrs/month
+    Content Engine: 5 runs × ~25 min = 125 min/day = ~63 hrs/month
+    Total: ~73 hrs/month = 2.4% of budget
+
+  Daily Output: 8 Shorts + 2 Long-form = 10 videos/day
+  Monthly Output: ~300 videos/month
 """
 
 import os
@@ -395,8 +403,8 @@ Here are today's top 20 trending YouTube videos in the US:
 Here are some of our existing video topics (to avoid duplicates):
 {existing_sample}
 
-Create a content plan for TOMORROW with exactly 6 video ideas:
-- 4 YouTube Shorts (under 60 seconds, fact/info style)
+Create a content plan for TOMORROW with exactly 10 video ideas:
+- 8 YouTube Shorts (under 60 seconds, fact/info style)
 - 2 Long-form ideas (8-15 minutes, documentary/educational style)
 
 Requirements:
@@ -462,7 +470,7 @@ Output STRICT JSON format:
             if norm_title in existing_titles:
                 continue
 
-            if v["is_shorts"] and len(shorts) < 4:
+            if v["is_shorts"] and len(shorts) < 8:
                 shorts.append({
                     "title": f"Facts About {v['title'][:40]}",
                     "topic": v["title"],
@@ -479,7 +487,7 @@ Output STRICT JSON format:
                     "estimated_views": "medium",
                 })
 
-            if len(shorts) >= 4 and len(longform) >= 2:
+            if len(shorts) >= 8 and len(longform) >= 2:
                 break
 
         return {
@@ -518,13 +526,19 @@ Output STRICT JSON format:
             plan = json.load(f)
 
         if plan.get("status") == "completed":
-            logger.info("Plan already completed today")
+            logger.info("Plan already fully completed today")
             return {"status": "already_completed"}
 
         results = {"shorts_produced": 0, "longform_produced": 0, "errors": []}
 
-        # Produce Shorts
-        for i, short in enumerate(plan.get("shorts", [])[:max_shorts]):
+        # Find pending shorts (not yet produced)
+        pending_shorts = [s for s in plan.get("shorts", []) if s.get("status", "pending") == "pending"]
+        pending_longform = [l for l in plan.get("longform", []) if l.get("status", "pending") == "pending"]
+
+        logger.info(f"📋 Pending: {len(pending_shorts)} shorts, {len(pending_longform)} longform")
+
+        # Produce Shorts (only pending ones)
+        for i, short in enumerate(pending_shorts[:max_shorts]):
             try:
                 logger.info(f"\n🎬 Producing Short {i+1}: {short['title'][:50]}")
                 production_id = factory_instance.run(
@@ -546,8 +560,8 @@ Output STRICT JSON format:
                 results["errors"].append(str(e))
                 logger.error(f"Short production error: {e}")
 
-        # Produce Long-form
-        for i, lf in enumerate(plan.get("longform", [])[:max_longform]):
+        # Produce Long-form (only pending ones)
+        for i, lf in enumerate(pending_longform[:max_longform]):
             try:
                 logger.info(f"\n🎬 Producing Long-form {i+1}: {lf['title'][:50]}")
                 production_id = factory_instance.run(
@@ -566,9 +580,18 @@ Output STRICT JSON format:
                 lf["status"] = "error"
                 results["errors"].append(str(e))
 
-        # Update plan status
-        plan["status"] = "completed"
-        plan["executed_at"] = datetime.utcnow().isoformat()
+        # Check if all items are done
+        all_shorts_done = all(s.get("status", "pending") != "pending" for s in plan.get("shorts", []))
+        all_longform_done = all(l.get("status", "pending") != "pending" for l in plan.get("longform", []))
+
+        if all_shorts_done and all_longform_done:
+            plan["status"] = "completed"
+            plan["completed_at"] = datetime.utcnow().isoformat()
+            logger.info("✅ All plan items completed!")
+        else:
+            plan["status"] = "in_progress"
+
+        plan["last_executed_at"] = datetime.utcnow().isoformat()
         plan["results"] = results
 
         with open(self.plan_file, "w") as f:
