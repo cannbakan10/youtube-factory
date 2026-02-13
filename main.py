@@ -43,6 +43,8 @@ from src.agents.x_content_agent import XContentAgent
 from src.agents.youtube_content_agent import YouTubeContentAgent
 from src.agents.country_content_agent import LongFormContentAgent
 from src.agents.nature_shorts_agent import NatureShortsAgent, NATURE_SHORTS_CATEGORIES
+from src.services.tiktok_service import TikTokService
+from src.agents.tiktok_agent import TikTokAgent
 from src.services.livestream_service import LivestreamService, LIVESTREAM_PRESETS
 
 
@@ -74,6 +76,8 @@ class YoutubeFactory:
         self.youtube_agent = self._safe_init(YouTubeContentAgent, "YouTubeContentAgent", factory_instance=self)
         self.longform_agent = self._safe_init(LongFormContentAgent, "LongFormContentAgent", factory_instance=self)
         self.nature_shorts_agent = self._safe_init(NatureShortsAgent, "NatureShortsAgent", factory_instance=self)
+        self.tiktok_service = self._safe_init(TikTokService, "TikTokService")
+        self.tiktok_agent = self._safe_init(TikTokAgent, "TikTokAgent", tiktok_service=self.tiktok_service)
         self.youtube_service = None
 
 
@@ -447,6 +451,16 @@ Examples:
     parser.add_argument("--nature-shorts-auto", action="store_true",
                         help="Run daily nature shorts automation (creates multiple shorts)")
 
+    # TikTok options
+    parser.add_argument("--tiktok-auth", action="store_true",
+                        help="Start TikTok OAuth2 authentication flow")
+    parser.add_argument("--tiktok-post", type=str, metavar="VIDEO_PATH",
+                        help="Post a specific video to TikTok")
+    parser.add_argument("--tiktok-auto", action="store_true",
+                        help="Run daily TikTok automation (cross-post shorts)")
+    parser.add_argument("--tiktok-count", type=int, default=3,
+                        help="Number of TikTok posts in daily automation (default: 3)")
+
     # Livestream options
     parser.add_argument("--livestream", type=str, choices=LIVESTREAM_TYPES, help="Start a 24/7 YouTube Live Stream")
     parser.add_argument("--livestream-list", action="store_true", help="List available livestream presets")
@@ -577,6 +591,43 @@ Examples:
             logger.error("Nature shorts daily automation produced no results.")
             sys.exit(1)
         logger.info(f"✅ Created {len(results)} nature shorts!")
+        sys.exit(0)
+
+    # TikTok Authentication
+    if args.tiktok_auth:
+        if not factory.tiktok_service:
+            logger.error("TikTokService is unavailable. Check TIKTOK_CLIENT_KEY and TIKTOK_CLIENT_SECRET.")
+            sys.exit(1)
+        factory.tiktok_service.start_auth_flow()
+        sys.exit(0)
+
+    # TikTok Single Post
+    if args.tiktok_post:
+        if not factory.tiktok_agent:
+            logger.error("TikTokAgent is unavailable.")
+            sys.exit(1)
+        result = factory.tiktok_agent.post_video(
+            video_path=args.tiktok_post,
+            title="",  # Will be auto-generated
+            category="nature",
+        )
+        if result:
+            logger.info(f"✅ TikTok post successful: {result}")
+        else:
+            logger.error("❌ TikTok post failed")
+            sys.exit(1)
+        sys.exit(0)
+
+    # TikTok Daily Automation
+    if args.tiktok_auto:
+        if not factory.tiktok_agent:
+            logger.error("TikTokAgent is unavailable.")
+            sys.exit(1)
+        logger.info(f"📱 TIKTOK DAILY: Cross-posting {args.tiktok_count} shorts...")
+        posted = factory.tiktok_agent.run_daily_automation(count=args.tiktok_count)
+        if posted == 0:
+            logger.warning("No TikTok posts were made.")
+        logger.info(f"✅ TikTok: {posted}/{args.tiktok_count} posted!")
         sys.exit(0)
 
     # Ambient Mode
