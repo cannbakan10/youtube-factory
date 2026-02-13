@@ -1,0 +1,31 @@
+{
+  "timestamp": "2026-02-13T23:33:02.665731",
+  "dry_run": false,
+  "cleanup": {
+    "deleted": 0,
+    "failed": 0,
+    "kept": 0
+  },
+  "trending": {
+    "found": 0,
+    "top_5": []
+  },
+  "plan": {
+    "shorts_planned": 8,
+    "longform_planned": 2,
+    "shorts": [
+      "Mind-Blowing Historical Coincidences!",
+      "Crazy Animal Adaptations You Won't Believe!",
+      "Daily Dose of Space Facts!",
+      "Secret Menu Hacks You NEED to Know!",
+      "Insane Psychological Tricks That Actually Work!",
+      "Bizarre Laws Still on the Books!",
+      "Tech Facts That Will Blow Your Mind!",
+      "Ridiculously Expensive Things People Actually Buy!"
+    ],
+    "longform": [
+      "The Untold Story of Area 51: Beyond the Myths",
+      "The Psychology of Superstitions: Why We Believe"
+    ]
+  }
+}

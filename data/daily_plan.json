@@ -2,149 +2,171 @@
   "date": "2024-03-16",
   "shorts": [
     {
-      "title": "Craziest Historical Coincidences!",
-      "topic": "Highlight 3 mind-blowing historical coincidences with impactful visuals. Each should be under 15 seconds. Use a countdown timer for each coincidence reveal.",
-      "hook": "Wait till you hear this...",
+      "title": "Mind-Blowing Historical Coincidences!",
+      "topic": "Quickly present 3 unbelievable coincidences in history that will make viewers question reality. Use visuals, sound effects, and fast-paced editing.",
+      "hook": "Did this REALLY happen?",
       "tags": [
         "history",
         "coincidence",
         "facts",
-        "weird history",
-        "mindblowing"
+        "amazing",
+        "unbelievable",
+        "shortsvideo",
+        "historyfacts"
       ],
-      "inspired_by": "General trend of history-related content",
+      "inspired_by": "General trending history fact videos",
       "estimated_views": "high"
     },
     {
-      "title": "Insane Animal Survival Tactics!",
-      "topic": "Showcase three unique and bizarre animal survival tactics. Include footage of the animals in action. Overlay text explaining the tactic.",
-      "hook": "You won't believe how this animal survives...",
+      "title": "Crazy Animal Adaptations You Won't Believe!",
+      "topic": "Highlight 3 unusual animal adaptations that help them survive in extreme environments. Focus on bizarre and visually interesting examples.",
+      "hook": "Nature is WILD!",
       "tags": [
         "animals",
-        "survival",
+        "adaptation",
         "nature",
         "wildlife",
-        "amazing animals"
+        "science",
+        "biology",
+        "animalfacts"
       ],
-      "inspired_by": "Trending nature documentaries",
+      "inspired_by": "Trending animal fact videos",
       "estimated_views": "medium"
     },
     {
-      "title": "Mind-Bending Optical Illusions!",
-      "topic": "Present a series of optical illusions (3-4) that mess with viewers' minds. Ask a question that prompts a response in the comments.",
-      "hook": "Is your brain working correctly?",
-      "tags": [
-        "optical illusion",
-        "illusion",
-        "brain teaser",
-        "mind trick",
-        "visual trick"
-      ],
-      "inspired_by": "Popularity of visual challenges",
-      "estimated_views": "medium"
-    },
-    {
-      "title": "Strangest Laws Around the World!",
-      "topic": "Present 3 unusual laws still in effect in different countries. Use visuals related to the countries/laws.",
-      "hook": "Did you know it's illegal to...?",
-      "tags": [
-        "laws",
-        "weird laws",
-        "strange laws",
-        "countries",
-        "travel"
-      ],
-      "inspired_by": "General interest in global oddities",
-      "estimated_views": "high"
-    },
-    {
-      "title": "Foods You're Eating WRONG!",
-      "topic": "Demonstrate the 'correct' way to eat common foods that most people eat inefficiently (e.g., cupcakes, oranges, etc.).",
-      "hook": "You've been eating this wrong your whole life!",
-      "tags": [
-        "food",
-        "life hacks",
-        "eating",
-        "etiquette",
-        "food hacks"
-      ],
-      "inspired_by": "Food-related viral content",
-      "estimated_views": "medium"
-    },
-    {
-      "title": "Little-Known Space Facts!",
-      "topic": "Share 3 surprising facts about space and astronomy. Use visuals and animations to enhance the facts.",
-      "hook": "Space is even weirder than you think...",
+      "title": "Daily Dose of Space Facts!",
+      "topic": "Share a single, fascinating fact about space. Focus on visuals to illustrate the vastness and mystery of the universe. Example: Neutron star spin",
+      "hook": "Space is weirder than you think!",
       "tags": [
         "space",
         "astronomy",
         "science",
         "facts",
-        "universe"
+        "universe",
+        "galaxy",
+        "astrophysics"
       ],
-      "inspired_by": "Renewed interest in space exploration",
+      "inspired_by": "General space fact videos",
       "estimated_views": "medium"
     },
     {
-      "title": "Random Facts That Will Blow Your Mind!",
-      "topic": "Present three completely random, surprising facts from various topics. Use visuals to illustrate each fact.",
-      "hook": "Prepare to have your mind blown!",
+      "title": "Secret Menu Hacks You NEED to Know!",
+      "topic": "Reveal 3 simple but effective secret menu hacks from popular fast-food chains. Focus on items that are easy to order and visually appealing. Disclaimer to check with local restaurants first.",
+      "hook": "Unlock hidden menu items!",
       "tags": [
-        "random facts",
+        "food",
+        "fastfood",
+        "secretmenu",
+        "hack",
+        "lifehack",
+        "foodie",
+        "shorts"
+      ],
+      "inspired_by": "Trending food hack videos",
+      "estimated_views": "high"
+    },
+    {
+      "title": "Insane Psychological Tricks That Actually Work!",
+      "topic": "Share 3 effective psychological tricks people can use in everyday social interactions. Keep it concise and provide clear examples.",
+      "hook": "Mind tricks that work!",
+      "tags": [
+        "psychology",
+        "lifehack",
+        "socialskills",
+        "tips",
+        "mindhack",
+        "communication",
+        "advice"
+      ],
+      "inspired_by": "Trending psychology tips videos",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "Bizarre Laws Still on the Books!",
+      "topic": "Showcase 3 ridiculous and outdated laws that are still technically in effect in different US states. Add comedic visuals and commentary.",
+      "hook": "Is this even legal?",
+      "tags": [
+        "law",
+        "weird",
+        "funny",
+        "strange",
+        "usa",
         "facts",
-        "mind blowing",
-        "interesting",
-        "did you know"
+        "legal",
+        "shorts"
       ],
-      "inspired_by": "General popularity of fact compilations",
+      "inspired_by": "Trending bizarre law videos",
+      "estimated_views": "high"
+    },
+    {
+      "title": "Tech Facts That Will Blow Your Mind!",
+      "topic": "Present 3 incredible facts about technology. Can use historic and current trends to explain, but keep it fast-paced.",
+      "hook": "Tech is changing EVERYTHING!",
+      "tags": [
+        "technology",
+        "tech",
+        "facts",
+        "future",
+        "innovation",
+        "science",
+        "gadgets"
+      ],
+      "inspired_by": "Trending Tech videos",
       "estimated_views": "medium"
     },
     {
-      "title": "Crazy Sports Records!",
-      "topic": "Showcase three unusual or little-known sports records. Focus on sports that are less mainstream, or obscure records from major sports.",
-      "hook": "This sports record is absolutely ridiculous...",
+      "title": "Ridiculously Expensive Things People Actually Buy!",
+      "topic": "Showcase 3 outrageously expensive items that wealthy people purchase (e.g., diamond dog collars, gold-plated phones). Add humorous commentary.",
+      "hook": "Who buys this stuff?!",
       "tags": [
-        "sports",
-        "records",
-        "weird sports",
-        "sports facts",
-        "unusual"
+        "expensive",
+        "luxury",
+        "wealth",
+        "money",
+        "rich",
+        "lifestyle",
+        "bizarre"
       ],
-      "inspired_by": "Trending sports highlights and records",
-      "estimated_views": "low"
+      "inspired_by": "Trending expensive item videos",
+      "estimated_views": "medium"
     }
   ],
   "longform": [
     {
-      "title": "The Untold Story of Area 51",
-      "topic": "A documentary-style exploration of the history, myths, and recent developments surrounding Area 51. Focus on declassified documents and expert interviews.",
-      "outline": "1. Brief History & Location; 2. Conspiracy Theories & Alien Myths; 3. Declassified Documents Analysis; 4. Expert Interviews (historians, former employees if possible); 5. Current Status and Future Speculation",
+      "title": "The Untold Story of Area 51: Beyond the Myths",
+      "topic": "A documentary exploring the real history of Area 51, separating fact from fiction and covering the government's involvement, technological advancements, and the impact on pop culture.",
+      "outline": "-Introduction to Area 51 and its location\n-Historical context: Cold War and U-2 spy plane program\n-The government's official and unofficial activities\n-Technological advancements and experimental aircraft\n-Impact on popular culture and conspiracy theories\n-Interviews with historians and experts\n-Conclusion: The ongoing legacy of Area 51",
       "tags": [
-        "area 51",
-        "aliens",
-        "conspiracy",
+        "area51",
         "ufo",
-        "government secrets"
+        "conspiracy",
+        "history",
+        "government",
+        "secret",
+        "military",
+        "nevada"
       ],
-      "inspired_by": "Persistent public interest in Area 51 and UFOs",
+      "inspired_by": "Trending conspiracy videos and documentaries",
       "estimated_views": "high"
     },
     {
-      "title": "The Science Behind Deja Vu",
-      "topic": "A scientific exploration of the phenomenon of déjà vu. Covering various theories, neurological research, and potential causes.",
-      "outline": "1. Introduction to Déjà Vu and its prevalence; 2. Psychological Theories (memory, perception); 3. Neurological Explanations (brain function, seizures); 4. Research Studies and Findings; 5. Personal Experiences and Anecdotes; 6. Conclusion: What we know and don't know.",
+      "title": "The Psychology of Superstitions: Why We Believe",
+      "topic": "An exploration into the psychological reasons behind superstitions, examining their origins, cultural significance, and how they affect our behavior and decision-making.",
+      "outline": "-Introduction to superstitions and their prevalence\n-Historical origins and cultural context\n-Psychological factors: fear of the unknown, cognitive biases\n-Impact on decision-making and risk assessment\n-The placebo effect and the power of belief\n-Interviews with psychologists and cultural anthropologists\n-Conclusion: The role of superstitions in modern society",
       "tags": [
-        "deja vu",
-        "science",
         "psychology",
-        "brain",
-        "memory"
+        "superstition",
+        "belief",
+        "culture",
+        "cognitivebias",
+        "behavior",
+        "anthropology"
       ],
-      "inspired_by": "General interest in unexplained phenomena",
+      "inspired_by": "Trending psychology videos",
       "estimated_views": "medium"
     }
   ],
-  "generated_at": "2026-02-13T21:52:01.522707",
+  "generated_at": "2026-02-13T23:33:12.096831",
   "trending_count": 0,
   "status": "pending"
 }
