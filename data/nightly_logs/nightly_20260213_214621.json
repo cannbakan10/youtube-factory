@@ -1,0 +1,31 @@
+{
+  "timestamp": "2026-02-13T21:46:14.084510",
+  "dry_run": false,
+  "cleanup": {
+    "deleted": 0,
+    "failed": 0,
+    "kept": 0
+  },
+  "trending": {
+    "found": 0,
+    "top_5": []
+  },
+  "plan": {
+    "shorts_planned": 8,
+    "longform_planned": 2,
+    "shorts": [
+      "Mind-Blowing Coincidence in History!",
+      "Secret Language of Animals EXPLAINED!",
+      "Insane Geography Facts That'll Shock You!",
+      "Craziest Invention Fails Ever!",
+      "The REAL Reason Rome Fell!",
+      "Space Fact That Will Keep You Up At Night",
+      "Hidden Secrets of the Amazon Rainforest",
+      "This Country Vanished Overnight!"
+    ],
+    "longform": [
+      "The Untold Story of Area 51: Declassified Files",
+      "The Psychology of Conspiracy Theories: Why We Beli"
+    ]
+  }
+}
