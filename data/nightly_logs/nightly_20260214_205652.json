@@ -1,0 +1,57 @@
+{
+  "timestamp": "2026-02-14T20:54:55.259526",
+  "dry_run": false,
+  "cleanup": {
+    "deleted": 74,
+    "failed": 4,
+    "kept": 169
+  },
+  "trending": {
+    "found": 84,
+    "top_5": [
+      {
+        "title": "Guess What Age Punched You",
+        "views": 61262681,
+        "category": "Entertainment"
+      },
+      {
+        "title": "Hero Woman Saves Officer Mid-Fight",
+        "views": 23758361,
+        "category": "Entertainment"
+      },
+      {
+        "title": "pride comes before flop",
+        "views": 16011808,
+        "category": "Sports"
+      },
+      {
+        "title": "LOAD IT UP LIKE THIS 🤣 #viral #explore #fyp #xaelameme",
+        "views": 15015889,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Biker has the most WHOLESOME crash ever‼️🤯",
+        "views": 14336156,
+        "category": "Howto & Style"
+      }
+    ]
+  },
+  "plan": {
+    "shorts_planned": 8,
+    "longform_planned": 2,
+    "shorts": [
+      "Undercover Cop Secrets: 3 Signs You're Being Watch",
+      "Magnus Carlsen SHOCK! He Fell For This Chess TRAP?",
+      "Before Freezers: How Ice Cream Was REALLY Made!",
+      "Schindler's List: The Most DANGEROUS Moment (Almos",
+      "Infinite Ice PC: Does It Actually WORK?!",
+      "Bumpy Johnson's Secret to RESPECT! (Power Moves)",
+      "Father-in-Law Test: The ULTIMATE Red Flags!",
+      "He Got His Revenge 🔥🥶 | The ULTIMATE Comeback! #Sh"
+    ],
+    "longform": [
+      "Weaponized Incompetence: The Psychology of Avoidin",
+      "The Untold Story of Joe Rogan's Rise to Podcast Ki"
+    ]
+  }
+}
