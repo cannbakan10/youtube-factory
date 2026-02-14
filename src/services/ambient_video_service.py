@@ -8,6 +8,7 @@ from typing import Dict, Optional, Tuple, List
 import numpy as np
 from PIL import Image
 
+from src.services.freepik_service import FreepikService
 from src.services.pexels_service import PexelsService
 from src.services.pixabay_service import PixabayService
 from src.utils.logger import get_logger
@@ -343,6 +344,7 @@ class AmbientVideoService:
         os.makedirs(self.cache_dir, exist_ok=True)
         os.makedirs(self.productions_dir, exist_ok=True)
 
+        self.freepik = FreepikService(output_dir=os.path.join(self.cache_dir, "freepik"))
         self.pexels = PexelsService(output_dir=self.cache_dir)
         self.pixabay = PixabayService(output_dir=self.cache_dir)
 
@@ -473,8 +475,17 @@ class AmbientVideoService:
             logger.info("AMBIENT_OFFLINE=1, skipping remote video lookup.")
         else:
             if keywords:
+                # Priority 1: Freepik Premium (4K quality)
                 try:
-                    # Try Pexels multi
+                    sources = self.freepik.get_multiple_videos(keywords, count=count, orientation=orientation)
+                    if sources:
+                        logger.info(f"🎨 Found {len(sources)} premium clips from Freepik for {ambient_type}")
+                        return sources
+                except Exception as e:
+                    logger.warning(f"Freepik multi-fetch failed: {e}")
+
+                # Priority 2: Pexels (free, good quality)
+                try:
                     sources = self.pexels.get_multiple_videos(keywords, count=count, orientation=orientation)
                     if sources:
                         logger.info(f"Found {len(sources)} unique clips from Pexels for {ambient_type}")
@@ -482,8 +493,8 @@ class AmbientVideoService:
                 except Exception as e:
                     logger.warning(f"Pexels multi-fetch failed: {e}")
 
+                # Priority 3: Pixabay (free fallback)
                 try:
-                    # Try Pixabay multi
                     sources = self.pixabay.get_multiple_videos(keywords, count=count, orientation=orientation)
                     if sources:
                         logger.info(f"Found {len(sources)} unique clips from Pixabay for {ambient_type}")
