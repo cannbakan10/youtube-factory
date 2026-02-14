@@ -22,7 +22,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from src.services.freepik_service import FreepikService
 from src.services.pixabay_service import PixabayService
 from src.services.youtube_service import YouTubeService
 from src.utils.logger import get_logger
@@ -258,167 +257,6 @@ NATURE_SHORTS_CATEGORIES: Dict[str, Dict] = {
             "underwater relaxation", "ocean meditation",
         ],
     },
-    # ── Satisfying ASMR (Freepik Premium) ─────────────────
-    "soap_carving": {
-        "search_queries": [
-            "soap carving", "soap cutting", "soap bar cutting",
-            "handmade soap", "soap shaving",
-        ],
-        "audio_queries": ["soap cutting asmr", "cutting sounds"],
-        "source": "freepik",
-        "title_templates": [
-            "Satisfying Soap Carving 🧼✨ #ASMR #Shorts",
-            "Soap Cutting ASMR — So Satisfying! 🧼🔪",
-            "This Soap Carving is PURE Satisfaction 🧼😌",
-            "Oddly Satisfying Soap Cutting 🧼✂️ #Shorts",
-            "Watch This Soap Get Carved to Perfection 🧼🎯",
-        ],
-        "tags": [
-            "soap cutting", "soap carving", "satisfying", "asmr",
-            "oddly satisfying", "soap asmr", "relaxing", "soap shaving",
-            "satisfying videos", "asmr cutting", "soap bar",
-        ],
-    },
-    "kinetic_sand": {
-        "search_queries": [
-            "kinetic sand cutting", "kinetic sand", "sand cutting asmr",
-            "kinetic sand satisfying", "sand molding",
-        ],
-        "audio_queries": ["sand cutting", "kinetic sand asmr"],
-        "source": "freepik",
-        "title_templates": [
-            "Kinetic Sand Cutting ASMR 🏖️✨ So Satisfying!",
-            "Satisfying Kinetic Sand Shapes 🏖️ #ASMR",
-            "This Sand Cutting is INSANELY Satisfying 🏖️🔪",
-            "Kinetic Sand ASMR — Watch Till the End! 🏖️😌",
-            "Crunchy Kinetic Sand Cutting 🏖️✂️ #Shorts",
-        ],
-        "tags": [
-            "kinetic sand", "kinetic sand asmr", "sand cutting", "satisfying",
-            "oddly satisfying", "asmr", "sand asmr", "crunchy sand",
-            "satisfying sand", "sand shapes", "kinetic sand cutting",
-        ],
-    },
-    "slime_asmr": {
-        "search_queries": [
-            "slime asmr", "slime stretching", "slime squeezing",
-            "fluffy slime", "crunchy slime", "floam slime",
-        ],
-        "audio_queries": ["slime sounds", "slime asmr"],
-        "source": "freepik",
-        "title_templates": [
-            "Satisfying Slime ASMR 🫧✨ So Relaxing!",
-            "Slime Stretching ASMR — Pure Satisfaction 🫧",
-            "This Slime is SO Satisfying 🫧😌 #ASMR",
-            "Crunchy Slime ASMR — Watch \u0026 Relax 🫧 #Shorts",
-            "Fluffy Slime Squish 🫧✨ Oddly Satisfying!",
-        ],
-        "tags": [
-            "slime asmr", "slime", "satisfying slime", "fluffy slime",
-            "crunchy slime", "slime stretching", "oddly satisfying",
-            "asmr", "relaxing", "slime sounds", "satisfying videos",
-        ],
-    },
-    "chocolate_breaking": {
-        "search_queries": [
-            "chocolate breaking satisfying", "chocolate bar break",
-            "chocolate melting", "chocolate tempering",
-        ],
-        "audio_queries": ["chocolate cracking", "chocolate asmr"],
-        "source": "freepik",
-        "title_templates": [
-            "Chocolate Breaking ASMR 🍫✨ So Satisfying!",
-            "The Perfect Chocolate Snap 🍫🔥 #ASMR",
-            "Satisfying Chocolate Tempering 🍫😌 #Shorts",
-            "This Chocolate Break is PURE Perfection 🍫✨",
-            "Oddly Satisfying Chocolate ASMR 🍫 #Shorts",
-        ],
-        "tags": [
-            "chocolate asmr", "chocolate breaking", "satisfying",
-            "chocolate", "food asmr", "oddly satisfying",
-            "chocolate snap", "asmr food", "satisfying videos",
-        ],
-    },
-    "paint_mixing": {
-        "search_queries": [
-            "paint mixing satisfying", "color mixing", "ink swirling",
-            "paint pouring art", "acrylic pouring",
-        ],
-        "audio_queries": ["paint mixing sounds", "liquid sounds"],
-        "source": "freepik",
-        "title_templates": [
-            "Satisfying Paint Mixing 🎨✨ Watch the Colors!",
-            "Mesmerizing Color Mixing 🎨 #ASMR #Shorts",
-            "Paint Swirl ASMR — So Relaxing! 🎨😌",
-            "Oddly Satisfying Ink Art 🎨✨ #Shorts",
-            "This Color Mix is HYPNOTIC 🎨🌀 #Shorts",
-        ],
-        "tags": [
-            "paint mixing", "color mixing", "satisfying", "asmr",
-            "acrylic pouring", "art", "oddly satisfying",
-            "paint swirl", "ink art", "mesmerizing", "satisfying videos",
-        ],
-    },
-    "wax_seal": {
-        "search_queries": [
-            "wax seal stamp", "wax seal satisfying", "sealing wax",
-            "wax melting stamp", "letter wax seal",
-        ],
-        "audio_queries": ["wax seal sounds", "melting wax"],
-        "source": "freepik",
-        "title_templates": [
-            "Satisfying Wax Seal 🫠✨ #ASMR #Shorts",
-            "Perfect Wax Seal Stamp 🫠🔥 So Satisfying!",
-            "This Wax Seal is PERFECTION 🫠✨ #Shorts",
-            "Wax Seal ASMR — Watch It Melt 🫠😌",
-            "Oddly Satisfying Wax Stamp 🫠 #Shorts",
-        ],
-        "tags": [
-            "wax seal", "wax stamp", "satisfying", "asmr",
-            "oddly satisfying", "sealing wax", "wax seal stamp",
-            "satisfying videos", "calligraphy", "wax art",
-        ],
-    },
-    "fruit_cutting": {
-        "search_queries": [
-            "fruit cutting satisfying", "fruit slicing", "cutting fruit",
-            "knife skills fruit", "food cutting asmr",
-        ],
-        "audio_queries": ["fruit cutting sounds", "food asmr"],
-        "source": "freepik",
-        "title_templates": [
-            "Satisfying Fruit Cutting 🍉✨ #ASMR #Shorts",
-            "Perfect Knife Skills — Fruit ASMR 🔪🍓",
-            "This Fruit Slicing is SO Satisfying 🍊😌",
-            "Oddly Satisfying Fruit Cutting 🍉✂️ #Shorts",
-            "ASMR Fruit Chopping — Pure Perfection 🍋✨",
-        ],
-        "tags": [
-            "fruit cutting", "satisfying", "asmr", "food asmr",
-            "knife skills", "oddly satisfying", "fruit asmr",
-            "cutting asmr", "satisfying videos", "food cutting",
-        ],
-    },
-    "ink_water": {
-        "search_queries": [
-            "ink in water", "ink drop water", "ink diffusion",
-            "color ink water", "food coloring water",
-        ],
-        "audio_queries": ["underwater ambience", "water sounds"],
-        "source": "freepik",
-        "title_templates": [
-            "Mesmerizing Ink in Water 🫧🎨 #Shorts",
-            "Ink Drop ASMR — So Hypnotic! 🫧✨ #Shorts",
-            "Watch This Ink Dance in Water 🫧🌀 #Shorts",
-            "Oddly Satisfying Ink Diffusion 🫧🎨",
-            "This Ink Swirl is PURE Art 🫧✨ #Shorts",
-        ],
-        "tags": [
-            "ink in water", "ink drop", "satisfying", "mesmerizing",
-            "oddly satisfying", "ink art", "water art", "asmr",
-            "color mixing", "ink diffusion", "satisfying videos",
-        ],
-    },
 }
 
 # Target duration for Shorts (YouTube allows up to 3 min, we target 60s)
@@ -444,7 +282,6 @@ class NatureShortsAgent:
         os.makedirs(self.productions_dir, exist_ok=True)
 
         self.pixabay = PixabayService(output_dir=self.cache_dir)
-        self.freepik = FreepikService(output_dir=os.path.join(self.cache_dir, "freepik"))
         self.youtube_service = None
         self.factory = factory_instance
 
@@ -598,27 +435,12 @@ class NatureShortsAgent:
     # ──────────────────────────────────────────────────────
 
     def _fetch_video(self, category: str, preset: Dict) -> Optional[str]:
-        """Fetch a suitable video — Freepik for ASMR, Pixabay for nature."""
+        """Fetch a suitable video from Pixabay."""
         queries = list(preset["search_queries"])
         random.shuffle(queries)
 
         # Track what we've already used
         used_ids = set(self.history.get("used_video_ids", []))
-
-        # Use Freepik for ASMR/satisfying categories
-        preferred_source = preset.get("source", "pixabay")
-
-        if preferred_source == "freepik":
-            for query in queries:
-                logger.info(f"  🔍 Searching Freepik: '{query}'")
-                try:
-                    video_path = self._search_freepik_video(query, used_ids)
-                    if video_path:
-                        return video_path
-                except Exception as e:
-                    logger.warning(f"  Freepik search failed for '{query}': {e}")
-            # Fallback to Pixabay
-            logger.info("  ↩️ Freepik failed, falling back to Pixabay...")
 
         for query in queries:
             logger.info(f"  🔍 Searching Pixabay: '{query}'")
@@ -628,44 +450,6 @@ class NatureShortsAgent:
                     return video_path
             except Exception as e:
                 logger.warning(f"  Search failed for '{query}': {e}")
-
-        return None
-
-    def _search_freepik_video(self, query: str, used_ids: set) -> Optional[str]:
-        """Search Freepik for a suitable video and download it."""
-        if not self.freepik.api_key:
-            logger.warning("Freepik API key not configured")
-            return None
-
-        videos = self.freepik.search_videos(query, limit=10, aspect_ratio=None)
-        if not videos:
-            return None
-
-        random.shuffle(videos)
-        for video in videos:
-            video_id = str(video["id"])
-            duration = video["duration_seconds"]
-
-            # Skip already used
-            if video_id in used_ids:
-                continue
-
-            # Duration filter: 5-120 seconds
-            if duration < 5 or duration > 120:
-                continue
-
-            logger.info(
-                f"  ✅ Found: freepik_id={video_id}, {video['quality']}, "
-                f"{duration}s, '{video['name'][:50]}'"
-            )
-
-            # Download full quality
-            path = self.freepik.download_video(video["id"])
-            if path:
-                used_ids.add(video_id)
-                self.history.setdefault("used_video_ids", []).append(video_id)
-                self._save_history()
-                return path
 
         return None
 
