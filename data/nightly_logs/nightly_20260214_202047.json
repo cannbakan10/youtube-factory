@@ -1,0 +1,31 @@
+{
+  "timestamp": "2026-02-14T20:20:37.586054",
+  "dry_run": false,
+  "cleanup": {
+    "deleted": 0,
+    "failed": 0,
+    "kept": 0
+  },
+  "trending": {
+    "found": 0,
+    "top_5": []
+  },
+  "plan": {
+    "shorts_planned": 8,
+    "longform_planned": 2,
+    "shorts": [
+      "Ancient Roman Fast Food?!",
+      "The Physics of a Perfect Paper Airplane",
+      "Why Cats Purr: It's Not Always Happiness!",
+      "The Secret Language of Body Language",
+      "The Truth About Sleepwalking",
+      "World's Smallest Country: A Fun Look!",
+      "Why Do We Say 'Bless You' After a Sneeze?",
+      "Crazy Animal Camouflage!"
+    ],
+    "longform": [
+      "The Untold Story of Area 51",
+      "The Science of Lucid Dreaming: Control Your Dreams"
+    ]
+  }
+}

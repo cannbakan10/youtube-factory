@@ -1,221 +1,174 @@
 {
-  "date": "2024-03-16",
+  "date": "2024-07-04",
   "shorts": [
     {
-      "title": "The REAL Reason Diamonds Are Expensive!",
-      "topic": "Explain the history of diamond marketing and how De Beers created artificial scarcity. Discuss ethical concerns around diamond mining.",
-      "hook": "Are diamonds *really* rare?",
+      "title": "Ancient Roman Fast Food?!",
+      "topic": "Explore the surprising world of ancient Roman fast food joints (thermopolia). What dishes did they serve? How popular were they? Compare to modern fast food.",
+      "hook": "Did Romans have takeout?",
       "tags": [
-        "diamonds",
-        "scarcity",
-        "debeers",
-        "marketing",
-        "history",
-        "luxury",
-        "expensive",
-        "#diamonds",
-        "#history",
-        "#money"
+        "Rome",
+        "Ancient History",
+        "Fast Food",
+        "Archaeology",
+        "Food History",
+        "#historyfacts",
+        "#ancientrome",
+        "#fastfoodhistory"
       ],
-      "inspired_by": "General trend of financial literacy content",
-      "estimated_views": "high",
-      "status": "produced",
-      "production_id": "Explain_the_history_of_diamond_1771057375"
+      "inspired_by": "General interest in historical facts and food trends",
+      "estimated_views": "medium"
     },
     {
-      "title": "The Dark Truth About Honey",
-      "topic": "Discuss the environmental impact of large-scale honey production, the ethical concerns around bee exploitation, and potential alternatives.",
-      "hook": "Is your honey hurting bees?",
+      "title": "The Physics of a Perfect Paper Airplane",
+      "topic": "Explain the science behind why certain paper airplane designs fly better than others. Focus on lift, drag, and thrust in a simple, visual way.",
+      "hook": "Fold THIS for ultimate flight!",
       "tags": [
-        "honey",
-        "bees",
-        "environment",
-        "ethics",
-        "farming",
-        "food",
-        "alternatives",
-        "#honey",
-        "#bees",
-        "#environment"
+        "Paper Airplane",
+        "Science",
+        "Physics",
+        "DIY",
+        "Aerodynamics",
+        "#sciencefacts",
+        "#paperairplane",
+        "#physicsfun"
       ],
-      "inspired_by": "Trend of exposing harmful food production methods",
-      "estimated_views": "medium",
-      "status": "produced",
-      "production_id": "Discuss_the_environmental_impa_1771057595"
+      "inspired_by": "General interest in DIY and science explanations",
+      "estimated_views": "medium"
     },
     {
-      "title": "Mind-Blowing Underwater Discovery!",
-      "topic": "Show footage of a newly discovered deep-sea creature or geological formation. Keep it visually stunning and mysterious. Focus on the unknown depths.",
-      "hook": "What's *really* at the bottom of the ocean?",
+      "title": "Why Cats Purr: It's Not Always Happiness!",
+      "topic": "Discuss the different reasons why cats purr. Explain that it's not always a sign of contentment but can also indicate pain or anxiety.",
+      "hook": "Your cat is LYING to you!",
       "tags": [
-        "ocean",
-        "deep sea",
-        "discovery",
-        "creature",
-        "science",
-        "underwater",
-        "exploration",
-        "#ocean",
-        "#science",
-        "#deepsea"
+        "Cats",
+        "Animal Behavior",
+        "Pets",
+        "Purring",
+        "Cat Facts",
+        "#catfacts",
+        "#catbehavior",
+        "#pets"
       ],
-      "inspired_by": "Trend of underwater exploration and weird sea creatures",
-      "estimated_views": "high",
-      "status": "produced",
-      "production_id": "Show_footage_of_a_newly_discov_1771064569"
+      "inspired_by": "Popularity of cat videos and pet-related content",
+      "estimated_views": "high"
     },
     {
-      "title": "Ancient Roman Concrete SECRETS!",
-      "topic": "Explain what made Roman concrete so durable, and why we still don't fully understand its secrets. Show visual examples of Roman structures.",
-      "hook": "Roman concrete is *still* standing. Here's why...",
+      "title": "The Secret Language of Body Language",
+      "topic": "Quick tips for reading body language. Focus on 3-4 key signals (e.g., crossed arms, eye contact, mirroring) and their potential meanings.",
+      "hook": "Read minds with THIS trick!",
       "tags": [
-        "roman empire",
-        "concrete",
-        "engineering",
-        "history",
-        "science",
-        "ancient rome",
-        "architecture",
-        "#rome",
-        "#history",
-        "#science"
+        "Body Language",
+        "Psychology",
+        "Communication",
+        "Nonverbal",
+        "Social Skills",
+        "#bodylanguage",
+        "#psychologyfacts",
+        "#communicationskills"
       ],
-      "inspired_by": "Interest in ancient civilizations and lost technologies",
-      "estimated_views": "medium",
-      "status": "produced",
-      "production_id": "Explain_what_made_Roman_concre_1771064836"
+      "inspired_by": "Interest in self-improvement and psychology",
+      "estimated_views": "medium"
     },
     {
-      "title": "Why Rain Smells SO Good",
-      "topic": "Explain the science behind petrichor, the smell of rain. Cover the plants and bacteria involved.",
-      "hook": "Why does rain smell so good? (It's science!)",
+      "title": "The Truth About Sleepwalking",
+      "topic": "Debunk common myths about sleepwalking. Explain the science behind it, why it happens, and what you should (and shouldn't) do if you encounter someone sleepwalking.",
+      "hook": "Sleepwalking: Fact vs. Fiction!",
       "tags": [
-        "rain",
-        "petrichor",
-        "smell",
-        "science",
-        "weather",
-        "nature",
-        "atmosphere",
-        "#rain",
-        "#science",
-        "#weather"
+        "Sleep",
+        "Sleepwalking",
+        "Dreams",
+        "Science",
+        "Health",
+        "#sleepfacts",
+        "#sleepwalking",
+        "#dreaming"
       ],
-      "inspired_by": "Popular 'explained' videos on common phenomena",
-      "estimated_views": "medium",
-      "status": "produced",
-      "production_id": "Explain_the_science_behind_pet_1771078597"
+      "inspired_by": "Interest in health, science and unexplained phenomena.",
+      "estimated_views": "medium"
     },
     {
-      "title": "Crazy Things You Didn't Know About Space",
-      "topic": "Share a bizarre or mind-blowing fact about the universe. Make sure it's visually engaging with space imagery.",
-      "hook": "Space is WAY weirder than you think...",
+      "title": "World's Smallest Country: A Fun Look!",
+      "topic": "Fun facts about Vatican City, the world's smallest country. Include info about its population, economy, and unique features.",
+      "hook": "The TINIEST country EVER!",
       "tags": [
-        "space",
-        "universe",
-        "astronomy",
-        "science",
-        "facts",
-        "galaxy",
-        "stars",
-        "#space",
-        "#science",
-        "#astronomy"
+        "Vatican City",
+        "Geography",
+        "Countries",
+        "Facts",
+        "Travel",
+        "#geographyfacts",
+        "#vaticancity",
+        "#traveltips"
       ],
-      "inspired_by": "General popularity of space-related content",
-      "estimated_views": "high",
-      "status": "produced",
-      "production_id": "Share_a_bizarre_or_mindblowing_1771078819"
+      "inspired_by": "General curiosity and travel content",
+      "estimated_views": "medium"
     },
     {
-      "title": "The Deadliest Plant on Earth",
-      "topic": "Discuss the properties and effects of a particularly dangerous plant (e.g., castor bean, hemlock). Include visuals and warnings.",
-      "hook": "This plant can KILL you...",
+      "title": "Why Do We Say 'Bless You' After a Sneeze?",
+      "topic": "Explore the historical origins of the tradition of saying 'bless you' after someone sneezes. Discuss potential theories, including the bubonic plague connection.",
+      "hook": "The WEIRD reason we say 'Bless You'!",
       "tags": [
-        "plants",
-        "poison",
-        "deadly",
-        "nature",
-        "toxins",
-        "science",
-        "danger",
-        "#plants",
-        "#danger",
-        "#science"
+        "Sneezing",
+        "Etiquette",
+        "History",
+        "Traditions",
+        "Bless You",
+        "#etiquettefacts",
+        "#sneezing",
+        "#historyfacts"
       ],
-      "inspired_by": "Morbid curiosity and interest in dangerous things",
-      "estimated_views": "medium",
-      "status": "produced",
-      "production_id": "Discuss_the_properties_and_eff_1771093255"
+      "inspired_by": "Popularity of explaining everyday phenomena",
+      "estimated_views": "medium"
     },
     {
-      "title": "The Truth About Blue Laws",
-      "topic": "Explain what blue laws are, their history, and where they still exist today. Examples of the weird restrictions they create.",
-      "hook": "You CAN'T buy alcohol on Sunday here...?",
+      "title": "Crazy Animal Camouflage!",
+      "topic": "Showcase examples of incredible animal camouflage from around the world. Name the animal and its camouflage and explain the evolutionary advantage.",
+      "hook": "Can you SEE this animal?",
       "tags": [
-        "blue laws",
-        "history",
-        "laws",
-        "religion",
-        "usa",
-        "politics",
-        "weird laws",
-        "#laws",
-        "#history",
-        "#politics"
+        "Animals",
+        "Camouflage",
+        "Nature",
+        "Wildlife",
+        "Evolution",
+        "#animalfacts",
+        "#camouflage",
+        "#wildlife"
       ],
-      "inspired_by": "Interest in quirky and unusual laws",
-      "estimated_views": "low",
-      "status": "produced",
-      "production_id": "Explain_what_blue_laws_are_the_1771093480"
+      "inspired_by": "Trending nature and animal content",
+      "estimated_views": "high"
     }
   ],
   "longform": [
     {
-      "title": "The Untold Story of Forgotten Inventions That Changed the World",
-      "topic": "Documentary highlighting inventions that were groundbreaking in their time but are now largely forgotten.  Focus on the inventors' stories, the impact these inventions had, and why they faded into obscurity. Explore a few specific examples with detailed historical context.",
-      "outline": "1. Intro: The concept of forgotten inventions. 2. The Telegraphone (magnetic recording). 3. The Pneumatic Tube System. 4. The Phonautograph (early sound recording). 5. Analysis of why these inventions were forgotten (technological advancements, marketing failures, etc.). 6. Conclusion: The importance of remembering these innovations.",
+      "title": "The Untold Story of Area 51",
+      "topic": "A deep dive into the history, theories, and controversies surrounding Area 51. Separate facts from fiction. Explore documented cases and government statements.",
+      "outline": "- Introduction to Area 51\n- Historical Timeline\n- Declassified Documents Overview\n- Debunking Conspiracy Theories\n- The Future of Area 51",
       "tags": [
-        "inventions",
-        "history",
-        "technology",
-        "science",
-        "innovation",
-        "forgotten",
-        "#history",
-        "#inventions",
-        "#technology"
+        "Area 51",
+        "UFO",
+        "Conspiracy",
+        "Government",
+        "Secrets"
       ],
-      "inspired_by": "General interest in history and technology documentaries",
-      "estimated_views": "medium"
+      "inspired_by": "Longstanding interest in conspiracy theories and unexplained phenomena.",
+      "estimated_views": "high"
     },
     {
-      "title": "The Great American Infrastructure Crisis: Are We Failing Our Future?",
-      "topic": "Documentary examining the state of US infrastructure (roads, bridges, water systems, power grid). Highlight specific examples of crumbling infrastructure and the potential consequences. Interview experts on solutions and the political challenges involved.",
-      "outline": "1. Intro: Overview of the current state of US infrastructure. 2. Focus on failing bridges and roads. 3. Discuss the outdated water systems and lead contamination issues. 4. Examine the vulnerability of the power grid. 5. Expert interviews: Civil engineers, policy analysts. 6. Potential solutions: Infrastructure bill, new technologies, funding mechanisms. 7. Conclusion: The need for urgent action.",
+      "title": "The Science of Lucid Dreaming: Control Your Dreams!",
+      "topic": "Explain the science behind lucid dreaming. How do researchers study dreams? What are the potential benefits of lucid dreaming? How can people train themselves to lucid dream?",
+      "outline": "- Introduction to Lucid Dreaming\n- Neuroscience of Dreaming\n- Benefits and Risks of Lucid Dreaming\n- Techniques for Inducing Lucid Dreams (MILD, WILD)\n- Expert Interviews and Research Findings",
       "tags": [
-        "infrastructure",
-        "usa",
-        "politics",
-        "engineering",
-        "environment",
-        "government",
-        "economy",
-        "#infrastructure",
-        "#usa",
-        "#politics"
+        "Lucid Dreaming",
+        "Dreams",
+        "Science",
+        "Sleep",
+        "Psychology"
       ],
-      "inspired_by": "Trend of documentaries examining social and political issues",
+      "inspired_by": "Interest in self-improvement and psychology.",
       "estimated_views": "medium"
     }
   ],
-  "generated_at": "2026-02-14T07:38:48.996239",
+  "generated_at": "2026-02-14T20:20:47.092476",
   "trending_count": 0,
-  "status": "in_progress",
-  "last_executed_at": "2026-02-14T18:28:43.383560",
-  "results": {
-    "shorts_produced": 2,
-    "longform_produced": 0,
-    "errors": []
-  }
+  "status": "pending"
 }
