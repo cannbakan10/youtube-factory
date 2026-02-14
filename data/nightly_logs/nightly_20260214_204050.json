@@ -1,0 +1,57 @@
+{
+  "timestamp": "2026-02-14T20:40:31.781671",
+  "dry_run": true,
+  "cleanup": {
+    "deleted": 73,
+    "failed": 0,
+    "kept": 174
+  },
+  "trending": {
+    "found": 83,
+    "top_5": [
+      {
+        "title": "Guess What Age Punched You",
+        "views": 61217517,
+        "category": "Entertainment"
+      },
+      {
+        "title": "Hero Woman Saves Officer Mid-Fight",
+        "views": 23752232,
+        "category": "Entertainment"
+      },
+      {
+        "title": "pride comes before flop",
+        "views": 15992983,
+        "category": "Sports"
+      },
+      {
+        "title": "LOAD IT UP LIKE THIS 🤣 #viral #explore #fyp #xaelameme",
+        "views": 15007890,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Biker has the most WHOLESOME crash ever‼️🤯",
+        "views": 14296785,
+        "category": "Howto & Style"
+      }
+    ]
+  },
+  "plan": {
+    "shorts_planned": 8,
+    "longform_planned": 2,
+    "shorts": [
+      "Undercover Cop Secrets They DON'T Want You To Know",
+      "The Most WHOLESOME Biker Crash EVER! ❤️",
+      "Magnus Carlsen's WORST Nightmare Just Happened!",
+      "Infinite Ice PC Build - Is It Possible?!",
+      "Ice Cream History: You Won't Believe How It Was Ma",
+      "This Bathroom Design Is Next Level!",
+      "Brawl Stars: Mr. P Strategy Guide!",
+      "Bridgerton Season 4: Fan Theories Explored!"
+    ],
+    "longform": [
+      "The Untold Stories of Schindler's List: Beyond the",
+      "Weaponized Incompetence: The Subtle Art of Avoidin"
+    ]
+  }
+}
