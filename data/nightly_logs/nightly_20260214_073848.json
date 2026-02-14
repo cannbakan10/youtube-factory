@@ -1,0 +1,31 @@
+{
+  "timestamp": "2026-02-14T07:38:38.186516",
+  "dry_run": false,
+  "cleanup": {
+    "deleted": 0,
+    "failed": 0,
+    "kept": 0
+  },
+  "trending": {
+    "found": 0,
+    "top_5": []
+  },
+  "plan": {
+    "shorts_planned": 8,
+    "longform_planned": 2,
+    "shorts": [
+      "The REAL Reason Diamonds Are Expensive!",
+      "The Dark Truth About Honey",
+      "Mind-Blowing Underwater Discovery!",
+      "Ancient Roman Concrete SECRETS!",
+      "Why Rain Smells SO Good",
+      "Crazy Things You Didn't Know About Space",
+      "The Deadliest Plant on Earth",
+      "The Truth About Blue Laws"
+    ],
+    "longform": [
+      "The Untold Story of Forgotten Inventions That Chan",
+      "The Great American Infrastructure Crisis: Are We F"
+    ]
+  }
+}
