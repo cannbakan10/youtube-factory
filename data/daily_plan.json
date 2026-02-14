@@ -144,7 +144,9 @@
         "#science"
       ],
       "inspired_by": "Morbid curiosity and interest in dangerous things",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Discuss_the_properties_and_eff_1771093255"
     },
     {
       "title": "The Truth About Blue Laws",
@@ -163,7 +165,9 @@
         "#politics"
       ],
       "inspired_by": "Interest in quirky and unusual laws",
-      "estimated_views": "low"
+      "estimated_views": "low",
+      "status": "produced",
+      "production_id": "Explain_what_blue_laws_are_the_1771093480"
     }
   ],
   "longform": [
@@ -208,7 +212,7 @@
   "generated_at": "2026-02-14T07:38:48.996239",
   "trending_count": 0,
   "status": "in_progress",
-  "last_executed_at": "2026-02-14T14:23:34.838316",
+  "last_executed_at": "2026-02-14T18:28:43.383560",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
