@@ -55,11 +55,12 @@ TURKISH_KEYWORDS = [
     "bilgiler", "olacaksınız", "insanlık", "öldü", "oluyor",
 ]
 
-# Minimum performance thresholds
-MIN_SHORTS_VIEWS_7D = 10       # Minimum views after 7 days
-MIN_SHORTS_VIEWS_14D = 25      # Minimum views after 14 days
-MIN_SHORTS_VIEWS_30D = 50      # Minimum views after 30 days
-MIN_LONGFORM_VIEWS_14D = 15    # Minimum views for longform after 14 days
+# Minimum performance thresholds (aggressive — low performers hurt channel score)
+MIN_SHORTS_VIEWS_7D = 50        # Minimum views after 7 days
+MIN_SHORTS_VIEWS_14D = 100      # Minimum views after 14 days
+MIN_SHORTS_VIEWS_30D = 200      # Minimum views after 30 days
+MIN_LONGFORM_VIEWS_14D = 50     # Minimum views for longform after 14 days
+MIN_LONGFORM_VIEWS_30D = 100    # Minimum views for longform after 30 days
 DUPLICATE_SIMILARITY_THRESHOLD = 0.70
 
 
@@ -166,9 +167,17 @@ class NightlyBrainAgent:
             # Rule 4: Low views for longform
             if not v["is_shorts"] and v["days_since_publish"] > 14:
                 if v["views"] < MIN_LONGFORM_VIEWS_14D:
-                    delete_reasons.append(f"Longform with only {v['views']} views after 14+ days")
+                    delete_reasons.append(f"Longform with only {v['views']} views after 14+ days (min: {MIN_LONGFORM_VIEWS_14D})")
 
-            # Rule 5: Don't delete recent videos (< 3 days)
+            if not v["is_shorts"] and v["days_since_publish"] > 30:
+                if v["views"] < MIN_LONGFORM_VIEWS_30D:
+                    delete_reasons.append(f"Longform with only {v['views']} views after 30+ days (min: {MIN_LONGFORM_VIEWS_30D})")
+
+            # Rule 5: Zero engagement after many views (dead content)
+            if v["views"] > 50 and v["engagement_rate"] == 0 and v["days_since_publish"] > 14:
+                delete_reasons.append(f"{v['views']} views but zero likes/comments — dead engagement")
+
+            # Rule 6: Don't delete recent videos (< 3 days)
             if v["days_since_publish"] < 3:
                 delete_reasons = []  # Too new to judge
 
