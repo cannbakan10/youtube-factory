@@ -1,18 +1,18 @@
 name: "🧠 Nightly Brain — Analytics, Cleanup & Planning"
 
 # ╔══════════════════════════════════════════════════════════╗
-# ║  NIGHTLY BRAIN v4.0 — Shorts + Ambient Strategy         ║
+# ║  NIGHTLY BRAIN v4.1 — Shorts Only (Ambient = Manual)    ║
 # ║                                                         ║
 # ║  Scheduled: Every night 23:00 UTC (02:00 Turkey)        ║
-# ║  Manual: Plan + Produce mode (instant production)       ║
+# ║  Manual: Plan + Produce Shorts immediately              ║
 # ║                                                         ║
 # ║  0. Reviews last 48h video performance (feedback loop)  ║
 # ║  1. Deletes underperformers + mid-length videos (<1h)   ║
 # ║  2. Deep US trending scan (chart + search + competitors)║
-# ║  3. Ambient video performance analysis (which type?)    ║
+# ║  3. Ambient video performance analysis                  ║
 # ║  4. Generates Shorts plan + Ambient recommendations     ║
 # ║  5. Enriches plan with YouTube SEO keywords             ║
-# ║  6. [Manual] Produces Shorts + Ambient immediately      ║
+# ║  6. [Manual] Produces Shorts immediately                ║
 # ╚══════════════════════════════════════════════════════════╝
 
 on:
@@ -29,7 +29,7 @@ on:
           - 'false'
           - 'true'
       produce_now:
-        description: 'After planning, immediately produce videos'
+        description: 'After planning, immediately produce Shorts'
         required: false
         default: 'false'
         type: choice
@@ -40,15 +40,11 @@ on:
         description: 'How many Shorts to produce immediately'
         required: false
         default: '4'
-      ambient_type:
-        description: 'Ambient video type (auto = AI recommended)'
-        required: false
-        default: 'auto'
 
 jobs:
   nightly-brain:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 45
 
     steps:
       - name: Checkout Repository
@@ -125,36 +121,6 @@ jobs:
           echo "📹 INSTANT PRODUCTION: $SHORTS Shorts"
           python main.py --execute-plan --plan-shorts $SHORTS --plan-longform 0
 
-      - name: Produce Ambient Video Now
-        if: github.event.inputs.produce_now == 'true'
-        env:
-          FREEPIK_API_KEY: ${{ secrets.FREEPIK_API_KEY }}
-          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
-          TOKEN_PICKLE_BASE64: ${{ secrets.TOKEN_PICKLE_BASE64 }}
-          CLIENT_SECRETS_JSON: ${{ secrets.CLIENT_SECRETS_JSON }}
-          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-        run: |
-          AMBIENT_TYPE="${{ github.event.inputs.ambient_type || 'auto' }}"
-
-          if [ "$AMBIENT_TYPE" = "auto" ]; then
-            # Pick AI-recommended ambient type from plan
-            AMBIENT_TYPE=$(python3 -c "
-          import json, random
-          try:
-              plan = json.load(open('data/daily_plan.json'))
-              recs = plan.get('ambient_recommendations', [])
-              if recs:
-                  print(recs[0]['type'])
-              else:
-                  print(random.choice(['fireplace','rain','ocean','forest','thunderstorm','waterfall','campfire','snow']))
-          except:
-              print(random.choice(['fireplace','rain','ocean','forest','thunderstorm','waterfall','campfire','snow']))
-          ")
-          fi
-
-          echo "🔥 INSTANT AMBIENT: 8-hour $AMBIENT_TYPE video"
-          python produce_ambient.py --type "$AMBIENT_TYPE" --hours 8 --upload --retry
-
       - name: Commit Production Results
         if: github.event.inputs.produce_now == 'true'
         run: |
@@ -162,6 +128,6 @@ jobs:
           git config --local user.name "Nightly Brain Bot"
           git add data/daily_plan.json -f
           TIMESTAMP=$(date -u +'%Y-%m-%d_%H:%M')
-          git diff --staged --quiet || git commit -m "🎬 Instant production [$TIMESTAMP]"
+          git diff --staged --quiet || git commit -m "📹 Instant Shorts production [$TIMESTAMP]"
           git pull --rebase origin main || true
           git push origin main

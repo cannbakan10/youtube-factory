@@ -1,12 +1,11 @@
-name: "🎬 Content Engine — Shorts + Ambient Production"
+name: "🎬 Content Engine — Shorts Production"
 
 # ╔══════════════════════════════════════════════════════════╗
-# ║  CONTENT ENGINE v4.0 — Shorts + Ambient Strategy        ║
+# ║  CONTENT ENGINE v4.1 — Shorts Only (Auto)               ║
 # ║                                                         ║
 # ║  Channel Strategy:                                      ║
-# ║  • Shorts = Discovery & subscriber growth (20/day)      ║
-# ║  • Ambient = Watch time & ad revenue (2/day, 8hr each)  ║
-# ║  • NO mid-length videos (documentaries removed)         ║
+# ║  • Shorts = Auto-produced from Nightly Brain plan       ║
+# ║  • Ambient = Manual production (produce_ambient.py)     ║
 # ║                                                         ║
 # ║  ┌──────────┬──────────────────────────────────────────┐ ║
 # ║  │ Time UTC │ Action                                   │ ║
@@ -19,13 +18,9 @@ name: "🎬 Content Engine — Shorts + Ambient Production"
 # ║  │ 18:00    │ 2 Shorts (US afternoon 1-2pm ET)        │ ║
 # ║  │ 20:00    │ 2 Shorts (US prime time 3-4pm ET)       │ ║
 # ║  │ 22:00    │ 2 Shorts (US evening 5-6pm ET)          │ ║
-# ║  │ 03:00    │ 🔥 Ambient video (8hr, AI-recommended)  │ ║
-# ║  │ 15:00    │ 🔥 Ambient video (8hr, AI-recommended)  │ ║
 # ║  └──────────┴──────────────────────────────────────────┘ ║
 # ║                                                         ║
-# ║  8 Shorts batches × 2 = 16 Shorts/day                  ║
-# ║  2 Ambient batches × 1 = 2 Ambient/day (8hr each)      ║
-# ║  Total: 18 videos/day                                   ║
+# ║  8 batches × 2 Shorts = 16 Shorts/day                  ║
 # ╚══════════════════════════════════════════════════════════╝
 
 on:
@@ -40,34 +35,17 @@ on:
     - cron: '0 20 * * *'   # 20:00 UTC — US prime time (3-4pm ET)
     - cron: '0 22 * * *'   # 22:00 UTC — US evening (5-6pm ET)
 
-    # Ambient video production — 2 batches (8-hour videos)
-    - cron: '0 3 * * *'    # 03:00 UTC — Ambient batch 1
-    - cron: '0 15 * * *'   # 15:00 UTC — Ambient batch 2
-
   workflow_dispatch:
     inputs:
-      video_type:
-        description: 'What to produce'
-        required: true
-        default: 'shorts'
-        type: choice
-        options:
-          - shorts
-          - ambient
-          - both
       count:
-        description: 'Number of videos to produce'
+        description: 'Number of Shorts to produce'
         required: false
         default: '3'
-      ambient_type:
-        description: 'Ambient type (for ambient mode)'
-        required: false
-        default: 'auto'
 
 jobs:
-  produce-content:
+  produce-shorts:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 45
 
     steps:
       - name: Checkout Repository
@@ -78,37 +56,8 @@ jobs:
       - name: Pull Latest Plan
         run: git pull origin main
 
-      - name: Determine Run Type
-        id: run_type
-        run: |
-          HOUR=$(date -u +%H)
-          MANUAL_TYPE="${{ github.event.inputs.video_type }}"
-          MANUAL_COUNT="${{ github.event.inputs.count }}"
-          MANUAL_AMBIENT="${{ github.event.inputs.ambient_type }}"
-
-          if [ -n "$MANUAL_TYPE" ]; then
-            # Manual dispatch
-            echo "video_type=$MANUAL_TYPE" >> $GITHUB_OUTPUT
-            echo "count=${MANUAL_COUNT:-3}" >> $GITHUB_OUTPUT
-            echo "ambient_type=${MANUAL_AMBIENT:-auto}" >> $GITHUB_OUTPUT
-          else
-            # Scheduled run — determine by hour
-            if [ "$HOUR" = "03" ] || [ "$HOUR" = "15" ]; then
-              echo "video_type=ambient" >> $GITHUB_OUTPUT
-              echo "count=1" >> $GITHUB_OUTPUT
-              echo "ambient_type=auto" >> $GITHUB_OUTPUT
-              echo "🔥 Ambient batch ($HOUR:00 UTC)"
-            else
-              echo "video_type=shorts" >> $GITHUB_OUTPUT
-              echo "count=2" >> $GITHUB_OUTPUT
-              echo "ambient_type=none" >> $GITHUB_OUTPUT
-              echo "📹 Shorts batch ($HOUR:00 UTC)"
-            fi
-          fi
-
-      - name: Check Daily Plan (Shorts only)
+      - name: Check Daily Plan
         id: check_plan
-        if: steps.run_type.outputs.video_type == 'shorts' || steps.run_type.outputs.video_type == 'both'
         run: |
           if [ ! -f "data/daily_plan.json" ]; then
             echo "status=no_plan" >> $GITHUB_OUTPUT
@@ -122,41 +71,45 @@ jobs:
               d = json.load(open('data/daily_plan.json'))
               plan_status = d.get('status', 'unknown')
               shorts = d.get('shorts', [])
-              pending_shorts = sum(1 for s in shorts if s.get('status','pending') == 'pending')
-              print(f'plan_status={plan_status},pending_shorts={pending_shorts}')
+              pending = sum(1 for s in shorts if s.get('status','pending') == 'pending')
+              print(f'plan_status={plan_status},pending_shorts={pending}')
           except:
               print('plan_status=error,pending_shorts=0')
           ")
 
+          PENDING=$(echo $STATUS | grep -oP 'pending_shorts=\K[0-9]+')
           PLAN_STATUS=$(echo $STATUS | grep -oP 'plan_status=\K[^,]+')
-          PENDING_SHORTS=$(echo $STATUS | grep -oP 'pending_shorts=\K[0-9]+')
 
-          echo "pending_shorts=$PENDING_SHORTS" >> $GITHUB_OUTPUT
+          echo "pending_shorts=$PENDING" >> $GITHUB_OUTPUT
 
-          if [ "$PLAN_STATUS" = "completed" ] || [ "$PENDING_SHORTS" = "0" ]; then
+          if [ "$PLAN_STATUS" = "completed" ] || [ "$PENDING" = "0" ]; then
             echo "status=completed" >> $GITHUB_OUTPUT
             echo "⏭️ All Shorts completed or no pending"
           else
             echo "status=ready" >> $GITHUB_OUTPUT
-            echo "📋 Plan ready: $PENDING_SHORTS shorts pending"
+            echo "📋 Plan ready: $PENDING shorts pending"
           fi
 
       - name: Set up Python
+        if: steps.check_plan.outputs.status == 'ready'
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
       - name: Install ffmpeg
+        if: steps.check_plan.outputs.status == 'ready'
         run: |
           sudo apt-get update
           sudo apt-get install -y ffmpeg
 
       - name: Install Dependencies
+        if: steps.check_plan.outputs.status == 'ready'
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
       - name: Setup Credentials
+        if: steps.check_plan.outputs.status == 'ready'
         run: |
           echo '${{ secrets.CLIENT_SECRETS_JSON }}' > client_secrets.json
           if [ -n "${{ secrets.TOKEN_PICKLE_BASE64 }}" ]; then
@@ -164,9 +117,7 @@ jobs:
           fi
 
       - name: Produce Shorts
-        if: |
-          (steps.run_type.outputs.video_type == 'shorts' || steps.run_type.outputs.video_type == 'both') &&
-          steps.check_plan.outputs.status == 'ready'
+        if: steps.check_plan.outputs.status == 'ready'
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -179,59 +130,22 @@ jobs:
           CLIENT_SECRETS_JSON: ${{ secrets.CLIENT_SECRETS_JSON }}
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: |
-          COUNT=${{ steps.run_type.outputs.count }}
+          MANUAL_COUNT="${{ github.event.inputs.count }}"
+          COUNT=${MANUAL_COUNT:-2}
           echo "📹 Producing $COUNT Shorts"
           python main.py --execute-plan --plan-shorts $COUNT --plan-longform 0
 
-      - name: Produce Ambient Video
-        if: steps.run_type.outputs.video_type == 'ambient' || steps.run_type.outputs.video_type == 'both'
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          FREEPIK_API_KEY: ${{ secrets.FREEPIK_API_KEY }}
-          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
-          TOKEN_PICKLE_BASE64: ${{ secrets.TOKEN_PICKLE_BASE64 }}
-          CLIENT_SECRETS_JSON: ${{ secrets.CLIENT_SECRETS_JSON }}
-          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-        run: |
-          AMBIENT_TYPE="${{ steps.run_type.outputs.ambient_type }}"
-
-          if [ "$AMBIENT_TYPE" = "auto" ] || [ "$AMBIENT_TYPE" = "none" ]; then
-            # Pick recommended type from daily plan, or random
-            AMBIENT_TYPE=$(python3 -c "
-          import json, random
-          try:
-              plan = json.load(open('data/daily_plan.json'))
-              recs = plan.get('ambient_recommendations', [])
-              if recs:
-                  # Pick first unused recommendation
-                  for r in recs:
-                      if r.get('status', 'pending') == 'pending':
-                          print(r['type'])
-                          break
-                  else:
-                      print(random.choice(['fireplace','rain','ocean','forest','thunderstorm','waterfall','snow','campfire']))
-              else:
-                  print(random.choice(['fireplace','rain','ocean','forest','thunderstorm','waterfall','snow','campfire']))
-          except:
-              print(random.choice(['fireplace','rain','ocean','forest','thunderstorm','waterfall','snow','campfire']))
-          ")
-          fi
-
-          echo "🔥 Producing 8-hour $AMBIENT_TYPE ambient video"
-          python produce_ambient.py --type "$AMBIENT_TYPE" --hours 8 --upload --retry
-
       - name: Commit Progress
+        if: steps.check_plan.outputs.status == 'ready'
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "Content Engine Bot"
-          git add data/daily_plan.json -f 2>/dev/null || true
+          git add data/daily_plan.json -f
           TIMESTAMP=$(date -u +'%Y-%m-%d_%H:%M')
-          git diff --staged --quiet || git commit -m "🎬 Produced content [$TIMESTAMP]"
+          git diff --staged --quiet || git commit -m "📹 Produced Shorts [$TIMESTAMP]"
           git pull --rebase origin main || true
           git push origin main
 
       - name: Skip — No Plan
-        if: |
-          steps.run_type.outputs.video_type == 'shorts' &&
-          steps.check_plan.outputs.status != 'ready'
-        run: echo "⏭️ No pending Shorts plan. Waiting for Nightly Brain."
+        if: steps.check_plan.outputs.status != 'ready'
+        run: echo "⏭️ No pending Shorts. Waiting for Nightly Brain."
