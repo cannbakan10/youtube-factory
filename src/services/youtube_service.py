@@ -144,7 +144,22 @@ class YouTubeService:
             except Exception as e:
                 print(f"   ⚠️ [YouTube]: Failed to load token.pickle: {e}")
                 creds = None
-        
+
+        # ── SCOPE VALIDATION ──
+        # If token exists but doesn't have all required scopes (e.g., youtube.force-ssl
+        # was added later), force re-authentication to get the new scopes
+        if creds and creds.valid:
+            token_scopes = set(getattr(creds, 'scopes', []) or [])
+            required_scopes = set(self.scopes)
+            missing = required_scopes - token_scopes
+            if missing and token_scopes:  # Only check if token has scope info
+                print(f"   ⚠️ [YouTube]: Token missing scopes: {missing}")
+                print(f"   🔄 [YouTube]: Re-authentication required for full permissions (comments, etc.)")
+                if self.allow_interactive:
+                    creds = None  # Force re-auth below
+                else:
+                    print(f"   ⚠️ [YouTube]: Running in CI — cannot re-auth. Some features (comments) may fail.")
+
         # If there are no (valid) credentials available
         if not creds or not creds.valid:
             if creds and creds.expired and creds.refresh_token:
