@@ -1,0 +1,97 @@
+{
+  "timestamp": "2026-02-14T23:27:23.192423",
+  "dry_run": false,
+  "performance_review": {
+    "status": "no_recent_videos"
+  },
+  "cleanup": {
+    "unlisted": 0,
+    "deleted": 0,
+    "failed": 0,
+    "kept": 0,
+    "thresholds": {}
+  },
+  "trending": {
+    "found": 20,
+    "viral_shorts_found": 0,
+    "competitors_analyzed": 0,
+    "comments_mined": 0,
+    "top_5": [
+      {
+        "title": "Building an infinite ice-cooled PC",
+        "views": 11679557,
+        "category": "Science & Technology"
+      },
+      {
+        "title": "Did Blowing Game Cartridges Really Work 🤔",
+        "views": 6359501,
+        "category": "Science & Technology"
+      },
+      {
+        "title": "This is why Custom earbuds cost so much 💸",
+        "views": 5823179,
+        "category": "Science & Technology"
+      },
+      {
+        "title": "PS5 cutting off mid-game. Only comes back after unplugging i",
+        "views": 5540104,
+        "category": "Science & Technology"
+      },
+      {
+        "title": "The Concept Of Pin Hole Camera 📸",
+        "views": 4084200,
+        "category": "Science & Technology"
+      }
+    ],
+    "top_viral_shorts": []
+  },
+  "ambient_analysis": {
+    "total_ambient": 0,
+    "total_views": 0,
+    "top_type": null,
+    "worst_type": null,
+    "type_rankings": []
+  },
+  "plan": {
+    "shorts_planned": 20,
+    "ambient_recommendations": [
+      {
+        "type": "thunderstorm",
+        "hours": 8,
+        "reason": "Thunderstorm sounds are perennially popular for sleep and focus, and often see a summertime boost. Good for relaxation."
+      },
+      {
+        "type": "ocean",
+        "hours": 8,
+        "reason": "Ocean sounds are highly searched year-round and promote a calming atmosphere."
+      },
+      {
+        "type": "fireplace",
+        "hours": 8,
+        "reason": "A fireplace provides relaxing sounds."
+      }
+    ],
+    "shorts": [
+      "PS5 Overheating? Simple Fix!",
+      "Headphone Hack: Wired vs. Wireless Sound Quality?",
+      "Google ROASTS Apple... AGAIN!",
+      "RENT a PS5? Here's the Catch!",
+      "PC Building SECRET: Infinite Ice Cooling?!",
+      "BLOWING Cartridges Actually Worked?! Myth BUSTED!",
+      "Pin Hole Cameras: The ULTIMATE Photography Secret?",
+      "Custom Earbuds: What's the BIG Deal?",
+      "$50 RAM?! Too Good to be True!",
+      "ChatGPT Knows Best? Car Wash Edition",
+      "Relaxing Campfire Sounds for Sleep",
+      "The BEST Beach Sounds for Studying",
+      "Rainy Day Vibes for Ultimate Focus",
+      "Find Your Focus With Waterfall Sounds",
+      "Winter Wonderland: Gentle Snow Sounds",
+      "Unbelievable Underwater Sounds For Anxiety",
+      "Forest sounds for sleep and studying",
+      "Candle Sounds to Calm You",
+      "River Sounds to Calm your Soul",
+      "Japanese Garden to bring you Happiness"
+    ]
+  }
+}
