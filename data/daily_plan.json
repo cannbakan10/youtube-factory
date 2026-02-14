@@ -15,7 +15,8 @@
         "historyfacts"
       ],
       "inspired_by": "General trending history fact videos",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "failed"
     },
     {
       "title": "Crazy Animal Adaptations You Won't Believe!",
@@ -31,7 +32,8 @@
         "animalfacts"
       ],
       "inspired_by": "Trending animal fact videos",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "failed"
     },
     {
       "title": "Daily Dose of Space Facts!",
@@ -168,5 +170,14 @@
   ],
   "generated_at": "2026-02-13T23:33:12.096831",
   "trending_count": 0,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-02-14T06:48:35.001442",
+  "results": {
+    "shorts_produced": 0,
+    "longform_produced": 0,
+    "errors": [
+      "Short 'Mind-Blowing Historical Coinci' failed",
+      "Short 'Crazy Animal Adaptations You W' failed"
+    ]
+  }
 }
