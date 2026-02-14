@@ -60,7 +60,9 @@
         "#deepsea"
       ],
       "inspired_by": "Trend of underwater exploration and weird sea creatures",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "produced",
+      "production_id": "Show_footage_of_a_newly_discov_1771064569"
     },
     {
       "title": "Ancient Roman Concrete SECRETS!",
@@ -79,7 +81,9 @@
         "#science"
       ],
       "inspired_by": "Interest in ancient civilizations and lost technologies",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Explain_what_made_Roman_concre_1771064836"
     },
     {
       "title": "Why Rain Smells SO Good",
@@ -200,7 +204,7 @@
   "generated_at": "2026-02-14T07:38:48.996239",
   "trending_count": 0,
   "status": "in_progress",
-  "last_executed_at": "2026-02-14T08:30:53.286917",
+  "last_executed_at": "2026-02-14T10:30:47.228096",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
