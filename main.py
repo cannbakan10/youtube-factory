@@ -166,7 +166,7 @@ class YoutubeFactory:
                 # Randomize keyword order for variety
                 random.shuffle(scene.keywords)
 
-                # Stock Video Collection
+                # Stock Video Collection — 3-tier fallback: Pixabay ↔ Pexels → Freepik
                 video_path = None
                 if i % 2 == 0:
                     logger.info(f"Scene {i + 1}: Source -> Pexels")
@@ -181,10 +181,23 @@ class YoutubeFactory:
                         logger.info(f"Scene {i + 1}: Pixabay empty, failing over to Pexels...")
                         video_path = self.pexels.get_video(scene.keywords, orientation=orientation)
 
-                # Global Topic Fallback
+                # Freepik fallback (last resort before giving up on keywords)
                 if not video_path:
-                    logger.warning(f"Scene {i + 1}: Keywords failed. Recovering with global topic: '{topic}'...")
+                    logger.info(f"Scene {i + 1}: Pexels+Pixabay failed, trying Freepik...")
+                    try:
+                        from src.services.freepik_service import FreepikService
+                        if not hasattr(self, '_freepik'):
+                            self._freepik = FreepikService()
+                        video_path = self._freepik.get_video(scene.keywords, orientation=orientation)
+                    except Exception as fe:
+                        logger.warning(f"Scene {i + 1}: Freepik fallback failed: {fe}")
+
+                # Global Topic Fallback (all 3 services)
+                if not video_path:
+                    logger.warning(f"Scene {i + 1}: All keywords failed. Recovering with global topic: '{topic}'...")
                     video_path = self.pexels.get_video([topic], orientation=orientation)
+                    if not video_path:
+                        video_path = self.pixabay.get_video([topic], orientation=orientation)
 
                 scene.video_path = video_path
 

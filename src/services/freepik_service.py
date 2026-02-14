@@ -40,6 +40,63 @@ class FreepikService:
             logger.warning("⚠️ FreepikService: No FREEPIK_API_KEY set")
 
     # ──────────────────────────────────────────────────────
+    # GET VIDEO (same interface as Pixabay/Pexels)
+    # ──────────────────────────────────────────────────────
+
+    def get_video(self, query, orientation="portrait"):
+        """
+        Fetches a single video from Freepik with smart retries.
+        Same interface as PixabayService.get_video() and PexelsService.get_video()
+        so it can be used as a last-resort fallback.
+        """
+        if not self.api_key:
+            logger.warning("Freepik API key not configured")
+            return None
+
+        keywords = query if isinstance(query, list) else query.split()
+        if not keywords:
+            keywords = ["cinematic"]
+
+        # Truncate long keywords (AI-generated sentences)
+        keywords = [kw[:50] for kw in keywords]
+
+        # Progressive search: specific → generic
+        search_attempts = [
+            " ".join(keywords[:5]),
+            " ".join(keywords[:3]),
+            keywords[0],
+        ]
+
+        # Clean up queries
+        cleaned = []
+        for a in search_attempts:
+            a = a.replace(",", "").replace(".", "").replace("(", "").replace(")", "").strip()[:100]
+            if a and a not in cleaned:
+                cleaned.append(a)
+
+        # Map orientation to aspect ratio
+        aspect = "9:16" if orientation == "portrait" else "16:9"
+
+        for attempt in cleaned:
+            try:
+                videos = self.search_videos(attempt, limit=5, aspect_ratio=aspect)
+                if not videos:
+                    # Retry without aspect ratio filter
+                    videos = self.search_videos(attempt, limit=5, aspect_ratio=None)
+                if videos:
+                    import random
+                    chosen = random.choice(videos[:3])  # Pick from top 3
+                    path = self.download_video(chosen["id"])
+                    if path:
+                        logger.info(f"🎬 Freepik fallback success: {attempt[:40]}")
+                        return path
+            except Exception as e:
+                logger.warning(f"Freepik attempt failed ({attempt[:40]}): {e}")
+
+        logger.error(f"All Freepik search attempts failed for: {keywords[:3]}")
+        return None
+
+    # ──────────────────────────────────────────────────────
     # SEARCH VIDEOS
     # ──────────────────────────────────────────────────────
 

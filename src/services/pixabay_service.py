@@ -37,15 +37,24 @@ class PixabayService:
         if not keywords:
             keywords = ["cinematic"]
 
+        # Truncate individual keywords that are too long (sentences from AI)
+        keywords = [kw[:50] for kw in keywords]
+
         # Smart Progressive Search: Focus on context, avoid random nature/tech fallbacks
         search_attempts = [
-            " ".join(keywords),  # Full specific query
+            " ".join(keywords[:5]),  # First 5 keywords (avoid mega-long queries)
             " ".join(keywords[:3]),  # Contextual core
             keywords[0]  # Subject only
         ]
 
-        # Remove any leading/trailing commas or dots that AI might add
-        search_attempts = [a.replace(",", "").replace(".", "").strip() for a in search_attempts]
+        # Clean up and enforce Pixabay 100-char limit
+        cleaned = []
+        for a in search_attempts:
+            a = a.replace(",", "").replace(".", "").replace("(", "").replace(")", "").strip()
+            a = a[:100]  # Pixabay API limit: 100 chars max
+            if a and a not in cleaned:
+                cleaned.append(a)
+        search_attempts = cleaned
 
         for attempt in search_attempts:
             try:
@@ -53,9 +62,9 @@ class PixabayService:
                 if result:
                     return result
             except Exception as e:
-                logger.warning(f"Pixabay attempt failed ({attempt}): {e}")
+                logger.warning(f"Pixabay attempt failed ({attempt[:40]}): {e}")
 
-        logger.error(f"All Pixabay search attempts failed for: {keywords}")
+        logger.error(f"All Pixabay search attempts failed for: {keywords[:3]}")
         return None
 
     def get_image(self, query):

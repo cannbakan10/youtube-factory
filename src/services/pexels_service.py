@@ -36,13 +36,24 @@ class PexelsService:
         if not keywords:
             keywords = ["cinematic"]
 
+        # Truncate individual keywords that are too long (AI-generated sentences)
+        keywords = [kw[:50] for kw in keywords]
+
         # Smart Progressive Search: Try specific first, then relax slightly, but NEVER go generic
         search_attempts = [
-            " ".join(keywords),  # Full specific query
+            " ".join(keywords[:5]),  # First 5 keywords (avoid mega-long queries)
             " ".join(keywords[:3]),  # First 3 keywords (Contextual core)
             keywords[0] + " " + keywords[-1] if len(keywords) > 1 else keywords[0],  # Bookends
             keywords[0]  # Primary subject only
         ]
+
+        # Clean up queries
+        cleaned = []
+        for a in search_attempts:
+            a = a.replace(",", "").replace(".", "").replace("(", "").replace(")", "").strip()[:100]
+            if a and a not in cleaned:
+                cleaned.append(a)
+        search_attempts = cleaned
 
         for attempt in search_attempts:
             try:
@@ -50,9 +61,9 @@ class PexelsService:
                 if result:
                     return result
             except Exception as e:
-                logger.warning(f"Pexels attempt failed ({attempt}): {e}")
+                logger.warning(f"Pexels attempt failed ({attempt[:40]}): {e}")
 
-        logger.error(f"All Pexels search attempts failed for: {keywords}")
+        logger.error(f"All Pexels search attempts failed for: {keywords[:3]}")
         return None
 
     def get_image(self, query, orientation="landscape"):
