@@ -80,6 +80,23 @@ class NightlyBrainAgent:
         self.log_dir = os.path.join(self.project_root, NIGHTLY_LOG_DIR)
         os.makedirs(self.log_dir, exist_ok=True)
 
+        # Public YouTube API client (API key, no OAuth needed)
+        # OAuth tokens may lack youtube.readonly scope, causing 403 on public data
+        self.yt_public = None
+        api_key = os.getenv("YOUTUBE_API_KEY")
+        if api_key:
+            try:
+                from googleapiclient.discovery import build
+                self.yt_public = build("youtube", "v3", developerKey=api_key)
+                logger.info("🔑 Nightly Brain: YouTube API key client ready")
+            except Exception as e:
+                logger.warning(f"YouTube API key client failed: {e}")
+
+        # Fallback: try OAuth service if API key not available
+        if not self.yt_public and self.youtube and self.youtube.youtube:
+            self.yt_public = self.youtube.youtube
+            logger.info("🔄 Using OAuth client for public data (may lack scopes)")
+
         # Gemini AI
         self.gemini = None
         try:
@@ -265,21 +282,25 @@ class NightlyBrainAgent:
         return len(intersection) / len(union)
 
     # ──────────────────────────────────────────────────────
-    # PHASE 2: DISCOVER — Find top 100 trending US videos
+    # PHASE 2: DISCOVER — Find trending videos + channels
     # ──────────────────────────────────────────────────────
 
     def discover_trending(self, region: str = "US", count: int = 100) -> List[Dict]:
         """
-        Use YouTube Data API to find top trending videos in the US.
-        Fetches from multiple categories for diversity.
+        Use YouTube Data API (API key) to find top trending videos + channels.
+        
+        Two-stage discovery:
+        1. Find trending videos via mostPopular chart
+        2. Identify top-performing channels → fetch their recent viral content
+           to understand what makes content go viral
         """
-        if not self.youtube or not self.youtube.youtube:
-            logger.error("YouTube service not available for trend discovery")
+        if not self.yt_public:
+            logger.error("No YouTube API client available (set YOUTUBE_API_KEY)")
             return []
 
         logger.info(f"🔍 Phase 2: Discovering top {count} trending videos in {region}...")
 
-        # YouTube video categories for diverse trend coverage
+        # ── STAGE 1: Trending Videos from mostPopular chart ──
         categories = {
             "0": "All",
             "24": "Entertainment",
@@ -295,11 +316,12 @@ class NightlyBrainAgent:
 
         all_trending = []
         seen_ids = set()
+        channel_ids = {}  # channel_id -> channel_name
         per_category = max(count // len(categories), 10)
 
         for cat_id, cat_name in categories.items():
             try:
-                request = self.youtube.youtube.videos().list(
+                request = self.yt_public.videos().list(
                     part="snippet,statistics,contentDetails",
                     chart="mostPopular",
                     regionCode=region,
@@ -319,7 +341,6 @@ class NightlyBrainAgent:
                     snippet = item.get("snippet", {})
                     content = item.get("contentDetails", {})
 
-                    # Parse duration
                     duration_str = content.get("duration", "PT0S")
                     duration_sec = self._parse_iso_duration(duration_str)
                     is_shorts = duration_sec <= 60
@@ -328,10 +349,17 @@ class NightlyBrainAgent:
                     likes = int(stats.get("likeCount", 0))
                     comments = int(stats.get("commentCount", 0))
 
+                    # Track channels for Stage 2
+                    ch_id = snippet.get("channelId", "")
+                    ch_title = snippet.get("channelTitle", "")
+                    if ch_id and views > 100000:
+                        channel_ids[ch_id] = ch_title
+
                     all_trending.append({
                         "id": vid_id,
                         "title": snippet.get("title", ""),
-                        "channel": snippet.get("channelTitle", ""),
+                        "channel": ch_title,
+                        "channel_id": ch_id,
                         "category": cat_name,
                         "category_id": cat_id,
                         "views": views,
@@ -350,14 +378,131 @@ class NightlyBrainAgent:
             except Exception as e:
                 logger.warning(f"  ⚠️ Category {cat_name} failed: {e}")
 
-        # Sort by views (most popular first)
-        all_trending.sort(key=lambda v: v["views"], reverse=True)
+        # ── STAGE 2: Analyze top trending channels ──
+        channel_insights = self._analyze_trending_channels(channel_ids)
 
-        # Limit to requested count
+        # Sort by views
+        all_trending.sort(key=lambda v: v["views"], reverse=True)
         all_trending = all_trending[:count]
 
-        logger.info(f"✅ Found {len(all_trending)} trending videos across {len(categories)} categories")
+        # Attach channel insights to trending data
+        if channel_insights:
+            for vid in all_trending:
+                ch_id = vid.get("channel_id", "")
+                if ch_id in channel_insights:
+                    vid["channel_patterns"] = channel_insights[ch_id]
+
+        logger.info(f"✅ Found {len(all_trending)} trending videos + {len(channel_insights)} channel analyses")
         return all_trending
+
+    def _analyze_trending_channels(self, channel_ids: Dict[str, str], max_channels: int = 10) -> Dict:
+        """
+        Analyze the top trending channels to understand their content strategy.
+        Fetches their recent popular uploads to find patterns.
+        
+        Returns dict: channel_id -> {name, subscribers, recent_hits, content_patterns}
+        """
+        if not self.yt_public or not channel_ids:
+            return {}
+
+        logger.info(f"📡 Analyzing top {min(len(channel_ids), max_channels)} trending channels...")
+
+        # Pick top channels (limit API calls)
+        top_channels = dict(list(channel_ids.items())[:max_channels])
+        insights = {}
+
+        try:
+            # Batch fetch channel details
+            ch_ids_str = ",".join(top_channels.keys())
+            ch_response = self.yt_public.channels().list(
+                part="snippet,statistics,contentDetails",
+                id=ch_ids_str,
+            ).execute()
+
+            for ch in ch_response.get("items", []):
+                ch_id = ch["id"]
+                ch_stats = ch.get("statistics", {})
+                ch_snippet = ch.get("snippet", {})
+                uploads_playlist = ch.get("contentDetails", {}).get("relatedPlaylists", {}).get("uploads", "")
+
+                subscribers = int(ch_stats.get("subscriberCount", 0))
+                total_videos = int(ch_stats.get("videoCount", 0))
+
+                # Skip very small channels
+                if subscribers < 10000:
+                    continue
+
+                # Fetch recent uploads from this channel
+                recent_hits = []
+                if uploads_playlist:
+                    try:
+                        pl_response = self.yt_public.playlistItems().list(
+                            part="snippet",
+                            playlistId=uploads_playlist,
+                            maxResults=10,
+                        ).execute()
+
+                        video_ids = [
+                            item["snippet"]["resourceId"]["videoId"]
+                            for item in pl_response.get("items", [])
+                            if item.get("snippet", {}).get("resourceId", {}).get("videoId")
+                        ]
+
+                        if video_ids:
+                            vids_response = self.yt_public.videos().list(
+                                part="snippet,statistics,contentDetails",
+                                id=",".join(video_ids),
+                            ).execute()
+
+                            for vid in vids_response.get("items", []):
+                                v_stats = vid.get("statistics", {})
+                                v_snippet = vid.get("snippet", {})
+                                v_content = vid.get("contentDetails", {})
+                                dur = self._parse_iso_duration(v_content.get("duration", "PT0S"))
+                                views = int(v_stats.get("viewCount", 0))
+
+                                recent_hits.append({
+                                    "title": v_snippet.get("title", ""),
+                                    "views": views,
+                                    "likes": int(v_stats.get("likeCount", 0)),
+                                    "duration_sec": dur,
+                                    "is_shorts": dur <= 60,
+                                    "tags": v_snippet.get("tags", [])[:5],
+                                    "published": v_snippet.get("publishedAt", ""),
+                                })
+
+                    except Exception as e:
+                        logger.warning(f"  ⚠️ Failed to fetch uploads for {top_channels.get(ch_id, ch_id)}: {e}")
+
+                # Extract patterns from recent hits
+                if recent_hits:
+                    avg_views = sum(h["views"] for h in recent_hits) / len(recent_hits)
+                    shorts_ratio = sum(1 for h in recent_hits if h["is_shorts"]) / len(recent_hits)
+                    
+                    # Extract common title patterns
+                    all_titles = [h["title"] for h in recent_hits]
+                    all_tags = []
+                    for h in recent_hits:
+                        all_tags.extend(h.get("tags", []))
+                    top_tags = [tag for tag, _ in Counter(all_tags).most_common(5)]
+
+                    insights[ch_id] = {
+                        "name": ch_snippet.get("title", top_channels.get(ch_id, "")),
+                        "subscribers": subscribers,
+                        "total_videos": total_videos,
+                        "avg_recent_views": int(avg_views),
+                        "shorts_ratio": round(shorts_ratio, 2),
+                        "recent_titles": all_titles[:5],
+                        "popular_tags": top_tags,
+                        "content_type": "shorts-focused" if shorts_ratio > 0.6 else ("mixed" if shorts_ratio > 0.3 else "longform-focused"),
+                    }
+
+                    logger.info(f"  🔎 {insights[ch_id]['name']}: {subscribers:,} subs, avg {int(avg_views):,} views, {insights[ch_id]['content_type']}")
+
+        except Exception as e:
+            logger.warning(f"⚠️ Channel analysis failed: {e}")
+
+        return insights
 
     # ──────────────────────────────────────────────────────
     # PHASE 3: PLAN — Generate next-day content plan
@@ -393,13 +538,39 @@ class NightlyBrainAgent:
 
             existing_sample = "\n".join(list(existing_titles)[:20]) if existing_titles else "None"
 
+            # Extract channel insights for the prompt
+            channel_insights_text = ""
+            seen_channels = set()
+            for v in trending[:50]:
+                patterns = v.get("channel_patterns")
+                if patterns and patterns["name"] not in seen_channels:
+                    seen_channels.add(patterns["name"])
+                    channel_insights_text += (
+                        f"\n🔎 {patterns['name']} ({patterns['subscribers']:,} subs, "
+                        f"avg {patterns['avg_recent_views']:,} views/video, {patterns['content_type']})\n"
+                        f"   Recent hits: {', '.join(patterns['recent_titles'][:3])}\n"
+                        f"   Top tags: {', '.join(patterns['popular_tags'][:5])}\n"
+                    )
+                if len(seen_channels) >= 8:
+                    break
+
+            channel_section = ""
+            if channel_insights_text:
+                channel_section = f"""
+Here are the TOP PERFORMING CHANNELS trending right now and their content patterns:
+{channel_insights_text}
+IMPORTANT: Study these channels' content patterns. Create content SIMILAR to their 
+successful formats but with your own unique angle. Focus on topics that these proven 
+channels have shown can go viral.
+"""
+
             prompt = f"""You are a YouTube content strategist for a channel called "StreamGlobal" 
 that creates English-language Shorts and long-form videos targeting a US audience.
 
 Here are today's top 20 trending YouTube videos in the US:
 
 {top_20_summary}
-
+{channel_section}
 Here are some of our existing video topics (to avoid duplicates):
 {existing_sample}
 
@@ -408,12 +579,14 @@ Create a content plan for TOMORROW with exactly 10 video ideas:
 - 2 Long-form ideas (8-15 minutes, documentary/educational style)
 
 Requirements:
-1. Topics must be INSPIRED by trending content but NOT copies
-2. Must be in ENGLISH only
-3. Must NOT duplicate any existing channel content
-4. Each idea should have viral potential
-5. Include relevant tags and hashtags
-6. Consider the "hook in first 3 seconds" rule for Shorts
+1. Topics must be INSPIRED by trending content AND successful channel patterns
+2. Study the trending channels' title formats and content styles — create similar content
+3. Must be in ENGLISH only
+4. Must NOT duplicate any existing channel content
+5. Each idea should have viral potential
+6. Include relevant tags and hashtags
+7. Consider the "hook in first 3 seconds" rule for Shorts
+8. Prioritize topics from channels with high engagement rates
 
 Output STRICT JSON format:
 {{
@@ -424,7 +597,7 @@ Output STRICT JSON format:
             "topic": "Detailed topic description for script generation",
             "hook": "First 3 seconds hook text",
             "tags": ["tag1", "tag2", "tag3"],
-            "inspired_by": "Which trending video inspired this",
+            "inspired_by": "Which trending video/channel inspired this",
             "estimated_views": "low/medium/high based on trend analysis"
         }}
     ],
@@ -434,7 +607,7 @@ Output STRICT JSON format:
             "topic": "Detailed topic for research and scripting",
             "outline": "Brief outline of what the video should cover",
             "tags": ["tag1", "tag2"],
-            "inspired_by": "Which trending video inspired this",
+            "inspired_by": "Which trending video/channel inspired this",
             "estimated_views": "low/medium/high"
         }}
     ]
@@ -451,6 +624,7 @@ Output STRICT JSON format:
             # Add metadata
             plan["generated_at"] = datetime.utcnow().isoformat()
             plan["trending_count"] = len(trending)
+            plan["channels_analyzed"] = len(seen_channels)
             plan["status"] = "pending"
 
             logger.info(f"✅ Content plan: {len(plan.get('shorts', []))} shorts + {len(plan.get('longform', []))} longform")
