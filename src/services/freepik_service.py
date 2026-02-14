@@ -106,11 +106,14 @@ class FreepikService:
     # DOWNLOAD VIDEO (Full Quality, Premium)
     # ──────────────────────────────────────────────────────
 
-    def download_video(self, video_id: int, filename: Optional[str] = None) -> Optional[str]:
+    def download_video(self, video_id: int, filename: Optional[str] = None, prefer_4k: bool = False) -> Optional[str]:
         """
-        Download full quality stock video using Premium API.
+        Download stock video using Premium API.
         
-        Endpoint: GET /v1/videos/{id}/download
+        Picks the best H.264 option (1080p by default, 4K if prefer_4k=True).
+        Avoids ProRes/MOV files which can be 1GB+ for short clips.
+        
+        Endpoint: GET /v1/videos/{id}/download?option_id=...
         Returns: local file path or None
         """
         if not self.api_key:
@@ -124,8 +127,20 @@ class FreepikService:
             return cached
 
         try:
-            # Step 1: Get download URL
-            resp = self.session.get(f"{BASE_URL}/videos/{video_id}/download")
+            # Step 1: Get video details to find best option
+            detail_resp = self.session.get(f"{BASE_URL}/videos/{video_id}")
+            detail_resp.raise_for_status()
+            options = detail_resp.json().get("data", {}).get("options", [])
+
+            # Pick best option: H.264, prefer 1080p (or 4K if requested)
+            option_id = self._pick_best_option(options, prefer_4k=prefer_4k)
+
+            # Step 2: Get download URL (with option_id if available)
+            dl_params = {}
+            if option_id:
+                dl_params["option_id"] = option_id
+
+            resp = self.session.get(f"{BASE_URL}/videos/{video_id}/download", params=dl_params)
             resp.raise_for_status()
             dl_data = resp.json().get("data", {})
 
@@ -136,28 +151,23 @@ class FreepikService:
                 logger.error(f"No download URL for video {video_id}")
                 return None
 
-            # Use custom filename or default
+            # Use custom filename or normalized default
             if filename:
                 dl_filename = filename
             else:
-                # Normalize: freepik_ID_name.ext
                 ext = os.path.splitext(dl_filename)[1] or ".mp4"
                 dl_filename = f"freepik_{video_id}{ext}"
 
             output_path = os.path.join(self.output_dir, dl_filename)
 
-            # Step 2: Download the actual video
+            # Step 3: Download the actual video
             logger.info(f"  📥 Downloading {dl_filename}...")
-            video_resp = requests.get(dl_url, stream=True, timeout=180)
+            video_resp = requests.get(dl_url, stream=True, timeout=300)
             video_resp.raise_for_status()
-
-            total_size = int(video_resp.headers.get("content-length", 0))
-            downloaded = 0
 
             with open(output_path, "wb") as f:
                 for chunk in video_resp.iter_content(chunk_size=65536):
                     f.write(chunk)
-                    downloaded += len(chunk)
 
             size_mb = os.path.getsize(output_path) / (1024 * 1024)
             logger.info(f"  ✅ Downloaded: {dl_filename} ({size_mb:.1f} MB)")
@@ -172,6 +182,39 @@ class FreepikService:
         except Exception as e:
             logger.error(f"Download failed: {e}")
             return None
+
+    def _pick_best_option(self, options: List[Dict], prefer_4k: bool = False) -> Optional[int]:
+        """
+        Pick the best download option:
+        - Prefer H.264 codec over ProRes (much smaller files)
+        - Prefer 1080p for shorts (good enough, fast download)
+        - Prefer 4K for ambient long-form if requested
+        """
+        if not options:
+            return None
+
+        # Filter H.264 options only
+        h264_options = [o for o in options if o.get("codec") == "H.264" and o.get("active")]
+        if not h264_options:
+            h264_options = [o for o in options if o.get("active")]
+
+        if not h264_options:
+            return None
+
+        if prefer_4k:
+            # Pick highest resolution
+            best = max(h264_options, key=lambda o: o.get("width", 0))
+        else:
+            # Pick 1080p if available, otherwise highest below 4K
+            target = [o for o in h264_options if o.get("height") == 1080]
+            if target:
+                best = target[0]
+            else:
+                # Get closest to 1080p without being ProRes-huge
+                best = min(h264_options, key=lambda o: abs(o.get("height", 0) - 1080))
+
+        logger.info(f"  🎯 Selected: {best.get('width')}x{best.get('height')} {best.get('codec', '?')}")
+        return best.get("id")
 
     def _find_cached(self, video_id: int) -> Optional[str]:
         """Check if video is already cached locally."""
