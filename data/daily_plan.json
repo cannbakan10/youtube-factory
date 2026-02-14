@@ -1,171 +1,309 @@
 {
-  "date": "2024-07-03",
+  "date": "2024-03-15",
   "shorts": [
     {
-      "title": "Undercover Cop Secrets: 3 Signs You're Being Watched!",
-      "topic": "Based on trending 'How to Spot an Undercover Cop' video, create a short highlighting 3 lesser-known signs an undercover cop is nearby. Focus on observation techniques and behavioral cues.",
-      "hook": "Think you're alone? Check for these 3 things...",
+      "title": "Scariest Animal Facts That Sound Fake But Are 100% True #shorts #animalfacts",
+      "topic": "Compilation of unbelievable but true animal facts (e.g., Mantis shrimp punch, Immortal jellyfish, Pistol shrimp sonic attack).",
+      "hook": "Think you know animals? These facts will blow your mind!",
       "tags": [
-        "undercover cop",
-        "police",
-        "law enforcement",
-        "security",
-        "street smarts",
-        "law by mike",
-        "hacks"
+        "animalfacts",
+        "wildlife",
+        "amazingfacts",
+        "nature",
+        "animals"
       ],
-      "inspired_by": "How To Spot An Undercover Cop",
+      "inspired_by": "Viral 'animal facts wildlife' shorts, e.g., 'اغرب 10 ظواهر مجنونة للحيوانات!'",
       "estimated_views": "high"
     },
     {
-      "title": "Magnus Carlsen SHOCK! He Fell For This Chess TRAP?!",
-      "topic": "Inspired by the trending chess video, create a short showcasing a quick chess trap or tactic that even a grandmaster like Magnus Carlsen could fall for. Explain the moves simply and visually.",
-      "hook": "Even Magnus gets tricked sometimes...",
+      "title": "Ancient Roman Concrete Secrets REVEALED! #history #shorts",
+      "topic": "Explain why Roman concrete is so durable, referencing scientific studies and its unique composition. Comparison to modern concrete.",
+      "hook": "Why are Roman ruins still standing after 2000 years?",
       "tags": [
-        "chess",
-        "magnus carlsen",
-        "chess tactics",
-        "chess traps",
-        "chess strategy",
-        "grandmaster",
-        "Nepomniachtchi chess"
-      ],
-      "inspired_by": "He Used Magnus’ OWN Trick Against Him… And Won 😤♟️",
-      "estimated_views": "high"
-    },
-    {
-      "title": "Before Freezers: How Ice Cream Was REALLY Made!",
-      "topic": "Based on the trending 'How Was Ice Cream Made Before Freezers' video, create a short explaining the historical methods of ice cream production using ice houses and salt. Show the process with visuals.",
-      "hook": "Ice cream WITHOUT a freezer? How?!",
-      "tags": [
-        "ice cream",
-        "history",
-        "food history",
-        "vintage",
-        "old fashioned",
-        "antique",
+        "romanconcrete",
+        "historyfacts",
+        "ancientrome",
+        "engineering",
         "science"
+      ],
+      "inspired_by": "MrBeast 'Guess What Age Punched You', BRIGHT SIDE content on ancient history",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "Mind-Blowing Facts About Space You Won't Believe! #space #shorts",
+      "topic": "Compilation of incredible space facts (e.g., neutron star density, diamond planet, the Great Attractor).",
+      "hook": "Get ready to question everything you know about space!",
+      "tags": [
+        "spacefacts",
+        "astronomy",
+        "universe",
+        "science",
+        "amazingfacts"
+      ],
+      "inspired_by": "James Webb Telescope trending topics",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "The WEIRDEST Animal Defenses EVER! #animals #shorts",
+      "topic": "Showcase strange and unusual animal defense mechanisms (e.g., horned lizard blood squirt, opossum playing dead, hagfish slime).",
+      "hook": "These animals are WEIRDLY protected!",
+      "tags": [
+        "animalfacts",
+        "wildlife",
+        "defense",
+        "nature",
+        "weirdanimals"
+      ],
+      "inspired_by": "Viral 'animal facts wildlife' shorts",
+      "estimated_views": "high"
+    },
+    {
+      "title": "AI Can Now Do WHAT?! (You Won't Believe It) #ai #shorts",
+      "topic": "Showcase the latest cutting-edge AI advancements (e.g., AI generated art, AI-driven drug discovery, AI coding).",
+      "hook": "The future is NOW and it's powered by AI!",
+      "tags": [
+        "artificialintelligence",
+        "futuretech",
+        "innovation",
+        "technology",
+        "ai"
+      ],
+      "inspired_by": "This Machine Drew a Porsche… Are Humans Still Needed?",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "Top 5 Amazing GARDENING Hacks! #gardening #shorts",
+      "topic": "Present 5 quick and easy gardening hacks to improve plant growth and yields.",
+      "hook": "Unlock your inner gardener with these simple tricks!",
+      "tags": [
+        "gardeninghacks",
+        "gardeningtips",
+        "plants",
+        "diy",
+        "growyourown"
+      ],
+      "inspired_by": "Top 5 intresting Amazing gardening Hacks",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "Unbelievable Facts About the Deep Sea! #ocean #shorts",
+      "topic": "Share fascinating facts about the deep sea, including bioluminescent creatures, hydrothermal vents, and extreme pressure.",
+      "hook": "The deep sea is more alien than space!",
+      "tags": [
+        "deepsea",
+        "oceanfacts",
+        "marinebiology",
+        "science",
+        "underwater"
+      ],
+      "inspired_by": "Abyssal Bloom: A Deep-Sea Mystery Unveiled",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "Did You Know THIS About Cats? 🤯 #cats #shorts",
+      "topic": "Highlight lesser-known cat facts: their ability to make over 100 different sounds, their unique nose prints, and their love of boxes.",
+      "hook": "Think you know cats? Think again!",
+      "tags": [
+        "catfacts",
+        "cats",
+        "animals",
+        "pets",
+        "didyouknow"
+      ],
+      "inspired_by": "Did you know this? 🤯 #Facts #cat #shorts #trending",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "Terrifying Animals Without Fur! #animals #shorts",
+      "topic": "Show images and discuss the appearance of animals without fur, highlighting the unsettling nature of their bare skin.",
+      "hook": "Prepare to be disturbed! Animals...naked!",
+      "tags": [
+        "animalfacts",
+        "wildlife",
+        "nakedanimals",
+        "creepy",
+        "science"
+      ],
+      "inspired_by": "Animals Without Fur Look Terrifying",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "Little-Known FACTS That Will BLOW Your Mind! #facts #shorts",
+      "topic": "Compilation of random but intriguing facts from various topics like history, science, geography. Ensure facts are surprising.",
+      "hook": "Prepare to have your mind blown by these insane facts!",
+      "tags": [
+        "amazingfacts",
+        "randomfacts",
+        "interestingfacts",
+        "didyouknow",
+        "funfacts"
+      ],
+      "inspired_by": "Interesting Facts You Probably Didn't Know",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "The Science Behind the Perfect Cup of Coffee #coffee #shorts",
+      "topic": "Explain the key scientific principles that affect coffee brewing, such as water temperature, grind size, and extraction time.",
+      "hook": "Brew the PERFECT cup of coffee every time!",
+      "tags": [
+        "coffee",
+        "science",
+        "brewing",
+        "howto",
+        "diy"
+      ],
+      "inspired_by": "Building an infinite ice-cooled PC",
+      "estimated_views": "low"
+    },
+    {
+      "title": "Why This Bathroom Design is GENIUS! #design #shorts",
+      "topic": "Showcase innovative bathroom designs that save space, improve functionality, or have unique aesthetic features.",
+      "hook": "This bathroom will blow your mind!",
+      "tags": [
+        "bathroomdesign",
+        "interiordesign",
+        "innovation",
+        "homeimprovement",
+        "design"
+      ],
+      "inspired_by": "This bathroom design is a crazy twist! #shorts",
+      "estimated_views": "low"
+    },
+    {
+      "title": "How Was Ice Cream Made BEFORE Freezers?! #history #shorts",
+      "topic": "Explain the historical methods of ice cream production before the invention of electric freezers, using ice harvesting and salt.",
+      "hook": "Ice cream WITHOUT a freezer? It's true!",
+      "tags": [
+        "icecream",
+        "history",
+        "foodhistory",
+        "invention",
+        "oldtimes"
       ],
       "inspired_by": "How Was Ice Cream Made Before Freezers 😮",
       "estimated_views": "medium"
     },
     {
-      "title": "Schindler's List: The Most DANGEROUS Moment (Almost Caught!)",
-      "topic": "Inspired by the trending Schindler's List clip, create a short focusing on one specific moment of near-discovery in the film, emphasizing the tension and danger. Use impactful visuals and music.",
-      "hook": "One wrong move, and it's over...",
+      "title": "He Used Magnus' OWN Trick Against Him! #chess #shorts",
+      "topic": "Analyze and explain a chess game where a player successfully countered Magnus Carlsen's signature move or tactic.",
+      "hook": "Magnus Carlsen REKT by his own strategy!",
       "tags": [
-        "Schindlers List",
-        "WW2",
-        "German",
-        "polish",
-        "history",
-        "movie clip",
-        "drama",
-        "intense"
-      ],
-      "inspired_by": "Hello Dodged Death Right Infront Of The GERMANS🥶💀Schindler's List 1993",
-      "estimated_views": "medium"
-    },
-    {
-      "title": "Infinite Ice PC: Does It Actually WORK?!",
-      "topic": "Inspired by the 'Building an infinite ice-cooled PC' video, create a short offering a skeptical view of the practical benefits. Could explore the limitations and potential downsides (condensation, leaks) in a humorous way.",
-      "hook": "Infinite Ice PC? Cool idea, but...",
-      "tags": [
-        "PC",
-        "PC tips",
-        "PC building",
-        "mryeester",
-        "tech",
-        "gaming pc",
-        "water cooling"
-      ],
-      "inspired_by": "Building an infinite ice-cooled PC",
-      "estimated_views": "medium"
-    },
-    {
-      "title": "Bumpy Johnson's Secret to RESPECT! (Power Moves)",
-      "topic": "Inspired by Leo in Frames, create a short featuring a compelling quote or scene from a Bumpy Johnson movie/show. Focus on themes of power, respect, and strategy. Use text overlays and editing to highlight key points.",
-      "hook": "Bumpy Johnson knew the secret to...",
-      "tags": [
-        "Bumpy Johnson",
-        "crime",
-        "power",
-        "respect",
+        "chess",
+        "magnuscarlsen",
+        "iannepomniachtchi",
         "strategy",
-        "Harlem",
-        "Godfather of Harlem"
+        "games"
       ],
-      "inspired_by": "Leo in Frames",
+      "inspired_by": "He Used Magnus’ OWN Trick Against Him… And Won 😤♟️",
       "estimated_views": "medium"
     },
     {
-      "title": "Father-in-Law Test: The ULTIMATE Red Flags!",
-      "topic": "Inspired by 'The Ultimate Father-in-Law Test', highlight common toxic behaviors to avoid. Provide quick, actionable advice presented in an engaging manner.",
-      "hook": "Dating their child? Watch out for THESE signs...",
+      "title": "The BIZARRE Reason Jake Paul Cried... #jakepaul #shorts",
+      "topic": "Provide context around Jake Paul's emotional moment, analyzing the circumstances and fan reactions.",
+      "hook": "Why was Jake Paul CRYING?!",
       "tags": [
-        "father-in-law",
-        "dating",
-        "relationships",
-        "red flags",
-        "toxic",
-        "family"
+        "jakepaul",
+        "boxing",
+        "sports",
+        "emotional",
+        "drama"
       ],
-      "inspired_by": "The Ultimate Father-in-Law Test! 😠 #shorts",
-      "estimated_views": "medium"
+      "inspired_by": "Why Jake Paul Cried For His Girlfriend…🤯❤️",
+      "estimated_views": "low"
     },
     {
-      "title": "He Got His Revenge 🔥🥶 | The ULTIMATE Comeback! #Shorts",
-      "topic": "Create an edit that emulates the style of Kroggy Edits, using clips of a moment of epic vengeance or a comeback in sports/film/TV. Use trending music and visual effects.",
-      "hook": "They thought it was over... THEN THIS HAPPENED!",
+      "title": "He Got His ULTIMATE Revenge! 🔥🥶 #revenge #shorts",
+      "topic": "Present a short clip of a satisfying revenge scene from a movie or show, highlighting the emotional impact.",
+      "hook": "Sweet, sweet revenge!",
       "tags": [
         "revenge",
-        "comeback",
-        "sports",
-        "epic",
-        "win",
-        "motivation",
-        "trending",
-        "shorts"
+        "movieclips",
+        "satisfying",
+        "drama",
+        "film"
       ],
-      "inspired_by": "Kroggy Edits",
-      "estimated_views": "medium"
-    }
-  ],
-  "longform": [
+      "inspired_by": "He Got His Revenge 🔥🥶",
+      "estimated_views": "low"
+    },
     {
-      "title": "Weaponized Incompetence: The Psychology of Avoiding Responsibility",
-      "topic": "Inspired by the trending 'Weaponized incompetence' video, create a documentary exploring the psychological roots of this behavior, its impact on relationships, and strategies for addressing it. Include expert interviews or insights.",
-      "outline": "- Define weaponized incompetence with examples\n- Psychological reasons behind the behavior\n- Impact on relationships (romantic, familial, professional)\n- Strategies for identifying and addressing the issue\n- Expert interviews with psychologists or relationship counselors",
+      "title": "How to Spot an Undercover Cop #shorts #law",
+      "topic": "Provide tips on how to potentially identify an undercover police officer based on their behavior and appearance.",
+      "hook": "Don't get caught! Spot an undercover cop!",
       "tags": [
-        "weaponized incompetence",
-        "psychology",
-        "relationships",
-        "toxic behavior",
-        "responsibility",
-        "gaslighting"
+        "law",
+        "undercover",
+        "police",
+        "legal",
+        "hacks"
       ],
-      "inspired_by": "What do they call that? Weaponized incompetence? #funny #fyp #couple",
+      "inspired_by": "How To Spot An Undercover Cop",
+      "estimated_views": "low"
+    },
+    {
+      "title": "70 Feet Down: The Forbidden Rapa Nui Find #shorts #history",
+      "topic": "Showcase an underground discover on Rapa Nui (Easter Island) and highlight its historical significance.",
+      "hook": "What secrets lie beneath Easter Island's statues?",
+      "tags": [
+        "RapaNui",
+        "EasterIsland",
+        "history",
+        "ancient",
+        "archaeology"
+      ],
+      "inspired_by": "BRIGHT SIDE: 70 Feet Down: The Forbidden Rapa Nui Find",
+      "estimated_views": "low"
+    },
+    {
+      "title": "Bumpy Johnson's WARNING! #shorts #crime #leoinframes",
+      "topic": "Highlight a compelling quote or scene featuring Bumpy Johnson from 'Godfather of Harlem'.",
+      "hook": "Bumpy Johnson: Words of wisdom... or warning?",
+      "tags": [
+        "bumpyjohnson",
+        "godfatherofharlem",
+        "crime",
+        "harlem",
+        "drama",
+        "leoinframes"
+      ],
+      "inspired_by": "Leo in Frames trending content",
       "estimated_views": "medium"
     },
     {
-      "title": "The Untold Story of Joe Rogan's Rise to Podcast King",
-      "topic": "Inspired by the trending Joe Rogan slap knockout video, create a documentary about Joe Rogan's life and how he became the podcast sensation he is today. Dive into his early career as a comedian and TV host, and examine key moments that shaped his podcasting style. Analyze why his podcast resonates with so many people.",
-      "outline": "- Joe Rogan's early life and influences\n- His start in comedy and TV hosting\n- The origins and evolution of the Joe Rogan Experience podcast\n- Key moments and interviews that defined his podcast\n- Analysis of his appeal and impact on media landscape",
+      "title": "Schindler's List: A Moment of Dodged Death 🥶💀#shorts #ww2",
+      "topic": "Show a powerful and emotional clip from Schindler's List, focusing on a scene of narrow escape or survival during the Holocaust.",
+      "hook": "This scene will leave you speechless...",
       "tags": [
-        "Joe Rogan",
-        "podcast",
-        "comedy",
-        "ufc",
-        "interview",
-        "media",
-        "jre"
+        "schindlerslist",
+        "ww2",
+        "holocaust",
+        "movieclips",
+        "drama",
+        "history"
       ],
-      "inspired_by": "Joe Rogan Reacts To Slap Knockout",
-      "estimated_views": "medium"
+      "inspired_by": "Hello Dodged Death Right Infront Of The GERMANS🥶💀Schindler's List 1993",
+      "estimated_views": "low"
     }
   ],
-  "generated_at": "2026-02-14T20:56:52.022547",
-  "trending_count": 84,
-  "channels_analyzed": 5,
+  "ambient_recommendations": [
+    {
+      "type": "rain",
+      "hours": 8,
+      "reason": "Consistent listener demand, can be combined with other relaxing elements"
+    },
+    {
+      "type": "fireplace",
+      "hours": 8,
+      "reason": "Timeless classic for relaxation and sleep, visually appealing."
+    },
+    {
+      "type": "snow",
+      "hours": 8,
+      "reason": "Still in winter months, can extend winter ambience"
+    }
+  ],
+  "longform": [],
+  "generated_at": "2026-02-14T22:18:41.082582",
+  "trending_count": 83,
+  "channels_analyzed": 3,
   "status": "pending"
 }
