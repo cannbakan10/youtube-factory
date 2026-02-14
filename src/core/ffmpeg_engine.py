@@ -201,31 +201,92 @@ class VideoEngine:
         with open(filter_script_path, "w", encoding="utf-8") as f:
             f.write(filter_complex_str)
 
+        # Quality settings — premium output for YouTube
+        # CI/CD environments: use 'fast' for speed; local: use 'medium' for quality
+        preset = os.getenv("FFMPEG_PRESET", "medium")
+        crf = "18" if not is_long else "20"  # Shorts = max quality, Long = balanced
+
         cmd = [
             "ffmpeg", "-y", "-v", "error",
             *input_args,
             "-filter_complex_script", filter_script_path,
             "-map", final_video_label,
             "-map", final_audio_label,
-            "-c:v", "libx264", "-preset", "ultrafast", "-crf", "22",
+            "-c:v", "libx264", "-preset", preset, "-crf", crf,
+            "-profile:v", "high", "-level", "4.2",
+            "-c:a", "aac", "-b:a", "192k", "-ar", "44100",
             "-pix_fmt", "yuv420p",
+            "-movflags", "+faststart",  # Web-optimized: metadata at start
             "-shortest", 
             final_output
         ]
 
-        logging.info(f"🎬 Factory V8.6 (Pro-Mix) starting render for {valid_scenes_count} scenes...")
+        logging.info(f"🎬 Factory V8.7 (Premium-Mix) starting render for {valid_scenes_count} scenes (preset={preset}, crf={crf})...")
         try:
             result = subprocess.run(cmd, capture_output=True, text=True)
             if result.returncode != 0:
                 logging.error(f"❌ FFmpeg Render failed.")
                 if result.stderr:
-                    logging.error(result.stderr[:400])
+                    logging.error(result.stderr[:800])
                 debug_file = os.path.join(self.output_dir, "ffmpeg_error.txt")
                 with open(debug_file, "w") as f:
                     f.write(f"ERROR: {result.stderr}\n\nCOMMAND:\n{' '.join(cmd)}")
                 logging.info(f"📁 Full command logged to: {debug_file}")
                 return None
+
+            # ── POST-RENDER VALIDATION ──
+            if not self._validate_output(final_output, width, height):
+                logging.error(f"❌ Video validation failed: {final_output}")
+                return None
+
             return final_output
         except Exception as e:
             logging.error(f"❌ Render Error: {e}")
             return None
+
+    def _validate_output(self, path, expected_w, expected_h):
+        """Validate rendered video is not corrupted."""
+        if not os.path.exists(path):
+            logging.error("Output file does not exist")
+            return False
+
+        file_size = os.path.getsize(path)
+        if file_size < 50_000:  # Less than 50KB = definitely broken
+            logging.error(f"Output too small ({file_size} bytes) — likely corrupted")
+            return False
+
+        try:
+            # Check duration
+            cmd = ["ffprobe", "-v", "error", "-show_entries", "format=duration",
+                   "-of", "default=noprint_wrappers=1:nokey=1", path]
+            duration = float(subprocess.check_output(cmd).decode().strip())
+            if duration < 1.0:
+                logging.error(f"Output too short ({duration:.1f}s)")
+                return False
+
+            # Check resolution
+            cmd = ["ffprobe", "-v", "error", "-select_streams", "v:0",
+                   "-show_entries", "stream=width,height",
+                   "-of", "csv=p=0", path]
+            dims = subprocess.check_output(cmd).decode().strip()
+            if dims:
+                w, h = map(int, dims.split(","))
+                if w != expected_w or h != expected_h:
+                    logging.warning(f"⚠️ Resolution mismatch: got {w}x{h}, expected {expected_w}x{expected_h}")
+
+            # Check audio stream exists
+            cmd = ["ffprobe", "-v", "error", "-select_streams", "a",
+                   "-show_entries", "stream=codec_name",
+                   "-of", "default=noprint_wrappers=1:nokey=1", path]
+            audio_codec = subprocess.check_output(cmd).decode().strip()
+            if not audio_codec:
+                logging.error("No audio stream found in output")
+                return False
+
+            size_mb = file_size / (1024 * 1024)
+            logging.info(f"✅ Video validated: {duration:.1f}s, {dims}, {audio_codec}, {size_mb:.1f}MB")
+            return True
+
+        except Exception as e:
+            logging.warning(f"⚠️ Validation check failed (proceeding anyway): {e}")
+            return True  # Don't block on ffprobe failures
