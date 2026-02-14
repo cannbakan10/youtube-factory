@@ -42,7 +42,7 @@ class ScriptWriter:
         self.oa_model = "gpt-4o-mini"
 
     def _clean_text(self, text, language="en"):
-        """Removes AI trash, stage directions, and common unwanted markers."""
+        """Removes AI trash, stage directions, meta-commentary, and unwanted markers."""
         if not text:
             return ""
         # Remove markdown headers like ### or ##
@@ -60,17 +60,49 @@ class ScriptWriter:
         text = re.sub(r'(?i)\[Video içeriği.*?\]', '', text)
         text = re.sub(r'(?i)\[Hazırlanan metin.*?\]', '', text)
 
+        # ── CRITICAL: Remove AI self-referential meta-text ──
+        # AI sometimes writes "Here's a YouTube short script..." or "Okay, get ready..."
+        # These meta-instructions must NEVER be narrated in the video
+        meta_patterns = [
+            r"(?i)^\s*okay[,.]?\s*here'?s\s+(a|the|your|my).*?script.*?[\.!]",
+            r"(?i)^\s*here'?s\s+(a|the|your|my).*?script.*?[\.!]",
+            r"(?i)^\s*get\s+ready\s+for.*?[\.!]",
+            r"(?i)following\s+(all\s+)?your\s+guidelines[,.]?",
+            r"(?i)here'?s\s+a\s+youtube\s+short",
+            r"(?i)this\s+is\s+a\s+\d+[- ]second\s+(script|video|narration)",
+            r"(?i)i'?ll\s+(now\s+)?write\s+(a|the)\s+(script|narration)",
+            r"(?i)let\s+me\s+(create|write|generate)\s+(a|the)",
+            r"(?i)sure!?\s+(here|i)",
+            r"(?i)^\s*absolutely!?",
+            r"(?i)^\s*of\s+course!?",
+            r"(?i)as\s+(requested|per\s+your|you\s+asked)",
+            r"(?i)based\s+on\s+(the|your)\s+(research|guidelines|instructions|prompt)",
+            r"(?i)following\s+(the|your)\s+(structure|format|guidelines|rules)",
+            r"(?i)word\s+count[:\s]*\d+",
+            r"(?i)target\s+duration",
+            r"(?i)act\s+\d+\s*:",
+        ]
+        for pattern in meta_patterns:
+            text = re.sub(pattern, '', text)
+
         # Remove common prefixes
         if language == "tr":
-            prefixes = ["ANLATICI:", "SAHNE:", "GİRİŞ:", "SONUÇ:", "NARRATOR:", "SCENE:", "BAŞLIK:"]
+            prefixes = ["ANLATICI:", "SAHNE:", "GİRİŞ:", "SONUÇ:", "NARRATOR:", "SCENE:", "BAŞLIK:",
+                        "FRAGMAN:", "HOOK:", "KAPANIŞ:", "CTA:"]
         else:
-            prefixes = ["NARRATOR:", "SCENE:", "INTRO:", "OUTRO:", "CHAPTER:", "TITLE:"]
+            prefixes = ["NARRATOR:", "SCENE:", "INTRO:", "OUTRO:", "CHAPTER:", "TITLE:",
+                        "HOOK:", "CTA:", "TRAILER:", "ACT 1:", "ACT 2:", "ACT 3:", "ACT 4:", "ACT 5:"]
 
         for p in prefixes:
             text = text.replace(p, "")
 
         # Remove bold/italic markers
         text = text.replace("**", "").replace("__", "").replace("*", "").replace("_", "")
+
+        # Remove lines that are just labels (e.g., single word followed by colon)
+        lines = text.split('\n')
+        lines = [l for l in lines if not re.match(r'^\s*[A-Z][A-Z\s]{0,20}:\s*$', l)]
+        text = ' '.join(lines)
 
         # Final cleanup for punctuation and spaces
         text = re.sub(r'\s+', ' ', text)
@@ -271,14 +303,23 @@ class ScriptWriter:
 
             TOPIC: {topic}
 
+            ⛔ CRITICAL OUTPUT RULES (VIOLATION = IMMEDIATE REJECTION):
+            - Output ONLY the words that will be SPOKEN ALOUD by a narrator.
+            - NEVER start with "Here's a script" or "Okay, get ready" or any self-referential meta-text.
+            - NEVER mention that this is a script, video, or YouTube content.
+            - NEVER reference guidelines, word counts, acts, or production notes.
+            - The VERY FIRST WORD must be the actual content hook — start talking about {topic} IMMEDIATELY.
+            - NO labels like ACT 1, SCENE, HOOK, CTA, INTRO, OUTRO.
+            - NO brackets, no parentheses, no stage directions.
+
             STRUCTURE & PACING RULES:
-            - 🎞️ ACT 1: FRAGMAN / HOOK (MANDATORY): Start with a unique hook directly related to "{topic}".
-            - 🎬 ACT 2: INTRO TRANSITION: Naturally lead into a short pause for the branding intro.
-            - 📖 ACT 3: INFORMATION BODY: Continuous narrative, facts, NO numbered lists.
-            - 🔥 ACT 4: THE CLIMAX & WRAP: End with shock using "{climax_lead_in}".
-            - 🏁 ACT 5: OUTRO / CTA: The VERY LAST sentence MUST be like, subscribe, comment.
+            - Start with a shocking/intriguing fact about "{topic}" to hook the viewer instantly.
+            - Deliver 3-5 mind-blowing facts in rapid succession.
+            - Build to a climax using "{climax_lead_in}".
+            - End with a natural call to action (like, subscribe, comment).
             - Language: STRICTLY {lang_name} only.
-            - ⚠️ WARNING: DO NOT include meta-labels like [Kısa Müzik] or [Logo].
+            - Word count: 110-140 words.
+            - Write as if you're a narrator speaking directly to the viewer, NOT describing what to write.
             """
 
     @retry_with_backoff(max_retries=2, base_delay=2.0)

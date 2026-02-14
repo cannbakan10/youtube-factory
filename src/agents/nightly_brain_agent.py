@@ -820,6 +820,52 @@ Output STRICT JSON format:
             # Ensure longform key exists (empty — ambient produced separately)
             plan["longform"] = []
 
+            # ── POST-GENERATION DUPLICATE FILTER ──
+            # AI sometimes suggests topics that already exist on the channel
+            if existing_titles and plan.get("shorts"):
+                original_count = len(plan["shorts"])
+                filtered_shorts = []
+                seen_in_plan = set()
+
+                for short in plan["shorts"]:
+                    norm = self._normalize_title(short.get("title", ""))
+                    topic_norm = self._normalize_title(short.get("topic", ""))
+
+                    # Check exact match
+                    if norm in existing_titles or topic_norm in existing_titles:
+                        logger.info(f"  🚫 Duplicate filtered (exact): {short['title'][:50]}")
+                        continue
+
+                    # Check fuzzy match (word overlap > 60%)
+                    is_dupe = False
+                    norm_words = set(norm.split())
+                    for existing in existing_titles:
+                        existing_words = set(existing.split())
+                        if not norm_words or not existing_words:
+                            continue
+                        overlap = len(norm_words & existing_words)
+                        ratio = overlap / min(len(norm_words), len(existing_words))
+                        if ratio > 0.6 and overlap >= 3:
+                            logger.info(f"  🚫 Duplicate filtered (fuzzy {ratio:.0%}): {short['title'][:50]} ≈ {existing[:50]}")
+                            is_dupe = True
+                            break
+
+                    if is_dupe:
+                        continue
+
+                    # Check within plan (dedup against itself)
+                    if norm in seen_in_plan:
+                        logger.info(f"  🚫 Duplicate filtered (self): {short['title'][:50]}")
+                        continue
+
+                    seen_in_plan.add(norm)
+                    filtered_shorts.append(short)
+
+                plan["shorts"] = filtered_shorts
+                removed = original_count - len(filtered_shorts)
+                if removed > 0:
+                    logger.info(f"  📊 Removed {removed} duplicate Shorts from plan ({len(filtered_shorts)} remaining)")
+
             # Add metadata
             plan["generated_at"] = datetime.utcnow().isoformat()
             plan["trending_count"] = len(trending)
