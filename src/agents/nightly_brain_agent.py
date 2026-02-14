@@ -608,11 +608,17 @@ class NightlyBrainAgent:
     # PHASE 3: PLAN — Generate next-day content plan
     # ──────────────────────────────────────────────────────
 
-    def generate_content_plan(self, trending: List[Dict], channel_videos: List[Dict] = None, performance_review: Dict = None) -> Dict:
+    def generate_content_plan(self, trending: List[Dict], channel_videos: List[Dict] = None,
+                              performance_review: Dict = None, viral_shorts: List[Dict] = None,
+                              competitor_insights: List[Dict] = None, audience_desires: List[str] = None) -> Dict:
         """
         Analyze trending videos and create a content plan for tomorrow.
-        Uses Gemini AI to identify the best topics to create content about.
-        Incorporates performance_review data from last 48h for feedback loop.
+        Uses Gemini AI with deep insights from:
+        - Trending chart videos
+        - Viral Shorts search results (search.list)
+        - Competitor channel monitoring
+        - Audience comment mining
+        - Performance feedback loop
         """
         logger.info("📝 Phase 3: Generating content plan...")
 
@@ -684,14 +690,60 @@ STRATEGY ADJUSTMENT: Create MORE content similar to the best performing topics.
 AVOID topics similar to the underperforming ones. Double down on what works!
 """
 
-            prompt = f"""You are a YouTube content strategist for a channel called "StreamGlobal" 
-that creates English-language Shorts and long-form videos targeting a global English audience.
+            # Viral Shorts section
+            viral_section = ""
+            if viral_shorts:
+                viral_list = "\n".join(
+                    f"  - \"{v['title']}\" ({v['views']:,} views, {v['engagement_rate']}% eng) [query: {v.get('search_query', '')}]"
+                    for v in viral_shorts[:10]
+                )
+                viral_section = f"""
 
-Here are today's top 20 trending YouTube videos (from multiple regions):
+VIRAL SHORTS IN OUR NICHE (last 7 days, 10K+ views):
+{viral_list}
+
+IMPORTANT: These Shorts went viral in OUR exact niche. Study their titles, 
+hooks, and topics. Create similar content with a fresh angle!
+"""
+
+            # Competitor section
+            competitor_section = ""
+            if competitor_insights:
+                comp_list = "\n".join(
+                    f"  📺 {c['channel']}: {', '.join(c['recent_titles'][:3])}"
+                    for c in competitor_insights
+                )
+                competitor_section = f"""
+
+COMPETITOR ACTIVITY (last 7 days):
+{comp_list}
+
+Study competitors' topics — create BETTER versions of their content.
+"""
+
+            # Audience desires section
+            audience_section = ""
+            if audience_desires:
+                desires_list = "\n".join(f"  - \"{d}\"" for d in audience_desires[:10])
+                audience_section = f"""
+
+AUDIENCE COMMENTS (from top viral videos — what people want):
+{desires_list}
+
+Use these comments to understand what viewers are asking for. Create content that answers their curiosity!
+"""
+
+            prompt = f"""You are a YouTube content strategist for a channel called "StreamGlobal" 
+that creates English-language Shorts and long-form videos targeting a US audience.
+
+Here are today's top 20 trending YouTube videos in the US:
 
 {top_20_summary}
 {channel_section}
 {perf_section}
+{viral_section}
+{competitor_section}
+{audience_section}
 Here are some of our existing video topics (to avoid duplicates):
 {existing_sample}
 
@@ -946,38 +998,237 @@ Output STRICT JSON format:
             return {"status": "error", "error": str(e)}
 
     # ──────────────────────────────────────────────────────
-    # MULTI-REGION TRENDING
+    # DEEP US TRENDING (chart + search + niche + competitors)
     # ──────────────────────────────────────────────────────
 
-    def discover_trending_multi_region(self, regions=None, count_per_region=30) -> List[Dict]:
+    def discover_trending_deep(self, count: int = 100) -> Dict:
         """
-        Scan multiple regions for trending content.
-        Discovers viral topics that haven't been covered in English yet.
+        Deep US-only trending analysis using ALL YouTube API capabilities:
+        1. mostPopular chart (existing)
+        2. search.list — find viral Shorts by niche keywords
+        3. Competitor channel monitoring — track what top channels upload
+        4. Comment mining — extract audience desires from viral video comments
+        
+        Returns dict with trending videos + viral shorts + competitor insights
         """
-        if regions is None:
-            regions = ["US", "GB", "IN", "CA", "AU", "DE"]
+        logger.info("🇺🇸 Deep US Trending Discovery...")
+        result = {
+            "trending": [],
+            "viral_shorts": [],
+            "competitor_insights": [],
+            "audience_desires": [],
+        }
 
-        logger.info(f"🌍 Multi-region trending scan: {', '.join(regions)}")
+        # ── STAGE 1: Standard trending chart ──
+        result["trending"] = self.discover_trending(region="US", count=count)
+        logger.info(f"  📊 Chart trending: {len(result['trending'])} videos")
 
-        all_trending = []
+        # ── STAGE 2: Search for viral Shorts by niche ──
+        result["viral_shorts"] = self._search_viral_shorts()
+        logger.info(f"  🔥 Viral Shorts found: {len(result['viral_shorts'])}")
+
+        # ── STAGE 3: Competitor monitoring ──
+        result["competitor_insights"] = self._monitor_competitors()
+        logger.info(f"  🔎 Competitor insights: {len(result['competitor_insights'])} channels")
+
+        # ── STAGE 4: Comment mining from top viral videos ──
+        top_viral_ids = [v["id"] for v in result["trending"][:5]]
+        result["audience_desires"] = self._mine_comments(top_viral_ids)
+        logger.info(f"  💬 Audience desires: {len(result['audience_desires'])} insights")
+
+        return result
+
+    def _search_viral_shorts(self) -> List[Dict]:
+        """
+        Use search.list to find recent viral Shorts in our niche categories.
+        This catches viral content that doesn't appear on the mostPopular chart.
+        """
+        if not self.yt_public:
+            return []
+
+        # Our content niches — search for what's working NOW
+        niche_queries = [
+            "amazing facts you didn't know",
+            "psychology facts about human behavior",
+            "science facts that will blow your mind",
+            "history facts nobody told you",
+            "space facts universe",
+            "animal facts wildlife",
+            "country facts geography",
+            "mystery unsolved creepy",
+            "technology AI future",
+            "ocean deep sea facts",
+            "did you know facts",
+            "top 5 facts",
+        ]
+
+        viral_shorts = []
         seen_ids = set()
 
-        for region in regions:
+        for query in niche_queries:
             try:
-                regional = self.discover_trending(region=region, count=count_per_region)
-                for v in regional:
-                    if v["id"] not in seen_ids:
-                        seen_ids.add(v["id"])
-                        v["source_region"] = region
-                        all_trending.append(v)
-                logger.info(f"  🌐 {region}: {len(regional)} trending found")
-            except Exception as e:
-                logger.warning(f"  ⚠️ {region} scan failed: {e}")
+                response = self.yt_public.search().list(
+                    part="snippet",
+                    q=query,
+                    type="video",
+                    videoDuration="short",          # Shorts only
+                    order="viewCount",              # Sort by views
+                    publishedAfter=(
+                        (datetime.utcnow() - timedelta(days=7)).strftime("%Y-%m-%dT%H:%M:%SZ")
+                    ),
+                    regionCode="US",
+                    relevanceLanguage="en",
+                    maxResults=5,
+                ).execute()
 
-        # Sort by views and deduplicate by topic
-        all_trending.sort(key=lambda v: v["views"], reverse=True)
-        logger.info(f"  ✅ Total unique trending: {len(all_trending)}")
-        return all_trending
+                video_ids = [item["id"]["videoId"] for item in response.get("items", [])]
+                if not video_ids:
+                    continue
+
+                # Get full stats
+                stats_response = self.yt_public.videos().list(
+                    part="snippet,statistics,contentDetails",
+                    id=",".join(video_ids),
+                ).execute()
+
+                for item in stats_response.get("items", []):
+                    vid_id = item["id"]
+                    if vid_id in seen_ids:
+                        continue
+                    seen_ids.add(vid_id)
+
+                    stats = item.get("statistics", {})
+                    snippet = item.get("snippet", {})
+                    content = item.get("contentDetails", {})
+                    dur = self._parse_iso_duration(content.get("duration", "PT0S"))
+
+                    if dur > 180:  # Skip non-shorts
+                        continue
+
+                    views = int(stats.get("viewCount", 0))
+                    likes = int(stats.get("likeCount", 0))
+                    comments = int(stats.get("commentCount", 0))
+
+                    if views < 10000:  # Only truly viral
+                        continue
+
+                    viral_shorts.append({
+                        "id": vid_id,
+                        "title": snippet.get("title", ""),
+                        "channel": snippet.get("channelTitle", ""),
+                        "channel_id": snippet.get("channelId", ""),
+                        "views": views,
+                        "likes": likes,
+                        "comments": comments,
+                        "engagement_rate": round((likes + comments) / max(views, 1) * 100, 2),
+                        "tags": snippet.get("tags", [])[:10],
+                        "duration_seconds": dur,
+                        "search_query": query,
+                        "published_at": snippet.get("publishedAt", ""),
+                        "description": snippet.get("description", "")[:200],
+                    })
+
+            except Exception as e:
+                logger.warning(f"  ⚠️ Search '{query[:30]}' failed: {e}")
+
+        # Sort by views
+        viral_shorts.sort(key=lambda v: v["views"], reverse=True)
+        return viral_shorts[:30]  # Top 30
+
+    def _monitor_competitors(self) -> List[Dict]:
+        """
+        Monitor competitor channels that create similar Shorts content.
+        Tracks their recent uploads to see what's working.
+        """
+        if not self.yt_public:
+            return []
+
+        # Top fact/educational Shorts channels to monitor
+        competitor_handles = [
+            "@MrBeast", "@FactsVerse", "@BrightSide",
+            "@ThoughtFactory", "@ScienceChannel",
+        ]
+
+        insights = []
+
+        for handle in competitor_handles:
+            try:
+                # Search for channel by handle
+                ch_response = self.yt_public.search().list(
+                    part="snippet",
+                    q=handle,
+                    type="channel",
+                    maxResults=1,
+                ).execute()
+
+                if not ch_response.get("items"):
+                    continue
+
+                ch_id = ch_response["items"][0]["snippet"]["channelId"]
+                ch_name = ch_response["items"][0]["snippet"]["channelTitle"]
+
+                # Get their recent Shorts
+                vids_response = self.yt_public.search().list(
+                    part="snippet",
+                    channelId=ch_id,
+                    type="video",
+                    videoDuration="short",
+                    order="date",
+                    publishedAfter=(
+                        (datetime.utcnow() - timedelta(days=7)).strftime("%Y-%m-%dT%H:%M:%SZ")
+                    ),
+                    maxResults=5,
+                ).execute()
+
+                recent_titles = []
+                for item in vids_response.get("items", []):
+                    recent_titles.append(item["snippet"]["title"])
+
+                if recent_titles:
+                    insights.append({
+                        "channel": ch_name,
+                        "channel_id": ch_id,
+                        "recent_titles": recent_titles,
+                    })
+
+            except Exception as e:
+                logger.warning(f"  ⚠️ Competitor {handle} failed: {e}")
+
+        return insights
+
+    def _mine_comments(self, video_ids: List[str], max_per_video: int = 20) -> List[str]:
+        """
+        Mine top comments from viral videos to understand audience desires.
+        Returns a list of comment themes/requests.
+        """
+        if not self.yt_public or not video_ids:
+            return []
+
+        all_comments = []
+
+        for vid_id in video_ids[:5]:
+            try:
+                response = self.yt_public.commentThreads().list(
+                    part="snippet",
+                    videoId=vid_id,
+                    order="relevance",
+                    maxResults=max_per_video,
+                    textFormat="plainText",
+                ).execute()
+
+                for item in response.get("items", []):
+                    comment = item["snippet"]["topLevelComment"]["snippet"]
+                    text = comment.get("textDisplay", "")
+                    likes = comment.get("likeCount", 0)
+
+                    # Only high-engagement comments (what audiences want)
+                    if likes >= 5 and len(text) > 10:
+                        all_comments.append(text[:150])
+
+            except Exception as e:
+                logger.debug(f"  Comment mining for {vid_id} failed: {e}")
+
+        return all_comments[:20]
 
     # ──────────────────────────────────────────────────────
     # SEO KEYWORD ENRICHMENT
@@ -1103,20 +1354,25 @@ Output STRICT JSON format:
             "thresholds": cleanup.get("thresholds_used", {}),
         }
 
-        # ─── PHASE 2: Discover Trending (Multi-Region!) ───
+        # ─── PHASE 2: Deep US Trending Discovery ───
         logger.info("\n" + "─" * 40)
-        logger.info("🌍 PHASE 2: Multi-Region Trend Discovery")
+        logger.info("🇺🇸 PHASE 2: Deep US Trending Discovery")
         logger.info("─" * 40)
-        trending = self.discover_trending_multi_region(
-            regions=["US", "GB", "IN", "CA", "AU", "DE"],
-            count_per_region=30
-        )
+        deep_trends = self.discover_trending_deep(count=100)
+        trending = deep_trends["trending"]
         nightly_report["trending"] = {
             "found": len(trending),
+            "viral_shorts_found": len(deep_trends.get("viral_shorts", [])),
+            "competitors_analyzed": len(deep_trends.get("competitor_insights", [])),
+            "comments_mined": len(deep_trends.get("audience_desires", [])),
             "top_5": [
-                {"title": v["title"][:60], "views": v["views"], "category": v["category"], "region": v.get("source_region", "US")}
+                {"title": v["title"][:60], "views": v["views"], "category": v["category"]}
                 for v in trending[:5]
-            ]
+            ],
+            "top_viral_shorts": [
+                {"title": v["title"][:60], "views": v["views"], "query": v.get("search_query", "")}
+                for v in deep_trends.get("viral_shorts", [])[:5]
+            ],
         }
 
         # ─── PHASE 3: Generate Plan ───
@@ -1129,7 +1385,13 @@ Output STRICT JSON format:
         analytics = YouTubeAnalyticsAgent(youtube_service=self.youtube)
         channel_videos = analytics.get_all_videos(max_results=200)
 
-        plan = self.generate_content_plan(trending, channel_videos, performance_review=performance)
+        plan = self.generate_content_plan(
+            trending, channel_videos,
+            performance_review=performance,
+            viral_shorts=deep_trends.get("viral_shorts", []),
+            competitor_insights=deep_trends.get("competitor_insights", []),
+            audience_desires=deep_trends.get("audience_desires", []),
+        )
 
         # ─── PHASE 4: SEO Enrichment (NEW!) ───
         logger.info("\n" + "─" * 40)
@@ -1169,6 +1431,13 @@ Output STRICT JSON format:
         print("🧠 NIGHTLY BRAIN SUMMARY")
         print("=" * 60)
 
+        # Performance review
+        perf = report.get("performance_review", {})
+        if perf and perf.get("status") != "no_recent_videos":
+            print(f"\n📈 Performance (48h):")
+            print(f"   Avg views: {perf.get('avg_views_48h', 0)}")
+            print(f"   Winners: {perf.get('winners_count', 0)} | Losers: {perf.get('losers_count', 0)}")
+
         cleanup = report.get("cleanup", {})
         print(f"\n🗑️ Cleanup:")
         print(f"   Deleted: {cleanup.get('deleted', 0)}")
@@ -1176,9 +1445,15 @@ Output STRICT JSON format:
         print(f"   Kept: {cleanup.get('kept', 0)}")
 
         trending = report.get("trending", {})
-        print(f"\n🔍 Trending Videos Found: {trending.get('found', 0)}")
+        print(f"\n🇺🇸 Deep US Trending:")
+        print(f"   Chart trending: {trending.get('found', 0)}")
+        print(f"   Viral Shorts: {trending.get('viral_shorts_found', 0)}")
+        print(f"   Competitors: {trending.get('competitors_analyzed', 0)}")
+        print(f"   Comments mined: {trending.get('comments_mined', 0)}")
         for t in trending.get("top_5", []):
             print(f"   🔥 {t['title'][:50]} ({t['views']:,} views)")
+        for s in trending.get("top_viral_shorts", []):
+            print(f"   ⚡ {s['title'][:50]} ({s['views']:,} views) [{s.get('query', '')}]")
 
         plan_info = report.get("plan", {})
         print(f"\n📝 Tomorrow's Plan:")
