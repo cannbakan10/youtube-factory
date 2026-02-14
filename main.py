@@ -304,10 +304,24 @@ class YoutubeFactory:
 
                 logger.info(f"VIDEO READY: {dest_path}")
 
-                # 5. Auto-Upload
+                # 5. Auto-Upload (with thumbnail)
                 if auto_upload:
                     if not self.youtube_service:
                         self.youtube_service = YouTubeService()
+
+                    # Generate thumbnail BEFORE upload
+                    thumb_path = None
+                    try:
+                        branding = BrandingService()
+                        thumb_path = branding.generate_thumbnail(
+                            topic=topic,
+                            title=title,
+                            video_type=video_type,
+                            output_path=os.path.join(lang_dir, "thumbnail.jpg"),
+                        )
+                        logger.info(f"🎨 Thumbnail generated: {thumb_path}")
+                    except Exception as te:
+                        logger.warning(f"Thumbnail generation failed: {te}")
 
                     upload_id = self.youtube_service.upload_video(
                         dest_path,
@@ -316,6 +330,15 @@ class YoutubeFactory:
                         tags,
                         video_type=video_type,
                     )
+
+                    # Set custom thumbnail after upload
+                    if upload_id and thumb_path and os.path.exists(thumb_path):
+                        try:
+                            self.youtube_service.set_thumbnail(upload_id, thumb_path)
+                            logger.info(f"🎨 Custom thumbnail set for {upload_id}")
+                        except Exception as te:
+                            logger.warning(f"Thumbnail set failed: {te}")
+
                     if not upload_id:
                         logger.error(f"Upload failed for {lang} ({dest_path})")
                         return None

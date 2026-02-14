@@ -896,3 +896,133 @@ Raporu markdown formatında, detaylı ve actionable önerilerle yaz.
         for i, v in enumerate(videos, 1):
             lines.append(f"  {i}. {v['title'][:50]} | Views: {v['views']:,} | Eng: {v['engagement_rate']}%")
         return "\n".join(lines)
+
+    # ──────────────────────────────────────────────────────
+    # AMBIENT VIDEO PERFORMANCE ANALYSIS
+    # ──────────────────────────────────────────────────────
+
+    def analyze_ambient_performance(self) -> Dict:
+        """
+        Analyze performance of all ambient/long-form videos (1h+).
+        Identifies which ambient types (fireplace, rain, forest, etc.) 
+        perform best to guide future production decisions.
+        
+        Returns rankings by views, engagement, and views-per-day.
+        """
+        logger.info("🔥 Analyzing ambient video performance...")
+
+        videos = self.get_all_videos(max_results=500)
+        if not videos:
+            return {"error": "No videos found"}
+
+        # Ambient type detection keywords
+        AMBIENT_KEYWORDS = {
+            "fireplace": ["fireplace", "fire", "crackling", "cozy fire", "burning"],
+            "rain": ["rain", "rainfall", "rainy", "rain sounds"],
+            "forest": ["forest", "nature sounds", "birds", "woodland"],
+            "ocean": ["ocean", "waves", "sea", "beach", "shore"],
+            "thunderstorm": ["thunder", "storm", "lightning"],
+            "waterfall": ["waterfall", "cascade", "falls"],
+            "snow": ["snow", "snowfall", "blizzard", "winter"],
+            "campfire": ["campfire", "camp fire", "bonfire"],
+            "candle": ["candle", "candlelight"],
+            "underwater": ["underwater", "deep sea", "aquatic"],
+            "river": ["river", "stream", "creek", "brook"],
+            "garden": ["garden", "flowers", "birds singing"],
+            "wind": ["wind", "breeze", "howling"],
+            "aurora": ["aurora", "northern lights"],
+            "sunset": ["sunset", "sunrise", "golden hour"],
+            "cave": ["cave", "cavern", "dripping"],
+            "jungle": ["jungle", "tropical", "rainforest"],
+            "zen": ["zen", "japanese", "meditation"],
+        }
+
+        # Filter for ambient videos (1h+ duration)
+        ambient_videos = [v for v in videos if v.get("duration_seconds", 0) >= 3600]
+        
+        if not ambient_videos:
+            logger.info("No ambient videos found (1h+ duration)")
+            return {
+                "total_ambient": 0,
+                "message": "No ambient videos found",
+                "type_rankings": [],
+            }
+
+        # Categorize by ambient type
+        type_stats = defaultdict(lambda: {
+            "videos": [],
+            "total_views": 0,
+            "total_likes": 0,
+            "total_comments": 0,
+            "avg_views_per_day": 0,
+            "count": 0,
+        })
+
+        uncategorized = []
+
+        for v in ambient_videos:
+            title_lower = v["title"].lower()
+            matched_type = None
+
+            for ambient_type, keywords in AMBIENT_KEYWORDS.items():
+                if any(kw in title_lower for kw in keywords):
+                    matched_type = ambient_type
+                    break
+
+            if matched_type:
+                stats = type_stats[matched_type]
+                stats["videos"].append(v)
+                stats["total_views"] += v["views"]
+                stats["total_likes"] += v["likes"]
+                stats["total_comments"] += v["comments"]
+                stats["avg_views_per_day"] += v["views_per_day"]
+                stats["count"] += 1
+            else:
+                uncategorized.append(v)
+
+        # Calculate averages and rankings
+        type_rankings = []
+        for ambient_type, stats in type_stats.items():
+            count = stats["count"]
+            avg_views = stats["total_views"] / count if count > 0 else 0
+            avg_vpd = stats["avg_views_per_day"] / count if count > 0 else 0
+            avg_eng = (
+                (stats["total_likes"] + stats["total_comments"])
+                / max(stats["total_views"], 1) * 100
+            )
+            
+            best_video = max(stats["videos"], key=lambda x: x["views"]) if stats["videos"] else None
+
+            type_rankings.append({
+                "type": ambient_type,
+                "video_count": count,
+                "total_views": stats["total_views"],
+                "avg_views": round(avg_views),
+                "avg_views_per_day": round(avg_vpd, 1),
+                "engagement_rate": round(avg_eng, 2),
+                "best_video": {
+                    "title": best_video["title"][:60],
+                    "views": best_video["views"],
+                    "views_per_day": best_video["views_per_day"],
+                } if best_video else None,
+            })
+
+        # Sort by total views (best performing first)
+        type_rankings.sort(key=lambda x: x["total_views"], reverse=True)
+
+        # Log findings
+        logger.info(f"📊 Ambient analysis: {len(ambient_videos)} total ambient videos")
+        for i, r in enumerate(type_rankings[:5], 1):
+            logger.info(
+                f"  {i}. {r['type'].upper()} — {r['video_count']} videos, "
+                f"{r['total_views']:,} total views, {r['avg_views_per_day']} vpd"
+            )
+
+        return {
+            "total_ambient": len(ambient_videos),
+            "total_ambient_views": sum(v["views"] for v in ambient_videos),
+            "type_rankings": type_rankings,
+            "uncategorized_count": len(uncategorized),
+            "top_type": type_rankings[0]["type"] if type_rankings else None,
+            "worst_type": type_rankings[-1]["type"] if type_rankings else None,
+        }

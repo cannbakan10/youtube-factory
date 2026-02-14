@@ -157,6 +157,21 @@ class NightlyBrainAgent:
                 to_keep.append(v)
                 continue
 
+            # ── Rule 0: Strategy enforcement — delete non-Shorts under 1 hour ──
+            # Channel strategy: Shorts (discovery) + Ambient (1-16h watch time)
+            # Mid-length videos (2-59 min) don't fit and hurt channel identity
+            if not v["is_shorts"] and v["duration_seconds"] < 3600:
+                delete_reasons.append(
+                    f"Mid-length video ({v['duration_seconds'] // 60}min) — "
+                    f"channel strategy is Shorts + Ambient only"
+                )
+                # Even if high views, remove to maintain channel identity
+                if v.get("privacy_status") == "unlisted":
+                    to_delete.append({**v, "delete_reasons": delete_reasons})
+                else:
+                    to_unlist.append({**v, "delete_reasons": delete_reasons})
+                continue
+
             # ── PROTECT: High engagement (algorithm may push later) ──
             if v["engagement_rate"] > 8.0 and v["days_since_publish"] < 30:
                 to_keep.append(v)
@@ -734,7 +749,12 @@ Use these comments to understand what viewers are asking for. Create content tha
 """
 
             prompt = f"""You are a YouTube content strategist for a channel called "StreamGlobal" 
-that creates English-language Shorts and long-form videos targeting a US audience.
+that creates English-language Shorts and ambient relaxation videos targeting a US audience.
+
+CHANNEL STRATEGY:
+- Shorts (under 60 seconds) = Discovery & subscriber growth
+- Ambient videos (1-8 hour loops: fireplace, rain, forest, ocean etc.) = Watch time & ad revenue
+- NO mid-length videos (2-59 min documentaries). Only Shorts + Ambient!
 
 Here are today's top 20 trending YouTube videos in the US:
 
@@ -747,20 +767,25 @@ Here are today's top 20 trending YouTube videos in the US:
 Here are some of our existing video topics (to avoid duplicates):
 {existing_sample}
 
-Create a content plan for TOMORROW with exactly 20 video ideas:
-- 16 YouTube Shorts (under 60 seconds, fact/info style)
-- 4 Long-form ideas (8-15 minutes, documentary/educational style)
+Create a content plan for TOMORROW with:
+- 20 YouTube Shorts (under 60 seconds, fact/info style)
+- 3 Ambient video recommendations (which ambient type to produce next)
+
+Available ambient types: fireplace, forest, rain, ocean, thunderstorm, waterfall, 
+snow, campfire, candle, underwater, river, garden, wind, aurora, sunset, cave, 
+jungle, lavender_field, zen_garden, japanese_garden
 
 Requirements:
-1. Topics must be INSPIRED by trending content AND successful channel patterns
+1. Shorts topics must be INSPIRED by trending content AND successful channel patterns
 2. Study the trending channels' title formats and content styles — create similar content
 3. Must be in ENGLISH only
 4. Must NOT duplicate any existing channel content
-5. Each idea should have viral potential
+5. Each Shorts idea should have viral potential
 6. Include relevant tags and hashtags
 7. Consider the "hook in first 3 seconds" rule for Shorts
 8. Prioritize topics from channels with high engagement rates
 9. Learn from performance feedback — avoid topic types that underperformed
+10. For ambient recommendations, suggest types that are seasonally relevant and trending
 
 Output STRICT JSON format:
 {{
@@ -775,14 +800,11 @@ Output STRICT JSON format:
             "estimated_views": "low/medium/high based on trend analysis"
         }}
     ],
-    "longform": [
+    "ambient_recommendations": [
         {{
-            "title": "Long-form Video Title",
-            "topic": "Detailed topic for research and scripting",
-            "outline": "Brief outline of what the video should cover",
-            "tags": ["tag1", "tag2"],
-            "inspired_by": "Which trending video/channel inspired this",
-            "estimated_views": "low/medium/high"
+            "type": "one of the available ambient types",
+            "hours": 8,
+            "reason": "Why this type would perform well right now"
         }}
     ]
 }}
@@ -795,13 +817,18 @@ Output STRICT JSON format:
 
             plan = json.loads(response.text)
 
+            # Ensure longform key exists (empty — ambient produced separately)
+            plan["longform"] = []
+
             # Add metadata
             plan["generated_at"] = datetime.utcnow().isoformat()
             plan["trending_count"] = len(trending)
             plan["channels_analyzed"] = len(seen_channels)
             plan["status"] = "pending"
 
-            logger.info(f"✅ Content plan: {len(plan.get('shorts', []))} shorts + {len(plan.get('longform', []))} longform")
+            shorts_count = len(plan.get("shorts", []))
+            ambient_recs = len(plan.get("ambient_recommendations", []))
+            logger.info(f"✅ Content plan: {shorts_count} shorts + {ambient_recs} ambient recommendations")
             return plan
 
         except Exception as e:
@@ -1375,15 +1402,30 @@ Output STRICT JSON format:
             ],
         }
 
-        # ─── PHASE 3: Generate Plan ───
+        # ─── PHASE 3: Ambient Performance Analysis ───
         logger.info("\n" + "─" * 40)
-        logger.info("📝 PHASE 3: Content Planning")
+        logger.info("🔥 PHASE 3: Ambient Video Performance Analysis")
         logger.info("─" * 40)
 
         # Get existing channel videos to avoid duplicates
         from src.agents.youtube_analytics_agent import YouTubeAnalyticsAgent
         analytics = YouTubeAnalyticsAgent(youtube_service=self.youtube)
         channel_videos = analytics.get_all_videos(max_results=200)
+
+        # Analyze ambient video performance
+        ambient_analysis = analytics.analyze_ambient_performance()
+        nightly_report["ambient_analysis"] = {
+            "total_ambient": ambient_analysis.get("total_ambient", 0),
+            "total_views": ambient_analysis.get("total_ambient_views", 0),
+            "top_type": ambient_analysis.get("top_type"),
+            "worst_type": ambient_analysis.get("worst_type"),
+            "type_rankings": ambient_analysis.get("type_rankings", [])[:5],
+        }
+
+        # ─── PHASE 4: Generate Plan ───
+        logger.info("\n" + "─" * 40)
+        logger.info("📝 PHASE 4: Content Planning (Shorts + Ambient Recs)")
+        logger.info("─" * 40)
 
         plan = self.generate_content_plan(
             trending, channel_videos,
@@ -1393,9 +1435,9 @@ Output STRICT JSON format:
             audience_desires=deep_trends.get("audience_desires", []),
         )
 
-        # ─── PHASE 4: SEO Enrichment (NEW!) ───
+        # ─── PHASE 5: SEO Enrichment ───
         logger.info("\n" + "─" * 40)
-        logger.info("🔎 PHASE 4: SEO Keyword Enrichment")
+        logger.info("🔎 PHASE 5: SEO Keyword Enrichment")
         logger.info("─" * 40)
         plan = self.enrich_plan_with_seo(plan)
 
@@ -1407,9 +1449,8 @@ Output STRICT JSON format:
 
         nightly_report["plan"] = {
             "shorts_planned": len(plan.get("shorts", [])),
-            "longform_planned": len(plan.get("longform", [])),
+            "ambient_recommendations": plan.get("ambient_recommendations", []),
             "shorts": [s.get("title", "?")[:50] for s in plan.get("shorts", [])],
-            "longform": [l.get("title", "?")[:50] for l in plan.get("longform", [])],
         }
 
         # Save nightly log
@@ -1460,9 +1501,23 @@ Output STRICT JSON format:
         print(f"   Shorts: {plan_info.get('shorts_planned', 0)}")
         for s in plan_info.get("shorts", []):
             print(f"   📹 {s}")
-        print(f"   Long-form: {plan_info.get('longform_planned', 0)}")
-        for l in plan_info.get("longform", []):
-            print(f"   🎬 {l}")
+
+        # Ambient analysis
+        ambient = report.get("ambient_analysis", {})
+        if ambient.get("total_ambient", 0) > 0:
+            print(f"\n🔥 Ambient Performance:")
+            print(f"   Total ambient videos: {ambient.get('total_ambient', 0)}")
+            print(f"   Total ambient views: {ambient.get('total_views', 0):,}")
+            print(f"   🏆 Best type: {ambient.get('top_type', 'N/A')}")
+            for r in ambient.get("type_rankings", [])[:3]:
+                print(f"   📊 {r['type'].upper()}: {r['total_views']:,} views ({r['video_count']} videos, {r['avg_views_per_day']} vpd)")
+
+        # Ambient recommendations
+        ambient_recs = plan_info.get("ambient_recommendations", [])
+        if ambient_recs:
+            print(f"\n🎯 Ambient Recommendations:")
+            for rec in ambient_recs:
+                print(f"   🔥 {rec.get('type', '?')} ({rec.get('hours', 8)}h) — {rec.get('reason', '')[:60]}")
 
         print("\n" + "=" * 60)
 
