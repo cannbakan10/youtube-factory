@@ -18,7 +18,9 @@
         "#money"
       ],
       "inspired_by": "General trend of financial literacy content",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "produced",
+      "production_id": "Explain_the_history_of_diamond_1771057375"
     },
     {
       "title": "The Dark Truth About Honey",
@@ -37,7 +39,9 @@
         "#environment"
       ],
       "inspired_by": "Trend of exposing harmful food production methods",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Discuss_the_environmental_impa_1771057595"
     },
     {
       "title": "Mind-Blowing Underwater Discovery!",
@@ -195,5 +199,11 @@
   ],
   "generated_at": "2026-02-14T07:38:48.996239",
   "trending_count": 0,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-02-14T08:30:53.286917",
+  "results": {
+    "shorts_produced": 2,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
