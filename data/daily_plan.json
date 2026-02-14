@@ -102,7 +102,9 @@
         "#weather"
       ],
       "inspired_by": "Popular 'explained' videos on common phenomena",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Explain_the_science_behind_pet_1771078597"
     },
     {
       "title": "Crazy Things You Didn't Know About Space",
@@ -121,7 +123,9 @@
         "#astronomy"
       ],
       "inspired_by": "General popularity of space-related content",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "produced",
+      "production_id": "Share_a_bizarre_or_mindblowing_1771078819"
     },
     {
       "title": "The Deadliest Plant on Earth",
@@ -204,7 +208,7 @@
   "generated_at": "2026-02-14T07:38:48.996239",
   "trending_count": 0,
   "status": "in_progress",
-  "last_executed_at": "2026-02-14T10:30:47.228096",
+  "last_executed_at": "2026-02-14T14:23:34.838316",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
