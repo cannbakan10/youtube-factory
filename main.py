@@ -140,8 +140,8 @@ class YoutubeFactory:
             lang = lang.strip().lower()
             logger.info(f"PROCESSING LANGUAGE: {lang.upper()}")
 
-            # Update Voice for current language
-            self.tts.set_voice(language=lang)
+            # Update Voice for current language + content-aware selection
+            self.tts.set_voice_for_content(topic=topic, mode=mode, language=lang)
 
             # 2. Script & Blueprint
             narrative = self.scriptwriter.generate_narrative(research_data, topic, language=lang, mode=mode, video_type=video_type, style_context=style_context)

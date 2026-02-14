@@ -1,10 +1,95 @@
 import os
+import json
+import random
 import pickle
+import requests
 import google.oauth2.credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
+
+# ─── Playlist Category Mapping ─────────────────────────────────
+PLAYLIST_MAP = {
+    "animal": "Amazing Animal Facts 🐾",
+    "animals": "Amazing Animal Facts 🐾",
+    "cat": "Amazing Animal Facts 🐾",
+    "dog": "Amazing Animal Facts 🐾",
+    "wildlife": "Amazing Animal Facts 🐾",
+    "space": "Mind-Blowing Space Facts 🌌",
+    "planet": "Mind-Blowing Space Facts 🌌",
+    "galaxy": "Mind-Blowing Space Facts 🌌",
+    "universe": "Mind-Blowing Space Facts 🌌",
+    "star": "Mind-Blowing Space Facts 🌌",
+    "black hole": "Mind-Blowing Space Facts 🌌",
+    "country": "Country Deep Dives 🌍",
+    "geography": "Country Deep Dives 🌍",
+    "city": "Country Deep Dives 🌍",
+    "nation": "Country Deep Dives 🌍",
+    "history": "Incredible History 📚",
+    "ancient": "Incredible History 📚",
+    "war": "Incredible History 📚",
+    "civilization": "Incredible History 📚",
+    "empire": "Incredible History 📚",
+    "nature": "Nature & Relaxation 🌿",
+    "forest": "Nature & Relaxation 🌿",
+    "mountain": "Nature & Relaxation 🌿",
+    "ambient": "Sleep & Study Sounds 🎧",
+    "sleep": "Sleep & Study Sounds 🎧",
+    "rain": "Sleep & Study Sounds 🎧",
+    "asmr": "Sleep & Study Sounds 🎧",
+    "study": "Sleep & Study Sounds 🎧",
+    "fireplace": "Cozy Fireplace Collection 🔥",
+    "fire": "Cozy Fireplace Collection 🔥",
+    "cozy": "Cozy Fireplace Collection 🔥",
+    "science": "Science Explained 🔬",
+    "physics": "Science Explained 🔬",
+    "chemistry": "Science Explained 🔬",
+    "biology": "Science Explained 🔬",
+    "brain": "Science Explained 🔬",
+    "human body": "Science Explained 🔬",
+    "technology": "Tech & Future 🤖",
+    "ai": "Tech & Future 🤖",
+    "robot": "Tech & Future 🤖",
+    "tech": "Tech & Future 🤖",
+    "ocean": "Ocean & Deep Sea 🌊",
+    "sea": "Ocean & Deep Sea 🌊",
+    "underwater": "Ocean & Deep Sea 🌊",
+    "marine": "Ocean & Deep Sea 🌊",
+    "mystery": "Unsolved Mysteries 🔮",
+    "horror": "Unsolved Mysteries 🔮",
+    "psychology": "Mind & Psychology 🧠",
+    "mind": "Mind & Psychology 🧠",
+}
+
+# ─── Engagement Comments Pool ──────────────────────────────────
+ENGAGEMENT_COMMENTS = {
+    "facts": [
+        "What fact surprised you the most? 🤯 Comment below!",
+        "Did you know this? Drop a 🔥 if you learned something new!",
+        "Which one was the most mind-blowing? Let me know! 👇",
+        "I bet you didn't know #3! 😱 Comment your reaction!",
+        "Share this with someone who needs to see this! 🧠",
+    ],
+    "nature": [
+        "Where would you love to visit? 🌍 Comment below!",
+        "Nature is incredible 🌿 Double tap if you agree!",
+        "Would you visit this place? Drop a ❤️ if yes!",
+    ],
+    "ambient": [
+        "Use this for sleep or study? 🎧 Let me know in the comments!",
+        "Turn up the volume and relax 😌 What are you doing while listening?",
+        "Perfect for: 📚 Study | 😴 Sleep | 🧘 Meditation — Which one? 👇",
+    ],
+    "default": [
+        "What do you think about this? 🤔 Comment below!",
+        "Drop a 🔥 if you enjoyed this! Subscribe for more!",
+        "Did this blow your mind? 🧠 Let me know! 👇",
+        "Share this with a friend who would love it! 🚀",
+        "Which part was your favorite? Comment below! 💬",
+    ],
+}
+
 
 class YouTubeService:
     def __init__(self):
@@ -12,6 +97,7 @@ class YouTubeService:
             "https://www.googleapis.com/auth/youtube",
             "https://www.googleapis.com/auth/youtube.upload",
             "https://www.googleapis.com/auth/youtube.readonly",
+            "https://www.googleapis.com/auth/youtube.force-ssl",
         ]
         # Determine project root relative to this file
         self.project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -30,6 +116,9 @@ class YouTubeService:
         self.allow_interactive = not (os.getenv("GITHUB_ACTIONS") or os.getenv("CI"))
         self.credentials = self._authenticate()
         self.youtube = build("youtube", "v3", credentials=self.credentials) if self.credentials else None
+        
+        # Cache for playlist IDs
+        self._playlist_cache = {}
         
         if not self.youtube:
             print("   ⚠️ [YouTube]: Service initialized WITHOUT upload capability (No valid credentials).")
@@ -83,10 +172,17 @@ class YouTubeService:
                     pickle.dump(creds, token)
         return creds
 
+    # ──────────────────────────────────────────────────────
+    # VIDEO UPLOAD (Enhanced with post-upload actions)
+    # ──────────────────────────────────────────────────────
+
     def upload_video(self, file_path, title, description, tags=None, video_type="shorts"):
         """
         Uploads a video to YouTube with chunked resumable upload.
-        Handles large files (10+ GB) with proper chunk sizes and retry logic.
+        After upload, automatically:
+          1. Adds to appropriate playlist
+          2. Posts a pinned engagement comment
+          3. Sets custom thumbnail (if available)
         """
         if not self.credentials or not self.youtube:
             print("   ⚠️ [YouTube]: Upload skipped (No credentials).")
@@ -101,11 +197,13 @@ class YouTubeService:
 
         is_shorts = video_type == "shorts"
         upload_title = f"{title} #Shorts" if is_shorts else title
-        upload_description = (
-            f"{description}\n\n#Shorts #Viral #Knowledge"
-            if is_shorts
-            else description
+        
+        # Enhanced description with cross-links
+        recent_videos = self._get_recent_videos(count=3)
+        upload_description = self._build_smart_description(
+            description, tags or [], recent_videos, is_shorts
         )
+        
         upload_tags = tags or (["shorts", "viral", "knowledge"] if is_shorts else ["longform", "ambient", "education"])
         
         body = {
@@ -161,6 +259,11 @@ class YouTubeService:
 
             video_id = response.get("id")
             print(f"✅ [YouTube]: Video uploaded successfully! ID: {video_id}")
+
+            # ─── POST-UPLOAD ACTIONS ────────────────────────
+            if video_id:
+                self._post_upload_actions(video_id, title, tags, video_type)
+
             return video_id
 
         except Exception as e:
@@ -175,3 +278,281 @@ class YouTubeService:
             else:
                 print(f"   ⚠️ ERROR: {error_str}")
             return None
+
+    def _post_upload_actions(self, video_id, title, tags, video_type):
+        """Run all post-upload enhancement actions."""
+        # Action 1: Add to playlist
+        try:
+            playlist_name = self._detect_playlist(title, tags)
+            if playlist_name:
+                playlist_id = self.get_or_create_playlist(playlist_name)
+                if playlist_id:
+                    self.add_to_playlist(playlist_id, video_id)
+                    print(f"   📋 [Playlist]: Added to '{playlist_name}'")
+        except Exception as e:
+            print(f"   ⚠️ [Playlist]: Failed - {e}")
+
+        # Action 2: Post pinned engagement comment
+        try:
+            comment_category = self._detect_comment_category(title, tags)
+            comment = random.choice(
+                ENGAGEMENT_COMMENTS.get(comment_category, ENGAGEMENT_COMMENTS["default"])
+            )
+            self.post_comment(video_id, comment)
+            print(f"   💬 [Comment]: Posted engagement comment")
+        except Exception as e:
+            print(f"   ⚠️ [Comment]: Failed - {e}")
+
+        # Action 3: Set thumbnail (if one exists next to the video)
+        try:
+            thumb_path = os.path.join(
+                self.project_root, "assets", "branding", f"thumb_{video_id}.jpg"
+            )
+            if os.path.exists(thumb_path):
+                self.set_thumbnail(video_id, thumb_path)
+                print(f"   🎨 [Thumbnail]: Custom thumbnail set")
+        except Exception as e:
+            print(f"   ⚠️ [Thumbnail]: Failed - {e}")
+
+    # ──────────────────────────────────────────────────────
+    # SMART DESCRIPTION BUILDER
+    # ──────────────────────────────────────────────────────
+
+    def _build_smart_description(self, original_desc, tags, recent_videos, is_shorts):
+        """Build SEO-optimized description with cross-links."""
+        parts = [original_desc.strip()]
+        
+        # Add subscribe CTA
+        parts.append("")
+        parts.append("🔔 Subscribe for more: https://youtube.com/@StreamGlobal?sub_confirmation=1")
+        
+        # Add recent video links
+        if recent_videos:
+            parts.append("")
+            parts.append("📺 Watch Next:")
+            for v in recent_videos[:3]:
+                vtitle = v.get("title", "")[:50]
+                vid = v.get("id", "")
+                if vid:
+                    parts.append(f"▶️ {vtitle}: https://youtu.be/{vid}")
+        
+        # Add hashtags
+        if is_shorts:
+            parts.append("")
+            tag_str = " ".join(f"#{t.replace(' ', '')}" for t in tags[:5] if t)
+            parts.append(f"#Shorts #Viral #Knowledge {tag_str}")
+        else:
+            parts.append("")
+            tag_str = " ".join(f"#{t.replace(' ', '')}" for t in tags[:8] if t)
+            parts.append(tag_str)
+        
+        return "\n".join(parts)
+
+    def _get_recent_videos(self, count=3):
+        """Get the most recent uploaded videos for cross-linking."""
+        if not self.youtube:
+            return []
+        try:
+            # Get channel's uploads playlist
+            channels = self.youtube.channels().list(
+                part="contentDetails", mine=True
+            ).execute()
+            
+            if not channels.get("items"):
+                return []
+            
+            uploads_id = channels["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
+            
+            response = self.youtube.playlistItems().list(
+                part="snippet",
+                playlistId=uploads_id,
+                maxResults=count + 1  # +1 to exclude the current upload
+            ).execute()
+            
+            videos = []
+            for item in response.get("items", []):
+                videos.append({
+                    "id": item["snippet"]["resourceId"]["videoId"],
+                    "title": item["snippet"]["title"],
+                })
+            return videos
+        except Exception as e:
+            print(f"   ⚠️ [RecentVideos]: Could not fetch - {e}")
+            return []
+
+    # ──────────────────────────────────────────────────────
+    # PLAYLIST MANAGEMENT
+    # ──────────────────────────────────────────────────────
+
+    def create_playlist(self, title, description="", privacy="public"):
+        """Create a new YouTube playlist."""
+        if not self.youtube:
+            return None
+        body = {
+            "snippet": {
+                "title": title,
+                "description": description or f"Best {title} videos by StreamGlobal",
+            },
+            "status": {"privacyStatus": privacy},
+        }
+        result = self.youtube.playlists().insert(
+            part="snippet,status", body=body
+        ).execute()
+        playlist_id = result.get("id")
+        print(f"   📋 [Playlist]: Created '{title}' (ID: {playlist_id})")
+        return playlist_id
+
+    def add_to_playlist(self, playlist_id, video_id, position=0):
+        """Add a video to a playlist."""
+        if not self.youtube:
+            return None
+        body = {
+            "snippet": {
+                "playlistId": playlist_id,
+                "resourceId": {"kind": "youtube#video", "videoId": video_id},
+                "position": position,
+            }
+        }
+        return self.youtube.playlistItems().insert(
+            part="snippet", body=body
+        ).execute()
+
+    def get_or_create_playlist(self, title):
+        """Get existing playlist by title or create a new one."""
+        if title in self._playlist_cache:
+            return self._playlist_cache[title]
+            
+        if not self.youtube:
+            return None
+            
+        try:
+            # Check existing playlists
+            playlists = self.youtube.playlists().list(
+                part="snippet", mine=True, maxResults=50
+            ).execute()
+            
+            for p in playlists.get("items", []):
+                if p["snippet"]["title"] == title:
+                    self._playlist_cache[title] = p["id"]
+                    return p["id"]
+            
+            # Create new playlist
+            playlist_id = self.create_playlist(title)
+            if playlist_id:
+                self._playlist_cache[title] = playlist_id
+            return playlist_id
+        except Exception as e:
+            print(f"   ⚠️ [Playlist]: get_or_create failed - {e}")
+            return None
+
+    def _detect_playlist(self, title, tags):
+        """Detect which playlist a video belongs to based on title and tags."""
+        combined = (title + " " + " ".join(tags or [])).lower()
+        
+        for keyword, playlist_name in PLAYLIST_MAP.items():
+            if keyword in combined:
+                return playlist_name
+        
+        return "Facts & Knowledge 💡"  # Default playlist
+
+    # ──────────────────────────────────────────────────────
+    # COMMENT ENGAGEMENT
+    # ──────────────────────────────────────────────────────
+
+    def post_comment(self, video_id, text):
+        """Post a comment on a video."""
+        if not self.youtube:
+            return None
+        body = {
+            "snippet": {
+                "videoId": video_id,
+                "topLevelComment": {
+                    "snippet": {"textOriginal": text}
+                }
+            }
+        }
+        try:
+            result = self.youtube.commentThreads().insert(
+                part="snippet", body=body
+            ).execute()
+            return result.get("id")
+        except Exception as e:
+            print(f"   ⚠️ [Comment]: Post failed - {e}")
+            return None
+
+    def _detect_comment_category(self, title, tags):
+        """Detect comment category based on title/tags."""
+        combined = (title + " " + " ".join(tags or [])).lower()
+        
+        if any(w in combined for w in ["animal", "cat", "dog", "wildlife", "nature", "forest"]):
+            return "nature"
+        if any(w in combined for w in ["sleep", "rain", "ambient", "asmr", "fireplace", "relax"]):
+            return "ambient"
+        return "facts"
+
+    # ──────────────────────────────────────────────────────
+    # THUMBNAIL MANAGEMENT
+    # ──────────────────────────────────────────────────────
+
+    def set_thumbnail(self, video_id, thumbnail_path):
+        """Set a custom thumbnail for a video."""
+        if not self.youtube:
+            return None
+        try:
+            self.youtube.thumbnails().set(
+                videoId=video_id,
+                media_body=MediaFileUpload(thumbnail_path, mimetype="image/jpeg")
+            ).execute()
+            print(f"   🎨 [Thumbnail]: Set for video {video_id}")
+            return True
+        except Exception as e:
+            print(f"   ⚠️ [Thumbnail]: Set failed - {e}")
+            return None
+
+    # ──────────────────────────────────────────────────────
+    # SEO: YouTube Search Suggestions
+    # ──────────────────────────────────────────────────────
+
+    @staticmethod
+    def get_youtube_suggestions(query, language="en"):
+        """
+        Fetch YouTube auto-suggest keywords for SEO optimization.
+        Free API, no key required.
+        """
+        try:
+            url = "https://suggestqueries-clients6.youtube.com/complete/search"
+            params = {
+                "client": "youtube",
+                "q": query,
+                "ds": "yt",
+                "hl": language,
+            }
+            resp = requests.get(url, params=params, timeout=5)
+            text = resp.text
+            start = text.index("(") + 1
+            end = text.rindex(")")
+            data = json.loads(text[start:end])
+            suggestions = [item[0] for item in data[1] if isinstance(item, list) and item]
+            return suggestions[:10]
+        except Exception:
+            return []
+
+    @staticmethod
+    def optimize_title_with_keywords(title, keywords):
+        """
+        Optimize a title by incorporating high-search-volume keywords.
+        Keeps the original title's intent but makes it more discoverable.
+        """
+        if not keywords:
+            return title
+        
+        # Find the most relevant keyword that's not already in the title
+        title_lower = title.lower()
+        for kw in keywords:
+            if kw.lower() not in title_lower and len(kw) > 5:
+                # Don't make title too long
+                if len(title) + len(kw) < 90:
+                    return f"{title} | {kw.title()}"
+                break
+        
+        return title

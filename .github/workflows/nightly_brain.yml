@@ -1,15 +1,17 @@
 name: "🧠 Nightly Brain — Analytics, Cleanup & Planning"
 
 # ╔══════════════════════════════════════════════════════════╗
-# ║  NIGHTLY BRAIN — The Central Intelligence System        ║
+# ║  NIGHTLY BRAIN v3.0 — The Central Intelligence System   ║
 # ║                                                         ║
-# ║  Runs every night at 23:00 UTC (02:00 Turkey)           ║
+# ║  Scheduled: Every night 23:00 UTC (02:00 Turkey)        ║
+# ║  Manual: Plan + Produce mode (instant video production) ║
+# ║                                                         ║
+# ║  0. Reviews last 48h video performance (feedback loop)  ║
 # ║  1. Deletes underperforming & Turkish videos            ║
-# ║  2. Discovers top 100 US trending via YouTube API       ║
+# ║  2. Multi-region trending scan (US+GB+IN+CA+AU+DE)     ║
 # ║  3. Generates next-day content plan with Gemini AI      ║
-# ║  4. Commits plan for Content Engine to execute          ║
-# ║                                                         ║
-# ║  Budget: ~20 min/run × 30 days = 10 hrs/month           ║
+# ║  4. Enriches plan with YouTube SEO keywords             ║
+# ║  5. [Manual only] Produces & uploads videos immediately ║
 # ╚══════════════════════════════════════════════════════════╝
 
 on:
@@ -25,11 +27,27 @@ on:
         options:
           - 'false'
           - 'true'
+      produce_now:
+        description: 'After planning, immediately produce videos'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
+      shorts_count:
+        description: 'How many Shorts to produce immediately'
+        required: false
+        default: '4'
+      longform_count:
+        description: 'How many Long-form to produce immediately'
+        required: false
+        default: '1'
 
 jobs:
   nightly-brain:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
 
     steps:
       - name: Checkout Repository
@@ -39,6 +57,12 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
+
+      - name: Install ffmpeg
+        if: github.event.inputs.produce_now == 'true'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
 
       - name: Install Dependencies
         run: |
@@ -52,7 +76,7 @@ jobs:
             printf "%s" "${{ secrets.TOKEN_PICKLE_BASE64 }}" | base64 -d > token.pickle
           fi
 
-      - name: Run Nightly Brain
+      - name: Run Nightly Brain (Plan)
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -79,5 +103,35 @@ jobs:
           git config --local user.name "Nightly Brain Bot"
           git add data/daily_plan.json data/nightly_logs/ -f
           git diff --staged --quiet || git commit -m "🧠 Nightly: cleanup + plan [$(date -u +'%Y-%m-%d')]"
+          git pull --rebase origin main || true
+          git push origin main
+
+      - name: Produce Videos Now
+        if: github.event.inputs.produce_now == 'true'
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          FREEPIK_API_KEY: ${{ secrets.FREEPIK_API_KEY }}
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          TOKEN_PICKLE_BASE64: ${{ secrets.TOKEN_PICKLE_BASE64 }}
+          CLIENT_SECRETS_JSON: ${{ secrets.CLIENT_SECRETS_JSON }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: |
+          SHORTS=${{ github.event.inputs.shorts_count || '4' }}
+          LONGFORM=${{ github.event.inputs.longform_count || '1' }}
+          echo "🎬 INSTANT PRODUCTION: $SHORTS shorts + $LONGFORM longform"
+          python main.py --execute-plan --plan-shorts $SHORTS --plan-longform $LONGFORM
+
+      - name: Commit Production Results
+        if: github.event.inputs.produce_now == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "Nightly Brain Bot"
+          git add data/daily_plan.json -f
+          TIMESTAMP=$(date -u +'%Y-%m-%d_%H:%M')
+          git diff --staged --quiet || git commit -m "🎬 Instant production [$TIMESTAMP]"
           git pull --rebase origin main || true
           git push origin main

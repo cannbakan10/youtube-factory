@@ -608,10 +608,11 @@ class NightlyBrainAgent:
     # PHASE 3: PLAN — Generate next-day content plan
     # ──────────────────────────────────────────────────────
 
-    def generate_content_plan(self, trending: List[Dict], channel_videos: List[Dict] = None) -> Dict:
+    def generate_content_plan(self, trending: List[Dict], channel_videos: List[Dict] = None, performance_review: Dict = None) -> Dict:
         """
         Analyze trending videos and create a content plan for tomorrow.
         Uses Gemini AI to identify the best topics to create content about.
+        Incorporates performance_review data from last 48h for feedback loop.
         """
         logger.info("📝 Phase 3: Generating content plan...")
 
@@ -633,6 +634,7 @@ class NightlyBrainAgent:
                 f"{i+1}. [{v['category']}] {v['title']} | "
                 f"Views: {v['views']:,} | Engagement: {v['engagement_rate']}% | "
                 f"Tags: {', '.join(v.get('tags', [])[:5])}"
+                + (f" | Region: {v.get('source_region', 'US')}" if v.get("source_region") else "")
                 for i, v in enumerate(trending[:20])
             )
 
@@ -664,19 +666,38 @@ successful formats but with your own unique angle. Focus on topics that these pr
 channels have shown can go viral.
 """
 
-            prompt = f"""You are a YouTube content strategist for a channel called "StreamGlobal" 
-that creates English-language Shorts and long-form videos targeting a US audience.
+            # Performance feedback section
+            perf_section = ""
+            if performance_review and performance_review.get("status") != "no_recent_videos":
+                best_topics = ", ".join(performance_review.get("best_topics", [])[:3])
+                loser_topics = ", ".join(performance_review.get("loser_titles", [])[:3])
+                avg_views = performance_review.get("avg_views_48h", 0)
+                perf_section = f"""
+PERFORMANCE FEEDBACK (Last 48 hours):
+- Average views: {avg_views}
+- Best performing topics: {best_topics}
+- Underperforming topics: {loser_topics}
+- Winners count: {performance_review.get('winners_count', 0)}
+- Losers count: {performance_review.get('losers_count', 0)}
 
-Here are today's top 20 trending YouTube videos in the US:
+STRATEGY ADJUSTMENT: Create MORE content similar to the best performing topics.
+AVOID topics similar to the underperforming ones. Double down on what works!
+"""
+
+            prompt = f"""You are a YouTube content strategist for a channel called "StreamGlobal" 
+that creates English-language Shorts and long-form videos targeting a global English audience.
+
+Here are today's top 20 trending YouTube videos (from multiple regions):
 
 {top_20_summary}
 {channel_section}
+{perf_section}
 Here are some of our existing video topics (to avoid duplicates):
 {existing_sample}
 
-Create a content plan for TOMORROW with exactly 10 video ideas:
-- 8 YouTube Shorts (under 60 seconds, fact/info style)
-- 2 Long-form ideas (8-15 minutes, documentary/educational style)
+Create a content plan for TOMORROW with exactly 20 video ideas:
+- 16 YouTube Shorts (under 60 seconds, fact/info style)
+- 4 Long-form ideas (8-15 minutes, documentary/educational style)
 
 Requirements:
 1. Topics must be INSPIRED by trending content AND successful channel patterns
@@ -687,6 +708,7 @@ Requirements:
 6. Include relevant tags and hashtags
 7. Consider the "hook in first 3 seconds" rule for Shorts
 8. Prioritize topics from channels with high engagement rates
+9. Learn from performance feedback — avoid topic types that underperformed
 
 Output STRICT JSON format:
 {{
@@ -878,15 +900,180 @@ Output STRICT JSON format:
     # MAIN: Run full nightly pipeline
     # ──────────────────────────────────────────────────────
 
+    # ──────────────────────────────────────────────────────
+    # PERFORMANCE REVIEW (Feedback Loop)
+    # ──────────────────────────────────────────────────────
+
+    def review_recent_performance(self) -> Dict:
+        """
+        Review performance of videos uploaded in the last 48 hours.
+        Returns insights to feed into the next content plan.
+        """
+        logger.info("📊 Reviewing recent video performance (48h)...")
+        try:
+            from src.agents.youtube_analytics_agent import YouTubeAnalyticsAgent
+            analytics = YouTubeAnalyticsAgent(youtube_service=self.youtube)
+            videos = analytics.get_all_videos(max_results=50)
+
+            recent = [v for v in videos if v.get("days_since_publish", 999) <= 2]
+
+            if not recent:
+                logger.info("  No videos uploaded in last 48 hours")
+                return {"status": "no_recent_videos"}
+
+            winners = [v for v in recent if v.get("views", 0) > 100]
+            losers = [v for v in recent if v.get("views", 0) < 10 and v.get("days_since_publish", 0) >= 1]
+
+            avg_views = sum(v.get("views", 0) for v in recent) / max(len(recent), 1)
+            best = sorted(recent, key=lambda x: x.get("views", 0), reverse=True)[:3]
+
+            review = {
+                "total_recent": len(recent),
+                "winners_count": len(winners),
+                "losers_count": len(losers),
+                "avg_views_48h": round(avg_views, 1),
+                "best_topics": [v.get("title", "")[:60] for v in best],
+                "best_views": [v.get("views", 0) for v in best],
+                "winner_titles": [v.get("title", "") for v in winners],
+                "loser_titles": [v.get("title", "") for v in losers[:5]],
+            }
+
+            logger.info(f"  📈 Recent: {len(recent)} videos | Winners: {len(winners)} | Losers: {len(losers)} | Avg Views: {avg_views:.0f}")
+            return review
+
+        except Exception as e:
+            logger.warning(f"  Performance review failed: {e}")
+            return {"status": "error", "error": str(e)}
+
+    # ──────────────────────────────────────────────────────
+    # MULTI-REGION TRENDING
+    # ──────────────────────────────────────────────────────
+
+    def discover_trending_multi_region(self, regions=None, count_per_region=30) -> List[Dict]:
+        """
+        Scan multiple regions for trending content.
+        Discovers viral topics that haven't been covered in English yet.
+        """
+        if regions is None:
+            regions = ["US", "GB", "IN", "CA", "AU", "DE"]
+
+        logger.info(f"🌍 Multi-region trending scan: {', '.join(regions)}")
+
+        all_trending = []
+        seen_ids = set()
+
+        for region in regions:
+            try:
+                regional = self.discover_trending(region=region, count=count_per_region)
+                for v in regional:
+                    if v["id"] not in seen_ids:
+                        seen_ids.add(v["id"])
+                        v["source_region"] = region
+                        all_trending.append(v)
+                logger.info(f"  🌐 {region}: {len(regional)} trending found")
+            except Exception as e:
+                logger.warning(f"  ⚠️ {region} scan failed: {e}")
+
+        # Sort by views and deduplicate by topic
+        all_trending.sort(key=lambda v: v["views"], reverse=True)
+        logger.info(f"  ✅ Total unique trending: {len(all_trending)}")
+        return all_trending
+
+    # ──────────────────────────────────────────────────────
+    # SEO KEYWORD ENRICHMENT
+    # ──────────────────────────────────────────────────────
+
+    def enrich_plan_with_seo(self, plan: Dict) -> Dict:
+        """
+        Enrich each planned video with YouTube Search Suggest keywords.
+        Optimizes titles and adds SEO tags for better discoverability.
+        """
+        from src.services.youtube_service import YouTubeService
+
+        items = plan.get("shorts", []) + plan.get("longform", [])
+        enriched_count = 0
+
+        for item in items:
+            topic = item.get("topic", item.get("title", ""))
+            if not topic:
+                continue
+
+            try:
+                suggestions = YouTubeService.get_youtube_suggestions(topic)
+                if suggestions:
+                    # Add SEO tags
+                    item["seo_keywords"] = suggestions[:8]
+                    # Optimize title if not already optimized
+                    if "optimized_title" not in item:
+                        item["optimized_title"] = YouTubeService.optimize_title_with_keywords(
+                            item.get("title", topic), suggestions
+                        )
+                    enriched_count += 1
+            except Exception as e:
+                logger.warning(f"  SEO enrichment failed for '{topic[:30]}': {e}")
+
+        logger.info(f"  🔎 SEO enriched: {enriched_count}/{len(items)} videos")
+        return plan
+
+    # ──────────────────────────────────────────────────────
+    # VIDEO SCORE CALCULATOR
+    # ──────────────────────────────────────────────────────
+
+    @staticmethod
+    def calculate_video_score(video: Dict) -> int:
+        """
+        Calculate a 0-100 performance score for a video.
+        Used to evaluate content strategy effectiveness.
+        """
+        score = 0
+        views = video.get("views", 0)
+        engagement = video.get("engagement_rate", 0)
+        days = video.get("days_since_publish", 30)
+        views_per_day = views / max(days, 1)
+
+        # Views (max 30 points)
+        if views > 1000: score += 30
+        elif views > 500: score += 25
+        elif views > 100: score += 20
+        elif views > 50: score += 15
+        elif views > 10: score += 10
+        elif views > 0: score += 5
+
+        # Engagement (max 25 points)
+        if engagement > 10: score += 25
+        elif engagement > 5: score += 20
+        elif engagement > 2: score += 15
+        elif engagement > 1: score += 10
+
+        # Views per day momentum (max 20 points)
+        if views_per_day > 50: score += 20
+        elif views_per_day > 20: score += 15
+        elif views_per_day > 5: score += 10
+
+        # Freshness bonus (max 15 points)
+        if days < 3 and views > 50: score += 15
+        elif days < 7 and views > 100: score += 10
+
+        # Consistency bonus (max 10 points)
+        if views_per_day > 10 and days > 7: score += 10
+
+        return min(score, 100)
+
+    # ──────────────────────────────────────────────────────
+    # MAIN: Run full nightly pipeline
+    # ──────────────────────────────────────────────────────
+
     def run_nightly(self, dry_run: bool = False) -> Dict:
         """
         Run the complete nightly pipeline:
+        0. Review recent performance (feedback loop)
         1. Cleanup underperformers
-        2. Discover top 100 trending
+        2. Discover trending (multi-region)
         3. Generate tomorrow's content plan
+        4. Enrich plan with SEO keywords
         """
         logger.info("=" * 60)
-        logger.info("🧠 NIGHTLY BRAIN — Starting...")
+        logger.info("🧠 NIGHTLY BRAIN v2.0 — Starting...")
         logger.info(f"   Time: {datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')}")
         logger.info(f"   Mode: {'DRY RUN' if dry_run else 'LIVE'}")
         logger.info("=" * 60)
@@ -895,6 +1082,13 @@ Output STRICT JSON format:
             "timestamp": datetime.utcnow().isoformat(),
             "dry_run": dry_run,
         }
+
+        # ─── PHASE 0: Performance Review (NEW!) ───
+        logger.info("\n" + "─" * 40)
+        logger.info("📊 PHASE 0: Performance Review (48h Feedback)")
+        logger.info("─" * 40)
+        performance = self.review_recent_performance()
+        nightly_report["performance_review"] = performance
 
         # ─── PHASE 1: Cleanup ───
         logger.info("\n" + "─" * 40)
@@ -909,15 +1103,18 @@ Output STRICT JSON format:
             "thresholds": cleanup.get("thresholds_used", {}),
         }
 
-        # ─── PHASE 2: Discover Trending ───
+        # ─── PHASE 2: Discover Trending (Multi-Region!) ───
         logger.info("\n" + "─" * 40)
-        logger.info("🔍 PHASE 2: Trend Discovery")
+        logger.info("🌍 PHASE 2: Multi-Region Trend Discovery")
         logger.info("─" * 40)
-        trending = self.discover_trending(region="US", count=100)
+        trending = self.discover_trending_multi_region(
+            regions=["US", "GB", "IN", "CA", "AU", "DE"],
+            count_per_region=30
+        )
         nightly_report["trending"] = {
             "found": len(trending),
             "top_5": [
-                {"title": v["title"][:60], "views": v["views"], "category": v["category"]}
+                {"title": v["title"][:60], "views": v["views"], "category": v["category"], "region": v.get("source_region", "US")}
                 for v in trending[:5]
             ]
         }
@@ -932,7 +1129,13 @@ Output STRICT JSON format:
         analytics = YouTubeAnalyticsAgent(youtube_service=self.youtube)
         channel_videos = analytics.get_all_videos(max_results=200)
 
-        plan = self.generate_content_plan(trending, channel_videos)
+        plan = self.generate_content_plan(trending, channel_videos, performance_review=performance)
+
+        # ─── PHASE 4: SEO Enrichment (NEW!) ───
+        logger.info("\n" + "─" * 40)
+        logger.info("🔎 PHASE 4: SEO Keyword Enrichment")
+        logger.info("─" * 40)
+        plan = self.enrich_plan_with_seo(plan)
 
         # Save plan
         os.makedirs(os.path.dirname(self.plan_file), exist_ok=True)

@@ -1,36 +1,49 @@
 name: "🎬 Content Engine — Produce & Upload Videos"
 
 # ╔══════════════════════════════════════════════════════════╗
-# ║  CONTENT ENGINE — Automated Video Production            ║
+# ║  CONTENT ENGINE v3.0 — High-Volume Video Production     ║
 # ║                                                         ║
-# ║  Daily output: 8 Shorts + 2 Long-form = 10 videos/day  ║
-# ║  Schedule: 4 runs/day × (2 Shorts per run)              ║
-# ║            + 1 long-form run                             ║
+# ║  Daily output: 16 Shorts + 4 Long-form = 20 videos/day ║
+# ║  Actions budget: ~200 hrs/month (of 3,000 available)    ║
 # ║                                                         ║
-# ║  ┌──────────┬──────────────────────────────────┐        ║
-# ║  │ Time UTC │ Action                           │        ║
-# ║  ├──────────┼──────────────────────────────────┤        ║
-# ║  │ 06:00    │ 2 Shorts (early morning US)      │        ║
-# ║  │ 10:00    │ 2 Shorts (morning US East Coast) │        ║
-# ║  │ 14:00    │ 2 Shorts (afternoon US)          │        ║
-# ║  │ 18:00    │ 2 Shorts (evening US prime time) │        ║
-# ║  │ 22:00    │ 2 Long-form (night engagement)   │        ║
-# ║  └──────────┴──────────────────────────────────┘        ║
+# ║  ┌──────────┬──────────────────────────────────────────┐ ║
+# ║  │ Time UTC │ Action                                   │ ║
+# ║  ├──────────┼──────────────────────────────────────────┤ ║
+# ║  │ 06:00    │ 2 Shorts (EU morning + Asia evening)    │ ║
+# ║  │ 09:00    │ 2 Shorts (UK morning + India afternoon) │ ║
+# ║  │ 12:00    │ 2 Shorts (US early morning + EU lunch)  │ ║
+# ║  │ 14:00    │ 2 Shorts (US morning rush 9-10am ET)    │ ║
+# ║  │ 16:00    │ 2 Shorts (US lunch + UK evening)        │ ║
+# ║  │ 18:00    │ 2 Shorts (US afternoon 1-2pm ET)        │ ║
+# ║  │ 20:00    │ 2 Shorts (US prime 3-4pm ET)            │ ║
+# ║  │ 22:00    │ 2 Shorts (US evening 5-6pm ET)          │ ║
+# ║  │ 01:00    │ 2 Long-form (US late night + Asia AM)   │ ║
+# ║  │ 11:00    │ 2 Long-form (US 6am + EU noon)          │ ║
+# ║  └──────────┴──────────────────────────────────────────┘ ║
 # ║                                                         ║
-# ║  Budget: 5 runs × ~25 min = 125 min/day                 ║
-# ║          = ~63 hrs/month out of 3,000 hrs                ║
+# ║  8 Shorts batches × 2 = 16 Shorts/day                  ║
+# ║  2 Long-form batches × 2 = 4 Long-form/day             ║
+# ║  Total: 20 videos/day = 600 videos/month                ║
+# ║                                                         ║
+# ║  Monthly budget: 10 runs/day × 35min × 30 = 175 hrs    ║
+# ║  + Nightly Brain = ~190 hrs total ≪ 3,000 hrs limit    ║
 # ╚══════════════════════════════════════════════════════════╝
 
 on:
   schedule:
-    # Shorts production (4 runs × 2 shorts = 8 shorts/day)
-    - cron: '0 6 * * *'    # 06:00 UTC — Early batch
-    - cron: '0 10 * * *'   # 10:00 UTC — Morning batch
-    - cron: '0 14 * * *'   # 14:00 UTC — Afternoon batch
-    - cron: '0 18 * * *'   # 18:00 UTC — Prime time batch
+    # Shorts production — 8 batches covering all time zones
+    - cron: '0 6 * * *'    # 06:00 UTC — EU morning + Asia evening
+    - cron: '0 9 * * *'    # 09:00 UTC — UK morning + India afternoon
+    - cron: '0 12 * * *'   # 12:00 UTC — US early morning + EU lunch
+    - cron: '0 14 * * *'   # 14:00 UTC — US morning rush (9-10am ET)
+    - cron: '0 16 * * *'   # 16:00 UTC — US lunch + UK evening
+    - cron: '0 18 * * *'   # 18:00 UTC — US afternoon (1-2pm ET)
+    - cron: '0 20 * * *'   # 20:00 UTC — US prime time (3-4pm ET)
+    - cron: '0 22 * * *'   # 22:00 UTC — US evening (5-6pm ET)
 
-    # Long-form production (1 run × 2 long-form = 2 long/day)
-    - cron: '0 22 * * *'   # 22:00 UTC — Night long-form batch
+    # Long-form production — 2 batches
+    - cron: '0 1 * * *'    # 01:00 UTC — US late night + Asian morning
+    - cron: '0 11 * * *'   # 11:00 UTC — US 6am + EU noon
 
   workflow_dispatch:
     inputs:
@@ -46,7 +59,7 @@ on:
       count:
         description: 'Number of videos to produce'
         required: false
-        default: '2'
+        default: '3'
 
 jobs:
   produce-content:
@@ -114,24 +127,24 @@ jobs:
           if [ -n "$MANUAL_TYPE" ]; then
             # Manual dispatch
             if [ "$MANUAL_TYPE" = "shorts" ]; then
-              echo "shorts_count=${MANUAL_COUNT:-2}" >> $GITHUB_OUTPUT
+              echo "shorts_count=${MANUAL_COUNT:-3}" >> $GITHUB_OUTPUT
               echo "longform_count=0" >> $GITHUB_OUTPUT
             elif [ "$MANUAL_TYPE" = "longform" ]; then
               echo "shorts_count=0" >> $GITHUB_OUTPUT
               echo "longform_count=${MANUAL_COUNT:-2}" >> $GITHUB_OUTPUT
             else
-              echo "shorts_count=${MANUAL_COUNT:-2}" >> $GITHUB_OUTPUT
-              echo "longform_count=1" >> $GITHUB_OUTPUT
+              echo "shorts_count=${MANUAL_COUNT:-3}" >> $GITHUB_OUTPUT
+              echo "longform_count=2" >> $GITHUB_OUTPUT
             fi
           else
             # Scheduled run — determine by hour
-            if [ "$HOUR" = "22" ]; then
-              # 22:00 UTC = Long-form batch
+            if [ "$HOUR" = "01" ] || [ "$HOUR" = "11" ]; then
+              # Long-form batches
               echo "shorts_count=0" >> $GITHUB_OUTPUT
               echo "longform_count=2" >> $GITHUB_OUTPUT
-              echo "🎬 Long-form batch (22:00 UTC)"
+              echo "🎬 Long-form batch ($HOUR:00 UTC)"
             else
-              # 06/10/14/18 UTC = Shorts batch
+              # All other hours = Shorts batch
               echo "shorts_count=2" >> $GITHUB_OUTPUT
               echo "longform_count=0" >> $GITHUB_OUTPUT
               echo "📹 Shorts batch ($HOUR:00 UTC)"

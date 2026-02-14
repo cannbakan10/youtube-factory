@@ -26,7 +26,7 @@ class XContentAgent:
         self.history_file = os.path.join(self.data_dir, "x_history.json")
 
     def generate_daily_plan(self, custom_topic=None):
-        """Generates 1 high-quality, media-rich post for the day."""
+        """Generates 1 high-quality, media-rich post for the day in English."""
         logger.info(f"Generating daily plan for X (Topic: {custom_topic or 'Auto Trend'})...")
         
         # Strategy Update: Always try to be media-rich (image/video) for maximum engagement
@@ -35,10 +35,16 @@ class XContentAgent:
         if custom_topic:
             topic = custom_topic
         else:
-            # Categorize to ensure variety
-            categories = ["bilim", "tarih", "uzay", "doğa", "hayvanlar", "teknoloji", "psikoloji", "sanat", "coğrafya", "arkeoloji", "denizaltı"]
+            # English categories for variety
+            categories = [
+                "science", "history", "space", "nature", "animals",
+                "technology", "psychology", "art", "geography",
+                "archaeology", "deep sea", "physics", "medicine",
+                "ancient civilizations", "AI and robots", "human body",
+                "mysteries", "climate", "evolution", "mathematics"
+            ]
             selected_category = random.choice(categories)
-            topic = f"{selected_category} hakkında bilinmeyen, çok şaşırtıcı, 'yok artık' dedirtecek ilginç bir bilgi"
+            topic = f"an unknown, mind-blowing, shocking fact about {selected_category}"
             
         research_data = self.researcher.research(topic)
         
@@ -47,25 +53,27 @@ class XContentAgent:
         {research_data}
         
         TASK:
-        Bu bilgiden yola çıkarak X (Twitter) için 1 adet "Vay Be!" dedirtecek post hazırla.
+        Create 1 viral "Mind-Blown" style post for X (Twitter) based on this data.
         
-        STRATEJİ KURALLARI:
-        1. Dil tamamen Türkçe olmalı. 
-        2. ASLA "Stream Global" veya herhangi bir marka ismi kullanma.
-        3. BAŞLIK: İlgi çekici bir emoji ile başla (Örn: 🧠 BUNLARI BİLİYOR MUYDUNUZ?, 🌌 ŞAŞIRTICI GERÇEK:).
-        4. SORU: Postun sonuna mutlaka etkileşim artıracak bir soru ekle (Örn: Sizce bu mümkün mü?, En çok hangisine şaşırdınız?).
-        5. HASHTAG: Maksimum 2-3 tane hashtag kullan. #VayBeBilgi etiketi SABİT olsun, diğeri konuya özel olsun (Örn: #uzay, #tarih).
-        6. ÇEŞİTLİLİK: Daha önceki postlarla aynı cümle yapılarını kullanma. ASLA "Satürn" hakkında bilgi verme; bu konu çok kez işlendi, farklı bir gezegen veya tamamen farklı bir konu seç.
+        STRATEGY RULES:
+        1. Language: ENGLISH only.
+        2. NEVER mention "Stream Global" or any brand name.
+        3. HOOK: Start with an eye-catching emoji (e.g., 🧠 DID YOU KNOW?, 🌌 SHOCKING FACT:, 🔬 SCIENCE SAYS:).
+        4. QUESTION: End with an engagement question (e.g., "Did you know this?", "Which one shocked you most?", "What do you think?").
+        5. HASHTAGS: Max 2-3 hashtags. #MindBlown is FIXED, plus 1-2 topic-specific ones (e.g., #space, #history, #science).
+        6. VARIETY: Don't repeat sentence structures from previous posts. Keep it fresh and unique.
+        7. LENGTH: Keep under 280 characters for maximum engagement.
+        8. TONE: Conversational, exciting, factual. Like sharing an incredible discovery with a friend.
         
         FORMAT (JSON):
         {{
           "type": "image",
-          "text": "Post metni...",
-          "keywords": ["görsel aramak için 2-3 adet ingilizce anahtar kelime"],
-          "scheduled_time": "08:00"
+          "text": "Post text...",
+          "keywords": ["2-3 English keywords for image search"],
+          "scheduled_time": "15:00"
         }}
         
-        Sadece JSON objesini döndür (liste değil).
+        Return ONLY the JSON object (not a list).
         """
         
         response = self.researcher._generate_report_gemini(prompt)
@@ -87,7 +95,7 @@ class XContentAgent:
             with open(self.plan_file, "w", encoding="utf-8") as f:
                 json.dump(plan, f, indent=2, ensure_ascii=False)
             
-            logger.info(f"Vay Be Plan generated: {post_data['type']} at {post_data['scheduled_time']}")
+            logger.info(f"Daily plan generated: {post_data['type']} at {post_data['scheduled_time']}")
             return plan
         except Exception as e:
             logger.error(f"Failed to parse daily plan: {e}")
@@ -103,10 +111,10 @@ class XContentAgent:
 
         clean_text = clean(text)
         
-        # Hard Blacklist for "Saturn" and its common variations in Turkish
-        blacklist = ["saturn", "satürn", "halkalı gezegen"]
+        # Blacklist for over-used topics
+        blacklist = ["saturn", "satürn", "pluto shrinking"]
         if any(word in clean_text for word in blacklist):
-            logger.warning(f"Post contains blacklisted word: {clean_text}")
+            logger.warning(f"Post contains blacklisted word: {clean_text[:50]}")
             return True
         
         with open(self.history_file, "r", encoding="utf-8") as f:
@@ -164,7 +172,7 @@ class XContentAgent:
     
     def execute_post(self, post):
         """Executes a single post with media support or just text."""
-        logger.info(f"Executing Vay Be post: {post['text'][:50]}...")
+        logger.info(f"Executing post: {post['text'][:50]}...")
         
         if post["type"] == "text":
             return self.twitter.post_text(post["text"])

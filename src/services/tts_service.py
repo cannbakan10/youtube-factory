@@ -41,6 +41,15 @@ class TTSService:
             }
         }
 
+        # Voice rotation pool for variety (English)
+        # Each voice has optimal use cases to avoid monotony
+        self.voice_pool = {
+            "narrator": "XfNU2rGpBa01ckF309OY",       # Default narrator (facts, documentary)
+            "deep": "pNInz6ob8mW8mY4Rnd87",            # Deep voice (mystery, horror)
+            "energetic": "XfNU2rGpBa01ckF309OY",       # Energetic (quiz, viral)
+            "calm": "EXAVITQu4vr4xnSDxMaL",            # Calm female (nature, ambient)
+        }
+
         self.current_voice_id = self.voices_config["en"]["default"]
         # Upgraded to Turbo v2.5 - Much more natural for Turkish and faster
         self.model_id = "eleven_turbo_v2_5"
@@ -57,6 +66,39 @@ class TTSService:
             self.current_voice_id = lang_cfg["default"]
 
         logger.info(f"Voice selected -> {self.current_voice_id} ({language.upper()})")
+
+    def set_voice_for_content(self, topic="", mode="info", language="en"):
+        """
+        Intelligently select voice based on content type and topic.
+        Prevents monotony by matching voice character to content.
+        """
+        if language != "en":
+            # For non-English, use language default
+            self.set_voice(language=language)
+            return
+
+        topic_lower = topic.lower()
+
+        # Mode-based selection
+        if mode in ("horror", "mystery"):
+            voice_key = "deep"
+        elif mode == "quiz":
+            voice_key = "energetic"
+        elif mode in ("nature", "ambient"):
+            voice_key = "calm"
+        # Topic-based fallback
+        elif any(w in topic_lower for w in ["sleep", "rain", "relax", "calm", "asmr", "ambient", "peaceful"]):
+            voice_key = "calm"
+        elif any(w in topic_lower for w in ["mystery", "dark", "unknown", "creepy", "unexplained"]):
+            voice_key = "deep"
+        elif any(w in topic_lower for w in ["fun", "amazing", "incredible", "mind", "blow"]):
+            voice_key = "energetic"
+        else:
+            voice_key = "narrator"
+
+        self.current_voice_id = self.voice_pool.get(voice_key, self.voice_pool["narrator"])
+        logger.info(f"Voice matched -> {voice_key} ({self.current_voice_id}) for '{topic[:30]}'")
+
 
     def generate_audio_with_subtitles(self, text, language="en"):
         """
