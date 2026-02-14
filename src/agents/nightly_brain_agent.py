@@ -115,74 +115,109 @@ class NightlyBrainAgent:
 
     def cleanup_channel(self, dry_run: bool = False) -> Dict:
         """
-        Delete underperforming and Turkish-language videos.
-        Returns cleanup report.
+        Smart cleanup with two-phase system:
+        
+        Phase A: Unlist underperformers (gives them a second chance)
+        Phase B: Delete already-unlisted videos from previous cycles
+        
+        Also considers:
+        - Dynamic thresholds based on channel subscriber count
+        - Growth trajectory (skip videos still gaining momentum)
+        - Engagement quality (protect high-engagement videos)
         """
         if not self.youtube or not self.youtube.youtube:
             logger.error("YouTube service not available for cleanup")
             return {"error": "No YouTube service"}
 
-        logger.info("🗑️ Phase 1: Channel Cleanup Starting...")
+        logger.info("🗑️ Phase 1: Smart Channel Cleanup Starting...")
 
         # Import analytics to get all videos
         from src.agents.youtube_analytics_agent import YouTubeAnalyticsAgent
         analytics = YouTubeAnalyticsAgent(youtube_service=self.youtube)
+        channel_info = analytics.get_channel_info()
         videos = analytics.get_all_videos()
 
         if not videos:
             return {"error": "No videos found"}
 
-        to_delete = []
+        # Dynamic thresholds based on subscriber count
+        subs = channel_info.get("subscriber_count", 0) if channel_info else 0
+        thresholds = self._calculate_dynamic_thresholds(subs)
+        logger.info(f"📐 Dynamic thresholds (based on {subs:,} subs): {thresholds}")
+
+        to_unlist = []    # Phase A: Make unlisted first
+        to_delete = []    # Phase B: Delete previously unlisted
         to_keep = []
 
         for v in videos:
             delete_reasons = []
 
-            # Rule 1: Turkish content — DELETE ALL (except high performers)
+            # ── SKIP: Too new to judge ──
+            if v["days_since_publish"] < 5:
+                to_keep.append(v)
+                continue
+
+            # ── PROTECT: High engagement (algorithm may push later) ──
+            if v["engagement_rate"] > 8.0 and v["days_since_publish"] < 30:
+                to_keep.append(v)
+                continue
+
+            # ── PROTECT: Growing videos (views_per_day > threshold) ──
+            if v["views_per_day"] > 5 and v["days_since_publish"] < 21:
+                to_keep.append(v)
+                continue
+
+            # ── Rule 1: Turkish content — always remove ──
             if self._is_turkish(v["title"]):
                 if v["views"] >= 1000:
-                    # High-performing Turkish video — keep but mark for review
-                    # These still drive engagement, don't auto-delete
-                    pass
-                else:
-                    delete_reasons.append("Turkish content (channel is English-only)")
+                    to_keep.append(v)
+                    continue
+                delete_reasons.append("Turkish content (channel is English-only)")
 
-            # Rule 2: Zero views after 7+ days
-            if v["views"] == 0 and v["days_since_publish"] > 7:
+            # ── Rule 2: Zero views ──
+            if v["views"] == 0 and v["days_since_publish"] > 5:
                 delete_reasons.append(f"Zero views after {v['days_since_publish']} days")
 
-            # Rule 3: Very low views for shorts
-            if v["is_shorts"] and v["days_since_publish"] > 7:
-                if v["views"] < MIN_SHORTS_VIEWS_7D:
-                    delete_reasons.append(f"Only {v['views']} views after 7+ days (min: {MIN_SHORTS_VIEWS_7D})")
+            # ── Rule 3: Low views for Shorts ──
+            if v["is_shorts"] and not delete_reasons:
+                if v["days_since_publish"] > 7 and v["views"] < thresholds["shorts_7d"]:
+                    delete_reasons.append(
+                        f"Only {v['views']} views after 7+ days (min: {thresholds['shorts_7d']})"
+                    )
+                elif v["days_since_publish"] > 14 and v["views"] < thresholds["shorts_14d"]:
+                    delete_reasons.append(
+                        f"Only {v['views']} views after 14+ days (min: {thresholds['shorts_14d']})"
+                    )
+                elif v["days_since_publish"] > 30 and v["views"] < thresholds["shorts_30d"]:
+                    delete_reasons.append(
+                        f"Only {v['views']} views after 30+ days (min: {thresholds['shorts_30d']})"
+                    )
 
-            if v["is_shorts"] and v["days_since_publish"] > 14:
-                if v["views"] < MIN_SHORTS_VIEWS_14D:
-                    delete_reasons.append(f"Only {v['views']} views after 14+ days (min: {MIN_SHORTS_VIEWS_14D})")
+            # ── Rule 4: Low views for Longform ──
+            if not v["is_shorts"] and not delete_reasons:
+                if v["days_since_publish"] > 14 and v["views"] < thresholds["long_14d"]:
+                    delete_reasons.append(
+                        f"Longform with only {v['views']} views after 14+ days (min: {thresholds['long_14d']})"
+                    )
+                elif v["days_since_publish"] > 30 and v["views"] < thresholds["long_30d"]:
+                    delete_reasons.append(
+                        f"Longform with only {v['views']} views after 30+ days (min: {thresholds['long_30d']})"
+                    )
 
-            if v["is_shorts"] and v["days_since_publish"] > 30:
-                if v["views"] < MIN_SHORTS_VIEWS_30D:
-                    delete_reasons.append(f"Only {v['views']} views after 30+ days (min: {MIN_SHORTS_VIEWS_30D})")
-
-            # Rule 4: Low views for longform
-            if not v["is_shorts"] and v["days_since_publish"] > 14:
-                if v["views"] < MIN_LONGFORM_VIEWS_14D:
-                    delete_reasons.append(f"Longform with only {v['views']} views after 14+ days (min: {MIN_LONGFORM_VIEWS_14D})")
-
-            if not v["is_shorts"] and v["days_since_publish"] > 30:
-                if v["views"] < MIN_LONGFORM_VIEWS_30D:
-                    delete_reasons.append(f"Longform with only {v['views']} views after 30+ days (min: {MIN_LONGFORM_VIEWS_30D})")
-
-            # Rule 5: Zero engagement after many views (dead content)
+            # ── Rule 5: Dead engagement ──
             if v["views"] > 50 and v["engagement_rate"] == 0 and v["days_since_publish"] > 14:
-                delete_reasons.append(f"{v['views']} views but zero likes/comments — dead engagement")
+                delete_reasons.append(
+                    f"{v['views']} views but zero engagement — dead content"
+                )
 
-            # Rule 6: Don't delete recent videos (< 3 days)
-            if v["days_since_publish"] < 3:
-                delete_reasons = []  # Too new to judge
-
+            # ── Decide: unlist or delete ──
             if delete_reasons:
-                to_delete.append({**v, "delete_reasons": delete_reasons})
+                if v.get("privacy_status") == "unlisted":
+                    # Already unlisted from a previous cycle → now delete
+                    to_delete.append({**v, "delete_reasons": delete_reasons})
+                else:
+                    # First offense → unlist, give second chance
+                    to_unlist.append({**v, "delete_reasons": delete_reasons})
             else:
                 to_keep.append(v)
 
@@ -194,12 +229,29 @@ class NightlyBrainAgent:
                 "delete_reasons": [f"Duplicate of '{dup['keep_video']['title'][:40]}' ({dup['similarity']}% similar)"]
             })
 
-        logger.info(f"📊 Cleanup summary: {len(to_delete)} to delete, {len(to_keep)} to keep")
+        logger.info(f"📊 Cleanup plan: {len(to_unlist)} to unlist, {len(to_delete)} to delete, {len(to_keep)} to keep")
 
-        # Execute deletions
+        # ── Execute: Unlist (Phase A) ──
+        unlisted = []
+        for v in to_unlist:
+            if dry_run:
+                logger.info(f"  [DRY] Would unlist: {v['title'][:50]} | Views: {v['views']} | {v['delete_reasons'][0]}")
+                unlisted.append({**v, "status": "DRY_RUN"})
+            else:
+                try:
+                    self.youtube.youtube.videos().update(
+                        part="status",
+                        body={"id": v["id"], "status": {"privacyStatus": "unlisted"}}
+                    ).execute()
+                    logger.info(f"  🔒 Unlisted: {v['title'][:50]} ({v['views']} views)")
+                    unlisted.append({**v, "status": "UNLISTED"})
+                    time.sleep(0.3)
+                except Exception as e:
+                    logger.error(f"  ❌ Failed to unlist {v['id']}: {e}")
+
+        # ── Execute: Delete (Phase B — previously unlisted) ──
         deleted = []
         failed = []
-
         for v in to_delete:
             if dry_run:
                 logger.info(f"  [DRY] Would delete: {v['title'][:50]} | Views: {v['views']} | {v['delete_reasons'][0]}")
@@ -209,7 +261,7 @@ class NightlyBrainAgent:
                     self.youtube.youtube.videos().delete(id=v["id"]).execute()
                     logger.info(f"  🗑️ Deleted: {v['title'][:50]} ({v['views']} views)")
                     deleted.append({**v, "status": "DELETED"})
-                    time.sleep(0.5)  # Rate limiting
+                    time.sleep(0.5)
                 except Exception as e:
                     logger.error(f"  ❌ Failed to delete {v['id']}: {e}")
                     failed.append({**v, "error": str(e)})
@@ -217,9 +269,17 @@ class NightlyBrainAgent:
         report = {
             "timestamp": datetime.utcnow().isoformat(),
             "total_videos": len(videos),
+            "unlisted_count": len(unlisted),
             "deleted_count": len(deleted),
             "failed_count": len(failed),
             "kept_count": len(to_keep),
+            "thresholds_used": thresholds,
+            "subscriber_count": subs,
+            "unlisted_videos": [
+                {"id": v["id"], "title": v["title"], "views": v["views"],
+                 "reasons": v["delete_reasons"], "status": v.get("status", "")}
+                for v in unlisted
+            ],
             "deleted_videos": [
                 {"id": v["id"], "title": v["title"], "views": v["views"],
                  "reasons": v["delete_reasons"], "status": v.get("status", "DELETED")}
@@ -231,8 +291,39 @@ class NightlyBrainAgent:
             ],
         }
 
-        logger.info(f"✅ Cleanup complete: {len(deleted)} deleted, {len(failed)} failed, {len(to_keep)} kept")
+        logger.info(
+            f"✅ Cleanup complete: {len(unlisted)} unlisted, "
+            f"{len(deleted)} deleted, {len(failed)} failed, {len(to_keep)} kept"
+        )
         return report
+
+    def _calculate_dynamic_thresholds(self, subscriber_count: int) -> Dict:
+        """
+        Calculate view thresholds relative to channel size.
+        Larger channels should have higher standards.
+        """
+        # Base multiplier: 1.0 for ~1K subs, scales up
+        if subscriber_count < 500:
+            mult = 0.5
+        elif subscriber_count < 2000:
+            mult = 0.75
+        elif subscriber_count < 5000:
+            mult = 1.0
+        elif subscriber_count < 20000:
+            mult = 1.5
+        elif subscriber_count < 100000:
+            mult = 2.0
+        else:
+            mult = 3.0
+
+        return {
+            "shorts_7d": int(MIN_SHORTS_VIEWS_7D * mult),
+            "shorts_14d": int(MIN_SHORTS_VIEWS_14D * mult),
+            "shorts_30d": int(MIN_SHORTS_VIEWS_30D * mult),
+            "long_14d": int(MIN_LONGFORM_VIEWS_14D * mult),
+            "long_30d": int(MIN_LONGFORM_VIEWS_30D * mult),
+            "multiplier": mult,
+        }
 
     def _is_turkish(self, text: str) -> bool:
         """Detect if text is Turkish."""
@@ -811,9 +902,11 @@ Output STRICT JSON format:
         logger.info("─" * 40)
         cleanup = self.cleanup_channel(dry_run=dry_run)
         nightly_report["cleanup"] = {
+            "unlisted": cleanup.get("unlisted_count", 0),
             "deleted": cleanup.get("deleted_count", 0),
             "failed": cleanup.get("failed_count", 0),
             "kept": cleanup.get("kept_count", 0),
+            "thresholds": cleanup.get("thresholds_used", {}),
         }
 
         # ─── PHASE 2: Discover Trending ───
