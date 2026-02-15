@@ -1,0 +1,97 @@
+{
+  "timestamp": "2026-02-15T07:33:35.954865",
+  "dry_run": false,
+  "performance_review": {
+    "status": "no_recent_videos"
+  },
+  "cleanup": {
+    "unlisted": 0,
+    "deleted": 0,
+    "failed": 0,
+    "kept": 0,
+    "thresholds": {}
+  },
+  "trending": {
+    "found": 10,
+    "viral_shorts_found": 0,
+    "competitors_analyzed": 0,
+    "comments_mined": 0,
+    "top_5": [
+      {
+        "title": "Hero Woman Saves Officer Mid-Fight",
+        "views": 24005840,
+        "category": "Entertainment"
+      },
+      {
+        "title": "How To Spot An Undercover Cop",
+        "views": 14654912,
+        "category": "Entertainment"
+      },
+      {
+        "title": "Bumpy Johnson was a smart man.",
+        "views": 13906699,
+        "category": "Entertainment"
+      },
+      {
+        "title": "He Got His Revenge 🔥🥶 | No Ordinary Family | MATADORA (slowe",
+        "views": 11921367,
+        "category": "Entertainment"
+      },
+      {
+        "title": "This bathroom design is a crazy twist! #shorts",
+        "views": 11060325,
+        "category": "Entertainment"
+      }
+    ],
+    "top_viral_shorts": []
+  },
+  "ambient_analysis": {
+    "total_ambient": 0,
+    "total_views": 0,
+    "top_type": null,
+    "worst_type": null,
+    "type_rankings": []
+  },
+  "plan": {
+    "shorts_planned": 20,
+    "ambient_recommendations": [
+      {
+        "type": "fireplace",
+        "hours": 8,
+        "reason": "Classic winter comfort. High search volume in colder months for a cozy atmosphere."
+      },
+      {
+        "type": "snow",
+        "hours": 8,
+        "reason": "Provides a visually calming and seasonally appropriate backdrop. Appeals to those experiencing or missing snowfall."
+      },
+      {
+        "type": "candle",
+        "hours": 8,
+        "reason": "Creates a sense of warmth and tranquility, perfect for relaxation and sleep during the darker winter days."
+      }
+    ],
+    "shorts": [
+      "Undercover Cop Hack You NEED To Know!",
+      "Father-in-Law's CRAZY Test! (Unexpected)",
+      "Weaponized Incompetence: Is Your Partner Doing Thi",
+      "Mind-Bending Bathroom Design! You Won't Believe Th",
+      "Fast & Furious Behind The Scenes: Hilarious Moment",
+      "Military Moments That Will Make You Laugh!",
+      "The Carbonaro Effect: Bowling Ball Prank!",
+      "No Ordinary Revenge: Chilling Scene",
+      "Bumpy Johnson's Genius Strategy!",
+      "Hero Saves Officer in CRAZY Fight!",
+      "Winter Blues? Try These Tips!",
+      "Cozy Up with these Winter Reads!",
+      "DIY Winter Decorations on a Budget",
+      "Stay Active Indoors: Winter Workout!",
+      "Warm Up with This Winter Soup!",
+      "The Best Winter Skincare Routine",
+      "Easy Tips for a Cozy Winter Night In",
+      "Winter Travel Essentials You Need!",
+      "Declutter Your Home This Winter",
+      "Plan Your Spring Garden Now!"
+    ]
+  }
+}
