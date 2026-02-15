@@ -15,7 +15,8 @@
         "law hacks"
       ],
       "inspired_by": "How To Spot An Undercover Cop",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "failed"
     },
     {
       "title": "Father-in-Law's CRAZY Test! (Unexpected)",
@@ -31,7 +32,8 @@
         "prank"
       ],
       "inspired_by": "The Ultimate Father-in-Law Test! 😠 #shorts",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "failed"
     },
     {
       "title": "Weaponized Incompetence: Is Your Partner Doing This?!",
@@ -48,7 +50,8 @@
         "couple"
       ],
       "inspired_by": "What do they call that? Weaponized incompetence? #funny #fyp #couple",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "failed"
     },
     {
       "title": "Mind-Bending Bathroom Design! You Won't Believe This",
@@ -64,7 +67,8 @@
         "shorts"
       ],
       "inspired_by": "This bathroom design is a crazy twist! #shorts",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "failed"
     },
     {
       "title": "Fast & Furious Behind The Scenes: Hilarious Moments",
@@ -335,5 +339,16 @@
   "generated_at": "2026-02-15T07:33:56.186124",
   "trending_count": 10,
   "channels_analyzed": 0,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-02-15T07:59:49.546910",
+  "results": {
+    "shorts_produced": 0,
+    "longform_produced": 0,
+    "errors": [
+      "Short 'Undercover Cop Hack You NEED T' failed",
+      "Short 'Father-in-Law's CRAZY Test! (U' failed",
+      "Short 'Weaponized Incompetence: Is Yo' failed",
+      "Short 'Mind-Bending Bathroom Design! ' failed"
+    ]
+  }
 }
