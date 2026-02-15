@@ -16,7 +16,9 @@
         "amazingfacts"
       ],
       "inspired_by": "A silent but deadly battle! #shorts",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "produced",
+      "production_id": "Archerfish_hunt_by_spitting_wa_1771142538"
     },
     {
       "title": "Octopus Escape Artist! 🤯",
@@ -34,7 +36,9 @@
         "amazingfacts"
       ],
       "inspired_by": "Octopus IQ Will Blow Your Mind!",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "produced",
+      "production_id": "Show_an_octopus_escaping_from__1771142920"
     },
     {
       "title": "The Unbelievable Strength of the Mantis Shrimp!",
@@ -51,7 +55,9 @@
         "amazingfacts"
       ],
       "inspired_by": "Animals vs Modern Battle Tank",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Explain_the_mantis_shrimps_pow_1771143323"
     },
     {
       "title": "Why Roman Concrete Still Stands Today",
@@ -68,7 +74,9 @@
         "amazingfacts"
       ],
       "inspired_by": "The Enduring Mystery of Roman Concrete #Shorts",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "produced",
+      "production_id": "Highlight_the_unique_ingredien_1771143674"
     },
     {
       "title": "Sea Otters Holding Hands? Cuteness Overload!",
@@ -341,5 +349,11 @@
   "generated_at": "2026-02-15T08:02:13.433542",
   "trending_count": 84,
   "channels_analyzed": 4,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-02-15T08:27:31.817314",
+  "results": {
+    "shorts_produced": 4,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
