@@ -224,7 +224,9 @@
         "amazingfacts"
       ],
       "inspired_by": "Top 5 intresting Amazing gardening Hacks 😱",
-      "estimated_views": "low"
+      "estimated_views": "low",
+      "status": "produced",
+      "production_id": "Explain_the_science_of_skippin_1771165059"
     },
     {
       "title": "Why You Can't Lick Your Elbow! (Probably)",
@@ -240,7 +242,9 @@
         "amazingfacts"
       ],
       "inspired_by": "Interesting Facts You Probably Didn't Know",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Challenge_viewers_to_try_licki_1771165381"
     },
     {
       "title": "The Mysterious Case of the Roanoke Colony: Solved?",
@@ -364,7 +368,7 @@
   "trending_count": 84,
   "channels_analyzed": 4,
   "status": "in_progress",
-  "last_executed_at": "2026-02-15T13:07:58.197408",
+  "last_executed_at": "2026-02-15T14:28:03.476241",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
