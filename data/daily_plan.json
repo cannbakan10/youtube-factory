@@ -152,7 +152,9 @@
         "amazingfacts"
       ],
       "inspired_by": "Eagle emotional story",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "produced",
+      "production_id": "Show_a_compelling_rescue_and_r_1771148102"
     },
     {
       "title": "That Time a Biker Had The Most Wholesome Crash Ever!",
@@ -167,7 +169,9 @@
         "shorts"
       ],
       "inspired_by": "Biker has the most WHOLESOME crash ever",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "produced",
+      "production_id": "Relay_a_story_similar_to_the_B_1771148454"
     },
     {
       "title": "How To Spot An Undercover Cop... (Allegedly)",
@@ -356,9 +360,9 @@
   "trending_count": 84,
   "channels_analyzed": 4,
   "status": "in_progress",
-  "last_executed_at": "2026-02-15T08:58:52.496687",
+  "last_executed_at": "2026-02-15T09:47:42.543947",
   "results": {
-    "shorts_produced": 3,
+    "shorts_produced": 2,
     "longform_produced": 0,
     "errors": []
   }
