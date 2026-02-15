@@ -187,7 +187,9 @@
         "shorts"
       ],
       "inspired_by": "How To Spot An Undercover Cop",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Taking_inspo_from_How_To_Spot__1771160111"
     },
     {
       "title": "Magnus Carlsen's Biggest Blunder!",
@@ -203,7 +205,9 @@
         "amazingfacts"
       ],
       "inspired_by": "He Used Magnus’ OWN Trick Against Him… And Won 😤♟️",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Analyze_a_chess_game_where_Mag_1771160487"
     },
     {
       "title": "The Physics Behind a Perfect Skip!",
@@ -360,7 +364,7 @@
   "trending_count": 84,
   "channels_analyzed": 4,
   "status": "in_progress",
-  "last_executed_at": "2026-02-15T09:47:42.543947",
+  "last_executed_at": "2026-02-15T13:07:58.197408",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
