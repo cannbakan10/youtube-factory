@@ -93,7 +93,9 @@
         "amazingfacts"
       ],
       "inspired_by": "Adorable sea otters #animals #animalfacts #wildlife #seaotters",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "produced",
+      "production_id": "Show_footage_of_sea_otters_hol_1771144822"
     },
     {
       "title": "The Secret of the Immortal Jellyfish!",
@@ -110,7 +112,9 @@
         "amazingfacts"
       ],
       "inspired_by": "اغرب 10 ظواهر مجنونة للحيوانات!",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Explain_the_biological_process_1771145216"
     },
     {
       "title": "The Bizarre Truth About Tardigrades (Water Bears)!",
@@ -128,7 +132,9 @@
         "amazingfacts"
       ],
       "inspired_by": "اغرب 10 ظواهر مجنونة للحيوانات!",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Highlight_the_extreme_resilien_1771145627"
     },
     {
       "title": "Eagle's Incredible Comeback Story!",
@@ -350,9 +356,9 @@
   "trending_count": 84,
   "channels_analyzed": 4,
   "status": "in_progress",
-  "last_executed_at": "2026-02-15T08:27:31.817314",
+  "last_executed_at": "2026-02-15T08:58:52.496687",
   "results": {
-    "shorts_produced": 4,
+    "shorts_produced": 3,
     "longform_produced": 0,
     "errors": []
   }
