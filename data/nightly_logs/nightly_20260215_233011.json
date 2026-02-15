@@ -1,0 +1,190 @@
+{
+  "timestamp": "2026-02-15T23:29:24.321228",
+  "dry_run": false,
+  "performance_review": {
+    "total_recent": 32,
+    "winners_count": 15,
+    "losers_count": 3,
+    "avg_views_48h": 179.7,
+    "best_topics": [
+      "Mantis Shrimp: The Ocean's Tiny Terror #Shorts",
+      "Abyssal Bloom: A Deep-Sea Mystery Unveiled #Shorts",
+      "The Enduring Mystery of Roman Concrete #Shorts"
+    ],
+    "best_views": [
+      695,
+      654,
+      639
+    ],
+    "winner_titles": [
+      "A Chain Reaction of Kindness: Wholesome Helping Hands! #Shorts",
+      "From Broken Wings to Soaring Skies: An Eagle's Inspiring Rescue #Shorts",
+      "Sea Otters: The Sweetest Hand-Holding Sleepers! #Shorts",
+      "Roman Concrete vs. Modern Concrete: The Ancient Secret to Longevity #Shorts",
+      "Mantis Shrimp: The Ocean's Tiny Terror #Shorts",
+      "Octopus Escape: The Brainy Brine Bandit! #Shorts",
+      "Archerfish: Nature's Water Pistol Assassins #Shorts",
+      "Mind-Blowing Animal Facts That Will Shock You! #Shorts",
+      "Unlocking the Mystery of Blue Laws: Strange Restrictions Explained #Shorts",
+      "The Castor Bean: A Deadly Beauty #Shorts",
+      "The Enduring Mystery of Roman Concrete #Shorts",
+      "Abyssal Bloom: A Deep-Sea Mystery Unveiled #Shorts",
+      "Honey Trouble: The Dark Side of Your Sweet Treat #Shorts",
+      "The Dark Truth Behind Diamond Marketing: Artificial Scarcity and Ethical Costs #Shorts",
+      "🔥 Cozy Fireplace 8 HOURS with Crackling Fire Sounds | Fireplace Ambience for Sleep, Study & Relax"
+    ],
+    "loser_titles": [
+      "Roman Concrete: The Ancient Secret to Unbreakable Structures #Shorts",
+      "Weird Animal Defenses: Nature's Strangest Survival Tactics #Shorts",
+      "Mind-Blowing Space Facts That Will Warp Your Perception! #Shorts"
+    ]
+  },
+  "cleanup": {
+    "unlisted": 9,
+    "deleted": 1,
+    "failed": 0,
+    "kept": 151,
+    "thresholds": {
+      "shorts_7d": 50,
+      "shorts_14d": 100,
+      "shorts_30d": 200,
+      "long_14d": 50,
+      "long_30d": 100,
+      "multiplier": 1.0
+    }
+  },
+  "trending": {
+    "found": 83,
+    "viral_shorts_found": 30,
+    "competitors_analyzed": 3,
+    "comments_mined": 20,
+    "top_5": [
+      {
+        "title": "Tom Holland React Viral Videos Part 22 #tomholland #funny #t",
+        "views": 44011312,
+        "category": "Film & Animation"
+      },
+      {
+        "title": "Hero Woman Saves Officer Mid-Fight",
+        "views": 24416490,
+        "category": "Entertainment"
+      },
+      {
+        "title": "How To Spot An Undercover Cop",
+        "views": 17936931,
+        "category": "Entertainment"
+      },
+      {
+        "title": "pride comes before flop",
+        "views": 17608347,
+        "category": "Sports"
+      },
+      {
+        "title": "Biker has the most WHOLESOME crash ever‼️🤯",
+        "views": 16823320,
+        "category": "Howto & Style"
+      }
+    ],
+    "top_viral_shorts": [
+      {
+        "title": "Se lo vieras en un árbol, ¿pasarías de largo?",
+        "views": 5560875,
+        "query": "amazing facts you didn't know"
+      },
+      {
+        "title": "اغرب 10 ظواهر مجنونة للحيوانات! والعلماء لم يجدوا لها تفسير ",
+        "views": 4768861,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "Eagle emotional story #animalrescue  #facts #trending #anima",
+        "views": 3367042,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "Animals vs Modern Battle Tank",
+        "views": 2369689,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "Top 5 intresting Amazing gardening Hacks 😱| Random Facts #fa",
+        "views": 1983514,
+        "query": "top 5 facts"
+      }
+    ]
+  },
+  "ambient_analysis": {
+    "total_ambient": 4,
+    "total_views": 785,
+    "top_type": "fireplace",
+    "worst_type": "rain",
+    "type_rankings": [
+      {
+        "type": "fireplace",
+        "video_count": 3,
+        "total_views": 454,
+        "avg_views": 151,
+        "avg_views_per_day": 73.6,
+        "engagement_rate": 3.52,
+        "best_video": {
+          "title": "Ultimate 4K HDR Fireplace Loop (1 Hour) 🔥 Real Crackling Fir",
+          "views": 291,
+          "views_per_day": 72.8
+        }
+      },
+      {
+        "type": "rain",
+        "video_count": 1,
+        "total_views": 331,
+        "avg_views": 331,
+        "avg_views_per_day": 36.8,
+        "engagement_rate": 2.11,
+        "best_video": {
+          "title": "1 Hour Rainy Night Ambience (60 Minutes)",
+          "views": 331,
+          "views_per_day": 36.8
+        }
+      }
+    ]
+  },
+  "plan": {
+    "shorts_planned": 18,
+    "ambient_recommendations": [
+      {
+        "type": "thunderstorm",
+        "hours": 8,
+        "reason": "Thunderstorm sounds are relaxing and conducive to sleep, aligning with the cozy indoor mood many seek in winter."
+      },
+      {
+        "type": "snow",
+        "hours": 8,
+        "reason": "Snow sounds provide relaxing white noise and align with the seasonal cozy vibes."
+      },
+      {
+        "type": "fireplace",
+        "hours": 8,
+        "reason": "The crackling sounds and warm visuals of a fireplace are seasonally appropriate and promote relaxation."
+      }
+    ],
+    "shorts": [
+      "Animals Without Fur: The Terrifying Truth! #shorts",
+      "Octopus IQ: Smarter Than You Think! #shorts",
+      "Amazing Gardening Hacks You Need to Know! #shorts",
+      "Fun Facts That Will Make You Question Everything! ",
+      "The Bumpy Johnson Warning Everyone Needs To Hear! ",
+      "Military Life: You Won't Believe These Moments! #s",
+      "Undercover Cop Secrets Revealed! #shorts",
+      "Cops vs Criminals: Unbelievable Moments! #shorts",
+      " Magnus Carlsen Gets Outsmarted! #shorts",
+      "Weaponized Incompetence: Is This Your Relationship",
+      "Ultimate Father-in-Law Test! #shorts",
+      "Bowling Ball Magic: You Won't Believe Your Eyes! #",
+      "Skunk Mistaken for a Dog: Hilarious Moment! #short",
+      "Pride Comes Before a Fall: Epic Fail! #shorts",
+      "Biker's Wholesome Crash: You'll Smile! #shorts",
+      "PC Building Taken to the Extreme! #shorts",
+      "Dream Girl Flexes Skills! #shorts",
+      "Why Did Jake Paul Cry? The Real Reason! #shorts"
+    ]
+  }
+}
