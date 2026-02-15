@@ -13,7 +13,8 @@
         "tech tips"
       ],
       "inspired_by": "PS5 cutting off mid-game. Only comes back after unplugging it from the wall.",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "failed"
     },
     {
       "title": "Headphone Hack: Wired vs. Wireless Sound Quality?",
@@ -27,7 +28,8 @@
         "sound quality"
       ],
       "inspired_by": "Wired vs. Wireless Headphones",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "failed"
     },
     {
       "title": "Google ROASTS Apple... AGAIN!",
@@ -356,5 +358,14 @@
   "generated_at": "2026-02-14T23:27:40.197560",
   "trending_count": 20,
   "channels_analyzed": 0,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-02-15T06:58:10.765752",
+  "results": {
+    "shorts_produced": 0,
+    "longform_produced": 0,
+    "errors": [
+      "Short 'PS5 Overheating? Simple Fix!' failed",
+      "Short 'Headphone Hack: Wired vs. Wire' failed"
+    ]
+  }
 }
