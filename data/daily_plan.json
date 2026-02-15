@@ -351,7 +351,9 @@
         "shorts"
       ],
       "inspired_by": "BRIGHT SIDE: We Finally Know Who Built the Pyramids",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Present_a_physical_challenge_t_1771186856"
     }
   ],
   "ambient_recommendations": [
@@ -375,11 +377,12 @@
   "generated_at": "2026-02-15T08:02:13.433542",
   "trending_count": 84,
   "channels_analyzed": 4,
-  "status": "in_progress",
-  "last_executed_at": "2026-02-15T18:31:47.445375",
+  "status": "completed",
+  "last_executed_at": "2026-02-15T20:25:18.608759",
   "results": {
-    "shorts_produced": 2,
+    "shorts_produced": 1,
     "longform_produced": 0,
     "errors": []
-  }
+  },
+  "completed_at": "2026-02-15T20:25:18.608711"
 }
