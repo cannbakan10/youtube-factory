@@ -314,7 +314,9 @@
         "recap of the james webb planet discovery with sand filter",
         "recap of the james webb planet discovery with sand dollars"
       ],
-      "optimized_title": "Webb Telescope: New Planet Discovered With SAND?"
+      "optimized_title": "Webb Telescope: New Planet Discovered With SAND?",
+      "status": "produced",
+      "production_id": "Recap_of_the_James_Webb_planet_1771179805"
     },
     {
       "title": "Quantum Computing is HERE!",
@@ -333,7 +335,9 @@
       "seo_keywords": [
         "recap of five interesting facts about quantum computers"
       ],
-      "optimized_title": "Quantum Computing is HERE! | Recap Of Five Interesting Facts About Quantum Computers"
+      "optimized_title": "Quantum Computing is HERE! | Recap Of Five Interesting Facts About Quantum Computers",
+      "status": "produced",
+      "production_id": "Recap_of_five_interesting_fact_1771180127"
     },
     {
       "title": "Can You Beat This Endurance Challenge?",
@@ -372,7 +376,7 @@
   "trending_count": 84,
   "channels_analyzed": 4,
   "status": "in_progress",
-  "last_executed_at": "2026-02-15T16:27:53.835057",
+  "last_executed_at": "2026-02-15T18:31:47.445375",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
