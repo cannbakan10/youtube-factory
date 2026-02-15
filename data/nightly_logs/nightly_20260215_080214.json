@@ -1,0 +1,187 @@
+{
+  "timestamp": "2026-02-15T08:01:44.325154",
+  "dry_run": false,
+  "performance_review": {
+    "total_recent": 34,
+    "winners_count": 10,
+    "losers_count": 14,
+    "avg_views_48h": 97.8,
+    "best_topics": [
+      "The Enduring Mystery of Roman Concrete #Shorts",
+      "James Webb Telescope: A Signal From the Dawn of Time? #Short",
+      "Abyssal Bloom: A Deep-Sea Mystery Unveiled #Shorts"
+    ],
+    "best_views": [
+      641,
+      520,
+      381
+    ],
+    "winner_titles": [
+      "Mind-Blowing Animal Facts That Will Shock You! #Shorts",
+      "Unlocking the Mystery of Blue Laws: Strange Restrictions Explained #Shorts",
+      "The Castor Bean: A Deadly Beauty #Shorts",
+      "The Enduring Mystery of Roman Concrete #Shorts",
+      "Abyssal Bloom: A Deep-Sea Mystery Unveiled #Shorts",
+      "Honey Trouble: The Dark Side of Your Sweet Treat #Shorts",
+      "The Dark Truth Behind Diamond Marketing: Artificial Scarcity and Ethical Costs #Shorts",
+      "🔥 Cozy Fireplace 8 HOURS with Crackling Fire Sounds | Fireplace Ambience for Sleep, Study & Relax",
+      "The Tunguska Event: Siberia's Mysterious Explosion #Shorts",
+      "James Webb Telescope: A Signal From the Dawn of Time? #Shorts"
+    ],
+    "loser_titles": [
+      "Webb Telescope Discovers Planet Where It Rains Sand! #Shorts",
+      "CRISPR Gene Editing: Rewriting the Code of Life #Shorts",
+      "⛈️Sleep to Thunder! Calming ASMR & Focus⛈️ #Shorts",
+      "James Webb Telescope Unveils Surprising Early Galaxies #Shorts",
+      "The Tunguska Event: Siberia's Unsolved Mystery #Shorts"
+    ]
+  },
+  "cleanup": {
+    "unlisted": 1,
+    "deleted": 0,
+    "failed": 0,
+    "kept": 143,
+    "thresholds": {
+      "shorts_7d": 50,
+      "shorts_14d": 100,
+      "shorts_30d": 200,
+      "long_14d": 50,
+      "long_30d": 100,
+      "multiplier": 1.0
+    }
+  },
+  "trending": {
+    "found": 84,
+    "viral_shorts_found": 30,
+    "competitors_analyzed": 3,
+    "comments_mined": 20,
+    "top_5": [
+      {
+        "title": "Tom Holland React Viral Videos Part 22 #tomholland #funny #t",
+        "views": 34220917,
+        "category": "Film & Animation"
+      },
+      {
+        "title": "Hero Woman Saves Officer Mid-Fight",
+        "views": 24017473,
+        "category": "Entertainment"
+      },
+      {
+        "title": "pride comes before flop",
+        "views": 16580309,
+        "category": "Sports"
+      },
+      {
+        "title": "Biker has the most WHOLESOME crash ever‼️🤯",
+        "views": 15417648,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "LOAD IT UP LIKE THIS 🤣 #viral #explore #fyp #xaelameme",
+        "views": 15315878,
+        "category": "Howto & Style"
+      }
+    ],
+    "top_viral_shorts": [
+      {
+        "title": "Se lo vieras en un árbol, ¿pasarías de largo?",
+        "views": 4710197,
+        "query": "amazing facts you didn't know"
+      },
+      {
+        "title": "اغرب 10 ظواهر مجنونة للحيوانات! والعلماء لم يجدوا لها تفسير ",
+        "views": 4162476,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "This Machine Drew a Porsche… Are Humans Still Needed?",
+        "views": 3395589,
+        "query": "technology AI future"
+      },
+      {
+        "title": "Eagle emotional story #animalrescue  #facts #trending #anima",
+        "views": 2290185,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "Adorable sea otters #animals #animalfacts #wildlife #seaotte",
+        "views": 2277141,
+        "query": "animal facts wildlife"
+      }
+    ]
+  },
+  "ambient_analysis": {
+    "total_ambient": 4,
+    "total_views": 762,
+    "top_type": "fireplace",
+    "worst_type": "rain",
+    "type_rankings": [
+      {
+        "type": "fireplace",
+        "video_count": 3,
+        "total_views": 431,
+        "avg_views": 144,
+        "avg_views_per_day": 75.1,
+        "engagement_rate": 3.48,
+        "best_video": {
+          "title": "Ultimate 4K HDR Fireplace Loop (1 Hour) 🔥 Real Crackling Fir",
+          "views": 288,
+          "views_per_day": 96.0
+        }
+      },
+      {
+        "type": "rain",
+        "video_count": 1,
+        "total_views": 331,
+        "avg_views": 331,
+        "avg_views_per_day": 41.4,
+        "engagement_rate": 2.11,
+        "best_video": {
+          "title": "1 Hour Rainy Night Ambience (60 Minutes)",
+          "views": 331,
+          "views_per_day": 41.4
+        }
+      }
+    ]
+  },
+  "plan": {
+    "shorts_planned": 18,
+    "ambient_recommendations": [
+      {
+        "type": "thunderstorm",
+        "hours": 8,
+        "reason": "Summer is thunderstorm season, and 'sleep to thunder' underperformed recently. This could be retested."
+      },
+      {
+        "type": "ocean",
+        "hours": 8,
+        "reason": "Relaxing and popular year-round. Creates a calming atmosphere."
+      },
+      {
+        "type": "campfire",
+        "hours": 8,
+        "reason": "Campfire ambience is generally comforting and enjoyable."
+      }
+    ],
+    "shorts": [
+      "The Silent But Deadly Archerfish!",
+      "Octopus Escape Artist! 🤯",
+      "The Unbelievable Strength of the Mantis Shrimp!",
+      "Why Roman Concrete Still Stands Today",
+      "Sea Otters Holding Hands? Cuteness Overload!",
+      "The Secret of the Immortal Jellyfish!",
+      "The Bizarre Truth About Tardigrades (Water Bears)!",
+      "Eagle's Incredible Comeback Story!",
+      "That Time a Biker Had The Most Wholesome Crash Eve",
+      "How To Spot An Undercover Cop... (Allegedly)",
+      "Magnus Carlsen's Biggest Blunder!",
+      "The Physics Behind a Perfect Skip!",
+      "Why You Can't Lick Your Elbow! (Probably)",
+      "The Mysterious Case of the Roanoke Colony: Solved?",
+      "Ancient Egypt In 10 Minutes!",
+      "Webb Telescope: New Planet Discovered With SAND?",
+      "Quantum Computing is HERE!",
+      "Can You Beat This Endurance Challenge?"
+    ]
+  }
+}

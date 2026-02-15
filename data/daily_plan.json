@@ -1,354 +1,345 @@
 {
-  "date": "2024-03-16",
+  "date": "2024-07-04",
   "shorts": [
     {
-      "title": "Undercover Cop Hack You NEED To Know!",
-      "topic": "Informational video about subtle cues to identify undercover police officers. Focus on body language, clothing choices, and common phrases they might use. Disclaimer: For educational purposes only.",
-      "hook": "Is that person an undercover cop? Look for these signs...",
+      "title": "The Silent But Deadly Archerfish!",
+      "topic": "Archerfish hunt by spitting water at insects, knocking them into the water. Discuss their accuracy, range, and how they compensate for light refraction. Include slow-motion footage of the spit.",
+      "hook": "Ever seen a fish snipe its dinner?",
       "tags": [
-        "undercover cop",
-        "law enforcement",
-        "police tactics",
-        "detective",
-        "security",
-        "safety tips",
-        "law hacks"
+        "archerfish",
+        "animals",
+        "animalfacts",
+        "wildlife",
+        "science",
+        "nature",
+        "shorts",
+        "amazingfacts"
+      ],
+      "inspired_by": "A silent but deadly battle! #shorts",
+      "estimated_views": "high"
+    },
+    {
+      "title": "Octopus Escape Artist! 🤯",
+      "topic": "Show an octopus escaping from a tank or container. Explain their intelligence and problem-solving abilities. Reference their ability to open jars and navigate mazes.",
+      "hook": "This octopus is smarter than your average...",
+      "tags": [
+        "octopus",
+        "ocean",
+        "animals",
+        "facts",
+        "science",
+        "mindblowing",
+        "wildlife",
+        "shorts",
+        "amazingfacts"
+      ],
+      "inspired_by": "Octopus IQ Will Blow Your Mind!",
+      "estimated_views": "high"
+    },
+    {
+      "title": "The Unbelievable Strength of the Mantis Shrimp!",
+      "topic": "Explain the mantis shrimp's powerful punch and the science behind its incredible speed. Show close-up shots of its club and its ability to break glass.",
+      "hook": "Meet the fastest punch in the animal kingdom!",
+      "tags": [
+        "mantisshrimp",
+        "animals",
+        "animalfacts",
+        "wildlife",
+        "science",
+        "ocean",
+        "shorts",
+        "amazingfacts"
+      ],
+      "inspired_by": "Animals vs Modern Battle Tank",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "Why Roman Concrete Still Stands Today",
+      "topic": "Highlight the unique ingredients of Roman concrete, like volcanic ash, that contribute to its longevity. Contrast it with modern concrete.",
+      "hook": "What's the secret to Roman Concrete's durability?",
+      "tags": [
+        "romanconcrete",
+        "ancientrome",
+        "history",
+        "science",
+        "engineering",
+        "architecture",
+        "shorts",
+        "amazingfacts"
+      ],
+      "inspired_by": "The Enduring Mystery of Roman Concrete #Shorts",
+      "estimated_views": "high"
+    },
+    {
+      "title": "Sea Otters Holding Hands? Cuteness Overload!",
+      "topic": "Show footage of sea otters holding hands while sleeping. Explain why they do this (to avoid drifting apart). Highlight their playful nature and reliance on each other.",
+      "hook": "These otters are serious about cuddles!",
+      "tags": [
+        "seaotters",
+        "animals",
+        "animalfacts",
+        "wildlife",
+        "ocean",
+        "cuteanimals",
+        "shorts",
+        "amazingfacts"
+      ],
+      "inspired_by": "Adorable sea otters #animals #animalfacts #wildlife #seaotters",
+      "estimated_views": "high"
+    },
+    {
+      "title": "The Secret of the Immortal Jellyfish!",
+      "topic": "Explain the biological process that allows the Turritopsis dohrnii jellyfish to revert to its polyp stage, effectively achieving biological immortality.",
+      "hook": "This jellyfish can cheat death!",
+      "tags": [
+        "immortaljellyfish",
+        "animals",
+        "animalfacts",
+        "wildlife",
+        "science",
+        "biology",
+        "shorts",
+        "amazingfacts"
+      ],
+      "inspired_by": "اغرب 10 ظواهر مجنونة للحيوانات!",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "The Bizarre Truth About Tardigrades (Water Bears)!",
+      "topic": "Highlight the extreme resilience of tardigrades, their ability to survive in space, and their unique adaptations to extreme environments.",
+      "hook": "Meet the toughest creature on Earth... and in space!",
+      "tags": [
+        "tardigrades",
+        "waterbears",
+        "animals",
+        "animalfacts",
+        "wildlife",
+        "science",
+        "biology",
+        "shorts",
+        "amazingfacts"
+      ],
+      "inspired_by": "اغرب 10 ظواهر مجنونة للحيوانات!",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "Eagle's Incredible Comeback Story!",
+      "topic": "Show a compelling rescue and rehabilitation story of an injured eagle. Highlight its recovery and eventual release back into the wild. Emphasize the emotional aspect.",
+      "hook": "This eagle's story will melt your heart!",
+      "tags": [
+        "eagle",
+        "animalrescue",
+        "animals",
+        "wildlife",
+        "birds",
+        "conservation",
+        "shorts",
+        "emotional",
+        "amazingfacts"
+      ],
+      "inspired_by": "Eagle emotional story",
+      "estimated_views": "high"
+    },
+    {
+      "title": "That Time a Biker Had The Most Wholesome Crash Ever!",
+      "topic": "Relay a story similar to the Biker crash but make it wholesome.",
+      "hook": "This crash will restore your faith in humanity!",
+      "tags": [
+        "wholesome",
+        "crash",
+        "kindness",
+        "biker",
+        "goodSamaritan",
+        "shorts"
+      ],
+      "inspired_by": "Biker has the most WHOLESOME crash ever",
+      "estimated_views": "high"
+    },
+    {
+      "title": "How To Spot An Undercover Cop... (Allegedly)",
+      "topic": "Taking inspo from How To Spot An Undercover Cop and create a StreamGlobal version.",
+      "hook": "Is that guy a cop?",
+      "tags": [
+        "undercover",
+        "cop",
+        "law",
+        "lawyer",
+        "laws",
+        "hacks",
+        "shorts"
       ],
       "inspired_by": "How To Spot An Undercover Cop",
-      "estimated_views": "high",
-      "status": "failed"
-    },
-    {
-      "title": "Father-in-Law's CRAZY Test! (Unexpected)",
-      "topic": "A comedic short depicting a father-in-law putting his daughter's boyfriend through a series of ridiculous tests to see if he's good enough. End with an unexpected twist showing the father-in-law approving after a silly challenge.",
-      "hook": "Father-in-law's giving him THE test...",
-      "tags": [
-        "father-in-law",
-        "relationship comedy",
-        "funny",
-        "shorts",
-        "couple goals",
-        "family humor",
-        "prank"
-      ],
-      "inspired_by": "The Ultimate Father-in-Law Test! 😠 #shorts",
-      "estimated_views": "high",
-      "status": "failed"
-    },
-    {
-      "title": "Weaponized Incompetence: Is Your Partner Doing This?!",
-      "topic": "Discuss the concept of weaponized incompetence in relationships. Use examples from trending audio clips. Offer advice on how to address it with your partner and promote equality in household tasks.",
-      "hook": "Is your partner pretending they can't do basic tasks?",
-      "tags": [
-        "weaponized incompetence",
-        "relationship advice",
-        "couple problems",
-        "gender roles",
-        "equality",
-        "funny",
-        "fyp",
-        "couple"
-      ],
-      "inspired_by": "What do they call that? Weaponized incompetence? #funny #fyp #couple",
-      "estimated_views": "medium",
-      "status": "failed"
-    },
-    {
-      "title": "Mind-Bending Bathroom Design! You Won't Believe This",
-      "topic": "Showcase an innovative and unusual bathroom design, highlighting its unique features and functionality. Use fast cuts and captivating visuals to keep viewers engaged.",
-      "hook": "Wait till you see this insane bathroom...",
-      "tags": [
-        "bathroom design",
-        "interior design",
-        "home decor",
-        "innovation",
-        "architecture",
-        "crazy design",
-        "shorts"
-      ],
-      "inspired_by": "This bathroom design is a crazy twist! #shorts",
-      "estimated_views": "medium",
-      "status": "failed"
-    },
-    {
-      "title": "Fast & Furious Behind The Scenes: Hilarious Moments",
-      "topic": "Compilation of funny and lighthearted moments from behind the scenes of the Fast & Furious franchise. Focus on interactions between cast members and bloopers during filming.",
-      "hook": "Paul Walker's joke on set...",
-      "tags": [
-        "fast and furious",
-        "behind the scenes",
-        "fast and furious on set",
-        "funny moment",
-        "paul walker",
-        "bloopers",
-        "movie magic"
-      ],
-      "inspired_by": "He’s spitting facts 😂",
       "estimated_views": "medium"
     },
     {
-      "title": "Military Moments That Will Make You Laugh!",
-      "topic": "A compilation of humorous moments from military training, exercises, and everyday life. Use appropriate music and editing to enhance the comedic effect.",
-      "hook": "This military prank will crack you up...",
+      "title": "Magnus Carlsen's Biggest Blunder!",
+      "topic": "Analyze a chess game where Magnus Carlsen made a significant mistake or fell for a clever trap. Explain the move and its consequences.",
+      "hook": "Even the Chess GOAT makes mistakes...",
       "tags": [
-        "military",
-        "funny military",
-        "military humor",
-        "army",
-        "air force",
-        "navy",
-        "comedy",
-        "shorts"
+        "MagnusCarlsen",
+        "chess",
+        "chessstrategy",
+        "chesstactics",
+        "chessblunder",
+        "shorts",
+        "amazingfacts"
       ],
-      "inspired_by": "Funny military moments part 59  #military",
+      "inspired_by": "He Used Magnus’ OWN Trick Against Him… And Won 😤♟️",
       "estimated_views": "medium"
     },
     {
-      "title": "The Carbonaro Effect: Bowling Ball Prank!",
-      "topic": "Recreate a simple prank inspired by The Carbonaro Effect, focusing on a magic trick or illusion involving a bowling ball or other everyday object. Emphasize the surprise and reaction of the target.",
-      "hook": "This bowling ball trick is insane!",
+      "title": "The Physics Behind a Perfect Skip!",
+      "topic": "Explain the science of skipping stones: spin, angle, velocity, and surface tension. Show slow-motion footage of a stone skipping successfully.",
+      "hook": "Unlock the secret to skipping stones!",
       "tags": [
-        "The Carbonaro Effect",
-        "prank",
-        "magic trick",
-        "illusion",
-        "comedy",
+        "skippingstones",
+        "physics",
+        "science",
+        "howto",
+        "outdoors",
+        "nature",
         "shorts",
-        "bowling ball"
+        "amazingfacts"
       ],
-      "inspired_by": "Bowling Ball Magic - The Carbonaro Effect #shorts #prank",
+      "inspired_by": "Top 5 intresting Amazing gardening Hacks 😱",
       "estimated_views": "low"
     },
     {
-      "title": "No Ordinary Revenge: Chilling Scene",
-      "topic": "Edit a clip from 'No Ordinary Family' with slowed audio and visual effects to create a dramatic revenge scene. Focus on the emotional impact and visual intensity.",
-      "hook": "He's coming for revenge...",
+      "title": "Why You Can't Lick Your Elbow! (Probably)",
+      "topic": "Challenge viewers to try licking their elbow, then explain the anatomical reasons why it's difficult or impossible for most people.",
+      "hook": "Bet you can't do this!",
       "tags": [
-        "No Ordinary Family",
-        "revenge",
-        "MATADORA",
-        "slowed",
+        "bodyfacts",
+        "humanbody",
+        "anatomy",
+        "funny",
+        "challenge",
         "shorts",
-        "TrendingNow",
-        "ForYou"
+        "amazingfacts"
       ],
-      "inspired_by": "He Got His Revenge 🔥🥶 | No Ordinary Family | MATADORA (slowed) #Shorts #TrendingNow #ForYou #Revenge",
+      "inspired_by": "Interesting Facts You Probably Didn't Know",
       "estimated_views": "medium"
     },
     {
-      "title": "Bumpy Johnson's Genius Strategy!",
-      "topic": "Highlight a specific strategy or decision made by Bumpy Johnson (from a relevant show) showcasing his intelligence and strategic thinking. Add commentary.",
-      "hook": "Bumpy Johnson's plan was genius...",
+      "title": "The Mysterious Case of the Roanoke Colony: Solved?",
+      "topic": "Present updated theories and findings about the Roanoke Colony, leaving the viewers with the conclusion that it is now 'solved'",
+      "hook": "The biggest mystery of the US... is now SOLVED?!",
       "tags": [
-        "Bumpy Johnson",
-        "Harlem",
-        "Godfather of Harlem",
-        "strategy",
-        "crime",
+        "roanoke",
         "history",
+        "mystery",
+        "unsolved",
+        "usa",
+        "shorts",
+        "amazingfacts"
+      ],
+      "inspired_by": "BRIGHT SIDE: We Finally Know Who Built the Pyramids",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "Ancient Egypt In 10 Minutes!",
+      "topic": "Recap of Egypt, but faster and flashier!",
+      "hook": "How to become an Egypt Expert!",
+      "tags": [
+        "egypt",
+        "ancientegypt",
+        "history",
+        "pyramids",
+        "pharaohs",
+        "shorts",
+        "amazingfacts"
+      ],
+      "inspired_by": "BRIGHT SIDE: We Finally Know Who Built the Pyramids",
+      "estimated_views": "medium",
+      "seo_keywords": [
+        "recap of egypt but faster and flashier on",
+        "recap of egypt but faster and flashier on netflix",
+        "recap of egypt but faster and flashier in english",
+        "recap of egypt but faster and flashier in the bible",
+        "recap of egypt but faster and flashier meaning",
+        "recap of egypt but faster and flashier hydrograph",
+        "recap of egypt but faster and flashier synonym"
+      ],
+      "optimized_title": "Ancient Egypt In 10 Minutes! | Recap Of Egypt But Faster And Flashier On"
+    },
+    {
+      "title": "Webb Telescope: New Planet Discovered With SAND?",
+      "topic": "Recap of the James Webb planet discovery with Sand!",
+      "hook": "Sand Rain!?",
+      "tags": [
+        "webb",
+        "sand",
+        "planet",
+        "discovery",
+        "shorts",
+        "amazingfacts"
+      ],
+      "inspired_by": "BRIGHT SIDE: We Finally Know Who Built the Pyramids",
+      "estimated_views": "medium",
+      "seo_keywords": [
+        "recap of the james webb planet discovery with sand planet",
+        "recap of the james webb planet discovery with sand videos",
+        "recap of the james webb planet discovery with sand in it",
+        "recap of the james webb planet discovery with sand and rocks",
+        "recap of the james webb planet discovery with sand filter",
+        "recap of the james webb planet discovery with sand dollars"
+      ],
+      "optimized_title": "Webb Telescope: New Planet Discovered With SAND?"
+    },
+    {
+      "title": "Quantum Computing is HERE!",
+      "topic": "Recap of five interesting facts about Quantum Computers",
+      "hook": "Technology of the FUTURE!",
+      "tags": [
+        "quantum",
+        "compute",
+        "future",
+        "technology",
+        "shorts",
+        "amazingfacts"
+      ],
+      "inspired_by": "BRIGHT SIDE: We Finally Know Who Built the Pyramids",
+      "estimated_views": "medium",
+      "seo_keywords": [
+        "recap of five interesting facts about quantum computers"
+      ],
+      "optimized_title": "Quantum Computing is HERE! | Recap Of Five Interesting Facts About Quantum Computers"
+    },
+    {
+      "title": "Can You Beat This Endurance Challenge?",
+      "topic": "Present a physical challenge that is incredibly difficult to complete.",
+      "hook": "Only 1% Of People Can Do This!",
+      "tags": [
+        "challenge",
+        "endurance",
+        "impossible",
+        "hard",
         "shorts"
       ],
-      "inspired_by": "Bumpy Johnson was a smart man.",
-      "estimated_views": "low"
-    },
-    {
-      "title": "Hero Saves Officer in CRAZY Fight!",
-      "topic": "Show a short clip (after sourcing it legally) of a citizen intervening to help a police officer in a dangerous situation. Keep the tone respectful and commend the heroic actions.",
-      "hook": "Hero jumps in to save the day...",
-      "tags": [
-        "hero",
-        "police officer",
-        "rescue",
-        "citizen",
-        "community",
-        "crime",
-        "fight"
-      ],
-      "inspired_by": "Hero Woman Saves Officer Mid-Fight",
-      "estimated_views": "low"
-    },
-    {
-      "title": "Winter Blues? Try These Tips!",
-      "topic": "Short and snappy tips to combat seasonal affective disorder (SAD). Include bright lighting, exercise, and healthy eating suggestions.",
-      "hook": "Feeling down? Try this...",
-      "tags": [
-        "winter blues",
-        "seasonal affective disorder",
-        "SAD",
-        "mental health",
-        "winter depression",
-        "mood boost"
-      ],
-      "inspired_by": null,
-      "estimated_views": "low"
-    },
-    {
-      "title": "Cozy Up with these Winter Reads!",
-      "topic": "Recommend a few popular books to read during the winter season. Show beautiful visuals of the books and cozy reading nooks.",
-      "hook": "The perfect books for a cold winter night...",
-      "tags": [
-        "books",
-        "winter reading",
-        "cozy",
-        "reading",
-        "winter books",
-        "book recommendations"
-      ],
-      "inspired_by": null,
-      "estimated_views": "low"
-    },
-    {
-      "title": "DIY Winter Decorations on a Budget",
-      "topic": "Show a couple of easy and inexpensive DIY winter decorations for your home. Emphasize using items you already have.",
-      "hook": "Decorate your home with these easy DIYs...",
-      "tags": [
-        "winter decorations",
-        "DIY",
-        "budget",
-        "home decor",
-        "winter",
-        "crafts"
-      ],
-      "inspired_by": null,
-      "estimated_views": "low"
-    },
-    {
-      "title": "Stay Active Indoors: Winter Workout!",
-      "topic": "Demonstrate a short workout routine that can be done indoors during the winter months. Keep it simple and accessible for all fitness levels.",
-      "hook": "Workout from home this winter...",
-      "tags": [
-        "winter workout",
-        "indoor workout",
-        "fitness",
-        "exercise",
-        "home workout",
-        "stay active"
-      ],
-      "inspired_by": null,
-      "estimated_views": "low"
-    },
-    {
-      "title": "Warm Up with This Winter Soup!",
-      "topic": "Show how to make a simple and comforting winter soup recipe. Focus on hearty and healthy ingredients.",
-      "hook": "Make this soup to warm up this winter...",
-      "tags": [
-        "winter soup",
-        "recipe",
-        "cooking",
-        "food",
-        "comfort food",
-        "winter recipe"
-      ],
-      "inspired_by": null,
-      "estimated_views": "low"
-    },
-    {
-      "title": "The Best Winter Skincare Routine",
-      "topic": "Share a quick and easy winter skincare routine to protect your skin from the cold and dry air.",
-      "hook": "Protect your skin this winter with this routine...",
-      "tags": [
-        "winter skincare",
-        "skincare routine",
-        "beauty",
-        "skin",
-        "winter skin",
-        "skincare tips"
-      ],
-      "inspired_by": null,
-      "estimated_views": "low"
-    },
-    {
-      "title": "Easy Tips for a Cozy Winter Night In",
-      "topic": "Share some simple tips for creating a cozy and relaxing winter night in, such as lighting candles, drinking hot chocolate, and watching a movie.",
-      "hook": "Create the perfect cozy night in...",
-      "tags": [
-        "cozy night in",
-        "winter night",
-        "relaxation",
-        "cozy",
-        "night in",
-        "self-care"
-      ],
-      "inspired_by": null,
-      "estimated_views": "low"
-    },
-    {
-      "title": "Winter Travel Essentials You Need!",
-      "topic": "A short list of travel essentials to pack for a winter trip, focusing on warm clothing, skincare, and travel-sized toiletries.",
-      "hook": "Don't forget these travel essentials...",
-      "tags": [
-        "winter travel",
-        "travel essentials",
-        "packing",
-        "travel",
-        "winter trip",
-        "travel tips"
-      ],
-      "inspired_by": null,
-      "estimated_views": "low"
-    },
-    {
-      "title": "Declutter Your Home This Winter",
-      "topic": "Share tips on decluttering your home during the winter months, focusing on getting rid of unwanted items and organizing your space.",
-      "hook": "Declutter your home before spring...",
-      "tags": [
-        "declutter",
-        "organization",
-        "home organization",
-        "winter cleaning",
-        "cleaning",
-        "home decluttering"
-      ],
-      "inspired_by": null,
-      "estimated_views": "low"
-    },
-    {
-      "title": "Plan Your Spring Garden Now!",
-      "topic": "Inspire viewers to start planning their spring garden now, sharing tips on seed starting and garden design.",
-      "hook": "Get ready for spring gardening...",
-      "tags": [
-        "spring garden",
-        "gardening",
-        "spring",
-        "garden design",
-        "seed starting",
-        "gardening tips"
-      ],
-      "inspired_by": null,
-      "estimated_views": "low"
+      "inspired_by": "BRIGHT SIDE: We Finally Know Who Built the Pyramids",
+      "estimated_views": "medium"
     }
   ],
   "ambient_recommendations": [
     {
-      "type": "fireplace",
+      "type": "thunderstorm",
       "hours": 8,
-      "reason": "Classic winter comfort. High search volume in colder months for a cozy atmosphere."
+      "reason": "Summer is thunderstorm season, and 'sleep to thunder' underperformed recently. This could be retested."
     },
     {
-      "type": "snow",
+      "type": "ocean",
       "hours": 8,
-      "reason": "Provides a visually calming and seasonally appropriate backdrop. Appeals to those experiencing or missing snowfall."
+      "reason": "Relaxing and popular year-round. Creates a calming atmosphere."
     },
     {
-      "type": "candle",
+      "type": "campfire",
       "hours": 8,
-      "reason": "Creates a sense of warmth and tranquility, perfect for relaxation and sleep during the darker winter days."
+      "reason": "Campfire ambience is generally comforting and enjoyable."
     }
   ],
   "longform": [],
-  "generated_at": "2026-02-15T07:33:56.186124",
-  "trending_count": 10,
-  "channels_analyzed": 0,
-  "status": "in_progress",
-  "last_executed_at": "2026-02-15T07:59:49.546910",
-  "results": {
-    "shorts_produced": 0,
-    "longform_produced": 0,
-    "errors": [
-      "Short 'Undercover Cop Hack You NEED T' failed",
-      "Short 'Father-in-Law's CRAZY Test! (U' failed",
-      "Short 'Weaponized Incompetence: Is Yo' failed",
-      "Short 'Mind-Bending Bathroom Design! ' failed"
-    ]
-  }
+  "generated_at": "2026-02-15T08:02:13.433542",
+  "trending_count": 84,
+  "channels_analyzed": 4,
+  "status": "pending"
 }
