@@ -260,7 +260,9 @@
         "amazingfacts"
       ],
       "inspired_by": "BRIGHT SIDE: We Finally Know Who Built the Pyramids",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Present_updated_theories_and_f_1771172129"
     },
     {
       "title": "Ancient Egypt In 10 Minutes!",
@@ -286,7 +288,9 @@
         "recap of egypt but faster and flashier hydrograph",
         "recap of egypt but faster and flashier synonym"
       ],
-      "optimized_title": "Ancient Egypt In 10 Minutes! | Recap Of Egypt But Faster And Flashier On"
+      "optimized_title": "Ancient Egypt In 10 Minutes! | Recap Of Egypt But Faster And Flashier On",
+      "status": "produced",
+      "production_id": "Recap_of_Egypt_but_faster_and__1771172505"
     },
     {
       "title": "Webb Telescope: New Planet Discovered With SAND?",
@@ -368,7 +372,7 @@
   "trending_count": 84,
   "channels_analyzed": 4,
   "status": "in_progress",
-  "last_executed_at": "2026-02-15T14:28:03.476241",
+  "last_executed_at": "2026-02-15T16:27:53.835057",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
