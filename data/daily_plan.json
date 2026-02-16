@@ -87,7 +87,9 @@
         "advice"
       ],
       "inspired_by": "Leo in Frames channel",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Clip_a_short_impactful_scene_f_1771247268"
     },
     {
       "title": "Military Life: You Won't Believe These Moments! #shorts",
@@ -103,7 +105,9 @@
         "humor"
       ],
       "inspired_by": "DefenderJo TV channel",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Compile_a_compilation_of_funny_1771247449"
     },
     {
       "title": "Undercover Cop Secrets Revealed! #shorts",
@@ -324,7 +328,7 @@
   "trending_count": 83,
   "channels_analyzed": 4,
   "status": "in_progress",
-  "last_executed_at": "2026-02-16T10:07:39.226603",
+  "last_executed_at": "2026-02-16T13:15:39.210329",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
