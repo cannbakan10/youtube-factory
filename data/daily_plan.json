@@ -124,7 +124,9 @@
         "crime"
       ],
       "inspired_by": "Law By Mike channel",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "produced",
+      "production_id": "Share_35_tips_on_how_to_potent_1771252525"
     },
     {
       "title": "Cops vs Criminals: Unbelievable Moments! #shorts",
@@ -141,7 +143,9 @@
         "viral"
       ],
       "inspired_by": "Law By Mike channel",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "produced",
+      "production_id": "Create_a_short_compilation_of__1771252846"
     },
     {
       "title": " Magnus Carlsen Gets Outsmarted! #shorts",
@@ -328,7 +332,7 @@
   "trending_count": 83,
   "channels_analyzed": 4,
   "status": "in_progress",
-  "last_executed_at": "2026-02-16T13:15:39.210329",
+  "last_executed_at": "2026-02-16T14:45:06.461678",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
