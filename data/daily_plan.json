@@ -159,7 +159,9 @@
         "chessgame"
       ],
       "inspired_by": "He Used Magnus’ OWN Trick Against Him… And Won 😤♟️",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Show_a_clip_of_Magnus_Carlsen__1771259385"
     },
     {
       "title": "Weaponized Incompetence: Is This Your Relationship? #shorts",
@@ -174,7 +176,9 @@
         "marriage"
       ],
       "inspired_by": "What do they call that? Weaponized incompetence? #funny #fyp #couple",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Present_examples_of_weaponized_1771259680"
     },
     {
       "title": "Ultimate Father-in-Law Test! #shorts",
@@ -332,7 +336,7 @@
   "trending_count": 83,
   "channels_analyzed": 4,
   "status": "in_progress",
-  "last_executed_at": "2026-02-16T14:45:06.461678",
+  "last_executed_at": "2026-02-16T16:38:43.054607",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
