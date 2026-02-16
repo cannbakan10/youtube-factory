@@ -194,7 +194,9 @@
         "shorts"
       ],
       "inspired_by": "The Ultimate Father-in-Law Test! 😠 #shorts",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Showcase_a_humorous_or_dramati_1771266643"
     },
     {
       "title": "Bowling Ball Magic: You Won't Believe Your Eyes! #shorts",
@@ -210,7 +212,9 @@
         "shorts"
       ],
       "inspired_by": "Bowling Ball Magic - The Carbonaro Effect #shorts #prank",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Show_a_short_surprising_clip_f_1771266896"
     },
     {
       "title": "Skunk Mistaken for a Dog: Hilarious Moment! #shorts",
@@ -336,7 +340,7 @@
   "trending_count": 83,
   "channels_analyzed": 4,
   "status": "in_progress",
-  "last_executed_at": "2026-02-16T16:38:43.054607",
+  "last_executed_at": "2026-02-16T18:38:54.548536",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
