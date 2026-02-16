@@ -235,7 +235,9 @@
         "crocodile dundee skunk scene",
         "crocodile dundee 2 funny scenes"
       ],
-      "optimized_title": "Skunk Mistaken for a Dog: Hilarious Moment! #shorts | Crocodile Dundee Skunk Scene"
+      "optimized_title": "Skunk Mistaken for a Dog: Hilarious Moment! #shorts | Crocodile Dundee Skunk Scene",
+      "status": "produced",
+      "production_id": "Present_the_funny_skunk_scene__1771273527"
     },
     {
       "title": "Pride Comes Before a Fall: Epic Fail! #shorts",
@@ -251,7 +253,9 @@
         "epicfail"
       ],
       "inspired_by": "pride comes before flop",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Showcase_a_short_clip_of_someo_1771273782"
     },
     {
       "title": "Biker's Wholesome Crash: You'll Smile! #shorts",
@@ -340,7 +344,7 @@
   "trending_count": 83,
   "channels_analyzed": 4,
   "status": "in_progress",
-  "last_executed_at": "2026-02-16T18:38:54.548536",
+  "last_executed_at": "2026-02-16T20:33:47.762139",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
