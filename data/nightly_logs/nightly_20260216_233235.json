@@ -1,0 +1,193 @@
+{
+  "timestamp": "2026-02-16T23:31:45.684805",
+  "dry_run": false,
+  "performance_review": {
+    "total_recent": 31,
+    "winners_count": 16,
+    "losers_count": 10,
+    "avg_views_48h": 212.3,
+    "best_topics": [
+      "Mantis Shrimp: The Ocean's Tiny Terror #Shorts",
+      "Abyssal Bloom: A Deep-Sea Mystery Unveiled #Shorts",
+      "The Enduring Mystery of Roman Concrete #Shorts"
+    ],
+    "best_views": [
+      693,
+      659,
+      641
+    ],
+    "winner_titles": [
+      "A Chain Reaction of Kindness: Wholesome Helping Hands! #Shorts",
+      "From Broken Wings to Soaring Skies: An Eagle's Inspiring Rescue #Shorts",
+      "The Immortal Jellyfish: How It Cheats Death #Shorts",
+      "Sea Otters: The Sweetest Hand-Holding Sleepers! #Shorts",
+      "Roman Concrete vs. Modern Concrete: The Ancient Secret to Longevity #Shorts",
+      "Mantis Shrimp: The Ocean's Tiny Terror #Shorts",
+      "Octopus Escape: The Brainy Brine Bandit! #Shorts",
+      "Archerfish: Nature's Water Pistol Assassins #Shorts",
+      "Mind-Blowing Animal Facts That Will Shock You! #Shorts",
+      "Unlocking the Mystery of Blue Laws: Strange Restrictions Explained #Shorts",
+      "The Castor Bean: A Deadly Beauty #Shorts",
+      "The Enduring Mystery of Roman Concrete #Shorts",
+      "Abyssal Bloom: A Deep-Sea Mystery Unveiled #Shorts",
+      "Honey Trouble: The Dark Side of Your Sweet Treat #Shorts",
+      "The Dark Truth Behind Diamond Marketing: Artificial Scarcity and Ethical Costs #Shorts",
+      "🔥 Cozy Fireplace 8 HOURS with Crackling Fire Sounds | Fireplace Ambience for Sleep, Study & Relax"
+    ],
+    "loser_titles": [
+      "Quantum Computing: 5 Mind-Blowing Facts! #Shorts",
+      "James Webb Telescope: Building Planets with Sand! #Shorts",
+      "Egypt in 60 Seconds: Fast & Flashy History! #Shorts",
+      "Roanoke: America's Oldest Cold Case...SOLVED?! #Shorts",
+      "Can YOU Lick Your Elbow? The Surprising Truth! #Shorts"
+    ]
+  },
+  "cleanup": {
+    "unlisted": 2,
+    "deleted": 6,
+    "failed": 0,
+    "kept": 144,
+    "thresholds": {
+      "shorts_7d": 50,
+      "shorts_14d": 100,
+      "shorts_30d": 200,
+      "long_14d": 50,
+      "long_30d": 100,
+      "multiplier": 1.0
+    }
+  },
+  "trending": {
+    "found": 83,
+    "viral_shorts_found": 30,
+    "competitors_analyzed": 2,
+    "comments_mined": 20,
+    "top_5": [
+      {
+        "title": "Tom Holland React Viral Videos Part 22 #tomholland #funny #t",
+        "views": 53726224,
+        "category": "Film & Animation"
+      },
+      {
+        "title": "How To Spot An Undercover Cop",
+        "views": 20144059,
+        "category": "Entertainment"
+      },
+      {
+        "title": "Biker has the most WHOLESOME crash ever‼️🤯",
+        "views": 18565548,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Bumpy Johnson was a smart man.",
+        "views": 17494622,
+        "category": "Entertainment"
+      },
+      {
+        "title": "W Speed for coming back stronger 💪🔥",
+        "views": 16675472,
+        "category": "Howto & Style"
+      }
+    ],
+    "top_viral_shorts": [
+      {
+        "title": "Se lo vieras en un árbol, ¿pasarías de largo?",
+        "views": 6770134,
+        "query": "amazing facts you didn't know"
+      },
+      {
+        "title": "Eagle emotional story #animalrescue  #facts #trending #anima",
+        "views": 4404658,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "the ultimate predator #facts #didyouknow #wildlife",
+        "views": 2650855,
+        "query": "did you know facts"
+      },
+      {
+        "title": "What If Your Dog Was Raised by Wolves? 🐺😱 #facts #shorts",
+        "views": 2572795,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "Top 5 intresting Amazing gardening Hacks 😱| Random Facts #fa",
+        "views": 2424559,
+        "query": "top 5 facts"
+      }
+    ]
+  },
+  "ambient_analysis": {
+    "total_ambient": 3,
+    "total_views": 952,
+    "top_type": "fireplace",
+    "worst_type": "rain",
+    "type_rankings": [
+      {
+        "type": "fireplace",
+        "video_count": 2,
+        "total_views": 621,
+        "avg_views": 310,
+        "avg_views_per_day": 111.0,
+        "engagement_rate": 2.09,
+        "best_video": {
+          "title": "🔥 Cozy Fireplace 8 HOURS with Crackling Fire Sounds | Firepl",
+          "views": 326,
+          "views_per_day": 163.0
+        }
+      },
+      {
+        "type": "rain",
+        "video_count": 1,
+        "total_views": 331,
+        "avg_views": 331,
+        "avg_views_per_day": 33.1,
+        "engagement_rate": 2.11,
+        "best_video": {
+          "title": "1 Hour Rainy Night Ambience (60 Minutes)",
+          "views": 331,
+          "views_per_day": 33.1
+        }
+      }
+    ]
+  },
+  "plan": {
+    "shorts_planned": 18,
+    "ambient_recommendations": [
+      {
+        "type": "snow",
+        "hours": 8,
+        "reason": "Winter season: Many viewers seek cozy and relaxing snow scenes for sleep and relaxation during colder months."
+      },
+      {
+        "type": "fireplace",
+        "hours": 8,
+        "reason": "Classic winter ambient: Fireplace videos always perform well during winter due to their warmth and comforting atmosphere."
+      },
+      {
+        "type": "thunderstorm",
+        "hours": 8,
+        "reason": "The sound of a thunderstorm can be very relaxing and help people focus or fall asleep, and it's not dependent on the season. This creates a cozy indoor feeling, especially appealing in winter."
+      }
+    ],
+    "shorts": [
+      "Magnus Carlsen's Revenge! The Chess Trick Heard Ro",
+      "Nerf Dart Wizardry! This Trick Defies Gravity! #sh",
+      "Eagle Rescue: The Emotional Story You Need To See!",
+      "Animals Without Fur Look Terrifying! 😱 #shorts #an",
+      "The Ultimate Predator: Stealth Mode Activated! #sh",
+      "Dog Raised By Wolves? The Shocking Truth! #shorts ",
+      "Craziest Bathroom Design Ever?! #shorts #design #c",
+      "Military Moments That Will Make You Laugh! 😂 #shor",
+      "Bumpy Johnson's Street Smarts: Lessons for Life! #",
+      "Father-in-Law Test: Can YOU Pass? 😠 #shorts #fathe",
+      "Magic Bowling Ball Prank! You Won't Believe Their ",
+      "Tom Holland Reacts to the Internet's Funniest Vide",
+      "He Got His Revenge 🔥🥶 #Shorts #TrendingNow #ForYou",
+      "PC so Cold It's Infinite! #shorts #PC #Tech",
+      "He’s spitting facts 😂 #shorts #fastandfurious",
+      "Joe Rogan Slap Knockout! #shorts #sports",
+      "Coloring Book Challenge #shorts #colors",
+      "Biker WHolesome Crash #shorts #crash"
+    ]
+  }
+}
