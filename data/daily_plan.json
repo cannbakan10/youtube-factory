@@ -18,7 +18,9 @@
         "shorts"
       ],
       "inspired_by": "Law By Mike",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "produced",
+      "production_id": "A_compilation_of_humorous_scen_1771281101"
     },
     {
       "title": "World's WORST father-in-law! 😂 Ultimate Test Fails!",
@@ -37,7 +39,9 @@
         "humor"
       ],
       "inspired_by": "The Ultimate Father-in-Law Test! #shorts",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "produced",
+      "production_id": "Show_various_scenarios_of_extr_1771281353"
     },
     {
       "title": "The ULTIMATE Animal Revenge! 😂 Who's Laughing Now?",
@@ -384,5 +388,11 @@
   "generated_at": "2026-02-16T22:10:47.907643",
   "trending_count": 83,
   "channels_analyzed": 5,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-02-16T22:40:48.825946",
+  "results": {
+    "shorts_produced": 2,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
