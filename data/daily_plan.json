@@ -14,7 +14,9 @@
         "animalfacts"
       ],
       "inspired_by": "Animals Without Fur Look Terrifying",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Showcase_images_and_videos_of__1771225128"
     },
     {
       "title": "Octopus IQ: Smarter Than You Think! #shorts",
@@ -31,7 +33,9 @@
         "wildlife"
       ],
       "inspired_by": "Octopus IQ Will Blow Your Mind!#octopus#ocean#animals#facts#shorts#science#mindblowing#love #latest",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "produced",
+      "production_id": "Highlight_octopus_intelligence_1771225401"
     },
     {
       "title": "Amazing Gardening Hacks You Need to Know! #shorts",
@@ -315,5 +319,11 @@
   "generated_at": "2026-02-15T23:30:09.739540",
   "trending_count": 83,
   "channels_analyzed": 4,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-02-16T07:08:38.191211",
+  "results": {
+    "shorts_produced": 2,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
