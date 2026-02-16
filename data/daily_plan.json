@@ -52,7 +52,9 @@
         "facts"
       ],
       "inspired_by": "Top 5 intresting Amazing gardening Hacks 😱| Random Facts #facts #shorts #ytshort",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Showcase_35_unique_and_simple__1771235859"
     },
     {
       "title": "Fun Facts That Will Make You Question Everything! #shorts",
@@ -68,7 +70,9 @@
         "mindblowing"
       ],
       "inspired_by": "Interesting Facts You Probably Didn't Know #funny #memes #shorts #ytshorts #comedy #viral",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Present_a_series_of_57_quirky__1771236189"
     },
     {
       "title": "The Bumpy Johnson Warning Everyone Needs To Hear! #shorts",
@@ -320,7 +324,7 @@
   "trending_count": 83,
   "channels_analyzed": 4,
   "status": "in_progress",
-  "last_executed_at": "2026-02-16T07:08:38.191211",
+  "last_executed_at": "2026-02-16T10:07:39.226603",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
