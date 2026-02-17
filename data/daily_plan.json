@@ -13,7 +13,9 @@
         "food storage"
       ],
       "inspired_by": "Stop Putting These Foods in the Fridge! 🥶",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Create_a_visually_engaging_lis_1771360328"
     },
     {
       "title": "😮Did You Know Your Earphones Have a HIDDEN Feature?! 🎧",
@@ -27,7 +29,9 @@
         "gadgets"
       ],
       "inspired_by": "Did you know about your earphones |#factsquarry |",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Reveal_a_lesserknown_function__1771360770"
     },
     {
       "title": "🐺What If Your Dog Was Raised by Wolves? 😱",
@@ -281,5 +285,11 @@
   "generated_at": "2026-02-17T18:51:07.343947",
   "trending_count": 84,
   "channels_analyzed": 3,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-02-17T20:44:10.196767",
+  "results": {
+    "shorts_produced": 2,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
