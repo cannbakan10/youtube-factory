@@ -52,7 +52,9 @@
         "emotional"
       ],
       "inspired_by": "Eagle emotional story #animalrescue  #facts #trending #animals",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Show_an_emotional_animal_rescu_1771321993"
     },
     {
       "title": "Animals Without Fur Look Terrifying! 😱 #shorts #animals #furless",
@@ -68,7 +70,9 @@
         "scary"
       ],
       "inspired_by": "Animals Without Fur Look Terrifying",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Show_images_or_short_clips_of__1771322276"
     },
     {
       "title": "The Ultimate Predator: Stealth Mode Activated! #shorts #wildlife #facts",
@@ -306,7 +310,7 @@
   "trending_count": 83,
   "channels_analyzed": 5,
   "status": "in_progress",
-  "last_executed_at": "2026-02-17T07:02:50.271140",
+  "last_executed_at": "2026-02-17T10:03:17.874805",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
