@@ -88,7 +88,9 @@
         "animal facts"
       ],
       "inspired_by": "the ultimate predator #facts #didyouknow #wildlife",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Show_footage_of_a_predator_usi_1771333751"
     },
     {
       "title": "Dog Raised By Wolves? The Shocking Truth! #shorts #dogs #wolves",
@@ -103,7 +105,9 @@
         "facts"
       ],
       "inspired_by": "What If Your Dog Was Raised by Wolves? 🐺😱 #facts #shorts",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Explore_the_hypothetical_scena_1771334030"
     },
     {
       "title": "Craziest Bathroom Design Ever?! #shorts #design #crazy",
@@ -310,7 +314,7 @@
   "trending_count": 83,
   "channels_analyzed": 5,
   "status": "in_progress",
-  "last_executed_at": "2026-02-17T10:03:17.874805",
+  "last_executed_at": "2026-02-17T13:18:53.727257",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
