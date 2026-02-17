@@ -122,7 +122,9 @@
         "interiordesign"
       ],
       "inspired_by": "This bathroom design is a crazy twist! #shorts",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Showcase_a_mindblowing_bathroo_1771339135"
     },
     {
       "title": "Military Moments That Will Make You Laugh! 😂 #shorts #military #funny",
@@ -137,7 +139,9 @@
         "humor"
       ],
       "inspired_by": "Funny military moments part 59  #military",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Compile_a_series_of_short_funn_1771339429"
     },
     {
       "title": "Bumpy Johnson's Street Smarts: Lessons for Life! #shorts #gangster #wisdom",
@@ -314,7 +318,7 @@
   "trending_count": 83,
   "channels_analyzed": 5,
   "status": "in_progress",
-  "last_executed_at": "2026-02-17T13:18:53.727257",
+  "last_executed_at": "2026-02-17T14:48:28.486195",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
