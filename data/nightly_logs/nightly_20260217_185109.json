@@ -1,0 +1,187 @@
+{
+  "timestamp": "2026-02-17T18:50:19.067506",
+  "dry_run": false,
+  "performance_review": {
+    "total_recent": 22,
+    "winners_count": 10,
+    "losers_count": 10,
+    "avg_views_48h": 183.9,
+    "best_topics": [
+      "Mantis Shrimp: The Ocean's Tiny Terror #Shorts",
+      "Sea Otters: The Sweetest Hand-Holding Sleepers! #Shorts",
+      "From Broken Wings to Soaring Skies: An Eagle's Inspiring Res"
+    ],
+    "best_views": [
+      693,
+      640,
+      545
+    ],
+    "winner_titles": [
+      "A Chain Reaction of Kindness: Wholesome Helping Hands! #Shorts",
+      "From Broken Wings to Soaring Skies: An Eagle's Inspiring Rescue #Shorts",
+      "Tardigrades: The Indestructible Water Bears of Space! #Shorts",
+      "The Immortal Jellyfish: How It Cheats Death #Shorts",
+      "Sea Otters: The Sweetest Hand-Holding Sleepers! #Shorts",
+      "Roman Concrete vs. Modern Concrete: The Ancient Secret to Longevity #Shorts",
+      "Mantis Shrimp: The Ocean's Tiny Terror #Shorts",
+      "Octopus Escape: The Brainy Brine Bandit! #Shorts",
+      "Archerfish: Nature's Water Pistol Assassins #Shorts",
+      "Mind-Blowing Animal Facts That Will Shock You! #Shorts"
+    ],
+    "loser_titles": [
+      "Quantum Computing: 5 Mind-Blowing Facts! #Shorts",
+      "James Webb Telescope: Building Planets with Sand! #Shorts",
+      "Egypt in 60 Seconds: Fast & Flashy History! #Shorts",
+      "Roanoke: America's Oldest Cold Case...SOLVED?! #Shorts",
+      "Can YOU Lick Your Elbow? The Surprising Truth! #Shorts"
+    ]
+  },
+  "cleanup": {
+    "unlisted": 8,
+    "deleted": 2,
+    "failed": 0,
+    "kept": 135,
+    "thresholds": {
+      "shorts_7d": 50,
+      "shorts_14d": 100,
+      "shorts_30d": 200,
+      "long_14d": 50,
+      "long_30d": 100,
+      "multiplier": 1.0
+    }
+  },
+  "trending": {
+    "found": 84,
+    "viral_shorts_found": 30,
+    "competitors_analyzed": 2,
+    "comments_mined": 20,
+    "top_5": [
+      {
+        "title": "Tom Holland React Viral Videos Part 22 #tomholland #funny #t",
+        "views": 61125186,
+        "category": "Film & Animation"
+      },
+      {
+        "title": "The Reason Why I Love My Dog🐕❤️#animalrescue #puppy #shorts",
+        "views": 37376263,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Bro Uses Full Power💀 #shorts #edit #funny #trollface #memes ",
+        "views": 34584943,
+        "category": "Entertainment"
+      },
+      {
+        "title": "How To Spot An Undercover Cop",
+        "views": 21336243,
+        "category": "Entertainment"
+      },
+      {
+        "title": "Biker has the most WHOLESOME crash ever‼️🤯",
+        "views": 19775807,
+        "category": "Howto & Style"
+      }
+    ],
+    "top_viral_shorts": [
+      {
+        "title": "Se lo vieras en un árbol, ¿pasarías de largo?",
+        "views": 7565563,
+        "query": "amazing facts you didn't know"
+      },
+      {
+        "title": "Eagle emotional story #animalrescue  #facts #trending #anima",
+        "views": 5023945,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "Stop Putting These Foods in the Fridge! 🥶",
+        "views": 4426611,
+        "query": "did you know facts"
+      },
+      {
+        "title": "The Impossible Arrow Shot Physics #didyouknow #experiment",
+        "views": 4024287,
+        "query": "did you know facts"
+      },
+      {
+        "title": "Mehhhgan🐐🐐 #katseye #megan #sophia #eyekons  #trend #fypvira",
+        "views": 2968070,
+        "query": "did you know facts"
+      }
+    ]
+  },
+  "ambient_analysis": {
+    "total_ambient": 3,
+    "total_views": 1083,
+    "top_type": "fireplace",
+    "worst_type": "rain",
+    "type_rankings": [
+      {
+        "type": "fireplace",
+        "video_count": 2,
+        "total_views": 752,
+        "avg_views": 376,
+        "avg_views_per_day": 100.7,
+        "engagement_rate": 2.13,
+        "best_video": {
+          "title": "🔥 Cozy Fireplace 8 HOURS with Crackling Fire Sounds | Firepl",
+          "views": 456,
+          "views_per_day": 152.0
+        }
+      },
+      {
+        "type": "rain",
+        "video_count": 1,
+        "total_views": 331,
+        "avg_views": 331,
+        "avg_views_per_day": 33.1,
+        "engagement_rate": 2.11,
+        "best_video": {
+          "title": "1 Hour Rainy Night Ambience (60 Minutes)",
+          "views": 331,
+          "views_per_day": 33.1
+        }
+      }
+    ]
+  },
+  "plan": {
+    "shorts_planned": 18,
+    "ambient_recommendations": [
+      {
+        "type": "snow",
+        "hours": 8,
+        "reason": "Seasonally relevant; evokes cozy and relaxing feelings during winter."
+      },
+      {
+        "type": "fireplace",
+        "hours": 8,
+        "reason": "Classic ambient choice for winter, promotes warmth and relaxation."
+      },
+      {
+        "type": "thunderstorm",
+        "hours": 8,
+        "reason": "Popular ambient sound for sleep and focus; creates a calming atmosphere."
+      }
+    ],
+    "shorts": [
+      "🔥Why You Should NEVER Put These Foods in the Fridg",
+      "😮Did You Know Your Earphones Have a HIDDEN Feature",
+      "🐺What If Your Dog Was Raised by Wolves? 😱",
+      "🐍The Ultimate Predator's Secret Weapon! 🎯 #Wildlif",
+      "😂Bismilah alrahmanilrahim Baby! 👶 #shorts",
+      "The Carbonaro Effect: Bowling Ball Magic! #shorts ",
+      "Nerf Dart Refuses To Fall!?! Physics Explained 👀 #",
+      "Funny Military Moments: Part 60! 😂 #military #shor",
+      "Bro Uses Full Power! 💀 #shorts #edit #funny #troll",
+      "Michael Jackson's Brain Works Different 😂 #shorts ",
+      "Building an infinite ice-cooled PC #shorts",
+      "Biker has the most WHOLESOME crash ever‼️🤯 #shorts",
+      "He Used Magnus’ OWN Trick Against Him… And Won 😤♟️",
+      "From Ordinary to Extraordinary: He Got His Revenge",
+      "Dog raised by wolves 🐺",
+      "Tom Holland Funny Reaction 😂 #shorts",
+      "The Ultimate Father-in-Law Test! 😠 #shorts",
+      "How These Energy Saving Stairs Work 😮 #shorts"
+    ]
+  }
+}
