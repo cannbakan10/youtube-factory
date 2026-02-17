@@ -156,7 +156,9 @@
         "Harlem"
       ],
       "inspired_by": "Bumpy Johnson was a smart man.",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Extract_a_key_piece_of_wisdom__1771346599"
     },
     {
       "title": "Father-in-Law Test: Can YOU Pass? 😠 #shorts #fatherinlaw #test",
@@ -171,7 +173,9 @@
         "comedy"
       ],
       "inspired_by": "The Ultimate Father-in-Law Test! 😠 #shorts",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Present_a_relatable_scenario_w_1771347131"
     },
     {
       "title": "Magic Bowling Ball Prank! You Won't Believe Their Reactions! #shorts #prank #magic",
@@ -318,7 +322,7 @@
   "trending_count": 83,
   "channels_analyzed": 5,
   "status": "in_progress",
-  "last_executed_at": "2026-02-17T14:48:28.486195",
+  "last_executed_at": "2026-02-17T16:56:34.156700",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
