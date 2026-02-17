@@ -45,7 +45,9 @@
         "animal facts"
       ],
       "inspired_by": "What If Your Dog Was Raised by Wolves? 🐺😱 #facts #shorts",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Explore_the_hypothetical_scena_1771367672"
     },
     {
       "title": "🐍The Ultimate Predator's Secret Weapon! 🎯 #Wildlife",
@@ -59,7 +61,9 @@
         "nature"
       ],
       "inspired_by": "the ultimate predator #facts #didyouknow #wildlife",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Showcase_the_unique_hunting_te_1771367969"
     },
     {
       "title": "😂Bismilah alrahmanilrahim Baby! 👶 #shorts",
@@ -286,7 +290,7 @@
   "trending_count": 84,
   "channels_analyzed": 3,
   "status": "in_progress",
-  "last_executed_at": "2026-02-17T20:44:10.196767",
+  "last_executed_at": "2026-02-17T22:42:51.068335",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
