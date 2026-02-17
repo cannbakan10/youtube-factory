@@ -15,7 +15,9 @@
         "chess strategy"
       ],
       "inspired_by": "He Used Magnus’ OWN Trick Against Him… And Won 😤♟️",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "produced",
+      "production_id": "Recreate_the_moment_Magnus_Car_1771311251"
     },
     {
       "title": "Nerf Dart Wizardry! This Trick Defies Gravity! #shorts #nerf #magic",
@@ -31,7 +33,9 @@
         "tiktok"
       ],
       "inspired_by": "Mappelz - This Nerf Dart Refuses To Fall 👀",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Show_a_Nerf_dart_doing_somethi_1771311548"
     },
     {
       "title": "Eagle Rescue: The Emotional Story You Need To See! #shorts #animals #rescue",
@@ -301,5 +305,11 @@
   "generated_at": "2026-02-16T23:32:33.512516",
   "trending_count": 83,
   "channels_analyzed": 5,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-02-17T07:02:50.271140",
+  "results": {
+    "shorts_produced": 2,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
