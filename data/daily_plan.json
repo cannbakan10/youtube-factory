@@ -231,7 +231,9 @@
         "amazingfacts"
       ],
       "inspired_by": "Animals Without Fur Look Terrifying",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Highlight_the_unique_features__1771446865"
     },
     {
       "title": "Is This Animal Immortal? The Tardigrade! 🐻 #shorts #tardigrade #animalfacts",
@@ -246,7 +248,9 @@
         "microscopic"
       ],
       "inspired_by": "Science Channel, Animals Without Fur Look Terrifying",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Explain_how_Tardigrades_have_t_1771447185"
     },
     {
       "title": "Why You Don't Want to Mess With The Honey Badger! 🦡 #shorts #honeybadger #animalfacts",
@@ -361,7 +365,7 @@
   "trending_count": 84,
   "channels_analyzed": 4,
   "status": "in_progress",
-  "last_executed_at": "2026-02-18T18:50:45.781848",
+  "last_executed_at": "2026-02-18T20:44:45.666543",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
