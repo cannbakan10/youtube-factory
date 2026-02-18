@@ -87,7 +87,9 @@
         "amazingfacts"
       ],
       "inspired_by": "Eagle emotional story #animalrescue  #facts #trending #animals, Mappelz",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Focus_on_a_surprising_fact_abo_1771420132"
     },
     {
       "title": "Why Sloths Are SO Slow! 😴 #shorts #sloths #animalfacts",
@@ -103,7 +105,9 @@
         "lazy"
       ],
       "inspired_by": "Animals Without Fur Look Terrifying, Mappelz",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Explain_the_reasons_behind_the_1771420470"
     },
     {
       "title": "Unbelievable Bird Migration Facts! 🐦 #shorts #birdmigration #animalfacts",
@@ -345,7 +349,7 @@
   "trending_count": 84,
   "channels_analyzed": 4,
   "status": "in_progress",
-  "last_executed_at": "2026-02-18T10:01:58.802330",
+  "last_executed_at": "2026-02-18T13:18:31.950331",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
