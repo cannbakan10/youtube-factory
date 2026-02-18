@@ -15,7 +15,9 @@
         "amazingfacts"
       ],
       "inspired_by": "Eagle emotional story #animalrescue  #facts #trending #animals, Mappelz",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "produced",
+      "production_id": "Focus_on_the_unique_adaptation_1771397862"
     },
     {
       "title": "Why You Should Never Trust A Mantis Shrimp! 🪲 #shorts #mantisshrimp #oceanfacts",
@@ -31,7 +33,9 @@
         "amazingfacts"
       ],
       "inspired_by": "Mantis Shrimp: The Ocean's Tiny Terror #Shorts, Animals Without Fur Look Terrifying, Kroggy Edits",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "produced",
+      "production_id": "Show_shocking_footage_of_Manti_1771398104"
     },
     {
       "title": "Crazy Animal Defense Mechanisms! 🛡️ #shorts #animalfacts #defense",
@@ -336,5 +340,11 @@
   "generated_at": "2026-02-17T23:32:51.182831",
   "trending_count": 84,
   "channels_analyzed": 4,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-02-18T07:05:39.951434",
+  "results": {
+    "shorts_produced": 2,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
