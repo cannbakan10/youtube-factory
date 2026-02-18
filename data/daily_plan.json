@@ -195,7 +195,9 @@
         "colors"
       ],
       "inspired_by": "Animals Without Fur Look Terrifying, Science Channel",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Explain_the_science_behind_how_1771439990"
     },
     {
       "title": "Electric Eels: Nature's Shocking Power! ⚡ #shorts #electriceel #animalfacts",
@@ -211,7 +213,9 @@
         "shocking"
       ],
       "inspired_by": "DefenderJo TV, Mappelz",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Demonstrate_how_electric_eels__1771440335"
     },
     {
       "title": "The Walking Fish! Meet The Axolotl! 🐡 #shorts #axolotl #animalfacts",
@@ -357,7 +361,7 @@
   "trending_count": 84,
   "channels_analyzed": 4,
   "status": "in_progress",
-  "last_executed_at": "2026-02-18T16:58:58.848831",
+  "last_executed_at": "2026-02-18T18:50:45.781848",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
