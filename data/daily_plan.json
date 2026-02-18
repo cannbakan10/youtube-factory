@@ -265,7 +265,9 @@
         "wildlife"
       ],
       "inspired_by": "Eagle emotional story #animalrescue  #facts #trending #animals, Animals Without Fur Look Terrifying",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "produced",
+      "production_id": "Showcase_the_honey_badgers_fea_1771454192"
     },
     {
       "title": "Why Are Flamingos Pink? 🦩 #shorts #flamingo #animalfacts",
@@ -280,7 +282,9 @@
         "birds"
       ],
       "inspired_by": "Animals Without Fur Look Terrifying",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Explain_the_dietary_reasons_wh_1771454454"
     },
     {
       "title": "Inside the Mind of a Sea Turtle! 🐢 #shorts #seaturtle #animalfacts",
@@ -365,7 +369,7 @@
   "trending_count": 84,
   "channels_analyzed": 4,
   "status": "in_progress",
-  "last_executed_at": "2026-02-18T20:44:45.666543",
+  "last_executed_at": "2026-02-18T22:46:13.930499",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
