@@ -159,7 +159,9 @@
         "dangerous"
       ],
       "inspired_by": "Animals Without Fur Look Terrifying, Biker has the most WHOLESOME crash ever‼️🤯",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Explain_how_Komodo_dragons_kil_1771433301"
     },
     {
       "title": "Crows: The Smartest Birds on Earth! 🧠 #shorts #crows #animalfacts",
@@ -175,7 +177,9 @@
         "smart"
       ],
       "inspired_by": "Science Channel, Animals Without Fur Look Terrifying, Mappelz",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Highlight_the_intelligence_of__1771433679"
     },
     {
       "title": "What Makes a Chameleon Change Colors? 🌈 #shorts #chameleon #animalfacts",
@@ -353,7 +357,7 @@
   "trending_count": 84,
   "channels_analyzed": 4,
   "status": "in_progress",
-  "last_executed_at": "2026-02-18T14:46:38.623377",
+  "last_executed_at": "2026-02-18T16:58:58.848831",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
