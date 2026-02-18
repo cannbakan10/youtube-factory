@@ -123,7 +123,9 @@
         "amazingfacts"
       ],
       "inspired_by": "Eagle emotional story #animalrescue  #facts #trending #animals, Star Wars",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Focus_on_the_incredible_distan_1771425532"
     },
     {
       "title": "The Mysterious Lyrebird: Nature's Impersonator! 🎤 #shorts #lyrebird #animalfacts",
@@ -139,7 +141,9 @@
         "amazingfacts"
       ],
       "inspired_by": "Funny military moments part 59  #military, DefenderJo TV, Mappelz",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Showcase_the_lyrebirds_incredi_1771425774"
     },
     {
       "title": "The Truth About Komodo Dragon Venom! 🐉 #shorts #komododragon #animalfacts",
@@ -349,7 +353,7 @@
   "trending_count": 84,
   "channels_analyzed": 4,
   "status": "in_progress",
-  "last_executed_at": "2026-02-18T13:18:31.950331",
+  "last_executed_at": "2026-02-18T14:46:38.623377",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
