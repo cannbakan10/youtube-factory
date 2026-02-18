@@ -51,7 +51,9 @@
         "animals"
       ],
       "inspired_by": "Eagle emotional story #animalrescue  #facts #trending #animals, Animals Without Fur Look Terrifying, Mappelz",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Show_examples_of_unusual_anima_1771408335"
     },
     {
       "title": "Sea Otters Hold Hands While Sleeping?! 🥺 #shorts #seaotters #cuteanimals",
@@ -67,7 +69,9 @@
         "wholesome"
       ],
       "inspired_by": "Sea Otters: The Sweetest Hand-Holding Sleepers! #Shorts, The Reason Why I Love My Dog🐕❤️#animalrescue #puppy #shorts, DefenderJo TV",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "produced",
+      "production_id": "Focus_on_the_adorable_behavior_1771408593"
     },
     {
       "title": "The Most Shocking Thing About Honeybees! 🐝 #shorts #honeybees #animalfacts",
@@ -341,7 +345,7 @@
   "trending_count": 84,
   "channels_analyzed": 4,
   "status": "in_progress",
-  "last_executed_at": "2026-02-18T07:05:39.951434",
+  "last_executed_at": "2026-02-18T10:01:58.802330",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
