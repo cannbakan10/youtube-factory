@@ -243,7 +243,9 @@
         "kingofpop"
       ],
       "inspired_by": "Trending video #15 - Michael Jackson's Brain Works Different 😂 #shorts #funny #michaeljackson",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Showcasing_an_amusing_Michael__1771532857"
     },
     {
       "title": "Nerf Dart Defies Gravity! Physics Fun #shorts #physics",
@@ -260,7 +262,9 @@
         "experiment"
       ],
       "inspired_by": "Trending video #20 - This Nerf Dart Refuses To Fall 👀",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Explaining_the_physics_behind__1771533162"
     },
     {
       "title": "Secret British Ritual Tunnels?! Underground Marvels #shorts",
@@ -362,7 +366,7 @@
   "trending_count": 84,
   "channels_analyzed": 1,
   "status": "in_progress",
-  "last_executed_at": "2026-02-19T18:48:32.989807",
+  "last_executed_at": "2026-02-19T20:36:31.698385",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
