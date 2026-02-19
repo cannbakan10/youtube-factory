@@ -60,7 +60,9 @@
         "legal"
       ],
       "inspired_by": "Trending video #3 - How To Spot An Undercover Cop",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "produced",
+      "production_id": "Presenting_some_of_the_hacks_o_1771494671"
     },
     {
       "title": "Little Known Koala Survival Secrets! #koala #animals #shorts",
@@ -75,7 +77,9 @@
         "shorts"
       ],
       "inspired_by": "Viral Short - Koala कैसे Survive कर पाए? 🐨 Nature का अनोखा राज",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "produced",
+      "production_id": "Presenting_Koala_survival_secr_1771495043"
     },
     {
       "title": "Shocking Animal Sound You Won't Believe! #animals #wildlife #shorts",
@@ -342,7 +346,7 @@
   "trending_count": 84,
   "channels_analyzed": 1,
   "status": "in_progress",
-  "last_executed_at": "2026-02-19T07:04:38.598867",
+  "last_executed_at": "2026-02-19T10:03:01.847412",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
