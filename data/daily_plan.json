@@ -279,7 +279,9 @@
         "secrets"
       ],
       "inspired_by": "Science Channel - Secret British Underground Tunnels Used for Ritual SACRIFICE | Underground Marvels | Science Channel",
-      "estimated_views": "low"
+      "estimated_views": "low",
+      "status": "produced",
+      "production_id": "Covering_secret_british_underg_1771540466"
     },
     {
       "title": "Galaxy Brain Explains the Mandela Effect #shorts #conspiracy",
@@ -293,7 +295,9 @@
         "paranormal"
       ],
       "inspired_by": "User comments about the Mandela Effect",
-      "estimated_views": "low"
+      "estimated_views": "low",
+      "status": "produced",
+      "production_id": "Covering_another_angle_on_the__1771540691"
     },
     {
       "title": "When a Sibling Knows Exactly What to Do 😂 #shorts #funny",
@@ -366,7 +370,7 @@
   "trending_count": 84,
   "channels_analyzed": 1,
   "status": "in_progress",
-  "last_executed_at": "2026-02-19T20:36:31.698385",
+  "last_executed_at": "2026-02-19T22:43:51.951958",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
