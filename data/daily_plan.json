@@ -1,379 +1,313 @@
 {
-  "date": "2024-07-01",
+  "date": "2024-07-04",
   "shorts": [
     {
-      "title": "Mind-Blowing PC Build! Infinite Ice Cooling?! #pc #tech #shorts",
-      "topic": "Highlighting the incredible infinite ice-cooled PC build from trending video #9, focusing on the science and engineering behind it.",
-      "hook": "Is this the coolest PC ever built?",
+      "title": "Undercover Cop or Just Suspicious? 🤔 Spot the Signs!",
+      "topic": "Examine subtle behavioral cues and clothing choices that might indicate someone is an undercover police officer. Cover stance, alertness, and common clothing choices. Ask viewers for their tells.",
+      "hook": "Think you can spot an undercover cop? I'll show you how!",
+      "tags": [
+        "undercover cop",
+        "law enforcement",
+        "police",
+        "security",
+        "street smarts",
+        "law by mike",
+        "life hacks"
+      ],
+      "inspired_by": "How To Spot An Undercover Cop",
+      "estimated_views": "high"
+    },
+    {
+      "title": "Biker's WHOLESOME Crash Leads to Unexpected Discovery! 🤯",
+      "topic": "Show a short clip of a minor, non-injury biker accident, followed by the biker discovering something heartwarming or unexpected nearby, like helping an animal or finding lost money.",
+      "hook": "This biker crashed... but what happened next will restore your faith in humanity!",
+      "tags": [
+        "biker",
+        "crash",
+        "wholesome",
+        "good deed",
+        "motorcycle",
+        "unexpected",
+        "random acts of kindness"
+      ],
+      "inspired_by": "Biker has the most WHOLESOME crash ever‼️🤯",
+      "estimated_views": "high"
+    },
+    {
+      "title": "Infinite Ice PC?! Genius or Madness? 🧊💻",
+      "topic": "Show a quick breakdown of the concept of an ice-cooled PC, highlighting its potential benefits (extreme cooling) and drawbacks (complexity, risk of leaks). Ask viewers if they'd try it.",
+      "hook": "Is this the COOLEST PC ever built?",
       "tags": [
         "PC",
         "PC building",
-        "ice cooling",
-        "technology",
-        "science",
-        "engineering",
-        "innovation",
-        "gaming",
-        "shorts",
+        "ice cooled PC",
+        "extreme PC",
+        "gaming PC",
+        "tech",
         "mryeester"
       ],
-      "inspired_by": "Trending video #9 - Building an infinite ice-cooled PC",
-      "estimated_views": "high",
-      "status": "produced",
-      "production_id": "Highlighting_the_incredible_in_1771484183"
+      "inspired_by": "Building an infinite ice-cooled PC",
+      "estimated_views": "medium"
     },
     {
-      "title": "Skunk Mistaken for a Dog! Hilarious Dundee Moment #shorts #comedy",
-      "topic": "Featuring the funny 'Skunk for a Dog' scene from Crocodile Dundee, riffing on the awkward situation and animal mix-up.",
-      "hook": "When you REALLY need glasses...",
-      "tags": [
-        "skunk",
-        "dog",
-        "crocodile dundee",
-        "movie",
-        "comedy",
-        "funny",
-        "animals",
-        "shorts",
-        "fail",
-        "trending"
-      ],
-      "inspired_by": "Trending video #13 - “When You Mistake a Skunk for a Dog” | Crocodile Dundee (2001)",
-      "estimated_views": "medium",
-      "status": "produced",
-      "production_id": "Featuring_the_funny_Skunk_for__1771484402"
-    },
-    {
-      "title": "Undercover Cop Secrets They Don't Want You To Know! #law #shorts",
-      "topic": "Presenting some of the hacks on how to spot an undercover cop, inspired by Law By Mike.",
-      "hook": "Can you spot an undercover cop?",
-      "tags": [
-        "law",
-        "lawyer",
-        "laws",
-        "hacks",
-        "law by mike",
-        "undercover",
-        "police",
-        "shorts",
-        "viral",
-        "legal"
-      ],
-      "inspired_by": "Trending video #3 - How To Spot An Undercover Cop",
-      "estimated_views": "high",
-      "status": "produced",
-      "production_id": "Presenting_some_of_the_hacks_o_1771494671"
-    },
-    {
-      "title": "Little Known Koala Survival Secrets! #koala #animals #shorts",
-      "topic": "Presenting Koala survival secrets, riffing on the viral short about Koalas",
-      "hook": "Koalas are cuter than they are smart!",
-      "tags": [
-        "animals",
-        "koala",
-        "wildlife",
-        "nature",
-        "animal facts",
-        "shorts"
-      ],
-      "inspired_by": "Viral Short - Koala कैसे Survive कर पाए? 🐨 Nature का अनोखा राज",
-      "estimated_views": "high",
-      "status": "produced",
-      "production_id": "Presenting_Koala_survival_secr_1771495043"
-    },
-    {
-      "title": "Shocking Animal Sound You Won't Believe! #animals #wildlife #shorts",
-      "topic": "Presenting a series of strange and unique animal sounds.",
-      "hook": "Can you guess this animal sound?",
-      "tags": [
-        "animals",
-        "wildlife",
-        "nature",
-        "animal facts",
-        "shorts",
-        "sound"
-      ],
-      "inspired_by": "Viral Short - These Animals Sound Strange 🤯 | Razz Facts",
-      "estimated_views": "medium",
-      "status": "produced",
-      "production_id": "Presenting_a_series_of_strange_1771506611"
-    },
-    {
-      "title": "Magnetar: The Universe's Strongest Magnet Explained! #space #science",
-      "topic": "Explaining what a magnetar is and its immense magnetic power.",
-      "hook": "What's stronger than any magnet on Earth?",
-      "tags": [
-        "space",
-        "science",
-        "magnetar",
-        "universe",
-        "astronomy",
-        "facts",
-        "shorts",
-        "physics"
-      ],
-      "inspired_by": "Viral Short - Strongest Magnet in the Universe",
-      "estimated_views": "medium",
-      "status": "produced",
-      "production_id": "Explaining_what_a_magnetar_is__1771506989"
-    },
-    {
-      "title": "Argentina's CRAZY Length! #geography #countries #shorts",
-      "topic": "Highlighting the unusual length of Argentina and its geographic features.",
-      "hook": "Did you know Argentina almost touches Antarctica?",
-      "tags": [
-        "geography",
-        "countries",
-        "argentina",
-        "antarctica",
-        "facts",
-        "world",
-        "shorts",
-        "travel"
-      ],
-      "inspired_by": "Viral Short - Argentina Is So Long It Touches Antarctica 🤯",
-      "estimated_views": "medium",
-      "status": "produced",
-      "production_id": "Highlighting_the_unusual_lengt_1771512037"
-    },
-    {
-      "title": "5 Real Animals Straight Out of Video Games! #animals #wildlife #shorts",
-      "topic": "Showcasing animals that look like video game bosses.",
-      "hook": "Is this real life or a video game?",
-      "tags": [
-        "animals",
-        "wildlife",
-        "videogames",
-        "boss",
-        "animalfacts",
-        "shorts",
-        "nature"
-      ],
-      "inspired_by": "Viral Short - 5 Real Animals That Look Like Video Game Bosses",
-      "estimated_views": "medium",
-      "status": "produced",
-      "production_id": "Showcasing_animals_that_look_l_1771512274"
-    },
-    {
-      "title": "What If Everyone Was a Millionaire? The Truth! #money #facts #shorts",
-      "topic": "Exploring the economic consequences of everyone suddenly becoming a millionaire.",
-      "hook": "What would happen if money lost all value?",
-      "tags": [
-        "money",
-        "millionaire",
-        "economics",
-        "facts",
-        "science",
-        "shorts",
-        "didyouknow"
-      ],
-      "inspired_by": "Viral Short - What if everyone on Earth woke up a millionaire?",
-      "estimated_views": "medium",
-      "status": "produced",
-      "production_id": "Exploring_the_economic_consequ_1771519132"
-    },
-    {
-      "title": "Hairless Animals: Nature's Weirdest! #animals #wildlife #shorts",
-      "topic": "Showing examples of animals without hair or fur and discussing why.",
-      "hook": "Ever seen a hairless bear?",
-      "tags": [
-        "animals",
-        "wildlife",
-        "hairless",
-        "nature",
-        "animalfacts",
-        "shorts"
-      ],
-      "inspired_by": "Viral Short - Animal Without Hair 😷",
-      "estimated_views": "medium",
-      "status": "produced",
-      "production_id": "Showing_examples_of_animals_wi_1771519418"
-    },
-    {
-      "title": "Craziest Bathroom Design EVER! You Won't Believe It! #shorts #design",
-      "topic": "Showcasing the crazy bathroom design featured in trending video #10.",
-      "hook": "Is this the most innovative bathroom ever?",
-      "tags": [
-        "bathroom",
-        "design",
-        "architecture",
-        "innovation",
-        "engineering",
-        "DIY",
-        "home improvement",
-        "shorts",
-        "viral",
-        "amazing"
-      ],
-      "inspired_by": "Trending video #10 - This bathroom design is a crazy twist! #shorts",
-      "estimated_views": "high",
-      "status": "produced",
-      "production_id": "Showcasing_the_crazy_bathroom__1771526408"
-    },
-    {
-      "title": "Bowling Ball PRANK! Carbonaro Effect Magic #shorts #prank",
-      "topic": "Highlighting a funny moment from The Carbonaro Effect bowling ball prank, showing reactions.",
-      "hook": "Is that bowling ball...floating?",
-      "tags": [
-        "bowling",
-        "prank",
-        "carbonaro effect",
-        "magic",
-        "comedy",
-        "funny",
-        "shorts",
-        "michael carbonaro"
-      ],
-      "inspired_by": "Trending video #14 - Bowling Ball Magic - The Carbonaro Effect #shorts #prank",
-      "estimated_views": "medium",
-      "status": "produced",
-      "production_id": "Highlighting_a_funny_moment_fr_1771526654"
-    },
-    {
-      "title": "Michael Jackson's Brain Works Different! 😂 #shorts #music",
-      "topic": "Showcasing an amusing Michael Jackson dance or performance clip, focusing on his unique style.",
-      "hook": "The King of Pop was on another level!",
-      "tags": [
-        "michael jackson",
-        "80s",
-        "music",
-        "dance",
-        "funny",
-        "shorts",
-        "kingofpop"
-      ],
-      "inspired_by": "Trending video #15 - Michael Jackson's Brain Works Different 😂 #shorts #funny #michaeljackson",
-      "estimated_views": "medium",
-      "status": "produced",
-      "production_id": "Showcasing_an_amusing_Michael__1771532857"
-    },
-    {
-      "title": "Nerf Dart Defies Gravity! Physics Fun #shorts #physics",
-      "topic": "Explaining the physics behind the Nerf dart trick featured in the trending video.",
-      "hook": "Can you explain this Nerf dart defying gravity?",
+      "title": "Nerf Dart MAGIC! ✨ Can you believe this?",
+      "topic": "Recreate the 'Nerf dart refusing to fall' video, offering a possible explanation (air currents, static electricity) and challenging viewers to try it themselves.",
+      "hook": "I can't believe this Nerf dart defying gravity!",
       "tags": [
         "nerf",
+        "nerf dart",
+        "magic trick",
         "physics",
         "science",
-        "trick",
-        "gravity",
-        "toys",
-        "shorts",
-        "experiment"
+        "tiktok",
+        "viral",
+        "toys"
       ],
-      "inspired_by": "Trending video #20 - This Nerf Dart Refuses To Fall 👀",
-      "estimated_views": "medium",
-      "status": "produced",
-      "production_id": "Explaining_the_physics_behind__1771533162"
+      "inspired_by": "This Nerf Dart Refuses To Fall 👀",
+      "estimated_views": "medium"
     },
     {
-      "title": "Secret British Ritual Tunnels?! Underground Marvels #shorts",
-      "topic": "Covering secret british underground tunnels. inspired by the science channel",
-      "hook": "Did you know this british tunnels",
+      "title": "Did Game Cartridge Blowing REALLY Work? 🤔 The Truth!",
+      "topic": "Briefly explain the urban legend of blowing on game cartridges. Then, explain the actual reason it temporarily worked - reseating the cartridge.",
+      "hook": "We ALL did this... but did it WORK?",
       "tags": [
-        "british",
-        "underground",
+        "game cartridge",
+        "retro gaming",
+        "nintendo",
+        "gaming myths",
+        "video games",
+        "nostalgia",
+        "80s",
+        "90s"
+      ],
+      "inspired_by": "Did Blowing Game Cartridges Really Work 🤔",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "Koalas: Nature's Sleepiest Survivors 🐨😴",
+      "topic": "Highlight a unique adaptation that allows koalas to survive (e.g., their specialized diet of eucalyptus leaves, which are toxic to most animals, or their ability to sleep up to 20 hours a day).",
+      "hook": "Koalas are lazy...or are they GENIUSES?",
+      "tags": [
+        "koala",
+        "animals",
+        "wildlife",
+        "animal facts",
+        "nature",
+        "australia",
+        "sleepy",
+        "evolution"
+      ],
+      "inspired_by": "Koala कैसे Survive कर पाए? 🐨 Nature का अनोखा राज | Jaane Kaise #animals #tree #koala #natureanimal",
+      "estimated_views": "high"
+    },
+    {
+      "title": "Hairless Animals: Creepy or Cute? 😱",
+      "topic": "Show a compilation of images or short clips of animals without hair (e.g., Sphynx cat, naked mole rat). Ask viewers for their opinions.",
+      "hook": "Nature's gone WRONG?! These animals have NO HAIR!",
+      "tags": [
+        "animals",
+        "hairless animals",
+        "animal facts",
+        "weird animals",
+        "nature",
+        "wildlife",
+        "creepy",
+        "cute"
+      ],
+      "inspired_by": "Animal Without Hair 😷 #shorts",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "5 Animals That Look Like Video Game Bosses! 🎮",
+      "topic": "Show five real animals that bear a striking resemblance to video game bosses (e.g., anglerfish, giant squid).",
+      "hook": "IRL Game Bosses?! You won't believe these animals!",
+      "tags": [
+        "animals",
+        "video games",
+        "animal facts",
+        "wildlife",
+        "gaming",
+        "boss battles",
+        "nature"
+      ],
+      "inspired_by": "5 Real Animals That Look Like Video Game Bosses #AnimalFacts #Animals #Wildlife",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "Strongest Magnet in the UNIVERSE! 🧲🤯",
+      "topic": "Explain what a magnetar is and why it's the strongest type of magnet in the universe. Use visuals to illustrate its immense power.",
+      "hook": "This magnet can rip APART atoms!",
+      "tags": [
+        "magnetar",
+        "space",
         "science",
-        "ritual",
-        "shorts",
-        "secrets"
+        "astronomy",
+        "universe",
+        "magnetism",
+        "physics",
+        "space facts"
       ],
-      "inspired_by": "Science Channel - Secret British Underground Tunnels Used for Ritual SACRIFICE | Underground Marvels | Science Channel",
-      "estimated_views": "low",
-      "status": "produced",
-      "production_id": "Covering_secret_british_underg_1771540466"
+      "inspired_by": "Strongest Magnet in the Universe",
+      "estimated_views": "medium"
     },
     {
-      "title": "Galaxy Brain Explains the Mandela Effect #shorts #conspiracy",
-      "topic": "Covering another angle on the mandela effect. inspired by user comments",
-      "hook": "What do you remember?",
+      "title": "Animals Nature Treats UNFAIRLY! 😭",
+      "topic": "Show examples of animals with unfortunate adaptations or disadvantages (e.g., kakapo, blobfish).",
+      "hook": "Poor animals! Nature's being CRUEL!",
       "tags": [
-        "galaxybrain",
-        "mandela effect",
-        "unexplained",
-        "shorts",
-        "paranormal"
+        "animals",
+        "animal facts",
+        "nature",
+        "wildlife",
+        "evolution",
+        "unfair",
+        "disadvantage",
+        "sad"
       ],
-      "inspired_by": "User comments about the Mandela Effect",
-      "estimated_views": "low",
-      "status": "produced",
-      "production_id": "Covering_another_angle_on_the__1771540691"
+      "inspired_by": "ANIMALES TRATADOS INJUSTAMENTE POR LA NATURALEZA #shorts #datoscuriosos #animales",
+      "estimated_views": "medium"
     },
     {
-      "title": "When a Sibling Knows Exactly What to Do 😂 #shorts #funny",
-      "topic": "Creating a skit based on sibling dynamics and knowing each other too well, inspired by audience comments.",
-      "hook": "That sibling intuition is strong!",
+      "title": "Could You Hide a Capybara? The TRUTH! 🤣",
+      "topic": "Present a humorous take on how difficult or easy it would be to hide a capybara from your parents, highlighting its size and unique characteristics.",
+      "hook": "Hiding a capybara? IMPOSSIBLE!",
       "tags": [
-        "siblings",
+        "capybara",
+        "animals",
+        "funny",
+        "humor",
+        "animal facts",
+        "pets",
+        "wildlife",
+        "did you know"
+      ],
+      "inspired_by": "Could you hide a capybara from your parents? #didyouknow #facts #science",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "Why Fishermen Throw Wolf Eels BACK?! 🎣",
+      "topic": "Explain why fishermen often release wolf eels back into the ocean, highlighting their importance to the ecosystem or their unusual behavior.",
+      "hook": "Fishermen REJECT this scary eel!",
+      "tags": [
+        "wolf eel",
+        "fish",
+        "animals",
+        "animal facts",
+        "fishing",
+        "ocean",
+        "wildlife",
+        "nature"
+      ],
+      "inspired_by": "Why Fishermen Throw Wolf Eels Back#animals #shorts #facts #knowledge #funny #wildlife",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "Brawl Stars Lore: The *Untold* Story of...",
+      "topic": "Create a short speculating on some background lore of one of the Brawlers in Brawl Stars, similar to the channel Brawl Stars.",
+      "hook": "What if... (character) was actually...",
+      "tags": [
+        "brawl stars",
+        "lore",
+        "mobile game",
+        "theory",
+        "animation"
+      ],
+      "inspired_by": "Brawl Stars",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "Poppy Playtime Chapter 6 LEAKS?! 🤫",
+      "topic": "Create a theory or speculation short on the next Poppy Playtime chapter, formatted like Thinknoodles.",
+      "hook": "Chapter 6 will reveal...",
+      "tags": [
+        "Poppy Playtime",
+        "Poppy Playtime Chapter 5",
+        "poppy playtime chapter 6"
+      ],
+      "inspired_by": "Thinknoodles",
+      "estimated_views": "low"
+    },
+    {
+      "title": "BRIGHT SIDE lied?! What they DIDN'T tell you...",
+      "topic": "Disprove or add nuance to a popular claim made by BRIGHT SIDE, using scientific reasoning or evidence.",
+      "hook": "BRIGHT SIDE's wrong?! Let's find out!",
+      "tags": [
+        "debunk",
+        "science",
+        "bright side",
+        "facts",
+        "mythbusters"
+      ],
+      "inspired_by": "BRIGHT SIDE",
+      "estimated_views": "low"
+    },
+    {
+      "title": "Secret British Ritual Tunnels REVEALED! 💀",
+      "topic": "Briefly cover a historical mystery related to underground tunnels, inspired by Science Channel's content.",
+      "hook": "What happened in these creepy tunnels?!",
+      "tags": [
+        "history",
+        "mystery",
+        "underground",
+        "science channel",
+        "britain"
+      ],
+      "inspired_by": "Science Channel",
+      "estimated_views": "low"
+    },
+    {
+      "title": "Evolution of the Funny Military Moments! 😂 Part 1",
+      "topic": "Show a quick montage of funny moments in the military from different eras, highlighting how humor evolves over time. Use public domain footage or creative commons licensed clips.",
+      "hook": "Military Humor: From Then to NOW!",
+      "tags": [
+        "military",
         "funny",
         "comedy",
-        "skit",
-        "family",
-        "shorts",
-        "relatable"
+        "humor",
+        "military moments",
+        "evolution",
+        "shorts"
       ],
-      "inspired_by": "Audience comments about sibling dynamics",
-      "estimated_views": "medium"
-    },
-    {
-      "title": "The Ultimate Father-in-Law Test! (Who Will Win?) #shorts #comedy",
-      "topic": "Presenting a comedic skit about a father-in-law testing his daughter's suitor, inspired by trending video #16",
-      "hook": "Can this guy pass the father-in-law test?",
-      "tags": [
-        "fatherinlaw",
-        "test",
-        "marriage",
-        "comedy",
-        "family",
-        "shorts",
-        "marriage"
-      ],
-      "inspired_by": "Trending video #16 - The Ultimate Father-in-Law Test!",
-      "estimated_views": "medium"
-    },
-    {
-      "title": "Biker's Wild Roadside Discovery! What is That?! #shorts #biker",
-      "topic": "Creating a video inspired by trending biker video, but make it funny, crazy and unexpected.",
-      "hook": "Did you know about this?",
-      "tags": [
-        "biker",
-        "motorcycle",
-        "finds",
-        "crazy",
-        "wildlife",
-        "shorts",
-        "roads"
-      ],
-      "inspired_by": "Trending video #17 - Biker Found Something Crazy In The Street...",
+      "inspired_by": "Funny military moments part 59  #military",
       "estimated_views": "low"
+    },
+    {
+      "title": "The Ultimate Father-in-Law Test...FAILED! 😬",
+      "topic": "Show a short, funny skit depicting a comically exaggerated and failed attempt by a prospective son-in-law to impress his future father-in-law.",
+      "hook": "He tried WAY too hard...",
+      "tags": [
+        "father-in-law",
+        "comedy",
+        "funny",
+        "relationship",
+        "family",
+        "skit",
+        "shorts"
+      ],
+      "inspired_by": "The Ultimate Father-in-Law Test! 😠 #shorts",
+      "estimated_views": "medium"
     }
   ],
   "ambient_recommendations": [
     {
       "type": "thunderstorm",
       "hours": 8,
-      "reason": "Summer is thunderstorm season in many parts of the US. Highly requested for sleep and relaxation."
+      "reason": "Summer thunderstorms are common and evocative, making this a seasonally relevant choice. Can also be used for relaxation."
     },
     {
       "type": "ocean",
       "hours": 8,
-      "reason": "Classic relaxation video, consistently popular and timeless."
+      "reason": "Ocean sounds are perennially popular for relaxation, focus, and sleep. Consistent views throughout the year."
     },
     {
-      "type": "forest",
+      "type": "waterfall",
       "hours": 8,
-      "reason": "Relaxing and calming, promoting a sense of well-being. Good contrast to the intensity of summer heat."
+      "reason": "Visually appealing and the white noise is soothing, making it a strong contender for relaxation and sleep videos."
     }
   ],
   "longform": [],
-  "generated_at": "2026-02-18T23:33:38.456329",
-  "trending_count": 84,
-  "channels_analyzed": 1,
-  "status": "in_progress",
-  "last_executed_at": "2026-02-19T22:43:51.951958",
-  "results": {
-    "shorts_produced": 2,
-    "longform_produced": 0,
-    "errors": []
-  }
+  "generated_at": "2026-02-19T23:33:12.260292",
+  "trending_count": 83,
+  "channels_analyzed": 2,
+  "status": "pending"
 }

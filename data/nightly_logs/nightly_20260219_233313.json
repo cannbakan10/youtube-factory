@@ -1,0 +1,155 @@
+{
+  "timestamp": "2026-02-19T23:32:13.910612",
+  "dry_run": false,
+  "performance_review": {
+    "status": "no_recent_videos"
+  },
+  "cleanup": {
+    "unlisted": 11,
+    "deleted": 7,
+    "failed": 0,
+    "kept": 113,
+    "thresholds": {
+      "shorts_7d": 50,
+      "shorts_14d": 100,
+      "shorts_30d": 200,
+      "long_14d": 50,
+      "long_30d": 100,
+      "multiplier": 1.0
+    }
+  },
+  "trending": {
+    "found": 83,
+    "viral_shorts_found": 30,
+    "competitors_analyzed": 3,
+    "comments_mined": 20,
+    "top_5": [
+      {
+        "title": "How To Spot An Undercover Cop",
+        "views": 24576080,
+        "category": "Entertainment"
+      },
+      {
+        "title": "Biker has the most WHOLESOME crash ever‼️🤯",
+        "views": 21439991,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Bumpy Johnson was a smart man.",
+        "views": 20043153,
+        "category": "Entertainment"
+      },
+      {
+        "title": "what the Hardest Coloring Book looks like",
+        "views": 18542001,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "He Got His Revenge 🔥🥶 | No Ordinary Family | MATADORA (slowe",
+        "views": 17194999,
+        "category": "Entertainment"
+      }
+    ],
+    "top_viral_shorts": [
+      {
+        "title": "Koala कैसे Survive कर पाए? 🐨 Nature का अनोखा राज | Jaane Kai",
+        "views": 5094244,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "Animal Without Hair 😷 #shorts",
+        "views": 1354472,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "5 Real Animals That Look Like Video Game Bosses #AnimalFacts",
+        "views": 1264237,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "🤯Top 5 Mind Blowing Facts In Telugu #shorts #telugufacts #fa",
+        "views": 1250276,
+        "query": "did you know facts"
+      },
+      {
+        "title": "Strongest Magnet in the Universe",
+        "views": 1223452,
+        "query": "space facts universe"
+      }
+    ]
+  },
+  "ambient_analysis": {
+    "total_ambient": 3,
+    "total_views": 1483,
+    "top_type": "fireplace",
+    "worst_type": "rain",
+    "type_rankings": [
+      {
+        "type": "fireplace",
+        "video_count": 2,
+        "total_views": 1150,
+        "avg_views": 575,
+        "avg_views_per_day": 103.7,
+        "engagement_rate": 1.83,
+        "best_video": {
+          "title": "🔥 Cozy Fireplace 8 HOURS with Crackling Fire Sounds | Firepl",
+          "views": 849,
+          "views_per_day": 169.8
+        }
+      },
+      {
+        "type": "rain",
+        "video_count": 1,
+        "total_views": 333,
+        "avg_views": 333,
+        "avg_views_per_day": 25.6,
+        "engagement_rate": 2.1,
+        "best_video": {
+          "title": "1 Hour Rainy Night Ambience (60 Minutes)",
+          "views": 333,
+          "views_per_day": 25.6
+        }
+      }
+    ]
+  },
+  "plan": {
+    "shorts_planned": 18,
+    "ambient_recommendations": [
+      {
+        "type": "thunderstorm",
+        "hours": 8,
+        "reason": "Summer thunderstorms are common and evocative, making this a seasonally relevant choice. Can also be used for relaxation."
+      },
+      {
+        "type": "ocean",
+        "hours": 8,
+        "reason": "Ocean sounds are perennially popular for relaxation, focus, and sleep. Consistent views throughout the year."
+      },
+      {
+        "type": "waterfall",
+        "hours": 8,
+        "reason": "Visually appealing and the white noise is soothing, making it a strong contender for relaxation and sleep videos."
+      }
+    ],
+    "shorts": [
+      "Undercover Cop or Just Suspicious? 🤔 Spot the Sign",
+      "Biker's WHOLESOME Crash Leads to Unexpected Discov",
+      "Infinite Ice PC?! Genius or Madness? 🧊💻",
+      "Nerf Dart MAGIC! ✨ Can you believe this?",
+      "Did Game Cartridge Blowing REALLY Work? 🤔 The Trut",
+      "Koalas: Nature's Sleepiest Survivors 🐨😴",
+      "Hairless Animals: Creepy or Cute? 😱",
+      "5 Animals That Look Like Video Game Bosses! 🎮",
+      "Strongest Magnet in the UNIVERSE! 🧲🤯",
+      "Animals Nature Treats UNFAIRLY! 😭",
+      "Could You Hide a Capybara? The TRUTH! 🤣",
+      "Why Fishermen Throw Wolf Eels BACK?! 🎣",
+      "Brawl Stars Lore: The *Untold* Story of...",
+      "Poppy Playtime Chapter 6 LEAKS?! 🤫",
+      "BRIGHT SIDE lied?! What they DIDN'T tell you...",
+      "Secret British Ritual Tunnels REVEALED! 💀",
+      "Evolution of the Funny Military Moments! 😂 Part 1",
+      "The Ultimate Father-in-Law Test...FAILED! 😬"
+    ]
+  }
+}
