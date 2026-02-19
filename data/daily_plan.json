@@ -94,7 +94,9 @@
         "sound"
       ],
       "inspired_by": "Viral Short - These Animals Sound Strange 🤯 | Razz Facts",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Presenting_a_series_of_strange_1771506611"
     },
     {
       "title": "Magnetar: The Universe's Strongest Magnet Explained! #space #science",
@@ -111,7 +113,9 @@
         "physics"
       ],
       "inspired_by": "Viral Short - Strongest Magnet in the Universe",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Explaining_what_a_magnetar_is__1771506989"
     },
     {
       "title": "Argentina's CRAZY Length! #geography #countries #shorts",
@@ -346,7 +350,7 @@
   "trending_count": 84,
   "channels_analyzed": 1,
   "status": "in_progress",
-  "last_executed_at": "2026-02-19T10:03:01.847412",
+  "last_executed_at": "2026-02-19T13:20:54.625950",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
