@@ -18,7 +18,9 @@
         "mryeester"
       ],
       "inspired_by": "Trending video #9 - Building an infinite ice-cooled PC",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "produced",
+      "production_id": "Highlighting_the_incredible_in_1771484183"
     },
     {
       "title": "Skunk Mistaken for a Dog! Hilarious Dundee Moment #shorts #comedy",
@@ -37,7 +39,9 @@
         "trending"
       ],
       "inspired_by": "Trending video #13 - “When You Mistake a Skunk for a Dog” | Crocodile Dundee (2001)",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Featuring_the_funny_Skunk_for__1771484402"
     },
     {
       "title": "Undercover Cop Secrets They Don't Want You To Know! #law #shorts",
@@ -337,5 +341,11 @@
   "generated_at": "2026-02-18T23:33:38.456329",
   "trending_count": 84,
   "channels_analyzed": 1,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-02-19T07:04:38.598867",
+  "results": {
+    "shorts_produced": 2,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
