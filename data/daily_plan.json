@@ -168,7 +168,9 @@
         "didyouknow"
       ],
       "inspired_by": "Viral Short - What if everyone on Earth woke up a millionaire?",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Exploring_the_economic_consequ_1771519132"
     },
     {
       "title": "Hairless Animals: Nature's Weirdest! #animals #wildlife #shorts",
@@ -183,7 +185,9 @@
         "shorts"
       ],
       "inspired_by": "Viral Short - Animal Without Hair 😷",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Showing_examples_of_animals_wi_1771519418"
     },
     {
       "title": "Craziest Bathroom Design EVER! You Won't Believe It! #shorts #design",
@@ -354,7 +358,7 @@
   "trending_count": 84,
   "channels_analyzed": 1,
   "status": "in_progress",
-  "last_executed_at": "2026-02-19T14:49:35.585871",
+  "last_executed_at": "2026-02-19T16:46:42.097797",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
