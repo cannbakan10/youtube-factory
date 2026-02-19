@@ -206,7 +206,9 @@
         "amazing"
       ],
       "inspired_by": "Trending video #10 - This bathroom design is a crazy twist! #shorts",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "produced",
+      "production_id": "Showcasing_the_crazy_bathroom__1771526408"
     },
     {
       "title": "Bowling Ball PRANK! Carbonaro Effect Magic #shorts #prank",
@@ -223,7 +225,9 @@
         "michael carbonaro"
       ],
       "inspired_by": "Trending video #14 - Bowling Ball Magic - The Carbonaro Effect #shorts #prank",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Highlighting_a_funny_moment_fr_1771526654"
     },
     {
       "title": "Michael Jackson's Brain Works Different! 😂 #shorts #music",
@@ -358,7 +362,7 @@
   "trending_count": 84,
   "channels_analyzed": 1,
   "status": "in_progress",
-  "last_executed_at": "2026-02-19T16:46:42.097797",
+  "last_executed_at": "2026-02-19T18:48:32.989807",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
