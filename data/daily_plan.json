@@ -132,7 +132,9 @@
         "travel"
       ],
       "inspired_by": "Viral Short - Argentina Is So Long It Touches Antarctica 🤯",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Highlighting_the_unusual_lengt_1771512037"
     },
     {
       "title": "5 Real Animals Straight Out of Video Games! #animals #wildlife #shorts",
@@ -148,7 +150,9 @@
         "nature"
       ],
       "inspired_by": "Viral Short - 5 Real Animals That Look Like Video Game Bosses",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Showcasing_animals_that_look_l_1771512274"
     },
     {
       "title": "What If Everyone Was a Millionaire? The Truth! #money #facts #shorts",
@@ -350,7 +354,7 @@
   "trending_count": 84,
   "channels_analyzed": 1,
   "status": "in_progress",
-  "last_executed_at": "2026-02-19T13:20:54.625950",
+  "last_executed_at": "2026-02-19T14:49:35.585871",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
