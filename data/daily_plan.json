@@ -15,7 +15,9 @@
         "life hacks"
       ],
       "inspired_by": "How To Spot An Undercover Cop",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "produced",
+      "production_id": "Examine_subtle_behavioral_cues_1771570285"
     },
     {
       "title": "Biker's WHOLESOME Crash Leads to Unexpected Discovery! 🤯",
@@ -31,7 +33,9 @@
         "random acts of kindness"
       ],
       "inspired_by": "Biker has the most WHOLESOME crash ever‼️🤯",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "produced",
+      "production_id": "Show_a_short_clip_of_a_minor_n_1771570622"
     },
     {
       "title": "Infinite Ice PC?! Genius or Madness? 🧊💻",
@@ -309,5 +313,11 @@
   "generated_at": "2026-02-19T23:33:12.260292",
   "trending_count": 83,
   "channels_analyzed": 2,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-02-20T07:01:46.522464",
+  "results": {
+    "shorts_produced": 2,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
