@@ -1,4 +1,5 @@
 from elevenlabs.client import ElevenLabs
+from openai import OpenAI
 import os
 import uuid
 import subprocess
@@ -16,6 +17,11 @@ class TTSService:
         raw_key = os.getenv("ELEVENLABS_API_KEY", "")
         api_key = raw_key.strip().replace('"', '').replace("'", "")
         self.client = ElevenLabs(api_key=api_key)
+        
+        # OpenAI Fallback Client
+        oa_key = os.getenv("OPENAI_API_KEY", "").strip().replace('"', '').replace("'", "")
+        self.oa_client = OpenAI(api_key=oa_key) if oa_key else None
+        
         self.cache_dir = output_dir
 
         # Audio Library (Not cleaned every run)
@@ -124,8 +130,17 @@ class TTSService:
             )
             return result
         except Exception as e:
-            logger.warning(f"ElevenLabs primary method failed: {e}. Attempting fallback...")
-            return self._generate_audio_fallback_retry(clean_text, language)
+            logger.warning(f"ElevenLabs primary method failed: {e}. Attempting ElevenLabs fallback...")
+            res = self._generate_audio_fallback_retry(clean_text, language)
+            if res[0]:
+                return res
+            
+            # ── SECONDARY FALLBACK: OpenAI TTS ──
+            if self.oa_client:
+                logger.warning("ElevenLabs fully failed. Switching to OpenAI TTS fallback...")
+                return self._generate_with_openai(clean_text, language)
+            
+            return None, None, 0
 
     @retry_with_backoff(max_retries=3, base_delay=2.0, exceptions=(Exception,))
     def _generate_with_timestamps(self, text, audio_path, subs_path, stability, style, language):
@@ -222,7 +237,7 @@ class TTSService:
             # Rate limiting
             APIRateLimiters.elevenlabs.wait()
 
-            logger.info(f"Using fallback TTS method for {language.upper()}")
+            logger.info(f"Using ElevenLabs fallback for {language.upper()}")
             audio_generator = self.client.text_to_speech.convert(
                 voice_id=self.current_voice_id,
                 text=text,
@@ -233,21 +248,49 @@ class TTSService:
                     f.write(chunk)
 
             duration = self._get_duration(audio_path)
-
-            # Generate simple time-based subtitles
-            words = text.split()
-            chunks = [" ".join(words[i:i + 2]) for i in range(0, len(words), 2)]
-            with open(subs_path, "w", encoding="utf-8") as f:
-                for i, c in enumerate(chunks):
-                    t = (i / len(chunks)) * duration
-                    next_t = ((i + 1) / len(chunks)) * duration
-                    f.write(f"{i + 1}\n{self._format_srt_time(t)} --> {self._format_srt_time(next_t)}\n{c.upper()}\n\n")
-
+            self._generate_simple_subtitles(text, subs_path, duration)
             return audio_path, subs_path, duration
 
         except Exception as e:
-            logger.error(f"TTS fallback also failed: {e}")
+            logger.error(f"ElevenLabs fallback failed: {e}")
             return None, None, 0
+
+    def _generate_with_openai(self, text, language="en"):
+        """Emergency fallback using OpenAI TTS."""
+        id = str(uuid.uuid4())
+        audio_path = os.path.join(self.cache_dir, f"{id}.mp3")
+        subs_path = os.path.join(self.cache_dir, f"{id}.srt")
+
+        # Map voices roughly
+        oa_voice = "onyx" if language == "tr" else "alloy" 
+        # alloy, echo, fable, onyx, nova, shimmer
+        
+        try:
+            logger.info(f"🚀 [OpenAI TTS]: Narrating using '{oa_voice}'...")
+            response = self.oa_client.audio.speech.create(
+                model="tts-1",
+                voice=oa_voice,
+                input=text
+            )
+            response.stream_to_file(audio_path)
+            
+            duration = self._get_duration(audio_path)
+            self._generate_simple_subtitles(text, subs_path, duration)
+            
+            return audio_path, subs_path, duration
+        except Exception as e:
+            logger.error(f"OpenAI TTS fallback also failed: {e}")
+            return None, None, 0
+
+    def _generate_simple_subtitles(self, text, subs_path, duration):
+        """Helper to generate basic time-based SRT."""
+        words = text.split()
+        chunks = [" ".join(words[i:i + 2]) for i in range(0, len(words), 2)]
+        with open(subs_path, "w", encoding="utf-8") as f:
+            for i, c in enumerate(chunks):
+                t = (i / len(chunks)) * duration
+                next_t = ((i + 1) / len(chunks)) * duration
+                f.write(f"{i + 1}\n{self._format_srt_time(t)} --> {self._format_srt_time(next_t)}\n{c.upper()}\n\n")
 
     def generate_sfx(self, prompt, duration_seconds=None):
         """Generates a custom sound effect using ElevenLabs AI."""
