@@ -1,255 +1,327 @@
 {
-  "date": "2024-01-27",
+  "date": "2024-07-04",
   "shorts": [
     {
-      "title": "The Baiae Sunken City: Rome's Sin City!",
-      "topic": "Explore the submerged Roman city of Baiae, known for its opulent villas and alleged debauchery. Discuss its volcanic activity and eventual sinking.",
-      "hook": "Dive into Rome's lost paradise...or its biggest scandal!",
+      "title": "Undercover Cop or Just Suspicious? 🤔 Spot the Signs!",
+      "topic": "Examine subtle behavioral cues and clothing choices that might indicate someone is an undercover police officer. Cover stance, alertness, and common clothing choices. Ask viewers for their tells.",
+      "hook": "Think you can spot an undercover cop? I'll show you how!",
       "tags": [
-        "history",
-        "rome",
-        "sunken city",
-        "archaeology",
-        "ancient history"
+        "undercover cop",
+        "law enforcement",
+        "police",
+        "security",
+        "street smarts",
+        "law by mike",
+        "life hacks"
       ],
-      "inspired_by": "BRIGHT SIDE: Perfectly Engineered Ancient Tunnel Found in Egypt (but focusing on a totally different place)",
-      "estimated_views": "medium"
+      "inspired_by": "How To Spot An Undercover Cop",
+      "estimated_views": "high",
+      "status": "produced",
+      "production_id": "Examine_subtle_behavioral_cues_1771570285"
     },
     {
-      "title": "The Bizarre Case of Exploding Head Syndrome!",
-      "topic": "Describe Exploding Head Syndrome, a rare parasomnia where people experience loud, imagined noises as they fall asleep or wake up.",
-      "hook": "Imagine waking up to a phantom explosion...in your HEAD!",
+      "title": "Biker's WHOLESOME Crash Leads to Unexpected Discovery! 🤯",
+      "topic": "Show a short clip of a minor, non-injury biker accident, followed by the biker discovering something heartwarming or unexpected nearby, like helping an animal or finding lost money.",
+      "hook": "This biker crashed... but what happened next will restore your faith in humanity!",
       "tags": [
-        "sleep disorder",
+        "biker",
+        "crash",
+        "wholesome",
+        "good deed",
+        "motorcycle",
+        "unexpected",
+        "random acts of kindness"
+      ],
+      "inspired_by": "Biker has the most WHOLESOME crash ever‼️🤯",
+      "estimated_views": "high",
+      "status": "produced",
+      "production_id": "Show_a_short_clip_of_a_minor_n_1771570622"
+    },
+    {
+      "title": "Infinite Ice PC?! Genius or Madness? 🧊💻",
+      "topic": "Show a quick breakdown of the concept of an ice-cooled PC, highlighting its potential benefits (extreme cooling) and drawbacks (complexity, risk of leaks). Ask viewers if they'd try it.",
+      "hook": "Is this the COOLEST PC ever built?",
+      "tags": [
+        "PC",
+        "PC building",
+        "ice cooled PC",
+        "extreme PC",
+        "gaming PC",
+        "tech",
+        "mryeester"
+      ],
+      "inspired_by": "Building an infinite ice-cooled PC",
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Show_a_quick_breakdown_of_the__1771580628"
+    },
+    {
+      "title": "Nerf Dart MAGIC! ✨ Can you believe this?",
+      "topic": "Recreate the 'Nerf dart refusing to fall' video, offering a possible explanation (air currents, static electricity) and challenging viewers to try it themselves.",
+      "hook": "I can't believe this Nerf dart defying gravity!",
+      "tags": [
+        "nerf",
+        "nerf dart",
+        "magic trick",
+        "physics",
         "science",
-        "health",
-        "mystery",
-        "weird facts"
+        "tiktok",
+        "viral",
+        "toys"
       ],
-      "inspired_by": "Dyatlov Pass Incident: Russia's Greatest Unsolved Mystery (but a medical mystery)",
-      "estimated_views": "medium"
+      "inspired_by": "This Nerf Dart Refuses To Fall 👀",
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Recreate_the_Nerf_dart_refusin_1771581151"
     },
     {
-      "title": "The Logic Puzzle That Stumped Einstein!",
-      "topic": "Present Einstein's Zebra Puzzle, a logic problem that only 2% of people can supposedly solve.",
-      "hook": "Can YOU solve the puzzle that tricked Einstein?",
+      "title": "Did Game Cartridge Blowing REALLY Work? 🤔 The Truth!",
+      "topic": "Briefly explain the urban legend of blowing on game cartridges. Then, explain the actual reason it temporarily worked - reseating the cartridge.",
+      "hook": "We ALL did this... but did it WORK?",
       "tags": [
-        "puzzle",
-        "logic",
-        "einstein",
-        "iq test",
-        "brain teaser"
+        "game cartridge",
+        "retro gaming",
+        "nintendo",
+        "gaming myths",
+        "video games",
+        "nostalgia",
+        "80s",
+        "90s"
       ],
       "inspired_by": "Did Blowing Game Cartridges Really Work 🤔",
-      "estimated_views": "high"
+      "estimated_views": "medium"
     },
     {
-      "title": "Venomous Mammals: Nature's Secret Weapons!",
-      "topic": "Highlight mammals that possess venom, like the platypus and slow loris, detailing their unique venom delivery systems.",
-      "hook": "Did you know some MAMMALS are venomous?!",
+      "title": "Koalas: Nature's Sleepiest Survivors 🐨😴",
+      "topic": "Highlight a unique adaptation that allows koalas to survive (e.g., their specialized diet of eucalyptus leaves, which are toxic to most animals, or their ability to sleep up to 20 hours a day).",
+      "hook": "Koalas are lazy...or are they GENIUSES?",
       "tags": [
+        "koala",
         "animals",
-        "nature",
-        "science",
         "wildlife",
-        "venom"
+        "animal facts",
+        "nature",
+        "australia",
+        "sleepy",
+        "evolution"
       ],
-      "inspired_by": "5 Real Animals That Look Like Video Game Bosses #AnimalFacts #Animals #Wildlife",
-      "estimated_views": "medium"
-    },
-    {
-      "title": "Why the Sky is (Sometimes) PINK!",
-      "topic": "Explain atmospheric scattering and how pollutants or dust can cause stunning pink sunrises and sunsets.",
-      "hook": "The sky is pink...but WHY?",
-      "tags": [
-        "science",
-        "weather",
-        "atmosphere",
-        "physics",
-        "pink sky"
-      ],
-      "inspired_by": "James Webb Telescope New Images: Recent release of stunning and informative space imagery (but applied to the atmosphere)",
-      "estimated_views": "low"
-    },
-    {
-      "title": "The Creepiest Highway in the World?",
-      "topic": "Explore the haunted reputation of the A666 highway in England, nicknamed 'The Devil's Highway'. Share reported ghostly encounters and its ominous name.",
-      "hook": "Dare to drive 'The Devil's Highway'?",
-      "tags": [
-        "haunted",
-        "ghosts",
-        "mystery",
-        "paranormal",
-        "road trip"
-      ],
-      "inspired_by": "The Haunting Mystery of the Mary Celeste Ghost Ship",
-      "estimated_views": "medium"
-    },
-    {
-      "title": "Why You Can't Tickle Yourself!",
-      "topic": "Explain the science behind why self-tickling is impossible, involving the cerebellum predicting the sensation.",
-      "hook": "Ever tried to tickle yourself? Here's why it FAILS!",
-      "tags": [
-        "science",
-        "body",
-        "brain",
-        "tickle",
-        "funny"
-      ],
-      "inspired_by": "Why You Can't Swallow and Breathe Simultaneously (Don't Try It!) #Shorts",
+      "inspired_by": "Koala कैसे Survive कर पाए? 🐨 Nature का अनोखा राज | Jaane Kaise #animals #tree #koala #natureanimal",
       "estimated_views": "high"
     },
     {
-      "title": "The World's LONELIEST Whale!",
-      "topic": "Tell the story of the 52-hertz whale, which emits a unique frequency unlike any other whale, suggesting it might be solitary.",
-      "hook": "Imagine being the only one who sounds like YOU...",
+      "title": "Hairless Animals: Creepy or Cute? 😱",
+      "topic": "Show a compilation of images or short clips of animals without hair (e.g., Sphynx cat, naked mole rat). Ask viewers for their opinions.",
+      "hook": "Nature's gone WRONG?! These animals have NO HAIR!",
       "tags": [
-        "whale",
-        "ocean",
         "animals",
-        "science",
-        "lonely"
+        "hairless animals",
+        "animal facts",
+        "weird animals",
+        "nature",
+        "wildlife",
+        "creepy",
+        "cute"
       ],
       "inspired_by": "Animal Without Hair 😷 #shorts",
       "estimated_views": "medium"
     },
     {
-      "title": "The Baffling Hum of Taos, New Mexico!",
-      "topic": "Investigate the Taos Hum, a persistent, low-frequency sound heard by some residents of Taos, New Mexico, with no definitive source.",
-      "hook": "A mysterious hum is driving people MAD!",
+      "title": "5 Animals That Look Like Video Game Bosses! 🎮",
+      "topic": "Show five real animals that bear a striking resemblance to video game bosses (e.g., anglerfish, giant squid).",
+      "hook": "IRL Game Bosses?! You won't believe these animals!",
       "tags": [
-        "mystery",
-        "sound",
-        "new mexico",
-        "unexplained",
-        "taos hum"
-      ],
-      "inspired_by": "The Tunguska Event: Siberia's Mysterious Explosion",
-      "estimated_views": "low"
-    },
-    {
-      "title": "The Lost City of Z: Real or Legend?",
-      "topic": "Detail the search for the Lost City of Z, an alleged ancient city in the Amazon rainforest, and the expeditions to find it.",
-      "hook": "Is there a LOST CITY hidden in the Amazon?",
-      "tags": [
-        "history",
-        "amazon",
-        "lost city",
-        "exploration",
-        "archaeology"
-      ],
-      "inspired_by": "BRIGHT SIDE: Perfectly Engineered Ancient Tunnel Found in Egypt",
-      "estimated_views": "medium"
-    },
-    {
-      "title": "The Deadly Beauty of Fugu: Japan's Risky Dish!",
-      "topic": "Explain the delicacy of fugu (pufferfish) in Japan, highlighting the dangerous toxin it contains and the highly trained chefs who prepare it.",
-      "hook": "Would you risk your LIFE for this dish?",
-      "tags": [
-        "food",
-        "japan",
-        "fugu",
-        "poison",
-        "travel"
-      ],
-      "inspired_by": "The Castor Bean: A Deadly Beauty #Shorts",
-      "estimated_views": "medium"
-    },
-    {
-      "title": "The Mind-Bending Banach-Tarski Paradox!",
-      "topic": "Present the Banach-Tarski paradox, a mathematical theorem that states a solid ball can be split into a finite number of pieces and reassembled into two identical copies of the original ball.",
-      "hook": "Duplicate reality...with MATH?!",
-      "tags": [
-        "math",
-        "paradox",
-        "science",
-        "logic",
-        "banach-tarski"
-      ],
-      "inspired_by": "The Science of Skipping Stones Explained! #Shorts",
-      "estimated_views": "low"
-    },
-    {
-      "title": "The Underwater Forest of Lake Kaindy!",
-      "topic": "Describe Lake Kaindy in Kazakhstan, formed by an earthquake that flooded a spruce forest, creating a surreal underwater landscape.",
-      "hook": "A submerged forest hidden beneath the lake!",
-      "tags": [
-        "lake",
-        "forest",
-        "nature",
-        "kazakhstan",
-        "travel"
-      ],
-      "inspired_by": "5 Unexplored Hidden Gems Around The World! #Shorts",
-      "estimated_views": "low"
-    },
-    {
-      "title": "The Mystery of the Dancing Plague!",
-      "topic": "Explore the Dancing Plague of 1518, where hundreds of people in Strasbourg danced uncontrollably for days, with some dancing to their deaths.",
-      "hook": "A deadly dance craze swept Europe!",
-      "tags": [
-        "history",
-        "plague",
-        "dance",
-        "mystery",
-        "strasbourg"
-      ],
-      "inspired_by": "The Haunting Mystery of the Mary Celeste Ghost Ship",
-      "estimated_views": "medium"
-    },
-    {
-      "title": "The Bizarre Truth About Exploding Lakes!",
-      "topic": "Describe limnic eruptions, where lakes suddenly release large amounts of carbon dioxide, potentially suffocating nearby life.",
-      "hook": "Lakes that can EXPLODE and kill!",
-      "tags": [
-        "science",
-        "lake",
-        "carbon dioxide",
-        "eruption",
+        "animals",
+        "video games",
+        "animal facts",
+        "wildlife",
+        "gaming",
+        "boss battles",
         "nature"
       ],
-      "inspired_by": "The Tunguska Event: Siberia's Mysterious Explosion",
-      "estimated_views": "low"
+      "inspired_by": "5 Real Animals That Look Like Video Game Bosses #AnimalFacts #Animals #Wildlife",
+      "estimated_views": "medium"
     },
     {
-      "title": "The Physics of 'Perpetual Motion' Machines",
-      "topic": "Debunk the concept of perpetual motion machines, explaining the laws of thermodynamics that prevent them from working.",
-      "hook": "Can you build a machine that runs FOREVER?",
+      "title": "Strongest Magnet in the UNIVERSE! 🧲🤯",
+      "topic": "Explain what a magnetar is and why it's the strongest type of magnet in the universe. Use visuals to illustrate its immense power.",
+      "hook": "This magnet can rip APART atoms!",
       "tags": [
-        "physics",
+        "magnetar",
+        "space",
         "science",
-        "energy",
-        "motion",
-        "debunked"
+        "astronomy",
+        "universe",
+        "magnetism",
+        "physics",
+        "space facts"
       ],
-      "inspired_by": "How These Energy Saving Stairs Work 😮",
+      "inspired_by": "Strongest Magnet in the Universe",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "Animals Nature Treats UNFAIRLY! 😭",
+      "topic": "Show examples of animals with unfortunate adaptations or disadvantages (e.g., kakapo, blobfish).",
+      "hook": "Poor animals! Nature's being CRUEL!",
+      "tags": [
+        "animals",
+        "animal facts",
+        "nature",
+        "wildlife",
+        "evolution",
+        "unfair",
+        "disadvantage",
+        "sad"
+      ],
+      "inspired_by": "ANIMALES TRATADOS INJUSTAMENTE POR LA NATURALEZA #shorts #datoscuriosos #animales",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "Could You Hide a Capybara? The TRUTH! 🤣",
+      "topic": "Present a humorous take on how difficult or easy it would be to hide a capybara from your parents, highlighting its size and unique characteristics.",
+      "hook": "Hiding a capybara? IMPOSSIBLE!",
+      "tags": [
+        "capybara",
+        "animals",
+        "funny",
+        "humor",
+        "animal facts",
+        "pets",
+        "wildlife",
+        "did you know"
+      ],
+      "inspired_by": "Could you hide a capybara from your parents? #didyouknow #facts #science",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "Why Fishermen Throw Wolf Eels BACK?! 🎣",
+      "topic": "Explain why fishermen often release wolf eels back into the ocean, highlighting their importance to the ecosystem or their unusual behavior.",
+      "hook": "Fishermen REJECT this scary eel!",
+      "tags": [
+        "wolf eel",
+        "fish",
+        "animals",
+        "animal facts",
+        "fishing",
+        "ocean",
+        "wildlife",
+        "nature"
+      ],
+      "inspired_by": "Why Fishermen Throw Wolf Eels Back#animals #shorts #facts #knowledge #funny #wildlife",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "Brawl Stars Lore: The *Untold* Story of...",
+      "topic": "Create a short speculating on some background lore of one of the Brawlers in Brawl Stars, similar to the channel Brawl Stars.",
+      "hook": "What if... (character) was actually...",
+      "tags": [
+        "brawl stars",
+        "lore",
+        "mobile game",
+        "theory",
+        "animation"
+      ],
+      "inspired_by": "Brawl Stars",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "Poppy Playtime Chapter 6 LEAKS?! 🤫",
+      "topic": "Create a theory or speculation short on the next Poppy Playtime chapter, formatted like Thinknoodles.",
+      "hook": "Chapter 6 will reveal...",
+      "tags": [
+        "Poppy Playtime",
+        "Poppy Playtime Chapter 5",
+        "poppy playtime chapter 6"
+      ],
+      "inspired_by": "Thinknoodles",
       "estimated_views": "low"
     },
     {
-      "title": "The Stone Spheres of Costa Rica: Ancient Mystery!",
-      "topic": "Explore the mysterious stone spheres of Costa Rica, their purpose, and how they were created by pre-Columbian cultures.",
-      "hook": "Giant stone balls...with a SECRET!",
+      "title": "BRIGHT SIDE lied?! What they DIDN'T tell you...",
+      "topic": "Disprove or add nuance to a popular claim made by BRIGHT SIDE, using scientific reasoning or evidence.",
+      "hook": "BRIGHT SIDE's wrong?! Let's find out!",
+      "tags": [
+        "debunk",
+        "science",
+        "bright side",
+        "facts",
+        "mythbusters"
+      ],
+      "inspired_by": "BRIGHT SIDE",
+      "estimated_views": "low"
+    },
+    {
+      "title": "Secret British Ritual Tunnels REVEALED! 💀",
+      "topic": "Briefly cover a historical mystery related to underground tunnels, inspired by Science Channel's content.",
+      "hook": "What happened in these creepy tunnels?!",
       "tags": [
         "history",
-        "costa rica",
-        "archaeology",
-        "stone spheres",
-        "ancient"
+        "mystery",
+        "underground",
+        "science channel",
+        "britain"
       ],
-      "inspired_by": "BRIGHT SIDE: Perfectly Engineered Ancient Tunnel Found in Egypt",
+      "inspired_by": "Science Channel",
+      "estimated_views": "low"
+    },
+    {
+      "title": "Evolution of the Funny Military Moments! 😂 Part 1",
+      "topic": "Show a quick montage of funny moments in the military from different eras, highlighting how humor evolves over time. Use public domain footage or creative commons licensed clips.",
+      "hook": "Military Humor: From Then to NOW!",
+      "tags": [
+        "military",
+        "funny",
+        "comedy",
+        "humor",
+        "military moments",
+        "evolution",
+        "shorts"
+      ],
+      "inspired_by": "Funny military moments part 59  #military",
+      "estimated_views": "low"
+    },
+    {
+      "title": "The Ultimate Father-in-Law Test...FAILED! 😬",
+      "topic": "Show a short, funny skit depicting a comically exaggerated and failed attempt by a prospective son-in-law to impress his future father-in-law.",
+      "hook": "He tried WAY too hard...",
+      "tags": [
+        "father-in-law",
+        "comedy",
+        "funny",
+        "relationship",
+        "family",
+        "skit",
+        "shorts"
+      ],
+      "inspired_by": "The Ultimate Father-in-Law Test! 😠 #shorts",
       "estimated_views": "medium"
     }
   ],
   "ambient_recommendations": [
     {
-      "type": "underwater",
+      "type": "thunderstorm",
       "hours": 8,
-      "reason": "Following the recent popularity of deep-sea discoveries and the Bizarre case of Exploding Lakes, an underwater ambient video aligns with current viewer interest in aquatic themes and mysteries."
+      "reason": "Summer thunderstorms are common and evocative, making this a seasonally relevant choice. Can also be used for relaxation."
+    },
+    {
+      "type": "ocean",
+      "hours": 8,
+      "reason": "Ocean sounds are perennially popular for relaxation, focus, and sleep. Consistent views throughout the year."
+    },
+    {
+      "type": "waterfall",
+      "hours": 8,
+      "reason": "Visually appealing and the white noise is soothing, making it a strong contender for relaxation and sleep videos."
     }
   ],
   "longform": [],
-  "generated_at": "2026-02-20T10:13:15.641533",
-  "trending_count": 86,
-  "channels_analyzed": 1,
-  "status": "pending"
+  "generated_at": "2026-02-19T23:33:12.260292",
+  "trending_count": 83,
+  "channels_analyzed": 2,
+  "status": "in_progress",
+  "last_executed_at": "2026-02-20T09:59:07.446475",
+  "results": {
+    "shorts_produced": 2,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
