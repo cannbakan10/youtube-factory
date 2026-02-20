@@ -93,7 +93,9 @@
         "road trip"
       ],
       "inspired_by": "The Haunting Mystery of the Mary Celeste Ghost Ship",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Explore_the_haunted_reputation_1771592555"
     },
     {
       "title": "Why You Can't Tickle Yourself!",
@@ -107,7 +109,9 @@
         "funny"
       ],
       "inspired_by": "Why You Can't Swallow and Breathe Simultaneously (Don't Try It!) #Shorts",
-      "estimated_views": "high"
+      "estimated_views": "high",
+      "status": "produced",
+      "production_id": "Explain_the_science_behind_why_1771593398"
     },
     {
       "title": "The World's LONELIEST Whale!",
@@ -262,9 +266,9 @@
   "trending_count": 86,
   "channels_analyzed": 1,
   "status": "in_progress",
-  "last_executed_at": "2026-02-20T10:53:58.154559",
+  "last_executed_at": "2026-02-20T13:33:12.402308",
   "results": {
-    "shorts_produced": 5,
+    "shorts_produced": 2,
     "longform_produced": 0,
     "errors": []
   }
