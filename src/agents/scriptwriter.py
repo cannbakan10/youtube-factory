@@ -361,7 +361,8 @@ class ScriptWriter:
         """
         Step 2: Scenes and Visual Intelligence.
         """
-        lang_name = "English" if language == "en" else "Turkish"
+        lang_map = {"en": "English", "tr": "Turkish", "es": "Spanish"}
+        lang_name = lang_map.get(language, "English")
         is_long = video_type == "long"
         scene_duration = "12.0 - 20.0 seconds" if is_long else "3.5 - 5.0 seconds"
         orientation = "LANDSCAPE (16:9)" if is_long else "PORTRAIT (9:16)"
