@@ -173,7 +173,7 @@ class TTSService:
         padded_audio_path = audio_path.replace(".mp3", "_padded.mp3")
         pad_cmd = [
             "ffmpeg", "-y", "-i", audio_path,
-            "-af", "apad=pad_dur=0.3",
+            "-af", "apad=pad_dur=0.8",
             padded_audio_path
         ]
         result = subprocess.run(pad_cmd, capture_output=True, timeout=30)

@@ -104,16 +104,23 @@ class VideoEngine:
             fade_dur = min(0.5, duration / 2)
             fade_out_st = max(0, duration - fade_dur)
             
+            # CRITICAL: If this is the LAST scene, we don't trim the audio so it can finish naturally.
+            is_last_scene = (i == len(blueprint.scenes) - 1)
+            audio_trim = f"atrim=duration={duration}," if not is_last_scene else ""
+            video_trim = f"trim=duration={duration},"
+
+            v_filters[v_filters.index(f"trim=duration={duration}")] = video_trim.strip(",")
+
             if sfx_in is not None:
                 filter_complex_parts.append(
-                    f"[{a_narrative_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo,volume=1.30[a_voc{valid_scenes_count}];"
+                    f"[{a_narrative_in}:a]{audio_trim}asetpts=PTS-STARTPTS,aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo,volume=1.30[a_voc{valid_scenes_count}];"
                     f"[{sfx_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo,volume=0.4[a_sfx_raw{valid_scenes_count}];"
                     f"[a_sfx_raw{valid_scenes_count}]afade=t=in:st=0:d={fade_dur},afade=t=out:st={fade_out_st}:d={fade_dur}[a_sfx{valid_scenes_count}];"
                     f"[a_voc{valid_scenes_count}][a_sfx{valid_scenes_count}]amix=inputs=2:duration=first:dropout_transition=0[a_sc{valid_scenes_count}];"
                 )
             else:
                 filter_complex_parts.append(
-                    f"[{a_narrative_in}:a]atrim=duration={duration},asetpts=PTS-STARTPTS,aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo,volume=1.30[a_sc{valid_scenes_count}];"
+                    f"[{a_narrative_in}:a]{audio_trim}asetpts=PTS-STARTPTS,aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo,volume=1.30[a_sc{valid_scenes_count}];"
                 )
             
             filter_complex_parts.append(v_filter)

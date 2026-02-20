@@ -718,6 +718,7 @@ Examples:
             logger.error("No daily plan found. Run --nightly first.")
             sys.exit(1)
 
+        langs = [l.strip().lower() for l in args.langs.split(",")]
         try:
             yt_service = YouTubeService()
             brain = NightlyBrainAgent(youtube_service=yt_service)
