@@ -189,7 +189,9 @@
         "banach-tarski"
       ],
       "inspired_by": "The Science of Skipping Stones Explained! #Shorts",
-      "estimated_views": "low"
+      "estimated_views": "low",
+      "status": "produced",
+      "production_id": "Present_the_BanachTarski_parad_1771612431"
     },
     {
       "title": "The Underwater Forest of Lake Kaindy!",
@@ -203,7 +205,8 @@
         "travel"
       ],
       "inspired_by": "5 Unexplored Hidden Gems Around The World! #Shorts",
-      "estimated_views": "low"
+      "estimated_views": "low",
+      "status": "failed"
     },
     {
       "title": "The Mystery of the Dancing Plague!",
@@ -274,10 +277,12 @@
   "trending_count": 86,
   "channels_analyzed": 1,
   "status": "in_progress",
-  "last_executed_at": "2026-02-20T16:56:00.369282",
+  "last_executed_at": "2026-02-20T18:57:10.006946",
   "results": {
-    "shorts_produced": 2,
+    "shorts_produced": 1,
     "longform_produced": 0,
-    "errors": []
+    "errors": [
+      "Short 'The Underwater Forest of Lake ' failed"
+    ]
   }
 }
