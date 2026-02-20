@@ -51,7 +51,9 @@
         "mryeester"
       ],
       "inspired_by": "Building an infinite ice-cooled PC",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Show_a_quick_breakdown_of_the__1771580628"
     },
     {
       "title": "Nerf Dart MAGIC! ✨ Can you believe this?",
@@ -68,7 +70,9 @@
         "toys"
       ],
       "inspired_by": "This Nerf Dart Refuses To Fall 👀",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Recreate_the_Nerf_dart_refusin_1771581151"
     },
     {
       "title": "Did Game Cartridge Blowing REALLY Work? 🤔 The Truth!",
@@ -314,7 +318,7 @@
   "trending_count": 83,
   "channels_analyzed": 2,
   "status": "in_progress",
-  "last_executed_at": "2026-02-20T07:01:46.522464",
+  "last_executed_at": "2026-02-20T09:59:07.446475",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
