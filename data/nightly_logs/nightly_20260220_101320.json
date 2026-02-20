@@ -1,0 +1,163 @@
+{
+  "timestamp": "2026-02-20T10:12:25.029151",
+  "dry_run": true,
+  "performance_review": {
+    "total_recent": 6,
+    "winners_count": 3,
+    "losers_count": 0,
+    "avg_views_48h": 161.3,
+    "best_topics": [
+      "Blowing Game Cartridges: Did It ACTUALLY Work? #Shorts",
+      "Defying Gravity: Recreating the Floating Nerf Dart! #Shorts",
+      "Ice-Cooled PCs: Extreme Cooling or Extreme Risk? #Shorts"
+    ],
+    "best_views": [
+      346,
+      342,
+      172
+    ],
+    "winner_titles": [
+      "Blowing Game Cartridges: Did It ACTUALLY Work? #Shorts",
+      "Defying Gravity: Recreating the Floating Nerf Dart! #Shorts",
+      "Ice-Cooled PCs: Extreme Cooling or Extreme Risk? #Shorts"
+    ],
+    "loser_titles": []
+  },
+  "cleanup": {
+    "unlisted": 1,
+    "deleted": 13,
+    "failed": 0,
+    "kept": 118,
+    "thresholds": {
+      "shorts_7d": 50,
+      "shorts_14d": 100,
+      "shorts_30d": 200,
+      "long_14d": 50,
+      "long_30d": 100,
+      "multiplier": 1.0
+    }
+  },
+  "trending": {
+    "found": 86,
+    "viral_shorts_found": 30,
+    "competitors_analyzed": 3,
+    "comments_mined": 20,
+    "top_5": [
+      {
+        "title": "How To Spot An Undercover Cop",
+        "views": 25139613,
+        "category": "Entertainment"
+      },
+      {
+        "title": "Bumpy Johnson was a smart man.",
+        "views": 20240138,
+        "category": "Film & Animation"
+      },
+      {
+        "title": "what the Hardest Coloring Book looks like",
+        "views": 19055541,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "How These Energy Saving Stairs Work 😮",
+        "views": 17425463,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "He Got His Revenge 🔥🥶 | No Ordinary Family | MATADORA (slowe",
+        "views": 17411302,
+        "category": "Film & Animation"
+      }
+    ],
+    "top_viral_shorts": [
+      {
+        "title": "Koala कैसे Survive कर पाए? 🐨 Nature का अनोखा राज | Jaane Kai",
+        "views": 5539267,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "Top 5 Funniest Naughty Pets That Will Shock You! 😱🐶#facts #s",
+        "views": 2401938,
+        "query": "top 5 facts"
+      },
+      {
+        "title": "Animal Without Hair 😷 #shorts",
+        "views": 1545462,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "5 Real Animals That Look Like Video Game Bosses #AnimalFacts",
+        "views": 1356946,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "🤯Top 5 Mind Blowing Facts In Telugu #shorts #telugufacts #fa",
+        "views": 1264105,
+        "query": "did you know facts"
+      }
+    ]
+  },
+  "ambient_analysis": {
+    "total_ambient": 3,
+    "total_views": 1572,
+    "top_type": "fireplace",
+    "worst_type": "rain",
+    "type_rankings": [
+      {
+        "type": "fireplace",
+        "video_count": 2,
+        "total_views": 1239,
+        "avg_views": 620,
+        "avg_views_per_day": 97.0,
+        "engagement_rate": 1.69,
+        "best_video": {
+          "title": "🔥 Cozy Fireplace 8 HOURS with Crackling Fire Sounds | Firepl",
+          "views": 938,
+          "views_per_day": 156.3
+        }
+      },
+      {
+        "type": "rain",
+        "video_count": 1,
+        "total_views": 333,
+        "avg_views": 333,
+        "avg_views_per_day": 25.6,
+        "engagement_rate": 2.1,
+        "best_video": {
+          "title": "1 Hour Rainy Night Ambience (60 Minutes)",
+          "views": 333,
+          "views_per_day": 25.6
+        }
+      }
+    ]
+  },
+  "plan": {
+    "shorts_planned": 17,
+    "ambient_recommendations": [
+      {
+        "type": "underwater",
+        "hours": 8,
+        "reason": "Following the recent popularity of deep-sea discoveries and the Bizarre case of Exploding Lakes, an underwater ambient video aligns with current viewer interest in aquatic themes and mysteries."
+      }
+    ],
+    "shorts": [
+      "The Baiae Sunken City: Rome's Sin City!",
+      "The Bizarre Case of Exploding Head Syndrome!",
+      "The Logic Puzzle That Stumped Einstein!",
+      "Venomous Mammals: Nature's Secret Weapons!",
+      "Why the Sky is (Sometimes) PINK!",
+      "The Creepiest Highway in the World?",
+      "Why You Can't Tickle Yourself!",
+      "The World's LONELIEST Whale!",
+      "The Baffling Hum of Taos, New Mexico!",
+      "The Lost City of Z: Real or Legend?",
+      "The Deadly Beauty of Fugu: Japan's Risky Dish!",
+      "The Mind-Bending Banach-Tarski Paradox!",
+      "The Underwater Forest of Lake Kaindy!",
+      "The Mystery of the Dancing Plague!",
+      "The Bizarre Truth About Exploding Lakes!",
+      "The Physics of 'Perpetual Motion' Machines",
+      "The Stone Spheres of Costa Rica: Ancient Mystery!"
+    ]
+  }
+}

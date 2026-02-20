@@ -724,7 +724,8 @@ Examples:
             result = brain.execute_plan(
                 factory_instance=factory,
                 max_shorts=args.plan_shorts,
-                max_longform=args.plan_longform
+                max_longform=args.plan_longform,
+                languages=langs
             )
             if result.get("error"):
                 logger.error(f"Plan execution failed: {result['error']}")

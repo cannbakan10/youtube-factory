@@ -140,7 +140,8 @@ class ScriptWriter:
         """
         Step 1: Create a dramatic narrative.
         """
-        lang_name = "English" if language == "en" else "Turkish"
+        lang_map = {"en": "English", "tr": "Turkish", "es": "Spanish"}
+        lang_name = lang_map.get(language, "English")
         is_long = video_type == "long"
 
         duration_match = re.search(r'(\d+)\s*(?:dakika|minute|dk|min|dakikalık|minutelık)', topic.lower())
@@ -215,7 +216,13 @@ class ScriptWriter:
             FAILURE TO REACH {target_word_count} WORDS WILL RESULT IN PRODUCTION FAILURE. BE DETAILED.
             """
         elif mode == "horror":
-            hook_start = "Bunun gerçekten yaşandığını biliyor muydunuz?" if language == "tr" else "Did you know this actually happened?"
+            if language == "tr":
+                hook_start = "Bunun gerçekten yaşandığını biliyor muydunuz?"
+            elif language == "es":
+                hook_start = "¿Sabías ki esto realmente sucedió?"
+            else:
+                hook_start = "Did you know this actually happened?"
+            
             return f"""
             Using the provided research about REAL terrifying events, write a 60-second narration.
             Everything MUST be in {lang_name}.
@@ -224,6 +231,7 @@ class ScriptWriter:
             STORYTELLING RULES:
             - Start with: "{hook_start}"
             - NO INTRO: Start DIRECTLY with the story.
+            - NO RHETORICAL QUESTIONS: After the hook, deliver facts as BOLD STATEMENTS.
             - Word count: ~110-130 words.
             - Language: STRICTLY {lang_name} only.
             """
@@ -231,6 +239,9 @@ class ScriptWriter:
             if language == "tr":
                 pause_phrase = "Düşün bakalım... Üç... İki... Bir..."
                 cta = "Kaç doğru bildin? Yorumlara yaz ve abone olmayı unutma!"
+            elif language == "es":
+                pause_phrase = "Piénsalo... Tres... Dos... Uno..."
+                cta = "¿Cuántas has acertado? ¡Comenta y suscríbete!"
             else:
                 pause_phrase = "Think about it... Three... Two... One..."
                 cta = "How many did you get right? Comment below and subscribe!"
@@ -260,18 +271,13 @@ class ScriptWriter:
             """
         elif mode == "reddit":
             if language == "tr":
-                hook_options = [
-                    "Reddit'te bir kullanıcı şunu yazdı...",
-                    "Bu hikayeyi okuyunca çenemi yerden topladım...",
-                    "İnternette okuduğum en çılgın gerçek hikaye...",
-                ]
+                hook_options = ["Reddit'te bir kullanıcı şunu yazdı...", "Bu hikayeyi okuyunca çenemi yerden topladım...", "İnternette okuduğum en çılgın gerçek hikaye..."]
                 cta = "Bu hikaye hakkında ne düşünüyorsun? Yorumlara yaz!"
+            elif language == "es":
+                hook_options = ["Un usuario de Reddit publicó esto y se volvió viral...", "Esta historia te dejará sin palabras...", "La historia real más loca que he leído online..."]
+                cta = "¿Qué piensas de esta historia? ¡Comenta abajo!"
             else:
-                hook_options = [
-                    "A Reddit user posted this and it blew up...",
-                    "This story will leave you speechless...",
-                    "The craziest true story I've ever read online...",
-                ]
+                hook_options = ["A Reddit user posted this and it blew up...", "This story will leave you speechless...", "The craziest true story I've ever read online..."]
                 cta = "What do you think about this story? Comment below!"
 
             return f"""
@@ -295,7 +301,12 @@ class ScriptWriter:
             - Word count: ~{target_word_count} words.
             """
         else:
-            climax_lead_in = "Gelelim en çarpıcı noktaya..." if language == "tr" else "Now for the most striking part..."
+            if language == "tr":
+                climax_lead_in = "Gelelim en çarpıcı noktaya..."
+            elif language == "es":
+                climax_lead_in = "Ahora, la parte más impactante..."
+            else:
+                climax_lead_in = "Now for the most striking part..."
             return f"""
             Using the following research data, write an exciting narration script for YouTube Shorts.
             Entirely in {lang_name}.
@@ -313,13 +324,15 @@ class ScriptWriter:
             - NO brackets, no parentheses, no stage directions.
 
             STRUCTURE & PACING RULES:
-            - Start with a shocking/intriguing fact about "{topic}" to hook the viewer instantly.
-            - Deliver 3-5 mind-blowing facts in rapid succession.
+            - ⛔ NO RHETORICAL QUESTIONS: Stop asking "Did you know?" or "What if?". Deliver information as BOLD, DIRECT STATEMENTS.
+            - ⏱️ INSTANT VALUE: Deliver the first mind-blowing fact within the first 10 seconds. No long setups.
+            - 🎯 TITLE ALIGNMENT: The very first sentence must confirm the promise made in the title "{topic}".
+            - Deliver 3-5 high-information facts in rapid succession.
             - Build to a climax using "{climax_lead_in}".
             - End with a natural call to action (like, subscribe, comment).
             - Language: STRICTLY {lang_name} only.
             - Word count: 110-140 words.
-            - Write as if you're a narrator speaking directly to the viewer, NOT describing what to write.
+            - Write as if you're a narrator speaking directly to the viewer with authority and speed.
             """
 
     @retry_with_backoff(max_retries=2, base_delay=2.0)

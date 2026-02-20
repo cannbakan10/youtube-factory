@@ -15,5 +15,8 @@ client_secrets.json
 token.pickle
 assets/productions/*
 !assets/productions/.gitkeep
+# Branding & Templates (Required for Production)
+!assets/branding/*.mp4
+!assets/branding/*.png
 !assets/templates/music/*.mp3
 !assets/templates/bg_music.mp3

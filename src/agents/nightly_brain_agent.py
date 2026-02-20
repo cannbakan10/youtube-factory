@@ -961,7 +961,7 @@ Output STRICT JSON format:
     # PHASE 4: EXECUTE PLAN — Produce content from plan
     # ──────────────────────────────────────────────────────
 
-    def execute_plan(self, factory_instance, max_shorts: int = 2, max_longform: int = 0) -> Dict:
+    def execute_plan(self, factory_instance, max_shorts: int = 2, max_longform: int = 0, languages: List[str] = None) -> Dict:
         """
         Read the daily plan and produce content.
         Called by morning automation workflows.
@@ -993,7 +993,7 @@ Output STRICT JSON format:
                 logger.info(f"\n🎬 Producing Short {i+1}: {short['title'][:50]}")
                 production_id = factory_instance.run(
                     topic=short.get("topic", short["title"]),
-                    languages=["en"],
+                    languages=languages or ["en"],
                     auto_upload=True,
                     video_type="shorts",
                     mode="info",
@@ -1016,7 +1016,7 @@ Output STRICT JSON format:
                 logger.info(f"\n🎬 Producing Long-form {i+1}: {lf['title'][:50]}")
                 production_id = factory_instance.run(
                     topic=lf.get("topic", lf["title"]),
-                    languages=["en"],
+                    languages=languages or ["en"],
                     auto_upload=True,
                     video_type="long",
                     mode="info",

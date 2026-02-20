@@ -34,8 +34,6 @@ class TTSService:
         # Language-Specific Voice Settings (Optimized for Prosody)
         self.voices_config = {
             "tr": {
-                # 'uvU9jrgGLWNPeNA4NgNT' is the user's latest preferred Turkish voice
-                # 'NNn9dv8zq2kUo7d3JSGG' was the previous voice
                 "male": ["uvU9jrgGLWNPeNA4NgNT", "NNn9dv8zq2kUo7d3JSGG"],
                 "female": ["bj1uMlYGikistcXNmFoh"],
                 "default": "uvU9jrgGLWNPeNA4NgNT"
@@ -44,16 +42,21 @@ class TTSService:
                 "male": ["XfNU2rGpBa01ckF309OY", "pNInz6ob8mW8mY4Rnd87"],
                 "female": ["XfNU2rGpBa01ckF309OY", "EXAVITQu4vr4xnSDxMaL"],
                 "default": "XfNU2rGpBa01ckF309OY"
+            },
+            "es": {
+                "male": ["pNInz6ob8mW8mY4Rnd87", "TX380q0664cnvofS9ntW"], # Adam, etc
+                "female": ["z9fAnlkUCvXgqy7Df9uJ"], # Glinda
+                "default": "z9fAnlkUCvXgqy7Df9uJ"
             }
         }
 
-        # Voice rotation pool for variety (English)
+        # Voice rotation pool for variety (English & Spanish)
         # Each voice has optimal use cases to avoid monotony
         self.voice_pool = {
-            "narrator": "XfNU2rGpBa01ckF309OY",       # Default narrator (facts, documentary)
-            "deep": "pNInz6ob8mW8mY4Rnd87",            # Deep voice (mystery, horror)
-            "energetic": "XfNU2rGpBa01ckF309OY",       # Energetic (quiz, viral)
-            "calm": "EXAVITQu4vr4xnSDxMaL",            # Calm female (nature, ambient)
+            "narrator": "XfNU2rGpBa01ckF309OY",       # Default narrator
+            "deep": "pNInz6ob8mW8mY4Rnd87",            # Deep voice
+            "energetic": "XfNU2rGpBa01ckF309OY",       # Energetic
+            "calm": "EXAVITQu4vr4xnSDxMaL",            # Calm female
         }
 
         self.current_voice_id = self.voices_config["en"]["default"]
