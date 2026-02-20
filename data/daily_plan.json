@@ -125,7 +125,9 @@
         "lonely"
       ],
       "inspired_by": "Animal Without Hair 😷 #shorts",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Tell_the_story_of_the_52hertz__1771597968"
     },
     {
       "title": "The Baffling Hum of Taos, New Mexico!",
@@ -139,7 +141,9 @@
         "taos hum"
       ],
       "inspired_by": "The Tunguska Event: Siberia's Mysterious Explosion",
-      "estimated_views": "low"
+      "estimated_views": "low",
+      "status": "produced",
+      "production_id": "Investigate_the_Taos_Hum_a_per_1771598885"
     },
     {
       "title": "The Lost City of Z: Real or Legend?",
@@ -266,7 +270,7 @@
   "trending_count": 86,
   "channels_analyzed": 1,
   "status": "in_progress",
-  "last_executed_at": "2026-02-20T13:33:12.402308",
+  "last_executed_at": "2026-02-20T15:03:15.012243",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
