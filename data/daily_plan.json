@@ -157,7 +157,9 @@
         "archaeology"
       ],
       "inspired_by": "BRIGHT SIDE: Perfectly Engineered Ancient Tunnel Found in Egypt",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Detail_the_search_for_the_Lost_1771604682"
     },
     {
       "title": "The Deadly Beauty of Fugu: Japan's Risky Dish!",
@@ -171,7 +173,9 @@
         "travel"
       ],
       "inspired_by": "The Castor Bean: A Deadly Beauty #Shorts",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Explain_the_delicacy_of_fugu_p_1771605622"
     },
     {
       "title": "The Mind-Bending Banach-Tarski Paradox!",
@@ -270,7 +274,7 @@
   "trending_count": 86,
   "channels_analyzed": 1,
   "status": "in_progress",
-  "last_executed_at": "2026-02-20T15:03:15.012243",
+  "last_executed_at": "2026-02-20T16:56:00.369282",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
