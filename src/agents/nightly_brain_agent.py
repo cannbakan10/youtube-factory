@@ -61,7 +61,7 @@ MIN_SHORTS_VIEWS_14D = 100      # Minimum views after 14 days
 MIN_SHORTS_VIEWS_30D = 200      # Minimum views after 30 days
 MIN_LONGFORM_VIEWS_14D = 50     # Minimum views for longform after 14 days
 MIN_LONGFORM_VIEWS_30D = 100    # Minimum views for longform after 30 days
-DUPLICATE_SIMILARITY_THRESHOLD = 0.70
+DUPLICATE_SIMILARITY_THRESHOLD = 0.60  # Lower = More aggressive cleanup
 
 
 class NightlyBrainAgent:
@@ -625,7 +625,8 @@ class NightlyBrainAgent:
 
     def generate_content_plan(self, trending: List[Dict], channel_videos: List[Dict] = None,
                               performance_review: Dict = None, viral_shorts: List[Dict] = None,
-                              competitor_insights: List[Dict] = None, audience_desires: List[str] = None) -> Dict:
+                              competitor_insights: List[Dict] = None, audience_desires: List[str] = None,
+                              ai_trends: List[Dict] = None) -> Dict:
         """
         Analyze trending videos and create a content plan for tomorrow.
         Uses Gemini AI with deep insights from:
@@ -634,20 +635,35 @@ class NightlyBrainAgent:
         - Competitor channel monitoring
         - Audience comment mining
         - Performance feedback loop
+        - AI Trend discovery (TrendAgent)
         """
         logger.info("📝 Phase 3: Generating content plan...")
 
         # Extract trending topics/themes
         trending_topics = self._extract_topics_from_trending(trending)
 
-        # Get existing video titles to avoid duplicates
-        existing_titles = set()
+        # Get existing video titles for history and deduplication
+        existing_titles_raw = []
         if channel_videos:
-            existing_titles = {self._normalize_title(v["title"]) for v in channel_videos}
+            existing_titles_raw = [v["title"] for v in channel_videos]
+        
+        # normalized set for fast exact lookups
+        existing_titles_norm = {self._normalize_title(t) for t in existing_titles_raw}
+
+        # --- ADVANCED VARIETY CHECK: Detect Saturated Topics ---
+        saturated_topics = []
+        if existing_titles_raw:
+            all_words = " ".join(existing_titles_raw).lower().split()
+            # Filter out common stop words and small words
+            stop_words = {"the", "and", "how", "why", "what", "is", "a", "of", "to", "in", "with", "for", "on", "new", "this", "that", "that's", "it's", "you", "your"}
+            keywords = [w for w in all_words if len(w) > 3 and w not in stop_words]
+            counts = Counter(keywords)
+            # Find keywords used more than 3 times
+            saturated_topics = [f"'{word.upper()}' (used {count} times)" for word, count in counts.most_common(12) if count >= 3]
 
         if not self.gemini:
             # Fallback: manually pick from trending
-            return self._manual_plan(trending, existing_titles)
+            return self._manual_plan(trending, existing_titles_norm)
 
         # AI-powered plan generation
         try:
@@ -659,7 +675,9 @@ class NightlyBrainAgent:
                 for i, v in enumerate(trending[:20])
             )
 
-            existing_sample = "\n".join(list(existing_titles)[:20]) if existing_titles else "None"
+            # Show much more history to Gemini (last 150 titles)
+            history_text = "\n".join(existing_titles_raw[:150]) if existing_titles_raw else "None"
+            saturated_text = "\n".join(saturated_topics) if saturated_topics else "None"
 
             # Extract channel insights for the prompt
             channel_insights_text = ""
@@ -748,6 +766,17 @@ AUDIENCE COMMENTS (from top viral videos — what people want):
 Use these comments to understand what viewers are asking for. Create content that answers their curiosity!
 """
 
+            # AI Trending Topics Section
+            ai_trend_section = ""
+            if ai_trends:
+                ai_list = "\n".join(f"  🔥 {t['topic']}: {t['reason']}" for t in ai_trends)
+                ai_trend_section = f"""
+AI-CURATED VIRAL TRENDS (High Potential):
+{ai_list}
+
+PRIORITIZE these AI trends as they are specifically selected for Shorts viral potential!
+"""
+
             prompt = f"""You are a YouTube content strategist for a channel called "StreamGlobal" 
 that creates English-language Shorts and ambient relaxation videos targeting a US audience.
 
@@ -764,8 +793,15 @@ Here are today's top 20 trending YouTube videos in the US:
 {viral_section}
 {competitor_section}
 {audience_section}
-Here are some of our existing video topics (to avoid duplicates):
-{existing_sample}
+{ai_trend_section}
+
+CHANNEL HISTORY (LAST 150 VIDEOS — DO NOT REPEAT THESE TOPICS!):
+{history_text}
+
+⛔ CRITICAL NON-REPETITION WARNING:
+The following keywords/themes have BEEN OVERUSED on this channel recently. 
+DO NOT suggest any more videos about these specific topics:
+{saturated_text}
 
 Create a content plan for TOMORROW with:
 - 20 YouTube Shorts (under 60 seconds, fact/info style)
@@ -775,17 +811,11 @@ Available ambient types: fireplace, forest, rain, ocean, thunderstorm, waterfall
 snow, campfire, candle, underwater, river, garden, wind, aurora, sunset, cave, 
 jungle, lavender_field, zen_garden, japanese_garden
 
-Requirements:
-1. Shorts topics must be INSPIRED by trending content AND successful channel patterns
-2. Study the trending channels' title formats and content styles — create similar content
-3. Must be in ENGLISH only
-4. Must NOT duplicate any existing channel content
-5. Each Shorts idea should have viral potential
-6. Include relevant tags and hashtags
-7. Consider the "hook in first 3 seconds" rule for Shorts
-8. Prioritize topics from channels with high engagement rates
-9. Learn from performance feedback — avoid topic types that underperformed
-10. For ambient recommendations, suggest types that are seasonally relevant and trending
+STRATEGY & VARIETY RULES:
+1. STRICT NON-REPETITION: Do not suggest anything even remotely similar to the topics in the history.
+2. DIVERSITY IS KEY: Suggest a wide mix of niches (History, Science, Mysteries, Logic Puzzles, Nature).
+3. NO OVERUSED THEMES: If we've done 'James Webb', 'Everest', or 'Dinosaurs' too much, find something entirely different.
+4. FRESH ANGLES: Explore specific, mind-blowing facts rather than general overviews.
 
 Output STRICT JSON format:
 {{
@@ -821,32 +851,31 @@ Output STRICT JSON format:
             plan["longform"] = []
 
             # ── POST-GENERATION DUPLICATE FILTER ──
-            # AI sometimes suggests topics that already exist on the channel
-            if existing_titles and plan.get("shorts"):
+            if existing_titles_norm and plan.get("shorts"):
                 original_count = len(plan["shorts"])
                 filtered_shorts = []
                 seen_in_plan = set()
 
                 for short in plan["shorts"]:
                     norm = self._normalize_title(short.get("title", ""))
-                    topic_norm = self._normalize_title(short.get("topic", ""))
-
-                    # Check exact match
-                    if norm in existing_titles or topic_norm in existing_titles:
+                    
+                    # Check exact match against history
+                    if norm in existing_titles_norm:
                         logger.info(f"  🚫 Duplicate filtered (exact): {short['title'][:50]}")
                         continue
 
-                    # Check fuzzy match (word overlap > 60%)
+                    # Check fuzzy match against history
                     is_dupe = False
                     norm_words = set(norm.split())
-                    for existing in existing_titles:
-                        existing_words = set(existing.split())
+                    for existing_norm in existing_titles_norm:
+                        existing_words = set(existing_norm.split())
                         if not norm_words or not existing_words:
                             continue
                         overlap = len(norm_words & existing_words)
                         ratio = overlap / min(len(norm_words), len(existing_words))
-                        if ratio > 0.6 and overlap >= 3:
-                            logger.info(f"  🚫 Duplicate filtered (fuzzy {ratio:.0%}): {short['title'][:50]} ≈ {existing[:50]}")
+                        # Stricter: 60% overlap OR 4+ common words
+                        if ratio > 0.6 or overlap >= 4:
+                            logger.info(f"  🚫 Duplicate filtered (fuzzy {ratio:.0%}): {short['title'][:50]}")
                             is_dupe = True
                             break
 
@@ -879,16 +908,16 @@ Output STRICT JSON format:
 
         except Exception as e:
             logger.error(f"AI plan generation failed: {e}")
-            return self._manual_plan(trending, existing_titles)
+            return self._manual_plan(trending, existing_titles_norm)
 
-    def _manual_plan(self, trending: List[Dict], existing_titles: set) -> Dict:
+    def _manual_plan(self, trending: List[Dict], existing_titles_norm: set) -> Dict:
         """Fallback plan without AI."""
         shorts = []
         longform = []
 
         for v in trending[:30]:
             norm_title = self._normalize_title(v["title"])
-            if norm_title in existing_titles:
+            if norm_title in existing_titles_norm:
                 continue
 
             if v["is_shorts"] and len(shorts) < 8:
@@ -1095,6 +1124,16 @@ Output STRICT JSON format:
         # ── STAGE 1: Standard trending chart ──
         result["trending"] = self.discover_trending(region="US", count=count)
         logger.info(f"  📊 Chart trending: {len(result['trending'])} videos")
+
+        # ── STAGE 2: AI-Powered Niche Trends ──
+        try:
+            from src.agents.trend_agent import TrendAgent
+            trend_agent = TrendAgent()
+            result["ai_trends"] = trend_agent.get_trending_topics(region="USA", count=15)
+            logger.info(f"  🤖 AI Trends found: {len(result.get('ai_trends', []))}")
+        except Exception as e:
+            logger.warning(f"  TrendAgent failed: {e}")
+            result["ai_trends"] = []
 
         # ── STAGE 2: Search for viral Shorts by niche ──
         result["viral_shorts"] = self._search_viral_shorts()
@@ -1479,6 +1518,7 @@ Output STRICT JSON format:
             viral_shorts=deep_trends.get("viral_shorts", []),
             competitor_insights=deep_trends.get("competitor_insights", []),
             audience_desires=deep_trends.get("audience_desires", []),
+            ai_trends=deep_trends.get("ai_trends", []),
         )
 
         # ─── PHASE 5: SEO Enrichment ───
