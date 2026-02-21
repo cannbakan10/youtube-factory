@@ -23,6 +23,7 @@ class TTSService:
         self.oa_client = OpenAI(api_key=oa_key) if oa_key else None
         
         self.cache_dir = output_dir
+        self.elevenlabs_quota_exceeded = False
 
         # Audio Library (Not cleaned every run)
         self.project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -112,6 +113,7 @@ class TTSService:
     def generate_audio_with_subtitles(self, text, language="en"):
         """
         Hyper-Sync Edition: Uses ElevenLabs Timestamps for perfect alignment.
+        Now with smart quota failover to OpenAI.
         """
         id = str(uuid.uuid4())
         audio_path = os.path.join(self.cache_dir, f"{id}.mp3")
@@ -119,33 +121,51 @@ class TTSService:
 
         clean_text = text.strip()
 
-        # Adaptive Voice Settings: Turkish needs more emotional soul (lower stability, higher style)
+        # If we already know quota is gone, go straight to fallback
+        if self.elevenlabs_quota_exceeded:
+            if self.oa_client:
+                return self._generate_with_openai(clean_text, language)
+            return None, None, 0
+
+        # Adaptive Voice Settings
         if language == "tr":
-            stability = 0.45  # Lower stability = More variance/pitch/emotion
-            style = 0.35  # Higher style = More expressive delivery
+            stability = 0.45
+            style = 0.35
         else:
-            stability = 0.70  # English is more stable at high settings
+            stability = 0.70
             style = 0.10
 
         try:
+            # We don't use @retry decorator on internal methods anymore
+            # so we can catch quota errors immediately.
             result = self._generate_with_timestamps(
                 clean_text, audio_path, subs_path, stability, style, language
             )
             return result
         except Exception as e:
-            logger.warning(f"ElevenLabs primary method failed: {e}. Attempting ElevenLabs fallback...")
+            err_msg = str(e).lower()
+            if "quota_exceeded" in err_msg or "status_code: 401" in err_msg:
+                logger.error("🚫 ElevenLabs Quota EXCEEDED. Switching to permanent fallback.")
+                self.elevenlabs_quota_exceeded = True
+            
+            logger.warning(f"ElevenLabs primary method failed: {e}. Attempting fallback...")
+            
+            if self.elevenlabs_quota_exceeded or "quota_exceeded" in err_msg:
+                if self.oa_client:
+                    return self._generate_with_openai(clean_text, language)
+                return None, None, 0
+
+            # Last-ditch ElevenLabs retry (no timestamps)
             res = self._generate_audio_fallback_retry(clean_text, language)
             if res[0]:
                 return res
             
-            # ── SECONDARY FALLBACK: OpenAI TTS ──
             if self.oa_client:
-                logger.warning("ElevenLabs fully failed. Switching to OpenAI TTS fallback...")
                 return self._generate_with_openai(clean_text, language)
             
             return None, None, 0
 
-    @retry_with_backoff(max_retries=3, base_delay=2.0, exceptions=(Exception,))
+    @retry_with_backoff(max_retries=1, base_delay=1.0) # Reduced retries for faster failover
     def _generate_with_timestamps(self, text, audio_path, subs_path, stability, style, language):
         """Generate audio with timestamps - with retry support."""
         # Rate limiting
@@ -266,6 +286,8 @@ class TTSService:
 
         # Map voices roughly
         oa_voice = "onyx" if language == "tr" else "alloy" 
+        if language == "es":
+            oa_voice = "shimmer" # More natural for Spanish
         # alloy, echo, fable, onyx, nova, shimmer
         
         try:

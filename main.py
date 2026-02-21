@@ -192,12 +192,15 @@ class YoutubeFactory:
                     except Exception as fe:
                         logger.warning(f"Scene {i + 1}: Freepik fallback failed: {fe}")
 
-                # Global Topic Fallback (all 3 services)
+                # Nuclear Fallback: If everything fails, use high-quality generic "safe" keywords
                 if not video_path:
-                    logger.warning(f"Scene {i + 1}: All keywords failed. Recovering with global topic: '{topic}'...")
-                    video_path = self.pexels.get_video([topic], orientation=orientation)
-                    if not video_path:
-                        video_path = self.pixabay.get_video([topic], orientation=orientation)
+                    logger.warning(f"Scene {i + 1}: Topic fallback failed. Using nuclear fallback...")
+                    safe_keywords = ["cinematic nature", "abstract motion background", "calm landscape", "modern technology background"]
+                    for sk in safe_keywords:
+                        video_path = self.pexels.get_video([sk], orientation=orientation)
+                        if video_path: break
+                        video_path = self.pixabay.get_video([sk], orientation=orientation)
+                        if video_path: break
 
                 scene.video_path = video_path
 

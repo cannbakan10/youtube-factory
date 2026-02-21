@@ -164,8 +164,8 @@ class PixabayService:
         # Rate limiting
         APIRateLimiters.pixabay.wait()
 
-        # Refine query based on orientation
-        refined_query = query[:95]  # Pixabay limit is 100 characters
+        # Refine query based on orientation (Pixabay limit is 100 characters)
+        refined_query = query[:85] 
         if orientation == "portrait":
             refined_query += " vertical"
         else:

@@ -1004,10 +1004,11 @@ Output STRICT JSON format:
                     short["production_id"] = production_id
                 else:
                     short["status"] = "failed"
-                    results["errors"].append(f"Short '{short['title'][:30]}' failed")
+                    results["errors"].append(f"Short '{short['title']}' failed (Reason: check logs)")
             except Exception as e:
                 short["status"] = "error"
-                results["errors"].append(str(e))
+                # Capture full error message
+                results["errors"].append(f"Short '{short['title']}' error: {str(e)}")
                 logger.error(f"Short production error: {e}")
 
         # Produce Long-form (only pending ones)
