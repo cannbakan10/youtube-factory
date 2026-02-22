@@ -171,7 +171,7 @@ async def uzunvideo_confirm(update: Update, context: ContextTypes.DEFAULT_TYPE):
             f.write("#!/bin/bash\ncd /root/youtube-factory\nsource venv/bin/activate\n")
             for t in topics:
                 t_escaped = t.replace('"', '\\"')
-                f.write(f'python3 main.py --topic "{t_escaped}" --langs en --type longform\n')
+                f.write(f'python3 main.py --topic "{t_escaped}" --langs en --type long\n')
                 
         os.chmod(sh_script, 0o755)
         subprocess.Popen(["nohup", "bash", sh_script], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, preexec_fn=os.setpgrp)
