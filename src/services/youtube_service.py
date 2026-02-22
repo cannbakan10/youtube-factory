@@ -221,6 +221,29 @@ class YouTubeService:
         
         upload_tags = tags or (["shorts", "viral", "knowledge"] if is_shorts else ["longform", "ambient", "education"])
         
+        # ─── STRICT SANITIZATION (Prevent HTTP 400 Errors) ───
+        # 1. Title limit: 100 characters max, no angle brackets
+        upload_title = upload_title.replace("<", "").replace(">", "").strip()
+        if len(upload_title) > 100:
+            upload_title = upload_title[:97] + "..."
+            
+        # 2. Description limit: 5000 characters max, no angle brackets
+        upload_description = upload_description.replace("<", "").replace(">", "").strip()
+        if len(upload_description) > 5000:
+            upload_description = upload_description[:4996] + "..."
+            
+        # 3. Tags limit: 400 total chars sum, individual tag max length 30, no angle brackets
+        sanitized_tags = []
+        c_len = 0
+        for tag in upload_tags:
+            cl_tag = str(tag).replace("<", "").replace(">", "").replace('"', '').strip()
+            if len(cl_tag) > 30:
+                cl_tag = cl_tag[:30]
+            if cl_tag and (c_len + len(cl_tag) + 1) < 450:
+                sanitized_tags.append(cl_tag)
+                c_len += len(cl_tag) + 1
+        upload_tags = sanitized_tags
+        
         body = {
             "snippet": {
                 "title": upload_title,

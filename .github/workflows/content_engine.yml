@@ -77,8 +77,8 @@ jobs:
               print('plan_status=error,pending_shorts=0')
           ")
 
-          PENDING=$(echo $STATUS | grep -oP 'pending_shorts=\K[0-9]+')
-          PLAN_STATUS=$(echo $STATUS | grep -oP 'plan_status=\K[^,]+')
+          PENDING=$(echo $STATUS | grep -oP 'pending_shorts=\K[0-9]+' || echo "0")
+          PLAN_STATUS=$(echo $STATUS | grep -oP 'plan_status=\K[^,]+' || echo "unknown")
 
           echo "pending_shorts=$PENDING" >> $GITHUB_OUTPUT
 
