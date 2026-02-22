@@ -94,7 +94,7 @@ async def uzunvideo_ask_count(update: Update, context: ContextTypes.DEFAULT_TYPE
         logging.getLogger().setLevel(logging.ERROR) # sessiz
         brain = NightlyBrainAgent()
         # YouTube API üzerinden günlük popüler 20 USA videosunu çekiyoruz:
-        top_trends = brain.get_top_100_usa_videos(count=20)
+        top_trends = brain.discover_trending(region="US", count=20)
         
         # Sadece başlıkları alarak ipucu hazırlıyoruz:
         trend_titles = "\n".join([f"- {t['title']}" for t in top_trends])
