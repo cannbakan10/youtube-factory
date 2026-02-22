@@ -163,12 +163,12 @@ class PexelsService:
             import random
             videos_list = data.get('videos') or data.get('hits')
             video_data = random.choice(videos_list)
-            video_files = video_data.get('video_files') or [video_data.get('video_files')]
+            video_files = video_data.get('video_files', [])
+            if not video_files:
+                return None
 
             # Sort by width descending to get best quality
-            sorted_files = sorted(video_files, key=lambda x: x.get('width', 0) or 0, reverse=True)
-            if not sorted_files:
-                return None
+            sorted_files = sorted(video_files, key=lambda x: (x.get('width', 0) or 0) if isinstance(x, dict) else 0, reverse=True)
 
             video_url = sorted_files[0]['link']
             quality = f"{sorted_files[0].get('width') or '?'}x{sorted_files[0].get('height') or '?'}"

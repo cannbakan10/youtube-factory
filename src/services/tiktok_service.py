@@ -62,7 +62,7 @@ class TikTokService:
         if self.authenticated:
             logger.info("✅ TikTok Service authenticated")
         else:
-            logger.warning("⚠️ TikTok Service: No access token. Run --tiktok-auth first.")
+            logger.info("ℹ️ TikTok Service: No access token. (Set up via --tiktok-auth if needed)")
 
     # ──────────────────────────────────────────────────────
     # TOKEN MANAGEMENT

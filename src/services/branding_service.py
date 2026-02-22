@@ -23,7 +23,25 @@ class BrandingService:
         self.gemini_key = os.getenv("GEMINI_API_KEY", "")
 
     def _font(self, size):
-        for font_name in ["Arial Bold.ttf", "Arial.ttf", "Helvetica.ttc", "DejaVuSans-Bold.ttf", "DejaVuSans.ttf"]:
+        # Professional font search Order: User provided -> Mac System -> Linux System -> Fallback
+        font_paths = [
+            "/System/Library/Fonts/Helvetica.ttc",
+            "/System/Library/Fonts/Avenir.ttc",
+            "/Library/Fonts/Arial Unicode.ttf",
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+        ]
+        
+        # Add basic names for OS lookup
+        font_names = ["Arial Bold.ttf", "Arial.ttf", "Helvetica.ttc", "DejaVuSans-Bold.ttf", "DejaVuSans.ttf"]
+        
+        for fp in font_paths:
+            if os.path.exists(fp):
+                try:
+                    return ImageFont.truetype(fp, size=size)
+                except:
+                    continue
+                    
+        for font_name in font_names:
             try:
                 return ImageFont.truetype(font_name, size=size)
             except Exception:

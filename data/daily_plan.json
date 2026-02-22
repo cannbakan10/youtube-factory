@@ -206,7 +206,8 @@
       ],
       "inspired_by": "5 Unexplored Hidden Gems Around The World! #Shorts",
       "estimated_views": "low",
-      "status": "failed"
+      "status": "produced",
+      "production_id": "Describe_Lake_Kaindy_in_Kazakh_1771667118"
     },
     {
       "title": "The Mystery of the Dancing Plague!",
@@ -220,7 +221,9 @@
         "strasbourg"
       ],
       "inspired_by": "The Haunting Mystery of the Mary Celeste Ghost Ship",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "Explore_the_Dancing_Plague_of__1771666437"
     },
     {
       "title": "The Bizarre Truth About Exploding Lakes!",
@@ -277,12 +280,10 @@
   "trending_count": 86,
   "channels_analyzed": 1,
   "status": "in_progress",
-  "last_executed_at": "2026-02-20T18:57:10.006946",
+  "last_executed_at": "2026-02-21T09:48:48.645804",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
-    "errors": [
-      "Short 'The Underwater Forest of Lake ' failed"
-    ]
+    "errors": []
   }
 }

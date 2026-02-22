@@ -819,7 +819,7 @@ STRATEGY & VARIETY RULES:
 
 Output STRICT JSON format:
 {{
-    "date": "YYYY-MM-DD",
+    "date": "{(datetime.utcnow() + timedelta(days=1)).strftime('%Y-%m-%d')}",
     "shorts": [
         {{
             "title": "Catchy Short Title",
@@ -982,8 +982,15 @@ Output STRICT JSON format:
         results = {"shorts_produced": 0, "longform_produced": 0, "errors": []}
 
         # Find pending shorts (not yet produced)
-        pending_shorts = [s for s in plan.get("shorts", []) if s.get("status", "pending") == "pending"]
-        pending_longform = [l for l in plan.get("longform", []) if l.get("status", "pending") == "pending"]
+        # Reset failed/error items from previous interrupted runs if they are from today's plan
+        for s in plan.get("shorts", []):
+            if s.get("status") in ["failed", "error"]:
+                # Only reset if we are explicitly retrying or if it was marked error in a past session
+                # For now, let's just include them in pending for convenience
+                pass
+
+        pending_shorts = [s for s in plan.get("shorts", []) if s.get("status", "pending") in ["pending", "failed", "error"]]
+        pending_longform = [l for l in plan.get("longform", []) if l.get("status", "pending") in ["pending", "failed", "error"]]
 
         logger.info(f"📋 Pending: {len(pending_shorts)} shorts, {len(pending_longform)} longform")
 

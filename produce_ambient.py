@@ -575,9 +575,10 @@ def main():
         log(f"📎 Using local clip: {clip_path}")
     else:
         freepik = FreepikService()
-        if not freepik.api_key:
+        if not os.getenv("FREEPIK_API_KEY"):
             log("❌ FREEPIK_API_KEY not set!")
-            return
+            log("   💡 Get your free account at https://developer.freepik.com and add FREEPIK_API_KEY to your .env file.")
+            sys.exit(1)
 
         clip_path = find_and_download(args.type, freepik)
         if not clip_path:

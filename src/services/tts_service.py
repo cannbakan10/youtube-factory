@@ -145,10 +145,10 @@ class TTSService:
         except Exception as e:
             err_msg = str(e).lower()
             if "quota_exceeded" in err_msg or "status_code: 401" in err_msg:
-                logger.error("🚫 ElevenLabs Quota EXCEEDED. Switching to permanent fallback.")
+                logger.warning("💎 ElevenLabs Quota EXCEEDED. Switching to permanent fallback.")
                 self.elevenlabs_quota_exceeded = True
             
-            logger.warning(f"ElevenLabs primary method failed: {e}. Attempting fallback...")
+            logger.info(f"ElevenLabs primary method failed (Reason: {e}). Attempting fallback...")
             
             if self.elevenlabs_quota_exceeded or "quota_exceeded" in err_msg:
                 if self.oa_client:
