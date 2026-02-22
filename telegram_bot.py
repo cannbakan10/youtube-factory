@@ -29,7 +29,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "🤖 *Youtube Factory Yönetim Botu Aktif!*\n\n"
         "Kullanılabilir Komutlar:\n\n"
         "👉 `/videouret <sayı>` - Otomatik plana göre 'en' (İngilizce) dilinde shorts üretir.\n"
-        "👉 `/trendcek` - İnternetteki yeni trendleri araştırır ve günlük planı baştan oluşturur.\n"
+        "👉 `/analiz` - Detaylı kanal analizi yapar, az izlenenleri silip kopya/tekrar eden içerikleri temizler.\n"
+        "👉 `/trendcek` - İnternetteki yeni trendleri araştırıp analiz ile birlikte günlük planı oluşturur.\n"
         "👉 `/uretozel <konu>` - Belirttiğiniz konuda özel bir shorts üretir.\n"
         "👉 `/uzunvideo` - Uzun (5+ dk) Youtube trend videoları üretmeniz için interaktif sihirbazı başlatır.\n\n"
         "_Not: Islemler sunucuda arkaplanda (pm2) çalişacağından geri dönüş gecikebilir. Loglari sunucudan izleyebilirsiniz._"
@@ -50,8 +51,22 @@ async def videouret(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def trendcek(update: Update, context: ContextTypes.DEFAULT_TYPE):
     save_chat_id(update)
-    await update.message.reply_text("⏳ *Trend Araştırması:* Nightly Brain (Gece Planlayıcısı) tetiklendi. Yeni trendler çekiliyor...", parse_mode='Markdown')
-    subprocess.Popen(["venv/bin/python3", "src/agents/nightly_brain_agent.py"])
+    await update.message.reply_text("⏳ *Trend Araştırması:* Nightly Brain (Gece Planlayıcısı) tetiklendi. Analiz ve Trend tespiti başlatıldı...", parse_mode='Markdown')
+    subprocess.Popen(["venv/bin/python3", "main.py", "--nightly"])
+
+async def analiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    save_chat_id(update)
+    msg = (
+        "🔬 *Detaylı Kanal Analizi ve Temizlik Başlatıldı!*\n\n"
+        "Şunlar yapılıyor:\n"
+        "1. Düşük izlenmeli videolar taranıp silinecek/gizlenecek\n"
+        "2. Kopya veya tekrar eden içerikler kaldırılacak\n"
+        "3. İçeriklerin izlenme ve abone getirme performansları incelenecek\n"
+        "4. Yeni trendlere göre yarınki yayın planı oluşturulacak\n\n"
+        "_Not: Analiz arka planda uzun sürebilir ve tamamlandığında loglar üzerinden sonuçları izleyebilirsiniz._"
+    )
+    await update.message.reply_text(msg, parse_mode='Markdown')
+    subprocess.Popen(["venv/bin/python3", "main.py", "--nightly"])
 
 async def uretozel(update: Update, context: ContextTypes.DEFAULT_TYPE):
     save_chat_id(update)
@@ -90,9 +105,17 @@ async def uzunvideo_ask_count(update: Update, context: ContextTypes.DEFAULT_TYPE
 
     try:
         from src.agents.nightly_brain_agent import NightlyBrainAgent
+        from src.agents.youtube_analytics_agent import YouTubeAnalyticsAgent
+        
         import logging
         logging.getLogger().setLevel(logging.ERROR) # sessiz
         brain = NightlyBrainAgent()
+        
+        # Geçmiş içerikleri alıyoruz ki AYNI içerik üretilmesin
+        analytics = YouTubeAnalyticsAgent(youtube_service=brain.youtube)
+        recent_videos = analytics.get_all_videos(max_results=40)
+        recent_titles = "\n".join([f"- {v['title']}" for v in recent_videos]) if recent_videos else "Yok"
+        
         # YouTube API üzerinden günlük popüler 20 USA videosunu çekiyoruz:
         top_trends = brain.discover_trending(region="US", count=20)
         
@@ -103,7 +126,12 @@ async def uzunvideo_ask_count(update: Update, context: ContextTypes.DEFAULT_TYPE
 Here are the top trending YouTube videos in the US right now based on real YouTube Data API:
 {trend_titles}
 
-Based heavily on these exact trends, provide {count} highly viral, highly engaging real-world topics optimized for an educational / storytelling Long-form video (minimum 5 minutes).
+CRITICAL RULES FOR REPETITION PREVENTION:
+Here are the titles of my recently uploaded contents on this channel:
+{recent_titles}
+DO NOT suggest ANY topic that is highly similar, directly identical, or a re-hash of my recent uploads above. Ensure fresh, new concepts only.
+
+Based heavily on these exact trends and strictly avoiding my history, provide {count} highly viral, highly engaging real-world topics optimized for an educational / storytelling Long-form video (minimum 5 minutes).
 Return ONLY the topics, separated by the '|' character. 
 DO NOT add any extra text, newlines or markdown.
 Example format: The Crazy Economics of Super Bowl Ads | Uncovering the Secrets Behind ChatGPT 4.5
@@ -167,6 +195,7 @@ def main():
     
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("videouret", videouret))
+    app.add_handler(CommandHandler("analiz", analiz))
     app.add_handler(CommandHandler("trendcek", trendcek))
     app.add_handler(CommandHandler("uretozel", uretozel))
     
