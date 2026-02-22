@@ -4,21 +4,27 @@ import asyncio
 from telegram import Update, ReplyKeyboardMarkup, ReplyKeyboardRemove
 from telegram.ext import Application, CommandHandler, ContextTypes, ConversationHandler, MessageHandler, filters
 from dotenv import load_dotenv
-import google.generativeai as genai
+
+import google.genai as genai
 
 load_dotenv()
 
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 api_key = os.getenv("GEMINI_API_KEY")
 
-if api_key:
-    genai.configure(api_key=api_key)
+client = genai.Client(api_key=api_key) if api_key else None
+
+def save_chat_id(update: Update):
+    chat_id = update.message.chat_id
+    with open("data/telegram_chat_id.txt", "w") as f:
+        f.write(str(chat_id))
 
 # States
 ASK_COUNT = 1
 CONFIRM_TOPICS = 2
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    save_chat_id(update)
     msg = (
         "🤖 *Youtube Factory Yönetim Botu Aktif!*\n\n"
         "Kullanılabilir Komutlar:\n\n"
@@ -31,6 +37,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(msg, parse_mode='Markdown')
 
 async def videouret(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    save_chat_id(update)
     count = 1
     if context.args:
         try:
@@ -42,10 +49,12 @@ async def videouret(update: Update, context: ContextTypes.DEFAULT_TYPE):
     subprocess.Popen(["venv/bin/python3", "main.py", "--execute-plan", "--plan-shorts", str(count), "--langs", "en"])
 
 async def trendcek(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    save_chat_id(update)
     await update.message.reply_text("⏳ *Trend Araştırması:* Nightly Brain (Gece Planlayıcısı) tetiklendi. Yeni trendler çekiliyor...", parse_mode='Markdown')
     subprocess.Popen(["venv/bin/python3", "src/agents/nightly_brain_agent.py"])
 
 async def uretozel(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    save_chat_id(update)
     topic = " ".join(context.args)
     if not topic:
         await update.message.reply_text("❌ Lütfen bir konu girin! Örnek:\n`/uretozel Antik Mısır Sırları`", parse_mode='Markdown')
@@ -56,6 +65,7 @@ async def uretozel(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # --- Uzun Video Sihirbazı ---
 async def uzunvideo_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    save_chat_id(update)
     await update.message.reply_text(
         "🎬 *Uzun Video (5+ Dk) Üretim Sihirbazı*\n\n"
         "Google ve YouTube trendlerine göre uzun videolar üreteceğiz.\nKaç adet video üretmek istiyorsun? (Örn: 2)",
@@ -64,6 +74,7 @@ async def uzunvideo_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     return ASK_COUNT
 
 async def uzunvideo_ask_count(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    save_chat_id(update)
     text = update.message.text.strip()
     if not text.isdigit():
         await update.message.reply_text("❌ Lütfen sadece bir sayı girin (Örn: 2). /iptal komutu ile çıkabilirsiniz.")
@@ -75,14 +86,33 @@ async def uzunvideo_ask_count(update: Update, context: ContextTypes.DEFAULT_TYPE
         return ASK_COUNT
 
     context.user_data['video_count'] = count
-    await update.message.reply_text(f"⏳ Harika, {count} adet uzun video için küresel trendler (Google/YouTube) araştırılıyor... Lütfen bekleyin.", parse_mode='Markdown')
+    await update.message.reply_text(f"⏳ Harika, {count} adet uzun video için küresel trendler (Google/YouTube API kullanarak) tespit ediliyor... Lütfen bekleyin.", parse_mode='Markdown')
 
     try:
-        model = genai.GenerativeModel('gemini-1.5-flash')
-        prompt = f"Give me {count} highly viral, highly trending real-world topics right now (like tech, history, space, AI, economy, global news, weird facts). Return ONLY the topics, separated by the '|' character. DO NOT add any extra text or markdown. Example: Artificial Intelligence Boom | Secrets of Ancient Egypt | James Webb Telescope Discoveries"
-        response = model.generate_content(prompt)
-        topics = response.text.replace('\n', '').strip().split('|')
+        from src.agents.nightly_brain_agent import NightlyBrainAgent
+        import logging
+        logging.getLogger().setLevel(logging.ERROR) # sessiz
+        brain = NightlyBrainAgent()
+        # YouTube API üzerinden günlük popüler 20 USA videosunu çekiyoruz:
+        top_trends = brain.get_top_100_usa_videos(count=20)
         
+        # Sadece başlıkları alarak ipucu hazırlıyoruz:
+        trend_titles = "\n".join([f"- {t['title']}" for t in top_trends])
+        
+        prompt = f"""
+Here are the top trending YouTube videos in the US right now based on real YouTube Data API:
+{trend_titles}
+
+Based heavily on these exact trends, provide {count} highly viral, highly engaging real-world topics optimized for an educational / storytelling Long-form video (minimum 5 minutes).
+Return ONLY the topics, separated by the '|' character. 
+DO NOT add any extra text, newlines or markdown.
+Example format: The Crazy Economics of Super Bowl Ads | Uncovering the Secrets Behind ChatGPT 4.5
+        """
+        response = client.models.generate_content(
+            model='gemini-2.0-flash',
+            contents=prompt
+        )
+        topics = response.text.replace('\n', '').strip().split('|')
         topics = [t.strip() for t in topics if t.strip()][:count]
         context.user_data['topics'] = topics
         
@@ -92,7 +122,7 @@ async def uzunvideo_ask_count(update: Update, context: ContextTypes.DEFAULT_TYPE
         markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True, resize_keyboard=True)
         
         await update.message.reply_text(
-            f"🎯 *Google & YouTube Trendlerinden Bulunan Konular:*\n\n{topic_list}\n\n❗️ *Bu konuları İngilizce dilinde en az 5 dakikalık Youtube videoları haline dönüştüreyim mi?*",
+            f"🎯 *Gerçek YouTube Trendlerinden Türetilen İçerik Fikirleri:*\n\n{topic_list}\n\n❗️ *Bu konuları İngilizce dilinde en az 5 dakikalık Youtube videoları haline dönüştüreyim mi?*",
             parse_mode='Markdown',
             reply_markup=markup
         )
@@ -102,21 +132,20 @@ async def uzunvideo_ask_count(update: Update, context: ContextTypes.DEFAULT_TYPE
         return ConversationHandler.END
 
 async def uzunvideo_confirm(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    save_chat_id(update)
     answer = update.message.text.lower()
     if answer in ['üret', 'uret', 'evet', 'ok', 'onaylıyorum']:
         topics = context.user_data.get('topics', [])
-        await update.message.reply_text("🚀 Onaylandı! Uzun videolar tek tek üretilmeye başlandı. (Büyük dosyalar olduğu için çok uzun sürebilir, arkaplanda otomatik çalışacak ve bittikçe yüklenecektir.)", reply_markup=ReplyKeyboardRemove())
+        await update.message.reply_text("🚀 Onaylandı! Uzun videolar tek tek üretilmeye başlandı. Ciddi bir işlem sürebilir, arkaplanda otomatik çalışacak ve üretim bittikçe sizi Telegram'dan haberdar edeceğim!", reply_markup=ReplyKeyboardRemove())
         
         sh_script = "/tmp/run_long_videos.sh"
         with open(sh_script, "w") as f:
             f.write("#!/bin/bash\ncd /root/youtube-factory\nsource venv/bin/activate\n")
             for t in topics:
-                # Use escaped topic
                 t_escaped = t.replace('"', '\\"')
                 f.write(f'python3 main.py --topic "{t_escaped}" --langs en --type longform\n')
                 
         os.chmod(sh_script, 0o755)
-        # Run detached
         subprocess.Popen(["nohup", "bash", sh_script], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, preexec_fn=os.setpgrp)
         
         return ConversationHandler.END

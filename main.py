@@ -6,6 +6,22 @@ import json
 import sys
 import importlib.metadata
 import unicodedata
+import requests
+
+def send_telegram_alert(message: str):
+    token = os.getenv("TELEGRAM_BOT_TOKEN")
+    project_root = os.path.dirname(os.path.abspath(__file__))
+    chat_id_file = os.path.join(project_root, "data", "telegram_chat_id.txt")
+    if token and os.path.exists(chat_id_file):
+        try:
+            with open(chat_id_file, "r") as f:
+                chat_id = f.read().strip()
+            if chat_id:
+                url = f"https://api.telegram.org/bot{token}/sendMessage"
+                payload = {"chat_id": chat_id, "text": message, "parse_mode": "Markdown"}
+                requests.post(url, json=payload, timeout=5)
+        except Exception as e:
+            pass
 
 # Python 3.9 Compatibility Fix for google-genai
 if sys.version_info < (3, 10):
@@ -319,6 +335,7 @@ class YoutubeFactory:
                     json.dump(meta_data, f, indent=2, ensure_ascii=False)
 
                 logger.info(f"VIDEO READY: {dest_path}")
+                send_telegram_alert(f"✅ *Video Renderlandı!*\n\n*Konu:* {topic}\n*Tip:* {video_type.upper()}\n*Dil:* {lang.upper()}\n*ID:* `{production_id}`")
 
                 # 5. Auto-Upload (with thumbnail)
                 if auto_upload:
@@ -357,7 +374,10 @@ class YoutubeFactory:
 
                     if not upload_id:
                         logger.error(f"Upload failed for {lang} ({dest_path})")
+                        send_telegram_alert(f"❌ *Yükleme Başarısız!*\n\n*Konu:* {title}\n*Sebeb:* Logları kontrol et.")
                         return None
+                    else:
+                        send_telegram_alert(f"🚀 *YouTube'a Yüklendi!*\n\n*Başlık:* {title}\n*Link:* https://youtu.be/{upload_id}")
             else:
                 logger.error(f"Render failed: {lang}")
 
