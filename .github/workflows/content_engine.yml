@@ -24,17 +24,6 @@ name: "🎬 Content Engine — Shorts Production"
 # ╚══════════════════════════════════════════════════════════╝
 
 on:
-  schedule:
-    # Shorts production — 8 batches covering all time zones
-    - cron: '0 6 * * *'    # 06:00 UTC — EU morning + Asia evening
-    - cron: '0 9 * * *'    # 09:00 UTC — UK morning + India afternoon
-    - cron: '0 12 * * *'   # 12:00 UTC — US early morning + EU lunch
-    - cron: '0 14 * * *'   # 14:00 UTC — US morning rush (9-10am ET)
-    - cron: '0 16 * * *'   # 16:00 UTC — US lunch + UK evening
-    - cron: '0 18 * * *'   # 18:00 UTC — US afternoon (1-2pm ET)
-    - cron: '0 20 * * *'   # 20:00 UTC — US prime time (3-4pm ET)
-    - cron: '0 22 * * *'   # 22:00 UTC — US evening (5-6pm ET)
-
   workflow_dispatch:
     inputs:
       count:

@@ -16,8 +16,6 @@ name: "🧠 Nightly Brain — Analytics, Cleanup & Planning"
 # ╚══════════════════════════════════════════════════════════╝
 
 on:
-  schedule:
-    - cron: '0 23 * * *'  # Every night 23:00 UTC
   workflow_dispatch:
     inputs:
       dry_run:
