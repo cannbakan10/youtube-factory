@@ -147,6 +147,7 @@ class YoutubeFactory:
         # 1. Research
         if self.researcher:
             logger.info("Gathering inspiration and research...")
+            send_telegram_alert(f"🔍 *{topic}* konusu araştırılıyor ve senaryo yazılıyor...")
             research_data = self.researcher.research(topic)
         else:
             logger.warning("ResearchAgent unavailable, continuing with topic-only context.")
@@ -170,6 +171,7 @@ class YoutubeFactory:
                 logger.error(f"Failed to generate blueprint for {lang}. Skipping.")
                 continue
 
+            send_telegram_alert(f"📝 Senaryo ve blueprint hazırlandı ({lang.upper()}). Medya dosyaları (stok videolar ve seslendirme) toplanıyor...")
             blueprint.video_id = production_id
 
             # 3. Media Collection
@@ -291,6 +293,7 @@ class YoutubeFactory:
             if not bg_music:
                 logger.warning("No background music tracks found. Rendering without music.")
 
+            send_telegram_alert(f"🎬 Video sahneleri hazırlandı. *Montaj (Render)* işlemi başlıyor... (Bu işlem uzun videolar için biraz zaman alabilir.)")
             final_path = self.engine.render(blueprint, language=lang, bg_music_path=bg_music, video_type=video_type)
 
             if final_path and os.path.exists(final_path):
@@ -356,6 +359,7 @@ class YoutubeFactory:
                     except Exception as te:
                         logger.warning(f"Thumbnail generation failed: {te}")
 
+                    send_telegram_alert(f"🚀 Video dosyası hazırlandı! YouTube'a yükleme işlemi başlatılıyor...")
                     upload_id = self.youtube_service.upload_video(
                         dest_path,
                         title,
