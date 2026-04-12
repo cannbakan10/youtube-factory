@@ -237,7 +237,9 @@
         "nature"
       ],
       "inspired_by": "The Tunguska Event: Siberia's Mysterious Explosion",
-      "estimated_views": "low"
+      "estimated_views": "low",
+      "status": "produced",
+      "production_id": "Describe_limnic_eruptions_wher_1775976808"
     },
     {
       "title": "The Physics of 'Perpetual Motion' Machines",
@@ -280,7 +282,7 @@
   "trending_count": 86,
   "channels_analyzed": 1,
   "status": "in_progress",
-  "last_executed_at": "2026-02-21T09:48:48.645804",
+  "last_executed_at": "2026-04-12T06:54:01.034358",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
