@@ -1,291 +1,123 @@
 {
-  "date": "2024-01-27",
+  "date": "2026-04-13",
   "shorts": [
     {
-      "title": "The Baiae Sunken City: Rome's Sin City!",
-      "topic": "Explore the submerged Roman city of Baiae, known for its opulent villas and alleged debauchery. Discuss its volcanic activity and eventual sinking.",
-      "hook": "Dive into Rome's lost paradise...or its biggest scandal!",
+      "title": "Facts About I'M SORRY LA KNIGHT",
+      "topic": "I'M SORRY LA KNIGHT",
       "tags": [
-        "history",
-        "rome",
-        "sunken city",
-        "archaeology",
-        "ancient history"
+        "ishowspeed"
       ],
-      "inspired_by": "BRIGHT SIDE: Perfectly Engineered Ancient Tunnel Found in Egypt (but focusing on a totally different place)",
+      "inspired_by": "I'M SORRY LA KNIGHT",
       "estimated_views": "medium",
-      "status": "produced",
-      "production_id": "Explore_the_submerged_Roman_ci_1771582433"
+      "seo_keywords": [
+        "i'm sorry la knight yeah",
+        "i'm sorry la knight let me talk to ya"
+      ],
+      "optimized_title": "Facts About I'M SORRY LA KNIGHT | I'M Sorry La Knight Yeah"
     },
     {
-      "title": "The Bizarre Case of Exploding Head Syndrome!",
-      "topic": "Describe Exploding Head Syndrome, a rare parasomnia where people experience loud, imagined noises as they fall asleep or wake up.",
-      "hook": "Imagine waking up to a phantom explosion...in your HEAD!",
-      "tags": [
-        "sleep disorder",
-        "science",
-        "health",
-        "mystery",
-        "weird facts"
-      ],
-      "inspired_by": "Dyatlov Pass Incident: Russia's Greatest Unsolved Mystery (but a medical mystery)",
-      "estimated_views": "medium",
-      "status": "produced",
-      "production_id": "Describe_Exploding_Head_Syndro_1771582910"
-    },
-    {
-      "title": "The Logic Puzzle That Stumped Einstein!",
-      "topic": "Present Einstein's Zebra Puzzle, a logic problem that only 2% of people can supposedly solve.",
-      "hook": "Can YOU solve the puzzle that tricked Einstein?",
-      "tags": [
-        "puzzle",
-        "logic",
-        "einstein",
-        "iq test",
-        "brain teaser"
-      ],
-      "inspired_by": "Did Blowing Game Cartridges Really Work 🤔",
-      "estimated_views": "high",
-      "status": "produced",
-      "production_id": "Present_Einsteins_Zebra_Puzzle_1771583233"
-    },
-    {
-      "title": "Venomous Mammals: Nature's Secret Weapons!",
-      "topic": "Highlight mammals that possess venom, like the platypus and slow loris, detailing their unique venom delivery systems.",
-      "hook": "Did you know some MAMMALS are venomous?!",
-      "tags": [
-        "animals",
-        "nature",
-        "science",
-        "wildlife",
-        "venom"
-      ],
-      "inspired_by": "5 Real Animals That Look Like Video Game Bosses #AnimalFacts #Animals #Wildlife",
-      "estimated_views": "medium",
-      "status": "produced",
-      "production_id": "Highlight_mammals_that_possess_1771583903"
-    },
-    {
-      "title": "Why the Sky is (Sometimes) PINK!",
-      "topic": "Explain atmospheric scattering and how pollutants or dust can cause stunning pink sunrises and sunsets.",
-      "hook": "The sky is pink...but WHY?",
-      "tags": [
-        "science",
-        "weather",
-        "atmosphere",
-        "physics",
-        "pink sky"
-      ],
-      "inspired_by": "James Webb Telescope New Images: Recent release of stunning and informative space imagery (but applied to the atmosphere)",
-      "estimated_views": "low",
-      "status": "produced",
-      "production_id": "Explain_atmospheric_scattering_1771584418"
-    },
-    {
-      "title": "The Creepiest Highway in the World?",
-      "topic": "Explore the haunted reputation of the A666 highway in England, nicknamed 'The Devil's Highway'. Share reported ghostly encounters and its ominous name.",
-      "hook": "Dare to drive 'The Devil's Highway'?",
-      "tags": [
-        "haunted",
-        "ghosts",
-        "mystery",
-        "paranormal",
-        "road trip"
-      ],
-      "inspired_by": "The Haunting Mystery of the Mary Celeste Ghost Ship",
-      "estimated_views": "medium",
-      "status": "produced",
-      "production_id": "Explore_the_haunted_reputation_1771592555"
-    },
-    {
-      "title": "Why You Can't Tickle Yourself!",
-      "topic": "Explain the science behind why self-tickling is impossible, involving the cerebellum predicting the sensation.",
-      "hook": "Ever tried to tickle yourself? Here's why it FAILS!",
-      "tags": [
-        "science",
-        "body",
-        "brain",
-        "tickle",
-        "funny"
-      ],
-      "inspired_by": "Why You Can't Swallow and Breathe Simultaneously (Don't Try It!) #Shorts",
-      "estimated_views": "high",
-      "status": "produced",
-      "production_id": "Explain_the_science_behind_why_1771593398"
-    },
-    {
-      "title": "The World's LONELIEST Whale!",
-      "topic": "Tell the story of the 52-hertz whale, which emits a unique frequency unlike any other whale, suggesting it might be solitary.",
-      "hook": "Imagine being the only one who sounds like YOU...",
-      "tags": [
-        "whale",
-        "ocean",
-        "animals",
-        "science",
-        "lonely"
-      ],
-      "inspired_by": "Animal Without Hair 😷 #shorts",
-      "estimated_views": "medium",
-      "status": "produced",
-      "production_id": "Tell_the_story_of_the_52hertz__1771597968"
-    },
-    {
-      "title": "The Baffling Hum of Taos, New Mexico!",
-      "topic": "Investigate the Taos Hum, a persistent, low-frequency sound heard by some residents of Taos, New Mexico, with no definitive source.",
-      "hook": "A mysterious hum is driving people MAD!",
-      "tags": [
-        "mystery",
-        "sound",
-        "new mexico",
-        "unexplained",
-        "taos hum"
-      ],
-      "inspired_by": "The Tunguska Event: Siberia's Mysterious Explosion",
-      "estimated_views": "low",
-      "status": "produced",
-      "production_id": "Investigate_the_Taos_Hum_a_per_1771598885"
-    },
-    {
-      "title": "The Lost City of Z: Real or Legend?",
-      "topic": "Detail the search for the Lost City of Z, an alleged ancient city in the Amazon rainforest, and the expeditions to find it.",
-      "hook": "Is there a LOST CITY hidden in the Amazon?",
-      "tags": [
-        "history",
-        "amazon",
-        "lost city",
-        "exploration",
-        "archaeology"
-      ],
-      "inspired_by": "BRIGHT SIDE: Perfectly Engineered Ancient Tunnel Found in Egypt",
-      "estimated_views": "medium",
-      "status": "produced",
-      "production_id": "Detail_the_search_for_the_Lost_1771604682"
-    },
-    {
-      "title": "The Deadly Beauty of Fugu: Japan's Risky Dish!",
-      "topic": "Explain the delicacy of fugu (pufferfish) in Japan, highlighting the dangerous toxin it contains and the highly trained chefs who prepare it.",
-      "hook": "Would you risk your LIFE for this dish?",
-      "tags": [
-        "food",
-        "japan",
-        "fugu",
-        "poison",
-        "travel"
-      ],
-      "inspired_by": "The Castor Bean: A Deadly Beauty #Shorts",
-      "estimated_views": "medium",
-      "status": "produced",
-      "production_id": "Explain_the_delicacy_of_fugu_p_1771605622"
-    },
-    {
-      "title": "The Mind-Bending Banach-Tarski Paradox!",
-      "topic": "Present the Banach-Tarski paradox, a mathematical theorem that states a solid ball can be split into a finite number of pieces and reassembled into two identical copies of the original ball.",
-      "hook": "Duplicate reality...with MATH?!",
-      "tags": [
-        "math",
-        "paradox",
-        "science",
-        "logic",
-        "banach-tarski"
-      ],
-      "inspired_by": "The Science of Skipping Stones Explained! #Shorts",
-      "estimated_views": "low",
-      "status": "produced",
-      "production_id": "Present_the_BanachTarski_parad_1771612431"
-    },
-    {
-      "title": "The Underwater Forest of Lake Kaindy!",
-      "topic": "Describe Lake Kaindy in Kazakhstan, formed by an earthquake that flooded a spruce forest, creating a surreal underwater landscape.",
-      "hook": "A submerged forest hidden beneath the lake!",
-      "tags": [
-        "lake",
-        "forest",
-        "nature",
-        "kazakhstan",
-        "travel"
-      ],
-      "inspired_by": "5 Unexplored Hidden Gems Around The World! #Shorts",
-      "estimated_views": "low",
-      "status": "produced",
-      "production_id": "Describe_Lake_Kaindy_in_Kazakh_1771667118"
-    },
-    {
-      "title": "The Mystery of the Dancing Plague!",
-      "topic": "Explore the Dancing Plague of 1518, where hundreds of people in Strasbourg danced uncontrollably for days, with some dancing to their deaths.",
-      "hook": "A deadly dance craze swept Europe!",
-      "tags": [
-        "history",
-        "plague",
-        "dance",
-        "mystery",
-        "strasbourg"
-      ],
-      "inspired_by": "The Haunting Mystery of the Mary Celeste Ghost Ship",
-      "estimated_views": "medium",
-      "status": "produced",
-      "production_id": "Explore_the_Dancing_Plague_of__1771666437"
-    },
-    {
-      "title": "The Bizarre Truth About Exploding Lakes!",
-      "topic": "Describe limnic eruptions, where lakes suddenly release large amounts of carbon dioxide, potentially suffocating nearby life.",
-      "hook": "Lakes that can EXPLODE and kill!",
-      "tags": [
-        "science",
-        "lake",
-        "carbon dioxide",
-        "eruption",
-        "nature"
-      ],
-      "inspired_by": "The Tunguska Event: Siberia's Mysterious Explosion",
-      "estimated_views": "low",
-      "status": "produced",
-      "production_id": "Describe_limnic_eruptions_wher_1775976808"
-    },
-    {
-      "title": "The Physics of 'Perpetual Motion' Machines",
-      "topic": "Debunk the concept of perpetual motion machines, explaining the laws of thermodynamics that prevent them from working.",
-      "hook": "Can you build a machine that runs FOREVER?",
-      "tags": [
-        "physics",
-        "science",
-        "energy",
-        "motion",
-        "debunked"
-      ],
-      "inspired_by": "How These Energy Saving Stairs Work 😮",
-      "estimated_views": "low"
-    },
-    {
-      "title": "The Stone Spheres of Costa Rica: Ancient Mystery!",
-      "topic": "Explore the mysterious stone spheres of Costa Rica, their purpose, and how they were created by pre-Columbian cultures.",
-      "hook": "Giant stone balls...with a SECRET!",
-      "tags": [
-        "history",
-        "costa rica",
-        "archaeology",
-        "stone spheres",
-        "ancient"
-      ],
-      "inspired_by": "BRIGHT SIDE: Perfectly Engineered Ancient Tunnel Found in Egypt",
+      "title": "Facts About This is so cute 😍  via - lillie.martin3/",
+      "topic": "This is so cute 😍  via - lillie.martin3/tiktok",
+      "tags": [],
+      "inspired_by": "This is so cute 😍  via - lillie.martin3/tiktok",
       "estimated_views": "medium"
-    }
-  ],
-  "ambient_recommendations": [
+    },
     {
-      "type": "underwater",
-      "hours": 8,
-      "reason": "Following the recent popularity of deep-sea discoveries and the Bizarre case of Exploding Lakes, an underwater ambient video aligns with current viewer interest in aquatic themes and mysteries."
+      "title": "Facts About I Can Feel His Pain😬(@NBCSports)",
+      "topic": "I Can Feel His Pain😬(@NBCSports)",
+      "tags": [],
+      "inspired_by": "I Can Feel His Pain😬(@NBCSports)",
+      "estimated_views": "medium",
+      "seo_keywords": [
+        "i can feel his pain"
+      ],
+      "optimized_title": "Facts About I Can Feel His Pain😬(@NBCSports)"
+    },
+    {
+      "title": "Facts About Just passing through\"?#shorts",
+      "topic": "Just passing through\"?#shorts",
+      "tags": [],
+      "inspired_by": "Just passing through\"?#shorts",
+      "estimated_views": "medium",
+      "seo_keywords": [
+        "just passing by meme",
+        "just passing through song",
+        "just passing through",
+        "not just passing through"
+      ],
+      "optimized_title": "Facts About Just passing through\"?#shorts | Just Passing By Meme"
+    },
+    {
+      "title": "Facts About He Is Scratching Concrete Wall With A Fo",
+      "topic": "He Is Scratching Concrete Wall With A Fork 😲",
+      "tags": [],
+      "inspired_by": "He Is Scratching Concrete Wall With A Fork 😲",
+      "estimated_views": "medium",
+      "seo_keywords": [
+        "he is scratching concrete wall with a fork 😲 #shorts"
+      ],
+      "optimized_title": "Facts About He Is Scratching Concrete Wall With A Fo"
+    },
+    {
+      "title": "Facts About Orlando mom calls for end tocars speedin",
+      "topic": "Orlando mom calls for end tocars speeding past stoppedschool bus#news",
+      "tags": [],
+      "inspired_by": "Orlando mom calls for end tocars speeding past stoppedschool bus#news",
+      "estimated_views": "medium",
+      "seo_keywords": [
+        "orlando mom calls for end to cars speeding past stopped school bus"
+      ],
+      "optimized_title": "Facts About Orlando mom calls for end tocars speedin"
+    },
+    {
+      "title": "Facts About Smooth Criminal (Animation Meme)",
+      "topic": "Smooth Criminal (Animation Meme)",
+      "tags": [],
+      "inspired_by": "Smooth Criminal (Animation Meme)",
+      "estimated_views": "medium",
+      "seo_keywords": [
+        "smooth criminal animation meme"
+      ],
+      "optimized_title": "Facts About Smooth Criminal (Animation Meme) | Smooth Criminal Animation Meme"
+    },
+    {
+      "title": "Facts About When Dad Was Jumped By…",
+      "topic": "When Dad Was Jumped By…",
+      "tags": [],
+      "inspired_by": "When Dad Was Jumped By…",
+      "estimated_views": "medium",
+      "seo_keywords": [
+        "when dad was jumped by"
+      ],
+      "optimized_title": "Facts About When Dad Was Jumped By…"
     }
   ],
-  "longform": [],
-  "generated_at": "2026-02-20T10:13:15.641533",
-  "trending_count": 86,
-  "channels_analyzed": 1,
-  "status": "in_progress",
-  "last_executed_at": "2026-04-12T06:54:01.034358",
-  "results": {
-    "shorts_produced": 1,
-    "longform_produced": 0,
-    "errors": []
-  }
+  "longform": [
+    {
+      "title": "Deep Dive: NASA's Artemis II Crew Launches To The M",
+      "topic": "NASA's Artemis II Crew Launches To The Moon (Official Broadcast)",
+      "tags": [],
+      "inspired_by": "NASA's Artemis II Crew Launches To The Moon (Official Broadcast)",
+      "estimated_views": "medium"
+    },
+    {
+      "title": "Deep Dive: KATSEYE (캣츠아이) \"PINKY UP\" Official MV",
+      "topic": "KATSEYE (캣츠아이) \"PINKY UP\" Official MV",
+      "tags": [
+        "HYBE",
+        "HYBE LABELS",
+        "하이브",
+        "하이브레이블즈"
+      ],
+      "inspired_by": "KATSEYE (캣츠아이) \"PINKY UP\" Official MV",
+      "estimated_views": "medium",
+      "seo_keywords": [
+        "pink kitani"
+      ],
+      "optimized_title": "Deep Dive: KATSEYE (캣츠아이) \"PINKY UP\" Official MV | Pink Kitani"
+    }
+  ],
+  "generated_at": "2026-04-12T06:59:56.399431",
+  "trending_count": 83,
+  "status": "pending"
 }

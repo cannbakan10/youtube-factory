@@ -1,0 +1,171 @@
+{
+  "timestamp": "2026-04-12T06:59:07.799511",
+  "dry_run": false,
+  "performance_review": {
+    "total_recent": 38,
+    "winners_count": 20,
+    "losers_count": 8,
+    "avg_views_48h": 183.8,
+    "best_topics": [
+      "Heartwarming Puppy Moments: This is so cute 😍 #Shorts",
+      "I'm Sorry LA Knight: The Rise of a Wrestling Superstar #Shor",
+      "A Biker's Journey Through Guilt and Forgiveness #Shorts"
+    ],
+    "best_views": [
+      1332,
+      732,
+      510
+    ],
+    "winner_titles": [
+      "This Baby Evolved Mid Race | Nature's Incredible Adaptability #Shorts",
+      "When Dad Was Jumped By Raccoons #Shorts",
+      "Smooth Criminal Animation Meme: A Viral Dance Sensation #Shorts",
+      "Scratching Concrete with a Fork: An Unexpected Art Technique #Shorts",
+      "Baby Animals That Will Melt Your Heart! #Shorts",
+      "Mastering Tic Tac Toe: Simple Strategies for Winning 🎮 #Shorts",
+      "When Dad Was Jumped By Raccoons! #Shorts",
+      "People Will Never Forget: The Power of Memories 💀 #Shorts",
+      "Biker Can’t Forgive Himself After Bumping into a Little Girl… #Shorts",
+      "I Can Feel His Pain😬: The Hidden Toll of Athletic Injuries #Shorts",
+      "Why Is This Biker Sobbing! 😭 | A Heartfelt Tribute #Shorts",
+      "I'm Sorry LA Knight: The Rise of a Wrestling Superstar #Shorts",
+      "It’s Impossible To Make Me MAD 😡 - Discover the Power of Positivity #Shorts",
+      "How To Win A Bet With One Grape 😏 #Shorts",
+      "A Biker's Journey Through Guilt and Forgiveness #Shorts",
+      "Drivers Worst Nightmare: Hacked Cars on the Highway #Shorts",
+      "Nature's Incredible Migratory Journeys #Shorts",
+      "I Can Feel His Pain: A Heart-Stopping Moment in Sports #Shorts",
+      "Heart-Pounding Moments of the 4 x 400 Relay 🏃🔥 #Shorts",
+      "Heartwarming Puppy Moments: This is so cute 😍 #Shorts"
+    ],
+    "loser_titles": [
+      "KATSEYE (캣츠아이) 'PINKY UP' Official MV - A Journey Through K-Pop",
+      "NASA's Artemis II: Launch to the Moon",
+      "Adorable Kittens: The Cutest Moments #Shorts",
+      "How I Negotiate Prices While Thrifting: Save Money Every Time!",
+      "The Emotional Landscape of Player Transitions in Basketball"
+    ]
+  },
+  "cleanup": {
+    "unlisted": 7,
+    "deleted": 9,
+    "failed": 0,
+    "kept": 284,
+    "thresholds": {
+      "shorts_7d": 75,
+      "shorts_14d": 150,
+      "shorts_30d": 300,
+      "long_14d": 75,
+      "long_30d": 150,
+      "multiplier": 1.5
+    }
+  },
+  "trending": {
+    "found": 83,
+    "viral_shorts_found": 30,
+    "competitors_analyzed": 4,
+    "comments_mined": 20,
+    "top_5": [
+      {
+        "title": "I'M SORRY LA KNIGHT",
+        "views": 40099532,
+        "category": "Sports"
+      },
+      {
+        "title": "This is so cute 😍  via - lillie.martin3/tiktok",
+        "views": 31785369,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "I Can Feel His Pain😬(@NBCSports)",
+        "views": 24845766,
+        "category": "Sports"
+      },
+      {
+        "title": "NASA's Artemis II Crew Launches To The Moon (Official Broadc",
+        "views": 18824376,
+        "category": "News & Politics"
+      },
+      {
+        "title": "Just passing through\"?#shorts",
+        "views": 18325151,
+        "category": "Entertainment"
+      }
+    ],
+    "top_viral_shorts": [
+      {
+        "title": "Loser Waits A Full Year #wildlife #animals #viral #shorts #a",
+        "views": 9115121,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "जिंदगी vs मौत 💀 | Ultimate Chase ⚡🔥 | #Shorts #animals #fact",
+        "views": 8347337,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "Kangaroo Baby Journey 🦘 | From Jellybean Size to Pouch Life ",
+        "views": 4609749,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "Как вороны спасают кенгуру #животные #факты #animals #хочуфа",
+        "views": 4517267,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "Title: Elephant Eating Watermelon 🍉 | Amazing Animal Shorts ",
+        "views": 3239997,
+        "query": "animal facts wildlife"
+      }
+    ]
+  },
+  "ambient_analysis": {
+    "total_ambient": 3,
+    "total_views": 8823,
+    "top_type": "fireplace",
+    "worst_type": "rain",
+    "type_rankings": [
+      {
+        "type": "fireplace",
+        "video_count": 2,
+        "total_views": 8486,
+        "avg_views": 4243,
+        "avg_views_per_day": 74.3,
+        "engagement_rate": 294.01,
+        "best_video": {
+          "title": "🔥 Cozy Fireplace 8 HOURS with Crackling Fire Sounds | Firepl",
+          "views": 8152,
+          "views_per_day": 143.0
+        }
+      },
+      {
+        "type": "rain",
+        "video_count": 1,
+        "total_views": 337,
+        "avg_views": 337,
+        "avg_views_per_day": 5.3,
+        "engagement_rate": 2.08,
+        "best_video": {
+          "title": "1 Hour Rainy Night Ambience (60 Minutes)",
+          "views": 337,
+          "views_per_day": 5.3
+        }
+      }
+    ]
+  },
+  "plan": {
+    "shorts_planned": 8,
+    "ambient_recommendations": [],
+    "shorts": [
+      "Facts About I'M SORRY LA KNIGHT",
+      "Facts About This is so cute 😍  via - lillie.martin",
+      "Facts About I Can Feel His Pain😬(@NBCSports)",
+      "Facts About Just passing through\"?#shorts",
+      "Facts About He Is Scratching Concrete Wall With A ",
+      "Facts About Orlando mom calls for end tocars speed",
+      "Facts About Smooth Criminal (Animation Meme)",
+      "Facts About When Dad Was Jumped By…"
+    ]
+  }
+}
