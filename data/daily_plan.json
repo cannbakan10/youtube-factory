@@ -13,14 +13,18 @@
         "i'm sorry la knight yeah",
         "i'm sorry la knight let me talk to ya"
       ],
-      "optimized_title": "Facts About I'M SORRY LA KNIGHT | I'M Sorry La Knight Yeah"
+      "optimized_title": "Facts About I'M SORRY LA KNIGHT | I'M Sorry La Knight Yeah",
+      "status": "produced",
+      "production_id": "IM_SORRY_LA_KNIGHT_1775977202"
     },
     {
       "title": "Facts About This is so cute 😍  via - lillie.martin3/",
       "topic": "This is so cute 😍  via - lillie.martin3/tiktok",
       "tags": [],
       "inspired_by": "This is so cute 😍  via - lillie.martin3/tiktok",
-      "estimated_views": "medium"
+      "estimated_views": "medium",
+      "status": "produced",
+      "production_id": "This_is_so_cute___via__lilliem_1775977235"
     },
     {
       "title": "Facts About I Can Feel His Pain😬(@NBCSports)",
@@ -31,7 +35,9 @@
       "seo_keywords": [
         "i can feel his pain"
       ],
-      "optimized_title": "Facts About I Can Feel His Pain😬(@NBCSports)"
+      "optimized_title": "Facts About I Can Feel His Pain😬(@NBCSports)",
+      "status": "produced",
+      "production_id": "I_Can_Feel_His_PainNBCSports_1775977267"
     },
     {
       "title": "Facts About Just passing through\"?#shorts",
@@ -45,7 +51,9 @@
         "just passing through",
         "not just passing through"
       ],
-      "optimized_title": "Facts About Just passing through\"?#shorts | Just Passing By Meme"
+      "optimized_title": "Facts About Just passing through\"?#shorts | Just Passing By Meme",
+      "status": "produced",
+      "production_id": "Just_passing_throughshorts_1775977299"
     },
     {
       "title": "Facts About He Is Scratching Concrete Wall With A Fo",
@@ -119,5 +127,11 @@
   ],
   "generated_at": "2026-04-12T06:59:56.399431",
   "trending_count": 83,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-04-12T07:02:13.371090",
+  "results": {
+    "shorts_produced": 4,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
