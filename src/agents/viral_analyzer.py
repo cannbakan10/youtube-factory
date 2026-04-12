@@ -4,6 +4,7 @@ Viral Analyzer Agent - Analyzes top performing YouTube Shorts to generate winnin
 import os
 import json
 import re
+from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Tuple
 from dataclasses import dataclass
 from google import genai
@@ -96,6 +97,12 @@ class ViralAnalyzer:
         self.gemini_key = os.getenv("GEMINI_API_KEY", "").strip().replace('"', '').replace("'", "")
         self.gemini_client = genai.Client(api_key=self.gemini_key) if self.gemini_key else None
         self.model = "gemini-2.0-flash"
+
+    @staticmethod
+    def _get_recent_date() -> str:
+        """Get ISO date string for 60 days ago to focus on fresh viral content."""
+        date = datetime.utcnow() - timedelta(days=60)
+        return date.strftime("%Y-%m-%dT00:00:00Z")
 
     def _extract_json(self, text: str):
         """Resilient JSON extraction from AI response."""
@@ -216,7 +223,7 @@ class ViralAnalyzer:
             order="viewCount",
             regionCode=region,
             maxResults=max_results,
-            publishedAfter="2025-06-01T00:00:00Z"  # Focus on very recent/trending videos
+            publishedAfter=self._get_recent_date()  # Focus on last 60 days for freshness
         ).execute()
 
         video_ids = [item['id']['videoId'] for item in search_response.get('items', [])]

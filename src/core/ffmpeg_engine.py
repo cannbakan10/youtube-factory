@@ -190,8 +190,8 @@ class VideoEngine:
             bg_in = current_input_idx
             current_input_idx += 1
             
-            # Mix: Multi-Layer (Narr + SFX) + (BG Music at 8% shorts / 3% long)
-            bg_vol = 0.03 if is_long else 0.08
+            # Mix: Multi-Layer (Narr + SFX) + (BG Music at 15% shorts / 8% long)
+            bg_vol = 0.08 if is_long else 0.15
             filter_complex_parts.append(
                 f"[{bg_in}:a]volume={bg_vol}[bg_low];"
                 f"[a_narrative][bg_low]amix=inputs=2:duration=first:dropout_transition=0[a_final]"

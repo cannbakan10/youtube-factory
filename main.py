@@ -223,7 +223,7 @@ class YoutubeFactory:
                 scene.video_path = video_path
 
                 # Narration & Subtitles
-                audio, subs, dur = self.tts.generate_audio_with_subtitles(scene.text, lang)
+                audio, subs, dur = self.tts.generate_audio_with_subtitles(scene.text, lang, mode=mode)
                 if not audio:
                     logger.error(f"Scene {i + 1}: Narration failed for {lang}! Skipping scene.")
                     continue
