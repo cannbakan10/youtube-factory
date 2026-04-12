@@ -110,7 +110,7 @@ class TTSService:
         logger.info(f"Voice matched -> {voice_key} ({self.current_voice_id}) for '{topic[:30]}'")
 
 
-    def generate_audio_with_subtitles(self, text, language="en"):
+    def generate_audio_with_subtitles(self, text, language="en", mode="info"):
         """
         Hyper-Sync Edition: Uses ElevenLabs Timestamps for perfect alignment.
         Now with smart quota failover to OpenAI.
@@ -127,13 +127,31 @@ class TTSService:
                 return self._generate_with_openai(clean_text, language)
             return None, None, 0
 
-        # Adaptive Voice Settings
-        if language == "tr":
-            stability = 0.45
-            style = 0.35
-        else:
-            stability = 0.70
-            style = 0.10
+        # Mode-aware voice settings for maximum engagement
+        voice_presets = {
+            "tr": {
+                "info":   {"stability": 0.45, "style": 0.35},
+                "horror": {"stability": 0.35, "style": 0.50},
+                "quiz":   {"stability": 0.50, "style": 0.40},
+                "reddit": {"stability": 0.38, "style": 0.48},
+            },
+            "en": {
+                "info":   {"stability": 0.58, "style": 0.30},
+                "horror": {"stability": 0.40, "style": 0.50},
+                "quiz":   {"stability": 0.55, "style": 0.35},
+                "reddit": {"stability": 0.42, "style": 0.45},
+            },
+            "es": {
+                "info":   {"stability": 0.50, "style": 0.30},
+                "horror": {"stability": 0.38, "style": 0.48},
+                "quiz":   {"stability": 0.52, "style": 0.38},
+                "reddit": {"stability": 0.40, "style": 0.45},
+            },
+        }
+        lang_presets = voice_presets.get(language, voice_presets["en"])
+        preset = lang_presets.get(mode, lang_presets["info"])
+        stability = preset["stability"]
+        style = preset["style"]
 
         try:
             # We don't use @retry decorator on internal methods anymore

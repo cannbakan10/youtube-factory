@@ -206,7 +206,7 @@ class ScriptWriter:
             - MUST COVER: History, Geography, Culture, Economy, Gastronomy, and Modern Life of {topic.split()[-1]}.
 
             STRUCTURE & STYLE RULES:
-            - 🎞️ TRAILER/HOOK (FIRST 30 SECONDS): Start with an epic summary of what many people don't know.
+            - 🎞️ TRAILER/HOOK (FIRST 30 SECONDS): Start with an IRRESISTIBLE hook — a shocking fact, a mystery, or a bold claim that makes viewers NEED to keep watching. Use curiosity gaps and open loops.
             - DEEP DIVE: Divide the script into clear thematic sections (Introduction, History, Culture, etc.).
             - CONTINUOUS NARRATIVE: Avoid numbered lists. Use smooth transitions between topics.
             - ⚠️ NO TIME REVEAL & NO META-COMMENTARY: {meta_avoid}
@@ -217,21 +217,40 @@ class ScriptWriter:
             """
         elif mode == "horror":
             if language == "tr":
-                hook_start = "Bunun gerçekten yaşandığını biliyor muydunuz?"
+                hook_options = [
+                    "Karanlıkta bir ses duyduğunuzda sakın arkınıza bakmayın...",
+                    "Bu hikaye gerçek ve kimse açıklayamıyor...",
+                    "Bu olaydan sonra o mahallede kimse yaşamıyor..."
+                ]
             elif language == "es":
-                hook_start = "¿Sabías ki esto realmente sucedió?"
+                hook_options = [
+                    "Cuando escuches un ruido en la oscuridad, no mires atrás...",
+                    "Esta historia es real y nadie puede explicarla...",
+                    "Después de este evento, nadie vive en ese barrio..."
+                ]
             else:
-                hook_start = "Did you know this actually happened?"
-            
+                hook_options = [
+                    "When you hear a sound in the dark, never look back...",
+                    "This story is real and no one can explain it...",
+                    "After this happened, no one ever lived there again..."
+                ]
+
             return f"""
             Using the provided research about REAL terrifying events, write a 60-second narration.
             Everything MUST be in {lang_name}.
             {extra_style}
 
+            RESEARCH DATA: {research_data}
+            TOPIC: {topic}
+
             STORYTELLING RULES:
-            - Start with: "{hook_start}"
-            - NO INTRO: Start DIRECTLY with the story.
+            - HOOK: Start with one of these styles: {', '.join(f'"{h}"' for h in hook_options)}
+            - NO INTRO: Start DIRECTLY with the story. The first sentence must send chills.
             - NO RHETORICAL QUESTIONS: After the hook, deliver facts as BOLD STATEMENTS.
+            - Build DREAD: Each sentence should escalate the tension. Use short, punchy sentences.
+            - SENSORY DETAILS: Describe what was seen, heard, felt. Make the viewer feel like they're THERE.
+            - END with a chilling final line that lingers in the viewer's mind.
+            - STRICTLY NARRATION ONLY: No brackets, no labels, no meta-text.
             - Word count: ~110-130 words.
             - Language: STRICTLY {lang_name} only.
             """
@@ -303,10 +322,34 @@ class ScriptWriter:
         else:
             if language == "tr":
                 climax_lead_in = "Gelelim en çarpıcı noktaya..."
+                hook_techniques = """
+            🎣 HOOK TEKNİKLERİ (İlk cümle MUTLAKA bunlardan biri olmalı):
+            - ŞOKUN İSTATİSTİK: "Dünya nüfusunun %90'ı bunu bilmiyor..."
+            - MERİK BOŞLUĞU: "Bu ülke herkesten bir şey saklıyor..."
+            - TERS SEZGI: "Bilim insanları yıllarca yanılmış..."
+            - YASAK BİLGİ: "Bu bilgiyi öğrenmeniz istenmiyordu..."
+            - MEYDAN OKUMA: "Bunu duyduktan sonra her şeyi sorgulayacaksınız..."
+            """
             elif language == "es":
                 climax_lead_in = "Ahora, la parte más impactante..."
+                hook_techniques = """
+            🎣 HOOK TECHNIQUES (First sentence MUST use one of these):
+            - SHOCKING STAT: "El 90% del mundo no sabe esto..."
+            - CURIOSITY GAP: "Este país esconde algo de todos..."
+            - COUNTER-INTUITIVE: "Los científicos estuvieron equivocados durante años..."
+            - FORBIDDEN KNOWLEDGE: "No quieren que sepas esta información..."
+            - CHALLENGE: "Después de escuchar esto, cuestionarás todo..."
+            """
             else:
                 climax_lead_in = "Now for the most striking part..."
+                hook_techniques = """
+            🎣 HOOK TECHNIQUES (First sentence MUST use one of these):
+            - SHOCKING STAT: "90% of the world doesn't know this..."
+            - CURIOSITY GAP: "This country is hiding something from everyone..."
+            - COUNTER-INTUITIVE: "Scientists were wrong about this for decades..."
+            - FORBIDDEN KNOWLEDGE: "You were never supposed to learn this..."
+            - CHALLENGE: "After hearing this, you'll question everything..."
+            """
             return f"""
             Using the following research data, write an exciting narration script for YouTube Shorts.
             Entirely in {lang_name}.
@@ -323,10 +366,14 @@ class ScriptWriter:
             - NO labels like ACT 1, SCENE, HOOK, CTA, INTRO, OUTRO.
             - NO brackets, no parentheses, no stage directions.
 
+            {hook_techniques}
+
             STRUCTURE & PACING RULES:
             - ⛔ NO RHETORICAL QUESTIONS: Stop asking "Did you know?" or "What if?". Deliver information as BOLD, DIRECT STATEMENTS.
             - ⏱️ INSTANT VALUE: Deliver the first mind-blowing fact within the first 10 seconds. No long setups.
             - 🎯 TITLE ALIGNMENT: The very first sentence must confirm the promise made in the title "{topic}".
+            - 🧲 CURIOSITY GAP: Every sentence should make the viewer NEED to hear the next one. Use open loops.
+            - 🔥 EMOTIONAL INTENSITY: Write with urgency and passion. Use power words: "shocking", "unbelievable", "terrifying", "incredible".
             - Deliver 3-5 high-information facts in rapid succession.
             - Build to a climax using "{climax_lead_in}".
             - End with a natural call to action (like, subscribe, comment).
