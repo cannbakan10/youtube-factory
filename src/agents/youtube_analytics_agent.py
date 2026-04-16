@@ -509,6 +509,255 @@ class YouTubeAnalyticsAgent:
             },
         }
 
+    # ──────────────────────────────────────────────────────
+    # PEAK-HOUR SCHEDULER (Phase 1, item 3)
+    # ──────────────────────────────────────────────────────
+
+    def get_peak_upload_hours(self, videos: List[Dict] = None,
+                              video_type: str = "shorts",
+                              lookback_days: int = 60,
+                              top_n: int = 3,
+                              min_samples_per_hour: int = 2) -> Dict:
+        """
+        Find the best UTC hours to upload based on historical channel performance.
+        Groups recent videos by publish_hour, returns hours with highest avg views.
+        Falls back to US prime-time defaults if insufficient channel data.
+
+        Returns:
+          {
+            "peak_hours_utc": [22, 23, 0],   # sorted best → worst
+            "by_hour": {hour: {avg_views, count}},
+            "source": "channel_data" | "fallback_defaults",
+            "sample_count": int,
+          }
+        """
+        # US prime time: EST 18-22 = UTC 22, 23, 00, 01, 02
+        fallback = {
+            "peak_hours_utc": [22, 23, 0, 1, 16],
+            "by_hour": {},
+            "source": "fallback_defaults",
+            "sample_count": 0,
+            "note": "US prime time (EST 18-22). Channel data insufficient.",
+        }
+
+        if videos is None:
+            videos = self.get_all_videos(max_results=200)
+        if not videos:
+            return fallback
+
+        is_shorts = video_type == "shorts"
+        filtered = [
+            v for v in videos
+            if v.get("is_shorts") == is_shorts
+            and v.get("publish_hour") is not None
+            and v.get("days_since_publish", 999) <= lookback_days
+            and v.get("days_since_publish", 0) >= 2  # give videos time to accumulate
+        ]
+
+        if len(filtered) < 5:
+            logger.info(f"⏰ Peak hours: only {len(filtered)} samples, using fallback defaults")
+            return fallback
+
+        hour_views = defaultdict(list)
+        for v in filtered:
+            hour_views[v["publish_hour"]].append(v["views"])
+
+        by_hour = {
+            h: {"avg_views": round(sum(vs) / len(vs)), "count": len(vs)}
+            for h, vs in hour_views.items()
+            if len(vs) >= min_samples_per_hour
+        }
+
+        if not by_hour:
+            logger.info("⏰ Peak hours: no hour meets min_samples threshold, using fallback")
+            return fallback
+
+        ranked = sorted(by_hour.items(), key=lambda x: x[1]["avg_views"], reverse=True)
+        peak_hours = [h for h, _ in ranked[:top_n]]
+
+        logger.info(
+            f"⏰ Peak hours (UTC, {video_type}): {peak_hours} "
+            f"[from {len(filtered)} videos, {len(by_hour)} hours with data]"
+        )
+        return {
+            "peak_hours_utc": peak_hours,
+            "by_hour": by_hour,
+            "source": "channel_data",
+            "sample_count": len(filtered),
+        }
+
+    # ──────────────────────────────────────────────────────
+    # RETENTION INSIGHTS (Phase 1, item 4)
+    # ──────────────────────────────────────────────────────
+
+    def get_retention_insights(self, videos: List[Dict] = None,
+                               max_videos: int = 30,
+                               lookback_days: int = 45) -> Dict:
+        """
+        Fetch retention metrics via YouTube Analytics API v2 for recent videos.
+        Requires OAuth scope: https://www.googleapis.com/auth/yt-analytics.readonly
+
+        Returns summary:
+          {
+            "avg_view_percentage": float,  # 0-100, channel-wide
+            "avg_view_duration_sec": float,
+            "drop_off_pattern": str,        # human summary for Gemini
+            "worst_performers": [{title, avg_view_pct, ...}],
+            "best_performers":  [{title, avg_view_pct, ...}],
+            "feedback_text": str,           # ready-to-inject Gemini prompt snippet
+            "source": "analytics_api" | "unavailable",
+            "video_count": int,
+          }
+        """
+        empty = {
+            "avg_view_percentage": 0,
+            "avg_view_duration_sec": 0,
+            "drop_off_pattern": "No data",
+            "worst_performers": [],
+            "best_performers": [],
+            "feedback_text": "",
+            "source": "unavailable",
+            "video_count": 0,
+        }
+
+        if not self.youtube or not self.youtube.credentials:
+            logger.info("📉 Retention: YouTube service unavailable, skipping")
+            return empty
+
+        # Build YouTube Analytics v2 client
+        try:
+            from googleapiclient.discovery import build
+            yta = build("youtubeAnalytics", "v2", credentials=self.youtube.credentials)
+        except Exception as e:
+            logger.warning(f"📉 Retention: could not build analytics client: {e}")
+            return empty
+
+        if videos is None:
+            videos = self.get_all_videos(max_results=100)
+
+        recent = [
+            v for v in videos
+            if v.get("is_shorts")
+            and v.get("days_since_publish", 999) <= lookback_days
+            and v.get("days_since_publish", 0) >= 2
+        ][:max_videos]
+
+        if not recent:
+            return empty
+
+        # Query date range: earliest video's publish date → today
+        today = datetime.utcnow().date()
+        start_date = (today - timedelta(days=lookback_days)).isoformat()
+        end_date = today.isoformat()
+
+        per_video = []
+        for v in recent:
+            try:
+                resp = yta.reports().query(
+                    ids="channel==MINE",
+                    startDate=start_date,
+                    endDate=end_date,
+                    metrics="averageViewDuration,averageViewPercentage,views",
+                    filters=f"video=={v['id']}",
+                ).execute()
+
+                rows = resp.get("rows", [])
+                if not rows:
+                    continue
+                avg_dur, avg_pct, views = rows[0][0], rows[0][1], rows[0][2]
+                per_video.append({
+                    "video_id": v["id"],
+                    "title": v["title"],
+                    "avg_view_duration_sec": avg_dur,
+                    "avg_view_percentage": round(avg_pct, 1),
+                    "views": views,
+                    "estimated_dropoff_sec": round(avg_dur, 1),
+                })
+            except Exception as e:
+                # Likely missing scope or quota error — abort
+                logger.warning(f"📉 Retention fetch aborted: {e}")
+                if not per_video:
+                    empty["drop_off_pattern"] = f"API unavailable: {str(e)[:120]}"
+                    return empty
+                break
+
+        if not per_video:
+            return empty
+
+        # Aggregate
+        avg_pct = sum(p["avg_view_percentage"] for p in per_video) / len(per_video)
+        avg_dur = sum(p["avg_view_duration_sec"] for p in per_video) / len(per_video)
+
+        # Rank performers
+        ranked = sorted(per_video, key=lambda p: p["avg_view_percentage"])
+        worst = ranked[:3]
+        best = ranked[-3:][::-1]
+
+        # Synthesize drop-off pattern description
+        if avg_pct < 30:
+            drop_pattern = (
+                f"CRITICAL: viewers abandon at ~{avg_dur:.0f}s on average "
+                f"({avg_pct:.0f}% retention). The first hook is failing badly."
+            )
+        elif avg_pct < 50:
+            drop_pattern = (
+                f"WEAK retention: viewers leave around {avg_dur:.0f}s "
+                f"({avg_pct:.0f}% watched). Hook works but pacing loses them mid-video."
+            )
+        elif avg_pct < 70:
+            drop_pattern = (
+                f"DECENT retention: {avg_pct:.0f}% watched "
+                f"(~{avg_dur:.0f}s avg view). Room to strengthen second-half payoff."
+            )
+        else:
+            drop_pattern = f"STRONG retention: {avg_pct:.0f}% watched. Keep the formula."
+
+        # Gemini-ready feedback text
+        best_examples = "\n".join(
+            f"  ✅ \"{p['title'][:60]}\" — {p['avg_view_percentage']}% watched"
+            for p in best
+        )
+        worst_examples = "\n".join(
+            f"  ❌ \"{p['title'][:60]}\" — {p['avg_view_percentage']}% watched"
+            for p in worst
+        )
+
+        feedback_text = f"""
+📉 CHANNEL RETENTION REALITY ({len(per_video)} recent Shorts):
+- Average: {avg_pct:.0f}% watched (~{avg_dur:.0f}s avg view duration)
+- Pattern: {drop_pattern}
+
+HIGHEST retention (what works):
+{best_examples}
+
+LOWEST retention (what to avoid):
+{worst_examples}
+
+RETENTION STRATEGY FOR THIS SCRIPT:
+- Viewers currently drop at ~{avg_dur:.0f}s. The hook must HOOK HARDER than past videos.
+- Open with a payoff preview ("by the end of this you'll know X") so they stay for it.
+- Add a second hook at ~{max(5, int(avg_dur * 0.7))}s (restate the promise with new twist).
+- Never dead-air. Every 2-3 seconds a new fact, question, or twist.
+- The ending must deliver the promise — viewers are clocking out at ~{avg_dur:.0f}s, push past it.
+"""
+
+        insights = {
+            "avg_view_percentage": round(avg_pct, 1),
+            "avg_view_duration_sec": round(avg_dur, 1),
+            "drop_off_pattern": drop_pattern,
+            "worst_performers": worst,
+            "best_performers": best,
+            "feedback_text": feedback_text.strip(),
+            "source": "analytics_api",
+            "video_count": len(per_video),
+        }
+
+        logger.info(
+            f"📉 Retention: {avg_pct:.0f}% avg ({avg_dur:.0f}s) "
+            f"across {len(per_video)} recent Shorts"
+        )
+        return insights
+
     def _find_content_gaps(self, videos: List[Dict]) -> List[str]:
         """Identify potential content gaps or opportunities."""
         titles_combined = " ".join(v["title"].lower() for v in videos)

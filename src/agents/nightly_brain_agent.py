@@ -45,6 +45,8 @@ logger = get_logger(__name__)
 DAILY_PLAN_FILE = "data/daily_plan.json"
 NIGHTLY_LOG_DIR = "data/nightly_logs"
 WINNERS_FILE = "data/winners.json"
+PEAK_HOURS_FILE = "data/peak_hours.json"
+RETENTION_FILE = "data/retention_insights.json"
 
 # Winner amplification thresholds
 WINNER_MIN_VIEWS = 300          # Absolute minimum to qualify as winner
@@ -1699,6 +1701,38 @@ Output STRICT JSON format:
                 }
                 for w in active_winners[:5]
             ],
+        }
+
+        # ─── PEAK HOUR DETECTION: find best UTC upload hours ───
+        peak_hours = analytics.get_peak_upload_hours(
+            videos=channel_videos, video_type="shorts"
+        )
+        peak_path = os.path.join(self.project_root, PEAK_HOURS_FILE)
+        os.makedirs(os.path.dirname(peak_path), exist_ok=True)
+        with open(peak_path, "w", encoding="utf-8") as f:
+            json.dump({
+                "updated_at": datetime.utcnow().isoformat(),
+                **peak_hours,
+            }, f, indent=2, ensure_ascii=False)
+        nightly_report["peak_hours"] = {
+            "utc": peak_hours.get("peak_hours_utc", []),
+            "source": peak_hours.get("source"),
+            "samples": peak_hours.get("sample_count", 0),
+        }
+
+        # ─── RETENTION INSIGHTS: fetch drop-off from YouTube Analytics v2 ───
+        retention = analytics.get_retention_insights(videos=channel_videos)
+        retention_path = os.path.join(self.project_root, RETENTION_FILE)
+        with open(retention_path, "w", encoding="utf-8") as f:
+            json.dump({
+                "updated_at": datetime.utcnow().isoformat(),
+                **retention,
+            }, f, indent=2, ensure_ascii=False)
+        nightly_report["retention"] = {
+            "avg_pct": retention.get("avg_view_percentage", 0),
+            "avg_dur_sec": retention.get("avg_view_duration_sec", 0),
+            "source": retention.get("source"),
+            "video_count": retention.get("video_count", 0),
         }
 
         # Analyze ambient video performance
