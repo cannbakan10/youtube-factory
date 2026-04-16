@@ -7,6 +7,7 @@ import sys
 import importlib.metadata
 import unicodedata
 import requests
+from datetime import datetime, timedelta
 
 def send_telegram_alert(message: str):
     token = os.getenv("TELEGRAM_BOT_TOKEN")
@@ -76,6 +77,43 @@ VIRAL_CATEGORIES = ["facts", "science", "history", "psychology", "nature", "tech
 AMBIENT_TYPES = list(AmbientVideoService.AMBIENT_PRESETS.keys())
 LIVESTREAM_TYPES = list(LIVESTREAM_PRESETS.keys())
 NATURE_SHORTS_TYPES = list(NATURE_SHORTS_CATEGORIES.keys())
+
+
+def compute_next_peak_publish_time(min_buffer_minutes: int = 15,
+                                   max_wait_hours: int = 20):
+    """
+    Read data/peak_hours.json and compute the next UTC datetime that matches
+    one of the peak hours, at least min_buffer_minutes in the future.
+    Returns None if no peak config exists (→ upload immediately).
+    """
+    project_root = os.path.dirname(os.path.abspath(__file__))
+    peak_path = os.path.join(project_root, "data", "peak_hours.json")
+    if not os.path.exists(peak_path):
+        return None
+    try:
+        with open(peak_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        peak_hours = data.get("peak_hours_utc") or []
+        if not peak_hours:
+            return None
+        now = datetime.utcnow()
+        earliest = now + timedelta(minutes=min_buffer_minutes)
+        # Look at each hour in next 24h, pick the soonest that matches a peak hour
+        candidates = []
+        for h_offset in range(0, max_wait_hours + 1):
+            candidate = (earliest + timedelta(hours=h_offset)).replace(
+                minute=0, second=0, microsecond=0
+            )
+            if candidate < earliest:
+                continue
+            if candidate.hour in peak_hours:
+                candidates.append(candidate)
+        if not candidates:
+            return None
+        return min(candidates)
+    except Exception as e:
+        logger.warning(f"Peak hours read failed: {e}")
+        return None
 
 
 class YoutubeFactory:
@@ -360,12 +398,21 @@ class YoutubeFactory:
                         logger.warning(f"Thumbnail generation failed: {te}")
 
                     send_telegram_alert(f"🚀 Video dosyası hazırlandı! YouTube'a yükleme işlemi başlatılıyor...")
+
+                    # Peak-hour scheduling (only for shorts — ambient/long publish immediately)
+                    publish_at = None
+                    if video_type == "shorts":
+                        publish_at = compute_next_peak_publish_time()
+                        if publish_at:
+                            logger.info(f"⏰ Peak-hour scheduling: publish at {publish_at.isoformat()} UTC")
+
                     upload_id = self.youtube_service.upload_video(
                         dest_path,
                         title,
                         desc,
                         tags,
                         video_type=video_type,
+                        publish_at=publish_at,
                     )
 
                     # Set custom thumbnail after upload

@@ -40,6 +40,23 @@ class ScriptWriter:
         self.oa_client = OpenAI(api_key=self.openai_key) if self.openai_key else None
         self.model = "gemini-2.0-flash"
         self.oa_model = "gpt-4o-mini"
+        self.project_root = os.path.dirname(
+            os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        )
+
+    def _load_retention_feedback(self) -> Optional[str]:
+        """Load retention feedback text from data/retention_insights.json if present."""
+        path = os.path.join(self.project_root, "data", "retention_insights.json")
+        if not os.path.exists(path):
+            return None
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            if data.get("source") == "analytics_api" and data.get("feedback_text"):
+                return data["feedback_text"]
+        except Exception as e:
+            logger.warning(f"Retention feedback load failed: {e}")
+        return None
 
     def _clean_text(self, text, language="en"):
         """Removes AI trash, stage directions, meta-commentary, and unwanted markers."""
@@ -136,9 +153,13 @@ class ScriptWriter:
 
         return None
 
-    def generate_narrative(self, research_data, topic, language="en", mode="info", video_type="shorts", style_context=None):
+    def generate_narrative(self, research_data, topic, language="en", mode="info", video_type="shorts", style_context=None, retention_feedback=None):
         """
         Step 1: Create a dramatic narrative.
+
+        retention_feedback: Optional string from YouTubeAnalyticsAgent.get_retention_insights()
+                            describing channel drop-off patterns. Auto-loaded from
+                            data/retention_insights.json if None.
         """
         lang_map = {"en": "English", "tr": "Turkish", "es": "Spanish"}
         lang_name = lang_map.get(language, "English")
@@ -147,12 +168,16 @@ class ScriptWriter:
         duration_match = re.search(r'(\d+)\s*(?:dakika|minute|dk|min|dakikalık|minutelık)', topic.lower())
         target_minutes = int(duration_match.group(1)) if duration_match else (10 if is_long else 1)
         target_word_count = target_minutes * 140 # Average narration speed
-        
+
         extra_style = f"\nSTYLE CONTEXT: {style_context}\n" if style_context else ""
+
+        # Auto-load retention feedback from disk if not passed
+        if retention_feedback is None:
+            retention_feedback = self._load_retention_feedback()
 
         prompt = self._build_narrative_prompt(
             research_data, topic, language, lang_name, mode, is_long,
-            target_minutes, target_word_count, style_context
+            target_minutes, target_word_count, style_context, retention_feedback
         )
 
         try:
@@ -170,9 +195,10 @@ class ScriptWriter:
                 logger.error(f"OpenAI narrative generation also failed: {oe}")
                 return None
 
-    def _build_narrative_prompt(self, research_data, topic, language, lang_name, mode, is_long, target_minutes, target_word_count, style_context=None):
+    def _build_narrative_prompt(self, research_data, topic, language, lang_name, mode, is_long, target_minutes, target_word_count, style_context=None, retention_feedback=None):
         """Build the narrative prompt based on mode and video type."""
         extra_style = f"\nSTYLE CONTEXT / VIRAL STYLE TO REPLICATE:\n{style_context}\n" if style_context else ""
+        retention_block = f"\n{retention_feedback}\n" if retention_feedback else ""
         if is_long:
             if language == "tr":
                 structure_rule = "SENTENCE STRUCTURE (Turkish): Standard KURALLI sentences only."
@@ -191,12 +217,12 @@ class ScriptWriter:
 
             return f"""
             Using the provided research data, write an EXHAUSTIVE and DEEP documentary-style narration script.
-            This is for a VERY LONG video ({target_minutes} minutes). 
+            This is for a VERY LONG video ({target_minutes} minutes).
             You must provide at least {target_word_count} words of high-quality narration.
-            
+
             Everything MUST be in {lang_name}.
             {extra_style}
-
+            {retention_block}
             RESEARCH DATA: {research_data}
             TOPIC: {topic}
 
@@ -354,7 +380,7 @@ class ScriptWriter:
             Using the following research data, write an exciting narration script for YouTube Shorts.
             Entirely in {lang_name}.
             {extra_style}
-
+            {retention_block}
             TOPIC: {topic}
 
             ⛔ CRITICAL OUTPUT RULES (VIOLATION = IMMEDIATE REJECTION):

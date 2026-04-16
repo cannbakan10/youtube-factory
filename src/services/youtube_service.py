@@ -3,6 +3,7 @@ import json
 import random
 import pickle
 import requests
+from datetime import datetime, timedelta
 import google.oauth2.credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
@@ -98,6 +99,7 @@ class YouTubeService:
             "https://www.googleapis.com/auth/youtube.upload",
             "https://www.googleapis.com/auth/youtube.readonly",
             "https://www.googleapis.com/auth/youtube.force-ssl",
+            "https://www.googleapis.com/auth/yt-analytics.readonly",
         ]
         # Determine project root relative to this file
         self.project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -191,13 +193,18 @@ class YouTubeService:
     # VIDEO UPLOAD (Enhanced with post-upload actions)
     # ──────────────────────────────────────────────────────
 
-    def upload_video(self, file_path, title, description, tags=None, video_type="shorts"):
+    def upload_video(self, file_path, title, description, tags=None, video_type="shorts", publish_at=None):
         """
         Uploads a video to YouTube with chunked resumable upload.
         After upload, automatically:
           1. Adds to appropriate playlist
           2. Posts a pinned engagement comment
           3. Sets custom thumbnail (if available)
+
+        Args:
+          publish_at: Optional datetime (UTC). If provided, the video is uploaded
+                      as private with a publishAt so YouTube auto-flips to public
+                      at that time (peak-hour scheduling).
         """
         if not self.credentials or not self.youtube:
             print("   ⚠️ [YouTube]: Upload skipped (No credentials).")
@@ -244,6 +251,33 @@ class YouTubeService:
                 c_len += len(cl_tag) + 1
         upload_tags = sanitized_tags
         
+        # Determine privacy + scheduled publish
+        privacy_status = "public"
+        publish_at_iso = None
+        if publish_at is not None:
+            try:
+                # Must be at least a few minutes in the future
+                now = datetime.utcnow()
+                if publish_at.tzinfo is not None:
+                    publish_at_utc = publish_at.astimezone(tz=None).replace(tzinfo=None)
+                else:
+                    publish_at_utc = publish_at
+                if publish_at_utc > now + timedelta(minutes=5):
+                    privacy_status = "private"
+                    publish_at_iso = publish_at_utc.strftime("%Y-%m-%dT%H:%M:%S.000Z")
+                    print(f"   ⏰ [YouTube]: Scheduled publish at {publish_at_iso} (UTC)")
+                else:
+                    print(f"   ⚠️ [YouTube]: publish_at is in the past, uploading publicly now")
+            except Exception as e:
+                print(f"   ⚠️ [YouTube]: invalid publish_at ({e}), uploading publicly now")
+
+        status_dict = {
+            "privacyStatus": privacy_status,
+            "selfDeclaredMadeForKids": False,
+        }
+        if publish_at_iso:
+            status_dict["publishAt"] = publish_at_iso
+
         body = {
             "snippet": {
                 "title": upload_title,
@@ -251,10 +285,7 @@ class YouTubeService:
                 "tags": upload_tags,
                 "categoryId": "27" # Education
             },
-            "status": {
-                "privacyStatus": "public",
-                "selfDeclaredMadeForKids": False
-            }
+            "status": status_dict
         }
 
         # Chunk size: 50MB for large files, -1 for small files

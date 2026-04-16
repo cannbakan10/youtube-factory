@@ -44,6 +44,16 @@ logger = get_logger(__name__)
 # Plan file locations
 DAILY_PLAN_FILE = "data/daily_plan.json"
 NIGHTLY_LOG_DIR = "data/nightly_logs"
+WINNERS_FILE = "data/winners.json"
+PEAK_HOURS_FILE = "data/peak_hours.json"
+RETENTION_FILE = "data/retention_insights.json"
+
+# Winner amplification thresholds
+WINNER_MIN_VIEWS = 300          # Absolute minimum to qualify as winner
+WINNER_MULTIPLIER = 2.0         # Or 2x channel median views (whichever is higher)
+WINNER_STORE_MAX = 30           # Keep last 30 winners
+WINNER_MAX_VARIATIONS = 5       # Stop re-using a winner after 5 variations generated
+WINNER_SLOT_RATIO = 0.30        # 30% of new plan shorts should be winner variations
 
 # Turkish detection patterns
 TURKISH_CHARS = set("çğıöşüÇĞİÖŞÜ")
@@ -626,7 +636,7 @@ class NightlyBrainAgent:
     def generate_content_plan(self, trending: List[Dict], channel_videos: List[Dict] = None,
                               performance_review: Dict = None, viral_shorts: List[Dict] = None,
                               competitor_insights: List[Dict] = None, audience_desires: List[str] = None,
-                              ai_trends: List[Dict] = None) -> Dict:
+                              ai_trends: List[Dict] = None, active_winners: List[Dict] = None) -> Dict:
         """
         Analyze trending videos and create a content plan for tomorrow.
         Uses Gemini AI with deep insights from:
@@ -777,6 +787,31 @@ AI-CURATED VIRAL TRENDS (High Potential):
 PRIORITIZE these AI trends as they are specifically selected for Shorts viral potential!
 """
 
+            # Winner Amplification Section (our own channel's proven winners)
+            winners_section = ""
+            target_winner_count = 0
+            if active_winners:
+                target_winner_count = max(1, int(round(20 * WINNER_SLOT_RATIO)))
+                winner_list = "\n".join(
+                    f"  🏆 [id:{w['video_id']}] \"{w['title']}\" — {w['views']:,} views "
+                    f"({w.get('views_per_day', 0):.1f}/day, {w.get('engagement_rate', 0)}% eng)"
+                    for w in active_winners[:8]
+                )
+                winners_section = f"""
+
+🏆 YOUR CHANNEL'S OWN WINNERS (PROVEN high performers on this channel):
+{winner_list}
+
+CRITICAL WINNER AMPLIFICATION RULE:
+- At least {target_winner_count} of the 20 new Shorts MUST be FRESH VARIATIONS/angles
+  of these winning topics. These are PROVEN to work for THIS channel's audience.
+- Do NOT copy the exact title. Create NEW angles: different facts, counter-perspectives,
+  deeper dives, related sub-topics, "the truth about X", "X explained", part 2, etc.
+- For each winner-variation Short, add `"winner_source_id": "<video_id>"` field
+  pointing to the winner it was inspired by, and `"is_winner_variation": true`.
+- Regular (non-winner) shorts should have `"is_winner_variation": false`.
+"""
+
             prompt = f"""You are a YouTube content strategist for a channel called "StreamGlobal" 
 that creates English-language Shorts and ambient relaxation videos targeting a US audience.
 
@@ -790,6 +825,7 @@ Here are today's top 20 trending YouTube videos in the US:
 {top_20_summary}
 {channel_section}
 {perf_section}
+{winners_section}
 {viral_section}
 {competitor_section}
 {audience_section}
@@ -827,7 +863,9 @@ Output STRICT JSON format:
             "hook": "First 3 seconds hook text",
             "tags": ["tag1", "tag2", "tag3"],
             "inspired_by": "Which trending video/channel inspired this",
-            "estimated_views": "low/medium/high based on trend analysis"
+            "estimated_views": "low/medium/high based on trend analysis",
+            "is_winner_variation": false,
+            "winner_source_id": ""
         }}
     ],
     "ambient_recommendations": [
@@ -895,10 +933,29 @@ Output STRICT JSON format:
                 if removed > 0:
                     logger.info(f"  📊 Removed {removed} duplicate Shorts from plan ({len(filtered_shorts)} remaining)")
 
+            # ── WINNER VARIATION TRACKING ──
+            # Count variations per winner and bump their counters
+            winner_variation_count = 0
+            if active_winners and plan.get("shorts"):
+                valid_winner_ids = {w["video_id"] for w in active_winners}
+                bumped_ids = set()
+                for short in plan["shorts"]:
+                    if short.get("is_winner_variation") and short.get("winner_source_id") in valid_winner_ids:
+                        winner_variation_count += 1
+                        src_id = short["winner_source_id"]
+                        if src_id not in bumped_ids:
+                            self.mark_winner_variation(src_id)
+                            bumped_ids.add(src_id)
+                logger.info(
+                    f"🏆 Winner amplification: {winner_variation_count} shorts inspired by "
+                    f"{len(bumped_ids)} winners"
+                )
+
             # Add metadata
             plan["generated_at"] = datetime.utcnow().isoformat()
             plan["trending_count"] = len(trending)
             plan["channels_analyzed"] = len(seen_channels)
+            plan["winner_variations_count"] = winner_variation_count
             plan["status"] = "pending"
 
             shorts_count = len(plan.get("shorts", []))
@@ -1061,6 +1118,126 @@ Output STRICT JSON format:
     # ──────────────────────────────────────────────────────
     # MAIN: Run full nightly pipeline
     # ──────────────────────────────────────────────────────
+
+    # ──────────────────────────────────────────────────────
+    # WINNER AMPLIFICATION (Feedback Loop)
+    # ──────────────────────────────────────────────────────
+
+    def _winners_path(self) -> str:
+        return os.path.join(self.project_root, WINNERS_FILE)
+
+    def _load_winners(self) -> List[Dict]:
+        """Load persisted winner topics from disk."""
+        path = self._winners_path()
+        if not os.path.exists(path):
+            return []
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                return data.get("winners", []) if isinstance(data, dict) else data
+        except Exception as e:
+            logger.warning(f"Could not load winners: {e}")
+            return []
+
+    def _save_winners(self, winners: List[Dict]):
+        """Persist winner topics to disk."""
+        path = self._winners_path()
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        try:
+            with open(path, "w", encoding="utf-8") as f:
+                json.dump({
+                    "updated_at": datetime.utcnow().isoformat(),
+                    "winners": winners,
+                }, f, indent=2, ensure_ascii=False)
+        except Exception as e:
+            logger.warning(f"Could not save winners: {e}")
+
+    def update_winners_store(self, all_videos: List[Dict]) -> Dict:
+        """
+        Scan the channel and update the persistent winners store.
+        A video becomes a 'winner' if it exceeds:
+            max(WINNER_MIN_VIEWS, WINNER_MULTIPLIER * channel_shorts_median)
+
+        Keeps the top WINNER_STORE_MAX winners by views_per_day (freshness bias).
+        """
+        if not all_videos:
+            return {"added": 0, "total": 0}
+
+        shorts = [v for v in all_videos if v.get("is_shorts") and v.get("days_since_publish", 0) >= 2]
+        if not shorts:
+            return {"added": 0, "total": 0}
+
+        # Dynamic threshold
+        views_list = sorted([v["views"] for v in shorts])
+        median = views_list[len(views_list) // 2] if views_list else 0
+        threshold = max(WINNER_MIN_VIEWS, int(median * WINNER_MULTIPLIER))
+
+        existing = self._load_winners()
+        existing_ids = {w["video_id"] for w in existing}
+
+        added = 0
+        for v in shorts:
+            if v["views"] < threshold:
+                continue
+            if v["id"] in existing_ids:
+                continue
+            existing.append({
+                "video_id": v["id"],
+                "title": v["title"],
+                "views": v["views"],
+                "engagement_rate": v.get("engagement_rate", 0),
+                "views_per_day": v.get("views_per_day", 0),
+                "tags": v.get("tags", [])[:8],
+                "added_at": datetime.utcnow().isoformat(),
+                "variations_generated": 0,
+            })
+            added += 1
+
+        # Refresh stats on existing winners (views may have grown)
+        id_to_current = {v["id"]: v for v in shorts}
+        for w in existing:
+            current = id_to_current.get(w["video_id"])
+            if current:
+                w["views"] = current["views"]
+                w["views_per_day"] = current.get("views_per_day", w.get("views_per_day", 0))
+                w["engagement_rate"] = current.get("engagement_rate", w.get("engagement_rate", 0))
+
+        # Sort by views_per_day desc, keep top N
+        existing.sort(key=lambda w: (w.get("views_per_day", 0), w.get("views", 0)), reverse=True)
+        existing = existing[:WINNER_STORE_MAX]
+
+        self._save_winners(existing)
+
+        logger.info(
+            f"🏆 Winners store: +{added} new, {len(existing)} total "
+            f"(threshold: {threshold} views, median: {median})"
+        )
+        return {
+            "added": added,
+            "total": len(existing),
+            "threshold": threshold,
+            "median": median,
+        }
+
+    def get_active_winners(self, limit: int = 10) -> List[Dict]:
+        """
+        Return top winners that haven't been amplified too many times yet.
+        """
+        winners = self._load_winners()
+        active = [w for w in winners if w.get("variations_generated", 0) < WINNER_MAX_VARIATIONS]
+        return active[:limit]
+
+    def mark_winner_variation(self, winner_video_id: str):
+        """Increment variation counter so the same winner isn't re-used forever."""
+        winners = self._load_winners()
+        changed = False
+        for w in winners:
+            if w.get("video_id") == winner_video_id:
+                w["variations_generated"] = w.get("variations_generated", 0) + 1
+                changed = True
+                break
+        if changed:
+            self._save_winners(winners)
 
     # ──────────────────────────────────────────────────────
     # PERFORMANCE REVIEW (Feedback Loop)
@@ -1505,6 +1682,59 @@ Output STRICT JSON format:
         analytics = YouTubeAnalyticsAgent(youtube_service=self.youtube)
         channel_videos = analytics.get_all_videos(max_results=200)
 
+        # ─── WINNER AMPLIFICATION: scan channel for proven winners ───
+        winners_stats = self.update_winners_store(channel_videos)
+        active_winners = self.get_active_winners(limit=10)
+        nightly_report["winners"] = {
+            "added": winners_stats.get("added", 0),
+            "total": winners_stats.get("total", 0),
+            "threshold": winners_stats.get("threshold", 0),
+            "median": winners_stats.get("median", 0),
+            "active": len(active_winners),
+            "top": [
+                {
+                    "video_id": w["video_id"],
+                    "title": w["title"][:60],
+                    "views": w["views"],
+                    "views_per_day": round(w.get("views_per_day", 0), 1),
+                    "variations_generated": w.get("variations_generated", 0),
+                }
+                for w in active_winners[:5]
+            ],
+        }
+
+        # ─── PEAK HOUR DETECTION: find best UTC upload hours ───
+        peak_hours = analytics.get_peak_upload_hours(
+            videos=channel_videos, video_type="shorts"
+        )
+        peak_path = os.path.join(self.project_root, PEAK_HOURS_FILE)
+        os.makedirs(os.path.dirname(peak_path), exist_ok=True)
+        with open(peak_path, "w", encoding="utf-8") as f:
+            json.dump({
+                "updated_at": datetime.utcnow().isoformat(),
+                **peak_hours,
+            }, f, indent=2, ensure_ascii=False)
+        nightly_report["peak_hours"] = {
+            "utc": peak_hours.get("peak_hours_utc", []),
+            "source": peak_hours.get("source"),
+            "samples": peak_hours.get("sample_count", 0),
+        }
+
+        # ─── RETENTION INSIGHTS: fetch drop-off from YouTube Analytics v2 ───
+        retention = analytics.get_retention_insights(videos=channel_videos)
+        retention_path = os.path.join(self.project_root, RETENTION_FILE)
+        with open(retention_path, "w", encoding="utf-8") as f:
+            json.dump({
+                "updated_at": datetime.utcnow().isoformat(),
+                **retention,
+            }, f, indent=2, ensure_ascii=False)
+        nightly_report["retention"] = {
+            "avg_pct": retention.get("avg_view_percentage", 0),
+            "avg_dur_sec": retention.get("avg_view_duration_sec", 0),
+            "source": retention.get("source"),
+            "video_count": retention.get("video_count", 0),
+        }
+
         # Analyze ambient video performance
         ambient_analysis = analytics.analyze_ambient_performance()
         nightly_report["ambient_analysis"] = {
@@ -1527,6 +1757,7 @@ Output STRICT JSON format:
             competitor_insights=deep_trends.get("competitor_insights", []),
             audience_desires=deep_trends.get("audience_desires", []),
             ai_trends=deep_trends.get("ai_trends", []),
+            active_winners=active_winners,
         )
 
         # ─── PHASE 5: SEO Enrichment ───
@@ -1544,6 +1775,7 @@ Output STRICT JSON format:
         nightly_report["plan"] = {
             "shorts_planned": len(plan.get("shorts", [])),
             "ambient_recommendations": plan.get("ambient_recommendations", []),
+            "winner_variations_count": plan.get("winner_variations_count", 0),
             "shorts": [s.get("title", "?")[:50] for s in plan.get("shorts", [])],
         }
 
@@ -1578,6 +1810,15 @@ Output STRICT JSON format:
         print(f"   Deleted: {cleanup.get('deleted', 0)}")
         print(f"   Failed: {cleanup.get('failed', 0)}")
         print(f"   Kept: {cleanup.get('kept', 0)}")
+
+        winners = report.get("winners", {})
+        if winners.get("total", 0) > 0:
+            print(f"\n🏆 Winner Amplification:")
+            print(f"   Store: {winners.get('total', 0)} total (+{winners.get('added', 0)} new)")
+            print(f"   Threshold: {winners.get('threshold', 0)} views (median: {winners.get('median', 0)})")
+            print(f"   Active for variations: {winners.get('active', 0)}")
+            for w in winners.get("top", [])[:3]:
+                print(f"   🏆 {w['title']} ({w['views']:,} views, x{w['variations_generated']} used)")
 
         trending = report.get("trending", {})
         print(f"\n🇺🇸 Deep US Trending:")
