@@ -16,6 +16,11 @@ name: "🧠 Nightly Brain — Analytics, Cleanup & Planning"
 # ╚══════════════════════════════════════════════════════════╝
 
 on:
+  # Automated nightly run: 23:00 UTC = 02:00 TR = 18:00 EST
+  # (right before US prime-time so the plan is fresh for peak-hour uploads)
+  schedule:
+    - cron: '0 23 * * *'
+
   workflow_dispatch:
     inputs:
       dry_run:
