@@ -877,13 +877,35 @@ Output STRICT JSON format:
     ]
 }}
 """
-            response = self.gemini.models.generate_content(
-                model="gemini-2.0-flash",
-                contents=prompt,
-                config={"response_mime_type": "application/json"},
-            )
+            # ── Gemini generation with retry (transient 5xx / empty-response safety) ──
+            plan = None
+            last_err = None
+            for attempt in range(3):
+                try:
+                    response = self.gemini.models.generate_content(
+                        model="gemini-2.0-flash",
+                        contents=prompt,
+                        config={"response_mime_type": "application/json"},
+                    )
+                    raw_text = getattr(response, "text", None)
+                    if not raw_text or not raw_text.strip():
+                        raise ValueError(f"Gemini returned empty response (attempt {attempt+1})")
+                    plan = json.loads(raw_text)
+                    break
+                except json.JSONDecodeError as je:
+                    last_err = je
+                    logger.warning(
+                        f"Gemini JSON parse failed (attempt {attempt+1}/3): {je}. "
+                        f"Raw preview: {(raw_text or '')[:200]!r}"
+                    )
+                except Exception as ge:
+                    last_err = ge
+                    logger.warning(f"Gemini call failed (attempt {attempt+1}/3): {ge}")
+                if attempt < 2:
+                    time.sleep(2 ** attempt)  # 1s, 2s backoff
 
-            plan = json.loads(response.text)
+            if plan is None:
+                raise RuntimeError(f"All 3 Gemini attempts failed. Last error: {last_err}")
 
             # Ensure longform key exists (empty — ambient produced separately)
             plan["longform"] = []
@@ -964,37 +986,65 @@ Output STRICT JSON format:
             return plan
 
         except Exception as e:
+            import traceback
             logger.error(f"AI plan generation failed: {e}")
+            logger.error(f"Traceback:\n{traceback.format_exc()}")
+            logger.warning("⚠️ Falling back to manual plan (titles will be generic)")
             return self._manual_plan(trending, existing_titles_norm)
 
     def _manual_plan(self, trending: List[Dict], existing_titles_norm: set) -> Dict:
-        """Fallback plan without AI."""
+        """
+        Fallback plan without AI. Builds more varied titles than the old
+        'Facts About X' prefix — rotates through curiosity-gap templates.
+        """
+        hook_templates = [
+            "The Shocking Truth About {topic}",
+            "What Nobody Tells You About {topic}",
+            "The Hidden Secret Of {topic}",
+            "You Won't Believe This About {topic}",
+            "3 Mind-Blowing Facts About {topic}",
+            "The Dark Side Of {topic}",
+            "Why {topic} Changed Everything",
+            "This Will Change How You See {topic}",
+        ]
+
         shorts = []
         longform = []
 
-        for v in trending[:30]:
+        for v in trending[:40]:
             norm_title = self._normalize_title(v["title"])
             if norm_title in existing_titles_norm:
                 continue
 
-            if v["is_shorts"] and len(shorts) < 8:
+            # Clean/shorten source title for use as a topic noun phrase
+            raw_topic = v["title"][:50].strip().rstrip(".,!?…")
+            # Strip trailing "#shorts" style hashtags from derived topic
+            raw_topic = re.sub(r"#\w+", "", raw_topic).strip()
+            if len(raw_topic) < 4:
+                continue
+
+            if v.get("is_shorts") and len(shorts) < 20:
+                template = hook_templates[len(shorts) % len(hook_templates)]
                 shorts.append({
-                    "title": f"Facts About {v['title'][:40]}",
+                    "title": template.format(topic=raw_topic),
                     "topic": v["title"],
+                    "hook": f"You're about to learn something shocking about {raw_topic.lower()}.",
                     "tags": v.get("tags", [])[:5],
                     "inspired_by": v["title"],
                     "estimated_views": "medium",
+                    "is_winner_variation": False,
+                    "winner_source_id": "",
                 })
-            elif not v["is_shorts"] and len(longform) < 2:
+            elif not v.get("is_shorts") and len(longform) < 2:
                 longform.append({
-                    "title": f"Deep Dive: {v['title'][:40]}",
+                    "title": f"Deep Dive: {raw_topic}",
                     "topic": v["title"],
                     "tags": v.get("tags", [])[:5],
                     "inspired_by": v["title"],
                     "estimated_views": "medium",
                 })
 
-            if len(shorts) >= 8 and len(longform) >= 2:
+            if len(shorts) >= 20 and len(longform) >= 2:
                 break
 
         return {
@@ -1004,6 +1054,7 @@ Output STRICT JSON format:
             "generated_at": datetime.utcnow().isoformat(),
             "trending_count": len(trending),
             "status": "pending",
+            "fallback_mode": True,
         }
 
     def _extract_topics_from_trending(self, trending: List[Dict]) -> List[str]:
