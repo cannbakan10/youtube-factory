@@ -1,0 +1,232 @@
+{
+  "timestamp": "2026-04-16T18:32:09.193184",
+  "dry_run": false,
+  "performance_review": {
+    "total_recent": 25,
+    "winners_count": 11,
+    "losers_count": 8,
+    "avg_views_48h": 227.7,
+    "best_topics": [
+      "World's Strongest Eraser VS 5 Levels! - Short Documentary #S",
+      "Smooth Criminal Animation Meme: The New Viral Trend #Shorts",
+      "Transforming Safety: Frank's Impact on Our Streets #Shorts"
+    ],
+    "best_views": [
+      1004,
+      756,
+      753
+    ],
+    "winner_titles": [
+      "Don't Mess with the Chefs: The Art of Culinary Mastery #Shorts",
+      "Transforming Safety: Frank's Impact on Our Streets #Shorts",
+      "He Was Bored and Accidentally Discovered This 🐐 #Shorts",
+      "She Flipped His 3 Wheel: The Daring Race Showdown #Shorts",
+      "Smooth Criminal Animation Meme: The New Viral Trend #Shorts",
+      "World's Strongest Eraser VS 5 Levels! - Short Documentary #Shorts",
+      "Transforming Urban Safety: Frank's Innovative Solutions #Shorts",
+      "Epic Three-Wheel Flip Stunt - You Won't Believe This! #Shorts",
+      "World’s Strongest Eraser: 5 Levels of Erasing Power (#shorts) #Shorts",
+      "Mike Tyson: 1 Punch vs 18 Punches #Shorts",
+      "He Is Scratching Concrete Wall With A Fork 😲 #Shorts"
+    ],
+    "loser_titles": [
+      "Understanding Job Burnout: A Deep Dive into an Epidemic",
+      "The Keep Brawl Alive Community Event: A Celebration of Camaraderie",
+      "Glued Together: The Unlikely Humor in Film",
+      "A Tale of Resilience: Father and Daughter's Survival #Shorts",
+      "Diving Catches: The Thrill of Slow Pitch Softball and Baseball"
+    ]
+  },
+  "cleanup": {
+    "unlisted": 3,
+    "deleted": 8,
+    "failed": 0,
+    "kept": 296,
+    "thresholds": {
+      "shorts_7d": 75,
+      "shorts_14d": 150,
+      "shorts_30d": 300,
+      "long_14d": 75,
+      "long_30d": 150,
+      "multiplier": 1.5
+    }
+  },
+  "trending": {
+    "found": 86,
+    "viral_shorts_found": 30,
+    "competitors_analyzed": 3,
+    "comments_mined": 20,
+    "top_5": [
+      {
+        "title": "Just passing through\"?#shorts",
+        "views": 22419606,
+        "category": "Entertainment"
+      },
+      {
+        "title": "World’s Strongest Eraser VS 5 Levels… (#shorts)",
+        "views": 18567614,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "When father and daughter survives of the pressing of the q……",
+        "views": 18374036,
+        "category": "Entertainment"
+      },
+      {
+        "title": "They actually got glued together! 😱🤣 #movie #edit #police",
+        "views": 18136452,
+        "category": "Film & Animation"
+      },
+      {
+        "title": "He Tapped Back 💔",
+        "views": 17212888,
+        "category": "Entertainment"
+      }
+    ],
+    "top_viral_shorts": [
+      {
+        "title": "🌍 All “I” Countries in a Straight Line 😳🔥",
+        "views": 6310907,
+        "query": "country facts geography"
+      },
+      {
+        "title": "How do Astronauts shower in Space? 🚿🛰️ #space #science #univ",
+        "views": 2168981,
+        "query": "space facts universe"
+      },
+      {
+        "title": "What If This Creature Was Real? The Most Dangerous Ever! 😨 #",
+        "views": 1987781,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "Moments when the actors were not acting",
+        "views": 1913130,
+        "query": "amazing facts you didn't know"
+      },
+      {
+        "title": "Animals Found in the Most Weird Places",
+        "views": 1860221,
+        "query": "animal facts wildlife"
+      }
+    ]
+  },
+  "winners": {
+    "added": 61,
+    "total": 30,
+    "threshold": 460,
+    "median": 230,
+    "active": 10,
+    "top": [
+      {
+        "video_id": "QBB0NHSE9to",
+        "title": "He Is Scratching Concrete Wall With A Fork 😲 #Shorts",
+        "views": 750,
+        "views_per_day": 375.0,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "i9zdlQ68_zo",
+        "title": "The Agony of Injury: A Journey of Resilience #Shorts",
+        "views": 1007,
+        "views_per_day": 335.7,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "H_uulVZGqjw",
+        "title": "This Baby Evolved Mid Race | Nature's Incredible Adaptabilit",
+        "views": 1064,
+        "views_per_day": 266.0,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "qNvsWYjBiHU",
+        "title": "Mike Tyson: The Power of One Punch vs Eighteen #Shorts",
+        "views": 769,
+        "views_per_day": 256.3,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "bk6E_jLWxEs",
+        "title": "Scratching Concrete with a Fork: An Unexpected Art Technique",
+        "views": 1014,
+        "views_per_day": 253.5,
+        "variations_generated": 0
+      }
+    ]
+  },
+  "peak_hours": {
+    "utc": [
+      6
+    ],
+    "source": "channel_data",
+    "samples": 182
+  },
+  "retention": {
+    "avg_pct": 0,
+    "avg_dur_sec": 0,
+    "source": "unavailable",
+    "video_count": 0
+  },
+  "ambient_analysis": {
+    "total_ambient": 3,
+    "total_views": 13495,
+    "top_type": "fireplace",
+    "worst_type": "rain",
+    "type_rankings": [
+      {
+        "type": "fireplace",
+        "video_count": 2,
+        "total_views": 13158,
+        "avg_views": 6579,
+        "avg_views_per_day": 107.7,
+        "engagement_rate": 189.54,
+        "best_video": {
+          "title": "🔥 Cozy Fireplace 8 HOURS with Crackling Fire Sounds | Firepl",
+          "views": 12824,
+          "views_per_day": 210.2
+        }
+      },
+      {
+        "type": "rain",
+        "video_count": 1,
+        "total_views": 337,
+        "avg_views": 337,
+        "avg_views_per_day": 5.0,
+        "engagement_rate": 2.08,
+        "best_video": {
+          "title": "1 Hour Rainy Night Ambience (60 Minutes)",
+          "views": 337,
+          "views_per_day": 5.0
+        }
+      }
+    ]
+  },
+  "plan": {
+    "shorts_planned": 20,
+    "ambient_recommendations": [],
+    "winner_variations_count": 0,
+    "shorts": [
+      "The Shocking Truth About Just passing through\"?",
+      "What Nobody Tells You About World’s Strongest Eras",
+      "The Hidden Secret Of When father and daughter surv",
+      "You Won't Believe This About Orlando mom calls for",
+      "3 Mind-Blowing Facts About How To Make A Candle Fr",
+      "The Dark Side Of She flipped his 3 wheel",
+      "Why That Was A Crazy Trick 🔥 | How I Met Your Moth",
+      "This Will Change How You See don't mess with the c",
+      "The Shocking Truth About Zip Lining Over a Ravine ",
+      "What Nobody Tells You About The doctor  resolved t",
+      "The Hidden Secret Of How to always win tic tac toe",
+      "You Won't Believe This About The soldier sacrifice",
+      "3 Mind-Blowing Facts About POV: Apple Creating New",
+      "The Dark Side Of He Made His Mom Proud 🫡 @Deestroy",
+      "Why Never Bring Your Bald Dad To An NBA Game 💀 Cha",
+      "This Will Change How You See Bro Is A Lost Cause 💀",
+      "The Shocking Truth About The broom prank never rea",
+      "What Nobody Tells You About He Accidentally Washed",
+      "The Hidden Secret Of When Pushing Your Older Broth",
+      "You Won't Believe This About In Wednesday (2022), "
+    ]
+  }
+}
