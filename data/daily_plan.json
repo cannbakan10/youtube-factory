@@ -16,7 +16,9 @@
         "just passing by meme",
         "just passing thru"
       ],
-      "optimized_title": "The Shocking Truth About Just passing through\"? | Just Passing Through Song"
+      "optimized_title": "The Shocking Truth About Just passing through\"? | Just Passing Through Song",
+      "status": "produced",
+      "production_id": "Just_passing_throughshorts_1776421106"
     },
     {
       "title": "What Nobody Tells You About World’s Strongest Eraser VS 5 Levels… ()",
@@ -307,6 +309,12 @@
   ],
   "generated_at": "2026-04-16T23:20:24.125317",
   "trending_count": 85,
-  "status": "pending",
-  "fallback_mode": true
+  "status": "in_progress",
+  "fallback_mode": true,
+  "last_executed_at": "2026-04-17T10:19:00.195066",
+  "results": {
+    "shorts_produced": 1,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
