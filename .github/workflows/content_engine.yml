@@ -24,6 +24,11 @@ name: "🎬 Content Engine — Shorts Production"
 # ╚══════════════════════════════════════════════════════════╝
 
 on:
+  # Automated batches across 24h (UTC) to catch all timezones.
+  # Each batch produces 2 Shorts → 16 Shorts/day total.
+  schedule:
+    - cron: '0 6,9,12,14,16,18,20,22 * * *'
+
   workflow_dispatch:
     inputs:
       count:

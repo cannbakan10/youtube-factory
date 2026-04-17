@@ -685,8 +685,10 @@ class NightlyBrainAgent:
                 for i, v in enumerate(trending[:20])
             )
 
-            # Show much more history to Gemini (last 150 titles)
-            history_text = "\n".join(existing_titles_raw[:150]) if existing_titles_raw else "None"
+            # Last 80 titles is enough to detect repeats — larger history
+            # bloats the prompt and can push us past Gemini's response budget,
+            # which was triggering silent fallbacks to _manual_plan.
+            history_text = "\n".join(existing_titles_raw[:80]) if existing_titles_raw else "None"
             saturated_text = "\n".join(saturated_topics) if saturated_topics else "None"
 
             # Extract channel insights for the prompt

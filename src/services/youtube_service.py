@@ -94,11 +94,19 @@ ENGAGEMENT_COMMENTS = {
 
 class YouTubeService:
     def __init__(self):
+        # Core scopes — MUST be present in token. Do NOT add new required scopes
+        # here without coordinating a token refresh; an extra required scope
+        # will invalidate existing tokens in CI and break ALL uploads.
         self.scopes = [
             "https://www.googleapis.com/auth/youtube",
             "https://www.googleapis.com/auth/youtube.upload",
             "https://www.googleapis.com/auth/youtube.readonly",
             "https://www.googleapis.com/auth/youtube.force-ssl",
+        ]
+        # Optional scopes — requested during re-auth but NOT required for uploads.
+        # yt-analytics.readonly powers get_retention_insights(); if missing,
+        # retention feedback is skipped gracefully instead of blocking uploads.
+        self.optional_scopes = [
             "https://www.googleapis.com/auth/yt-analytics.readonly",
         ]
         # Determine project root relative to this file
@@ -179,8 +187,11 @@ class YouTubeService:
                     return None
                 else:
                     print("   🌐 [YouTube]: Starting local authentication flow...")
+                    # Ask for core + optional scopes during interactive re-auth
                     flow = InstalledAppFlow.from_client_secrets_file(
-                        self.client_secrets_file, self.scopes)
+                        self.client_secrets_file,
+                        self.scopes + self.optional_scopes,
+                    )
                     creds = flow.run_local_server(port=0)
             
             # Save the credentials for the next run
