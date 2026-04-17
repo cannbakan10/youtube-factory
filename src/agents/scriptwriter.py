@@ -33,7 +33,7 @@ class VideoBlueprint(BaseModel):
 
 
 class ScriptWriter:
-    GEMINI_MODELS = ["gemini-2.0-flash", "gemini-2.0-flash-lite", "gemini-1.5-flash"]
+    GEMINI_MODELS = ["gemini-2.5-flash", "gemini-2.0-flash-lite", "gemini-1.5-flash"]
 
     def __init__(self):
         self.gemini_key = os.getenv("GEMINI_API_KEY")
@@ -42,12 +42,18 @@ class ScriptWriter:
         self.oa_client = None
         if self.openai_key:
             import httpx
+            # Warn if key looks malformed (helps diagnose Connection error)
+            if not (self.openai_key.startswith("sk-") or self.openai_key.startswith("sess-")):
+                logger.warning(
+                    f"OPENAI_API_KEY does not start with 'sk-' (starts with {self.openai_key[:6]!r}). "
+                    "This may cause Connection error."
+                )
             self.oa_client = OpenAI(
                 api_key=self.openai_key,
                 timeout=httpx.Timeout(60.0, connect=10.0),
                 max_retries=3,
             )
-        self.model = "gemini-2.0-flash"
+        self.model = "gemini-2.5-flash"
         self.oa_model = "gpt-4o-mini"
         self.project_root = os.path.dirname(
             os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

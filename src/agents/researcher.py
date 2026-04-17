@@ -10,16 +10,25 @@ logger = get_logger(__name__)
 
 
 class ResearchAgent:
+    GEMINI_MODELS = ["gemini-2.5-flash", "gemini-2.0-flash-lite", "gemini-1.5-flash"]
+
     def __init__(self):
         # Ultra-Clean Key Loading
         self.gemini_key = os.getenv("GEMINI_API_KEY", "").strip().replace('"', '').replace("'", "")
         self.openai_key = os.getenv("OPENAI_API_KEY", "").strip().replace('"', '').replace("'", "")
         self.client = genai.Client(api_key=self.gemini_key) if self.gemini_key else None
-        self.oa_client = OpenAI(api_key=self.openai_key) if self.openai_key else None
+        self.oa_client = None
+        if self.openai_key:
+            import httpx
+            self.oa_client = OpenAI(
+                api_key=self.openai_key,
+                timeout=httpx.Timeout(60.0, connect=10.0),
+                max_retries=3,
+            )
 
         tavily_key = os.getenv("TAVILY_API_KEY", "").strip().replace('"', '').replace("'", "")
         self.tavily = TavilyClient(api_key=tavily_key) if tavily_key else None
-        self.model = "gemini-2.0-flash"
+        self.model = "gemini-2.5-flash"
         self.oa_model = "gpt-4o-mini"
 
     def research(self, topic):
@@ -101,18 +110,28 @@ class ResearchAgent:
                 results.append(f"Content: {r['body']}")
         return results
 
-    @retry_with_backoff(max_retries=2, base_delay=2.0)
     def _generate_report_gemini(self, prompt):
-        """Generate report using Gemini with retry support."""
+        """Generate report using Gemini with model fallback chain."""
         if not self.client:
             raise ValueError("Gemini client not configured")
-        APIRateLimiters.gemini.wait()
 
-        response = self.client.models.generate_content(
-            model=self.model,
-            contents=prompt
-        )
-        return response.text
+        last_err = None
+        for model in self.GEMINI_MODELS:
+            try:
+                APIRateLimiters.gemini.wait()
+                response = self.client.models.generate_content(model=model, contents=prompt)
+                text = getattr(response, "text", None)
+                if text and text.strip():
+                    return text
+                raise ValueError(f"{model} returned empty response")
+            except Exception as e:
+                last_err = e
+                err_str = str(e).lower()
+                if "not_found" in err_str or "404" in err_str or "resource_exhausted" in err_str or "429" in err_str:
+                    logger.warning(f"Research: {model} unavailable, trying next...")
+                    continue
+                raise
+        raise last_err or RuntimeError("All Gemini models exhausted")
 
     @retry_with_backoff(max_retries=2, base_delay=2.0)
     def _generate_report_openai(self, prompt):

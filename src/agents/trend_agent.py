@@ -17,7 +17,8 @@ class TrendAgent:
         raw_key = os.getenv("GEMINI_API_KEY", "")
         self.gemini_key = raw_key.strip().replace('"', '').replace("'", "")
         self.client = genai.Client(api_key=self.gemini_key) if self.gemini_key else None
-        self.model = "gemini-2.0-flash"
+        self.model = "gemini-2.5-flash"
+        self.fallback_models = ["gemini-2.0-flash-lite", "gemini-1.5-flash"]
 
     def get_trending_topics(self, region="USA", category="General", count=5) -> List[dict]:
         """
@@ -57,16 +58,26 @@ class TrendAgent:
         ]
         """
 
-        # Using Gemini 2.0 Flash's search capability
-        response = self.client.models.generate_content(
-            model=self.model,
-            contents=prompt,
-            config={'response_mime_type': 'application/json'}
-        )
-
-        topics = json.loads(response.text)
-        logger.info(f"Found {len(topics)} trending topics")
-        return topics
+        # Try primary model, then fallbacks if 404/quota error
+        last_err = None
+        for model in [self.model] + self.fallback_models:
+            try:
+                response = self.client.models.generate_content(
+                    model=model,
+                    contents=prompt,
+                    config={'response_mime_type': 'application/json'}
+                )
+                topics = json.loads(response.text)
+                logger.info(f"Found {len(topics)} trending topics ({model})")
+                return topics
+            except Exception as e:
+                last_err = e
+                err_str = str(e).lower()
+                if "not_found" in err_str or "404" in err_str or "resource_exhausted" in err_str or "429" in err_str:
+                    logger.warning(f"Trends: {model} unavailable, trying next...")
+                    continue
+                raise
+        raise last_err or RuntimeError("All Gemini models exhausted")
 
 
 if __name__ == "__main__":
