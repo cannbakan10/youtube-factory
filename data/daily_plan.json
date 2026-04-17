@@ -2,356 +2,321 @@
   "date": "2026-04-18",
   "shorts": [
     {
-      "title": "Unbreakable Fabrics: Material Strength Explained",
-      "topic": "Exploring the material properties and engineering behind ultra-durable textiles, comparing different types of strong fabrics.",
-      "hook": "Ever wonder what makes some fabrics impossible to tear? It's not magic, it's material science!",
+      "title": "The Unbreakable: What Really Stops a Hydraulic Press?",
+      "topic": "Exploring extreme material strength tests using common objects and industrial machinery, detailing unexpected outcomes.",
+      "hook": "Think a diamond is unbreakable? Wait till you see this!",
+      "tags": [
+        "engineering",
+        "materials",
+        "strengthtest",
+        "hydraulicpress",
+        "facts"
+      ],
+      "inspired_by": "World’s Strongest Eraser VS 5 Levels… (trending & own winner)",
+      "estimated_views": "high",
+      "is_winner_variation": true,
+      "winner_source_id": "n2FBDPG5dNk"
+    },
+    {
+      "title": "Chefs' Secret Weapon: The Ingredient That Changes Everything",
+      "topic": "A deep dive into bizarre or rare ingredients professional chefs use to elevate dishes, or extreme cooking competitions.",
+      "hook": "Forget salt and pepper. This ingredient is culinary gold!",
+      "tags": [
+        "culinary",
+        "cooking",
+        "foodfacts",
+        "gastronomy",
+        "chef"
+      ],
+      "inspired_by": "Perfect Steak Hack (trending) & Don't Mess with the Chefs (own winner)",
+      "estimated_views": "medium",
+      "is_winner_variation": true,
+      "winner_source_id": "phGsPGsSL80"
+    },
+    {
+      "title": "Gravity Defied: The Impossible Balance Behind Crazy Stunts",
+      "topic": "Examining the counter-intuitive physics and engineering that allow daredevils to perform seemingly impossible balancing acts and vehicle stunts.",
+      "hook": "You think this stunt is impossible? The science says otherwise!",
+      "tags": [
+        "physics",
+        "stunts",
+        "engineering",
+        "gravity",
+        "extreme"
+      ],
+      "inspired_by": "She Flipped His 3 Wheel (own winner)",
+      "estimated_views": "medium",
+      "is_winner_variation": true,
+      "winner_source_id": "YmYZ91LkiCg"
+    },
+    {
+      "title": "The Mind's Ultimate Test: Surviving Extreme Conditions",
+      "topic": "Stories of individuals who used incredible mental toughness to overcome dire, life-threatening situations far beyond typical physical injuries.",
+      "hook": "It's not just physical pain. This is what true mental strength looks like!",
+      "tags": [
+        "resilience",
+        "survival",
+        "psychology",
+        "mindset",
+        "overcome"
+      ],
+      "inspired_by": "The Agony of Injury (own winner)",
+      "estimated_views": "medium",
+      "is_winner_variation": true,
+      "winner_source_id": "i9zdlQ68_zo"
+    },
+    {
+      "title": "The Fork's True Power: Beyond the Dinner Table",
+      "topic": "Showcasing various, often absurd, alternative uses for common household objects that go far beyond their intended design, revealing surprising utility.",
+      "hook": "This isn't just a fork. It's a tool you never knew you needed!",
+      "tags": [
+        "hacks",
+        "DIY",
+        "unconventional",
+        "everydayobjects",
+        "clever"
+      ],
+      "inspired_by": "He Is Scratching Concrete Wall With A Fork (own winner) & How To Make A Candle From An Orange (trending)",
+      "estimated_views": "high",
+      "is_winner_variation": true,
+      "winner_source_id": "QBB0NHSE9to"
+    },
+    {
+      "title": "Instant Evolution: Animals That Adapt at Lightning Speed",
+      "topic": "Focusing on specific animal species demonstrating remarkably rapid adaptations to changing environments or new threats, showcasing micro-evolution in action.",
+      "hook": "These creatures don't just survive; they adapt FASTER than you can imagine!",
+      "tags": [
+        "animals",
+        "adaptations",
+        "biology",
+        "wildlife",
+        "evolution"
+      ],
+      "inspired_by": "This Baby Evolved Mid Race (own winner) & How Animals Teach Their Young (viral niche)",
+      "estimated_views": "high",
+      "is_winner_variation": true,
+      "winner_source_id": "H_uulVZGqjw"
+    },
+    {
+      "title": "AI's Medical Miracle: Curing Diseases Faster Than Ever",
+      "topic": "Exploring how artificial intelligence is revolutionizing drug discovery, accelerating the identification of new treatments and potential cures for complex diseases.",
+      "hook": "What if a computer could find a cure? AI is making it happen!",
+      "tags": [
+        "AI",
+        "medicine",
+        "healthtech",
+        "breakthrough",
+        "future"
+      ],
+      "inspired_by": "AI's Rapid Drug Discovery Breakthroughs (AI-Curated Trend)",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Pentagon's Secret: The Truth About Declassified UAPs",
+      "topic": "Delving into recently declassified government reports and public disclosures regarding Unidentified Aerial Phenomena (UAPs) and what they actually reveal.",
+      "hook": "They said it wasn't real. The Pentagon just proved them wrong!",
+      "tags": [
+        "UAP",
+        "UFO",
+        "declassified",
+        "governmentsecrets",
+        "extraterrestrial"
+      ],
+      "inspired_by": "Declassified UFO Reports: What the Pentagon Revealed (AI-Curated Trend)",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Editing Life: CRISPR's Impact on Our Genetic Future",
+      "topic": "The latest advancements in CRISPR gene-editing technology, showcasing its potential to treat and potentially eradicate genetic disorders in humans.",
+      "hook": "Imagine rewriting your DNA. CRISPR is making it possible!",
+      "tags": [
+        "CRISPR",
+        "genetics",
+        "biotechnology",
+        "medicaladvances",
+        "futurehealth"
+      ],
+      "inspired_by": "CRISPR Gene Editing: Curing Diseases on the Horizon (AI-Curated Trend)",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "The Future Is Here: Meet Your New Robot Coworker",
+      "topic": "Showcasing advanced humanoid robots performing complex tasks and discussing the implications and integration of AI-powered robots into daily life and various industries.",
+      "hook": "Robots are coming for our jobs... and they're bringing coffee!",
+      "tags": [
+        "robotics",
+        "AI",
+        "futuretech",
+        "automation",
+        "innovation"
+      ],
+      "inspired_by": "The Latest in Humanoid Robotics & AI Integration (AI-Curated Trend)",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Who Built This? Megalithic Structures That Defy Logic",
+      "topic": "Exploring pre-recorded history megalithic structures around the world (like Puma Punku or Gobekli Tepe) whose construction methods continue to baffle modern engineers.",
+      "hook": "These structures were built thousands of years ago... but HOW?",
+      "tags": [
+        "megaliths",
+        "archeology",
+        "engineeringmarvels",
+        "losttech",
+        "historyfacts"
+      ],
+      "inspired_by": "Ancient Civilizations' Unexplained Megastructures (AI-Curated Trend)",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Ocean's Depths: Creatures You Won't Believe Exist",
+      "topic": "Unveiling bizarre and newly discovered species and ecosystems from ongoing deep-ocean exploration missions, highlighting the mysteries of the planet's last frontier.",
+      "hook": "The ocean is home to aliens... and we just found them!",
+      "tags": [
+        "deepsea",
+        "oceanlife",
+        "marinelife",
+        "discoveries",
+        "ecosystems"
+      ],
+      "inspired_by": "Deep-Sea Discoveries: New Species and Ecosystems (AI-Curated Trend)",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Beyond Your Laptop: The Quantum Computing Revolution",
+      "topic": "Explaining recent breakthroughs in quantum computing and how this revolutionary technology is moving closer to practical applications in various fields.",
+      "hook": "Your phone is smart. Quantum computers are on a whole other level!",
+      "tags": [
+        "quantumcomputing",
+        "tech",
+        "futuretech",
+        "innovation",
+        "physics"
+      ],
+      "inspired_by": "Quantum Computing's Leap Towards Practicality (AI-Curated Trend)",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "America's Forgotten Battle: A Civil War Gold Heist?",
+      "topic": "Investigating a specific, little-known event from US history, such as a surprising incident during the Civil War or a lesser-known presidential scandal.",
+      "hook": "Forget what you learned in school. This US history fact will shock you!",
+      "tags": [
+        "UShistory",
+        "forgottenevents",
+        "civilwar",
+        "goldheist",
+        "historicalfacts"
+      ],
+      "inspired_by": "Untold Stories of Forgotten US Historical Events (AI-Curated Trend)",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Unlimited Power: The Race for Fusion Energy",
+      "topic": "Updates on major fusion research projects and the latest progress towards achieving net-energy gain, moving us closer to a clean and limitless power source.",
+      "hook": "Imagine power with no waste, no limits. It's almost here!",
+      "tags": [
+        "fusionenergy",
+        "cleantech",
+        "energy",
+        "innovation",
+        "futurepower"
+      ],
+      "inspired_by": "Breakthroughs in Fusion Energy: A Clean Power Future? (AI-Curated Trend)",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Is Earth 2.0 Out There? The Hunt for Alien Worlds",
+      "topic": "The latest discoveries in exoplanet hunting, focusing on potentially habitable worlds and new techniques used to search for signs of extraterrestrial life.",
+      "hook": "They found another one! Is this our new home, or someone else's?",
+      "tags": [
+        "exoplanets",
+        "space",
+        "alienlife",
+        "astronomy",
+        "cosmos"
+      ],
+      "inspired_by": "Exoplanet Hunting: Searching for Earth 2.0 (AI-Curated Trend)",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Pisa's Secret: The Unsinkable Tower's Engineering Trick",
+      "topic": "The surprising geological and engineering factors that have prevented the Leaning Tower of Pisa from collapsing despite its famous tilt over centuries.",
+      "hook": "It defies gravity! How is the Leaning Tower of Pisa still standing?",
+      "tags": [
+        "Pisa",
+        "engineering",
+        "history",
+        "architecture",
+        "gravity"
+      ],
+      "inspired_by": "Why the Leaning Tower of Pisa Still Hasn’t Fallen After 850 Years! (Viral Niche)",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Bulletproof Glass VS. The Impossible Shot: Can It Hold?",
+      "topic": "An exploration of extreme durability tests, focusing on the composition and limits of bulletproof glass against increasingly powerful impacts.",
+      "hook": "You think it's strong? Watch what happens when we push it to its limit!",
       "tags": [
         "durability",
+        "ballistics",
         "materials",
-        "engineering",
-        "textiles",
-        "strong fabrics",
-        "tech facts"
+        "technology",
+        "safetyscience"
       ],
-      "inspired_by": "Your Channel Winner: World's Strongest Eraser VS 5 Levels!",
-      "estimated_views": "high",
-      "is_winner_variation": true,
-      "winner_source_id": "n2FBDPG5dNk",
-      "status": "produced",
-      "production_id": "Exploring_the_material_propert_1776423666"
-    },
-    {
-      "title": "Meme Magic: How Viral Trends Are Born",
-      "topic": "A deep dive into the psychology and mechanics of how internet memes spread, evolve, and become global phenomena.",
-      "hook": "One day it's just a funny picture, the next it's everywhere. This is the secret of meme virality!",
-      "tags": [
-        "internet culture",
-        "viral trends",
-        "memes explained",
-        "social media",
-        "digital trends",
-        "pop culture"
-      ],
-      "inspired_by": "Your Channel Winner: Smooth Criminal Animation Meme: The New Viral Trend",
-      "estimated_views": "medium",
-      "is_winner_variation": true,
-      "winner_source_id": "Nye4U42Ksrg",
-      "status": "produced",
-      "production_id": "A_deep_dive_into_the_psycholog_1776424066"
-    },
-    {
-      "title": "Cities That Heal: Urban Planning for Well-being",
-      "topic": "Examining innovative urban planning strategies and design choices that actively improve public safety and community health.",
-      "hook": "Can a city's design make you feel safer? Discover how smart urban planning transforms lives!",
-      "tags": [
-        "urban planning",
-        "city design",
-        "public safety",
-        "community health",
-        "urban innovation",
-        "design facts"
-      ],
-      "inspired_by": "Your Channel Winner: Transforming Safety: Frank's Impact on Our Streets",
-      "estimated_views": "medium",
-      "is_winner_variation": true,
-      "winner_source_id": "1N59aTz4khM",
-      "status": "produced",
-      "production_id": "Examining_innovative_urban_pla_1776424506"
-    },
-    {
-      "title": "Chef's Secrets: Mastery Beyond the Recipe",
-      "topic": "Unveiling the precise techniques, hidden knowledge, and artistic flair that elevate a good chef to a culinary master.",
-      "hook": "Why do some dishes just taste better? It's not just the recipe, it's the chef's hidden mastery!",
-      "tags": [
-        "culinary arts",
-        "cooking tips",
-        "chef skills",
-        "food mastery",
-        "kitchen expertise",
-        "gastronomy"
-      ],
-      "inspired_by": "Your Channel Winner: Don't Mess with the Chefs: The Art of Culinary Mastery",
-      "estimated_views": "medium",
-      "is_winner_variation": true,
-      "winner_source_id": "phGsPGsSL80",
-      "status": "produced",
-      "production_id": "Unveiling_the_precise_techniqu_1776424869"
-    },
-    {
-      "title": "Gravity Defied: The Physics of Wild Stunts",
-      "topic": "Exploring the scientific principles and extreme engineering that allow daredevils to perform seemingly impossible acrobatic feats and vehicle stunts.",
-      "hook": "How do stunt performers pull off those insane tricks? It's all about bending the rules of physics!",
-      "tags": [
-        "stunts",
-        "physics explained",
-        "extreme sports",
-        "acrobatics",
-        "engineering feats",
-        "daredevil"
-      ],
-      "inspired_by": "Your Channel Winner: She Flipped His 3 Wheel: The Daring Race Showdown",
-      "estimated_views": "high",
-      "is_winner_variation": true,
-      "winner_source_id": "YmYZ91LkiCg",
-      "status": "produced",
-      "production_id": "Exploring_the_scientific_princ_1776429231"
-    },
-    {
-      "title": "Body's Comeback: Athlete Recovery Tactics",
-      "topic": "A look at the physiological processes and advanced techniques athletes use to recover from severe injuries and return to peak performance.",
-      "hook": "Injuries can end a career, but athletes have incredible ways to fight back. Discover the body's comeback tactics!",
-      "tags": [
-        "athlete recovery",
-        "sports medicine",
-        "human physiology",
-        "healing process",
-        "fitness facts",
-        "resilience"
-      ],
-      "inspired_by": "Your Channel Winner: The Agony of Injury: A Journey of Resilience",
-      "estimated_views": "medium",
-      "is_winner_variation": true,
-      "winner_source_id": "i9zdlQ68_zo",
-      "status": "produced",
-      "production_id": "A_look_at_the_physiological_pr_1776429691"
-    },
-    {
-      "title": "Survival Instincts: Remarkable Animal Adaptations",
-      "topic": "Showcasing the incredible evolutionary adaptations and instinctual behaviors that allow animals to thrive in challenging environments.",
-      "hook": "From camouflage to extreme endurance, animals have developed mind-blowing strategies to survive!",
-      "tags": [
-        "animal behavior",
-        "evolution",
-        "wildlife survival",
-        "biological facts",
-        "animal facts",
-        "adaptations"
-      ],
-      "inspired_by": "Your Channel Winner: This Baby Evolved Mid Race | Nature's Incredible Adaptability",
-      "estimated_views": "high",
-      "is_winner_variation": true,
-      "winner_source_id": "H_uulVZGqjw",
-      "status": "produced",
-      "production_id": "Showcasing_the_incredible_evol_1776436556"
-    },
-    {
-      "title": "Cosmic Wonders: Webb's Exoplanet Discoveries",
-      "topic": "Highlighting the latest, most exciting exoplanet discoveries made by the James Webb Space Telescope and what they mean for the search for life.",
-      "hook": "The Webb Telescope is showing us worlds we never imagined! Get ready for mind-bending exoplanet facts.",
-      "tags": [
-        "JWST",
-        "exoplanets",
-        "space exploration",
-        "cosmology",
-        "astronomy",
-        "universe facts"
-      ],
-      "inspired_by": "AI-Curated Viral Trend: The Webb Telescope's Latest Exoplanet Discoveries",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": "",
-      "status": "produced",
-      "production_id": "Highlighting_the_latest_most_e_1776436952"
-    },
-    {
-      "title": "The Great Filter: Humanity's Ultimate Test?",
-      "topic": "Exploring the Great Filter theory, a hypothesis explaining why we haven't found extraterrestrial life, and what it implies for human civilization's future.",
-      "hook": "Is there a cosmic barrier stopping civilizations from reaching us? The Great Filter theory explains all!",
-      "tags": [
-        "fermi paradox",
-        "great filter",
-        "exolife",
-        "existential risk",
-        "cosmic theories",
-        "humanity future"
-      ],
-      "inspired_by": "AI-Curated Viral Trend: The Great Filter Theory: Are We Doomed by AI?",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": "",
-      "status": "produced",
-      "production_id": "Exploring_the_Great_Filter_the_1776443304"
-    },
-    {
-      "title": "Roman Genius: Engineering Feats That Endure",
-      "topic": "Showcasing the unparalleled architectural and engineering achievements of the Roman Empire, from aqueducts to roads, that still stand today.",
-      "hook": "The Romans built things that defied their time! Discover the engineering feats that prove their genius.",
-      "tags": [
-        "roman empire",
-        "engineering history",
-        "architecture",
-        "roman technology",
-        "historical facts",
-        "construction"
-      ],
-      "inspired_by": "AI-Curated Viral Trend: Untold Secrets of Ancient Roman Engineering",
-      "estimated_views": "medium",
-      "is_winner_variation": false,
-      "winner_source_id": "",
-      "status": "produced",
-      "production_id": "Showcasing_the_unparalleled_ar_1776443769"
-    },
-    {
-      "title": "Deepfake Reality: The Perils of AI Deception",
-      "topic": "An examination of deepfake technology, its creation, its implications for misinformation, and how to spot digitally altered media.",
-      "hook": "Seeing isn't always believing. Deepfakes are here, and they're more convincing than you think!",
-      "tags": [
-        "deepfake",
-        "ai technology",
-        "misinformation",
-        "digital ethics",
-        "ai risks",
-        "media literacy"
-      ],
-      "inspired_by": "AI-Curated Viral Trend: Deepfake Technology: The New Frontier of Deception",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": "",
-      "status": "produced",
-      "production_id": "An_examination_of_deepfake_tec_1776450465"
-    },
-    {
-      "title": "Sleep Mysteries: Unpacking Dreams and Paralysis",
-      "topic": "Investigating the psychological and physiological aspects of dreams, nightmares, and the unsettling phenomenon of sleep paralysis.",
-      "hook": "What really happens when you dream, and why can't you move during sleep paralysis? Uncover your sleep's deepest secrets.",
-      "tags": [
-        "dreams",
-        "sleep paralysis",
-        "psychology facts",
-        "sleep disorders",
-        "brain function",
-        "mind facts"
-      ],
-      "inspired_by": "AI-Curated Viral Trend: The Science Behind Dreams and Sleep Paralysis",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": "",
-      "status": "produced",
-      "production_id": "Investigating_the_psychologica_1776450900"
-    },
-    {
-      "title": "Microplastic Health Crisis: What You Don't Know",
-      "topic": "Uncovering the pervasive issue of microplastics in our environment and bodies, detailing their sources, effects, and global impact.",
-      "hook": "You're probably consuming microplastics right now. The shocking truth about their global health crisis!",
-      "tags": [
-        "microplastics",
-        "environmental health",
-        "pollution",
-        "health risks",
-        "plastic waste",
-        "global impact"
-      ],
-      "inspired_by": "AI-Curated Viral Trend: New Discoveries in Microplastics' Impact on Health",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": "",
-      "status": "produced",
-      "production_id": "Uncovering_the_pervasive_issue_1776457337"
-    },
-    {
-      "title": "Dyatlov Pass Enigma: The Bizarre Truth?",
-      "topic": "Revisiting the perplexing Dyatlov Pass incident, exploring the leading theories and strange circumstances surrounding the hikers' deaths.",
-      "hook": "Nine experienced hikers vanished in the snow. What really happened at Dyatlov Pass? The truth is chilling!",
-      "tags": [
-        "dyatlov pass",
-        "unexplained events",
-        "true crime",
-        "historical enigma",
-        "survival stories",
-        "conspiracy theories"
-      ],
-      "inspired_by": "AI-Curated Viral Trend: The Unsolved Mystery of the Dyatlov Pass Incident",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": "",
-      "status": "produced",
-      "production_id": "Revisiting_the_perplexing_Dyat_1776457701"
-    },
-    {
-      "title": "AI & Art: The Creative Collision",
-      "topic": "A discussion on the evolving relationship between Artificial Intelligence and creative arts, examining its potential and ethical considerations.",
-      "hook": "Is AI the future of art, or a threat? Explore the fascinating collision between algorithms and creativity!",
-      "tags": [
-        "ai art",
-        "generative ai",
-        "art technology",
-        "creative industries",
-        "ai ethics",
-        "digital art"
-      ],
-      "inspired_by": "AI-Curated Viral Trend: AI's Role in Creative Arts: Revolution or Threat?",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": "",
-      "status": "produced",
-      "production_id": "A_discussion_on_the_evolving_r_1776464466"
-    },
-    {
-      "title": "Animal Mentors: Teaching Survival Skills",
-      "topic": "Showcasing how various animal species educate their young, imparting crucial survival skills, hunting techniques, and social behaviors.",
-      "hook": "From hunting lessons to warning calls, animal parents are the ultimate survival teachers!",
-      "tags": [
-        "animal parenting",
-        "wildlife education",
-        "animal behavior",
-        "survival skills",
-        "animal facts",
-        "biology"
-      ],
-      "inspired_by": "Viral Shorts In Our Niche: How Animals Teach Their Young",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": "",
-      "status": "produced",
-      "production_id": "Showcasing_how_various_animal__1776464795"
-    },
-    {
-      "title": "Global Geography: Odd Country Alignments",
-      "topic": "Highlighting peculiar and surprising geographical facts about countries, focusing on unusual borders, shapes, or unexpected spatial relationships.",
-      "hook": "Countries shaped like animals, or entire nations in a straight line? Geography gets weird!",
-      "tags": [
-        "geography facts",
-        "world map",
-        "country borders",
-        "global trivia",
-        "cartography",
-        "fun facts"
-      ],
-      "inspired_by": "Viral Shorts In Our Niche: 🌍 All “I” Countries in a Straight Line 😳🔥",
+      "inspired_by": "Can a Window Stop a Wrecking Ball? (Competitor MrBeast) and World’s Strongest Eraser VS 5 Levels… (Trending)",
       "estimated_views": "high",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "Pisa's Tilt: Engineering a Landmark's Survival",
-      "topic": "Explaining the engineering marvels and correctional efforts that have prevented the Leaning Tower of Pisa from toppling over for centuries.",
-      "hook": "It's been leaning for 850 years, but why hasn't Pisa's tower fallen? The answer is brilliant engineering!",
+      "title": "The Viral Trend That Caught Everyone Off Guard",
+      "topic": "Deconstructing a new, unexpected viral social media trend or challenge that has recently exploded, examining its origin and widespread appeal.",
+      "hook": "One minute it's nothing, the next it's everywhere. How did THIS go viral?",
       "tags": [
-        "leaning tower of pisa",
-        "italian history",
-        "architecture facts",
-        "structural engineering",
-        "historical landmarks",
-        "famous buildings"
+        "viral",
+        "trending",
+        "socialmedia",
+        "internetculture",
+        "popculture"
       ],
-      "inspired_by": "Viral Shorts In Our Niche: Why the Leaning Tower of Pisa Still Hasn’t Fallen After 850 Years!",
-      "estimated_views": "medium",
+      "inspired_by": "Bro Is A Lost Cause 💀 (Trending) & Mappelz content pattern",
+      "estimated_views": "high",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "Eraser Explained: How It Removes Marks",
-      "topic": "Delving into the simple yet clever physics and chemistry behind how erasers work to lift pencil marks from paper.",
-      "hook": "It seems like magic, but how does an eraser actually make pencil marks vanish? The explanation is satisfying!",
+      "title": "Geographic Oddities: Countries That Share the Strangest Borders",
+      "topic": "Focusing on bizarre and unusual geographical facts about country borders, enclaves, or strange territorial divisions around the world.",
+      "hook": "Forget straight lines. These borders will blow your mind!",
       "tags": [
-        "office supplies",
-        "physics of materials",
-        "chemistry facts",
-        "everyday objects",
-        "how things work",
-        "stationery"
+        "geography",
+        "worldfacts",
+        "countries",
+        "borders",
+        "maps"
       ],
-      "inspired_by": "Viral Shorts In Our Niche: How Does An Eraser Actually Work? ✏️🤯",
+      "inspired_by": "🌍 All “I” Countries in a Straight Line 😳🔥 (Viral Niche)",
       "estimated_views": "medium",
       "is_winner_variation": false,
       "winner_source_id": ""
@@ -359,31 +324,25 @@
   ],
   "ambient_recommendations": [
     {
-      "type": "rain",
+      "type": "zen_garden",
       "hours": 8,
-      "reason": "Rain sounds are universally appealing for relaxation, sleep, and focus. A long-duration video consistently draws high watch time and passive ad revenue, especially for a US audience."
+      "reason": "Offers a unique visual and auditory escape for stress relief, tapping into a growing trend for mindful relaxation. It stands out from typical nature sounds and caters to a desire for calm and focus."
     },
     {
-      "type": "ocean",
+      "type": "thunderstorm",
       "hours": 8,
-      "reason": "Ocean waves provide a natural, rhythmic soundscape highly effective for stress reduction and meditation. Its broad appeal ensures consistent viewership for extended periods."
+      "reason": "Thunderstorms are a classic and highly effective sound for sleep, study, and concentration. It consistently performs well due to its powerful, immersive quality and broad appeal."
     },
     {
-      "type": "forest",
+      "type": "river",
       "hours": 8,
-      "reason": "Forest sounds, including birdsong and rustling leaves, offer a serene and immersive escape. This type is perfect for mindfulness, study, and general relaxation, tapping into a consistent demand."
+      "reason": "The continuous, gentle flow of a river is universally calming, excellent for focus or sleep. It's a fundamental nature sound that consistently attracts viewers seeking background ambience."
     }
   ],
   "longform": [],
-  "generated_at": "2026-04-17T11:00:56.989848",
+  "generated_at": "2026-04-17T23:20:05.122935",
   "trending_count": 86,
   "channels_analyzed": 6,
-  "winner_variations_count": 7,
-  "status": "in_progress",
-  "last_executed_at": "2026-04-17T22:33:17.401447",
-  "results": {
-    "shorts_produced": 2,
-    "longform_produced": 0,
-    "errors": []
-  }
+  "winner_variations_count": 6,
+  "status": "pending"
 }
