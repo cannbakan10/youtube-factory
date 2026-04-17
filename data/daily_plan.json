@@ -206,7 +206,9 @@
       "inspired_by": "AI-Curated Viral Trend: Deepfake Technology: The New Frontier of Deception",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "An_examination_of_deepfake_tec_1776450465"
     },
     {
       "title": "Sleep Mysteries: Unpacking Dreams and Paralysis",
@@ -223,7 +225,9 @@
       "inspired_by": "AI-Curated Viral Trend: The Science Behind Dreams and Sleep Paralysis",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "Investigating_the_psychologica_1776450900"
     },
     {
       "title": "Microplastic Health Crisis: What You Don't Know",
@@ -368,7 +372,7 @@
   "channels_analyzed": 6,
   "winner_variations_count": 7,
   "status": "in_progress",
-  "last_executed_at": "2026-04-17T16:43:42.509953",
+  "last_executed_at": "2026-04-17T18:43:34.169286",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
