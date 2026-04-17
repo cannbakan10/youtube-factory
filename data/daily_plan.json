@@ -168,7 +168,9 @@
       "inspired_by": "AI-Curated Viral Trend: The Great Filter Theory: Are We Doomed by AI?",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "Exploring_the_Great_Filter_the_1776443304"
     },
     {
       "title": "Roman Genius: Engineering Feats That Endure",
@@ -185,7 +187,9 @@
       "inspired_by": "AI-Curated Viral Trend: Untold Secrets of Ancient Roman Engineering",
       "estimated_views": "medium",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "Showcasing_the_unparalleled_ar_1776443769"
     },
     {
       "title": "Deepfake Reality: The Perils of AI Deception",
@@ -364,7 +368,7 @@
   "channels_analyzed": 6,
   "winner_variations_count": 7,
   "status": "in_progress",
-  "last_executed_at": "2026-04-17T14:48:43.777027",
+  "last_executed_at": "2026-04-17T16:43:42.509953",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
