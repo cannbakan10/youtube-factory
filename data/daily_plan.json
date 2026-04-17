@@ -244,7 +244,9 @@
       "inspired_by": "AI-Curated Viral Trend: New Discoveries in Microplastics' Impact on Health",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "Uncovering_the_pervasive_issue_1776457337"
     },
     {
       "title": "Dyatlov Pass Enigma: The Bizarre Truth?",
@@ -261,7 +263,9 @@
       "inspired_by": "AI-Curated Viral Trend: The Unsolved Mystery of the Dyatlov Pass Incident",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "Revisiting_the_perplexing_Dyat_1776457701"
     },
     {
       "title": "AI & Art: The Creative Collision",
@@ -372,7 +376,7 @@
   "channels_analyzed": 6,
   "winner_variations_count": 7,
   "status": "in_progress",
-  "last_executed_at": "2026-04-17T18:43:34.169286",
+  "last_executed_at": "2026-04-17T20:35:19.234133",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
