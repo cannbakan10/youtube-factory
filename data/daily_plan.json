@@ -40,7 +40,9 @@
       "inspired_by": "When father and daughter survives of the pressing of the q…………",
       "estimated_views": "medium",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "When_father_and_daughter_survi_1776422328"
     },
     {
       "title": "You Won't Believe This About Orlando mom calls for end tocars speeding past sto",
@@ -313,7 +315,7 @@
   "trending_count": 85,
   "status": "in_progress",
   "fallback_mode": true,
-  "last_executed_at": "2026-04-17T10:24:23.351042",
+  "last_executed_at": "2026-04-17T10:39:21.198621",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
