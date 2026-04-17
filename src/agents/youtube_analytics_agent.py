@@ -568,16 +568,46 @@ class YouTubeAnalyticsAgent:
             if len(vs) >= min_samples_per_hour
         }
 
-        if not by_hour:
-            logger.info("⏰ Peak hours: no hour meets min_samples threshold, using fallback")
-            return fallback
+        # ── UPLOAD-BIAS GUARD ──
+        # If the channel only uploads at 1-3 distinct hours, the "peak" is a
+        # self-fulfilling prophecy (the only hour we post is also the only hour
+        # that has views). In that case, blend channel signal with US prime time
+        # so the scheduler actually explores new hours instead of reinforcing bias.
+        us_prime = [22, 23, 0, 1, 16]  # EST 18-22 + EST 12 lunch
+        unique_hours = len(by_hour)
 
         ranked = sorted(by_hour.items(), key=lambda x: x[1]["avg_views"], reverse=True)
+
+        if unique_hours < 4:
+            # Too concentrated → blend: top 1 channel hour + 4 US prime hours
+            channel_top = ranked[0][0] if ranked else None
+            blended = []
+            if channel_top is not None:
+                blended.append(channel_top)
+            for h in us_prime:
+                if h not in blended:
+                    blended.append(h)
+            peak_hours = blended[:top_n + 2]  # widen a bit when blending
+            logger.info(
+                f"⏰ Peak hours (blended, upload-bias guard): {peak_hours} "
+                f"[only {unique_hours} distinct upload hours in {len(filtered)} videos]"
+            )
+            return {
+                "peak_hours_utc": peak_hours,
+                "by_hour": by_hour,
+                "source": "blended_channel_and_us_prime",
+                "sample_count": len(filtered),
+                "note": (
+                    "Channel data too concentrated to be trusted alone; "
+                    "blended with US prime-time defaults."
+                ),
+            }
+
         peak_hours = [h for h, _ in ranked[:top_n]]
 
         logger.info(
             f"⏰ Peak hours (UTC, {video_type}): {peak_hours} "
-            f"[from {len(filtered)} videos, {len(by_hour)} hours with data]"
+            f"[from {len(filtered)} videos, {unique_hours} hours with data]"
         )
         return {
             "peak_hours_utc": peak_hours,
