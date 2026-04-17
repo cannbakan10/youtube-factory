@@ -56,7 +56,9 @@
       "seo_keywords": [
         "orlando mom calls for end to cars speeding past stopped school bus"
       ],
-      "optimized_title": "You Won't Believe This About Orlando mom calls for end tocars speeding past sto"
+      "optimized_title": "You Won't Believe This About Orlando mom calls for end tocars speeding past sto",
+      "status": "produced",
+      "production_id": "Orlando_mom_calls_for_end_toca_1776422803"
     },
     {
       "title": "3 Mind-Blowing Facts About Perfect Steak Hack",
@@ -315,7 +317,7 @@
   "trending_count": 85,
   "status": "in_progress",
   "fallback_mode": true,
-  "last_executed_at": "2026-04-17T10:39:21.198621",
+  "last_executed_at": "2026-04-17T10:53:14.089854",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
