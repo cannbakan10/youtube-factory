@@ -778,6 +778,7 @@ Examples:
 
         if result.get("error"):
             logger.error(f"Nightly brain failed: {result['error']}")
+            send_telegram_alert(f"❌ *Nightly Brain Failed*\n\n`{result['error']}`")
             sys.exit(1)
 
         sys.exit(0)
@@ -804,10 +805,12 @@ Examples:
             )
             if result.get("error"):
                 logger.error(f"Plan execution failed: {result['error']}")
+                send_telegram_alert(f"❌ *Content Engine Failed*\n\n{result['error']}")
                 sys.exit(1)
             logger.info(f"✅ Plan executed: {result}")
         except Exception as e:
             logger.error(f"Plan execution error: {e}")
+            send_telegram_alert(f"❌ *Content Engine Error*\n\n`{str(e)[:200]}`")
             sys.exit(1)
 
         sys.exit(0)

@@ -137,7 +137,7 @@ DO NOT add any extra text, newlines or markdown.
 Example format: The Crazy Economics of Super Bowl Ads | Uncovering the Secrets Behind ChatGPT 4.5
         """
         response = client.models.generate_content(
-            model='gemini-2.0-flash',
+            model='gemini-2.5-flash',
             contents=prompt
         )
         topics = response.text.replace('\n', '').strip().split('|')

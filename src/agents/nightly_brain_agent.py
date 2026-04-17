@@ -108,8 +108,9 @@ class NightlyBrainAgent:
             self.yt_public = self.youtube.youtube
             logger.info("🔄 Using OAuth client for public data (may lack scopes)")
 
-        # Gemini AI
+        # Gemini AI (with model fallback chain for quota exhaustion)
         self.gemini = None
+        self.gemini_models = ["gemini-2.5-flash", "gemini-2.0-flash-lite", "gemini-1.5-flash"]
         try:
             from google import genai
             api_key = os.getenv("GEMINI_API_KEY")
@@ -118,6 +119,22 @@ class NightlyBrainAgent:
                 logger.info("🧠 Nightly Brain: Gemini AI connected")
         except Exception:
             logger.info("Nightly Brain: Running without Gemini")
+
+        # OpenAI fallback for plan generation
+        self.oa_client = None
+        openai_key = os.getenv("OPENAI_API_KEY")
+        if openai_key:
+            try:
+                from openai import OpenAI
+                import httpx
+                self.oa_client = OpenAI(
+                    api_key=openai_key,
+                    timeout=httpx.Timeout(90.0, connect=10.0),
+                    max_retries=3,
+                )
+                logger.info("🤖 Nightly Brain: OpenAI fallback ready")
+            except Exception as e:
+                logger.warning(f"OpenAI client init failed: {e}")
 
     # ──────────────────────────────────────────────────────
     # PHASE 1: CLEANUP — Delete underperformers
@@ -879,35 +896,65 @@ Output STRICT JSON format:
     ]
 }}
 """
-            # ── Gemini generation with retry (transient 5xx / empty-response safety) ──
+            # ── AI generation with model fallback chain ──
             plan = None
             last_err = None
-            for attempt in range(3):
-                try:
-                    response = self.gemini.models.generate_content(
-                        model="gemini-2.0-flash",
-                        contents=prompt,
-                        config={"response_mime_type": "application/json"},
-                    )
-                    raw_text = getattr(response, "text", None)
-                    if not raw_text or not raw_text.strip():
-                        raise ValueError(f"Gemini returned empty response (attempt {attempt+1})")
-                    plan = json.loads(raw_text)
+            all_gemini_exhausted = False
+
+            # Try each Gemini model (handles per-model quota)
+            for model in self.gemini_models:
+                for attempt in range(2):
+                    try:
+                        logger.info(f"  Trying {model} (attempt {attempt+1}/2)...")
+                        response = self.gemini.models.generate_content(
+                            model=model,
+                            contents=prompt,
+                            config={"response_mime_type": "application/json"},
+                        )
+                        raw_text = getattr(response, "text", None)
+                        if not raw_text or not raw_text.strip():
+                            raise ValueError(f"{model} returned empty response")
+                        plan = json.loads(raw_text)
+                        break
+                    except json.JSONDecodeError as je:
+                        last_err = je
+                        logger.warning(
+                            f"{model} JSON parse failed (attempt {attempt+1}): {je}. "
+                            f"Raw preview: {(raw_text or '')[:200]!r}"
+                        )
+                    except Exception as ge:
+                        last_err = ge
+                        err_str = str(ge).lower()
+                        if "resource_exhausted" in err_str or "quota" in err_str or "429" in err_str:
+                            logger.warning(f"  {model} credits exhausted, trying next model...")
+                            break
+                        logger.warning(f"{model} call failed (attempt {attempt+1}): {ge}")
+                    if attempt < 1:
+                        time.sleep(2)
+                if plan:
                     break
-                except json.JSONDecodeError as je:
-                    last_err = je
-                    logger.warning(
-                        f"Gemini JSON parse failed (attempt {attempt+1}/3): {je}. "
-                        f"Raw preview: {(raw_text or '')[:200]!r}"
+
+            # OpenAI fallback for plan generation if all Gemini models exhausted
+            if plan is None and self.oa_client:
+                all_gemini_exhausted = True
+                logger.warning("⚠️ All Gemini models exhausted. Trying OpenAI for plan generation...")
+                try:
+                    oa_response = self.oa_client.chat.completions.create(
+                        model="gpt-4o-mini",
+                        messages=[{"role": "user", "content": prompt}],
+                        response_format={"type": "json_object"},
                     )
-                except Exception as ge:
-                    last_err = ge
-                    logger.warning(f"Gemini call failed (attempt {attempt+1}/3): {ge}")
-                if attempt < 2:
-                    time.sleep(2 ** attempt)  # 1s, 2s backoff
+                    raw_text = oa_response.choices[0].message.content
+                    if raw_text and raw_text.strip():
+                        plan = json.loads(raw_text)
+                        logger.info("✅ OpenAI plan generation succeeded")
+                except Exception as oe:
+                    logger.error(f"OpenAI plan generation also failed: {oe}")
+                    last_err = oe
 
             if plan is None:
-                raise RuntimeError(f"All 3 Gemini attempts failed. Last error: {last_err}")
+                self._send_api_failure_alert(all_gemini_exhausted)
+                raise RuntimeError(f"All AI providers failed. Last error: {last_err}")
 
             # Ensure longform key exists (empty — ambient produced separately)
             plan["longform"] = []
@@ -1077,6 +1124,16 @@ Output STRICT JSON format:
         Called by morning automation workflows.
         """
         logger.info("🎬 Executing daily content plan...")
+
+        # Quick health check before wasting time on setup
+        health = self.preflight_check()
+        logger.info(f"🔍 Pre-flight: Gemini={health['gemini']}, OpenAI={health['openai']}")
+        if not health["healthy"]:
+            logger.error("❌ ALL AI PROVIDERS DOWN — cannot produce videos")
+            logger.error("   Fix: Top up Gemini credits at https://aistudio.google.com/apikey")
+            logger.error("   Fix: Check OPENAI_API_KEY secret in GitHub repo settings")
+            self._send_api_failure_alert(gemini_exhausted="exhausted" in health.get("gemini", ""))
+            return {"error": "All AI providers unavailable. Top up Gemini credits or fix OpenAI key."}
 
         if not os.path.exists(self.plan_file):
             logger.error("No daily plan found. Run nightly brain first.")
@@ -1674,14 +1731,23 @@ Output STRICT JSON format:
         4. Enrich plan with SEO keywords
         """
         logger.info("=" * 60)
-        logger.info("🧠 NIGHTLY BRAIN v2.0 — Starting...")
+        logger.info("🧠 NIGHTLY BRAIN v2.1 — Starting...")
         logger.info(f"   Time: {datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')}")
         logger.info(f"   Mode: {'DRY RUN' if dry_run else 'LIVE'}")
         logger.info("=" * 60)
 
+        # ─── PRE-FLIGHT: Check AI providers ───
+        health = self.preflight_check()
+        logger.info(f"🔍 Pre-flight: Gemini={health['gemini']}, OpenAI={health['openai']}")
+        if not health["healthy"]:
+            logger.error("❌ ALL AI PROVIDERS DOWN — pipeline cannot generate content")
+            logger.error("   Fix: Top up Gemini credits or check OpenAI API key")
+            self._send_api_failure_alert(gemini_exhausted="exhausted" in health.get("gemini", ""))
+
         nightly_report = {
             "timestamp": datetime.utcnow().isoformat(),
             "dry_run": dry_run,
+            "api_health": health,
         }
 
         # ─── PHASE 0: Performance Review (NEW!) ───
@@ -1908,6 +1974,81 @@ Output STRICT JSON format:
                 print(f"   🔥 {rec.get('type', '?')} ({rec.get('hours', 8)}h) — {rec.get('reason', '')[:60]}")
 
         print("\n" + "=" * 60)
+
+    def _send_api_failure_alert(self, gemini_exhausted: bool = False):
+        """Send Telegram alert when AI providers are down."""
+        try:
+            import requests as req
+            token = os.getenv("TELEGRAM_BOT_TOKEN")
+            chat_id_file = os.path.join(self.project_root, "data", "telegram_chat_id.txt")
+            if not token or not os.path.exists(chat_id_file):
+                return
+            with open(chat_id_file, "r") as f:
+                chat_id = f.read().strip()
+            if not chat_id:
+                return
+            if gemini_exhausted:
+                msg = (
+                    "🚨 *PIPELINE DOWN — API Credits Exhausted*\n\n"
+                    "Gemini: `RESOURCE_EXHAUSTED` (all models)\n"
+                    "OpenAI: Connection failed\n\n"
+                    "📋 *Fix:*\n"
+                    "1. Gemini → https://aistudio.google.com/apikey (top up credits)\n"
+                    "2. OpenAI → Check `OPENAI_API_KEY` secret in GitHub\n"
+                    "3. Re-run nightly brain manually after fixing"
+                )
+            else:
+                msg = (
+                    "⚠️ *Nightly Brain — Plan Generation Failed*\n\n"
+                    "Both Gemini and OpenAI failed to generate content plan.\n"
+                    "Check API keys and credits."
+                )
+            url = f"https://api.telegram.org/bot{token}/sendMessage"
+            req.post(url, json={"chat_id": chat_id, "text": msg, "parse_mode": "Markdown"}, timeout=5)
+        except Exception:
+            pass
+
+    def preflight_check(self) -> Dict:
+        """Quick health check on AI providers before running the full pipeline."""
+        results = {"gemini": "unknown", "openai": "unknown", "healthy": False}
+
+        if self.gemini:
+            for model in self.gemini_models:
+                try:
+                    response = self.gemini.models.generate_content(
+                        model=model, contents="Say OK"
+                    )
+                    if getattr(response, "text", ""):
+                        results["gemini"] = f"ok ({model})"
+                        break
+                except Exception as e:
+                    err_str = str(e).lower()
+                    if "resource_exhausted" in err_str or "429" in err_str:
+                        results["gemini"] = f"credits_exhausted ({model})"
+                        continue
+                    results["gemini"] = f"error: {str(e)[:80]}"
+                    break
+        else:
+            results["gemini"] = "not_configured"
+
+        if self.oa_client:
+            try:
+                oa_resp = self.oa_client.chat.completions.create(
+                    model="gpt-4o-mini",
+                    messages=[{"role": "user", "content": "Say OK"}],
+                    max_tokens=5,
+                )
+                if oa_resp.choices:
+                    results["openai"] = "ok"
+            except Exception as e:
+                results["openai"] = f"error: {str(e)[:80]}"
+        else:
+            results["openai"] = "not_configured"
+
+        results["healthy"] = (
+            results["gemini"].startswith("ok") or results["openai"] == "ok"
+        )
+        return results
 
     def _parse_iso_duration(self, duration: str) -> int:
         match = re.match(r'PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?', duration)

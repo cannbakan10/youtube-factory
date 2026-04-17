@@ -33,12 +33,27 @@ class VideoBlueprint(BaseModel):
 
 
 class ScriptWriter:
+    GEMINI_MODELS = ["gemini-2.5-flash", "gemini-2.0-flash-lite", "gemini-1.5-flash"]
+
     def __init__(self):
         self.gemini_key = os.getenv("GEMINI_API_KEY")
         self.openai_key = os.getenv("OPENAI_API_KEY")
         self.client = genai.Client(api_key=self.gemini_key) if self.gemini_key else None
-        self.oa_client = OpenAI(api_key=self.openai_key) if self.openai_key else None
-        self.model = "gemini-2.0-flash"
+        self.oa_client = None
+        if self.openai_key:
+            import httpx
+            # Warn if key looks malformed (helps diagnose Connection error)
+            if not (self.openai_key.startswith("sk-") or self.openai_key.startswith("sess-")):
+                logger.warning(
+                    f"OPENAI_API_KEY does not start with 'sk-' (starts with {self.openai_key[:6]!r}). "
+                    "This may cause Connection error."
+                )
+            self.oa_client = OpenAI(
+                api_key=self.openai_key,
+                timeout=httpx.Timeout(60.0, connect=10.0),
+                max_retries=3,
+            )
+        self.model = "gemini-2.5-flash"
         self.oa_model = "gpt-4o-mini"
         self.project_root = os.path.dirname(
             os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -408,18 +423,31 @@ class ScriptWriter:
             - Write as if you're a narrator speaking directly to the viewer with authority and speed.
             """
 
-    @retry_with_backoff(max_retries=2, base_delay=2.0)
     def _generate_narrative_gemini(self, prompt, language):
-        """Generate narrative using Gemini with retry support."""
+        """Generate narrative using Gemini with model fallback chain."""
         if not self.client:
             raise ValueError("Gemini client not configured")
-        APIRateLimiters.gemini.wait()
-        logger.info("Generating narrative with Gemini...")
 
-        response = self.client.models.generate_content(model=self.model, contents=prompt)
-        return self._clean_text(response.text.strip(), language=language)
+        last_err = None
+        for model in self.GEMINI_MODELS:
+            try:
+                APIRateLimiters.gemini.wait()
+                logger.info(f"Generating narrative with Gemini ({model})...")
+                response = self.client.models.generate_content(model=model, contents=prompt)
+                text = getattr(response, "text", None)
+                if not text or not text.strip():
+                    raise ValueError(f"{model} returned empty response")
+                return self._clean_text(text.strip(), language=language)
+            except Exception as e:
+                last_err = e
+                err_str = str(e).lower()
+                if "resource_exhausted" in err_str or "quota" in err_str or "429" in err_str:
+                    logger.warning(f"Gemini {model} credits exhausted, trying next model...")
+                    continue
+                raise
+        raise last_err or RuntimeError("All Gemini models exhausted")
 
-    @retry_with_backoff(max_retries=2, base_delay=2.0)
+    @retry_with_backoff(max_retries=3, base_delay=3.0)
     def _generate_narrative_openai(self, prompt, language):
         """Generate narrative using OpenAI with retry support."""
         logger.info("Generating narrative with OpenAI fallback...")
@@ -530,22 +558,38 @@ class ScriptWriter:
         logger.error("Failed to extract valid JSON from blueprint response")
         return None
 
-    @retry_with_backoff(max_retries=2, base_delay=2.0)
     def _generate_blueprint_gemini(self, prompt):
-        """Generate blueprint using Gemini with retry support."""
+        """Generate blueprint using Gemini with model fallback chain."""
         if not self.client:
             raise ValueError("Gemini client not configured")
-        APIRateLimiters.gemini.wait()
-        logger.info("Generating blueprint with Gemini...")
 
-        response = self.client.models.generate_content(
-            model=self.model,
-            contents=prompt,
-            config={'response_mime_type': 'application/json'}
-        )
-        return self._extract_json(response.text)
+        last_err = None
+        for model in self.GEMINI_MODELS:
+            try:
+                APIRateLimiters.gemini.wait()
+                logger.info(f"Generating blueprint with Gemini ({model})...")
+                response = self.client.models.generate_content(
+                    model=model,
+                    contents=prompt,
+                    config={'response_mime_type': 'application/json'}
+                )
+                text = getattr(response, "text", None)
+                if not text or not text.strip():
+                    raise ValueError(f"{model} returned empty response")
+                data = self._extract_json(text)
+                if data:
+                    return data
+                raise ValueError(f"{model} returned non-JSON response")
+            except Exception as e:
+                last_err = e
+                err_str = str(e).lower()
+                if "resource_exhausted" in err_str or "quota" in err_str or "429" in err_str:
+                    logger.warning(f"Gemini {model} credits exhausted, trying next model...")
+                    continue
+                raise
+        raise last_err or RuntimeError("All Gemini models exhausted")
 
-    @retry_with_backoff(max_retries=2, base_delay=2.0)
+    @retry_with_backoff(max_retries=3, base_delay=3.0)
     def _generate_blueprint_openai(self, prompt):
         """Generate blueprint using OpenAI with retry support."""
         logger.info("Generating blueprint with OpenAI fallback...")
