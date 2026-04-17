@@ -130,7 +130,9 @@
       "inspired_by": "Your Channel Winner: This Baby Evolved Mid Race | Nature's Incredible Adaptability",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "H_uulVZGqjw"
+      "winner_source_id": "H_uulVZGqjw",
+      "status": "produced",
+      "production_id": "Showcasing_the_incredible_evol_1776436556"
     },
     {
       "title": "Cosmic Wonders: Webb's Exoplanet Discoveries",
@@ -147,7 +149,9 @@
       "inspired_by": "AI-Curated Viral Trend: The Webb Telescope's Latest Exoplanet Discoveries",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "Highlighting_the_latest_most_e_1776436952"
     },
     {
       "title": "The Great Filter: Humanity's Ultimate Test?",
@@ -360,7 +364,7 @@
   "channels_analyzed": 6,
   "winner_variations_count": 7,
   "status": "in_progress",
-  "last_executed_at": "2026-04-17T12:46:57.126535",
+  "last_executed_at": "2026-04-17T14:48:43.777027",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
