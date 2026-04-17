@@ -282,7 +282,9 @@
       "inspired_by": "AI-Curated Viral Trend: AI's Role in Creative Arts: Revolution or Threat?",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "A_discussion_on_the_evolving_r_1776464466"
     },
     {
       "title": "Animal Mentors: Teaching Survival Skills",
@@ -299,7 +301,9 @@
       "inspired_by": "Viral Shorts In Our Niche: How Animals Teach Their Young",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "Showcasing_how_various_animal__1776464795"
     },
     {
       "title": "Global Geography: Odd Country Alignments",
@@ -376,7 +380,7 @@
   "channels_analyzed": 6,
   "winner_variations_count": 7,
   "status": "in_progress",
-  "last_executed_at": "2026-04-17T20:35:19.234133",
+  "last_executed_at": "2026-04-17T22:33:17.401447",
   "results": {
     "shorts_produced": 2,
     "longform_produced": 0,
