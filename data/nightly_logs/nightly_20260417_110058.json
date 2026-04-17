@@ -1,0 +1,251 @@
+{
+  "timestamp": "2026-04-17T10:59:18.180517",
+  "dry_run": false,
+  "api_health": {
+    "gemini": "ok (gemini-2.5-flash)",
+    "openai": "error: Connection error.",
+    "healthy": true
+  },
+  "performance_review": {
+    "total_recent": 15,
+    "winners_count": 6,
+    "losers_count": 5,
+    "avg_views_48h": 270.5,
+    "best_topics": [
+      "World's Strongest Eraser VS 5 Levels! - Short Documentary #S",
+      "Smooth Criminal Animation Meme: The New Viral Trend #Shorts",
+      "Transforming Safety: Frank's Impact on Our Streets #Shorts"
+    ],
+    "best_views": [
+      1004,
+      759,
+      753
+    ],
+    "winner_titles": [
+      "Don't Mess with the Chefs: The Art of Culinary Mastery #Shorts",
+      "Transforming Safety: Frank's Impact on Our Streets #Shorts",
+      "He Was Bored and Accidentally Discovered This 🐐 #Shorts",
+      "She Flipped His 3 Wheel: The Daring Race Showdown #Shorts",
+      "Smooth Criminal Animation Meme: The New Viral Trend #Shorts",
+      "World's Strongest Eraser VS 5 Levels! - Short Documentary #Shorts"
+    ],
+    "loser_titles": [
+      "Against the Odds: A Father-Daughter Survival Tale #Shorts",
+      "Understanding Job Burnout: A Deep Dive into an Epidemic",
+      "The Keep Brawl Alive Community Event: A Celebration of Camaraderie",
+      "Glued Together: The Unlikely Humor in Film",
+      "A Tale of Resilience: Father and Daughter's Survival #Shorts"
+    ]
+  },
+  "cleanup": {
+    "unlisted": 7,
+    "deleted": 0,
+    "failed": 0,
+    "kept": 290,
+    "thresholds": {
+      "shorts_7d": 75,
+      "shorts_14d": 150,
+      "shorts_30d": 300,
+      "long_14d": 75,
+      "long_30d": 150,
+      "multiplier": 1.5
+    }
+  },
+  "trending": {
+    "found": 86,
+    "viral_shorts_found": 30,
+    "competitors_analyzed": 3,
+    "comments_mined": 20,
+    "top_5": [
+      {
+        "title": "Just passing through\"?#shorts",
+        "views": 22722661,
+        "category": "Film & Animation"
+      },
+      {
+        "title": "World’s Strongest Eraser VS 5 Levels… (#shorts)",
+        "views": 19904547,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "He Tapped Back 💔",
+        "views": 19015773,
+        "category": "Entertainment"
+      },
+      {
+        "title": "When father and daughter survives of the pressing of the q……",
+        "views": 18872473,
+        "category": "Entertainment"
+      },
+      {
+        "title": "Perfect Steak Hack",
+        "views": 16483270,
+        "category": "Howto & Style"
+      }
+    ],
+    "top_viral_shorts": [
+      {
+        "title": "How Animals Teach Their Young",
+        "views": 10783139,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "🌍 All “I” Countries in a Straight Line 😳🔥",
+        "views": 6590596,
+        "query": "country facts geography"
+      },
+      {
+        "title": "Humans vs Cute Animals 💀☠️ #Shorts #Space #Astronomy #Biolog",
+        "views": 4225888,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "Top 5 Powerful Kitchen Hacks ✨🔥 #shorts #kitchenhacks",
+        "views": 3452777,
+        "query": "top 5 facts"
+      },
+      {
+        "title": "Dumb Animals",
+        "views": 3331820,
+        "query": "animal facts wildlife"
+      }
+    ]
+  },
+  "winners": {
+    "added": 67,
+    "total": 30,
+    "threshold": 464,
+    "median": 232,
+    "active": 10,
+    "top": [
+      {
+        "video_id": "n2FBDPG5dNk",
+        "title": "World's Strongest Eraser VS 5 Levels! - Short Documentary #S",
+        "views": 1004,
+        "views_per_day": 502.0,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "Nye4U42Ksrg",
+        "title": "Smooth Criminal Animation Meme: The New Viral Trend #Shorts",
+        "views": 757,
+        "views_per_day": 378.5,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "1N59aTz4khM",
+        "title": "Transforming Safety: Frank's Impact on Our Streets #Shorts",
+        "views": 753,
+        "views_per_day": 376.5,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "phGsPGsSL80",
+        "title": "Don't Mess with the Chefs: The Art of Culinary Mastery #Shor",
+        "views": 693,
+        "views_per_day": 346.5,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "YmYZ91LkiCg",
+        "title": "She Flipped His 3 Wheel: The Daring Race Showdown #Shorts",
+        "views": 534,
+        "views_per_day": 267.0,
+        "variations_generated": 0
+      }
+    ]
+  },
+  "peak_hours": {
+    "utc": [
+      6,
+      22,
+      23,
+      0,
+      1
+    ],
+    "source": "blended_channel_and_us_prime",
+    "samples": 191
+  },
+  "retention": {
+    "avg_pct": 0,
+    "avg_dur_sec": 0,
+    "source": "unavailable",
+    "video_count": 0
+  },
+  "ambient_analysis": {
+    "total_ambient": 3,
+    "total_views": 13496,
+    "top_type": "fireplace",
+    "worst_type": "rain",
+    "type_rankings": [
+      {
+        "type": "fireplace",
+        "video_count": 2,
+        "total_views": 13159,
+        "avg_views": 6580,
+        "avg_views_per_day": 106.0,
+        "engagement_rate": 189.51,
+        "best_video": {
+          "title": "🔥 Cozy Fireplace 8 HOURS with Crackling Fire Sounds | Firepl",
+          "views": 12825,
+          "views_per_day": 206.9
+        }
+      },
+      {
+        "type": "rain",
+        "video_count": 1,
+        "total_views": 337,
+        "avg_views": 337,
+        "avg_views_per_day": 4.9,
+        "engagement_rate": 2.08,
+        "best_video": {
+          "title": "1 Hour Rainy Night Ambience (60 Minutes)",
+          "views": 337,
+          "views_per_day": 4.9
+        }
+      }
+    ]
+  },
+  "plan": {
+    "shorts_planned": 19,
+    "ambient_recommendations": [
+      {
+        "type": "rain",
+        "hours": 8,
+        "reason": "Rain sounds are universally appealing for relaxation, sleep, and focus. A long-duration video consistently draws high watch time and passive ad revenue, especially for a US audience."
+      },
+      {
+        "type": "ocean",
+        "hours": 8,
+        "reason": "Ocean waves provide a natural, rhythmic soundscape highly effective for stress reduction and meditation. Its broad appeal ensures consistent viewership for extended periods."
+      },
+      {
+        "type": "forest",
+        "hours": 8,
+        "reason": "Forest sounds, including birdsong and rustling leaves, offer a serene and immersive escape. This type is perfect for mindfulness, study, and general relaxation, tapping into a consistent demand."
+      }
+    ],
+    "winner_variations_count": 7,
+    "shorts": [
+      "Unbreakable Fabrics: Material Strength Explained",
+      "Meme Magic: How Viral Trends Are Born",
+      "Cities That Heal: Urban Planning for Well-being",
+      "Chef's Secrets: Mastery Beyond the Recipe",
+      "Gravity Defied: The Physics of Wild Stunts",
+      "Body's Comeback: Athlete Recovery Tactics",
+      "Survival Instincts: Remarkable Animal Adaptations",
+      "Cosmic Wonders: Webb's Exoplanet Discoveries",
+      "The Great Filter: Humanity's Ultimate Test?",
+      "Roman Genius: Engineering Feats That Endure",
+      "Deepfake Reality: The Perils of AI Deception",
+      "Sleep Mysteries: Unpacking Dreams and Paralysis",
+      "Microplastic Health Crisis: What You Don't Know",
+      "Dyatlov Pass Enigma: The Bizarre Truth?",
+      "AI & Art: The Creative Collision",
+      "Animal Mentors: Teaching Survival Skills",
+      "Global Geography: Odd Country Alignments",
+      "Pisa's Tilt: Engineering a Landmark's Survival",
+      "Eraser Explained: How It Removes Marks"
+    ]
+  }
+}
