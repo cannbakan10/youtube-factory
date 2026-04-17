@@ -92,7 +92,9 @@
       "inspired_by": "Your Channel Winner: She Flipped His 3 Wheel: The Daring Race Showdown",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "YmYZ91LkiCg"
+      "winner_source_id": "YmYZ91LkiCg",
+      "status": "produced",
+      "production_id": "Exploring_the_scientific_princ_1776429231"
     },
     {
       "title": "Body's Comeback: Athlete Recovery Tactics",
@@ -109,7 +111,9 @@
       "inspired_by": "Your Channel Winner: The Agony of Injury: A Journey of Resilience",
       "estimated_views": "medium",
       "is_winner_variation": true,
-      "winner_source_id": "i9zdlQ68_zo"
+      "winner_source_id": "i9zdlQ68_zo",
+      "status": "produced",
+      "production_id": "A_look_at_the_physiological_pr_1776429691"
     },
     {
       "title": "Survival Instincts: Remarkable Animal Adaptations",
@@ -356,9 +360,9 @@
   "channels_analyzed": 6,
   "winner_variations_count": 7,
   "status": "in_progress",
-  "last_executed_at": "2026-04-17T11:27:17.970607",
+  "last_executed_at": "2026-04-17T12:46:57.126535",
   "results": {
-    "shorts_produced": 4,
+    "shorts_produced": 2,
     "longform_produced": 0,
     "errors": []
   }
