@@ -16,7 +16,9 @@
       "inspired_by": "Your Channel Winner: World's Strongest Eraser VS 5 Levels!",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "n2FBDPG5dNk"
+      "winner_source_id": "n2FBDPG5dNk",
+      "status": "produced",
+      "production_id": "Exploring_the_material_propert_1776423666"
     },
     {
       "title": "Meme Magic: How Viral Trends Are Born",
@@ -33,7 +35,9 @@
       "inspired_by": "Your Channel Winner: Smooth Criminal Animation Meme: The New Viral Trend",
       "estimated_views": "medium",
       "is_winner_variation": true,
-      "winner_source_id": "Nye4U42Ksrg"
+      "winner_source_id": "Nye4U42Ksrg",
+      "status": "produced",
+      "production_id": "A_deep_dive_into_the_psycholog_1776424066"
     },
     {
       "title": "Cities That Heal: Urban Planning for Well-being",
@@ -50,7 +54,9 @@
       "inspired_by": "Your Channel Winner: Transforming Safety: Frank's Impact on Our Streets",
       "estimated_views": "medium",
       "is_winner_variation": true,
-      "winner_source_id": "1N59aTz4khM"
+      "winner_source_id": "1N59aTz4khM",
+      "status": "produced",
+      "production_id": "Examining_innovative_urban_pla_1776424506"
     },
     {
       "title": "Chef's Secrets: Mastery Beyond the Recipe",
@@ -67,7 +73,9 @@
       "inspired_by": "Your Channel Winner: Don't Mess with the Chefs: The Art of Culinary Mastery",
       "estimated_views": "medium",
       "is_winner_variation": true,
-      "winner_source_id": "phGsPGsSL80"
+      "winner_source_id": "phGsPGsSL80",
+      "status": "produced",
+      "production_id": "Unveiling_the_precise_techniqu_1776424869"
     },
     {
       "title": "Gravity Defied: The Physics of Wild Stunts",
@@ -347,5 +355,11 @@
   "trending_count": 86,
   "channels_analyzed": 6,
   "winner_variations_count": 7,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-04-17T11:27:17.970607",
+  "results": {
+    "shorts_produced": 4,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
