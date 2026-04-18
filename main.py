@@ -594,6 +594,16 @@ Examples:
     parser.add_argument("--plan-longform", type=int, default=0,
                         help="Number of longform to produce from plan (default: 0)")
 
+    # Standalone long-form production
+    parser.add_argument("--longform-topic", type=str,
+                        help="Produce a long-form documentary video on this topic (direct, no plan needed)")
+    parser.add_argument("--longform-duration", type=int, default=15,
+                        help="Target duration in minutes for longform video (default: 15)")
+    parser.add_argument("--longform-suggest", action="store_true",
+                        help="Show top trending long-form topics and let the system pick the best one")
+    parser.add_argument("--longform-suggest-produce", type=int, metavar="N", default=0,
+                        help="Produce long-form video from suggestion #N (use with --longform-suggest)")
+
     # Fast Loop options (turn short clip into hours-long video)
     parser.add_argument("--loop-video", type=str,
                         help="Input video file to loop (e.g. 8 second 4K clip)")
@@ -782,6 +792,128 @@ Examples:
             sys.exit(1)
 
         sys.exit(0)
+
+    # Standalone Long-form Production Mode
+    if args.longform_suggest or args.longform_topic:
+        logger.info("🎬 Long-form Documentary Mode")
+
+        try:
+            yt_service = YouTubeService()
+            brain = NightlyBrainAgent(youtube_service=yt_service)
+        except Exception as e:
+            logger.error(f"Failed to initialize: {e}")
+            sys.exit(1)
+
+        if args.longform_suggest:
+            # Search for trending longform topics and show them
+            logger.info("🔍 Searching for trending long-form topics...")
+            news_videos = brain._search_world_news_videos()
+            trending = brain.discover_trending(region="US", count=50)
+
+            # Merge: pick the best long-form candidates from both sources
+            longform_candidates = []
+
+            # From world news search
+            for v in news_videos[:10]:
+                longform_candidates.append({
+                    "title": v["title"],
+                    "views": v["views"],
+                    "channel": v.get("channel", ""),
+                    "source": "world_news",
+                    "query": v.get("search_query", ""),
+                })
+
+            # From trending chart (non-shorts, 5min+)
+            for v in trending:
+                if not v.get("is_shorts") and v.get("duration_seconds", 0) > 300:
+                    longform_candidates.append({
+                        "title": v["title"],
+                        "views": v["views"],
+                        "channel": v.get("channel", ""),
+                        "source": "trending_chart",
+                        "query": v.get("category", ""),
+                    })
+                if len(longform_candidates) >= 20:
+                    break
+
+            # Sort by views
+            longform_candidates.sort(key=lambda x: x["views"], reverse=True)
+            longform_candidates = longform_candidates[:15]
+
+            if not longform_candidates:
+                logger.error("No trending long-form topics found.")
+                sys.exit(1)
+
+            print("\n" + "=" * 70)
+            print("🎬 TRENDING LONG-FORM TOPICS — All Categories (pick one to produce)")
+            print("=" * 70)
+            for i, c in enumerate(longform_candidates, 1):
+                source_tag = "🔍" if c["source"] == "world_news" else "📊"
+                print(f"  {i:2d}. {source_tag} {c['title'][:65]}")
+                print(f"      Views: {c['views']:,} | Channel: {c['channel'][:30]} | [{c['query']}]")
+            print("=" * 70)
+            print(f"\n💡 Usage: python main.py --longform-suggest --longform-suggest-produce N --upload")
+            print(f"   Example: python main.py --longform-suggest --longform-suggest-produce 1 --upload")
+            print()
+
+            # Auto-produce if index given
+            if args.longform_suggest_produce > 0:
+                idx = args.longform_suggest_produce - 1
+                if idx >= len(longform_candidates):
+                    logger.error(f"Invalid index. Choose between 1 and {len(longform_candidates)}")
+                    sys.exit(1)
+
+                selected = longform_candidates[idx]
+                topic = f"{args.longform_duration} minute deep analysis of {selected['title']}"
+                logger.info(f"🎬 Producing #{args.longform_suggest_produce}: {topic[:60]}")
+                send_telegram_alert(f"🎬 *Uzun Video Üretimi Başladı*\n\n*Konu:* {selected['title'][:60]}\n*Süre:* {args.longform_duration} dakika")
+                production_id = factory.run(
+                    topic=topic,
+                    languages=args.langs.split(","),
+                    auto_upload=args.upload,
+                    video_type="long",
+                    mode="info",
+                )
+                if not production_id:
+                    logger.error("Long-form production failed.")
+                    send_telegram_alert(f"❌ *Uzun Video Üretimi Başarısız*\n\n*Konu:* {selected['title'][:60]}")
+                    sys.exit(1)
+            elif args.upload:
+                # Auto-select top topic
+                selected = longform_candidates[0]
+                topic = f"{args.longform_duration} minute deep analysis of {selected['title']}"
+                logger.info(f"🎬 Auto-producing top topic: {topic[:60]}")
+                send_telegram_alert(f"🎬 *Uzun Video Üretimi Başladı*\n\n*Konu:* {selected['title'][:60]}\n*Süre:* {args.longform_duration} dakika")
+                production_id = factory.run(
+                    topic=topic,
+                    languages=args.langs.split(","),
+                    auto_upload=args.upload,
+                    video_type="long",
+                    mode="info",
+                )
+                if not production_id:
+                    logger.error("Long-form production failed.")
+                    sys.exit(1)
+
+            sys.exit(0)
+
+        # Direct topic mode
+        if args.longform_topic:
+            topic = f"{args.longform_duration} minute documentary about {args.longform_topic}"
+            logger.info(f"🎬 Producing long-form: {topic[:60]}")
+            send_telegram_alert(f"🎬 *Uzun Video Üretimi Başladı*\n\n*Konu:* {args.longform_topic[:60]}\n*Süre:* {args.longform_duration} dakika")
+            production_id = factory.run(
+                topic=topic,
+                languages=args.langs.split(","),
+                auto_upload=args.upload,
+                video_type="long",
+                mode="info",
+            )
+            if not production_id:
+                logger.error("Long-form production failed.")
+                send_telegram_alert(f"❌ *Uzun Video Üretimi Başarısız*\n\n*Konu:* {args.longform_topic[:60]}")
+                sys.exit(1)
+            sys.exit(0)
 
     # Execute Daily Plan Mode
     if args.execute_plan:

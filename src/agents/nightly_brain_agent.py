@@ -882,22 +882,26 @@ Create a content plan for TOMORROW with:
 - 3 Ambient video recommendations (which ambient type to produce next)
 
 LONG-FORM VIDEO STRATEGY (CRITICAL):
-These are the channel's FLAGSHIP content — deep-dive documentaries on TODAY'S
-biggest world events and breaking news. They drive watch time and ad revenue.
+These are the channel's FLAGSHIP content — deep-dive documentaries that drive
+watch time and ad revenue. NOT just news — pick from ALL trending categories.
 
 Long-form topic selection rules:
-1. CURRENT EVENTS FIRST: Focus on what the WORLD is talking about RIGHT NOW.
-   Geopolitics, wars, conflicts, economic crises, major diplomatic events,
-   natural disasters, technology breakthroughs — whatever dominates headlines.
-2. DEEP ANALYSIS: Don't just report the news — explain WHY it matters, the
-   history behind it, what could happen next. Give viewers context they can't
-   get from a 30-second news clip.
-3. EVERGREEN ANGLE: Frame current events with lasting relevance. Instead of
+1. MOST-WATCHED FIRST: Focus on what YouTube audiences are watching most RIGHT NOW.
+   This can be world events, science, technology, history, mysteries, economics,
+   space, AI, true crime, nature — whatever long-form content is trending highest.
+2. WORLD EVENTS ARE GREAT BUT NOT THE ONLY OPTION: Geopolitics, wars, crises are
+   good topics BUT also consider science breakthroughs, tech explainers, historical
+   deep dives, unsolved mysteries, and viral documentary topics.
+3. DEEP ANALYSIS: Don't just report — explain WHY it matters, the history behind it,
+   what could happen next. Give viewers context they can't get elsewhere.
+4. EVERGREEN ANGLE: Frame topics with lasting relevance. Instead of
    "Breaking: X happened today", use "Why X Changes Everything" or
    "The Hidden History Behind X".
-4. DURATION: Each long-form video should target 15 minutes (~2100 words of narration).
+5. DURATION: Each long-form video should target 15 minutes (~2100 words of narration).
    Include "15 minute" in the topic field so the scriptwriter knows the target length.
-5. HIGH SEARCH VOLUME: Pick topics people are actively searching for on YouTube.
+6. HIGH SEARCH VOLUME: Pick topics people are actively searching for on YouTube.
+7. VARIETY: Alternate between categories — don't do 2 geopolitics videos in a row.
+   Mix news, science, history, technology, mysteries across days.
 
 Available ambient types: fireplace, forest, rain, ocean, thunderstorm, waterfall,
 snow, campfire, candle, underwater, river, garden, wind, aurora, sunset, cave,
@@ -1640,21 +1644,32 @@ Output STRICT JSON format:
 
     def _search_world_news_videos(self) -> List[Dict]:
         """
-        Search for high-performing world news / current events long-form videos.
-        These inform the AI planner about what geopolitical topics are trending.
+        Search for high-performing long-form videos across ALL trending categories.
+        Not just news — includes science, history, technology, documentaries, etc.
         """
         if not self.yt_public:
             return []
 
         news_queries = [
+            # World news & geopolitics
             "world news today explained",
             "geopolitics analysis",
-            "middle east crisis explained",
             "global conflict update",
             "breaking world news documentary",
-            "international relations explained",
             "economic crisis explained",
-            "war update analysis",
+            # Science & technology
+            "science documentary 2024",
+            "technology explained",
+            "space discovery documentary",
+            "AI technology explained",
+            # History & mysteries
+            "history documentary",
+            "ancient mysteries explained",
+            "unsolved mysteries documentary",
+            # Popular trending long-form
+            "most watched documentary this week",
+            "trending explained video",
+            "deep dive analysis",
         ]
 
         news_videos = []
