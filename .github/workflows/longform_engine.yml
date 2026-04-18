@@ -1,45 +1,35 @@
-name: "🎬 Content Engine — Shorts Production"
+name: "🎬 Longform Engine — World News Documentaries"
 
 # ╔══════════════════════════════════════════════════════════╗
-# ║  CONTENT ENGINE v4.1 — Shorts Only (Auto)               ║
+# ║  LONGFORM ENGINE v1.0 — Daily News Documentaries         ║
 # ║                                                         ║
-# ║  Channel Strategy:                                      ║
-# ║  • Shorts = Auto-produced from Nightly Brain plan       ║
-# ║  • Ambient = Manual production (produce_ambient.py)     ║
+# ║  Produces 10-20 minute deep-dive documentary videos     ║
+# ║  about trending world events, geopolitics, and current  ║
+# ║  affairs. Content plan comes from Nightly Brain.        ║
 # ║                                                         ║
-# ║  ┌──────────┬──────────────────────────────────────────┐ ║
-# ║  │ Time UTC │ Action                                   │ ║
-# ║  ├──────────┼──────────────────────────────────────────┤ ║
-# ║  │ 06:00    │ 2 Shorts (EU morning + Asia evening)    │ ║
-# ║  │ 09:00    │ 2 Shorts (UK morning + India afternoon) │ ║
-# ║  │ 12:00    │ 2 Shorts (US early morning + EU lunch)  │ ║
-# ║  │ 14:00    │ 2 Shorts (US morning rush 9-10am ET)    │ ║
-# ║  │ 16:00    │ 2 Shorts (US lunch + UK evening)        │ ║
-# ║  │ 18:00    │ 2 Shorts (US afternoon 1-2pm ET)        │ ║
-# ║  │ 20:00    │ 2 Shorts (US prime time 3-4pm ET)       │ ║
-# ║  │ 22:00    │ 2 Shorts (US evening 5-6pm ET)          │ ║
-# ║  └──────────┴──────────────────────────────────────────┘ ║
+# ║  Schedule: Twice daily (morning + afternoon US time)    ║
+# ║  • 14:00 UTC = 10 AM ET — morning production           ║
+# ║  • 20:00 UTC = 4 PM ET  — afternoon production         ║
 # ║                                                         ║
-# ║  8 batches × 2 Shorts = 16 Shorts/day                  ║
+# ║  Each run produces 1 long-form video (~30-45 min build) ║
+# ║  2 runs × 1 video = 2 documentaries/day                ║
 # ╚══════════════════════════════════════════════════════════╝
 
 on:
-  # Automated batches across 24h (UTC) to catch all timezones.
-  # Each batch produces 2 Shorts → 16 Shorts/day total.
   schedule:
-    - cron: '0 6,9,12,14,16,18,20,22 * * *'
+    - cron: '0 14,20 * * *'
 
   workflow_dispatch:
     inputs:
       count:
-        description: 'Number of Shorts to produce'
+        description: 'Number of long-form videos to produce'
         required: false
-        default: '3'
+        default: '1'
 
 jobs:
-  produce-shorts:
+  produce-longform:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 90
     permissions:
       contents: write
       checks: write
@@ -67,25 +57,22 @@ jobs:
           import json
           try:
               d = json.load(open('data/daily_plan.json'))
-              plan_status = d.get('status', 'unknown')
-              shorts = d.get('shorts', [])
-              pending = sum(1 for s in shorts if s.get('status','pending') == 'pending')
-              print(f'plan_status={plan_status},pending_shorts={pending}')
+              longform = d.get('longform', [])
+              pending = sum(1 for l in longform if l.get('status','pending') in ('pending','failed','error'))
+              print(f'pending_longform={pending}')
           except:
-              print('plan_status=error,pending_shorts=0')
+              print('pending_longform=0')
           ")
 
-          PENDING=$(echo $STATUS | grep -oP 'pending_shorts=\K[0-9]+' || echo "0")
-          PLAN_STATUS=$(echo $STATUS | grep -oP 'plan_status=\K[^,]+' || echo "unknown")
+          PENDING=$(echo $STATUS | grep -oP 'pending_longform=\K[0-9]+' || echo "0")
+          echo "pending_longform=$PENDING" >> $GITHUB_OUTPUT
 
-          echo "pending_shorts=$PENDING" >> $GITHUB_OUTPUT
-
-          if [ "$PLAN_STATUS" = "completed" ] || [ "$PENDING" = "0" ]; then
+          if [ "$PENDING" = "0" ]; then
             echo "status=completed" >> $GITHUB_OUTPUT
-            echo "⏭️ All Shorts completed or no pending"
+            echo "⏭️ All long-form videos completed or none planned"
           else
             echo "status=ready" >> $GITHUB_OUTPUT
-            echo "📋 Plan ready: $PENDING shorts pending"
+            echo "📋 Plan ready: $PENDING long-form videos pending"
           fi
 
       - name: Set up Python
@@ -114,7 +101,7 @@ jobs:
             printf "%s" "${{ secrets.TOKEN_PICKLE_BASE64 }}" | base64 -d > token.pickle
           fi
 
-      - name: Produce Shorts
+      - name: Produce Long-form Videos
         if: steps.check_plan.outputs.status == 'ready'
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -130,21 +117,21 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         run: |
           MANUAL_COUNT="${{ github.event.inputs.count }}"
-          COUNT=${MANUAL_COUNT:-2}
-          echo "📹 Producing $COUNT Shorts"
-          python main.py --execute-plan --plan-shorts $COUNT --plan-longform 0 --langs en
+          COUNT=${MANUAL_COUNT:-1}
+          echo "🎬 Producing $COUNT long-form documentary videos"
+          python main.py --execute-plan --plan-shorts 0 --plan-longform $COUNT --langs en
 
       - name: Commit Progress
         if: steps.check_plan.outputs.status == 'ready'
         run: |
           git config --local user.email "action@github.com"
-          git config --local user.name "Content Engine Bot"
+          git config --local user.name "Longform Engine Bot"
           git add data/daily_plan.json -f
           TIMESTAMP=$(date -u +'%Y-%m-%d_%H:%M')
-          git diff --staged --quiet || git commit -m "📹 Produced Shorts [$TIMESTAMP]"
+          git diff --staged --quiet || git commit -m "🎬 Produced Longform [$TIMESTAMP]"
           git pull --rebase origin main || true
           git push origin main
 
       - name: Skip — No Plan
         if: steps.check_plan.outputs.status != 'ready'
-        run: echo "⏭️ No pending Shorts. Waiting for Nightly Brain."
+        run: echo "⏭️ No pending long-form videos. Waiting for Nightly Brain."
