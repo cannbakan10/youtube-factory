@@ -877,9 +877,16 @@ DO NOT suggest any more videos about these specific topics:
 {saturated_text}
 
 Create a content plan for TOMORROW with:
-- 20 YouTube Shorts (under 60 seconds, fact/info style)
-- 2 Long-form videos (10-20 minutes, documentary/news analysis style)
+- 7 YouTube Shorts (25-35 seconds each, fact/info style — QUALITY over quantity)
+- 2 Long-form videos (10-20 minutes, documentary/deep-dive style)
 - 3 Ambient video recommendations (which ambient type to produce next)
+
+SHORTS QUALITY RULES (CRITICAL — 2026 Algorithm):
+- Each Short must have a SPECIFIC hook (not generic "90% don't know this")
+- Target 25-35 seconds (55-75 words) for maximum completion rate
+- End with a LOOPING structure (last line connects back to the opening)
+- FEWER but BETTER: 5-7 high-quality Shorts beat 20 mediocre ones
+- The algorithm rewards completion rate, not posting frequency
 
 LONG-FORM VIDEO STRATEGY (CRITICAL):
 These are the channel's FLAGSHIP content — deep-dive documentaries that drive

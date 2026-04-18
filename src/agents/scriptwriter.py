@@ -182,7 +182,10 @@ class ScriptWriter:
 
         duration_match = re.search(r'(\d+)\s*(?:dakika|minute|dk|min|dakikalık|minutelık)', topic.lower())
         target_minutes = int(duration_match.group(1)) if duration_match else (10 if is_long else 1)
-        target_word_count = target_minutes * 140 # Average narration speed
+        if is_long:
+            target_word_count = target_minutes * 140
+        else:
+            target_word_count = 65  # 25-35 second Shorts = higher completion rate
 
         extra_style = f"\nSTYLE CONTEXT: {style_context}\n" if style_context else ""
 
@@ -292,7 +295,7 @@ class ScriptWriter:
             - SENSORY DETAILS: Describe what was seen, heard, felt. Make the viewer feel like they're THERE.
             - END with a chilling final line that lingers in the viewer's mind.
             - STRICTLY NARRATION ONLY: No brackets, no labels, no meta-text.
-            - Word count: ~110-130 words.
+            - Word count: ~55-75 words (TARGET: 25-35 seconds when spoken).
             - Language: STRICTLY {lang_name} only.
             """
         elif mode == "quiz":
@@ -364,32 +367,35 @@ class ScriptWriter:
             if language == "tr":
                 climax_lead_in = "Gelelim en çarpıcı noktaya..."
                 hook_techniques = """
-            🎣 HOOK TEKNİKLERİ (İlk cümle MUTLAKA bunlardan biri olmalı):
-            - ŞOKUN İSTATİSTİK: "Dünya nüfusunun %90'ı bunu bilmiyor..."
-            - MERİK BOŞLUĞU: "Bu ülke herkesten bir şey saklıyor..."
-            - TERS SEZGI: "Bilim insanları yıllarca yanılmış..."
-            - YASAK BİLGİ: "Bu bilgiyi öğrenmeniz istenmiyordu..."
-            - MEYDAN OKUMA: "Bunu duyduktan sonra her şeyi sorgulayacaksınız..."
+            🎣 HOOK TEKNİKLERİ (İlk cümle SPESIFIK bir gerçek olmalı, jenerik değil):
+            ❌ KÖTÜ (jenerik): "Dünya nüfusunun %90'ı bunu bilmiyor..."
+            ✅ İYİ (spesifik): "Neptün'de Dünya'dan büyük bir fırtına var — ve 400 yıldır devam ediyor."
+            ✅ İYİ (cesur iddia): "Bu küçük adada metrekare başına dünyanın en çok zehirli yılanı yaşıyor."
+            ✅ İYİ (gizem): "1977'de bir radyo teleskobu o kadar güçlü bir sinyal yakaladı ki, astronom kenara 'Wow!' yazdı."
+            KURAL: Spesifik bir gerçek, isim, sayı veya yerle başla. ASLA belirsiz cümlelerle başlama.
             """
             elif language == "es":
                 climax_lead_in = "Ahora, la parte más impactante..."
                 hook_techniques = """
-            🎣 HOOK TECHNIQUES (First sentence MUST use one of these):
-            - SHOCKING STAT: "El 90% del mundo no sabe esto..."
-            - CURIOSITY GAP: "Este país esconde algo de todos..."
-            - COUNTER-INTUITIVE: "Los científicos estuvieron equivocados durante años..."
-            - FORBIDDEN KNOWLEDGE: "No quieren que sepas esta información..."
-            - CHALLENGE: "Después de escuchar esto, cuestionarás todo..."
+            🎣 HOOK TECHNIQUES (First sentence MUST be SPECIFIC, not generic):
+            ❌ BAD: "El 90% del mundo no sabe esto..."
+            ✅ GOOD: "Neptuno tiene una tormenta más grande que la Tierra — y lleva 400 años activa."
+            ✅ GOOD: "Esta pequeña isla tiene más serpientes venenosas por metro cuadrado que cualquier lugar del planeta."
+            RULES: Start with a SPECIFIC fact, name, number, or place. NEVER start with vague phrases.
             """
             else:
                 climax_lead_in = "Now for the most striking part..."
                 hook_techniques = """
-            🎣 HOOK TECHNIQUES (First sentence MUST use one of these):
-            - SHOCKING STAT: "90% of the world doesn't know this..."
-            - CURIOSITY GAP: "This country is hiding something from everyone..."
-            - COUNTER-INTUITIVE: "Scientists were wrong about this for decades..."
-            - FORBIDDEN KNOWLEDGE: "You were never supposed to learn this..."
-            - CHALLENGE: "After hearing this, you'll question everything..."
+            🎣 HOOK TECHNIQUES (First sentence MUST be SPECIFIC, not generic):
+            ❌ BAD (generic, overused): "90% of the world doesn't know this..."
+            ❌ BAD: "Scientists were wrong about this for decades..."
+            ✅ GOOD (specific fact as hook): "Neptune has a storm bigger than Earth — and it's been raging for 400 years."
+            ✅ GOOD (bold claim): "This tiny island has more venomous snakes per square meter than anywhere on Earth."
+            ✅ GOOD (mystery): "In 1977, a radio telescope picked up a signal so powerful that the astronomer wrote 'Wow!' in the margin."
+            ✅ GOOD (list): "Three facts about sleep that will keep you up tonight."
+            ✅ GOOD (exclusivity): "Only 1% of divers have ever seen what lives below 1,000 meters."
+
+            RULES: Start with a SPECIFIC fact, name, number, or place. NEVER start with vague phrases.
             """
             return f"""
             Using the following research data, write an exciting narration script for YouTube Shorts.
@@ -411,15 +417,16 @@ class ScriptWriter:
 
             STRUCTURE & PACING RULES:
             - ⛔ NO RHETORICAL QUESTIONS: Stop asking "Did you know?" or "What if?". Deliver information as BOLD, DIRECT STATEMENTS.
-            - ⏱️ INSTANT VALUE: Deliver the first mind-blowing fact within the first 10 seconds. No long setups.
+            - ⏱️ INSTANT VALUE: The FIRST SENTENCE must contain a specific, mind-blowing fact. No buildup, no filler.
             - 🎯 TITLE ALIGNMENT: The very first sentence must confirm the promise made in the title "{topic}".
-            - 🧲 CURIOSITY GAP: Every sentence should make the viewer NEED to hear the next one. Use open loops.
-            - 🔥 EMOTIONAL INTENSITY: Write with urgency and passion. Use power words: "shocking", "unbelievable", "terrifying", "incredible".
-            - Deliver 3-5 high-information facts in rapid succession.
+            - 🧲 OPEN LOOPS: Every sentence should make the viewer NEED to hear the next one.
+            - 🔥 CONCISE POWER: Short punchy sentences. Every word must earn its place. Cut filler words ruthlessly.
+            - Deliver 2-3 high-information facts in rapid succession (NOT 5 — quality over quantity).
             - Build to a climax using "{climax_lead_in}".
-            - End with a natural call to action (like, subscribe, comment).
+            - 🔄 LOOPING END: The LAST sentence must circle back to the opening hook or topic, creating a seamless loop so the viewer replays without realizing. Example: if you open with "Neptune's storm..." end with "...and that storm? It's still growing."
+            - End with a SHORT natural CTA woven into the last fact (not a separate "like and subscribe" line).
             - Language: STRICTLY {lang_name} only.
-            - Word count: 110-140 words.
+            - Word count: 55-75 words (TARGET: 25-35 seconds when spoken). Be CONCISE — every word must earn its place.
             - Write as if you're a narrator speaking directly to the viewer with authority and speed.
             """
 

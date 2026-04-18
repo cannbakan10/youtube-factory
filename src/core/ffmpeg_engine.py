@@ -19,8 +19,8 @@ class VideoEngine:
         """
         is_long = video_type == "long"
         width, height = (1920, 1080) if is_long else (1080, 1920)
-        margin_v = 50 if is_long else 60
-        font_size = 20 if is_long else 12
+        margin_v = 50 if is_long else 80
+        font_size = 22 if is_long else 26
         
         video_id = getattr(blueprint, 'video_id', 'output')
         final_output = os.path.join(self.output_dir, f"{video_id}_{language}_final.mp4")
@@ -43,8 +43,8 @@ class VideoEngine:
             
             # Subtitle styling
             style = (
-                f"FontName={font_name},FontSize={font_size},PrimaryColour=&H00FFFFFF,OutlineColour=&H000000,"
-                f"BorderStyle=1,Outline=1.0,Shadow=0.5,Alignment=2,MarginV={margin_v},Bold=1"
+                f"FontName={font_name},FontSize={font_size},PrimaryColour=&H00FFFFFF,OutlineColour=&H00000000,"
+                f"BorderStyle=1,Outline=2.0,Shadow=1.0,Alignment=2,MarginV={margin_v},Bold=1"
             )
             
             subs_path = os.path.abspath(scene.subs_path)

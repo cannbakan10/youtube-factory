@@ -1,33 +1,28 @@
 name: "🎬 Content Engine — Shorts Production"
 
 # ╔══════════════════════════════════════════════════════════╗
-# ║  CONTENT ENGINE v4.1 — Shorts Only (Auto)               ║
+# ║  CONTENT ENGINE v5.0 — Quality Over Quantity             ║
 # ║                                                         ║
 # ║  Channel Strategy:                                      ║
-# ║  • Shorts = Auto-produced from Nightly Brain plan       ║
-# ║  • Ambient = Manual production (produce_ambient.py)     ║
+# ║  • 1 Short per batch, 1 batch/day = ~5 Shorts/week     ║
+# ║  • Mon-Fri only (weekends off for algorithm digestion)  ║
+# ║  • Posted at US prime time for max initial traction     ║
 # ║                                                         ║
 # ║  ┌──────────┬──────────────────────────────────────────┐ ║
 # ║  │ Time UTC │ Action                                   │ ║
 # ║  ├──────────┼──────────────────────────────────────────┤ ║
-# ║  │ 06:00    │ 2 Shorts (EU morning + Asia evening)    │ ║
-# ║  │ 09:00    │ 2 Shorts (UK morning + India afternoon) │ ║
-# ║  │ 12:00    │ 2 Shorts (US early morning + EU lunch)  │ ║
-# ║  │ 14:00    │ 2 Shorts (US morning rush 9-10am ET)    │ ║
-# ║  │ 16:00    │ 2 Shorts (US lunch + UK evening)        │ ║
-# ║  │ 18:00    │ 2 Shorts (US afternoon 1-2pm ET)        │ ║
-# ║  │ 20:00    │ 2 Shorts (US prime time 3-4pm ET)       │ ║
-# ║  │ 22:00    │ 2 Shorts (US evening 5-6pm ET)          │ ║
+# ║  │ 20:00    │ 1 Short (US 3-4PM ET prime time)        │ ║
 # ║  └──────────┴──────────────────────────────────────────┘ ║
 # ║                                                         ║
-# ║  8 batches × 2 Shorts = 16 Shorts/day                  ║
+# ║  Why 1/day: YouTube 2026 algorithm rewards quality over ║
+# ║  quantity. 16/day = spam flag + self-cannibalization.   ║
+# ║  Each Short needs 2-4h warm-up for algorithm testing.  ║
 # ╚══════════════════════════════════════════════════════════╝
 
 on:
-  # Automated batches across 24h (UTC) to catch all timezones.
-  # Each batch produces 2 Shorts → 16 Shorts/day total.
+  # 1 Short/day, Mon-Fri only, at US prime time (3PM ET = 20:00 UTC)
   schedule:
-    - cron: '0 6,9,12,14,16,18,20,22 * * *'
+    - cron: '0 20 * * 1-5'
 
   workflow_dispatch:
     inputs:
@@ -130,7 +125,7 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         run: |
           MANUAL_COUNT="${{ github.event.inputs.count }}"
-          COUNT=${MANUAL_COUNT:-2}
+          COUNT=${MANUAL_COUNT:-1}
           echo "📹 Producing $COUNT Shorts"
           python main.py --execute-plan --plan-shorts $COUNT --plan-longform 0 --langs en
 
