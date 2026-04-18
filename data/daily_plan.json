@@ -1,356 +1,149 @@
 {
-  "date": "2026-04-18",
+  "date": "2026-04-19",
   "shorts": [
     {
-      "title": "The Unbreakable: What Really Stops a Hydraulic Press?",
-      "topic": "Exploring extreme material strength tests using common objects and industrial machinery, detailing unexpected outcomes.",
-      "hook": "Think a diamond is unbreakable? Wait till you see this!",
+      "title": "Beyond Erasers: The Friction That Removes Mistakes",
+      "topic": "Explain the scientific principles of friction and abrasion that allow erasers to remove pencil marks, and how 'strong' erasers actually grind paper fibers, addressing audience curiosity about how they truly work.",
+      "hook": "Ever wonder how an eraser removes mistakes? It's not magic, it's the physics of friction and abrasion at work!",
       "tags": [
-        "engineering",
-        "materials",
-        "strengthtest",
-        "hydraulicpress",
-        "facts"
+        "eraserfacts",
+        "materialtech",
+        "everydayphysics",
+        "howthingswork"
       ],
-      "inspired_by": "World’s Strongest Eraser VS 5 Levels… (trending & own winner)",
+      "inspired_by": "World’s Strongest Eraser VS 5 Levels… (#shorts) & comments",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "n2FBDPG5dNk",
-      "status": "produced",
-      "production_id": "Exploring_extreme_material_str_1776489350"
+      "winner_source_id": "n2FBDPG5dNk"
     },
     {
-      "title": "Chefs' Secret Weapon: The Ingredient That Changes Everything",
-      "topic": "A deep dive into bizarre or rare ingredients professional chefs use to elevate dishes, or extreme cooking competitions.",
-      "hook": "Forget salt and pepper. This ingredient is culinary gold!",
+      "title": "The World's Strangest Borders: Travel Moments You Won't Believe",
+      "topic": "Explore bizarre or unique international borders and the surprising travel moments they create, such as tiny enclaves, shared towns, or historically complex divisions, highlighting unusual geographical facts.",
+      "hook": "Think all borders are straight lines? Prepare to have your mind blown by these strange global boundaries that create unforgettable travel experiences!",
       "tags": [
-        "culinary",
-        "cooking",
-        "foodfacts",
-        "gastronomy",
-        "chef"
+        "travelfacts",
+        "geography",
+        "worldborders",
+        "globalfacts"
       ],
-      "inspired_by": "Perfect Steak Hack (trending) & Don't Mess with the Chefs (own winner)",
+      "inspired_by": "Just Passing Through: Unforgettable Travel Moments #Shorts & 'All “I” Countries in a Straight Line 😳🔥' viral short",
       "estimated_views": "medium",
       "is_winner_variation": true,
-      "winner_source_id": "phGsPGsSL80"
+      "winner_source_id": "Ue9e91x6IGY"
     },
     {
-      "title": "Gravity Defied: The Impossible Balance Behind Crazy Stunts",
-      "topic": "Examining the counter-intuitive physics and engineering that allow daredevils to perform seemingly impossible balancing acts and vehicle stunts.",
-      "hook": "You think this stunt is impossible? The science says otherwise!",
+      "title": "Beyond Crosswalks: Ingenious Urban Safety Innovations",
+      "topic": "Showcase cutting-edge urban design and technological solutions making streets safer for pedestrians and drivers, preventing common accidents and transforming public spaces for health and safety.",
+      "hook": "From smart crosswalks to AI traffic flow, our cities are getting a safety upgrade you might not even notice!",
       "tags": [
-        "physics",
-        "stunts",
-        "engineering",
-        "gravity",
-        "extreme"
+        "urbansafety",
+        "citytech",
+        "innovations",
+        "publichealth"
       ],
-      "inspired_by": "She Flipped His 3 Wheel (own winner)",
+      "inspired_by": "Transforming Safety: Frank's Impact on Our Streets #Shorts & 'Orlando mom calls for end to cars speeding past stopped school bus'",
       "estimated_views": "medium",
       "is_winner_variation": true,
-      "winner_source_id": "YmYZ91LkiCg"
+      "winner_source_id": "1N59aTz4khM"
     },
     {
-      "title": "The Mind's Ultimate Test: Surviving Extreme Conditions",
-      "topic": "Stories of individuals who used incredible mental toughness to overcome dire, life-threatening situations far beyond typical physical injuries.",
-      "hook": "It's not just physical pain. This is what true mental strength looks like!",
+      "title": "Fork vs. Concrete: The Unexpected Durability Test",
+      "topic": "Demonstrate the surprising strength of everyday materials like concrete and explore the physics of small-scale abrasion, showing what truly happens when a common utensil meets a solid wall.",
+      "hook": "Can a simple fork really scratch concrete? The answer reveals more about material durability than you think!",
       "tags": [
-        "resilience",
-        "survival",
-        "psychology",
-        "mindset",
-        "overcome"
-      ],
-      "inspired_by": "The Agony of Injury (own winner)",
-      "estimated_views": "medium",
-      "is_winner_variation": true,
-      "winner_source_id": "i9zdlQ68_zo"
-    },
-    {
-      "title": "The Fork's True Power: Beyond the Dinner Table",
-      "topic": "Showcasing various, often absurd, alternative uses for common household objects that go far beyond their intended design, revealing surprising utility.",
-      "hook": "This isn't just a fork. It's a tool you never knew you needed!",
-      "tags": [
-        "hacks",
-        "DIY",
-        "unconventional",
+        "materialtests",
+        "physicsfacts",
         "everydayobjects",
-        "clever"
+        "durability"
       ],
-      "inspired_by": "He Is Scratching Concrete Wall With A Fork (own winner) & How To Make A Candle From An Orange (trending)",
-      "estimated_views": "high",
+      "inspired_by": "He Is Scratching Concrete Wall With A Fork 😲 #Shorts",
+      "estimated_views": "medium",
       "is_winner_variation": true,
       "winner_source_id": "QBB0NHSE9to"
     },
     {
-      "title": "Instant Evolution: Animals That Adapt at Lightning Speed",
-      "topic": "Focusing on specific animal species demonstrating remarkably rapid adaptations to changing environments or new threats, showcasing micro-evolution in action.",
-      "hook": "These creatures don't just survive; they adapt FASTER than you can imagine!",
+      "title": "Why Puppies Play Fight: More Than Just Cuteness",
+      "topic": "Explain the scientific reasons behind puppy play-fighting, exploring how it develops crucial social skills, physical strength, and prepares them for adult life and interactions within their species.",
+      "hook": "Those adorable puppy play fights aren't just cute! They're crucial lessons in survival. Here's why.",
       "tags": [
-        "animals",
-        "adaptations",
-        "biology",
-        "wildlife",
+        "puppytraining",
+        "animalbehavior",
+        "dogfacts",
         "evolution"
       ],
-      "inspired_by": "This Baby Evolved Mid Race (own winner) & How Animals Teach Their Young (viral niche)",
+      "inspired_by": "Heartwarming Puppy Moments: This is so cute 😍 #Shorts & 'The Cub That Turned Mom Into a Practice Dummy'",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "H_uulVZGqjw"
+      "winner_source_id": "a-U9pdVk22Q"
     },
     {
-      "title": "AI's Medical Miracle: Curing Diseases Faster Than Ever",
-      "topic": "Exploring how artificial intelligence is revolutionizing drug discovery, accelerating the identification of new treatments and potential cures for complex diseases.",
-      "hook": "What if a computer could find a cure? AI is making it happen!",
+      "title": "Unraveling Everyday Physics: Why Your Hair Stands Up",
+      "topic": "Explain the concept of static electricity in simple, relatable terms by detailing why hair stands up when rubbed or near a charged object, providing an 'aha!' moment for viewers.",
+      "hook": "Ever touched a balloon and felt your hair go wild? It's not magic, it's static electricity at play!",
       "tags": [
-        "AI",
-        "medicine",
-        "healthtech",
-        "breakthrough",
-        "future"
+        "physicsbasics",
+        "everydayphenomena",
+        "static",
+        "electricityfacts"
       ],
-      "inspired_by": "AI's Rapid Drug Discovery Breakthroughs (AI-Curated Trend)",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Pentagon's Secret: The Truth About Declassified UAPs",
-      "topic": "Delving into recently declassified government reports and public disclosures regarding Unidentified Aerial Phenomena (UAPs) and what they actually reveal.",
-      "hook": "They said it wasn't real. The Pentagon just proved them wrong!",
-      "tags": [
-        "UAP",
-        "UFO",
-        "declassified",
-        "governmentsecrets",
-        "extraterrestrial"
-      ],
-      "inspired_by": "Declassified UFO Reports: What the Pentagon Revealed (AI-Curated Trend)",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Editing Life: CRISPR's Impact on Our Genetic Future",
-      "topic": "The latest advancements in CRISPR gene-editing technology, showcasing its potential to treat and potentially eradicate genetic disorders in humans.",
-      "hook": "Imagine rewriting your DNA. CRISPR is making it possible!",
-      "tags": [
-        "CRISPR",
-        "genetics",
-        "biotechnology",
-        "medicaladvances",
-        "futurehealth"
-      ],
-      "inspired_by": "CRISPR Gene Editing: Curing Diseases on the Horizon (AI-Curated Trend)",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "The Future Is Here: Meet Your New Robot Coworker",
-      "topic": "Showcasing advanced humanoid robots performing complex tasks and discussing the implications and integration of AI-powered robots into daily life and various industries.",
-      "hook": "Robots are coming for our jobs... and they're bringing coffee!",
-      "tags": [
-        "robotics",
-        "AI",
-        "futuretech",
-        "automation",
-        "innovation"
-      ],
-      "inspired_by": "The Latest in Humanoid Robotics & AI Integration (AI-Curated Trend)",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Who Built This? Megalithic Structures That Defy Logic",
-      "topic": "Exploring pre-recorded history megalithic structures around the world (like Puma Punku or Gobekli Tepe) whose construction methods continue to baffle modern engineers.",
-      "hook": "These structures were built thousands of years ago... but HOW?",
-      "tags": [
-        "megaliths",
-        "archeology",
-        "engineeringmarvels",
-        "losttech",
-        "historyfacts"
-      ],
-      "inspired_by": "Ancient Civilizations' Unexplained Megastructures (AI-Curated Trend)",
+      "inspired_by": "Mind-Bending Physics: Why Everyday Things Happen (AI-curated trend)",
       "estimated_views": "medium",
       "is_winner_variation": false,
       "winner_source_id": ""
-    },
+    }
+  ],
+  "longform": [
     {
-      "title": "Ocean's Depths: Creatures You Won't Believe Exist",
-      "topic": "Unveiling bizarre and newly discovered species and ecosystems from ongoing deep-ocean exploration missions, highlighting the mysteries of the planet's last frontier.",
-      "hook": "The ocean is home to aliens... and we just found them!",
+      "title": "The Looming Chessboard: US-Iran Tensions and Global Power Shifts (15 minute)",
+      "topic": "15 minute deep analysis of current US-Iran geopolitical tensions. Cover the historical background, strategic importance of the region, key players' motivations, recent escalations, potential global impacts, and diplomatic avenues. Include specific facts, dates, and geopolitical context.",
+      "hook": "For decades, the relationship between the US and Iran has been a tightrope walk, but recent events suggest the rope is fraying. What's at stake, and how could this reshape global power?",
       "tags": [
-        "deepsea",
-        "oceanlife",
-        "marinelife",
-        "discoveries",
-        "ecosystems"
+        "USIran",
+        "geopolitics",
+        "middleeast",
+        "globalaffairs",
+        "internationalrelations"
       ],
-      "inspired_by": "Deep-Sea Discoveries: New Species and Ecosystems (AI-Curated Trend)",
+      "inspired_by": "US Iran War Analysis: America ki saalo ki mehnat barbaad || पूर्व अमेरिकी राजदूत बोले || Dharmendra",
       "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
+      "duration_minutes": 15
     },
     {
-      "title": "Beyond Your Laptop: The Quantum Computing Revolution",
-      "topic": "Explaining recent breakthroughs in quantum computing and how this revolutionary technology is moving closer to practical applications in various fields.",
-      "hook": "Your phone is smart. Quantum computers are on a whole other level!",
+      "title": "Sora AI: How Text-to-Video is Reshaping Reality (15 minute)",
+      "topic": "15 minute deep analysis of OpenAI's Sora AI. Explain how text-to-video models work, their potential applications in film, advertising, and creative industries, and the ethical dilemmas and societal impacts of hyper-realistic AI-generated content. Discuss the future of visual media.",
+      "hook": "Imagine generating hyper-realistic video from a simple text prompt. It's no longer science fiction. OpenAI's Sora AI is here, and it's set to fundamentally alter how we create and consume visual media.",
       "tags": [
-        "quantumcomputing",
-        "tech",
-        "futuretech",
-        "innovation",
-        "physics"
+        "SoraAI",
+        "AItechnology",
+        "videogeneration",
+        "futureofmedia",
+        "artificialintelligence"
       ],
-      "inspired_by": "Quantum Computing's Leap Towards Practicality (AI-Curated Trend)",
-      "estimated_views": "medium",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "America's Forgotten Battle: A Civil War Gold Heist?",
-      "topic": "Investigating a specific, little-known event from US history, such as a surprising incident during the Civil War or a lesser-known presidential scandal.",
-      "hook": "Forget what you learned in school. This US history fact will shock you!",
-      "tags": [
-        "UShistory",
-        "forgottenevents",
-        "civilwar",
-        "goldheist",
-        "historicalfacts"
-      ],
-      "inspired_by": "Untold Stories of Forgotten US Historical Events (AI-Curated Trend)",
-      "estimated_views": "medium",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Unlimited Power: The Race for Fusion Energy",
-      "topic": "Updates on major fusion research projects and the latest progress towards achieving net-energy gain, moving us closer to a clean and limitless power source.",
-      "hook": "Imagine power with no waste, no limits. It's almost here!",
-      "tags": [
-        "fusionenergy",
-        "cleantech",
-        "energy",
-        "innovation",
-        "futurepower"
-      ],
-      "inspired_by": "Breakthroughs in Fusion Energy: A Clean Power Future? (AI-Curated Trend)",
-      "estimated_views": "medium",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Is Earth 2.0 Out There? The Hunt for Alien Worlds",
-      "topic": "The latest discoveries in exoplanet hunting, focusing on potentially habitable worlds and new techniques used to search for signs of extraterrestrial life.",
-      "hook": "They found another one! Is this our new home, or someone else's?",
-      "tags": [
-        "exoplanets",
-        "space",
-        "alienlife",
-        "astronomy",
-        "cosmos"
-      ],
-      "inspired_by": "Exoplanet Hunting: Searching for Earth 2.0 (AI-Curated Trend)",
+      "inspired_by": "Sora AI: The Future of Video Creation Explained (AI-curated trend)",
       "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Pisa's Secret: The Unsinkable Tower's Engineering Trick",
-      "topic": "The surprising geological and engineering factors that have prevented the Leaning Tower of Pisa from collapsing despite its famous tilt over centuries.",
-      "hook": "It defies gravity! How is the Leaning Tower of Pisa still standing?",
-      "tags": [
-        "Pisa",
-        "engineering",
-        "history",
-        "architecture",
-        "gravity"
-      ],
-      "inspired_by": "Why the Leaning Tower of Pisa Still Hasn’t Fallen After 850 Years! (Viral Niche)",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Bulletproof Glass VS. The Impossible Shot: Can It Hold?",
-      "topic": "An exploration of extreme durability tests, focusing on the composition and limits of bulletproof glass against increasingly powerful impacts.",
-      "hook": "You think it's strong? Watch what happens when we push it to its limit!",
-      "tags": [
-        "durability",
-        "ballistics",
-        "materials",
-        "technology",
-        "safetyscience"
-      ],
-      "inspired_by": "Can a Window Stop a Wrecking Ball? (Competitor MrBeast) and World’s Strongest Eraser VS 5 Levels… (Trending)",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "The Viral Trend That Caught Everyone Off Guard",
-      "topic": "Deconstructing a new, unexpected viral social media trend or challenge that has recently exploded, examining its origin and widespread appeal.",
-      "hook": "One minute it's nothing, the next it's everywhere. How did THIS go viral?",
-      "tags": [
-        "viral",
-        "trending",
-        "socialmedia",
-        "internetculture",
-        "popculture"
-      ],
-      "inspired_by": "Bro Is A Lost Cause 💀 (Trending) & Mappelz content pattern",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Geographic Oddities: Countries That Share the Strangest Borders",
-      "topic": "Focusing on bizarre and unusual geographical facts about country borders, enclaves, or strange territorial divisions around the world.",
-      "hook": "Forget straight lines. These borders will blow your mind!",
-      "tags": [
-        "geography",
-        "worldfacts",
-        "countries",
-        "borders",
-        "maps"
-      ],
-      "inspired_by": "🌍 All “I” Countries in a Straight Line 😳🔥 (Viral Niche)",
-      "estimated_views": "medium",
-      "is_winner_variation": false,
-      "winner_source_id": ""
+      "duration_minutes": 15
     }
   ],
   "ambient_recommendations": [
     {
-      "type": "zen_garden",
+      "type": "rain",
       "hours": 8,
-      "reason": "Offers a unique visual and auditory escape for stress relief, tapping into a growing trend for mindful relaxation. It stands out from typical nature sounds and caters to a desire for calm and focus."
+      "reason": "Consistently popular for relaxation, study, sleep, and background noise across all demographics. Its soothing auditory qualities promise high passive watch time."
     },
     {
-      "type": "thunderstorm",
+      "type": "forest",
       "hours": 8,
-      "reason": "Thunderstorms are a classic and highly effective sound for sleep, study, and concentration. It consistently performs well due to its powerful, immersive quality and broad appeal."
+      "reason": "Offers a calming visual and auditory experience, appealing to nature lovers and those seeking stress relief. Provides an evergreen backdrop for extended viewing sessions."
     },
     {
-      "type": "river",
+      "type": "ocean",
       "hours": 8,
-      "reason": "The continuous, gentle flow of a river is universally calming, excellent for focus or sleep. It's a fundamental nature sound that consistently attracts viewers seeking background ambience."
+      "reason": "The rhythmic sound of waves is universally recognized for promoting relaxation and meditation. Its endless loop potential contributes to very high passive watch time and subscriber retention."
     }
   ],
-  "longform": [],
-  "generated_at": "2026-04-17T23:20:05.122935",
-  "trending_count": 86,
+  "generated_at": "2026-04-18T23:16:23.258389",
+  "trending_count": 84,
   "channels_analyzed": 6,
-  "winner_variations_count": 6,
-  "status": "in_progress",
-  "last_executed_at": "2026-04-18T05:21:02.868914",
-  "results": {
-    "shorts_produced": 1,
-    "longform_produced": 0,
-    "errors": []
-  }
+  "winner_variations_count": 5,
+  "status": "pending"
 }
