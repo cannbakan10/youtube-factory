@@ -1161,6 +1161,16 @@ Output STRICT JSON format:
 
         logger.info(f"📋 Pending: {len(pending_shorts)} shorts, {len(pending_longform)} longform")
 
+        # Notify start
+        batch_target = min(max_shorts, len(pending_shorts))
+        total_in_plan = len(plan.get("shorts", []))
+        produced_so_far = sum(1 for s in plan.get("shorts", []) if s.get("status") == "produced")
+        self._send_telegram(
+            f"🎬 *Content Engine Başladı*\n\n"
+            f"📋 Bu batch: {batch_target} Short üretilecek\n"
+            f"📊 Plan durumu: {produced_so_far}/{total_in_plan} tamamlandı"
+        )
+
         # Produce Shorts (only pending ones)
         for i, short in enumerate(pending_shorts[:max_shorts]):
             try:
@@ -1179,11 +1189,20 @@ Output STRICT JSON format:
                 else:
                     short["status"] = "failed"
                     results["errors"].append(f"Short '{short['title']}' failed (Reason: check logs)")
+                    self._send_telegram(
+                        f"❌ *Short Üretim Başarısız*\n\n"
+                        f"*Başlık:* {short['title'][:60]}\n"
+                        f"Logları kontrol et."
+                    )
             except Exception as e:
                 short["status"] = "error"
-                # Capture full error message
                 results["errors"].append(f"Short '{short['title']}' error: {str(e)}")
                 logger.error(f"Short production error: {e}")
+                self._send_telegram(
+                    f"❌ *Short Üretim Hatası*\n\n"
+                    f"*Başlık:* {short['title'][:60]}\n"
+                    f"*Hata:* `{str(e)[:150]}`"
+                )
 
         # Produce Long-form (only pending ones)
         for i, lf in enumerate(pending_longform[:max_longform]):
@@ -1223,6 +1242,27 @@ Output STRICT JSON format:
             json.dump(plan, f, indent=2, ensure_ascii=False)
 
         logger.info(f"✅ Plan executed: {results['shorts_produced']} shorts, {results['longform_produced']} longform")
+
+        # Completion notification
+        now_produced = sum(1 for s in plan.get("shorts", []) if s.get("status") == "produced")
+        total_shorts = len(plan.get("shorts", []))
+        error_count = len(results.get("errors", []))
+        status_emoji = "✅" if error_count == 0 else "⚠️"
+
+        msg_lines = [
+            f"{status_emoji} *Content Engine Bitti*\n",
+            f"📹 Bu batch: {results['shorts_produced']} Short üretildi",
+            f"📊 Toplam: {now_produced}/{total_shorts} tamamlandı",
+        ]
+        if error_count > 0:
+            msg_lines.append(f"❌ Hatalar: {error_count}")
+            for err in results["errors"][:3]:
+                msg_lines.append(f"   • `{err[:80]}`")
+        if plan.get("status") == "completed":
+            msg_lines.append("\n🎉 Bugünkü plan tamamen bitti!")
+
+        self._send_telegram("\n".join(msg_lines))
+
         return results
 
     # ──────────────────────────────────────────────────────
@@ -1909,6 +1949,9 @@ Output STRICT JSON format:
         # Print summary
         self._print_summary(nightly_report, plan)
 
+        # Telegram notification
+        self._send_nightly_summary_telegram(nightly_report, plan)
+
         return nightly_report
 
     def _print_summary(self, report: Dict, plan: Dict):
@@ -1975,8 +2018,94 @@ Output STRICT JSON format:
 
         print("\n" + "=" * 60)
 
-    def _send_api_failure_alert(self, gemini_exhausted: bool = False):
-        """Send Telegram alert when AI providers are down."""
+    def _send_nightly_summary_telegram(self, report: Dict, plan: Dict):
+        """Send nightly brain summary to Telegram."""
+        cleanup = report.get("cleanup", {})
+        perf = report.get("performance_review", {})
+        winners = report.get("winners", {})
+        trending = report.get("trending", {})
+        plan_info = report.get("plan", {})
+        peak = report.get("peak_hours", {})
+        retention = report.get("retention", {})
+
+        lines = ["🧠 *Nightly Brain Tamamlandı!*\n"]
+
+        # Performance
+        if perf and perf.get("status") != "no_recent_videos":
+            lines.append(f"📈 *Son 48s:* Ort. {perf.get('avg_views_48h', 0):.0f} izlenme")
+            best = perf.get("best_topics", [])
+            if best:
+                lines.append(f"   🏆 En iyi: {best[0][:45]}")
+
+        # Cleanup
+        deleted = cleanup.get("deleted", 0)
+        unlisted = cleanup.get("unlisted", 0)
+        kept = cleanup.get("kept", 0)
+        if deleted or unlisted:
+            lines.append(f"🗑 *Temizlik:* {deleted} silindi, {unlisted} gizlendi, {kept} kaldı")
+        else:
+            lines.append(f"🗑 *Temizlik:* Değişiklik yok ({kept} video)")
+
+        # Winners
+        if winners.get("total", 0) > 0:
+            lines.append(
+                f"🏆 *Kazananlar:* {winners.get('total', 0)} toplam "
+                f"(+{winners.get('added', 0)} yeni, eşik: {winners.get('threshold', 0)} izlenme)"
+            )
+
+        # Trending
+        lines.append(
+            f"🇺🇸 *Trend:* {trending.get('found', 0)} chart + "
+            f"{trending.get('viral_shorts_found', 0)} viral shorts"
+        )
+
+        # Peak hours
+        peak_utc = peak.get("utc", [])
+        if peak_utc:
+            lines.append(f"⏰ *Peak saatler (UTC):* {', '.join(str(h) for h in peak_utc)}")
+
+        # Retention
+        if retention.get("source") == "analytics_api":
+            lines.append(
+                f"📊 *Retention:* %{retention.get('avg_pct', 0):.0f} ort. "
+                f"({retention.get('avg_dur_sec', 0):.0f}s)"
+            )
+
+        # Plan
+        shorts_count = plan_info.get("shorts_planned", 0)
+        winner_vars = plan_info.get("winner_variations_count", 0)
+        is_fallback = plan.get("fallback_mode", False)
+        plan_label = "Fallback" if is_fallback else "AI"
+
+        lines.append(f"\n📝 *Yarının Planı ({plan_label}):* {shorts_count} Shorts")
+        if winner_vars:
+            lines.append(f"   🏆 {winner_vars} tanesi kazanan varyasyonu")
+
+        # First 8 shorts titles
+        shorts_titles = plan_info.get("shorts", [])[:8]
+        for i, title in enumerate(shorts_titles, 1):
+            lines.append(f"   {i}. {title}")
+        if shorts_count > 8:
+            lines.append(f"   ... ve {shorts_count - 8} tane daha")
+
+        # Ambient recs
+        ambient_recs = plan_info.get("ambient_recommendations", [])
+        if ambient_recs:
+            recs_text = ", ".join(r.get("type", "?") for r in ambient_recs)
+            lines.append(f"\n🎧 *Ambient önerisi:* {recs_text}")
+
+        # API health
+        health = report.get("api_health", {})
+        if health:
+            gemini_status = health.get("gemini", "?")
+            openai_status = health.get("openai", "?")
+            if not health.get("healthy", True):
+                lines.append(f"\n⚠️ *API Durumu:* Gemini={gemini_status}, OpenAI={openai_status}")
+
+        self._send_telegram("\n".join(lines))
+
+    def _send_telegram(self, message: str):
+        """Send a Telegram notification."""
         try:
             import requests as req
             token = os.getenv("TELEGRAM_BOT_TOKEN")
@@ -1987,26 +2116,30 @@ Output STRICT JSON format:
                 chat_id = f.read().strip()
             if not chat_id:
                 return
-            if gemini_exhausted:
-                msg = (
-                    "🚨 *PIPELINE DOWN — API Credits Exhausted*\n\n"
-                    "Gemini: `RESOURCE_EXHAUSTED` (all models)\n"
-                    "OpenAI: Connection failed\n\n"
-                    "📋 *Fix:*\n"
-                    "1. Gemini → https://aistudio.google.com/apikey (top up credits)\n"
-                    "2. OpenAI → Check `OPENAI_API_KEY` secret in GitHub\n"
-                    "3. Re-run nightly brain manually after fixing"
-                )
-            else:
-                msg = (
-                    "⚠️ *Nightly Brain — Plan Generation Failed*\n\n"
-                    "Both Gemini and OpenAI failed to generate content plan.\n"
-                    "Check API keys and credits."
-                )
             url = f"https://api.telegram.org/bot{token}/sendMessage"
-            req.post(url, json={"chat_id": chat_id, "text": msg, "parse_mode": "Markdown"}, timeout=5)
+            req.post(url, json={"chat_id": chat_id, "text": message, "parse_mode": "Markdown"}, timeout=10)
         except Exception:
             pass
+
+    def _send_api_failure_alert(self, gemini_exhausted: bool = False):
+        """Send Telegram alert when AI providers are down."""
+        if gemini_exhausted:
+            msg = (
+                "🚨 *PIPELINE DOWN — API Credits Exhausted*\n\n"
+                "Gemini: `RESOURCE_EXHAUSTED` (all models)\n"
+                "OpenAI: Connection failed\n\n"
+                "📋 *Fix:*\n"
+                "1. Gemini → https://aistudio.google.com/apikey (top up credits)\n"
+                "2. OpenAI → Check `OPENAI_API_KEY` secret in GitHub\n"
+                "3. Re-run nightly brain manually after fixing"
+            )
+        else:
+            msg = (
+                "⚠️ *Nightly Brain — Plan Generation Failed*\n\n"
+                "Both Gemini and OpenAI failed to generate content plan.\n"
+                "Check API keys and credits."
+            )
+        self._send_telegram(msg)
 
     def preflight_check(self) -> Dict:
         """Quick health check on AI providers before running the full pipeline."""
