@@ -15,7 +15,9 @@
       "inspired_by": "World’s Strongest Eraser VS 5 Levels… (trending & own winner)",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "n2FBDPG5dNk"
+      "winner_source_id": "n2FBDPG5dNk",
+      "status": "produced",
+      "production_id": "Exploring_extreme_material_str_1776489350"
     },
     {
       "title": "Chefs' Secret Weapon: The Ingredient That Changes Everything",
@@ -344,5 +346,11 @@
   "trending_count": 86,
   "channels_analyzed": 6,
   "winner_variations_count": 6,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-04-18T05:21:02.868914",
+  "results": {
+    "shorts_produced": 1,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
