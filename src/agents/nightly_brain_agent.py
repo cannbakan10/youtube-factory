@@ -653,7 +653,8 @@ class NightlyBrainAgent:
     def generate_content_plan(self, trending: List[Dict], channel_videos: List[Dict] = None,
                               performance_review: Dict = None, viral_shorts: List[Dict] = None,
                               competitor_insights: List[Dict] = None, audience_desires: List[str] = None,
-                              ai_trends: List[Dict] = None, active_winners: List[Dict] = None) -> Dict:
+                              ai_trends: List[Dict] = None, active_winners: List[Dict] = None,
+                              world_news_videos: List[Dict] = None) -> Dict:
         """
         Analyze trending videos and create a content plan for tomorrow.
         Uses Gemini AI with deep insights from:
@@ -831,13 +832,29 @@ CRITICAL WINNER AMPLIFICATION RULE:
 - Regular (non-winner) shorts should have `"is_winner_variation": false`.
 """
 
-            prompt = f"""You are a YouTube content strategist for a channel called "StreamGlobal" 
-that creates English-language Shorts and ambient relaxation videos targeting a US audience.
+            # World news section for long-form planning
+            world_news_section = ""
+            if world_news_videos:
+                news_list = "\n".join(
+                    f"  🌍 \"{v['title']}\" ({v['views']:,} views, {v.get('channel', 'N/A')}) [{v.get('search_query', '')}]"
+                    for v in world_news_videos[:10]
+                )
+                world_news_section = f"""
+
+🌍 TRENDING WORLD NEWS VIDEOS (high-performing current events content):
+{news_list}
+
+IMPORTANT: Use these as inspiration for the 2 long-form documentary videos.
+Study what world events are getting the most views and create deep-dive analysis content.
+"""
+
+            prompt = f"""You are a YouTube content strategist for a channel called "StreamGlobal"
+that creates English-language content targeting a global (primarily US) audience.
 
 CHANNEL STRATEGY:
 - Shorts (under 60 seconds) = Discovery & subscriber growth
-- Ambient videos (1-8 hour loops: fireplace, rain, forest, ocean etc.) = Watch time & ad revenue
-- NO mid-length videos (2-59 min documentaries). Only Shorts + Ambient!
+- Long-form documentaries (10-20 minutes) = Deep-dive analysis of world events, geopolitics, current affairs = Watch time & ad revenue
+- Ambient videos (1-8 hour loops: fireplace, rain, forest, ocean etc.) = Passive watch time
 
 Here are today's top 20 trending YouTube videos in the US:
 
@@ -849,6 +866,7 @@ Here are today's top 20 trending YouTube videos in the US:
 {competitor_section}
 {audience_section}
 {ai_trend_section}
+{world_news_section}
 
 CHANNEL HISTORY (LAST 150 VIDEOS — DO NOT REPEAT THESE TOPICS!):
 {history_text}
@@ -860,10 +878,33 @@ DO NOT suggest any more videos about these specific topics:
 
 Create a content plan for TOMORROW with:
 - 20 YouTube Shorts (under 60 seconds, fact/info style)
+- 2 Long-form videos (10-20 minutes, documentary/news analysis style)
 - 3 Ambient video recommendations (which ambient type to produce next)
 
-Available ambient types: fireplace, forest, rain, ocean, thunderstorm, waterfall, 
-snow, campfire, candle, underwater, river, garden, wind, aurora, sunset, cave, 
+LONG-FORM VIDEO STRATEGY (CRITICAL):
+These are the channel's FLAGSHIP content — deep-dive documentaries that drive
+watch time and ad revenue. NOT just news — pick from ALL trending categories.
+
+Long-form topic selection rules:
+1. MOST-WATCHED FIRST: Focus on what YouTube audiences are watching most RIGHT NOW.
+   This can be world events, science, technology, history, mysteries, economics,
+   space, AI, true crime, nature — whatever long-form content is trending highest.
+2. WORLD EVENTS ARE GREAT BUT NOT THE ONLY OPTION: Geopolitics, wars, crises are
+   good topics BUT also consider science breakthroughs, tech explainers, historical
+   deep dives, unsolved mysteries, and viral documentary topics.
+3. DEEP ANALYSIS: Don't just report — explain WHY it matters, the history behind it,
+   what could happen next. Give viewers context they can't get elsewhere.
+4. EVERGREEN ANGLE: Frame topics with lasting relevance. Instead of
+   "Breaking: X happened today", use "Why X Changes Everything" or
+   "The Hidden History Behind X".
+5. DURATION: Each long-form video should target 15 minutes (~2100 words of narration).
+   Include "15 minute" in the topic field so the scriptwriter knows the target length.
+6. HIGH SEARCH VOLUME: Pick topics people are actively searching for on YouTube.
+7. VARIETY: Alternate between categories — don't do 2 geopolitics videos in a row.
+   Mix news, science, history, technology, mysteries across days.
+
+Available ambient types: fireplace, forest, rain, ocean, thunderstorm, waterfall,
+snow, campfire, candle, underwater, river, garden, wind, aurora, sunset, cave,
 jungle, lavender_field, zen_garden, japanese_garden
 
 STRATEGY & VARIETY RULES:
@@ -885,6 +926,17 @@ Output STRICT JSON format:
             "estimated_views": "low/medium/high based on trend analysis",
             "is_winner_variation": false,
             "winner_source_id": ""
+        }}
+    ],
+    "longform": [
+        {{
+            "title": "Compelling Documentary Title About Current Event",
+            "topic": "15 minute deep analysis of [specific world event]. Cover the background, key players, current situation, and what could happen next. Include specific facts, dates, and geopolitical context.",
+            "hook": "Opening hook that grabs attention in the first 10 seconds",
+            "tags": ["tag1", "tag2", "tag3", "tag4", "tag5"],
+            "inspired_by": "Which news event or trending topic inspired this",
+            "estimated_views": "medium/high",
+            "duration_minutes": 15
         }}
     ],
     "ambient_recommendations": [
@@ -956,8 +1008,9 @@ Output STRICT JSON format:
                 self._send_api_failure_alert(all_gemini_exhausted)
                 raise RuntimeError(f"All AI providers failed. Last error: {last_err}")
 
-            # Ensure longform key exists (empty — ambient produced separately)
-            plan["longform"] = []
+            # Ensure longform key exists
+            if "longform" not in plan:
+                plan["longform"] = []
 
             # ── POST-GENERATION DUPLICATE FILTER ──
             if existing_titles_norm and plan.get("shorts"):
@@ -1087,10 +1140,12 @@ Output STRICT JSON format:
             elif not v.get("is_shorts") and len(longform) < 2:
                 longform.append({
                     "title": f"Deep Dive: {raw_topic}",
-                    "topic": v["title"],
+                    "topic": f"15 minute deep analysis of {v['title']}. Cover the background, key context, current situation, and implications.",
+                    "hook": f"What you're about to learn about {raw_topic.lower()} will change how you see the world.",
                     "tags": v.get("tags", [])[:5],
                     "inspired_by": v["title"],
                     "estimated_views": "medium",
+                    "duration_minutes": 15,
                 })
 
             if len(shorts) >= 20 and len(longform) >= 2:
@@ -1161,6 +1216,16 @@ Output STRICT JSON format:
 
         logger.info(f"📋 Pending: {len(pending_shorts)} shorts, {len(pending_longform)} longform")
 
+        # Notify start
+        batch_target = min(max_shorts, len(pending_shorts))
+        total_in_plan = len(plan.get("shorts", []))
+        produced_so_far = sum(1 for s in plan.get("shorts", []) if s.get("status") == "produced")
+        self._send_telegram(
+            f"🎬 *Content Engine Başladı*\n\n"
+            f"📋 Bu batch: {batch_target} Short üretilecek\n"
+            f"📊 Plan durumu: {produced_so_far}/{total_in_plan} tamamlandı"
+        )
+
         # Produce Shorts (only pending ones)
         for i, short in enumerate(pending_shorts[:max_shorts]):
             try:
@@ -1179,11 +1244,20 @@ Output STRICT JSON format:
                 else:
                     short["status"] = "failed"
                     results["errors"].append(f"Short '{short['title']}' failed (Reason: check logs)")
+                    self._send_telegram(
+                        f"❌ *Short Üretim Başarısız*\n\n"
+                        f"*Başlık:* {short['title'][:60]}\n"
+                        f"Logları kontrol et."
+                    )
             except Exception as e:
                 short["status"] = "error"
-                # Capture full error message
                 results["errors"].append(f"Short '{short['title']}' error: {str(e)}")
                 logger.error(f"Short production error: {e}")
+                self._send_telegram(
+                    f"❌ *Short Üretim Hatası*\n\n"
+                    f"*Başlık:* {short['title'][:60]}\n"
+                    f"*Hata:* `{str(e)[:150]}`"
+                )
 
         # Produce Long-form (only pending ones)
         for i, lf in enumerate(pending_longform[:max_longform]):
@@ -1223,6 +1297,27 @@ Output STRICT JSON format:
             json.dump(plan, f, indent=2, ensure_ascii=False)
 
         logger.info(f"✅ Plan executed: {results['shorts_produced']} shorts, {results['longform_produced']} longform")
+
+        # Completion notification
+        now_produced = sum(1 for s in plan.get("shorts", []) if s.get("status") == "produced")
+        total_shorts = len(plan.get("shorts", []))
+        error_count = len(results.get("errors", []))
+        status_emoji = "✅" if error_count == 0 else "⚠️"
+
+        msg_lines = [
+            f"{status_emoji} *Content Engine Bitti*\n",
+            f"📹 Bu batch: {results['shorts_produced']} Short üretildi",
+            f"📊 Toplam: {now_produced}/{total_shorts} tamamlandı",
+        ]
+        if error_count > 0:
+            msg_lines.append(f"❌ Hatalar: {error_count}")
+            for err in results["errors"][:3]:
+                msg_lines.append(f"   • `{err[:80]}`")
+        if plan.get("status") == "completed":
+            msg_lines.append("\n🎉 Bugünkü plan tamamen bitti!")
+
+        self._send_telegram("\n".join(msg_lines))
+
         return results
 
     # ──────────────────────────────────────────────────────
@@ -1412,6 +1507,7 @@ Output STRICT JSON format:
         result = {
             "trending": [],
             "viral_shorts": [],
+            "world_news_videos": [],
             "competitor_insights": [],
             "audience_desires": [],
         }
@@ -1430,9 +1526,13 @@ Output STRICT JSON format:
             logger.warning(f"  TrendAgent failed: {e}")
             result["ai_trends"] = []
 
-        # ── STAGE 2: Search for viral Shorts by niche ──
+        # ── STAGE 2b: Search for viral Shorts by niche ──
         result["viral_shorts"] = self._search_viral_shorts()
         logger.info(f"  🔥 Viral Shorts found: {len(result['viral_shorts'])}")
+
+        # ── STAGE 2c: World news / current events long-form discovery ──
+        result["world_news_videos"] = self._search_world_news_videos()
+        logger.info(f"  🌍 World news videos found: {len(result['world_news_videos'])}")
 
         # ── STAGE 3: Competitor monitoring ──
         result["competitor_insights"] = self._monitor_competitors()
@@ -1541,6 +1641,101 @@ Output STRICT JSON format:
         # Sort by views
         viral_shorts.sort(key=lambda v: v["views"], reverse=True)
         return viral_shorts[:30]  # Top 30
+
+    def _search_world_news_videos(self) -> List[Dict]:
+        """
+        Search for high-performing long-form videos across ALL trending categories.
+        Not just news — includes science, history, technology, documentaries, etc.
+        """
+        if not self.yt_public:
+            return []
+
+        news_queries = [
+            # World news & geopolitics
+            "world news today explained",
+            "geopolitics analysis",
+            "global conflict update",
+            "breaking world news documentary",
+            "economic crisis explained",
+            # Science & technology
+            "science documentary 2024",
+            "technology explained",
+            "space discovery documentary",
+            "AI technology explained",
+            # History & mysteries
+            "history documentary",
+            "ancient mysteries explained",
+            "unsolved mysteries documentary",
+            # Popular trending long-form
+            "most watched documentary this week",
+            "trending explained video",
+            "deep dive analysis",
+        ]
+
+        news_videos = []
+        seen_ids = set()
+
+        for query in news_queries:
+            try:
+                response = self.yt_public.search().list(
+                    part="snippet",
+                    q=query,
+                    type="video",
+                    videoDuration="medium",  # 4-20 minutes
+                    order="viewCount",
+                    publishedAfter=(
+                        (datetime.utcnow() - timedelta(days=3)).strftime("%Y-%m-%dT%H:%M:%SZ")
+                    ),
+                    regionCode="US",
+                    relevanceLanguage="en",
+                    maxResults=5,
+                ).execute()
+
+                video_ids = [item["id"]["videoId"] for item in response.get("items", [])]
+                if not video_ids:
+                    continue
+
+                stats_response = self.yt_public.videos().list(
+                    part="snippet,statistics,contentDetails",
+                    id=",".join(video_ids),
+                ).execute()
+
+                for item in stats_response.get("items", []):
+                    vid_id = item["id"]
+                    if vid_id in seen_ids:
+                        continue
+                    seen_ids.add(vid_id)
+
+                    stats = item.get("statistics", {})
+                    snippet = item.get("snippet", {})
+                    content = item.get("contentDetails", {})
+                    dur = self._parse_iso_duration(content.get("duration", "PT0S"))
+
+                    if dur < 300 or dur > 2400:  # 5-40 min only
+                        continue
+
+                    views = int(stats.get("viewCount", 0))
+                    if views < 5000:
+                        continue
+
+                    news_videos.append({
+                        "id": vid_id,
+                        "title": snippet.get("title", ""),
+                        "channel": snippet.get("channelTitle", ""),
+                        "views": views,
+                        "likes": int(stats.get("likeCount", 0)),
+                        "duration_seconds": dur,
+                        "tags": snippet.get("tags", [])[:10],
+                        "search_query": query,
+                        "published_at": snippet.get("publishedAt", ""),
+                        "description": snippet.get("description", "")[:200],
+                    })
+
+            except Exception as e:
+                logger.warning(f"  ⚠️ News search '{query[:30]}' failed: {e}")
+
+        news_videos.sort(key=lambda v: v["views"], reverse=True)
+        return news_videos[:20]
 
     def _monitor_competitors(self) -> List[Dict]:
         """
@@ -1779,6 +1974,7 @@ Output STRICT JSON format:
         nightly_report["trending"] = {
             "found": len(trending),
             "viral_shorts_found": len(deep_trends.get("viral_shorts", [])),
+            "world_news_found": len(deep_trends.get("world_news_videos", [])),
             "competitors_analyzed": len(deep_trends.get("competitor_insights", [])),
             "comments_mined": len(deep_trends.get("audience_desires", [])),
             "top_5": [
@@ -1877,6 +2073,7 @@ Output STRICT JSON format:
             audience_desires=deep_trends.get("audience_desires", []),
             ai_trends=deep_trends.get("ai_trends", []),
             active_winners=active_winners,
+            world_news_videos=deep_trends.get("world_news_videos", []),
         )
 
         # ─── PHASE 5: SEO Enrichment ───
@@ -1893,9 +2090,11 @@ Output STRICT JSON format:
 
         nightly_report["plan"] = {
             "shorts_planned": len(plan.get("shorts", [])),
+            "longform_planned": len(plan.get("longform", [])),
             "ambient_recommendations": plan.get("ambient_recommendations", []),
             "winner_variations_count": plan.get("winner_variations_count", 0),
             "shorts": [s.get("title", "?")[:50] for s in plan.get("shorts", [])],
+            "longform": [l.get("title", "?")[:60] for l in plan.get("longform", [])],
         }
 
         # Save nightly log
@@ -1908,6 +2107,9 @@ Output STRICT JSON format:
 
         # Print summary
         self._print_summary(nightly_report, plan)
+
+        # Telegram notification
+        self._send_nightly_summary_telegram(nightly_report, plan)
 
         return nightly_report
 
@@ -1943,6 +2145,7 @@ Output STRICT JSON format:
         print(f"\n🇺🇸 Deep US Trending:")
         print(f"   Chart trending: {trending.get('found', 0)}")
         print(f"   Viral Shorts: {trending.get('viral_shorts_found', 0)}")
+        print(f"   World News: {trending.get('world_news_found', 0)}")
         print(f"   Competitors: {trending.get('competitors_analyzed', 0)}")
         print(f"   Comments mined: {trending.get('comments_mined', 0)}")
         for t in trending.get("top_5", []):
@@ -1955,6 +2158,12 @@ Output STRICT JSON format:
         print(f"   Shorts: {plan_info.get('shorts_planned', 0)}")
         for s in plan_info.get("shorts", []):
             print(f"   📹 {s}")
+
+        longform_titles = plan_info.get("longform", [])
+        if longform_titles:
+            print(f"   Long-form: {plan_info.get('longform_planned', 0)}")
+            for lf in longform_titles:
+                print(f"   🎬 {lf}")
 
         # Ambient analysis
         ambient = report.get("ambient_analysis", {})
@@ -1975,8 +2184,105 @@ Output STRICT JSON format:
 
         print("\n" + "=" * 60)
 
-    def _send_api_failure_alert(self, gemini_exhausted: bool = False):
-        """Send Telegram alert when AI providers are down."""
+    def _send_nightly_summary_telegram(self, report: Dict, plan: Dict):
+        """Send nightly brain summary to Telegram."""
+        cleanup = report.get("cleanup", {})
+        perf = report.get("performance_review", {})
+        winners = report.get("winners", {})
+        trending = report.get("trending", {})
+        plan_info = report.get("plan", {})
+        peak = report.get("peak_hours", {})
+        retention = report.get("retention", {})
+
+        lines = ["🧠 *Nightly Brain Tamamlandı!*\n"]
+
+        # Performance
+        if perf and perf.get("status") != "no_recent_videos":
+            lines.append(f"📈 *Son 48s:* Ort. {perf.get('avg_views_48h', 0):.0f} izlenme")
+            best = perf.get("best_topics", [])
+            if best:
+                lines.append(f"   🏆 En iyi: {best[0][:45]}")
+
+        # Cleanup
+        deleted = cleanup.get("deleted", 0)
+        unlisted = cleanup.get("unlisted", 0)
+        kept = cleanup.get("kept", 0)
+        if deleted or unlisted:
+            lines.append(f"🗑 *Temizlik:* {deleted} silindi, {unlisted} gizlendi, {kept} kaldı")
+        else:
+            lines.append(f"🗑 *Temizlik:* Değişiklik yok ({kept} video)")
+
+        # Winners
+        if winners.get("total", 0) > 0:
+            lines.append(
+                f"🏆 *Kazananlar:* {winners.get('total', 0)} toplam "
+                f"(+{winners.get('added', 0)} yeni, eşik: {winners.get('threshold', 0)} izlenme)"
+            )
+
+        # Trending
+        lines.append(
+            f"🇺🇸 *Trend:* {trending.get('found', 0)} chart + "
+            f"{trending.get('viral_shorts_found', 0)} viral shorts + "
+            f"{trending.get('world_news_found', 0)} haber"
+        )
+
+        # Peak hours
+        peak_utc = peak.get("utc", [])
+        if peak_utc:
+            lines.append(f"⏰ *Peak saatler (UTC):* {', '.join(str(h) for h in peak_utc)}")
+
+        # Retention
+        if retention.get("source") == "analytics_api":
+            lines.append(
+                f"📊 *Retention:* %{retention.get('avg_pct', 0):.0f} ort. "
+                f"({retention.get('avg_dur_sec', 0):.0f}s)"
+            )
+
+        # Plan
+        shorts_count = plan_info.get("shorts_planned", 0)
+        winner_vars = plan_info.get("winner_variations_count", 0)
+        is_fallback = plan.get("fallback_mode", False)
+        plan_label = "Fallback" if is_fallback else "AI"
+
+        longform_count = plan_info.get("longform_planned", 0)
+        lines.append(f"\n📝 *Yarının Planı ({plan_label}):* {shorts_count} Shorts + {longform_count} Uzun Video")
+        if winner_vars:
+            lines.append(f"   🏆 {winner_vars} tanesi kazanan varyasyonu")
+
+        # Longform titles
+        longform_titles = plan_info.get("longform", [])
+        if longform_titles:
+            lines.append(f"\n🎬 *Uzun Videolar:*")
+            for lf in longform_titles:
+                lines.append(f"   🌍 {lf}")
+
+        # First 8 shorts titles
+        shorts_titles = plan_info.get("shorts", [])[:8]
+        if shorts_titles:
+            lines.append(f"\n📹 *Shorts:*")
+        for i, title in enumerate(shorts_titles, 1):
+            lines.append(f"   {i}. {title}")
+        if shorts_count > 8:
+            lines.append(f"   ... ve {shorts_count - 8} tane daha")
+
+        # Ambient recs
+        ambient_recs = plan_info.get("ambient_recommendations", [])
+        if ambient_recs:
+            recs_text = ", ".join(r.get("type", "?") for r in ambient_recs)
+            lines.append(f"\n🎧 *Ambient önerisi:* {recs_text}")
+
+        # API health
+        health = report.get("api_health", {})
+        if health:
+            gemini_status = health.get("gemini", "?")
+            openai_status = health.get("openai", "?")
+            if not health.get("healthy", True):
+                lines.append(f"\n⚠️ *API Durumu:* Gemini={gemini_status}, OpenAI={openai_status}")
+
+        self._send_telegram("\n".join(lines))
+
+    def _send_telegram(self, message: str):
+        """Send a Telegram notification."""
         try:
             import requests as req
             token = os.getenv("TELEGRAM_BOT_TOKEN")
@@ -1987,26 +2293,30 @@ Output STRICT JSON format:
                 chat_id = f.read().strip()
             if not chat_id:
                 return
-            if gemini_exhausted:
-                msg = (
-                    "🚨 *PIPELINE DOWN — API Credits Exhausted*\n\n"
-                    "Gemini: `RESOURCE_EXHAUSTED` (all models)\n"
-                    "OpenAI: Connection failed\n\n"
-                    "📋 *Fix:*\n"
-                    "1. Gemini → https://aistudio.google.com/apikey (top up credits)\n"
-                    "2. OpenAI → Check `OPENAI_API_KEY` secret in GitHub\n"
-                    "3. Re-run nightly brain manually after fixing"
-                )
-            else:
-                msg = (
-                    "⚠️ *Nightly Brain — Plan Generation Failed*\n\n"
-                    "Both Gemini and OpenAI failed to generate content plan.\n"
-                    "Check API keys and credits."
-                )
             url = f"https://api.telegram.org/bot{token}/sendMessage"
-            req.post(url, json={"chat_id": chat_id, "text": msg, "parse_mode": "Markdown"}, timeout=5)
+            req.post(url, json={"chat_id": chat_id, "text": message, "parse_mode": "Markdown"}, timeout=10)
         except Exception:
             pass
+
+    def _send_api_failure_alert(self, gemini_exhausted: bool = False):
+        """Send Telegram alert when AI providers are down."""
+        if gemini_exhausted:
+            msg = (
+                "🚨 *PIPELINE DOWN — API Credits Exhausted*\n\n"
+                "Gemini: `RESOURCE_EXHAUSTED` (all models)\n"
+                "OpenAI: Connection failed\n\n"
+                "📋 *Fix:*\n"
+                "1. Gemini → https://aistudio.google.com/apikey (top up credits)\n"
+                "2. OpenAI → Check `OPENAI_API_KEY` secret in GitHub\n"
+                "3. Re-run nightly brain manually after fixing"
+            )
+        else:
+            msg = (
+                "⚠️ *Nightly Brain — Plan Generation Failed*\n\n"
+                "Both Gemini and OpenAI failed to generate content plan.\n"
+                "Check API keys and credits."
+            )
+        self._send_telegram(msg)
 
     def preflight_check(self) -> Dict:
         """Quick health check on AI providers before running the full pipeline."""

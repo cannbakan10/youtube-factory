@@ -1,0 +1,210 @@
+name: "🎬 Longform Engine — Documentary Production"
+
+# ╔══════════════════════════════════════════════════════════╗
+# ║  LONGFORM ENGINE v1.1 — Documentaries & World Events     ║
+# ║                                                         ║
+# ║  Two modes:                                             ║
+# ║  A) Scheduled: Produces from Nightly Brain plan         ║
+# ║  B) Manual: Write a topic OR let system pick trending   ║
+# ║                                                         ║
+# ║  Schedule: Twice daily (morning + afternoon US time)    ║
+# ║  • 14:00 UTC = 10 AM ET — morning production           ║
+# ║  • 20:00 UTC = 4 PM ET  — afternoon production         ║
+# ║                                                         ║
+# ║  Each run produces 1 long-form video (~30-45 min build) ║
+# ╚══════════════════════════════════════════════════════════╝
+
+on:
+  schedule:
+    - cron: '0 14,20 * * *'
+
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Production mode'
+        required: true
+        default: 'plan'
+        type: choice
+        options:
+          - 'plan'
+          - 'topic'
+          - 'trending'
+      topic:
+        description: 'Custom topic (only for mode=topic). Example: "Strait of Hormuz Crisis"'
+        required: false
+        default: ''
+      duration:
+        description: 'Video duration in minutes'
+        required: false
+        default: '15'
+      count:
+        description: 'Number of videos to produce (plan/trending mode)'
+        required: false
+        default: '1'
+
+jobs:
+  produce-longform:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    permissions:
+      contents: write
+      checks: write
+      actions: read
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Pull Latest
+        run: git pull origin main
+
+      - name: Determine Mode
+        id: mode
+        run: |
+          MODE="${{ github.event.inputs.mode }}"
+          TOPIC="${{ github.event.inputs.topic }}"
+
+          # Scheduled runs use plan mode
+          if [ -z "$MODE" ]; then
+            MODE="plan"
+          fi
+
+          echo "mode=$MODE" >> $GITHUB_OUTPUT
+          echo "topic=$TOPIC" >> $GITHUB_OUTPUT
+          echo "🎬 Mode: $MODE"
+
+          if [ "$MODE" = "plan" ]; then
+            # Check if plan has pending longform
+            if [ ! -f "data/daily_plan.json" ]; then
+              echo "status=no_plan" >> $GITHUB_OUTPUT
+              echo "❌ No daily plan found."
+            else
+              PENDING=$(python3 -c "
+          import json
+          try:
+              d = json.load(open('data/daily_plan.json'))
+              pending = sum(1 for l in d.get('longform', []) if l.get('status','pending') in ('pending','failed','error'))
+              print(pending)
+          except:
+              print(0)
+          ")
+              echo "pending=$PENDING" >> $GITHUB_OUTPUT
+              if [ "$PENDING" = "0" ]; then
+                echo "status=no_pending" >> $GITHUB_OUTPUT
+                echo "⏭️ No pending long-form videos in plan"
+              else
+                echo "status=ready" >> $GITHUB_OUTPUT
+                echo "📋 $PENDING long-form videos pending"
+              fi
+            fi
+          else
+            echo "status=ready" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Set up Python
+        if: steps.mode.outputs.status == 'ready'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install ffmpeg
+        if: steps.mode.outputs.status == 'ready'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Install Dependencies
+        if: steps.mode.outputs.status == 'ready'
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Setup Credentials
+        if: steps.mode.outputs.status == 'ready'
+        run: |
+          echo '${{ secrets.CLIENT_SECRETS_JSON }}' > client_secrets.json
+          if [ -n "${{ secrets.TOKEN_PICKLE_BASE64 }}" ]; then
+            printf "%s" "${{ secrets.TOKEN_PICKLE_BASE64 }}" | base64 -d > token.pickle
+          fi
+
+      - name: "Mode: Plan — Produce from Nightly Brain plan"
+        if: steps.mode.outputs.status == 'ready' && steps.mode.outputs.mode == 'plan'
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          FREEPIK_API_KEY: ${{ secrets.FREEPIK_API_KEY }}
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          TOKEN_PICKLE_BASE64: ${{ secrets.TOKEN_PICKLE_BASE64 }}
+          CLIENT_SECRETS_JSON: ${{ secrets.CLIENT_SECRETS_JSON }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: |
+          COUNT="${{ github.event.inputs.count }}"
+          COUNT=${COUNT:-1}
+          echo "🎬 Producing $COUNT long-form videos from plan"
+          python main.py --execute-plan --plan-shorts 0 --plan-longform $COUNT --langs en
+
+      - name: "Mode: Topic — Produce from custom topic"
+        if: steps.mode.outputs.status == 'ready' && steps.mode.outputs.mode == 'topic'
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          FREEPIK_API_KEY: ${{ secrets.FREEPIK_API_KEY }}
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          TOKEN_PICKLE_BASE64: ${{ secrets.TOKEN_PICKLE_BASE64 }}
+          CLIENT_SECRETS_JSON: ${{ secrets.CLIENT_SECRETS_JSON }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: |
+          TOPIC="${{ github.event.inputs.topic }}"
+          DURATION="${{ github.event.inputs.duration }}"
+          DURATION=${DURATION:-15}
+          if [ -z "$TOPIC" ]; then
+            echo "❌ No topic provided for topic mode"
+            exit 1
+          fi
+          echo "🎬 Producing long-form: $TOPIC ($DURATION min)"
+          python main.py --longform-topic "$TOPIC" --longform-duration $DURATION --upload --langs en
+
+      - name: "Mode: Trending — Auto-pick top trending topic"
+        if: steps.mode.outputs.status == 'ready' && steps.mode.outputs.mode == 'trending'
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          FREEPIK_API_KEY: ${{ secrets.FREEPIK_API_KEY }}
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          TOKEN_PICKLE_BASE64: ${{ secrets.TOKEN_PICKLE_BASE64 }}
+          CLIENT_SECRETS_JSON: ${{ secrets.CLIENT_SECRETS_JSON }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: |
+          DURATION="${{ github.event.inputs.duration }}"
+          DURATION=${DURATION:-15}
+          echo "🎬 Auto-selecting top trending topic and producing ($DURATION min)"
+          python main.py --longform-suggest --longform-duration $DURATION --upload --langs en
+
+      - name: Commit Progress
+        if: steps.mode.outputs.status == 'ready'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "Longform Engine Bot"
+          git add data/daily_plan.json -f 2>/dev/null || true
+          TIMESTAMP=$(date -u +'%Y-%m-%d_%H:%M')
+          git diff --staged --quiet || git commit -m "🎬 Produced Longform [$TIMESTAMP]"
+          git pull --rebase origin main || true
+          git push origin main
+
+      - name: Skip
+        if: steps.mode.outputs.status != 'ready'
+        run: echo "⏭️ Nothing to produce. Status: ${{ steps.mode.outputs.status }}"
