@@ -399,14 +399,20 @@ class YouTubeService:
     # ──────────────────────────────────────────────────────
 
     def _build_smart_description(self, original_desc, tags, recent_videos, is_shorts):
-        """Build SEO-optimized description with cross-links."""
+        """Build SEO-optimized description with cross-links and funnel."""
         parts = [original_desc.strip()]
-        
-        # Add subscribe CTA
+
+        # Shorts→Long-form funnel: link to latest long-form video
+        if is_shorts:
+            longform_video = self._get_latest_longform_video()
+            if longform_video:
+                parts.append("")
+                parts.append(f"🎬 Full deep dive: {longform_video['title'][:50]}")
+                parts.append(f"▶️ https://youtu.be/{longform_video['id']}")
+
         parts.append("")
         parts.append("🔔 Subscribe for more: https://youtube.com/@StreamGlobal?sub_confirmation=1")
-        
-        # Add recent video links
+
         if recent_videos:
             parts.append("")
             parts.append("📺 Watch Next:")
@@ -415,18 +421,52 @@ class YouTubeService:
                 vid = v.get("id", "")
                 if vid:
                     parts.append(f"▶️ {vtitle}: https://youtu.be/{vid}")
-        
-        # Add hashtags
+
         if is_shorts:
             parts.append("")
             tag_str = " ".join(f"#{t.replace(' ', '')}" for t in tags[:5] if t)
-            parts.append(f"#Shorts #Viral #Knowledge {tag_str}")
+            parts.append(f"#Shorts {tag_str}")
         else:
             parts.append("")
             tag_str = " ".join(f"#{t.replace(' ', '')}" for t in tags[:8] if t)
             parts.append(tag_str)
-        
+
         return "\n".join(parts)
+
+    def _get_latest_longform_video(self):
+        """Get the most recent long-form (non-Shorts) video for funnel cross-linking."""
+        if not self.youtube:
+            return None
+        try:
+            channels = self.youtube.channels().list(
+                part="contentDetails", mine=True
+            ).execute()
+            if not channels.get("items"):
+                return None
+            uploads_id = channels["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
+            response = self.youtube.playlistItems().list(
+                part="snippet,contentDetails",
+                playlistId=uploads_id,
+                maxResults=20,
+            ).execute()
+            for item in response.get("items", []):
+                vid_id = item["snippet"]["resourceId"]["videoId"]
+                title = item["snippet"].get("title", "")
+                if "#shorts" not in title.lower() and "#short" not in title.lower():
+                    try:
+                        vid_details = self.youtube.videos().list(
+                            part="contentDetails", id=vid_id
+                        ).execute()
+                        if vid_details.get("items"):
+                            duration = vid_details["items"][0]["contentDetails"].get("duration", "")
+                            if "M" in duration:
+                                return {"id": vid_id, "title": title}
+                    except Exception:
+                        continue
+            return None
+        except Exception as e:
+            print(f"   ⚠️ [LongformFunnel]: Could not fetch - {e}")
+            return None
 
     def _get_recent_videos(self, count=3):
         """Get the most recent uploaded videos for cross-linking."""
