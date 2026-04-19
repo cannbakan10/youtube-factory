@@ -1,0 +1,239 @@
+{
+  "timestamp": "2026-04-19T23:16:23.213971",
+  "dry_run": false,
+  "api_health": {
+    "gemini": "ok (gemini-2.5-flash)",
+    "openai": "error: Connection error.",
+    "healthy": true
+  },
+  "performance_review": {
+    "total_recent": 18,
+    "winners_count": 2,
+    "losers_count": 15,
+    "avg_views_48h": 62.1,
+    "best_topics": [
+      "Roman Engineering Secrets: Still Standing After 2000 Years! ",
+      "Unveiling Daredevil Science: Extreme Engineering Behind Impo",
+      "Mind-Blowing Animal Teachers: Shocking Ways Species Educate "
+    ],
+    "best_views": [
+      558,
+      512,
+      10
+    ],
+    "winner_titles": [
+      "Roman Engineering Secrets: Still Standing After 2000 Years! #Shorts",
+      "Unveiling Daredevil Science: Extreme Engineering Behind Impossible Feats #Shorts"
+    ],
+    "loser_titles": [
+      "Unbelievable Strength: Everyday Objects Defy Industrial Machines! #Shorts",
+      "AI Art: The Creative Revolution & Ethical Dilemma #Shorts",
+      "Urban Planning Secrets: How Design Radically Transforms Public Safety & Health! #Shorts",
+      "Unbreakable Fabrics: The Science of Ultra-Durable Textiles #Shorts",
+      "Why Memes Go Viral: The Hidden Psychology Behind Internet Culture #Shorts"
+    ]
+  },
+  "cleanup": {
+    "unlisted": 10,
+    "deleted": 0,
+    "failed": 0,
+    "kept": 297,
+    "thresholds": {
+      "shorts_7d": 75,
+      "shorts_14d": 150,
+      "shorts_30d": 300,
+      "long_14d": 75,
+      "long_30d": 150,
+      "multiplier": 1.5
+    }
+  },
+  "trending": {
+    "found": 85,
+    "viral_shorts_found": 30,
+    "world_news_found": 19,
+    "competitors_analyzed": 3,
+    "comments_mined": 20,
+    "top_5": [
+      {
+        "title": "Last To Leave Grocery Store, Wins $250,000",
+        "views": 46533212,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Speed Made His Day❤️‍🩹 #ishowspeed #wholesome #edit",
+        "views": 18907522,
+        "category": "Entertainment"
+      },
+      {
+        "title": "That Was A Crazy Trick 🔥 | How I Met Your Mother | Song - He",
+        "views": 16883025,
+        "category": "Entertainment"
+      },
+      {
+        "title": "Bro Is A Lost Cause 💀",
+        "views": 16476298,
+        "category": "Entertainment"
+      },
+      {
+        "title": "When someone's using you:",
+        "views": 15804907,
+        "category": "Film & Animation"
+      }
+    ],
+    "top_viral_shorts": [
+      {
+        "title": "🌍 All “I” Countries in a Straight Line 😳🔥",
+        "views": 7339986,
+        "query": "country facts geography"
+      },
+      {
+        "title": "The Cub That Turned Mom Into a Practice Dummy #viral #wildli",
+        "views": 7194352,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "How Does An Eraser Actually Work? ✏️🤯 #facts #shorts",
+        "views": 5774158,
+        "query": "did you know facts"
+      },
+      {
+        "title": "You Won’t Hear This Owl… But It’s Watching You",
+        "views": 5383045,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "This is what personal flight technology looks like 😳",
+        "views": 4261745,
+        "query": "technology AI future"
+      }
+    ]
+  },
+  "winners": {
+    "added": 66,
+    "total": 30,
+    "threshold": 420,
+    "median": 210,
+    "active": 10,
+    "top": [
+      {
+        "video_id": "d7q1A_ogbo4",
+        "title": "Roman Engineering Secrets: Still Standing After 2000 Years! ",
+        "views": 558,
+        "views_per_day": 279.0,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "rpon1alnaTs",
+        "title": "Unveiling Daredevil Science: Extreme Engineering Behind Impo",
+        "views": 512,
+        "views_per_day": 256.0,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "n2FBDPG5dNk",
+        "title": "World's Strongest Eraser VS 5 Levels! - Short Documentary #S",
+        "views": 1010,
+        "views_per_day": 252.5,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "Nye4U42Ksrg",
+        "title": "Smooth Criminal Animation Meme: The New Viral Trend #Shorts",
+        "views": 769,
+        "views_per_day": 192.2,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "1N59aTz4khM",
+        "title": "Transforming Safety: Frank's Impact on Our Streets #Shorts",
+        "views": 754,
+        "views_per_day": 188.5,
+        "variations_generated": 0
+      }
+    ]
+  },
+  "peak_hours": {
+    "utc": [
+      6,
+      16,
+      12
+    ],
+    "source": "channel_data",
+    "samples": 193
+  },
+  "retention": {
+    "avg_pct": 0,
+    "avg_dur_sec": 0,
+    "source": "unavailable",
+    "video_count": 0
+  },
+  "ambient_analysis": {
+    "total_ambient": 3,
+    "total_views": 13499,
+    "top_type": "fireplace",
+    "worst_type": "rain",
+    "type_rankings": [
+      {
+        "type": "fireplace",
+        "video_count": 2,
+        "total_views": 13162,
+        "avg_views": 6581,
+        "avg_views_per_day": 102.7,
+        "engagement_rate": 189.42,
+        "best_video": {
+          "title": "🔥 Cozy Fireplace 8 HOURS with Crackling Fire Sounds | Firepl",
+          "views": 12828,
+          "views_per_day": 200.4
+        }
+      },
+      {
+        "type": "rain",
+        "video_count": 1,
+        "total_views": 337,
+        "avg_views": 337,
+        "avg_views_per_day": 4.7,
+        "engagement_rate": 2.08,
+        "best_video": {
+          "title": "1 Hour Rainy Night Ambience (60 Minutes)",
+          "views": 337,
+          "views_per_day": 4.7
+        }
+      }
+    ]
+  },
+  "plan": {
+    "shorts_planned": 7,
+    "longform_planned": 2,
+    "ambient_recommendations": [
+      {
+        "type": "thunderstorm",
+        "hours": 8,
+        "reason": "Offers a dynamic yet calming soundscape, popular for relaxation, study, or sleep. The visual appeal of lightning and rain has high re-watch value."
+      },
+      {
+        "type": "zen_garden",
+        "hours": 8,
+        "reason": "Taps into a niche seeking tranquil, visually serene environments. The minimalist aesthetic combined with subtle ambient sounds promotes focus and mindfulness, providing a unique alternative to natural landscapes."
+      },
+      {
+        "type": "aurora",
+        "hours": 8,
+        "reason": "Provides a visually spectacular and ethereal backdrop. The slow, mesmerizing movement of the aurora borealis, coupled with subtle ambient sounds, offers a deeply immersive and calming experience with broad appeal."
+      }
+    ],
+    "winner_variations_count": 6,
+    "shorts": [
+      "Unbreakable: The Roman Concrete Secret That Outlas",
+      "The Insane Physics Behind Skyscraper Window Cleane",
+      "Stronger Than Steel? The Mind-Bending Power of Spi",
+      "Why Your Brain Falls for This Viral Optical Illusi",
+      "Silent Guardians: How AI is Predicting & Preventin",
+      "The Ancient Secret to Sourdough: Why Our Ancestors",
+      "Beyond Human Hearing: The Secret Language of Eleph"
+    ],
+    "longform": [
+      "The Strait of Hormuz: Why This Tiny Waterway Could Trigger a",
+      "CRISPR's Ethical Tightrope: Gene Editing's Promise and Peril"
+    ]
+  }
+}
