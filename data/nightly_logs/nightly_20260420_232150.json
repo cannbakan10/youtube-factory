@@ -1,0 +1,228 @@
+{
+  "timestamp": "2026-04-20T23:20:15.259015",
+  "dry_run": false,
+  "api_health": {
+    "gemini": "ok (gemini-2.5-flash)",
+    "openai": "error: Connection error.",
+    "healthy": true
+  },
+  "performance_review": {
+    "total_recent": 2,
+    "winners_count": 0,
+    "losers_count": 1,
+    "avg_views_48h": 1.0,
+    "best_topics": [
+      "Roman Concrete: Ancient Super-Material That Heals Itself #Sh",
+      "Unbelievable Strength: Everyday Objects Defy Industrial Mach"
+    ],
+    "best_views": [
+      1,
+      1
+    ],
+    "winner_titles": [],
+    "loser_titles": [
+      "Unbelievable Strength: Everyday Objects Defy Industrial Machines! #Shorts"
+    ]
+  },
+  "cleanup": {
+    "unlisted": 6,
+    "deleted": 10,
+    "failed": 0,
+    "kept": 292,
+    "thresholds": {
+      "shorts_7d": 75,
+      "shorts_14d": 150,
+      "shorts_30d": 300,
+      "long_14d": 75,
+      "long_30d": 150,
+      "multiplier": 1.5
+    }
+  },
+  "trending": {
+    "found": 85,
+    "viral_shorts_found": 30,
+    "world_news_found": 20,
+    "competitors_analyzed": 3,
+    "comments_mined": 20,
+    "top_5": [
+      {
+        "title": "Last To Leave Grocery Store, Wins $250,000",
+        "views": 61121614,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Speed Made His Day❤️‍🩹 #ishowspeed #wholesome #edit",
+        "views": 23849595,
+        "category": "Entertainment"
+      },
+      {
+        "title": "That Was A Crazy Trick 🔥 | How I Met Your Mother | Song - He",
+        "views": 18078447,
+        "category": "Film & Animation"
+      },
+      {
+        "title": "Bro Is A Lost Cause 💀",
+        "views": 17375206,
+        "category": "Entertainment"
+      },
+      {
+        "title": "Things We Did as Kids 👧 🧒.     #usa",
+        "views": 16529559,
+        "category": "Howto & Style"
+      }
+    ],
+    "top_viral_shorts": [
+      {
+        "title": "How Does An Eraser Actually Work? ✏️🤯 #facts #shorts",
+        "views": 6074914,
+        "query": "did you know facts"
+      },
+      {
+        "title": "Can Porcupines Really Shoot Their Quills? 😱 The Truth Will S",
+        "views": 4886709,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "Top 5 Funniest Falling Moments EverCaught on Camera!🤣😂  #sho",
+        "views": 3632226,
+        "query": "top 5 facts"
+      },
+      {
+        "title": "#babyshorts",
+        "views": 3536911,
+        "query": "science facts that will blow your mind"
+      },
+      {
+        "title": "Top 5 Richest Families #shorts",
+        "views": 3534481,
+        "query": "top 5 facts"
+      }
+    ]
+  },
+  "winners": {
+    "added": 68,
+    "total": 30,
+    "threshold": 442,
+    "median": 221,
+    "active": 10,
+    "top": [
+      {
+        "video_id": "n2FBDPG5dNk",
+        "title": "World's Strongest Eraser VS 5 Levels! - Short Documentary #S",
+        "views": 1011,
+        "views_per_day": 202.2,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "d7q1A_ogbo4",
+        "title": "Roman Engineering Secrets: Still Standing After 2000 Years! ",
+        "views": 559,
+        "views_per_day": 186.3,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "rpon1alnaTs",
+        "title": "Unveiling Daredevil Science: Extreme Engineering Behind Impo",
+        "views": 512,
+        "views_per_day": 170.7,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "Nye4U42Ksrg",
+        "title": "Smooth Criminal Animation Meme: The New Viral Trend #Shorts",
+        "views": 769,
+        "views_per_day": 153.8,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "1N59aTz4khM",
+        "title": "Transforming Safety: Frank's Impact on Our Streets #Shorts",
+        "views": 754,
+        "views_per_day": 150.8,
+        "variations_generated": 0
+      }
+    ]
+  },
+  "peak_hours": {
+    "utc": [
+      6,
+      16,
+      12
+    ],
+    "source": "channel_data",
+    "samples": 196
+  },
+  "retention": {
+    "avg_pct": 0,
+    "avg_dur_sec": 0,
+    "source": "unavailable",
+    "video_count": 0
+  },
+  "ambient_analysis": {
+    "total_ambient": 3,
+    "total_views": 13503,
+    "top_type": "fireplace",
+    "worst_type": "rain",
+    "type_rankings": [
+      {
+        "type": "fireplace",
+        "video_count": 2,
+        "total_views": 13166,
+        "avg_views": 6583,
+        "avg_views_per_day": 101.2,
+        "engagement_rate": 189.31,
+        "best_video": {
+          "title": "🔥 Cozy Fireplace 8 HOURS with Crackling Fire Sounds | Firepl",
+          "views": 12831,
+          "views_per_day": 197.4
+        }
+      },
+      {
+        "type": "rain",
+        "video_count": 1,
+        "total_views": 337,
+        "avg_views": 337,
+        "avg_views_per_day": 4.6,
+        "engagement_rate": 2.08,
+        "best_video": {
+          "title": "1 Hour Rainy Night Ambience (60 Minutes)",
+          "views": 337,
+          "views_per_day": 4.6
+        }
+      }
+    ]
+  },
+  "plan": {
+    "shorts_planned": 5,
+    "longform_planned": 2,
+    "ambient_recommendations": [
+      {
+        "type": "rain",
+        "hours": 8,
+        "reason": "Rain sounds are universally calming, excellent for focus, study, or sleep, consistently attracting high passive watch time."
+      },
+      {
+        "type": "forest",
+        "hours": 8,
+        "reason": "Forest ambiance provides natural, peaceful sounds perfect for relaxation and background noise during work or meditation, appealing to a broad audience."
+      },
+      {
+        "type": "ocean",
+        "hours": 8,
+        "reason": "Ocean waves offer rhythmic and soothing audio, ideal for stress relief and aiding sleep, which are popular categories for ambient videos."
+      }
+    ],
+    "winner_variations_count": 4,
+    "shorts": [
+      "Timeless Masterpieces: How Roman Engineers Defied ",
+      "Physics of the Impossible: How Daredevils Master D",
+      "Unseen Protectors: Ingenious Innovations Making Ou",
+      "Beyond Cuteness: Amazing Facts About Puppy Develop",
+      "Mandela Effect: Is Your Memory Playing Tricks? The"
+    ],
+    "longform": [
+      "Strait of Hormuz: Why This Waterway Could Spark the Next Glo",
+      "Invisible Universe: The Unseen Forces of Dark Matter and Dar"
+    ]
+  }
+}
