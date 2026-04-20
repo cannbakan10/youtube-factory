@@ -15,7 +15,9 @@
       "inspired_by": "Your channel's winner: Roman Engineering Secrets",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "d7q1A_ogbo4"
+      "winner_source_id": "d7q1A_ogbo4",
+      "status": "produced",
+      "production_id": "Explore_the_incredible_durabil_1776716268"
     },
     {
       "title": "The Insane Physics Behind Skyscraper Window Cleaners' Daredevil Moves",
@@ -177,5 +179,11 @@
   "trending_count": 85,
   "channels_analyzed": 8,
   "winner_variations_count": 6,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-04-20T20:21:52.095132",
+  "results": {
+    "shorts_produced": 1,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
