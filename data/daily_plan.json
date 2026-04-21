@@ -15,7 +15,9 @@
       "inspired_by": "StreamGlobal Winner: Roman Engineering Secrets: Still Standing After 2000 Years!",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "d7q1A_ogbo4"
+      "winner_source_id": "d7q1A_ogbo4",
+      "status": "produced",
+      "production_id": "Deep_dive_into_a_specific_Roma_1776759782"
     },
     {
       "title": "Physics of the Impossible: How Daredevils Master Death-Defying Stunts",
@@ -31,7 +33,9 @@
       "inspired_by": "StreamGlobal Winner: Unveiling Daredevil Science: Extreme Engineering Behind Impossible Feats",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "rpon1alnaTs"
+      "winner_source_id": "rpon1alnaTs",
+      "status": "produced",
+      "production_id": "Examine_the_scientific_princip_1776760029"
     },
     {
       "title": "Unseen Protectors: Ingenious Innovations Making Our Cities Safer",
@@ -47,7 +51,9 @@
       "inspired_by": "StreamGlobal Winner: Transforming Safety: Frank's Impact on Our Streets",
       "estimated_views": "medium",
       "is_winner_variation": true,
-      "winner_source_id": "1N59aTz4khM"
+      "winner_source_id": "1N59aTz4khM",
+      "status": "produced",
+      "production_id": "Highlight_a_lesserknown_invent_1776760391"
     },
     {
       "title": "Beyond Cuteness: Amazing Facts About Puppy Development You Didn't Know",
@@ -135,5 +141,11 @@
   "trending_count": 85,
   "channels_analyzed": 5,
   "winner_variations_count": 4,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-04-21T08:38:03.267070",
+  "results": {
+    "shorts_produced": 3,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
