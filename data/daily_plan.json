@@ -1,156 +1,359 @@
 {
-  "date": "2026-04-21",
+  "date": "2026-04-22",
   "shorts": [
     {
-      "title": "Timeless Masterpieces: How Roman Engineers Defied Their Era",
-      "topic": "Deep dive into a specific Roman engineering marvel, like aqueducts or the Pantheon's dome, explaining its construction without modern tools and why it endures. Focus on the innovative techniques and design principles.",
-      "hook": "Romans built structures that still humble engineers today.",
+      "title": "World's Strongest Eraser Material Explained",
+      "topic": "The specific polymer compounds that give certain erasers extreme durability and effectiveness, and how they achieve this molecularly.",
+      "hook": "The world's strongest erasers aren't just rubber; they're engineered from specific polymer compounds that achieve incredible friction and material lift.",
       "tags": [
-        "romanempire",
-        "engineeringmarvels",
-        "architecture",
-        "historicalfacts",
-        "innovation"
+        "erasers",
+        "materials science",
+        "polymers",
+        "engineering"
       ],
-      "inspired_by": "StreamGlobal Winner: Roman Engineering Secrets: Still Standing After 2000 Years!",
+      "inspired_by": "Own winner",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "d7q1A_ogbo4",
-      "status": "produced",
-      "production_id": "Deep_dive_into_a_specific_Roma_1776759782"
+      "winner_source_id": "n2FBDPG5dNk"
     },
     {
-      "title": "Physics of the Impossible: How Daredevils Master Death-Defying Stunts",
-      "topic": "Examine the scientific principles and extreme engineering feats that make seemingly impossible stunts a reality, from high-wire acts to base jumping.",
-      "hook": "Think gravity always wins? Think again.",
+      "title": "Roman Aqueducts Defied Gravity for Centuries",
+      "topic": "The ingenious hydraulic engineering principles, specific materials (like volcanic ash cement mixes for waterproofing), and precise gradient calculations that allowed Roman aqueducts to transport water over vast distances using gravity alone for centuries.",
+      "hook": "Roman aqueducts weren't just big pipes; they were gravity-defying marvels, moving millions of gallons of water daily through precise engineering and self-healing volcanic cement.",
       "tags": [
+        "roman engineering",
+        "aqueducts",
+        "ancient technology",
+        "water systems"
+      ],
+      "inspired_by": "Own winner",
+      "estimated_views": "high",
+      "is_winner_variation": true,
+      "winner_source_id": "d7q1A_ogbo4"
+    },
+    {
+      "title": "Why Puppies Have Their 'Zoomies' Moments",
+      "topic": "The behavioral and developmental reasons behind \"the zoomies\" in puppies, explaining it as a release of pent-up energy, excitement, or a coping mechanism, with quick scientific insights into canine psychology.",
+      "hook": "Those sudden bursts of puppy energy, known as 'zoomies,' are a fascinating canine behavior, often a natural way for them to release pent-up energy or excitement.",
+      "tags": [
+        "puppy behavior",
+        "dog facts",
+        "animal psychology",
+        "cute animals"
+      ],
+      "inspired_by": "Own winner",
+      "estimated_views": "high",
+      "is_winner_variation": true,
+      "winner_source_id": "a-U9pdVk22Q"
+    },
+    {
+      "title": "The Lean in Michael Jackson's 'Smooth Criminal'",
+      "topic": "The physics and specific shoe design (created by Michael Jackson and his team) that allowed him to perform the seemingly impossible forward lean in his \"Smooth Criminal\" music video and stage performances.",
+      "hook": "Michael Jackson's iconic anti-gravity lean in 'Smooth Criminal' wasn't CGI; it was a groundbreaking illusion achieved with specially designed shoes and precision timing.",
+      "tags": [
+        "michael jackson",
+        "smooth criminal",
+        "dance history",
+        "stage effects"
+      ],
+      "inspired_by": "Own winner",
+      "estimated_views": "high",
+      "is_winner_variation": true,
+      "winner_source_id": "Nye4U42Ksrg"
+    },
+    {
+      "title": "Felix Baumgartner's Supersonic Skydive Physics",
+      "topic": "The precise physics and engineering calculations that allowed Felix Baumgartner to become the first human to break the sound barrier during a freefall from the stratosphere, including capsule design, suit technology, and descent mechanics.",
+      "hook": "In 2012, Felix Baumgartner jumped from the edge of space, reaching supersonic speeds; this wasn't just bravery, but a meticulously planned feat of physics and engineering.",
+      "tags": [
+        "felix baumgartner",
         "physics",
-        "engineeringfeats",
-        "stunts",
-        "daredevil",
-        "sciencefacts"
+        "extreme sports",
+        "space jump"
       ],
-      "inspired_by": "StreamGlobal Winner: Unveiling Daredevil Science: Extreme Engineering Behind Impossible Feats",
+      "inspired_by": "Own winner",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "rpon1alnaTs",
-      "status": "produced",
-      "production_id": "Examine_the_scientific_princip_1776760029"
+      "winner_source_id": "rpon1alnaTs"
     },
     {
-      "title": "Unseen Protectors: Ingenious Innovations Making Our Cities Safer",
-      "topic": "Highlight a lesser-known invention or urban planning concept (e.g., smart traffic lights, specific pedestrian crossing designs) that has dramatically improved public safety.",
-      "hook": "The silent tech making your daily commute safer...",
+      "title": "The Dutch Reach Prevents Car Door Accidents",
+      "topic": "Explaining the \"Dutch Reach\" method, a simple yet effective technique for opening a car door with the far hand, forcing drivers to look over their shoulder and preventing collisions with cyclists or pedestrians.",
+      "hook": "A simple technique called the 'Dutch Reach' can prevent countless car door accidents, especially with cyclists, by forcing you to look before opening your door.",
       "tags": [
-        "publicsafety",
-        "urbantech",
-        "innovation",
-        "cityplanning",
-        "safetyfirst"
+        "road safety",
+        "traffic laws",
+        "urban planning",
+        "driving tips"
       ],
-      "inspired_by": "StreamGlobal Winner: Transforming Safety: Frank's Impact on Our Streets",
+      "inspired_by": "Own winner",
       "estimated_views": "medium",
       "is_winner_variation": true,
-      "winner_source_id": "1N59aTz4khM",
-      "status": "produced",
-      "production_id": "Highlight_a_lesserknown_invent_1776760391"
+      "winner_source_id": "1N59aTz4khM"
     },
     {
-      "title": "Beyond Cuteness: Amazing Facts About Puppy Development You Didn't Know",
-      "topic": "Explore surprising facts about puppy behavior, intelligence, or their unique stages of development that go beyond just being cute. Educational and engaging.",
-      "hook": "Puppies are cute, but they're also tiny geniuses!",
+      "title": "OpenAI's Sora AI Generates Entire Minutes of Video",
+      "topic": "How OpenAI's Sora AI, a text-to-video model, can generate high-fidelity, minute-long videos from simple text prompts, and the specific technological advancements that make this possible.",
+      "hook": "OpenAI's Sora AI isn't just creating short clips; it's generating entire minutes of coherent, realistic video from text prompts, a breakthrough in generative AI.",
       "tags": [
-        "puppyfacts",
-        "animalbehavior",
-        "doglovers",
-        "peteducation",
-        "cutepuppies"
+        "sora ai",
+        "openai",
+        "generative ai",
+        "future tech"
       ],
-      "inspired_by": "StreamGlobal Winner: Heartwarming Puppy Moments: This is so cute 😍",
-      "estimated_views": "high",
-      "is_winner_variation": true,
-      "winner_source_id": "a-U9pdVk22Q",
-      "status": "produced",
-      "production_id": "Explore_surprising_facts_about_1776761180"
-    },
-    {
-      "title": "Mandela Effect: Is Your Memory Playing Tricks? The Shocking Truth",
-      "topic": "Explain the Mandela Effect, what collective false memories are, and provide common examples. Explore the psychological theories behind why so many people share the same incorrect memories.",
-      "hook": "Remember this movie scene differently? You're not alone.",
-      "tags": [
-        "mandelaeffect",
-        "psychology",
-        "memory",
-        "falsememories",
-        "mindblown"
-      ],
-      "inspired_by": "AI-Curated Viral Trend: The Mandela Effect: Collective False Memories Explained",
+      "inspired_by": "AI-Curated Viral Trend",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "winner_source_id": "",
-      "status": "produced",
-      "production_id": "Explain_the_Mandela_Effect_wha_1776761582"
+      "winner_source_id": ""
+    },
+    {
+      "title": "Neuralink User Controls Mouse with His Thoughts",
+      "topic": "The specific success of Neuralink's first human patient, Noland Arbaugh, demonstrating direct brain-computer interface control over a computer mouse, and how this technology is currently translating thoughts into digital actions.",
+      "hook": "Neuralink's first human patient, Noland Arbaugh, is now controlling a computer mouse with his thoughts, demonstrating a revolutionary step in brain-computer interface technology.",
+      "tags": [
+        "neuralink",
+        "brain tech",
+        "bci",
+        "neuroscience"
+      ],
+      "inspired_by": "AI-Curated Viral Trend",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Webb Telescope Sees Galaxies 29 Billion Light-Years Away",
+      "topic": "The James Webb Space Telescope's specific discovery of the most distant galaxies ever observed, seemingly 29 billion light-years away due to cosmic expansion, and what these ancient light signals reveal about the early universe.",
+      "hook": "The James Webb Space Telescope is capturing light from galaxies that existed just after the Big Bang, appearing almost 29 billion light-years distant due to the universe's expansion.",
+      "tags": [
+        "jwst",
+        "space telescope",
+        "deep space",
+        "cosmology"
+      ],
+      "inspired_by": "AI-Curated Viral Trend",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "CIA's MKUltra Used LSD for Mind Control",
+      "topic": "The specific use of LSD and other drugs by the CIA in Project MKUltra during the Cold War, detailing the non-consensual human experimentation aiming to develop mind control and torture resistance techniques.",
+      "hook": "Project MKUltra was a real CIA program in the 1950s and 60s, secretly experimenting with LSD and other substances on unsuspecting citizens to explore mind control possibilities.",
+      "tags": [
+        "mkultra",
+        "cia secrets",
+        "cold war",
+        "conspiracy"
+      ],
+      "inspired_by": "AI-Curated Viral Trend",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Microplastics Found in Human Brain Tissue",
+      "topic": "The alarming discovery of microplastics in human brain tissue and other organs, discussing the pathways of entry into the body and the potential, yet still unknown, long-term health implications.",
+      "hook": "Microplastics aren't just in our oceans and food; they've now been found embedded in human brain tissue, raising serious concerns about their impact on our health.",
+      "tags": [
+        "microplastics",
+        "health risk",
+        "pollution",
+        "human body"
+      ],
+      "inspired_by": "AI-Curated Viral Trend",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Earth's Great Dying Ended 90% of All Life",
+      "topic": "The Permian–Triassic extinction event, known as \"The Great Dying,\" which occurred 252 million years ago and wiped out an estimated 90% of all marine species and 70% of terrestrial vertebrate species, making it Earth's most severe extinction.",
+      "hook": "252 million years ago, Earth suffered 'The Great Dying,' the most catastrophic extinction event ever, eradicating over 90% of all marine life and transforming the planet.",
+      "tags": [
+        "great dying",
+        "extinction event",
+        "paleontology",
+        "earth history"
+      ],
+      "inspired_by": "AI-Curated Viral Trend",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Antikythera Mechanism Predicted Eclipses in Greece",
+      "topic": "The Antikythera Mechanism, an ancient Greek analog computer dating back to the 2nd century BC, capable of predicting astronomical positions, eclipses, and even Olympic games cycles with astonishing precision.",
+      "hook": "Discovered in a shipwreck, the Antikythera Mechanism is an ancient Greek device from 200 BC, essentially a complex computer that accurately predicted astronomical events and eclipses.",
+      "tags": [
+        "antikythera",
+        "ancient tech",
+        "greek history",
+        "archaeology"
+      ],
+      "inspired_by": "AI-Curated Viral Trend",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Octopuses Use Tools and Solve Complex Puzzles",
+      "topic": "The advanced cognitive abilities of octopuses, including their demonstrated capacity for tool use (like carrying coconut shells for shelter), complex problem-solving, and mimicking other animals, showcasing their exceptional intelligence.",
+      "hook": "Octopuses aren't just ocean creatures; they're master problem-solvers, capable of using tools like coconut shells and navigating complex mazes, showcasing surprising intelligence.",
+      "tags": [
+        "octopus facts",
+        "animal intelligence",
+        "marine biology",
+        "tool use"
+      ],
+      "inspired_by": "AI-Curated Viral Trend",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Deja Vu Is Your Brain's Processing Glitch",
+      "topic": "The leading scientific theories behind déjà vu, often explained as a momentary glitch in the brain's memory processing, where new information is briefly perceived as old due to a temporary malfunction in memory retrieval or recognition.",
+      "hook": "That strange feeling of déjà vu isn't a premonition; scientists believe it's often a temporary glitch in your brain's memory system, a fleeting moment of cognitive misprocessing.",
+      "tags": [
+        "deja vu",
+        "brain facts",
+        "psychology",
+        "memory science"
+      ],
+      "inspired_by": "AI-Curated Viral Trend",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "CRISPR Can Edit Human DNA With Precision",
+      "topic": "How CRISPR-Cas9 technology functions as a revolutionary gene-editing tool, allowing scientists to precisely cut and paste DNA sequences to correct genetic defects, and its immense potential for treating inherited diseases.",
+      "hook": "CRISPR gene editing technology is a groundbreaking tool that allows scientists to precisely edit human DNA, offering unprecedented potential to cure genetic diseases.",
+      "tags": [
+        "crispr",
+        "gene editing",
+        "biotechnology",
+        "medical science"
+      ],
+      "inspired_by": "AI-Curated Viral Trend",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Erasers Were Once Just Crumbs of Bread",
+      "topic": "The little-known history of erasers, revealing that before the invention of rubber-based erasers in the 18th century, people commonly used moist breadcrumbs to remove pencil marks from paper.",
+      "hook": "Before the invention of rubber erasers, people used an unexpected item to correct their mistakes on paper: soft, moist crumbs of bread.",
+      "tags": [
+        "eraser history",
+        "stationery facts",
+        "invention",
+        "everyday objects"
+      ],
+      "inspired_by": "Viral Shorts in Niche",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Porcupines Don't Shoot Their Quills",
+      "topic": "The common misconception that porcupines can actively \"shoot\" their quills, explaining that their quills are actually loosely attached and only detach upon contact, embedding themselves in a predator's skin.",
+      "hook": "Despite popular belief, porcupines don't actually shoot their quills; instead, these barbed defenses are released only when they make direct contact with a threat.",
+      "tags": [
+        "porcupine facts",
+        "animal defense",
+        "wildlife myths",
+        "biology"
+      ],
+      "inspired_by": "Viral Shorts in Niche",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Deployable Flood Barriers Saved Homes",
+      "topic": "The effectiveness of rapidly deployable, water-filled tube barriers as a modern flood defense solution, showcasing how they quickly create a temporary wall to divert or contain floodwaters, protecting properties.",
+      "hook": "Water-filled tubes aren't just for toys; these rapidly deployable barriers can create instant flood defenses, protecting homes and infrastructure from rising waters.",
+      "tags": [
+        "flood defense",
+        "engineering solutions",
+        "disaster prep",
+        "innovative tech"
+      ],
+      "inspired_by": "Top 20 Trending US",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "CGI Humans Look Real with Motion Capture",
+      "topic": "The advanced motion capture technology used in film and video games, detailing how actors' movements are digitally recorded and translated to create incredibly realistic computer-generated human characters and animations.",
+      "hook": "The incredibly realistic CGI humans you see in movies and games aren't just animated; they're often brought to life through sophisticated motion capture technology that records real actors' movements.",
+      "tags": [
+        "cgi",
+        "motion capture",
+        "film tech",
+        "animation"
+      ],
+      "inspired_by": "Top 20 Trending US",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
     }
   ],
   "longform": [
     {
-      "title": "Strait of Hormuz: Why This Waterway Could Spark the Next Global Crisis",
-      "topic": "15 minute deep analysis of the geopolitical significance of the Strait of Hormuz. Cover its history, control dynamics, global energy implications, and the potential for international conflict if access is threatened. Include specific facts on oil transport, naval presence, and economic impacts.",
-      "hook": "This narrow strip of water holds the world's oil supply hostage. The Strait of Hormuz: a choke point with the power to ignite a global crisis.",
+      "title": "The New Geopolitics of Energy: Why Middle East Tensions Threaten Global Stability",
+      "topic": "15 minute deep analysis of the escalating geopolitical tensions in the Middle East, specifically focusing on the Strait of Hormuz and its critical role in global energy security. Cover the historical context of US-Iran relations, recent military and diplomatic escalations, and the potential economic and political ripple effects on global oil markets and international stability. Include specific facts on oil transit volumes, recent incidents, and analysis from geopolitical experts.",
+      "hook": "The world's energy lifeline runs through a narrow chokepoint, and with escalating tensions in the Middle East, the specter of a global energy crisis looms larger than ever.",
       "tags": [
         "geopolitics",
-        "iran",
-        "straitofhormuz",
-        "globalconflict",
-        "energysecurity"
+        "energy security",
+        "middle east conflict",
+        "iran us relations",
+        "global economics"
       ],
-      "inspired_by": "Trending World News: Iran-US Tensions & Hormuz discussions",
+      "inspired_by": "Trending World News Videos",
       "estimated_views": "high",
-      "duration_minutes": 15,
-      "status": "produced"
+      "duration_minutes": 15
     },
     {
-      "title": "Invisible Universe: The Unseen Forces of Dark Matter and Dark Energy",
-      "topic": "15 minute deep analysis of dark matter and dark energy. Explain what scientists believe they are, the evidence for their existence, current theories on their nature, and why they remain one of cosmology's biggest unanswered questions. Discuss ongoing experiments and their potential implications for understanding the universe.",
-      "hook": "What if 95% of our universe is invisible? Prepare to explore the mind-bending realities of dark matter and dark energy.",
+      "title": "Sora AI and the Creative Revolution: How Generative Video Will Reshape Industries",
+      "topic": "15 minute deep analysis of OpenAI's Sora AI and its profound implications for creative industries, media production, and the future of work. Explore the technology's capabilities, its potential to democratize video creation, and the significant challenges it poses, including intellectual property rights, misinformation, and the displacement of traditional creative roles. Discuss how businesses and artists are adapting to this new paradigm and what regulations might be needed. Include examples of Sora's output and expert opinions on its societal impact.",
+      "hook": "Imagine generating entire, realistic video scenes from a single text prompt; OpenAI's Sora AI isn't just a technological marvel, it's a creative revolution poised to fundamentally reshape industries and our relationship with digital content.",
       "tags": [
-        "darkmatter",
-        "darkenergy",
-        "cosmology",
-        "universequestions",
-        "astrophysics"
+        "sora ai",
+        "generative ai",
+        "future of work",
+        "creative industries",
+        "artificial intelligence"
       ],
-      "inspired_by": "AI-Curated Viral Trend: Unraveling the Mystery of Dark Matter and Dark Energy",
-      "estimated_views": "medium",
+      "inspired_by": "AI-Curated Viral Trends",
+      "estimated_views": "high",
       "duration_minutes": 15
     }
   ],
   "ambient_recommendations": [
     {
-      "type": "rain",
+      "type": "thunderstorm",
       "hours": 8,
-      "reason": "Rain sounds are universally calming, excellent for focus, study, or sleep, consistently attracting high passive watch time."
+      "reason": "Thunderstorm sounds are consistently popular for relaxation, study, and sleep, offering a dynamic yet soothing auditory experience."
     },
     {
       "type": "forest",
       "hours": 8,
-      "reason": "Forest ambiance provides natural, peaceful sounds perfect for relaxation and background noise during work or meditation, appealing to a broad audience."
+      "reason": "Forest ambient sounds (birds, rustling leaves) provide a natural, calming atmosphere, ideal for long passive listening sessions and stress reduction."
     },
     {
       "type": "ocean",
       "hours": 8,
-      "reason": "Ocean waves offer rhythmic and soothing audio, ideal for stress relief and aiding sleep, which are popular categories for ambient videos."
+      "reason": "The rhythmic sounds of ocean waves are highly effective for meditation, concentration, and sleep, with broad appeal across diverse audiences seeking tranquility."
     }
   ],
-  "generated_at": "2026-04-20T23:21:49.782923",
+  "generated_at": "2026-04-21T23:19:19.805698",
   "trending_count": 85,
-  "channels_analyzed": 5,
-  "winner_variations_count": 4,
-  "status": "in_progress",
-  "last_executed_at": "2026-04-21T17:56:09.731412",
-  "results": {
-    "shorts_produced": 0,
-    "longform_produced": 1,
-    "errors": []
-  }
+  "channels_analyzed": 4,
+  "winner_variations_count": 6,
+  "status": "pending"
 }

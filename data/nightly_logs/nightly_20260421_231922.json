@@ -1,0 +1,248 @@
+{
+  "timestamp": "2026-04-21T23:17:45.870300",
+  "dry_run": false,
+  "api_health": {
+    "gemini": "ok (gemini-2.5-flash)",
+    "openai": "error: Connection error.",
+    "healthy": true
+  },
+  "performance_review": {
+    "total_recent": 7,
+    "winners_count": 2,
+    "losers_count": 1,
+    "avg_views_48h": 95.9,
+    "best_topics": [
+      "Pantheon's Secret: Rome's Unreinforced Concrete Dome Explain",
+      "Puppy's Fear Period: Brains Permanently Altered #Shorts",
+      "Physics of the Impossible: Extreme Stunts Explained #Shorts "
+    ],
+    "best_views": [
+      456,
+      200,
+      5
+    ],
+    "winner_titles": [
+      "Puppy's Fear Period: Brains Permanently Altered #Shorts",
+      "Pantheon's Secret: Rome's Unreinforced Concrete Dome Explained #Shorts #facts #curiosity #world"
+    ],
+    "loser_titles": [
+      "Roman Concrete: Ancient Super-Material That Heals Itself #Shorts"
+    ]
+  },
+  "cleanup": {
+    "unlisted": 1,
+    "deleted": 6,
+    "failed": 0,
+    "kept": 297,
+    "thresholds": {
+      "shorts_7d": 75,
+      "shorts_14d": 150,
+      "shorts_30d": 300,
+      "long_14d": 75,
+      "long_30d": 150,
+      "multiplier": 1.5
+    }
+  },
+  "trending": {
+    "found": 85,
+    "viral_shorts_found": 30,
+    "world_news_found": 20,
+    "competitors_analyzed": 3,
+    "comments_mined": 20,
+    "top_5": [
+      {
+        "title": "Last To Leave Grocery Store, Wins $250,000",
+        "views": 69490743,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Speed Made His Day❤️‍🩹 #ishowspeed #wholesome #edit",
+        "views": 25699867,
+        "category": "Entertainment"
+      },
+      {
+        "title": "That Was A Crazy Trick 🔥 | How I Met Your Mother | Song - He",
+        "views": 19124716,
+        "category": "Film & Animation"
+      },
+      {
+        "title": "Racing my daughter, and if she wins… I’ll finally buy her a ",
+        "views": 18143452,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Bro Is A Lost Cause 💀",
+        "views": 17993741,
+        "category": "Entertainment"
+      }
+    ],
+    "top_viral_shorts": [
+      {
+        "title": "This AI Machine Changes Baby Diapers in Seconds",
+        "views": 19209189,
+        "query": "technology AI future"
+      },
+      {
+        "title": "How Does An Eraser Actually Work? ✏️🤯 #facts #shorts",
+        "views": 6559494,
+        "query": "did you know facts"
+      },
+      {
+        "title": "Can Porcupines Really Shoot Their Quills? 😱 The Truth Will S",
+        "views": 5715287,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "Top 5 Funniest Falling Moments EverCaught on Camera!🤣😂  #sho",
+        "views": 4223504,
+        "query": "top 5 facts"
+      },
+      {
+        "title": "Pangolin: The Animal Even Lions Can’t Break!",
+        "views": 3218182,
+        "query": "animal facts wildlife"
+      }
+    ]
+  },
+  "winners": {
+    "added": 67,
+    "total": 30,
+    "threshold": 448,
+    "median": 224,
+    "active": 10,
+    "top": [
+      {
+        "video_id": "n2FBDPG5dNk",
+        "title": "World's Strongest Eraser VS 5 Levels! - Short Documentary #S",
+        "views": 1011,
+        "views_per_day": 168.5,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "d7q1A_ogbo4",
+        "title": "Roman Engineering Secrets: Still Standing After 2000 Years! ",
+        "views": 559,
+        "views_per_day": 139.8,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "a-U9pdVk22Q",
+        "title": "Heartwarming Puppy Moments: This is so cute 😍 #Shorts",
+        "views": 1443,
+        "views_per_day": 131.2,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "Nye4U42Ksrg",
+        "title": "Smooth Criminal Animation Meme: The New Viral Trend #Shorts",
+        "views": 771,
+        "views_per_day": 128.5,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "rpon1alnaTs",
+        "title": "Unveiling Daredevil Science: Extreme Engineering Behind Impo",
+        "views": 512,
+        "views_per_day": 128.0,
+        "variations_generated": 0
+      }
+    ]
+  },
+  "peak_hours": {
+    "utc": [
+      6,
+      16,
+      12
+    ],
+    "source": "channel_data",
+    "samples": 193
+  },
+  "retention": {
+    "avg_pct": 0,
+    "avg_dur_sec": 0,
+    "source": "unavailable",
+    "video_count": 0
+  },
+  "ambient_analysis": {
+    "total_ambient": 3,
+    "total_views": 13503,
+    "top_type": "fireplace",
+    "worst_type": "rain",
+    "type_rankings": [
+      {
+        "type": "fireplace",
+        "video_count": 2,
+        "total_views": 13166,
+        "avg_views": 6583,
+        "avg_views_per_day": 99.7,
+        "engagement_rate": 189.29,
+        "best_video": {
+          "title": "🔥 Cozy Fireplace 8 HOURS with Crackling Fire Sounds | Firepl",
+          "views": 12831,
+          "views_per_day": 194.4
+        }
+      },
+      {
+        "type": "rain",
+        "video_count": 1,
+        "total_views": 337,
+        "avg_views": 337,
+        "avg_views_per_day": 4.6,
+        "engagement_rate": 2.08,
+        "best_video": {
+          "title": "1 Hour Rainy Night Ambience (60 Minutes)",
+          "views": 337,
+          "views_per_day": 4.6
+        }
+      }
+    ]
+  },
+  "plan": {
+    "shorts_planned": 20,
+    "longform_planned": 2,
+    "ambient_recommendations": [
+      {
+        "type": "thunderstorm",
+        "hours": 8,
+        "reason": "Thunderstorm sounds are consistently popular for relaxation, study, and sleep, offering a dynamic yet soothing auditory experience."
+      },
+      {
+        "type": "forest",
+        "hours": 8,
+        "reason": "Forest ambient sounds (birds, rustling leaves) provide a natural, calming atmosphere, ideal for long passive listening sessions and stress reduction."
+      },
+      {
+        "type": "ocean",
+        "hours": 8,
+        "reason": "The rhythmic sounds of ocean waves are highly effective for meditation, concentration, and sleep, with broad appeal across diverse audiences seeking tranquility."
+      }
+    ],
+    "winner_variations_count": 6,
+    "shorts": [
+      "World's Strongest Eraser Material Explained",
+      "Roman Aqueducts Defied Gravity for Centuries",
+      "Why Puppies Have Their 'Zoomies' Moments",
+      "The Lean in Michael Jackson's 'Smooth Criminal'",
+      "Felix Baumgartner's Supersonic Skydive Physics",
+      "The Dutch Reach Prevents Car Door Accidents",
+      "OpenAI's Sora AI Generates Entire Minutes of Video",
+      "Neuralink User Controls Mouse with His Thoughts",
+      "Webb Telescope Sees Galaxies 29 Billion Light-Year",
+      "CIA's MKUltra Used LSD for Mind Control",
+      "Microplastics Found in Human Brain Tissue",
+      "Earth's Great Dying Ended 90% of All Life",
+      "Antikythera Mechanism Predicted Eclipses in Greece",
+      "Octopuses Use Tools and Solve Complex Puzzles",
+      "Deja Vu Is Your Brain's Processing Glitch",
+      "CRISPR Can Edit Human DNA With Precision",
+      "Erasers Were Once Just Crumbs of Bread",
+      "Porcupines Don't Shoot Their Quills",
+      "Deployable Flood Barriers Saved Homes",
+      "CGI Humans Look Real with Motion Capture"
+    ],
+    "longform": [
+      "The New Geopolitics of Energy: Why Middle East Tensions Thre",
+      "Sora AI and the Creative Revolution: How Generative Video Wi"
+    ]
+  }
+}
