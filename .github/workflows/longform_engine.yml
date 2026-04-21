@@ -7,16 +7,16 @@ name: "🎬 Longform Engine — Documentary Production"
 # ║  A) Scheduled: Produces from Nightly Brain plan         ║
 # ║  B) Manual: Write a topic OR let system pick trending   ║
 # ║                                                         ║
-# ║  Schedule: Twice daily (morning + afternoon US time)    ║
-# ║  • 14:00 UTC = 10 AM ET — morning production           ║
-# ║  • 20:00 UTC = 4 PM ET  — afternoon production         ║
+# ║  Schedule: Daily at US midday (no conflict w/ Shorts)   ║
+# ║  • 16:00 UTC = 12 PM ET — longform production          ║
 # ║                                                         ║
 # ║  Each run produces 1 long-form video (~30-45 min build) ║
 # ╚══════════════════════════════════════════════════════════╝
 
 on:
+  # Daily at 16:00 UTC (12PM ET) — offset from Content Engine (14:00, 20:00)
   schedule:
-    - cron: '0 14,20 * * *'
+    - cron: '0 16 * * *'
 
   workflow_dispatch:
     inputs:
@@ -65,38 +65,24 @@ jobs:
         run: |
           MODE="${{ github.event.inputs.mode }}"
           TOPIC="${{ github.event.inputs.topic }}"
-
-          # Scheduled runs use plan mode
           if [ -z "$MODE" ]; then
             MODE="plan"
           fi
-
           echo "mode=$MODE" >> $GITHUB_OUTPUT
           echo "topic=$TOPIC" >> $GITHUB_OUTPUT
-          echo "🎬 Mode: $MODE"
-
+          echo "Mode: $MODE"
           if [ "$MODE" = "plan" ]; then
-            # Check if plan has pending longform
             if [ ! -f "data/daily_plan.json" ]; then
               echo "status=no_plan" >> $GITHUB_OUTPUT
-              echo "❌ No daily plan found."
+              echo "No daily plan found."
             else
-              PENDING=$(python3 -c "
-          import json
-          try:
-              d = json.load(open('data/daily_plan.json'))
-              pending = sum(1 for l in d.get('longform', []) if l.get('status','pending') in ('pending','failed','error'))
-              print(pending)
-          except:
-              print(0)
-          ")
+              PENDING=$(python3 -c "import json; d=json.load(open('data/daily_plan.json')); print(sum(1 for l in d.get('longform',[]) if l.get('status','pending') in ('pending','failed','error')))" 2>/dev/null || echo "0")
               echo "pending=$PENDING" >> $GITHUB_OUTPUT
+              echo "Pending longform: $PENDING"
               if [ "$PENDING" = "0" ]; then
                 echo "status=no_pending" >> $GITHUB_OUTPUT
-                echo "⏭️ No pending long-form videos in plan"
               else
                 echo "status=ready" >> $GITHUB_OUTPUT
-                echo "📋 $PENDING long-form videos pending"
               fi
             fi
           else
@@ -207,4 +193,4 @@ jobs:
 
       - name: Skip
         if: steps.mode.outputs.status != 'ready'
-        run: echo "⏭️ Nothing to produce. Status: ${{ steps.mode.outputs.status }}"
+        run: echo "Nothing to produce — skipping."
