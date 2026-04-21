@@ -877,7 +877,7 @@ DO NOT suggest any more videos about these specific topics:
 {saturated_text}
 
 Create a content plan for TOMORROW with:
-- 7 YouTube Shorts (25-35 seconds each, fact/info style — QUALITY over quantity)
+- 15 YouTube Shorts (25-35 seconds each, fact/info style — QUALITY over quantity)
 - 2 Long-form videos (10-20 minutes, documentary/deep-dive style)
 - 3 Ambient video recommendations (which ambient type to produce next)
 

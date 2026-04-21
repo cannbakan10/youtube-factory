@@ -1,28 +1,27 @@
 name: "🎬 Content Engine — Shorts Production"
 
 # ╔══════════════════════════════════════════════════════════╗
-# ║  CONTENT ENGINE v5.0 — Quality Over Quantity             ║
+# ║  CONTENT ENGINE v5.1 — Quality + Consistency             ║
 # ║                                                         ║
 # ║  Channel Strategy:                                      ║
-# ║  • 1 Short per batch, 1 batch/day = ~5 Shorts/week     ║
-# ║  • Mon-Fri only (weekends off for algorithm digestion)  ║
-# ║  • Posted at US prime time for max initial traction     ║
+# ║  • 2 Shorts/day, every day (14 Shorts/week)            ║
+# ║  • Spaced 6h apart for algorithm warm-up between posts  ║
+# ║  • US prime time focus for maximum initial traction      ║
 # ║                                                         ║
 # ║  ┌──────────┬──────────────────────────────────────────┐ ║
 # ║  │ Time UTC │ Action                                   │ ║
 # ║  ├──────────┼──────────────────────────────────────────┤ ║
-# ║  │ 20:00    │ 1 Short (US 3-4PM ET prime time)        │ ║
+# ║  │ 14:00    │ 1 Short (US 10AM ET morning)             │ ║
+# ║  │ 20:00    │ 1 Short (US 4PM ET prime time)           │ ║
 # ║  └──────────┴──────────────────────────────────────────┘ ║
 # ║                                                         ║
-# ║  Why 1/day: YouTube 2026 algorithm rewards quality over ║
-# ║  quantity. 16/day = spam flag + self-cannibalization.   ║
-# ║  Each Short needs 2-4h warm-up for algorithm testing.  ║
+# ║  2 batches × 1 Short = 2 Shorts/day = 14/week          ║
 # ╚══════════════════════════════════════════════════════════╝
 
 on:
-  # 1 Short/day, Mon-Fri only, at US prime time (3PM ET = 20:00 UTC)
+  # 2 Shorts/day, every day, spaced 6h apart
   schedule:
-    - cron: '0 20 * * 1-5'
+    - cron: '0 14,20 * * *'
 
   workflow_dispatch:
     inputs:
