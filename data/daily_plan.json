@@ -106,7 +106,8 @@
       ],
       "inspired_by": "Trending World News: Iran-US Tensions & Hormuz discussions",
       "estimated_views": "high",
-      "duration_minutes": 15
+      "duration_minutes": 15,
+      "status": "produced"
     },
     {
       "title": "Invisible Universe: The Unseen Forces of Dark Matter and Dark Energy",
@@ -146,10 +147,10 @@
   "channels_analyzed": 5,
   "winner_variations_count": 4,
   "status": "in_progress",
-  "last_executed_at": "2026-04-21T08:57:26.127551",
+  "last_executed_at": "2026-04-21T17:56:09.731412",
   "results": {
-    "shorts_produced": 1,
-    "longform_produced": 0,
+    "shorts_produced": 0,
+    "longform_produced": 1,
     "errors": []
   }
 }
