@@ -87,7 +87,9 @@
       "inspired_by": "AI-Curated Viral Trend: The Mandela Effect: Collective False Memories Explained",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "Explain_the_Mandela_Effect_wha_1776761582"
     }
   ],
   "longform": [
@@ -144,7 +146,7 @@
   "channels_analyzed": 5,
   "winner_variations_count": 4,
   "status": "in_progress",
-  "last_executed_at": "2026-04-21T08:51:03.649297",
+  "last_executed_at": "2026-04-21T08:57:26.127551",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
