@@ -852,9 +852,9 @@ Study what world events are getting the most views and create deep-dive analysis
 that creates English-language content targeting a global (primarily US) audience.
 
 CHANNEL STRATEGY:
-- Shorts (under 60 seconds) = Discovery & subscriber growth
-- Long-form documentaries (10-20 minutes) = Deep-dive analysis of world events, geopolitics, current affairs = Watch time & ad revenue
-- Ambient videos (1-8 hour loops: fireplace, rain, forest, ocean etc.) = Passive watch time
+- Shorts (25-35 seconds) = Discovery & subscriber growth
+- Long-form documentaries (10-20 minutes) = Deep analysis, watch time & ad revenue
+- Ambient videos (1-8 hour loops: fireplace, rain, forest etc.) = Passive watch time
 
 Here are today's top 20 trending YouTube videos in the US:
 
@@ -872,43 +872,69 @@ CHANNEL HISTORY (LAST 150 VIDEOS — DO NOT REPEAT THESE TOPICS!):
 {history_text}
 
 ⛔ CRITICAL NON-REPETITION WARNING:
-The following keywords/themes have BEEN OVERUSED on this channel recently. 
+The following keywords/themes have BEEN OVERUSED on this channel recently.
 DO NOT suggest any more videos about these specific topics:
 {saturated_text}
 
 Create a content plan for TOMORROW with:
-- 20 YouTube Shorts (25-35 seconds each, fact/info style — QUALITY over quantity)
+- 20 YouTube Shorts (25-35 seconds each)
 - 2 Long-form videos (10-20 minutes, documentary/deep-dive style)
-- 3 Ambient video recommendations (which ambient type to produce next)
+- 3 Ambient video recommendations
 
-SHORTS QUALITY RULES (CRITICAL — 2026 Algorithm):
-- Each Short must have a SPECIFIC hook (not generic "90% don't know this")
-- Target 25-35 seconds (55-75 words) for maximum completion rate
-- End with a LOOPING structure (last line connects back to the opening)
-- FEWER but BETTER: 5-7 high-quality Shorts beat 20 mediocre ones
-- The algorithm rewards completion rate, not posting frequency
+═══════════════════════════════════════════════════
+SHORTS TOPIC SELECTION (THIS IS THE MOST IMPORTANT PART):
+═══════════════════════════════════════════════════
+
+❌ BANNED — NEVER DO THESE:
+- Generic overview topics: "Roman concrete", "Black holes", "Bermuda Triangle", "Human body facts"
+- Topics that 1000+ channels already covered
+- Vague titles: "Amazing facts about X", "Things you didn't know about Y"
+- Any topic where searching YouTube shows 50+ similar videos
+
+✅ WHAT TO DO — HYPER-SPECIFIC ANGLES:
+Instead of a general topic, pick ONE specific fact, event, person, or place:
+- ❌ "Roman concrete facts" → ✅ "The Pantheon has a giant hole in the roof — and it never floods. Here's why."
+- ❌ "Black hole facts" → ✅ "In 2019, scientists photographed a black hole — but the image took 5 petabytes of data to create."
+- ❌ "Ocean facts" → ✅ "There's a lake at the bottom of the Gulf of Mexico. Anything that swims into it dies."
+- ❌ "Japan facts" → ✅ "Japan has a train that's been 0 seconds late on average for 50 years."
+- ❌ "Space facts" → ✅ "Voyager 1 is so far away that its signals take 22 hours to reach Earth — and it's still sending data."
+
+EACH SHORT MUST:
+1. Be about ONE ultra-specific fact (not a list of 5 random facts)
+2. Open with that fact as the hook (first sentence = the mind-blowing claim)
+3. Spend 20-30 seconds explaining WHY it's mind-blowing (context, science, history)
+4. End with a line that loops back to the opening (replay trigger)
+5. Target 55-75 words total (25-35 seconds when spoken)
+
+TITLE FORMULA FOR SHORTS:
+- Use the specific fact as the title, not a generic label
+- ❌ "Amazing Facts About Space" → ✅ "Voyager 1 Is Still Sending Signals After 47 Years"
+- ❌ "Mind-Blowing Ocean Facts" → ✅ "There's a Lake at the Bottom of the Ocean That Kills Everything"
+- Keep under 60 characters, keyword-front-loaded
+- NO clickbait words like "SHOCKING", "UNBELIEVABLE", "YOU WON'T BELIEVE"
+
+HOOK FIELD — Write the EXACT first sentence of the video:
+- Must be the specific fact itself, spoken as a bold statement
+- ❌ "Did you know that..." → ✅ "The Pantheon in Rome has a 30-foot hole in the ceiling — and it never leaks."
+- ❌ "90% of people don't know..." → ✅ "There's a species of jellyfish that is biologically immortal."
 
 LONG-FORM VIDEO STRATEGY (CRITICAL):
 These are the channel's FLAGSHIP content — deep-dive documentaries that drive
-watch time and ad revenue. NOT just news — pick from ALL trending categories.
+watch time and ad revenue. Pick from ALL trending categories.
 
 Long-form topic selection rules:
 1. MOST-WATCHED FIRST: Focus on what YouTube audiences are watching most RIGHT NOW.
-   This can be world events, science, technology, history, mysteries, economics,
-   space, AI, true crime, nature — whatever long-form content is trending highest.
-2. WORLD EVENTS ARE GREAT BUT NOT THE ONLY OPTION: Geopolitics, wars, crises are
-   good topics BUT also consider science breakthroughs, tech explainers, historical
-   deep dives, unsolved mysteries, and viral documentary topics.
-3. DEEP ANALYSIS: Don't just report — explain WHY it matters, the history behind it,
+   World events, science, technology, history, mysteries, economics, space, AI,
+   true crime, nature — whatever long-form content is trending highest.
+2. DEEP ANALYSIS: Don't just report — explain WHY it matters, the history behind it,
    what could happen next. Give viewers context they can't get elsewhere.
-4. EVERGREEN ANGLE: Frame topics with lasting relevance. Instead of
+3. EVERGREEN ANGLE: Frame topics with lasting relevance. Instead of
    "Breaking: X happened today", use "Why X Changes Everything" or
    "The Hidden History Behind X".
-5. DURATION: Each long-form video should target 15 minutes (~2100 words of narration).
-   Include "15 minute" in the topic field so the scriptwriter knows the target length.
-6. HIGH SEARCH VOLUME: Pick topics people are actively searching for on YouTube.
-7. VARIETY: Alternate between categories — don't do 2 geopolitics videos in a row.
-   Mix news, science, history, technology, mysteries across days.
+4. DURATION: Each long-form video should target 15 minutes (~2100 words of narration).
+   Include "15 minute" in the topic field.
+5. HIGH SEARCH VOLUME: Pick topics people are actively searching for on YouTube.
+6. VARIETY: Don't do 2 videos in the same category in a row.
 
 Available ambient types: fireplace, forest, rain, ocean, thunderstorm, waterfall,
 snow, campfire, candle, underwater, river, garden, wind, aurora, sunset, cave,
@@ -916,18 +942,18 @@ jungle, lavender_field, zen_garden, japanese_garden
 
 STRATEGY & VARIETY RULES:
 1. STRICT NON-REPETITION: Do not suggest anything even remotely similar to the topics in the history.
-2. DIVERSITY IS KEY: Suggest a wide mix of niches (History, Science, Mysteries, Logic Puzzles, Nature).
-3. NO OVERUSED THEMES: If we've done 'James Webb', 'Everest', or 'Dinosaurs' too much, find something entirely different.
-4. FRESH ANGLES: Explore specific, mind-blowing facts rather than general overviews.
+2. DIVERSITY IS KEY: Mix History, Science, Nature, Geography, Psychology, Technology, Space, True Crime.
+3. SPECIFICITY IS EVERYTHING: Every single topic must be about ONE hyper-specific fact, not a category overview.
+4. SEARCH COMPETITOR CHECK: Before suggesting a topic, ask yourself "Are there already 50+ YouTube videos about this?" If yes, find a more specific angle or skip it entirely.
 
 Output STRICT JSON format:
 {{
     "date": "{(datetime.utcnow() + timedelta(days=1)).strftime('%Y-%m-%d')}",
     "shorts": [
         {{
-            "title": "Catchy Short Title",
-            "topic": "Detailed topic description for script generation",
-            "hook": "First 3 seconds hook text",
+            "title": "The Specific Fact As Title (under 60 chars)",
+            "topic": "ONE hyper-specific fact with full context for script generation. Not a category overview.",
+            "hook": "The exact first sentence spoken in the video — must be the specific fact as a bold statement. NO generic openers.",
             "tags": ["tag1", "tag2", "tag3"],
             "inspired_by": "Which trending video/channel inspired this",
             "estimated_views": "low/medium/high based on trend analysis",
@@ -937,9 +963,9 @@ Output STRICT JSON format:
     ],
     "longform": [
         {{
-            "title": "Compelling Documentary Title About Current Event",
-            "topic": "15 minute deep analysis of [specific world event]. Cover the background, key players, current situation, and what could happen next. Include specific facts, dates, and geopolitical context.",
-            "hook": "Opening hook that grabs attention in the first 10 seconds",
+            "title": "Compelling Documentary Title",
+            "topic": "15 minute deep analysis of [specific topic]. Cover the background, key facts, current situation, and implications. Include specific facts, dates, and context.",
+            "hook": "Opening hook — a specific, bold claim that makes viewers need to keep watching",
             "tags": ["tag1", "tag2", "tag3", "tag4", "tag5"],
             "inspired_by": "Which news event or trending topic inspired this",
             "estimated_views": "medium/high",
