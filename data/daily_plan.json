@@ -69,7 +69,9 @@
       "inspired_by": "StreamGlobal Winner: Heartwarming Puppy Moments: This is so cute 😍",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "a-U9pdVk22Q"
+      "winner_source_id": "a-U9pdVk22Q",
+      "status": "produced",
+      "production_id": "Explore_surprising_facts_about_1776761180"
     },
     {
       "title": "Mandela Effect: Is Your Memory Playing Tricks? The Shocking Truth",
@@ -142,9 +144,9 @@
   "channels_analyzed": 5,
   "winner_variations_count": 4,
   "status": "in_progress",
-  "last_executed_at": "2026-04-21T08:38:03.267070",
+  "last_executed_at": "2026-04-21T08:51:03.649297",
   "results": {
-    "shorts_produced": 3,
+    "shorts_produced": 1,
     "longform_produced": 0,
     "errors": []
   }
