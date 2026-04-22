@@ -1,14 +1,29 @@
 import os
+import shutil
 import subprocess
 import logging
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+MIN_DISK_GB = 2  # Minimum free disk space in GB before rendering
+
 
 class VideoEngine:
     def __init__(self):
         self.project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
         self.output_dir = os.path.join(self.project_root, "assets", "cache")
         os.makedirs(self.output_dir, exist_ok=True)
+
+    def _check_disk_space(self):
+        """Check if enough disk space is available for rendering."""
+        usage = shutil.disk_usage(self.output_dir)
+        free_gb = usage.free / (1024 ** 3)
+        if free_gb < MIN_DISK_GB:
+            raise RuntimeError(
+                f"Insufficient disk space: {free_gb:.1f} GB free, need at least {MIN_DISK_GB} GB. "
+                "Clear old productions or increase disk space."
+            )
+        logging.info(f"Disk space check: {free_gb:.1f} GB free")
 
     def render(self, blueprint, language="en", bg_music_path=None, video_type="shorts"):
         """
@@ -17,6 +32,7 @@ class VideoEngine:
         - Supports Shorts (9:16) and Long Form (16:9).
         - Dynamic Typography & Safe Zones.
         """
+        self._check_disk_space()
         is_long = video_type == "long"
         width, height = (1920, 1080) if is_long else (1080, 1920)
         margin_v = 50 if is_long else 80

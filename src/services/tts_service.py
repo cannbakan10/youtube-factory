@@ -1,6 +1,7 @@
 from elevenlabs.client import ElevenLabs
 from openai import OpenAI
 import os
+import time
 import uuid
 import subprocess
 import base64
@@ -24,6 +25,7 @@ class TTSService:
         
         self.cache_dir = output_dir
         self.elevenlabs_quota_exceeded = False
+        self._quota_exceeded_at = None
 
         # Audio Library (Not cleaned every run)
         self.project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -121,11 +123,15 @@ class TTSService:
 
         clean_text = text.strip()
 
-        # If we already know quota is gone, go straight to fallback
         if self.elevenlabs_quota_exceeded:
-            if self.oa_client:
-                return self._generate_with_openai(clean_text, language)
-            return None, None, 0
+            if self._quota_exceeded_at and (time.time() - self._quota_exceeded_at) > 3600:
+                logger.info("ElevenLabs quota cooldown expired (1h). Retrying ElevenLabs...")
+                self.elevenlabs_quota_exceeded = False
+                self._quota_exceeded_at = None
+            else:
+                if self.oa_client:
+                    return self._generate_with_openai(clean_text, language)
+                return None, None, 0
 
         # Mode-aware voice settings for maximum engagement
         voice_presets = {
@@ -163,8 +169,9 @@ class TTSService:
         except Exception as e:
             err_msg = str(e).lower()
             if "quota_exceeded" in err_msg or "status_code: 401" in err_msg:
-                logger.warning("💎 ElevenLabs Quota EXCEEDED. Switching to permanent fallback.")
+                logger.warning("💎 ElevenLabs Quota EXCEEDED. Switching to OpenAI fallback (retry in 1h).")
                 self.elevenlabs_quota_exceeded = True
+                self._quota_exceeded_at = time.time()
             
             logger.info(f"ElevenLabs primary method failed (Reason: {e}). Attempting fallback...")
             
