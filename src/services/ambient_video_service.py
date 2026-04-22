@@ -21,8 +21,8 @@ class AmbientVideoService:
 
     AMBIENT_PRESETS: Dict[str, Dict[str, object]] = {
         "fireplace": {
-            "title": "1 Hour Cozy Fireplace Ambience",
-            "description": "Relax with one hour of cozy fireplace visuals and calm ambience.",
+            "title": "4 Hours Cozy Fireplace Ambience for Sleep & Relaxation",
+            "description": "Relax with hours of cozy fireplace visuals and calm ambience. Perfect for sleep, study, and deep relaxation.",
             "tags": ["fireplace", "cozy ambience", "relaxing", "sleep", "study"],
             "video_keywords": ["steady fireplace burning", "static fireplace long take", "calm fire burning"],
             "audio_queries": ["fireplace crackling ambience", "fire crackling slow"],
@@ -31,8 +31,8 @@ class AmbientVideoService:
             "fallback_bg_color": "0x2B1208",
         },
         "sleep": {
-            "title": "1 Hour Deep Sleep Soundscape",
-            "description": "One hour of soft sleep ambience to help you relax and fall asleep faster.",
+            "title": "4 Hours Deep Sleep Soundscape — Fall Asleep Fast",
+            "description": "Hours of soft sleep ambience to help you relax and fall asleep faster. No interruptions, pure calm.",
             "tags": ["sleep sounds", "deep sleep", "white noise", "rain", "relax"],
             "video_keywords": ["night sky stars timelapse", "moon clouds", "calm night ocean"],
             "audio_queries": ["sleep rain ambience", "deep sleep white noise"],
@@ -40,8 +40,8 @@ class AmbientVideoService:
             "fallback_bg_color": "0x04080F",
         },
         "rain": {
-            "title": "1 Hour Rainy Night Ambience",
-            "description": "Steady rain ambience for sleep, deep focus, and relaxation.",
+            "title": "4 Hours Rainy Night Ambience for Deep Sleep",
+            "description": "Steady rain ambience for sleep, deep focus, and relaxation. Hours of uninterrupted rain sounds.",
             "tags": ["rain sounds", "sleep rain", "focus ambience", "night rain"],
             "video_keywords": ["rain window night", "rainy city night", "rain drops glass"],
             "audio_queries": ["rain ambience sleep", "night rain sound"],
@@ -49,8 +49,8 @@ class AmbientVideoService:
             "fallback_bg_color": "0x0A1421",
         },
         "ocean_sleep": {
-            "title": "1 Hour Ocean Waves for Deep Sleep",
-            "description": "Calm ocean waves and relaxing visuals to help you fall asleep.",
+            "title": "4 Hours Ocean Waves for Deep Sleep & Relaxation",
+            "description": "Calm ocean waves and relaxing visuals to help you fall asleep. Hours of gentle wave sounds.",
             "tags": ["ocean waves", "deep sleep", "night ocean", "relaxing sounds"],
             "video_keywords": ["calm ocean night", "moonlight sea", "gentle waves beach"],
             "audio_queries": ["ocean waves sleep", "calm sea ambience"],
@@ -58,8 +58,8 @@ class AmbientVideoService:
             "fallback_bg_color": "0x061328",
         },
         "white_noise": {
-            "title": "1 Hour White Noise for Better Sleep",
-            "description": "Smooth white noise to mask distractions and help with deep sleep.",
+            "title": "4 Hours White Noise for Better Sleep — No Interruptions",
+            "description": "Smooth white noise to mask distractions and help with deep sleep. Hours of consistent sound.",
             "tags": ["white noise", "sleep sounds", "insomnia relief", "fan noise"],
             "video_keywords": ["static noise visual", "blur lights"],
             "audio_queries": ["pure white noise"],
@@ -69,8 +69,8 @@ class AmbientVideoService:
             "fallback_bg_color": "0x0A0A0A",
         },
         "rainy_tokyo": {
-            "title": "1 Hour Rainy Night in Tokyo",
-            "description": "Experience the peaceful atmosphere of Tokyo streets on a rainy night.",
+            "title": "4 Hours Rainy Night in Tokyo — City Ambience for Sleep",
+            "description": "Experience the peaceful atmosphere of Tokyo streets on a rainy night. Hours of neon-lit rain.",
             "tags": ["tokyo rain", "rainy night", "city ambience", "neon rain", "lofi"],
             "video_keywords": ["tokyo rain night", "shibuya rain", "neon city rain"],
             "audio_queries": ["city rain night", "tokyo street rain"],
@@ -351,7 +351,7 @@ class AmbientVideoService:
     def create_video(
         self,
         ambient_type: str = "sleep",
-        duration_minutes: int = 60,
+        duration_minutes: int = 240,
         video_type: str = "long",
         language: str = "en",
         source_mode: str = "auto",

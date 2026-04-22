@@ -1,0 +1,114 @@
+name: "🎧 Ambient Engine — Passive Revenue Videos"
+
+# ╔══════════════════════════════════════════════════════════╗
+# ║  AMBIENT ENGINE v1.0 — Sleep/Rain/Fireplace Videos       ║
+# ║                                                         ║
+# ║  Why: Ambient videos = $10+ RPM, massive watch time     ║
+# ║  - 4-hour video = 1 viewer = 24x more watch time        ║
+# ║    than a 10-minute video                               ║
+# ║  - Sleep/wellness advertisers pay $16-20 CPM            ║
+# ║  - Runs while viewers sleep = passive ad impressions     ║
+# ║                                                         ║
+# ║  Schedule: Weekly on Saturday at 10:00 UTC               ║
+# ║  Produces: 1 ambient video (4 hours) per week           ║
+# ╚══════════════════════════════════════════════════════════╝
+
+on:
+  schedule:
+    - cron: '0 10 * * 6'  # Every Saturday at 10:00 UTC
+
+  workflow_dispatch:
+    inputs:
+      ambient_type:
+        description: 'Ambient type preset'
+        required: true
+        default: 'sleep'
+        type: choice
+        options:
+          - 'sleep'
+          - 'rain'
+          - 'fireplace'
+          - 'thunderstorm'
+          - 'ocean_sleep'
+          - 'coffee_shop'
+          - 'attic_rain'
+          - 'snowy_cabin'
+          - 'train_ride'
+      duration:
+        description: 'Duration in minutes (240 = 4h, 480 = 8h)'
+        required: false
+        default: '240'
+
+jobs:
+  produce-ambient:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    permissions:
+      contents: write
+      actions: read
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Setup Credentials
+        run: |
+          echo '${{ secrets.CLIENT_SECRETS_JSON }}' > client_secrets.json
+          if [ -n "${{ secrets.TOKEN_PICKLE_BASE64 }}" ]; then
+            printf "%s" "${{ secrets.TOKEN_PICKLE_BASE64 }}" | base64 -d > token.pickle
+          fi
+
+      - name: Select Ambient Type
+        id: select
+        run: |
+          MANUAL_TYPE="${{ github.event.inputs.ambient_type }}"
+          MANUAL_DURATION="${{ github.event.inputs.duration }}"
+
+          if [ -n "$MANUAL_TYPE" ]; then
+            echo "type=$MANUAL_TYPE" >> $GITHUB_OUTPUT
+            echo "duration=${MANUAL_DURATION:-240}" >> $GITHUB_OUTPUT
+          else
+            # Rotate through high-CPM ambient types weekly
+            WEEK_NUM=$(date +%U)
+            TYPES=("sleep" "rain" "thunderstorm" "fireplace" "ocean_sleep" "attic_rain" "snowy_cabin" "coffee_shop" "train_ride")
+            INDEX=$((WEEK_NUM % ${#TYPES[@]}))
+            SELECTED=${TYPES[$INDEX]}
+            echo "type=$SELECTED" >> $GITHUB_OUTPUT
+            echo "duration=240" >> $GITHUB_OUTPUT
+          fi
+
+          echo "Selected: type=$(cat $GITHUB_OUTPUT | grep type | cut -d= -f2), duration=$(cat $GITHUB_OUTPUT | grep duration | cut -d= -f2) min"
+
+      - name: Produce Ambient Video
+        env:
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          FREEPIK_API_KEY: ${{ secrets.FREEPIK_API_KEY }}
+          TOKEN_PICKLE_BASE64: ${{ secrets.TOKEN_PICKLE_BASE64 }}
+          CLIENT_SECRETS_JSON: ${{ secrets.CLIENT_SECRETS_JSON }}
+        run: |
+          TYPE="${{ steps.select.outputs.type }}"
+          DURATION="${{ steps.select.outputs.duration }}"
+          echo "🎧 Producing $TYPE ambient video ($DURATION min)"
+          python main.py --ambient "$TYPE" --ambient-duration "$DURATION" --type long --upload
+
+      - name: Skip
+        if: failure()
+        run: echo "⚠️ Ambient video production failed. Check logs."

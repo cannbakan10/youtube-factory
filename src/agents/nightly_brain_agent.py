@@ -931,8 +931,9 @@ Long-form topic selection rules:
 3. EVERGREEN ANGLE: Frame topics with lasting relevance. Instead of
    "Breaking: X happened today", use "Why X Changes Everything" or
    "The Hidden History Behind X".
-4. DURATION: Each long-form video should target 15 minutes (~2100 words of narration).
-   Include "15 minute" in the topic field.
+4. DURATION: Each long-form video should target 20 minutes (~2800 words of narration).
+   20 minutes allows 2-3 mid-roll ad breaks = significantly more ad revenue than 15 min.
+   Include "20 minute" in the topic field.
 5. HIGH SEARCH VOLUME: Pick topics people are actively searching for on YouTube.
 6. VARIETY: Don't do 2 videos in the same category in a row.
 
@@ -964,12 +965,12 @@ Output STRICT JSON format:
     "longform": [
         {{
             "title": "Compelling Documentary Title",
-            "topic": "15 minute deep analysis of [specific topic]. Cover the background, key facts, current situation, and implications. Include specific facts, dates, and context.",
+            "topic": "20 minute deep analysis of [specific topic]. Cover the background, key facts, current situation, and implications. Include specific facts, dates, and context.",
             "hook": "Opening hook — a specific, bold claim that makes viewers need to keep watching",
             "tags": ["tag1", "tag2", "tag3", "tag4", "tag5"],
             "inspired_by": "Which news event or trending topic inspired this",
             "estimated_views": "medium/high",
-            "duration_minutes": 15
+            "duration_minutes": 20
         }}
     ],
     "ambient_recommendations": [
@@ -1173,12 +1174,12 @@ Output STRICT JSON format:
             elif not v.get("is_shorts") and len(longform) < 2:
                 longform.append({
                     "title": f"Deep Dive: {raw_topic}",
-                    "topic": f"15 minute deep analysis of {v['title']}. Cover the background, key context, current situation, and implications.",
+                    "topic": f"20 minute deep analysis of {v['title']}. Cover the background, key context, current situation, and implications.",
                     "hook": f"What you're about to learn about {raw_topic.lower()} will change how you see the world.",
                     "tags": v.get("tags", [])[:5],
                     "inspired_by": v["title"],
                     "estimated_views": "medium",
-                    "duration_minutes": 15,
+                    "duration_minutes": 20,
                 })
 
             if len(shorts) >= 20 and len(longform) >= 2:

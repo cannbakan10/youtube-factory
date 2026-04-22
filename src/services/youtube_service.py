@@ -63,6 +63,43 @@ PLAYLIST_MAP = {
     "mind": "Mind & Psychology 🧠",
 }
 
+# ─── YouTube Category IDs for Higher CPM ──────────────────────
+# Dynamic category selection attracts niche-specific advertisers
+CATEGORY_MAP = {
+    "science": "28",       # Science & Technology — $10-18 CPM
+    "physics": "28",
+    "chemistry": "28",
+    "biology": "28",
+    "technology": "28",
+    "ai": "28",
+    "robot": "28",
+    "tech": "28",
+    "space": "28",
+    "planet": "28",
+    "galaxy": "28",
+    "universe": "28",
+    "finance": "22",       # People & Blogs (finance content) — $15-22 CPM
+    "money": "22",
+    "economy": "22",
+    "business": "22",
+    "investing": "22",
+    "animal": "15",        # Pets & Animals — niche advertisers
+    "animals": "15",
+    "wildlife": "15",
+    "war": "25",           # News & Politics — high CPM for current events
+    "politics": "25",
+    "crisis": "25",
+    "geopolitics": "25",
+    "sleep": "10",         # Music — best for ambient/sleep content
+    "rain": "10",
+    "ambient": "10",
+    "fireplace": "10",
+    "asmr": "10",
+    "relax": "10",
+    "thunderstorm": "10",
+}
+DEFAULT_CATEGORY = "27"    # Education — solid $5-18 CPM baseline
+
 # ─── Engagement Comments Pool ──────────────────────────────────
 ENGAGEMENT_COMMENTS = {
     "facts": [
@@ -289,12 +326,14 @@ class YouTubeService:
         if publish_at_iso:
             status_dict["publishAt"] = publish_at_iso
 
+        category_id = self._detect_category(title, upload_tags)
+
         body = {
             "snippet": {
                 "title": upload_title,
                 "description": upload_description,
                 "tags": upload_tags,
-                "categoryId": "27" # Education
+                "categoryId": category_id
             },
             "status": status_dict
         }
@@ -409,6 +448,11 @@ class YouTubeService:
                 parts.append("")
                 parts.append(f"🎬 Full deep dive: {longform_video['title'][:50]}")
                 parts.append(f"▶️ https://youtu.be/{longform_video['id']}")
+        else:
+            chapters = self._generate_chapter_markers(original_desc)
+            if chapters:
+                parts.append("")
+                parts.append(chapters)
 
         parts.append("")
         parts.append("🔔 Subscribe for more: https://youtube.com/@StreamGlobal?sub_confirmation=1")
@@ -432,6 +476,25 @@ class YouTubeService:
             parts.append(tag_str)
 
         return "\n".join(parts)
+
+    def _generate_chapter_markers(self, description):
+        """Generate chapter timestamps for long-form videos.
+        Chapters boost retention ~11% and create natural mid-roll ad break points."""
+        chapter_labels = [
+            "Introduction",
+            "The Story Begins",
+            "Key Discovery",
+            "Deep Analysis",
+            "The Turning Point",
+            "What This Means",
+            "Conclusion",
+        ]
+        intervals = [0, 120, 300, 480, 720, 960, 1140]
+        lines = ["📑 Chapters:"]
+        for i, (sec, label) in enumerate(zip(intervals, chapter_labels)):
+            m, s = divmod(sec, 60)
+            lines.append(f"{m}:{s:02d} {label}")
+        return "\n".join(lines)
 
     def _get_latest_longform_video(self):
         """Get the most recent long-form (non-Shorts) video for funnel cross-linking."""
@@ -565,14 +628,22 @@ class YouTubeService:
             print(f"   ⚠️ [Playlist]: get_or_create failed - {e}")
             return None
 
+    def _detect_category(self, title, tags):
+        """Select YouTube category ID based on content for optimal CPM."""
+        combined = (title + " " + " ".join(tags or [])).lower()
+        for keyword, cat_id in CATEGORY_MAP.items():
+            if keyword in combined:
+                return cat_id
+        return DEFAULT_CATEGORY
+
     def _detect_playlist(self, title, tags):
         """Detect which playlist a video belongs to based on title and tags."""
         combined = (title + " " + " ".join(tags or [])).lower()
-        
+
         for keyword, playlist_name in PLAYLIST_MAP.items():
             if keyword in combined:
                 return playlist_name
-        
+
         return "Facts & Knowledge 💡"  # Default playlist
 
     # ──────────────────────────────────────────────────────
