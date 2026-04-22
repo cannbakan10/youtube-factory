@@ -18,7 +18,6 @@ class PixabayService:
         self.api_key = raw_key.strip().replace('"', '').replace("'", "")
         self.video_url = "https://pixabay.com/api/videos/"
         self.image_url = "https://pixabay.com/api/"
-        self.music_url = "https://pixabay.com/api/music/"  # For SFX and Background Music
 
         if output_dir:
             self.cache_dir = output_dir
@@ -208,45 +207,8 @@ class PixabayService:
         return None
 
     def get_audio(self, query, category="music"):
-        """Downloads royalty-free music or SFX from Pixabay API."""
-        if not self.api_key:
-            logger.warning("Pixabay API key not configured")
-            return None
-
-        try:
-            return self._search_and_download_audio(query, category)
-        except Exception as e:
-            logger.error(f"Pixabay Audio Error: {e}")
-            return None
-
-    @retry_with_backoff(max_retries=2, base_delay=2.0, exceptions=(requests.RequestException,))
-    def _search_and_download_audio(self, query, category):
-        """Search and download audio with retry support."""
-        APIRateLimiters.pixabay.wait()
-
-        params = {
-            "key": self.api_key,
-            "q": query,
-            "per_page": 20,
-            "safesearch": "true"
-        }
-
-        response = requests.get(self.music_url, params=params, timeout=REQUEST_TIMEOUT)
-        response.raise_for_status()
-        data = response.json()
-
-        if data.get('hits'):
-            import random
-            hit = random.choice(data['hits'])
-            audio_url = hit.get('download_url') or hit.get('audio')
-
-            if audio_url:
-                filename = f"{category}_{uuid.uuid4()}.mp3"
-                filepath = os.path.join(self.cache_dir, filename)
-
-                self._download_file(audio_url, filepath)
-                return filepath
-
+        """Pixabay does not have a public music/audio API. Returns None to trigger local fallback."""
+        logger.info("Pixabay: No public audio API available — using local fallback audio")
         return None
 
     @retry_with_backoff(max_retries=2, base_delay=1.0, exceptions=(requests.RequestException,))
