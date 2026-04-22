@@ -14,7 +14,9 @@
       "inspired_by": "Own winner",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "n2FBDPG5dNk"
+      "winner_source_id": "n2FBDPG5dNk",
+      "status": "produced",
+      "production_id": "The_specific_polymer_compounds_1776840071"
     },
     {
       "title": "Roman Aqueducts Defied Gravity for Centuries",
@@ -355,5 +357,11 @@
   "trending_count": 85,
   "channels_analyzed": 4,
   "winner_variations_count": 6,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-04-22T06:45:32.284269",
+  "results": {
+    "shorts_produced": 1,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
