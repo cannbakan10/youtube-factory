@@ -22,7 +22,7 @@ def send_telegram_alert(message: str):
                 payload = {"chat_id": chat_id, "text": message, "parse_mode": "Markdown"}
                 requests.post(url, json=payload, timeout=5)
         except Exception as e:
-            pass
+            print(f"   [Telegram] Alert failed: {e}")
 
 # Python 3.9 Compatibility Fix for google-genai
 if sys.version_info < (3, 10):
