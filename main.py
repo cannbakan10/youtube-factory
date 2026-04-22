@@ -529,7 +529,7 @@ Examples:
     parser.add_argument("--mode", type=str, default="info", choices=["info", "horror", "quiz", "reddit"], help="Content mode")
     parser.add_argument("--type", type=str, default="shorts", choices=["shorts", "long"], help="Video format")
     parser.add_argument("--ambient", type=str, choices=AMBIENT_TYPES, help="Generate long ambient videos")
-    parser.add_argument("--ambient-duration", type=int, default=60, help="Ambient video duration in minutes")
+    parser.add_argument("--ambient-duration", type=int, default=240, help="Ambient video duration in minutes (default: 240 = 4 hours)")
     parser.add_argument("--ambient-source", type=str, default="auto", choices=["auto", "api"],
                         help="Ambient video source mode: auto (fallback allowed) or api (strict API footage)")
 
@@ -597,8 +597,8 @@ Examples:
     # Standalone long-form production
     parser.add_argument("--longform-topic", type=str,
                         help="Produce a long-form documentary video on this topic (direct, no plan needed)")
-    parser.add_argument("--longform-duration", type=int, default=15,
-                        help="Target duration in minutes for longform video (default: 15)")
+    parser.add_argument("--longform-duration", type=int, default=20,
+                        help="Target duration in minutes for longform video (default: 20)")
     parser.add_argument("--longform-suggest", action="store_true",
                         help="Show top trending long-form topics and let the system pick the best one")
     parser.add_argument("--longform-suggest-produce", type=int, metavar="N", default=0,
