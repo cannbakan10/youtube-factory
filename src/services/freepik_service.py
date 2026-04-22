@@ -34,6 +34,9 @@ class FreepikService:
             "Accept-Encoding": "gzip",
         })
 
+        self._download_failures = 0
+        self._download_disabled = False
+
         if self.api_key:
             logger.info("🎨 FreepikService: Premium API ready")
         else:
@@ -166,15 +169,18 @@ class FreepikService:
     def download_video(self, video_id: int, filename: Optional[str] = None, prefer_4k: bool = False) -> Optional[str]:
         """
         Download stock video using Premium API.
-        
+
         Picks the best H.264 option (1080p by default, 4K if prefer_4k=True).
         Avoids ProRes/MOV files which can be 1GB+ for short clips.
-        
+
         Endpoint: GET /v1/videos/{id}/download?option_id=...
         Returns: local file path or None
         """
         if not self.api_key:
             logger.warning("No Freepik API key")
+            return None
+
+        if self._download_disabled:
             return None
 
         # Check cache first
@@ -232,7 +238,12 @@ class FreepikService:
 
         except requests.exceptions.HTTPError as e:
             if e.response and e.response.status_code == 403:
-                logger.error(f"❌ Download denied for video {video_id} — check API plan")
+                self._download_failures += 1
+                if self._download_failures >= 2:
+                    self._download_disabled = True
+                    logger.error("❌ Freepik downloads disabled — API plan doesn't support video downloads. Falling back to Pexels.")
+                else:
+                    logger.error(f"Download failed: {e}")
             else:
                 logger.error(f"Download failed: {e}")
             return None
