@@ -38,6 +38,7 @@ from typing import List, Dict, Optional
 from collections import Counter
 
 from src.utils.logger import get_logger
+from src.utils.retry import gemini_generate_with_retry, is_gemini_quota, is_gemini_transient
 
 logger = get_logger(__name__)
 
@@ -110,7 +111,7 @@ class NightlyBrainAgent:
 
         # Gemini AI (with model fallback chain for quota exhaustion)
         self.gemini = None
-        self.gemini_models = ["gemini-2.5-flash", "gemini-2.0-flash-lite", "gemini-1.5-flash"]
+        self.gemini_models = ["gemini-2.0-flash", "gemini-2.0-flash-lite", "gemini-2.0-flash-8b"]
         try:
             from google import genai
             api_key = os.getenv("GEMINI_API_KEY")
@@ -982,43 +983,38 @@ Output STRICT JSON format:
     ]
 }}
 """
-            # ── AI generation with model fallback chain ──
+            # ── AI generation with model fallback chain + transient retry ──
             plan = None
             last_err = None
             all_gemini_exhausted = False
 
-            # Try each Gemini model (handles per-model quota)
             for model in self.gemini_models:
-                for attempt in range(2):
-                    try:
-                        logger.info(f"  Trying {model} (attempt {attempt+1}/2)...")
-                        response = self.gemini.models.generate_content(
-                            model=model,
-                            contents=prompt,
-                            config={"response_mime_type": "application/json"},
-                        )
-                        raw_text = getattr(response, "text", None)
-                        if not raw_text or not raw_text.strip():
-                            raise ValueError(f"{model} returned empty response")
-                        plan = json.loads(raw_text)
-                        break
-                    except json.JSONDecodeError as je:
-                        last_err = je
-                        logger.warning(
-                            f"{model} JSON parse failed (attempt {attempt+1}): {je}. "
-                            f"Raw preview: {(raw_text or '')[:200]!r}"
-                        )
-                    except Exception as ge:
-                        last_err = ge
-                        err_str = str(ge).lower()
-                        if "resource_exhausted" in err_str or "quota" in err_str or "429" in err_str:
-                            logger.warning(f"  {model} credits exhausted, trying next model...")
-                            break
-                        logger.warning(f"{model} call failed (attempt {attempt+1}): {ge}")
-                    if attempt < 1:
-                        time.sleep(2)
-                if plan:
+                raw_text = None
+                try:
+                    logger.info(f"  [NightlyBrain] Trying {model}…")
+                    response = gemini_generate_with_retry(
+                        self.gemini, model,
+                        contents=prompt,
+                        config={"response_mime_type": "application/json"},
+                    )
+                    raw_text = getattr(response, "text", None)
+                    if not raw_text or not raw_text.strip():
+                        raise ValueError(f"{model} returned empty response")
+                    plan = json.loads(raw_text)
                     break
+                except json.JSONDecodeError as je:
+                    last_err = je
+                    logger.warning(
+                        f"[NightlyBrain] {model} JSON parse failed: {je}. "
+                        f"Raw preview: {(raw_text or '')[:200]!r}"
+                    )
+                    continue  # try next model
+                except Exception as ge:
+                    last_err = ge
+                    if is_gemini_quota(ge) or is_gemini_transient(ge):
+                        logger.warning(f"[NightlyBrain] {model} failed ({str(ge)[:80]}), trying next model…")
+                        continue
+                    raise  # Non-retryable
 
             # OpenAI fallback for plan generation if all Gemini models exhausted
             if plan is None and self.oa_client:
@@ -2359,16 +2355,19 @@ Output STRICT JSON format:
         if self.gemini:
             for model in self.gemini_models:
                 try:
-                    response = self.gemini.models.generate_content(
-                        model=model, contents="Say OK"
+                    response = gemini_generate_with_retry(
+                        self.gemini, model, contents="Say OK",
+                        max_transient_retries=1, base_delay=3.0,
                     )
                     if getattr(response, "text", ""):
                         results["gemini"] = f"ok ({model})"
                         break
                 except Exception as e:
-                    err_str = str(e).lower()
-                    if "resource_exhausted" in err_str or "429" in err_str:
+                    if is_gemini_quota(e):
                         results["gemini"] = f"credits_exhausted ({model})"
+                        continue
+                    if is_gemini_transient(e):
+                        results["gemini"] = f"transient_error ({model})"
                         continue
                     results["gemini"] = f"error: {str(e)[:80]}"
                     break

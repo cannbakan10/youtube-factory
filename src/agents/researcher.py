@@ -4,13 +4,13 @@ from tavily import TavilyClient
 from openai import OpenAI
 import os
 from src.utils.logger import get_logger
-from src.utils.retry import retry_with_backoff, APIRateLimiters
+from src.utils.retry import retry_with_backoff, APIRateLimiters, gemini_generate_with_retry, is_gemini_quota, is_gemini_transient
 
 logger = get_logger(__name__)
 
 
 class ResearchAgent:
-    GEMINI_MODELS = ["gemini-2.5-flash", "gemini-2.0-flash-lite", "gemini-1.5-flash"]
+    GEMINI_MODELS = ["gemini-2.0-flash", "gemini-2.0-flash-lite", "gemini-2.0-flash-8b"]
 
     def __init__(self):
         # Ultra-Clean Key Loading
@@ -28,7 +28,7 @@ class ResearchAgent:
 
         tavily_key = os.getenv("TAVILY_API_KEY", "").strip().replace('"', '').replace("'", "")
         self.tavily = TavilyClient(api_key=tavily_key) if tavily_key else None
-        self.model = "gemini-2.5-flash"
+        self.model = "gemini-2.0-flash"
         self.oa_model = "gpt-4o-mini"
 
     def research(self, topic):
@@ -111,7 +111,7 @@ class ResearchAgent:
         return results
 
     def _generate_report_gemini(self, prompt):
-        """Generate report using Gemini with model fallback chain."""
+        """Generate report using Gemini with model fallback chain + transient retry."""
         if not self.client:
             raise ValueError("Gemini client not configured")
 
@@ -119,19 +119,18 @@ class ResearchAgent:
         for model in self.GEMINI_MODELS:
             try:
                 APIRateLimiters.gemini.wait()
-                response = self.client.models.generate_content(model=model, contents=prompt)
+                response = gemini_generate_with_retry(self.client, model, contents=prompt)
                 text = getattr(response, "text", None)
                 if text and text.strip():
                     return text
                 raise ValueError(f"{model} returned empty response")
             except Exception as e:
                 last_err = e
-                err_str = str(e).lower()
-                if "not_found" in err_str or "404" in err_str or "resource_exhausted" in err_str or "429" in err_str:
-                    logger.warning(f"Research: {model} unavailable, trying next...")
+                if is_gemini_quota(e) or is_gemini_transient(e):
+                    logger.warning(f"[Research] {model} failed ({str(e)[:80]}), trying next model…")
                     continue
-                raise
-        raise last_err or RuntimeError("All Gemini models exhausted")
+                raise  # Non-retryable
+        raise last_err or RuntimeError("All Gemini models exhausted for research")
 
     @retry_with_backoff(max_retries=2, base_delay=2.0)
     def _generate_report_openai(self, prompt):

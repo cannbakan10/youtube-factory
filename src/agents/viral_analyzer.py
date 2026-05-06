@@ -96,7 +96,7 @@ class ViralAnalyzer:
         # Gemini for analysis
         self.gemini_key = os.getenv("GEMINI_API_KEY", "").strip().replace('"', '').replace("'", "")
         self.gemini_client = genai.Client(api_key=self.gemini_key) if self.gemini_key else None
-        self.model = "gemini-2.5-flash"
+        self.model = "gemini-2.0-flash"
 
     @staticmethod
     def _get_recent_date() -> str:

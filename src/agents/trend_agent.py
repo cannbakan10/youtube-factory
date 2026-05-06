@@ -4,7 +4,7 @@ from google import genai
 from typing import List
 from dotenv import load_dotenv
 from src.utils.logger import get_logger
-from src.utils.retry import retry_with_backoff, APIRateLimiters
+from src.utils.retry import retry_with_backoff, APIRateLimiters, gemini_generate_with_retry, is_gemini_quota, is_gemini_transient
 
 load_dotenv()
 
@@ -17,8 +17,8 @@ class TrendAgent:
         raw_key = os.getenv("GEMINI_API_KEY", "")
         self.gemini_key = raw_key.strip().replace('"', '').replace("'", "")
         self.client = genai.Client(api_key=self.gemini_key) if self.gemini_key else None
-        self.model = "gemini-2.5-flash"
-        self.fallback_models = ["gemini-2.0-flash-lite", "gemini-1.5-flash"]
+        self.model = "gemini-2.0-flash"
+        self.fallback_models = ["gemini-2.0-flash-lite", "gemini-2.0-flash-8b"]
 
     def get_trending_topics(self, region="USA", category="General", count=5) -> List[dict]:
         """
@@ -58,26 +58,25 @@ class TrendAgent:
         ]
         """
 
-        # Try primary model, then fallbacks if 404/quota error
+        # Try primary model, then fallbacks — with transient error retry
         last_err = None
         for model in [self.model] + self.fallback_models:
             try:
-                response = self.client.models.generate_content(
-                    model=model,
+                response = gemini_generate_with_retry(
+                    self.client, model,
                     contents=prompt,
-                    config={'response_mime_type': 'application/json'}
+                    config={"response_mime_type": "application/json"},
                 )
                 topics = json.loads(response.text)
                 logger.info(f"Found {len(topics)} trending topics ({model})")
                 return topics
             except Exception as e:
                 last_err = e
-                err_str = str(e).lower()
-                if "not_found" in err_str or "404" in err_str or "resource_exhausted" in err_str or "429" in err_str:
-                    logger.warning(f"Trends: {model} unavailable, trying next...")
+                if is_gemini_quota(e) or is_gemini_transient(e):
+                    logger.warning(f"[Trends] {model} failed ({str(e)[:80]}), trying next model…")
                     continue
-                raise
-        raise last_err or RuntimeError("All Gemini models exhausted")
+                raise  # Non-retryable
+        raise last_err or RuntimeError("All Gemini models exhausted for trends")
 
 
 if __name__ == "__main__":
