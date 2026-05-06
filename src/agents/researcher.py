@@ -10,7 +10,7 @@ logger = get_logger(__name__)
 
 
 class ResearchAgent:
-    GEMINI_MODELS = ["gemini-2.0-flash", "gemini-2.0-flash-lite", "gemini-2.0-flash-8b"]
+    GEMINI_MODELS = ["gemini-2.0-flash", "gemini-2.0-flash-lite", "gemini-2.5-flash-lite"]
 
     def __init__(self):
         # Ultra-Clean Key Loading

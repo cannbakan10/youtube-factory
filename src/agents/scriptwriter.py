@@ -33,7 +33,7 @@ class VideoBlueprint(BaseModel):
 
 
 class ScriptWriter:
-    GEMINI_MODELS = ["gemini-2.0-flash", "gemini-2.0-flash-lite", "gemini-2.0-flash-8b"]
+    GEMINI_MODELS = ["gemini-2.0-flash", "gemini-2.0-flash-lite", "gemini-2.5-flash-lite"]
 
     def __init__(self):
         self.gemini_key = os.getenv("GEMINI_API_KEY")

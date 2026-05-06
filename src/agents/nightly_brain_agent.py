@@ -111,7 +111,7 @@ class NightlyBrainAgent:
 
         # Gemini AI (with model fallback chain for quota exhaustion)
         self.gemini = None
-        self.gemini_models = ["gemini-2.0-flash", "gemini-2.0-flash-lite", "gemini-2.0-flash-8b"]
+        self.gemini_models = ["gemini-2.0-flash", "gemini-2.0-flash-lite", "gemini-2.5-flash-lite"]
         try:
             from google import genai
             api_key = os.getenv("GEMINI_API_KEY")

@@ -18,7 +18,7 @@ class TrendAgent:
         self.gemini_key = raw_key.strip().replace('"', '').replace("'", "")
         self.client = genai.Client(api_key=self.gemini_key) if self.gemini_key else None
         self.model = "gemini-2.0-flash"
-        self.fallback_models = ["gemini-2.0-flash-lite", "gemini-2.0-flash-8b"]
+        self.fallback_models = ["gemini-2.0-flash-lite", "gemini-2.5-flash-lite"]
 
     def get_trending_topics(self, region="USA", category="General", count=5) -> List[dict]:
         """
