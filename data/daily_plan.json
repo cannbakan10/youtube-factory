@@ -14,7 +14,9 @@
       "inspired_by": "AI-Curated Viral Trends",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "OpenAIs_Sora_AI_can_generate_h_1778149273"
     },
     {
       "title": "Mars Rover Found Ancient Riverbed Pebbles",
@@ -29,7 +31,9 @@
       "inspired_by": "AI-Curated Viral Trends",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "Perseverance_Rover_has_found_s_1778149634"
     },
     {
       "title": "Apple Intelligence Rewrites Your iPhone Emojis",
@@ -44,7 +48,9 @@
       "inspired_by": "AI-Curated Viral Trends",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "Apple_Intelligence_introduces__1778149820"
     },
     {
       "title": "Australia Lost a War to Emus in 1932",
@@ -59,7 +65,9 @@
       "inspired_by": "AI-Curated Viral Trends",
       "estimated_views": "medium",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "In_1932_the_Australian_militar_1778150011"
     },
     {
       "title": "CRISPR Can Edit Human Genes to Stop Cancer",
@@ -355,5 +363,11 @@
   "trending_count": 86,
   "channels_analyzed": 5,
   "winner_variations_count": 0,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-05-07T10:36:21.071392",
+  "results": {
+    "shorts_produced": 4,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
