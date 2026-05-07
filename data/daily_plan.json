@@ -82,7 +82,9 @@
       "inspired_by": "AI-Curated Viral Trends",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "CRISPRCas9_technology_can_prec_1778163096"
     },
     {
       "title": "The Mandela Effect Is About False Collective Memory",
@@ -364,9 +366,9 @@
   "channels_analyzed": 5,
   "winner_variations_count": 0,
   "status": "in_progress",
-  "last_executed_at": "2026-05-07T10:36:21.071392",
+  "last_executed_at": "2026-05-07T14:12:10.534849",
   "results": {
-    "shorts_produced": 4,
+    "shorts_produced": 1,
     "longform_produced": 0,
     "errors": []
   }
