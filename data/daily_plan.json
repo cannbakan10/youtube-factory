@@ -326,7 +326,8 @@
       ],
       "inspired_by": "Trending World News",
       "estimated_views": "high",
-      "duration_minutes": 20
+      "duration_minutes": 20,
+      "status": "produced"
     },
     {
       "title": "The AI Revolution: How Sora, ChatGPT, and Apple Intelligence Are Reshaping Our World",
@@ -366,10 +367,10 @@
   "channels_analyzed": 5,
   "winner_variations_count": 0,
   "status": "in_progress",
-  "last_executed_at": "2026-05-07T14:12:10.534849",
+  "last_executed_at": "2026-05-07T17:45:36.980903",
   "results": {
-    "shorts_produced": 1,
-    "longform_produced": 0,
+    "shorts_produced": 0,
+    "longform_produced": 1,
     "errors": []
   }
 }
