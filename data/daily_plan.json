@@ -116,7 +116,9 @@
       "inspired_by": "AI-Curated Viral Trends",
       "estimated_views": "medium",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "The_Kola_Superdeep_Borehole_is_1778194906"
     },
     {
       "title": "JWST Discovered a Planet Covered in Lava",
@@ -369,7 +371,7 @@
   "channels_analyzed": 5,
   "winner_variations_count": 0,
   "status": "in_progress",
-  "last_executed_at": "2026-05-07T18:26:21.752157",
+  "last_executed_at": "2026-05-07T23:04:06.577797",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
