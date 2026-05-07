@@ -48,6 +48,10 @@ jobs:
   nightly-brain:
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    permissions:
+      contents: write
+      checks: write
+      actions: read
 
     steps:
       - name: Checkout Repository
