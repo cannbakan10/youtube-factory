@@ -849,7 +849,7 @@ IMPORTANT: Use these as inspiration for the 2 long-form documentary videos.
 Study what world events are getting the most views and create deep-dive analysis content.
 """
 
-            prompt = f"""You are a YouTube content strategist for a channel called "StreamGlobal"
+            prompt = f"""You are a YouTube content strategist for a channel called "BrainBolt"
 that creates English-language content targeting a global (primarily US) audience.
 
 CHANNEL STRATEGY:
