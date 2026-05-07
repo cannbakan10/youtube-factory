@@ -20,3 +20,4 @@ assets/productions/*
 !assets/branding/*.png
 !assets/templates/music/*.mp3
 !assets/templates/bg_music.mp3
+.claude/
