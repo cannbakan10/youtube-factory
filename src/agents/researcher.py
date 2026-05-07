@@ -10,7 +10,7 @@ logger = get_logger(__name__)
 
 
 class ResearchAgent:
-    GEMINI_MODELS = ["gemini-2.0-flash", "gemini-2.0-flash-lite", "gemini-2.5-flash-lite"]
+    GEMINI_MODELS = ["gemini-2.5-flash", "gemini-2.5-flash-lite"]
 
     def __init__(self):
         # Ultra-Clean Key Loading
@@ -28,7 +28,7 @@ class ResearchAgent:
 
         tavily_key = os.getenv("TAVILY_API_KEY", "").strip().replace('"', '').replace("'", "")
         self.tavily = TavilyClient(api_key=tavily_key) if tavily_key else None
-        self.model = "gemini-2.0-flash"
+        self.model = "gemini-2.5-flash"
         self.oa_model = "gpt-4o-mini"
 
     def research(self, topic):

@@ -33,7 +33,7 @@ class VideoBlueprint(BaseModel):
 
 
 class ScriptWriter:
-    GEMINI_MODELS = ["gemini-2.0-flash", "gemini-2.0-flash-lite", "gemini-2.5-flash-lite"]
+    GEMINI_MODELS = ["gemini-2.0-flash", "gemini-2.5-flash-lite", "gemini-2.5-flash-lite"]
 
     def __init__(self):
         self.gemini_key = os.getenv("GEMINI_API_KEY")
@@ -53,7 +53,7 @@ class ScriptWriter:
                 timeout=httpx.Timeout(60.0, connect=10.0),
                 max_retries=3,
             )
-        self.model = "gemini-2.0-flash"
+        self.model = "gemini-2.5-flash"
         self.oa_model = "gpt-4o-mini"
         self.project_root = os.path.dirname(
             os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
