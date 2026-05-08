@@ -561,62 +561,77 @@ class AmbientVideoService:
         audio_mode: str,
         ambient_type: str,
     ) -> bool:
-        input_args = []
-        
-        # 1. Handle Multiple Video Inputs
-        if video_sources:
-            # Create a concat file for ffmpeg
-            concat_path = os.path.join(os.path.dirname(output_path), "concat_list.txt")
-            with open(concat_path, "w", encoding="utf-8") as f:
-                for vs in video_sources:
-                    if os.path.exists(vs):
-                        f.write(f"file '{vs}'\n")
-            
-            # Use concat demuxer with looping
-            input_args.extend(["-f", "concat", "-safe", "0", "-stream_loop", "-1", "-i", concat_path])
+        # ── FAST STREAM-COPY RENDER ──────────────────────────────
+        # Use the first available video source + loop it with -c:v copy
+        # This avoids re-encoding = completes in seconds not minutes
+        # ─────────────────────────────────────────────────────────
+
+        video_input = video_sources[0] if video_sources else None
+
+        if video_input and os.path.exists(video_input):
+            # Build audio input
+            if audio_mode == "noise" and audio_source:
+                audio_lavfi = f"anoisesrc=color={audio_source}:sample_rate=44100:amplitude=0.15:duration={duration_seconds}"
+                cmd = [
+                    "ffmpeg", "-y", "-v", "warning", "-stats",
+                    "-stream_loop", "-1", "-i", video_input,
+                    "-f", "lavfi", "-i", audio_lavfi,
+                    "-map", "0:v:0",
+                    "-map", "1:a:0",
+                    "-t", str(duration_seconds),
+                    "-c:v", "copy",
+                    "-c:a", "aac", "-b:a", "96k",
+                    output_path
+                ]
+            elif audio_mode == "file" and audio_source and os.path.exists(audio_source):
+                cmd = [
+                    "ffmpeg", "-y", "-v", "warning", "-stats",
+                    "-stream_loop", "-1", "-i", video_input,
+                    "-stream_loop", "-1", "-i", audio_source,
+                    "-map", "0:v:0",
+                    "-map", "1:a:0",
+                    "-t", str(duration_seconds),
+                    "-c:v", "copy",
+                    "-c:a", "aac", "-b:a", "96k",
+                    output_path
+                ]
+            else:
+                cmd = [
+                    "ffmpeg", "-y", "-v", "warning", "-stats",
+                    "-stream_loop", "-1", "-i", video_input,
+                    "-f", "lavfi", "-i", "anoisesrc=color=white:sample_rate=44100:amplitude=0.15",
+                    "-map", "0:v:0",
+                    "-map", "1:a:0",
+                    "-t", str(duration_seconds),
+                    "-c:v", "copy",
+                    "-c:a", "aac", "-b:a", "96k",
+                    output_path
+                ]
         else:
+            # Fallback: procedural lavfi video + noise audio
             fallback_lavfi = self._fallback_video_lavfi(
-                ambient_type=ambient_type,
-                width=width,
-                height=height,
-                bg_color=bg_color,
+                ambient_type=ambient_type, width=width, height=height, bg_color=bg_color,
             )
-            input_args.extend(["-f", "lavfi", "-i", fallback_lavfi])
+            audio_lavfi = f"anoisesrc=color=white:sample_rate=44100:amplitude=0.15:duration={duration_seconds}"
+            cmd = [
+                "ffmpeg", "-y", "-v", "warning", "-stats",
+                "-f", "lavfi", "-i", fallback_lavfi,
+                "-f", "lavfi", "-i", audio_lavfi,
+                "-map", "0:v:0", "-map", "1:a:0",
+                "-t", str(duration_seconds),
+                "-c:v", "libx264", "-preset", "ultrafast", "-crf", "35",
+                "-threads", "2",
+                "-c:a", "aac", "-b:a", "96k", "-pix_fmt", "yuv420p",
+                output_path
+            ]
 
-        # 2. Handle Audio
-        if audio_mode == "file" and audio_source and os.path.exists(audio_source):
-            input_args.extend(["-stream_loop", "-1", "-i", audio_source])
-        elif audio_mode == "noise" and audio_source:
-            input_args.extend(["-f", "lavfi", "-i", f"anoisesrc=color={audio_source}:sample_rate=44100:amplitude=0.08"])
-        else:
-            input_args.extend(["-f", "lavfi", "-i", "anullsrc=channel_layout=stereo:sample_rate=44100"])
-
-        filter_complex = (
-            "[0:v]fps=15,setsar=1,"
-            f"scale=w={width}:h={height}:force_original_aspect_ratio=increase,"
-            f"crop={width}:{height},format=yuv420p[vout];"
-            f"[1:a]atrim=duration={duration_seconds},"
-            "asetpts=PTS-STARTPTS,aformat=sample_fmts=fltp:channel_layouts=stereo,volume=1.0[aout]"
-        )
-
-        cmd = [
-            "ffmpeg", "-y", "-v", "error",
-            *input_args,
-            "-filter_complex", filter_complex,
-            "-map", "[vout]", "-map", "[aout]",
-            "-t", str(duration_seconds),
-            "-c:v", "libx264", "-preset", "ultrafast", "-crf", "35",
-            "-b:v", "800k", "-maxrate", "1000k", "-bufsize", "2000k",
-            "-threads", "2",
-            "-c:a", "aac", "-b:a", "96k", "-pix_fmt", "yuv420p",
-            output_path
-        ]
-
+        logger.info(f"⚡ Rendering {duration_seconds}s ambient video (stream copy)...")
         try:
             result = subprocess.run(cmd, capture_output=True, text=True)
             if result.returncode != 0:
-                logger.error(f"Render failed: {result.stderr}")
+                logger.error(f"Render failed: {result.stderr[:500]}")
                 return False
+            logger.info(f"✅ Render complete: {output_path}")
             return True
         except Exception as e:
             logger.error(f"Render crashed: {e}")
