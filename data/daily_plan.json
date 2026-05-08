@@ -39,7 +39,9 @@
       "inspired_by": "Is Mom doing the right thing?#Shorts",
       "estimated_views": "medium",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "Is_Mom_doing_the_right_thingSh_1778280992"
     },
     {
       "title": "You Won't Believe This About He Converted a Dumpster Into a Luxury Apartment?!🏠",
@@ -293,7 +295,7 @@
   "trending_count": 85,
   "status": "in_progress",
   "fallback_mode": true,
-  "last_executed_at": "2026-05-08T18:13:55.602120",
+  "last_executed_at": "2026-05-08T22:59:14.081801",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
