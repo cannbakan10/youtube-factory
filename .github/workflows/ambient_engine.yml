@@ -1,50 +1,60 @@
-name: "🎧 Ambient Engine — Passive Revenue Videos"
+name: "🌧️ Ambient Engine — Rain & Relaxation Videos"
 
 # ╔══════════════════════════════════════════════════════════╗
-# ║  AMBIENT ENGINE v1.0 — Sleep/Rain/Fireplace Videos       ║
+# ║  AMBIENT ENGINE v1.0                                    ║
 # ║                                                         ║
-# ║  Why: Ambient videos = $10+ RPM, massive watch time     ║
-# ║  - 4-hour video = 1 viewer = 24x more watch time        ║
-# ║    than a 10-minute video                               ║
-# ║  - Sleep/wellness advertisers pay $16-20 CPM            ║
-# ║  - Runs while viewers sleep = passive ad impressions     ║
+# ║  Produces long ambient videos (1–9 hours)               ║
+# ║  Types: rain, fireplace, ocean, thunderstorm, etc.      ║
 # ║                                                         ║
-# ║  Schedule: Weekly on Saturday at 10:00 UTC               ║
-# ║  Produces: 1 ambient video (4 hours) per week           ║
+# ║  Schedule: Every Sunday at 10:00 UTC                    ║
+# ║  Manual: Pick any type + duration on demand             ║
 # ╚══════════════════════════════════════════════════════════╝
 
 on:
   schedule:
-    - cron: '0 10 * * 6'  # Every Saturday at 10:00 UTC
+    - cron: '0 10 * * 0'
 
   workflow_dispatch:
     inputs:
       ambient_type:
-        description: 'Ambient type preset'
+        description: 'Ambient video type'
         required: true
-        default: 'sleep'
+        default: 'rain'
         type: choice
         options:
-          - 'sleep'
-          - 'rain'
-          - 'fireplace'
-          - 'thunderstorm'
-          - 'ocean_sleep'
-          - 'coffee_shop'
-          - 'attic_rain'
-          - 'snowy_cabin'
-          - 'train_ride'
-      duration:
-        description: 'Duration in minutes (240 = 4h, 480 = 8h)'
+          - rain
+          - rainy_tokyo
+          - thunderstorm
+          - attic_rain
+          - fireplace
+          - ocean_sleep
+          - coffee_shop
+          - moonlit_lake
+          - autumn_forest
+          - bamboo_forest
+          - zen_garden
+          - tropical_beach
+          - snowy_cabin
+      duration_hours:
+        description: 'Duration in hours (1-9)'
         required: false
-        default: '240'
+        default: '8'
+      upload:
+        description: 'Upload to YouTube after render'
+        required: false
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
 
 jobs:
-  produce-ambient:
+  ambient-produce:
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 120
     permissions:
       contents: write
+      checks: write
       actions: read
 
     steps:
@@ -75,40 +85,40 @@ jobs:
             printf "%s" "${{ secrets.TOKEN_PICKLE_BASE64 }}" | base64 -d > token.pickle
           fi
 
-      - name: Select Ambient Type
-        id: select
+      - name: Determine Parameters
+        id: params
         run: |
-          MANUAL_TYPE="${{ github.event.inputs.ambient_type }}"
-          MANUAL_DURATION="${{ github.event.inputs.duration }}"
-
-          if [ -n "$MANUAL_TYPE" ]; then
-            echo "type=$MANUAL_TYPE" >> $GITHUB_OUTPUT
-            echo "duration=${MANUAL_DURATION:-240}" >> $GITHUB_OUTPUT
-          else
-            # Rotate through high-CPM ambient types weekly
-            WEEK_NUM=$(date +%U)
-            TYPES=("sleep" "rain" "thunderstorm" "fireplace" "ocean_sleep" "attic_rain" "snowy_cabin" "coffee_shop" "train_ride")
-            INDEX=$((WEEK_NUM % ${#TYPES[@]}))
-            SELECTED=${TYPES[$INDEX]}
-            echo "type=$SELECTED" >> $GITHUB_OUTPUT
-            echo "duration=240" >> $GITHUB_OUTPUT
-          fi
-
-          echo "Selected: type=$(cat $GITHUB_OUTPUT | grep type | cut -d= -f2), duration=$(cat $GITHUB_OUTPUT | grep duration | cut -d= -f2) min"
+          TYPE="${{ github.event.inputs.ambient_type }}"
+          HOURS="${{ github.event.inputs.duration_hours }}"
+          UPLOAD="${{ github.event.inputs.upload }}"
+          TYPE=${TYPE:-rain}
+          HOURS=${HOURS:-8}
+          UPLOAD=${UPLOAD:-true}
+          DURATION_MIN=$((HOURS * 60))
+          echo "type=$TYPE" >> $GITHUB_OUTPUT
+          echo "hours=$HOURS" >> $GITHUB_OUTPUT
+          echo "duration_min=$DURATION_MIN" >> $GITHUB_OUTPUT
+          echo "upload=$UPLOAD" >> $GITHUB_OUTPUT
+          echo "Type: $TYPE | Duration: ${HOURS}h (${DURATION_MIN} min) | Upload: $UPLOAD"
 
       - name: Produce Ambient Video
         env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
           PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
           FREEPIK_API_KEY: ${{ secrets.FREEPIK_API_KEY }}
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
           TOKEN_PICKLE_BASE64: ${{ secrets.TOKEN_PICKLE_BASE64 }}
           CLIENT_SECRETS_JSON: ${{ secrets.CLIENT_SECRETS_JSON }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         run: |
-          TYPE="${{ steps.select.outputs.type }}"
-          DURATION="${{ steps.select.outputs.duration }}"
-          echo "🎧 Producing $TYPE ambient video ($DURATION min)"
-          python main.py --ambient "$TYPE" --ambient-duration "$DURATION" --type long --upload
-
-      - name: Skip
-        if: failure()
-        run: echo "⚠️ Ambient video production failed. Check logs."
+          TYPE="${{ steps.params.outputs.type }}"
+          DURATION_MIN="${{ steps.params.outputs.duration_min }}"
+          UPLOAD="${{ steps.params.outputs.upload }}"
+          UPLOAD_FLAG=""
+          if [ "$UPLOAD" = "true" ]; then
+            UPLOAD_FLAG="--upload"
+          fi
+          echo "Producing: $TYPE for ${DURATION_MIN} minutes"
+          python main.py --ambient $TYPE --ambient-duration $DURATION_MIN --type long $UPLOAD_FLAG --langs en
