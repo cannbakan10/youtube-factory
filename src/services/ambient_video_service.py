@@ -68,6 +68,15 @@ class AmbientVideoService:
             "fallback_noise_color": "white",
             "fallback_bg_color": "0x0A0A0A",
         },
+        "istanbul_walk": {
+            "title": "Walking in Istanbul — City Ambience & Street Sounds",
+            "description": "Take a peaceful walk through the beautiful streets of Istanbul. Experience the sights and sounds of one of the world's most captivating cities.",
+            "tags": ["istanbul walk", "turkey city walk", "istanbul streets", "city ambience", "walking tour", "istanbul 4k", "relaxing walk"],
+            "video_keywords": ["istanbul street walk", "istanbul city", "bosphorus istanbul", "grand bazaar istanbul", "turkey street"],
+            "audio_queries": ["city street ambience", "urban street sounds"],
+            "fallback_noise_color": "brown",
+            "fallback_bg_color": "0x1A0F0A",
+        },
         "rainy_tokyo": {
             "title": "4 Hours Rainy Night in Tokyo — City Ambience for Sleep",
             "description": "Experience the peaceful atmosphere of Tokyo streets on a rainy night. Hours of neon-lit rain.",

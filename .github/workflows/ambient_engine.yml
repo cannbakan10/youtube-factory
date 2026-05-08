@@ -23,6 +23,7 @@ on:
         type: choice
         options:
           - rain
+          - istanbul_walk
           - rainy_tokyo
           - thunderstorm
           - attic_rain
