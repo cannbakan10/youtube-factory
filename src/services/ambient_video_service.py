@@ -569,44 +569,30 @@ class AmbientVideoService:
         video_input = video_sources[0] if video_sources else None
 
         if video_input and os.path.exists(video_input):
-            # Build audio input
+            # Audio input
             if audio_mode == "noise" and audio_source:
-                audio_lavfi = f"anoisesrc=color={audio_source}:sample_rate=44100:amplitude=0.15:duration={duration_seconds}"
-                cmd = [
-                    "ffmpeg", "-y", "-v", "warning", "-stats",
-                    "-stream_loop", "-1", "-i", video_input,
-                    "-f", "lavfi", "-i", audio_lavfi,
-                    "-map", "0:v:0",
-                    "-map", "1:a:0",
-                    "-t", str(duration_seconds),
-                    "-c:v", "copy",
-                    "-c:a", "aac", "-b:a", "96k",
-                    output_path
-                ]
+                audio_input_args = ["-f", "lavfi", "-i", f"anoisesrc=color={audio_source}:sample_rate=44100:amplitude=0.15"]
             elif audio_mode == "file" and audio_source and os.path.exists(audio_source):
-                cmd = [
-                    "ffmpeg", "-y", "-v", "warning", "-stats",
-                    "-stream_loop", "-1", "-i", video_input,
-                    "-stream_loop", "-1", "-i", audio_source,
-                    "-map", "0:v:0",
-                    "-map", "1:a:0",
-                    "-t", str(duration_seconds),
-                    "-c:v", "copy",
-                    "-c:a", "aac", "-b:a", "96k",
-                    output_path
-                ]
+                audio_input_args = ["-stream_loop", "-1", "-i", audio_source]
             else:
-                cmd = [
-                    "ffmpeg", "-y", "-v", "warning", "-stats",
-                    "-stream_loop", "-1", "-i", video_input,
-                    "-f", "lavfi", "-i", "anoisesrc=color=white:sample_rate=44100:amplitude=0.15",
-                    "-map", "0:v:0",
-                    "-map", "1:a:0",
-                    "-t", str(duration_seconds),
-                    "-c:v", "copy",
-                    "-c:a", "aac", "-b:a", "96k",
-                    output_path
-                ]
+                audio_input_args = ["-f", "lavfi", "-i", "anoisesrc=color=white:sample_rate=44100:amplitude=0.15"]
+
+            # Re-encode to 720p ~1.5 Mbps — keeps file size ~1 GB/hour, fast with ultrafast
+            cmd = [
+                "ffmpeg", "-y", "-v", "warning", "-stats",
+                "-stream_loop", "-1", "-i", video_input,
+                *audio_input_args,
+                "-map", "0:v:0",
+                "-map", "1:a:0",
+                "-t", str(duration_seconds),
+                "-vf", f"scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2,fps=24",
+                "-c:v", "libx264", "-preset", "ultrafast", "-crf", "28",
+                "-b:v", "1500k", "-maxrate", "2000k", "-bufsize", "4000k",
+                "-c:a", "aac", "-b:a", "96k",
+                "-pix_fmt", "yuv420p",
+                "-threads", "2",
+                output_path
+            ]
         else:
             # Fallback: procedural lavfi video + noise audio
             fallback_lavfi = self._fallback_video_lavfi(
