@@ -45,7 +45,7 @@ class AmbientVideoService:
             "tags": ["rain sounds", "sleep rain", "focus ambience", "night rain"],
             "video_keywords": ["rain window night", "rainy city night", "rain drops glass"],
             "audio_queries": ["rain ambience sleep", "night rain sound"],
-            "fallback_audio": ["assets/templates/music/nature_3.mp3"],
+            "fallback_noise_color": "white",
             "fallback_bg_color": "0x0A1421",
         },
         "ocean_sleep": {
@@ -542,15 +542,10 @@ class AmbientVideoService:
         else:
             logger.info("AMBIENT_OFFLINE=1, skipping remote audio lookup.")
 
-        for rel_path in preset.get("fallback_audio", []):
-            abs_path = os.path.join(self.project_root, str(rel_path))
-            if os.path.exists(abs_path):
-                logger.info(f"Using local fallback ambient audio: {abs_path}")
-                return abs_path, "file"
-
+        # Skip local music fallback (may have copyright) — use noise synthesis instead
         noise_color = str(preset.get("fallback_noise_color", "pink"))
-        logger.warning(
-            f"No ambient audio file found. Falling back to ffmpeg noise source ({noise_color})."
+        logger.info(
+            f"Using FFmpeg synthesized noise audio ({noise_color}) — copyright-free."
         )
         return noise_color, "noise"
 
