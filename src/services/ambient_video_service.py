@@ -388,7 +388,7 @@ class AmbientVideoService:
             fallback_video_paths=list(preset.get("fallback_video", [])),  # type: ignore[arg-type]
             orientation=orientation,
             source_mode=source_mode,
-            count=8 if is_long else 3,
+            count=3,
         )
         if source_mode == "api" and not video_sources:
             logger.error(
@@ -610,8 +610,10 @@ class AmbientVideoService:
             "-filter_complex", filter_complex,
             "-map", "[vout]", "-map", "[aout]",
             "-t", str(duration_seconds),
-            "-c:v", "libx264", "-preset", "ultrafast", "-crf", "28",
-            "-c:a", "aac", "-b:a", "128k", "-pix_fmt", "yuv420p",
+            "-c:v", "libx264", "-preset", "ultrafast", "-crf", "35",
+            "-b:v", "800k", "-maxrate", "1000k", "-bufsize", "2000k",
+            "-threads", "2",
+            "-c:a", "aac", "-b:a", "96k", "-pix_fmt", "yuv420p",
             output_path
         ]
 
