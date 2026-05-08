@@ -274,7 +274,8 @@
       "tags": [],
       "inspired_by": "I Stranded 100 People In The Wilderness For $250,000",
       "estimated_views": "medium",
-      "duration_minutes": 20
+      "duration_minutes": 20,
+      "status": "produced"
     },
     {
       "title": "Deep Dive: REAL VS AI COMPILATION 😂",
@@ -290,10 +291,10 @@
   "trending_count": 85,
   "status": "in_progress",
   "fallback_mode": true,
-  "last_executed_at": "2026-05-08T13:52:38.340460",
+  "last_executed_at": "2026-05-08T17:55:39.417054",
   "results": {
-    "shorts_produced": 1,
-    "longform_produced": 0,
+    "shorts_produced": 0,
+    "longform_produced": 1,
     "errors": []
   }
 }
