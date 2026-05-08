@@ -15,7 +15,9 @@
         "crazy lady with road rage",
         "crazy woman vs police"
       ],
-      "optimized_title": "The Shocking Truth About Crazy women mess with the wrong driver | Crazy Lady With Road Rage"
+      "optimized_title": "The Shocking Truth About Crazy women mess with the wrong driver | Crazy Lady With Road Rage",
+      "status": "produced",
+      "production_id": "Crazy_women_mess_with_the_wron_1778248177"
     },
     {
       "title": "What Nobody Tells You About Gordon Gave The Owner A BRUTAL Reality Check... 😳😤",
@@ -286,6 +288,12 @@
   ],
   "generated_at": "2026-05-07T23:42:53.550999",
   "trending_count": 85,
-  "status": "pending",
-  "fallback_mode": true
+  "status": "in_progress",
+  "fallback_mode": true,
+  "last_executed_at": "2026-05-08T13:52:38.340460",
+  "results": {
+    "shorts_produced": 1,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
