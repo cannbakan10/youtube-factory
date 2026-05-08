@@ -27,7 +27,9 @@
       "inspired_by": "Gordon Gave The Owner A BRUTAL Reality Check... 😳😤",
       "estimated_views": "medium",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "Gordon_Gave_The_Owner_A_BRUTAL_1778263889"
     },
     {
       "title": "The Hidden Secret Of Is Mom doing the right thing?",
@@ -291,10 +293,10 @@
   "trending_count": 85,
   "status": "in_progress",
   "fallback_mode": true,
-  "last_executed_at": "2026-05-08T17:55:39.417054",
+  "last_executed_at": "2026-05-08T18:13:55.602120",
   "results": {
-    "shorts_produced": 0,
-    "longform_produced": 1,
+    "shorts_produced": 1,
+    "longform_produced": 0,
     "errors": []
   }
 }
