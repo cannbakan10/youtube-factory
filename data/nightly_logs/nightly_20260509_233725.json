@@ -1,0 +1,205 @@
+{
+  "timestamp": "2026-05-09T23:36:08.774083",
+  "dry_run": false,
+  "api_health": {
+    "gemini": "ok (gemini-2.5-flash)",
+    "openai": "not_configured",
+    "healthy": true
+  },
+  "performance_review": {
+    "total_recent": 16,
+    "winners_count": 6,
+    "losers_count": 1,
+    "avg_views_48h": 123.8,
+    "best_topics": [
+      "Restaurant Shutdown After Dirty Fridge & Mold #Shorts",
+      "Deadly Snake Island: Venom Liquefies Flesh #Shorts",
+      "Oldest Galaxy GLASS-z13 Discovered #Shorts"
+    ],
+    "best_views": [
+      439,
+      326,
+      249
+    ],
+    "winner_titles": [
+      "Oldest Galaxy GLASS-z13 Discovered #Shorts",
+      "Jellyfish Reverses Aging, Lives Forever #Shorts",
+      "Deadly Snake Island: Venom Liquefies Flesh #Shorts",
+      "Restaurant Shutdown After Dirty Fridge & Mold #Shorts",
+      "Tiny Rodents Unleash Deadly Hantavirus Storm #Shorts",
+      "Neptune's Great Dark Spot Is Shrinking #Shorts"
+    ],
+    "loser_titles": [
+      "Mars Pebbles Prove Ancient Rivers #Shorts"
+    ]
+  },
+  "cleanup": {
+    "unlisted": 0,
+    "deleted": 0,
+    "failed": 0,
+    "kept": 16,
+    "thresholds": {
+      "shorts_7d": 25,
+      "shorts_14d": 50,
+      "shorts_30d": 100,
+      "long_14d": 25,
+      "long_30d": 50,
+      "multiplier": 0.5
+    }
+  },
+  "trending": {
+    "found": 81,
+    "viral_shorts_found": 30,
+    "world_news_found": 20,
+    "competitors_analyzed": 3,
+    "comments_mined": 20,
+    "top_5": [
+      {
+        "title": "Crazy women mess with the wrong driver",
+        "views": 31232932,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Can You Find The Poisoned Food",
+        "views": 17113588,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Is Mom doing the right thing?#Shorts",
+        "views": 15386075,
+        "category": "Entertainment"
+      },
+      {
+        "title": "Apocalypto Realism 🌄",
+        "views": 14628170,
+        "category": "Film & Animation"
+      },
+      {
+        "title": "How To Fish OVER Limit 🤯",
+        "views": 12504120,
+        "category": "Entertainment"
+      }
+    ],
+    "top_viral_shorts": [
+      {
+        "title": "The Saddest Moments In The Animal Kingdom 💔#animalfacts #wil",
+        "views": 6833977,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "नेप्च्यून की दूरी का रहस्य: 4 घंटे बाद पहुँचती है सूरज की रो",
+        "views": 5736553,
+        "query": "space facts universe"
+      },
+      {
+        "title": "When the Wife Gets Fierce, Even the Husband Backs Off #anima",
+        "views": 5596777,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "Door Secret Trick Will Blow Your Mind 🤯🚪",
+        "views": 4662683,
+        "query": "science facts that will blow your mind"
+      },
+      {
+        "title": "Top 5 Most Dangerous Commando Forces of india || #comando#sh",
+        "views": 3391322,
+        "query": "top 5 facts"
+      }
+    ]
+  },
+  "winners": {
+    "added": 0,
+    "total": 0,
+    "threshold": 300,
+    "median": 29,
+    "active": 0,
+    "top": []
+  },
+  "peak_hours": {
+    "utc": [
+      9,
+      22,
+      23,
+      0,
+      1
+    ],
+    "source": "blended_channel_and_us_prime",
+    "samples": 8
+  },
+  "retention": {
+    "avg_pct": 0,
+    "avg_dur_sec": 0,
+    "source": "unavailable",
+    "video_count": 0
+  },
+  "ambient_analysis": {
+    "total_ambient": 1,
+    "total_views": 48,
+    "top_type": "rain",
+    "worst_type": "rain",
+    "type_rankings": [
+      {
+        "type": "rain",
+        "video_count": 1,
+        "total_views": 48,
+        "avg_views": 48,
+        "avg_views_per_day": 48.0,
+        "engagement_rate": 47.92,
+        "best_video": {
+          "title": "1 Hour 4 Hours Rainy Night Ambience for Deep Sleep",
+          "views": 48,
+          "views_per_day": 48.0
+        }
+      }
+    ]
+  },
+  "plan": {
+    "shorts_planned": 20,
+    "longform_planned": 2,
+    "ambient_recommendations": [
+      {
+        "type": "ocean",
+        "hours": 8,
+        "reason": "Perennial calming favorite, universally appealing for relaxation, study, or sleep, driving high passive watch time. Appeals to general curiosity about the ocean."
+      },
+      {
+        "type": "thunderstorm",
+        "hours": 8,
+        "reason": "High demand for immersive soundscapes for deep sleep, meditation, or focus. The dynamic visuals and sounds maintain engagement for long durations."
+      },
+      {
+        "type": "forest",
+        "hours": 8,
+        "reason": "Offers a natural, calming, and visually rich environment ideal for relaxation, study, or background ambiance. Appeals to nature lovers and those seeking peaceful focus."
+      }
+    ],
+    "winner_variations_count": 0,
+    "shorts": [
+      "Brain Implants Translate Thoughts to Text",
+      "Thousands Hear the Unexplained Global Hum",
+      "Rome's Pantheon Hole Never Leaks: Here's Why",
+      "Salamanders Regrow Entire Brains and Limbs",
+      "Scientists Just Decoded Dolphin Whistles",
+      "Your Brain Shrinks Every Night When You Sleep",
+      "GPT-4o Can Identify Your Emotions in Real-Time",
+      "95% of the Universe is Invisible Dark Matter",
+      "Your Phone Knows Your Location 24/7 Even Off",
+      "New Deep Sea Fish Has Eyes Like No Other",
+      "Can AI Art Be Copyrighted? Courts Say No",
+      "Your Brain Makes Fake Memories During Deja Vu",
+      "The Plague of Justinian Killed 50 Million",
+      "Quantum Computers Break Encryption Instantly",
+      "JWST Spotted a Planet Made of Pure Diamond",
+      "This Lizard Plays Dead for 20 Minutes to Escape",
+      "The Bridge That Disappears Underwater Daily",
+      "Water Can Boil and Freeze at the Same Time",
+      "Ancient Rome Used Urine as a Whitening Agent",
+      "Why Your Coffee Tastes Better With Salt"
+    ],
+    "longform": [
+      "Strait of Hormuz: The Tiny Chokepoint Controlling Global Oil",
+      "The AI Revolution: Decoding How It Remakes Our Brains & Soci"
+    ]
+  }
+}
