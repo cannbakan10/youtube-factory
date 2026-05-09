@@ -33,7 +33,9 @@
       "inspired_by": "AI-Curated Viral Trends: Unexplained Deep Sea Discoveries",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "The_astonishing_Turritopsis_do_1778349148"
     },
     {
       "title": "Webb Telescope Found Oldest Galaxy Candidate",
@@ -384,7 +386,7 @@
   "channels_analyzed": 4,
   "winner_variations_count": 0,
   "status": "in_progress",
-  "last_executed_at": "2026-05-09T13:21:32.069533",
+  "last_executed_at": "2026-05-09T17:54:52.895563",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
