@@ -15,7 +15,9 @@
       "inspired_by": "AI-Curated Viral Trends: Recent AI Breakthroughs",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "The_mindbending_realism_of_Ope_1778332749"
     },
     {
       "title": "The Immortal Jellyfish That Can Revert Age",
@@ -381,5 +383,11 @@
   "trending_count": 84,
   "channels_analyzed": 4,
   "winner_variations_count": 0,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-05-09T13:21:32.069533",
+  "results": {
+    "shorts_produced": 1,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
