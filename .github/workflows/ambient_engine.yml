@@ -23,6 +23,8 @@ on:
         type: choice
         options:
           - rain
+          - cat_fireplace
+          - fireplace
           - istanbul_walk
           - rainy_tokyo
           - thunderstorm
