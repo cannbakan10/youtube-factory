@@ -15,7 +15,9 @@
       "inspired_by": "AI-Curated Viral Trends: How AI is Already Reading Your Mind",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "A_specific_scientific_breakthr_1778419193"
     },
     {
       "title": "Thousands Hear the Unexplained Global Hum",
@@ -385,5 +387,11 @@
   "trending_count": 81,
   "channels_analyzed": 4,
   "winner_variations_count": 0,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-05-10T13:21:51.047805",
+  "results": {
+    "shorts_produced": 1,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
