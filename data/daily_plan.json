@@ -1,328 +1,282 @@
 {
-  "date": "2026-05-10",
+  "date": "2026-05-11",
   "shorts": [
     {
-      "title": "Brain Implants Translate Thoughts to Text",
-      "topic": "A specific scientific breakthrough in brain-computer interfaces (BCI) where implants can translate human thoughts directly into readable text, exploring the underlying neural mechanisms and its potential for communication. This is one ultra-specific fact about a mind-blowing AI discovery.",
-      "hook": "The future is here: Scientists have developed brain implants that can translate your silent thoughts directly into text, creating a revolutionary new form of communication.",
+      "title": "Hidden Restaurant Fines That Cost Millions",
+      "topic": "One common, yet often overlooked, health code violation that can lead to massive fines and shutdowns for restaurants, focusing on cross-contamination or temperature abuse.",
+      "hook": "A restaurant can be shut down and fined millions for a single, invisible health code violation.",
       "tags": [
-        "AI",
-        "BCI",
-        "neuroscience",
-        "mind reading",
+        "foodsafety",
+        "restaurantfacts",
+        "healthcode"
+      ],
+      "inspired_by": "Channel Winner: Restaurant Shutdown After Dirty Fridge & Mold",
+      "estimated_views": "high",
+      "is_winner_variation": true,
+      "winner_source_id": "T_yBjy6aSGA"
+    },
+    {
+      "title": "Why Restaurant Lemon Wedges Are Dangerous",
+      "topic": "The surprising reason why lemon wedges served in drinks are often a major source of bacteria in restaurants, detailing the handling and lack of sanitation.",
+      "hook": "Those lemon wedges in your restaurant drink are often covered in invisible bacteria.",
+      "tags": [
+        "foodsafety",
+        "restaurantsecrets",
+        "hygiene"
+      ],
+      "inspired_by": "Channel Winner: Restaurant Shutdown After Dirty Fridge & Mold",
+      "estimated_views": "high",
+      "is_winner_variation": true,
+      "winner_source_id": "T_yBjy6aSGA"
+    },
+    {
+      "title": "What Happens Immediately After Restaurant Fails Inspection",
+      "topic": "The exact protocol and rapid consequences a restaurant faces the moment it fails a health inspection, from immediate closure to public disclosure.",
+      "hook": "When a restaurant fails a health inspection, it can be shut down within hours, sometimes on the spot.",
+      "tags": [
+        "foodinspection",
+        "restaurantfail",
+        "publichealth"
+      ],
+      "inspired_by": "Channel Winner: Restaurant Shutdown After Dirty Fridge & Mold",
+      "estimated_views": "high",
+      "is_winner_variation": true,
+      "winner_source_id": "T_yBjy6aSGA"
+    },
+    {
+      "title": "Snake Island Venom Melts Human Tissue",
+      "topic": "Focus on the specific enzymatic properties of the Golden Lancehead viper's venom that cause rapid tissue necrosis and organ failure, explaining the biological mechanism.",
+      "hook": "The venom of the Golden Lancehead viper literally melts human tissue and organs in minutes.",
+      "tags": [
+        "snakefacts",
+        "venom",
+        "naturefacts"
+      ],
+      "inspired_by": "Channel Winner: Deadly Snake Island: Venom Liquefies Flesh",
+      "estimated_views": "high",
+      "is_winner_variation": true,
+      "winner_source_id": "40TJre3Wyy8"
+    },
+    {
+      "title": "Brazil's Snake Island: A Natural Fortress",
+      "topic": "Beyond the snakes, explain why Ilha da Queimada Grande is a unique, isolated ecosystem, highlighting its flora and the specific reasons it became a snake haven without predators.",
+      "hook": "Brazil's infamous Snake Island is a unique natural fortress where one species became ultimate predator.",
+      "tags": [
+        "snakeisland",
+        "ecosystem",
+        "brazilfacts"
+      ],
+      "inspired_by": "Channel Winner: Deadly Snake Island: Venom Liquefies Flesh",
+      "estimated_views": "high",
+      "is_winner_variation": true,
+      "winner_source_id": "40TJre3Wyy8"
+    },
+    {
+      "title": "The Last Lighthouse Keeper of Snake Island",
+      "topic": "The true, chilling story of the last human inhabitants/workers on Snake Island (lighthouse keepers) and their tragic fate, reinforcing why it's forbidden.",
+      "hook": "The last human who lived on Brazil's Snake Island vanished, cementing its deadly reputation.",
+      "tags": [
+        "snakeislandhistory",
+        "truehorror",
+        "lighthouse"
+      ],
+      "inspired_by": "Channel Winner: Deadly Snake Island: Venom Liquefies Flesh",
+      "estimated_views": "high",
+      "is_winner_variation": true,
+      "winner_source_id": "40TJre3Wyy8"
+    },
+    {
+      "title": "GPT-4o Can See Your Emotions Live",
+      "topic": "Explain the multimodal capability of GPT-4o to interpret human emotions and surroundings in real-time video, and its implications for human-AI interaction.",
+      "hook": "The latest AI model, GPT-4o, can now analyze your live video feed and understand your emotions.",
+      "tags": [
+        "ai",
+        "gpt4o",
         "technology"
       ],
-      "inspired_by": "AI-Curated Viral Trends: How AI is Already Reading Your Mind",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": "",
-      "status": "produced",
-      "production_id": "A_specific_scientific_breakthr_1778419193"
-    },
-    {
-      "title": "Thousands Hear the Unexplained Global Hum",
-      "topic": "The 'Hum' is a perplexing acoustic phenomenon reported globally by a small percentage of people, describing a persistent, low-frequency sound with no identifiable source, leading to various scientific and psychological theories.",
-      "hook": "Across continents, thousands of people report hearing an unexplained, persistent low-frequency sound, a mystery scientists call 'The Hum' that defies all explanation.",
-      "tags": [
-        "mystery",
-        "unexplained",
-        "acoustic",
-        "sciencefacts",
-        "phenomenon"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: The Unexplained Phenomenon of the 'Hum'",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": "",
-      "status": "produced",
-      "production_id": "The_Hum_is_a_perplexing_acoust_1778435630"
-    },
-    {
-      "title": "Rome's Pantheon Hole Never Leaks: Here's Why",
-      "topic": "The Pantheon in Rome features a 30-foot oculus (open hole) in its dome that has never leaked in 2000 years. The short will explain the specific ancient Roman engineering principles and architectural design, including the floor's drainage system and the updraft effect, that prevent flooding.",
-      "hook": "Rome's iconic Pantheon has a massive 30-foot hole in its ceiling—an oculus—yet, for 2,000 years, it has never flooded, even during downpours.",
-      "tags": [
-        "ancientrome",
-        "engineering",
-        "architecture",
-        "history",
-        "romanempire"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: Ancient Civilizations with Unbelievable Lost Technologies",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": "",
-      "status": "produced",
-      "production_id": "The_Pantheon_in_Rome_features__1778453429"
-    },
-    {
-      "title": "Salamanders Regrow Entire Brains and Limbs",
-      "topic": "The axolotl salamander possesses an extraordinary ability to regenerate complex body parts, including entire limbs, spinal cords, and even portions of its brain, thanks to specific cellular mechanisms and stem cell activity unique in vertebrates.",
-      "hook": "Imagine regenerating an entire limb or even part of your brain after an injury. The axolotl salamander can do exactly that, a biological marvel unlike almost any other creature on Earth.",
-      "tags": [
-        "regeneration",
-        "biology",
-        "science",
-        "animals",
-        "salamander"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: Breakthroughs in Longevity Science (re-angled from immortality to regeneration)",
+      "inspired_by": "AI-Curated Viral Trends: AI Language Models",
       "estimated_views": "high",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "Scientists Just Decoded Dolphin Whistles",
-      "topic": "Recent advancements, often utilizing AI, have allowed scientists to make significant progress in decoding the complex communication system of dolphins, identifying specific whistles and clicks linked to individual names and emotional states.",
-      "hook": "For centuries, the complex whistles of dolphins remained a mystery, but now, scientists using advanced AI are finally decoding their language, revealing individual names and intricate social calls.",
+      "title": "Webb Telescope Spotted Light From 13.5 Billion Years Ago",
+      "topic": "Focus on the specific achievement of the James Webb Space Telescope capturing light from the earliest galaxies, pushing the boundaries of the observable universe.",
+      "hook": "The Webb Telescope has detected light from galaxies formed just 300 million years after the Big Bang.",
       "tags": [
-        "animalcommunication",
-        "dolphins",
-        "marinebiology",
-        "AI",
-        "wildlife"
+        "jwst",
+        "space",
+        "astronomy"
       ],
-      "inspired_by": "AI-Curated Viral Trends: Decoding Animal Communication",
+      "inspired_by": "AI-Curated Viral Trends: Webb Telescope's Discoveries",
       "estimated_views": "high",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "Your Brain Shrinks Every Night When You Sleep",
-      "topic": "During sleep, your brain undergoes a remarkable process where neural cells physically shrink, creating more space for cerebrospinal fluid to flush out metabolic waste products that accumulate during wakefulness, a crucial process for brain health.",
-      "hook": "It sounds unbelievable, but every single night while you sleep, your brain actually shrinks, making space for a vital cleansing process that keeps you healthy.",
+      "title": "The Real \"Berenstain Bears\" Mystery",
+      "topic": "Explain the Mandela Effect using the Berenstain/Berenstein Bears as the prime example, presenting the debate between parallel universes and false memories without definitive judgment.",
+      "hook": "Millions remember the 'Berenstein Bears' but the actual name is 'Berenstain' – revealing the Mandela Effect.",
       "tags": [
-        "sleepscience",
-        "neuroscience",
-        "brainhealth",
-        "biology",
-        "humanbody"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: The Real Reason Why We Sleep",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "GPT-4o Can Identify Your Emotions in Real-Time",
-      "topic": "GPT-4o, OpenAI's latest flagship model, can process audio and video inputs in real-time, allowing it to detect and interpret human emotions, facial expressions, and vocal tones during conversations, marking a significant leap in human-AI interaction.",
-      "hook": "Imagine an AI that not only understands your words but also instantly recognizes your emotions and tone from your voice and facial expressions. GPT-4o can now do exactly that, in real-time.",
-      "tags": [
-        "AI",
-        "GPT4o",
-        "technology",
-        "humanaiinteraction",
-        "artificialintelligence"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: GPT-4o and the Future of Human-AI Interaction",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "95% of the Universe is Invisible Dark Matter",
-      "topic": "Only 5% of the universe is composed of visible matter; the remaining 95% consists of mysterious 'dark matter' and 'dark energy' that cannot be directly observed but whose gravitational effects are profound, shaping galaxies and the expansion of the cosmos.",
-      "hook": "Look up at the night sky and you see stars and galaxies, but what if I told you that all of that visible matter accounts for less than 5% of the entire universe?",
-      "tags": [
-        "darkmatter",
-        "darkenergy",
-        "cosmology",
-        "universe",
-        "spacefacts"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: Unraveling the Mysteries of Dark Matter and Dark Energy",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Your Phone Knows Your Location 24/7 Even Off",
-      "topic": "Even when you power down your smartphone, certain components like the baseband processor can remain active to maintain essential functions like emergency calls or location tracking, transmitting data without your explicit knowledge or consent.",
-      "hook": "You might think turning off your smartphone ensures privacy, but the truth is, your device can still track your location and transmit data 24/7, even when it appears to be completely shut down.",
-      "tags": [
-        "privacy",
-        "smartphone",
-        "technology",
-        "data",
-        "surveillance"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: The Shocking Truth About Your Smartphone's Data and Privacy",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "New Deep Sea Fish Has Eyes Like No Other",
-      "topic": "Scientists recently discovered a new species of deep-sea fish, the Macropinna microstoma, which possesses unique tubular eyes that can rotate both upwards to scan for prey and forwards to see its mouth, allowing it to see in multiple directions in the pitch black depths.",
-      "hook": "Deep in the ocean's darkest zones, scientists have just identified a new fish species with truly alien eyes, designed to rotate in multiple directions, allowing it to see its own mouth and scan for predators simultaneously.",
-      "tags": [
-        "marinebiology",
-        "newspecies",
-        "deepsea",
-        "ocean",
-        "animals"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: Hidden Gems of the Ocean",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Can AI Art Be Copyrighted? Courts Say No",
-      "topic": "Recent legal rulings in the US and other countries have determined that art generated entirely by AI, without significant human creative input, cannot be copyrighted, raising profound ethical and legal questions about authorship and intellectual property in the age of generative AI.",
-      "hook": "As AI art floods the internet, a critical question emerges: who owns it? Courts are now ruling that purely AI-generated art, lacking human creativity, cannot be copyrighted.",
-      "tags": [
-        "AIart",
-        "copyright",
-        "ethics",
-        "law",
-        "artificialintelligence"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: Viral AI Art Generators: The Ethical Questions",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Your Brain Makes Fake Memories During Deja Vu",
-      "topic": "Deja vu, the sensation of having previously experienced a new situation, is thought by neuroscientists to be a temporary glitch in the brain's memory processing, where the brain creates a false sense of familiarity for a novel event.",
-      "hook": "That strange feeling of déjà vu, where a new moment feels incredibly familiar? Your brain might actually be creating a fake memory in real-time.",
-      "tags": [
-        "dejavu",
+        "mandelaeffect",
         "psychology",
-        "neuroscience",
-        "brainfacts",
-        "humanmind"
+        "mystery"
       ],
-      "inspired_by": "AI-Curated Viral Trends: The Science Behind Why We Get Deja Vu",
+      "inspired_by": "AI-Curated Viral Trends: The Truth Behind the Mandela Effect",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "If Earth's Core Stopped, Days Last A Year",
+      "topic": "The immediate and catastrophic effects if Earth's inner core completely stopped spinning, focusing on changes to the magnetic field, atmosphere, and day/night cycles.",
+      "hook": "If Earth's inner core ever stopped spinning, a single day could last an entire year.",
+      "tags": [
+        "earthscience",
+        "geology",
+        "whatif"
+      ],
+      "inspired_by": "AI-Curated Viral Trends: What If Earth's Core Stopped Spinning?",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Amelia Earhart's Final Crash Site Theory",
+      "topic": "Discuss one leading, recent theory about the exact fate and crash site of Amelia Earhart's plane, avoiding repetition of general 'vanishing' facts.",
+      "hook": "A recent expedition claims to have found definitive evidence of Amelia Earhart's plane crash site near Nikumaroro.",
+      "tags": [
+        "ameliaearhart",
+        "historymystery",
+        "aviation"
+      ],
+      "inspired_by": "AI-Curated Viral Trends: Unexplained Vanishing of Amelia Earhart",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "CRISPR Can Now Edit Single DNA Letters",
+      "topic": "Focus on the precision of CRISPR base editing, which can change a single 'letter' of DNA without cutting the double helix, and its potential for correcting genetic diseases.",
+      "hook": "New CRISPR technology can now precisely edit single letters of your DNA without making a single cut.",
+      "tags": [
+        "crispr",
+        "genetics",
+        "biotechnology"
+      ],
+      "inspired_by": "AI-Curated Viral Trends: CRISPR Gene Editing",
       "estimated_views": "high",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "The Plague of Justinian Killed 50 Million",
-      "topic": "The Plague of Justinian, occurring in the 6th century CE, was one of history's deadliest pandemics, caused by the Yersinia pestis bacterium (the same as the Black Death) and responsible for wiping out an estimated 25-50 million people across Europe, Asia, and Africa.",
-      "hook": "Before the Black Death, another silent killer swept across the ancient world: the Plague of Justinian, an epidemic so devastating it wiped out an estimated 50 million people, fundamentally reshaping empires.",
+      "title": "The Maya Empire Collapsed From Climate Change",
+      "topic": "Focus on the specific theory that severe, prolonged droughts linked to climate change were the primary cause of the Classic Maya civilization's collapse.",
+      "hook": "The advanced Maya civilization vanished not from war, but from a catastrophic climate shift.",
       "tags": [
         "ancienthistory",
-        "pandemics",
-        "disease",
-        "plague",
-        "epidemiology"
+        "mayacivilization",
+        "climatechange"
       ],
-      "inspired_by": "AI-Curated Viral Trends: Forgotten Pandemics: The Devastating Plagues Before the Black Death",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Quantum Computers Break Encryption Instantly",
-      "topic": "Quantum computers, once fully developed, will possess the power to break many of today's strongest encryption algorithms, including those protecting financial transactions and sensitive data, almost instantly, necessitating a global shift to 'post-quantum cryptography'.",
-      "hook": "Imagine a computer so powerful it could crack almost any modern encryption in seconds. Quantum computers promise to do exactly that, threatening to dismantle the very foundations of internet security as we know it.",
-      "tags": [
-        "quantumcomputing",
-        "cybersecurity",
-        "technology",
-        "futuretech",
-        "encryption"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: How Quantum Computing Could Change EVERYTHING",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "JWST Spotted a Planet Made of Pure Diamond",
-      "topic": "The James Webb Space Telescope (JWST) has identified exoplanets, like 55 Cancri e, with conditions so extreme that their interiors are theorized to be composed largely of diamond, formed under immense pressure and heat.",
-      "hook": "Out in the vastness of space, the James Webb Space Telescope has detected something truly astonishing: a planet, not of rock or gas, but potentially made almost entirely of pure diamond.",
-      "tags": [
-        "JWST",
-        "exoplanets",
-        "space",
-        "astronomy",
-        "diamonds"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: Mind-Blowing Discoveries from the James Webb Space Telescope",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "This Lizard Plays Dead for 20 Minutes to Escape",
-      "topic": "The hognose snake, when threatened, will engage in an elaborate feigning-death display, flipping onto its back, opening its mouth, and even emitting foul-smelling musk for up to 20 minutes to convince predators it's inedible or already rotting.",
-      "hook": "When faced with danger, this particular lizard has a shocking defense mechanism: it will play absolutely dead for up to 20 minutes, convincingly pretending to be a rotting corpse.",
-      "tags": [
-        "animalbehavior",
-        "wildlife",
-        "survivalinstincts",
-        "reptiles",
-        "nature"
-      ],
-      "inspired_by": "Viral Shorts in our Niche (animal facts, survival) and audience comments about 'survival instincts'",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "The Bridge That Disappears Underwater Daily",
-      "topic": "The Eshima Ohashi bridge in Japan, often called a 'rollercoaster bridge' due to its extreme gradient, allows ships to pass beneath it by having a section that submerges underwater at specific tides or times, creating an optical illusion of disappearing.",
-      "hook": "Imagine driving across a bridge that, twice a day, literally disappears underwater to let ships pass. This engineering marvel in Japan seems to vanish into the sea.",
-      "tags": [
-        "engineering",
-        "architecture",
-        "japan",
-        "infrastructure",
-        "optics"
-      ],
-      "inspired_by": "Trending videos on 'How To Hide Nails In Wood' for ingenuity, and general 'mind-blowing science facts'",
+      "inspired_by": "AI-Curated Viral Trends: Ancient Civilizations That Disappeared",
       "estimated_views": "medium",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "Water Can Boil and Freeze at the Same Time",
-      "topic": "The 'triple point' of water is a specific temperature and pressure at which water, ice, and steam can coexist in thermodynamic equilibrium simultaneously, appearing to boil and freeze at the same time in a vacuum.",
-      "hook": "It sounds impossible, but under specific conditions, water can actually boil and freeze at the exact same moment, creating a bizarre state of matter known as the triple point.",
+      "title": "Mariana Trench Is Hiding Liquid CO2 Lakes",
+      "topic": "Describe the discovery of unique hydrothermal vents in the Mariana Trench that release liquid carbon dioxide, creating pools that could support unique life.",
+      "hook": "At the bottom of the Mariana Trench, scientists found actual lakes of liquid carbon dioxide.",
       "tags": [
-        "physics",
-        "chemistry",
-        "water",
-        "sciencemysteries",
-        "thermodynamics"
+        "deepsea",
+        "oceanfacts",
+        "mariana_trench"
       ],
-      "inspired_by": "Viral Shorts in our Niche ('Door Secret Trick Will Blow Your Mind') and general science facts",
+      "inspired_by": "AI-Curated Viral Trends: Secrets of the Ocean's Abyss",
       "estimated_views": "medium",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "Ancient Rome Used Urine as a Whitening Agent",
-      "topic": "In ancient Rome, urine was highly valued for its ammonia content and used extensively, not just for cleaning clothes but also as a mouthwash and a teeth-whitening agent, showcasing surprising historical practices and chemical applications.",
-      "hook": "Forget modern toothpaste; ancient Romans had a far more... unconventional method for whitening their teeth: they used urine, believing its ammonia content was the secret to a brighter smile.",
+      "title": "Tardigrades Survive Space Vacuum Alive",
+      "topic": "Explain the extreme resilience of tardigrades (water bears), specifically their ability to survive the vacuum of space, extreme radiation, and dehydration, showcasing their unique biology.",
+      "hook": "Tardigrades, microscopic water bears, can survive the vacuum of space completely unharmed.",
       "tags": [
-        "ancientrome",
-        "history",
-        "weirdfacts",
-        "socialpractices",
-        "chemistry"
+        "animalfacts",
+        "survival",
+        "microbiology"
       ],
-      "inspired_by": "General 'mind-blowing facts' approach for BrainBolt, focusing on unusual historical details.",
+      "inspired_by": "Viral Shorts in Niche: Extreme animal survival",
       "estimated_views": "medium",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "Why Your Coffee Tastes Better With Salt",
-      "topic": "Adding a tiny pinch of salt to coffee, particularly dark roasts or those brewed with hard water, can significantly reduce bitterness by chemically neutralizing bitter compounds and enhancing other flavors, a scientific trick for a better brew.",
-      "hook": "It sounds like a bizarre kitchen hack, but adding a tiny pinch of salt to your coffee can dramatically reduce its bitterness and actually make it taste much, much better.",
+      "title": "The \"Stand Your Ground\" Law Explained",
+      "topic": "Explain the specific legal concept of \"Stand Your Ground\" laws in the US, what they permit, and common misconceptions, relating it to scenarios of self-defense.",
+      "hook": "In many US states, \"Stand Your Ground\" laws mean you have no duty to retreat from a threat.",
       "tags": [
-        "foodscience",
-        "coffee",
-        "chemistry",
-        "hacks",
-        "cooking"
+        "legalfacts",
+        "selfdefense",
+        "uslaws"
       ],
-      "inspired_by": "Trending videos like 'Magic Sauce' for unexpected food science and taste-related facts.",
+      "inspired_by": "US Trending Videos & Audience Comments on self-defense",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "The Brain Generates Enough Power For Lightbulb",
+      "topic": "Explain the amount of electrical activity the human brain generates, specifically enough to power a small lightbulb, highlighting the constant neural communication.",
+      "hook": "Your brain, even at rest, generates enough electricity to power a small lightbulb.",
+      "tags": [
+        "brainfacts",
+        "neuroscience",
+        "humanbody"
+      ],
+      "inspired_by": "US Trending Video: What Human Brains Actually Feel Like",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "First Computer Bug Was a Moth",
+      "topic": "The true origin of the term \"computer bug\" when a moth was found causing a malfunction in an early Harvard Mark II computer.",
+      "hook": "The very first \"computer bug\" in history was an actual moth stuck in a machine.",
+      "tags": [
+        "techhistory",
+        "computerfacts",
+        "innovation"
+      ],
+      "inspired_by": "US Trending Video: DID I HANDLE THIS RIGHT?!?",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Catching ONE Undersized Fish Is A Crime",
+      "topic": "Explain why catching and keeping just one fish below the legal size limit can result in significant fines and penalties from wildlife officers.",
+      "hook": "Keeping even one undersized fish can result in thousands in fines and immediate confiscation of your gear.",
+      "tags": [
+        "wildlifelaw",
+        "fishingrules",
+        "conservation"
+      ],
+      "inspired_by": "Top Performing Channel: dangerjunkie & US Trending Video: How To Fish OVER Limit",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Humans Smell With Just 350 Receptors",
+      "topic": "Explain that despite popular belief, humans have an incredibly sophisticated sense of smell, using only about 350 olfactory receptors to detect over a trillion different odors.",
+      "hook": "Humans can distinguish over a trillion different smells, despite having just 350 active scent receptors.",
+      "tags": [
+        "humanbody",
+        "senses",
+        "biology"
+      ],
+      "inspired_by": "Top Performing Channel: CineClue7 (adapting 'senses' angle)",
       "estimated_views": "medium",
       "is_winner_variation": false,
       "winner_source_id": ""
@@ -330,73 +284,56 @@
   ],
   "longform": [
     {
-      "title": "Strait of Hormuz: The Tiny Chokepoint Controlling Global Oil",
-      "topic": "20 minute deep analysis of the geopolitical significance of the Strait of Hormuz. Cover its history as a strategic waterway, the economic implications of blockades, Iran's position, international responses, and the potential global impact of conflicts in the region. Discuss historical tensions, recent naval incidents, the role of major powers like the US and China, and the strategic vulnerability it represents for global energy security.",
-      "hook": "Imagine a single, narrow stretch of water, just 21 miles wide, that controls over one-fifth of the world's daily oil supply. This is the Strait of Hormuz, and it's on the brink of becoming the next global flashpoint, with consequences that could shake the entire planet.",
+      "title": "The Webb Telescope's Cosmic Secrets: Unraveling the Universe's Deepest Mysteries",
+      "topic": "20 minute deep analysis of the James Webb Space Telescope's most significant discoveries since its launch. Cover its technological capabilities (infrared, mirror size), groundbreaking images (Carina Nebula, Stephan's Quintet), and what these observations reveal about early galaxy formation, exoplanet atmospheres, and the expansion of the universe. Discuss the implications for understanding cosmic origins and the search for extraterrestrial life, avoiding speculation and focusing on scientific facts.",
+      "hook": "The James Webb Space Telescope has peered back in time, revealing the universe's earliest secrets with images so stunning, they're rewriting astronomy textbooks.",
       "tags": [
-        "Strait of Hormuz",
-        "geopolitics",
-        "Iran",
-        "US Iran conflict",
-        "oil supply chain",
-        "global economy",
-        "maritime security",
-        "middle east",
-        "energy crisis",
-        "international relations"
+        "jwst",
+        "spaceexploration",
+        "cosmology",
+        "astronomyfacts",
+        "deepspace"
       ],
-      "inspired_by": "Trending World News Videos (US-Iran conflict, Strait of Hormuz discussions)",
+      "inspired_by": "AI-Curated Viral Trends: Webb Telescope's Most Breathtaking Discoveries & Trending World News: UFO Files Explained",
       "estimated_views": "high",
-      "duration_minutes": 20,
-      "status": "produced"
+      "duration_minutes": 20
     },
     {
-      "title": "The AI Revolution: Decoding How It Remakes Our Brains & Society",
-      "topic": "20 minute deep analysis of how advanced AI, including models like GPT-4o, is fundamentally changing human cognition, communication, and societal structures. Explore the science behind AI's influence on decision-making, its role in shaping information consumption, and the ethical dilemmas of a hyper-connected, AI-driven world. Discuss the evolution of human-AI interaction, the impact on job markets and education, and speculative futures for human intelligence in a symbiotic relationship with AI.",
-      "hook": "From predictive text to personalized news feeds, AI is already an invisible architect of our daily lives. But what if it's not just changing our world, but subtly reshaping the very way our brains think, learn, and interact, fundamentally altering the future of human society?",
+      "title": "The Strait of Hormuz: Why This Tiny Chokepoint Controls Global Oil & Geopolitics",
+      "topic": "20 minute deep analysis of the Strait of Hormuz, its critical role in global energy markets, and the geopolitical tensions surrounding it. Cover its geographic importance (only sea passage for Gulf oil), historical conflicts (Iran-Iraq War, tanker wars), current flashpoints (Iran's threats, naval presence), and potential economic and political consequences of a disruption. Explain why major powers like the US, China, and EU have vested interests and how current events reflect these long-standing strategic dynamics.",
+      "hook": "A narrow waterway, just 21 miles wide, holds the world's oil supply hostage and dictates the balance of power in the Middle East.",
       "tags": [
-        "AI revolution",
-        "GPT4o",
-        "artificial intelligence",
-        "human cognition",
-        "society",
-        "future of AI",
-        "ethics of AI",
-        "brain-computer interface",
-        "technology impact",
-        "digital society"
+        "geopolitics",
+        "iranus",
+        "middleeast",
+        "oilcrisis",
+        "worldeconomy"
       ],
-      "inspired_by": "AI-Curated Viral Trends (AI reading minds, GPT-4o), and general science/tech trends, aiming for a deep analytical approach.",
+      "inspired_by": "Trending World News videos on Iran/Hormuz conflicts",
       "estimated_views": "high",
       "duration_minutes": 20
     }
   ],
   "ambient_recommendations": [
     {
-      "type": "ocean",
-      "hours": 8,
-      "reason": "Perennial calming favorite, universally appealing for relaxation, study, or sleep, driving high passive watch time. Appeals to general curiosity about the ocean."
-    },
-    {
       "type": "thunderstorm",
       "hours": 8,
-      "reason": "High demand for immersive soundscapes for deep sleep, meditation, or focus. The dynamic visuals and sounds maintain engagement for long durations."
+      "reason": "Thunderstorms provide strong, immersive natural sounds (rain, thunder) that are excellent for focus, relaxation, and inducing sleep, appealing to a broad audience seeking white noise."
     },
     {
       "type": "forest",
       "hours": 8,
-      "reason": "Offers a natural, calming, and visually rich environment ideal for relaxation, study, or background ambiance. Appeals to nature lovers and those seeking peaceful focus."
+      "reason": "Forest ambience, with bird calls and rustling leaves, offers a calming, natural soundscape perfect for stress relief, meditation, or as background noise during work or study."
+    },
+    {
+      "type": "ocean",
+      "hours": 8,
+      "reason": "The rhythmic sound of ocean waves is universally recognized for relaxation and sleep induction, providing a consistent, soothing background perfect for unwinding."
     }
   ],
-  "generated_at": "2026-05-09T23:37:24.140118",
-  "trending_count": 81,
-  "channels_analyzed": 4,
-  "winner_variations_count": 0,
-  "status": "in_progress",
-  "last_executed_at": "2026-05-10T22:52:43.291020",
-  "results": {
-    "shorts_produced": 1,
-    "longform_produced": 0,
-    "errors": []
-  }
+  "generated_at": "2026-05-10T23:41:11.675763",
+  "trending_count": 84,
+  "channels_analyzed": 5,
+  "winner_variations_count": 6,
+  "status": "pending"
 }

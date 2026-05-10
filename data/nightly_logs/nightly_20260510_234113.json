@@ -1,0 +1,231 @@
+{
+  "timestamp": "2026-05-10T23:39:58.755064",
+  "dry_run": false,
+  "api_health": {
+    "gemini": "ok (gemini-2.5-flash)",
+    "openai": "not_configured",
+    "healthy": true
+  },
+  "performance_review": {
+    "total_recent": 13,
+    "winners_count": 6,
+    "losers_count": 0,
+    "avg_views_48h": 253.2,
+    "best_topics": [
+      "Restaurant Shutdown After Dirty Fridge & Mold #Shorts",
+      "Oldest Galaxy GLASS-z13 Discovered #Shorts",
+      "Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome #Shorts"
+    ],
+    "best_views": [
+      956,
+      896,
+      365
+    ],
+    "winner_titles": [
+      "Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome #Shorts",
+      "The Mysterious Global 'Hum' Unexplained #Shorts",
+      "Oldest Galaxy GLASS-z13 Discovered #Shorts",
+      "Jellyfish Reverses Aging, Lives Forever #Shorts",
+      "Deadly Snake Island: Venom Liquefies Flesh #Shorts",
+      "Restaurant Shutdown After Dirty Fridge & Mold #Shorts"
+    ],
+    "loser_titles": []
+  },
+  "cleanup": {
+    "unlisted": 0,
+    "deleted": 0,
+    "failed": 0,
+    "kept": 21,
+    "thresholds": {
+      "shorts_7d": 25,
+      "shorts_14d": 50,
+      "shorts_30d": 100,
+      "long_14d": 25,
+      "long_30d": 50,
+      "multiplier": 0.5
+    }
+  },
+  "trending": {
+    "found": 84,
+    "viral_shorts_found": 30,
+    "world_news_found": 20,
+    "competitors_analyzed": 3,
+    "comments_mined": 20,
+    "top_5": [
+      {
+        "title": "Crazy women mess with the wrong driver",
+        "views": 32783488,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Eating Snacks Without Mom knowing 😮😮",
+        "views": 30339049,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Can You Find The Poisoned Food",
+        "views": 21060138,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Do Fish EAT RAMEN?",
+        "views": 14663867,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Karma Hits Him Back Instantly...👀",
+        "views": 13312130,
+        "category": "Sports"
+      }
+    ],
+    "top_viral_shorts": [
+      {
+        "title": "The Saddest Moments In The Animal Kingdom 💔#animalfacts #wil",
+        "views": 10872941,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "When the Wife Gets Fierce, Even the Husband Backs Off #anima",
+        "views": 8337667,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "Door Secret Trick Will Blow Your Mind 🤯🚪",
+        "views": 5004629,
+        "query": "science facts that will blow your mind"
+      },
+      {
+        "title": "Top 5 Most Dangerous Commando Forces of india || #comando#sh",
+        "views": 4339488,
+        "query": "top 5 facts"
+      },
+      {
+        "title": "3 Animals That Can Live Without a Head! #animalfacts #wildli",
+        "views": 2814584,
+        "query": "animal facts wildlife"
+      }
+    ]
+  },
+  "winners": {
+    "added": 2,
+    "total": 2,
+    "threshold": 300,
+    "median": 45,
+    "active": 2,
+    "top": [
+      {
+        "video_id": "T_yBjy6aSGA",
+        "title": "Restaurant Shutdown After Dirty Fridge & Mold #Shorts",
+        "views": 956,
+        "views_per_day": 478.0,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "40TJre3Wyy8",
+        "title": "Deadly Snake Island: Venom Liquefies Flesh #Shorts",
+        "views": 333,
+        "views_per_day": 166.5,
+        "variations_generated": 0
+      }
+    ]
+  },
+  "peak_hours": {
+    "utc": [
+      9,
+      22,
+      23,
+      0,
+      1
+    ],
+    "source": "blended_channel_and_us_prime",
+    "samples": 13
+  },
+  "retention": {
+    "avg_pct": 0,
+    "avg_dur_sec": 0,
+    "source": "unavailable",
+    "video_count": 0
+  },
+  "ambient_analysis": {
+    "total_ambient": 3,
+    "total_views": 88,
+    "top_type": "rain",
+    "worst_type": "fireplace",
+    "type_rankings": [
+      {
+        "type": "rain",
+        "video_count": 1,
+        "total_views": 55,
+        "avg_views": 55,
+        "avg_views_per_day": 27.5,
+        "engagement_rate": 41.82,
+        "best_video": {
+          "title": "1 Hour 4 Hours Rainy Night Ambience for Deep Sleep",
+          "views": 55,
+          "views_per_day": 27.5
+        }
+      },
+      {
+        "type": "fireplace",
+        "video_count": 2,
+        "total_views": 33,
+        "avg_views": 16,
+        "avg_views_per_day": 16.5,
+        "engagement_rate": 90.91,
+        "best_video": {
+          "title": "8 Hours Cozy Cat by the Fireplace — Purring & Crackling Fire",
+          "views": 24,
+          "views_per_day": 24.0
+        }
+      }
+    ]
+  },
+  "plan": {
+    "shorts_planned": 20,
+    "longform_planned": 2,
+    "ambient_recommendations": [
+      {
+        "type": "thunderstorm",
+        "hours": 8,
+        "reason": "Thunderstorms provide strong, immersive natural sounds (rain, thunder) that are excellent for focus, relaxation, and inducing sleep, appealing to a broad audience seeking white noise."
+      },
+      {
+        "type": "forest",
+        "hours": 8,
+        "reason": "Forest ambience, with bird calls and rustling leaves, offers a calming, natural soundscape perfect for stress relief, meditation, or as background noise during work or study."
+      },
+      {
+        "type": "ocean",
+        "hours": 8,
+        "reason": "The rhythmic sound of ocean waves is universally recognized for relaxation and sleep induction, providing a consistent, soothing background perfect for unwinding."
+      }
+    ],
+    "winner_variations_count": 6,
+    "shorts": [
+      "Hidden Restaurant Fines That Cost Millions",
+      "Why Restaurant Lemon Wedges Are Dangerous",
+      "What Happens Immediately After Restaurant Fails In",
+      "Snake Island Venom Melts Human Tissue",
+      "Brazil's Snake Island: A Natural Fortress",
+      "The Last Lighthouse Keeper of Snake Island",
+      "GPT-4o Can See Your Emotions Live",
+      "Webb Telescope Spotted Light From 13.5 Billion Yea",
+      "The Real \"Berenstain Bears\" Mystery",
+      "If Earth's Core Stopped, Days Last A Year",
+      "Amelia Earhart's Final Crash Site Theory",
+      "CRISPR Can Now Edit Single DNA Letters",
+      "The Maya Empire Collapsed From Climate Change",
+      "Mariana Trench Is Hiding Liquid CO2 Lakes",
+      "Tardigrades Survive Space Vacuum Alive",
+      "The \"Stand Your Ground\" Law Explained",
+      "The Brain Generates Enough Power For Lightbulb",
+      "First Computer Bug Was a Moth",
+      "Catching ONE Undersized Fish Is A Crime",
+      "Humans Smell With Just 350 Receptors"
+    ],
+    "longform": [
+      "The Webb Telescope's Cosmic Secrets: Unraveling the Universe",
+      "The Strait of Hormuz: Why This Tiny Chokepoint Controls Glob"
+    ]
+  }
+}
