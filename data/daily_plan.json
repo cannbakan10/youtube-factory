@@ -51,7 +51,9 @@
       "inspired_by": "AI-Curated Viral Trends: Ancient Civilizations with Unbelievable Lost Technologies",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "The_Pantheon_in_Rome_features__1778453429"
     },
     {
       "title": "Salamanders Regrow Entire Brains and Limbs",
@@ -391,7 +393,7 @@
   "channels_analyzed": 4,
   "winner_variations_count": 0,
   "status": "in_progress",
-  "last_executed_at": "2026-05-10T17:56:23.940448",
+  "last_executed_at": "2026-05-10T22:52:43.291020",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
