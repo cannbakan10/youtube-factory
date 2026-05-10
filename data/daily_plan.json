@@ -33,7 +33,9 @@
       "inspired_by": "AI-Curated Viral Trends: The Unexplained Phenomenon of the 'Hum'",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "The_Hum_is_a_perplexing_acoust_1778435630"
     },
     {
       "title": "Rome's Pantheon Hole Never Leaks: Here's Why",
@@ -389,10 +391,10 @@
   "channels_analyzed": 4,
   "winner_variations_count": 0,
   "status": "in_progress",
-  "last_executed_at": "2026-05-10T16:48:40.210157",
+  "last_executed_at": "2026-05-10T17:56:23.940448",
   "results": {
-    "shorts_produced": 0,
-    "longform_produced": 1,
+    "shorts_produced": 1,
+    "longform_produced": 0,
     "errors": []
   }
 }
