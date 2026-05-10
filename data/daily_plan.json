@@ -343,7 +343,8 @@
       ],
       "inspired_by": "Trending World News Videos (US-Iran conflict, Strait of Hormuz discussions)",
       "estimated_views": "high",
-      "duration_minutes": 20
+      "duration_minutes": 20,
+      "status": "produced"
     },
     {
       "title": "The AI Revolution: Decoding How It Remakes Our Brains & Society",
@@ -388,10 +389,10 @@
   "channels_analyzed": 4,
   "winner_variations_count": 0,
   "status": "in_progress",
-  "last_executed_at": "2026-05-10T13:21:51.047805",
+  "last_executed_at": "2026-05-10T16:48:40.210157",
   "results": {
-    "shorts_produced": 1,
-    "longform_produced": 0,
+    "shorts_produced": 0,
+    "longform_produced": 1,
     "errors": []
   }
 }
