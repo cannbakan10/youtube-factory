@@ -13,7 +13,9 @@
       "inspired_by": "Channel Winner: Restaurant Shutdown After Dirty Fridge & Mold",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "T_yBjy6aSGA"
+      "winner_source_id": "T_yBjy6aSGA",
+      "status": "produced",
+      "production_id": "One_common_yet_often_overlooke_1778511233"
     },
     {
       "title": "Why Restaurant Lemon Wedges Are Dangerous",
@@ -335,5 +337,11 @@
   "trending_count": 84,
   "channels_analyzed": 5,
   "winner_variations_count": 6,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-05-11T14:56:34.330528",
+  "results": {
+    "shorts_produced": 1,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
