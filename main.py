@@ -53,6 +53,7 @@ from src.services.tts_service import TTSService
 from src.services.youtube_service import YouTubeService
 from src.services.branding_service import BrandingService
 from src.services.ambient_video_service import AmbientVideoService
+from src.services.ai_ambient_producer import AIAmbientProducer, AI_AMBIENT_PRESETS
 from src.core.ffmpeg_engine import VideoEngine
 from src.agents.trend_agent import TrendAgent
 from src.agents.viral_analyzer import ViralAnalyzer
@@ -75,6 +76,7 @@ BULK_MODE_COOLDOWN = 30  # seconds between bulk video productions
 # Available viral categories for --viral command
 VIRAL_CATEGORIES = ["facts", "science", "history", "psychology", "nature", "tech", "mystery", "lifestyle"]
 AMBIENT_TYPES = list(AmbientVideoService.AMBIENT_PRESETS.keys())
+AI_AMBIENT_TYPES = list(AI_AMBIENT_PRESETS.keys())
 LIVESTREAM_TYPES = list(LIVESTREAM_PRESETS.keys())
 NATURE_SHORTS_TYPES = list(NATURE_SHORTS_CATEGORIES.keys())
 
@@ -532,6 +534,12 @@ Examples:
     parser.add_argument("--ambient-duration", type=int, default=240, help="Ambient video duration in minutes (default: 240 = 4 hours)")
     parser.add_argument("--ambient-source", type=str, default="auto", choices=["auto", "api"],
                         help="Ambient video source mode: auto (fallback allowed) or api (strict API footage)")
+
+    # AI Ambient options (DALL-E 3 generated visuals)
+    parser.add_argument("--ai-ambient", type=str, choices=AI_AMBIENT_TYPES,
+                        help=f"Generate AI ambient video with DALL-E 3. Presets: {', '.join(AI_AMBIENT_TYPES)}")
+    parser.add_argument("--ai-ambient-duration", type=int, default=480,
+                        help="AI ambient video duration in minutes (default: 480 = 8 hours)")
 
     # Trend options
     parser.add_argument("--list-trends", action="store_true", help="List trending topics")
@@ -1070,6 +1078,20 @@ Examples:
             language=args.langs.split(",")[0].strip().lower(),
         )
         if not ambient_result:
+            sys.exit(1)
+        sys.exit(0)
+
+    # AI Ambient Mode (DALL-E 3 + Ken Burns + fire overlay)
+    if args.ai_ambient:
+        duration_hours = args.ai_ambient_duration / 60.0
+        logger.info(f"🤖 AI AMBIENT MODE: {args.ai_ambient} ({args.ai_ambient_duration} min / {duration_hours:.1f}h)")
+        producer = AIAmbientProducer(project_root=project_root)
+        result = producer.produce(
+            preset_name=args.ai_ambient,
+            duration_hours=duration_hours,
+            auto_upload=args.upload,
+        )
+        if not result:
             sys.exit(1)
         sys.exit(0)
 
