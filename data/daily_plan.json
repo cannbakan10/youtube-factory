@@ -29,7 +29,9 @@
       "inspired_by": "Channel Winner: Restaurant Shutdown After Dirty Fridge & Mold",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "T_yBjy6aSGA"
+      "winner_source_id": "T_yBjy6aSGA",
+      "status": "produced",
+      "production_id": "The_surprising_reason_why_lemo_1778525968"
     },
     {
       "title": "What Happens Immediately After Restaurant Fails Inspection",
@@ -339,10 +341,10 @@
   "channels_analyzed": 5,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-05-11T18:38:28.462798",
+  "last_executed_at": "2026-05-11T19:01:26.268824",
   "results": {
-    "shorts_produced": 0,
-    "longform_produced": 1,
+    "shorts_produced": 1,
+    "longform_produced": 0,
     "errors": []
   }
 }
