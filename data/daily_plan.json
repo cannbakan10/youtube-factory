@@ -45,7 +45,9 @@
       "inspired_by": "Channel Winner: Restaurant Shutdown After Dirty Fridge & Mold",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "T_yBjy6aSGA"
+      "winner_source_id": "T_yBjy6aSGA",
+      "status": "produced",
+      "production_id": "The_exact_protocol_and_rapid_c_1778540091"
     },
     {
       "title": "Snake Island Venom Melts Human Tissue",
@@ -341,7 +343,7 @@
   "channels_analyzed": 5,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-05-11T19:01:26.268824",
+  "last_executed_at": "2026-05-11T22:56:51.812448",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
