@@ -15,7 +15,9 @@
       "inspired_by": "Oldest Galaxy GLASS-z13 Discovered",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "n41UVkdKXxY"
+      "winner_source_id": "n41UVkdKXxY",
+      "status": "produced",
+      "production_id": "The_James_Webb_Space_Telescope_1778596140"
     },
     {
       "title": "Seeing Time Travel: Light from GLASS-z13",
@@ -365,5 +367,11 @@
   "trending_count": 85,
   "channels_analyzed": 6,
   "winner_variations_count": 6,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-05-12T14:32:14.830979",
+  "results": {
+    "shorts_produced": 1,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
