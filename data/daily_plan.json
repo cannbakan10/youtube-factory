@@ -51,7 +51,9 @@
       "inspired_by": "Restaurant Shutdown After Dirty Fridge & Mold",
       "estimated_views": "medium",
       "is_winner_variation": true,
-      "winner_source_id": "T_yBjy6aSGA"
+      "winner_source_id": "T_yBjy6aSGA",
+      "status": "produced",
+      "production_id": "Even_seemingly_clean_kitchen_s_1778626970"
     },
     {
       "title": "Public Touchpoints Harbour Germs",
@@ -370,7 +372,7 @@
   "channels_analyzed": 6,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-05-12T18:59:35.432542",
+  "last_executed_at": "2026-05-12T23:04:55.615741",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
