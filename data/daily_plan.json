@@ -33,7 +33,9 @@
       "inspired_by": "Oldest Galaxy GLASS-z13 Discovered",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "n41UVkdKXxY"
+      "winner_source_id": "n41UVkdKXxY",
+      "status": "produced",
+      "production_id": "When_we_observe_the_galaxy_GLA_1778612245"
     },
     {
       "title": "Unseen Danger Lurks in Your Kitchen Sponge",
@@ -368,7 +370,7 @@
   "channels_analyzed": 6,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-05-12T14:32:14.830979",
+  "last_executed_at": "2026-05-12T18:59:35.432542",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
