@@ -1,70 +1,64 @@
 {
-  "date": "2026-05-12",
+  "date": "2026-05-13",
   "shorts": [
     {
-      "title": "JWST Sees Light from Universe's Dawn",
-      "topic": "The James Webb Space Telescope's infrared capabilities allow it to detect the incredibly faint, redshifted light from galaxies like GLASS-z13, providing a glimpse into the universe's infancy.",
-      "hook": "The James Webb Space Telescope just peered back 13.5 billion years, capturing light from the universe's first galaxies.",
+      "title": "Pantheon Concrete: Rome's Lost Supermaterial",
+      "topic": "The Pantheon's concrete dome has endured 2000 years, a recipe lost to time. Explain how Roman volcanic concrete, using pozzolana ash, self-heals and gains strength over millennia, unlike modern concrete.",
+      "hook": "The concrete in Rome's Pantheon is stronger today than when it was first poured, a 2000-year-old secret still baffling engineers.",
       "tags": [
-        "JWST",
-        "Space",
-        "Universe",
-        "Galaxy",
-        "Astronomy"
+        "Pantheon",
+        "RomanEngineering",
+        "AncientTech",
+        "History",
+        "Concrete"
       ],
-      "inspired_by": "Oldest Galaxy GLASS-z13 Discovered",
+      "inspired_by": "Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "n41UVkdKXxY",
-      "status": "produced",
-      "production_id": "The_James_Webb_Space_Telescope_1778596140"
+      "winner_source_id": "jQ6gW5Oe-n8"
     },
     {
-      "title": "Seeing Time Travel: Light from GLASS-z13",
-      "topic": "When we observe the galaxy GLASS-z13, we are seeing it as it existed only 300 million years after the Big Bang, a true window into the universe's past.",
-      "hook": "Looking at galaxy GLASS-z13 isn't just seeing distant space; it's looking back in time to the universe's earliest moments.",
+      "title": "Pantheon's Oculus: A 2000-Year Air Conditioner",
+      "topic": "The Pantheon's iconic oculus, a 30-foot open hole to the sky, serves a surprising purpose beyond light: it's an ancient air conditioning system, cleverly using convection to cool the vast interior.",
+      "hook": "Rome's Pantheon has a massive hole in its roof, not just for light, but as an ingenious 2000-year-old air conditioning system.",
       "tags": [
-        "Cosmic",
-        "SpaceTime",
-        "BigBang",
+        "Pantheon",
+        "Oculus",
+        "AncientRome",
+        "Architecture",
+        "Engineering"
+      ],
+      "inspired_by": "Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome",
+      "estimated_views": "high",
+      "is_winner_variation": true,
+      "winner_source_id": "jQ6gW5Oe-n8"
+    },
+    {
+      "title": "Early Universe: Galaxy Evolution Speed Shock",
+      "topic": "The discovery of GLASS-z13 and other early galaxies by JWST challenges existing models of cosmic evolution, suggesting stars and galaxies formed much faster in the early universe than previously thought.",
+      "hook": "The universe's earliest galaxies are forcing scientists to rethink how quickly stars and structures formed after the Big Bang.",
+      "tags": [
         "EarlyUniverse",
-        "Astronomy"
+        "GalaxyFormation",
+        "Astronomy",
+        "JWST",
+        "CosmicEvolution"
       ],
       "inspired_by": "Oldest Galaxy GLASS-z13 Discovered",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "n41UVkdKXxY",
-      "status": "produced",
-      "production_id": "When_we_observe_the_galaxy_GLA_1778612245"
+      "winner_source_id": "n41UVkdKXxY"
     },
     {
-      "title": "Unseen Danger Lurks in Your Kitchen Sponge",
-      "topic": "Even seemingly clean kitchen sponges can harbor millions of bacteria, posing a significant food safety risk far greater than meets the eye.",
-      "hook": "Your kitchen sponge might be the dirtiest item in your entire home, teeming with unseen bacteria.",
+      "title": "Hidden Dangers: Kitchen Mold Zones Exposed",
+      "topic": "Beyond obvious spoilage, hidden mold and bacteria thrive in specific, often overlooked kitchen zones, posing significant health risks and triggering immediate health code violations.",
+      "hook": "Even seemingly clean kitchens hide dangerous mold zones that can instantly shut down an establishment.",
       "tags": [
-        "Hygiene",
-        "KitchenFacts",
-        "Bacteria",
         "FoodSafety",
-        "Microbes"
-      ],
-      "inspired_by": "Restaurant Shutdown After Dirty Fridge & Mold",
-      "estimated_views": "medium",
-      "is_winner_variation": true,
-      "winner_source_id": "T_yBjy6aSGA",
-      "status": "produced",
-      "production_id": "Even_seemingly_clean_kitchen_s_1778626970"
-    },
-    {
-      "title": "Public Touchpoints Harbour Germs",
-      "topic": "Everyday surfaces like shopping cart handles and public touchscreens are breeding grounds for countless microbes, surprisingly affecting public health.",
-      "hook": "That shopping cart handle you just touched carries more germs than a public toilet seat.",
-      "tags": [
-        "PublicHealth",
-        "Germs",
-        "HygieneTips",
-        "DailyLife",
-        "BacteriaFacts"
+        "KitchenHygiene",
+        "Mold",
+        "HealthInspection",
+        "HiddenDangers"
       ],
       "inspired_by": "Restaurant Shutdown After Dirty Fridge & Mold",
       "estimated_views": "medium",
@@ -72,14 +66,30 @@
       "winner_source_id": "T_yBjy6aSGA"
     },
     {
-      "title": "Snake Venom Stops Prey Escaping",
-      "topic": "The Golden Lancehead Viper's potent venom not only breaks down tissue but acts so rapidly that its prey often dies before it can even leave the tree branch.",
-      "hook": "On Brazil's forbidden island, a viper's venom is so fast-acting, its prey is dead before it can fall to the ground.",
+      "title": "Health Inspection Triggers: What Closes Kitchens",
+      "topic": "Uncover the specific, often surprising, health code violations that lead to immediate kitchen closures, from temperature abuse in fridges to cross-contamination issues that patrons rarely see.",
+      "hook": "Health inspectors look for specific, often invisible, violations that can shut down a kitchen in minutes.",
       "tags": [
-        "Snakes",
-        "Venom",
+        "FoodSafety",
+        "HealthViolations",
+        "KitchenSecrets",
+        "PublicHealth",
+        "Inspection"
+      ],
+      "inspired_by": "Restaurant Shutdown After Dirty Fridge & Mold",
+      "estimated_views": "medium",
+      "is_winner_variation": true,
+      "winner_source_id": "T_yBjy6aSGA"
+    },
+    {
+      "title": "Snake Island's Viper: Gold, Venom, Isolation",
+      "topic": "Brazil's Ilha da Queimada Grande, or Snake Island, is home to the Golden Lancehead Viper, a species found nowhere else. Its potent venom and island isolation have made it one of the most feared snakes.",
+      "hook": "Brazil's infamous Snake Island is the only place on Earth where the Golden Lancehead Viper lives, armed with a venom that can cause rapid tissue necrosis.",
+      "tags": [
+        "SnakeIsland",
+        "Vipers",
+        "GoldenLancehead",
         "Wildlife",
-        "AnimalFacts",
         "Brazil"
       ],
       "inspired_by": "Deadly Snake Island: Venom Liquefies Flesh",
@@ -88,15 +98,15 @@
       "winner_source_id": "40TJre3Wyy8"
     },
     {
-      "title": "Why Humans Are Banned from Ilha Queimada",
-      "topic": "Ilha da Queimada Grande, also known as Snake Island, is so densely populated with highly venomous pit vipers that it's illegal for anyone to set foot on it.",
-      "hook": "There's an island off Brazil where stepping foot on shore is strictly forbidden, and for good reason: it's overrun by one of the world's most dangerous snakes.",
+      "title": "Snake Island: Why Humans Are Forbidden",
+      "topic": "Explore why Brazil strictly forbids human entry to Ilha da Queimada Grande, known as Snake Island. It's not just the sheer number of highly venomous vipers, but their aggressive nature and evolutionary adaptations that make it uniquely dangerous for humans.",
+      "hook": "No human is allowed on Brazil's Snake Island, not just because of its thousands of vipers, but because their venom is among the fastest acting in the world.",
       "tags": [
-        "Forbidden",
-        "Islands",
-        "Wildlife",
-        "Travel",
-        "SouthAmerica"
+        "SnakeIsland",
+        "ForbiddenPlaces",
+        "Venom",
+        "Conservation",
+        "WildlifeFacts"
       ],
       "inspired_by": "Deadly Snake Island: Venom Liquefies Flesh",
       "estimated_views": "high",
@@ -104,278 +114,256 @@
       "winner_source_id": "40TJre3Wyy8"
     },
     {
-      "title": "Ancient Batteries: Baghdad's Lost Tech",
-      "topic": "The Baghdad Battery, an artifact from ancient Mesopotamia, suggests surprising electrical knowledge over 2,000 years ago, baffling modern scientists.",
-      "hook": "Ancient Mesopotamians may have used batteries over 2,000 years ago, an astonishing lost technology.",
+      "title": "Sora AI: One Minute Of Ultra-Realistic Video",
+      "topic": "OpenAI's Sora AI can generate stunning, realistic video clips up to a minute long from simple text prompts, showing complex scene interactions and character emotions that blur the line with reality.",
+      "hook": "OpenAI's new Sora AI is generating mind-bending, minute-long video clips from text that are almost indistinguishable from real footage.",
+      "tags": [
+        "AI",
+        "Sora",
+        "OpenAI",
+        "TextToVideo",
+        "FutureTech"
+      ],
+      "inspired_by": "Sora AI's Mind-Blowing Text-to-Video Revolution",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "JWST's Exoplanet Search: Life Beyond Earth?",
+      "topic": "The James Webb Space Telescope isn't just seeing distant galaxies; it's analyzing exoplanet atmospheres for biosignatures, chemical clues that could indicate the presence of alien life beyond Earth.",
+      "hook": "The James Webb Space Telescope is scrutinizing exoplanet atmospheres, searching for chemical fingerprints that could signal the presence of life light-years away.",
+      "tags": [
+        "JWST",
+        "Exoplanets",
+        "AlienLife",
+        "Space",
+        "Astronomy"
+      ],
+      "inspired_by": "James Webb Space Telescope: Latest Discoveries on Early Galaxies",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Dyatlov Pass: Hikers' Bodies Unexplained Trauma",
+      "topic": "The Dyatlov Pass incident remains an enigma: nine hikers died with inexplicable injuries, some with internal trauma and fractured skulls but no external wounds, fueling theories from avalanches to paranormal activity.",
+      "hook": "Nine hikers in Russia's Dyatlov Pass died with fractured skulls and missing eyes, yet no external struggle, leaving one of history's most baffling mysteries.",
+      "tags": [
+        "DyatlovPass",
+        "UnsolvedMystery",
+        "TrueCrime",
+        "History",
+        "ColdCase"
+      ],
+      "inspired_by": "The Unsolved Mystery of the Dyatlov Pass Incident",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "CRISPR Gene Editing: Editing Human Embryos",
+      "topic": "CRISPR gene editing technology allows scientists to modify DNA with unprecedented precision, raising ethical questions about its use in human embryos to eliminate genetic diseases before birth.",
+      "hook": "CRISPR gene editing has the power to eliminate inherited diseases by modifying human embryos, presenting a future where genetic flaws could be erased before birth.",
+      "tags": [
+        "CRISPR",
+        "Genetics",
+        "Bioethics",
+        "Medicine",
+        "Future"
+      ],
+      "inspired_by": "CRISPR Gene Editing: New Cures & Ethical Dilemmas",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Antikythera Mechanism: Ancient Greek Computer",
+      "topic": "The Antikythera Mechanism, recovered from a shipwreck, is a 2000-year-old astronomical calculator. Its complex gears predict eclipses and planetary positions, showcasing technology far beyond its supposed era.",
+      "hook": "Ancient Greeks built a device 2000 years ago, the Antikythera Mechanism, that could predict celestial movements with the precision of a modern computer.",
       "tags": [
         "AncientTech",
         "Archaeology",
-        "Inventions",
-        "HistoryFacts",
-        "Mesopotamia"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: Lost Tech",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Quantum Entanglement: Spooky Action",
-      "topic": "Quantum entanglement allows particles to be linked in such a way that they instantly affect each other, regardless of distance, a phenomenon Einstein called 'spooky action at a distance'.",
-      "hook": "Two particles can be linked instantly across the universe, a quantum mystery Einstein found 'spooky'.",
-      "tags": [
-        "QuantumPhysics",
-        "Science",
-        "Technology",
-        "PhysicsFacts",
-        "SpookyAction"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: Quantum Computing",
-      "estimated_views": "medium",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Deep Sea's Glass Sponge That Lives Forever",
-      "topic": "In the deep ocean trenches, scientists discovered glass sponges that can live for over 10,000 years, making them among Earth's longest-living creatures.",
-      "hook": "Deep beneath the ocean, a creature made of glass can live for over 10,000 years.",
-      "tags": [
-        "DeepSea",
-        "OceanLife",
-        "MarineBiology",
-        "Creatures",
-        "Longevity"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: Unbelievable Creatures",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Cicada 3301: The Internet's Deepest Puzzle",
-      "topic": "Cicada 3301 was a series of complex online puzzles that appeared annually, challenging cryptography experts and internet sleuths with no clear purpose or solution ever revealed.",
-      "hook": "The internet's greatest unsolved mystery, Cicada 3301, challenged the world's best minds for years.",
-      "tags": [
-        "InternetMystery",
-        "Cryptography",
-        "Unsolved",
-        "Puzzles",
-        "WebFacts"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: Internet's Darkest Mysteries",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Tardigrades Survive Space Vacuum",
-      "topic": "Tardigrades, or 'water bears', are microscopic animals famous for their ability to survive extreme conditions, including the vacuum of space and radiation.",
-      "hook": "Meet the 'water bear', a microscopic animal that can survive the vacuum of outer space.",
-      "tags": [
-        "AnimalSuperpowers",
-        "Microbiology",
-        "Extremophiles",
-        "ScienceFacts",
-        "Tardigrade"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: Animals With Superpowers",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Dyson Sphere: Megastructure from Sci-Fi",
-      "topic": "A Dyson Sphere is a hypothetical megastructure that completely encloses a star to capture its energy output, a concept explored in science fiction that could power advanced civilizations.",
-      "hook": "Imagine a structure so vast it could harness all the energy from a star: the Dyson Sphere.",
-      "tags": [
-        "SpaceTech",
-        "SciFi",
-        "FutureTech",
-        "Astrophysics",
-        "Megastructure"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: Your Next Vacation To Space!",
-      "estimated_views": "medium",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "CRISPR Can Edit Genes to Cure Diseases",
-      "topic": "CRISPR gene editing technology allows scientists to precisely modify DNA, holding promise for correcting genetic defects and curing previously incurable diseases.",
-      "hook": "A revolutionary gene-editing tool called CRISPR could cure diseases once thought incurable.",
-      "tags": [
-        "GeneEditing",
-        "Biotechnology",
-        "MedicalBreakthrough",
-        "ScienceNews",
-        "CRISPR"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: The Gene-Editing Revolution",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Hidden Ocean Lake Kills Everything",
-      "topic": "At the bottom of the Gulf of Mexico lies a 'brine pool,' a super-salty, oxygen-free lake that's toxic to most marine life, creating a unique ecosystem.",
-      "hook": "There's a lake at the bottom of the Gulf of Mexico where anything that swims into it dies.",
-      "tags": [
-        "OceanFacts",
-        "DeepSea",
-        "BrinePool",
-        "MarineMystery",
-        "GulfOfMexico"
-      ],
-      "inspired_by": "Viral Shorts in Our Niche: Pacific Ocean",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Ancient Rome's Secret Concrete",
-      "topic": "Roman concrete, especially that used in structures like harbors, possessed a unique ability to grow stronger over time due to a rare volcanic ash reaction with seawater.",
-      "hook": "Ancient Roman concrete used volcanic ash that made structures like harbors stronger underwater.",
-      "tags": [
-        "RomanEmpire",
-        "AncientEngineering",
-        "MaterialsScience",
         "History",
-        "Concrete"
+        "Innovation",
+        "Science"
       ],
-      "inspired_by": "AI-Curated Viral Trends: Lost Tech",
-      "estimated_views": "medium",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "The Octopus That Mimics Other Animals",
-      "topic": "The Mimic Octopus, found in Indonesian waters, can impersonate over a dozen other sea creatures, including lionfish, sea snakes, and sole fish, to avoid predators.",
-      "hook": "An octopus in Indonesia can perfectly imitate 15 different marine animals to trick predators.",
-      "tags": [
-        "Octopus",
-        "AnimalMimicry",
-        "MarineLife",
-        "AnimalFacts",
-        "OceanCreatures"
-      ],
-      "inspired_by": "Viral Shorts in Our Niche: Animal Facts",
+      "inspired_by": "Ancient Civilizations: Shocking Technologies Ahead of Their Time",
       "estimated_views": "high",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "Black Goo That Powered Nazis",
-      "topic": "A peculiar 'black goo' discovered in archaeological sites, purportedly used by Nazi scientists, has led to theories about its potential role in secret wartime technologies.",
-      "hook": "Nazi scientists were fascinated by a mysterious 'black goo' found in ancient ruins.",
+      "title": "Neuralink: Human Thoughts Control Computers",
+      "topic": "Elon Musk's Neuralink has successfully implanted brain-computer interfaces into humans, allowing thoughts to directly control computers, a breakthrough that could revolutionize treatment for paralysis.",
+      "hook": "Elon Musk's Neuralink has just allowed a human to control a computer cursor with their thoughts alone, marking a monumental step for brain-computer interfaces.",
       "tags": [
-        "WW2",
-        "SecretHistory",
+        "Neuralink",
+        "BCI",
+        "ElonMusk",
+        "FutureTech",
+        "Neuroscience"
+      ],
+      "inspired_by": "Neuralink's First Human Trials",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Mariana Trench: Life In Crushing Darkness",
+      "topic": "The Mariana Trench, Earth's deepest point, hosts bizarre life forms adapted to unimaginable pressure and complete darkness, surviving on chemical energy rather than sunlight in hidden ecosystems.",
+      "hook": "At the bottom of the Mariana Trench, where sunlight never reaches and pressure crushes steel, life thrives in forms stranger than science fiction.",
+      "tags": [
+        "DeepSea",
+        "MarianaTrench",
+        "Ocean",
+        "MarineBiology",
+        "Extremophile"
+      ],
+      "inspired_by": "Deep-Sea Discoveries",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Mandela Effect: Berenstain Bears Or Berenstein?",
+      "topic": "The Mandela Effect is a phenomenon where many people collectively misremember facts, like the spelling of 'Berenstain Bears' as 'Berenstein,' sparking debates on alternate realities versus cognitive biases.",
+      "hook": "Millions swear the children's books were 'Berenstein Bears,' not 'Berenstain Bears,' a classic example of the Mandela Effect where collective memory defies reality.",
+      "tags": [
+        "MandelaEffect",
+        "Psychology",
+        "CognitiveScience",
+        "Memory",
+        "Paranormal"
+      ],
+      "inspired_by": "The Mandela Effect",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Tesla's Wardenclyffe Tower: Free Wireless Power?",
+      "topic": "Nikola Tesla's Wardenclyffe Tower was intended to be a global wireless transmission station, capable of beaming free electricity and communications across the Atlantic, but it was mysteriously shut down.",
+      "hook": "Nikola Tesla once built a giant tower, Wardenclyffe, believing he could provide free, wireless electricity to the entire world, a vision that was never realized.",
+      "tags": [
+        "NikolaTesla",
+        "Wardenclyffe",
+        "LostTech",
+        "History",
+        "Inventor"
+      ],
+      "inspired_by": "Nikola Tesla's Lost Inventions",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Quantum Computers: Qubit's Superposition Secret",
+      "topic": "Unlike traditional bits, quantum computers use 'qubits' that can be both 0 and 1 simultaneously through superposition. This allows them to perform calculations exponentially faster for complex problems.",
+      "hook": "Quantum computers solve problems unimaginable for regular computers, thanks to 'qubits' that can exist in multiple states at once, not just a simple on or off.",
+      "tags": [
+        "QuantumComputing",
+        "FutureTech",
+        "Physics",
+        "Science",
+        "AI"
+      ],
+      "inspired_by": "Quantum Computing: How It Works and Its Future Impact",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Fermi Paradox: Where Are All The Aliens?",
+      "topic": "The Fermi Paradox asks: if the universe is vast and ancient, with billions of potentially habitable planets, why haven't we found any evidence of alien civilizations? Are we truly alone?",
+      "hook": "The universe is ancient, vast, and teeming with billions of planets, yet the Fermi Paradox asks a chilling question: where is everybody?",
+      "tags": [
+        "FermiParadox",
+        "AlienLife",
+        "Space",
+        "Astronomy",
+        "Mystery"
+      ],
+      "inspired_by": "The Fermi Paradox: Why Haven't We Found Alien Life Yet?",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Göbekli Tepe: Humanity's First Temple 11,000 BCE",
+      "topic": "Göbekli Tepe in Turkey, dated to 9600–9000 BCE, predates farming and writing, challenging our understanding of civilization's origins by revealing complex, monumental structures built by hunter-gatherers.",
+      "hook": "Before agriculture, before cities, hunter-gatherers built Göbekli Tepe, a massive temple complex in Turkey 11,000 years ago, rewriting human history.",
+      "tags": [
+        "GobekliTepe",
         "Archaeology",
-        "Conspiracy",
-        "NaziGermany"
+        "AncientHistory",
+        "Civilization",
+        "Mystery"
       ],
-      "inspired_by": "AI-Curated Viral Trends: Shocking Historical 'What Ifs'",
-      "estimated_views": "medium",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Crows Recognize Human Faces",
-      "topic": "Crows possess an extraordinary cognitive ability to recognize individual human faces and remember them for years, even communicating this information to other crows.",
-      "hook": "Crows remember human faces, even if you wear a mask, and can teach other crows about you.",
-      "tags": [
-        "AnimalIntelligence",
-        "Crows",
-        "Cognition",
-        "BirdFacts",
-        "Wildlife"
-      ],
-      "inspired_by": "Viral Shorts in Our Niche: Animal Facts",
+      "inspired_by": "Forgotten Wonders: Ancient Sites More Mysterious Than the Pyramids",
       "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "What If Rome Never Fell?",
-      "topic": "Exploring the historical 'what if' scenario where the Western Roman Empire never collapsed, examining potential technological, social, and political futures.",
-      "hook": "What if the Roman Empire never fell? How would our modern world be different?",
-      "tags": [
-        "AlternateHistory",
-        "RomanEmpire",
-        "HistoryFacts",
-        "WhatIf",
-        "AncientHistory"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: Shocking Historical 'What Ifs'",
-      "estimated_views": "medium",
       "is_winner_variation": false,
       "winner_source_id": ""
     }
   ],
   "longform": [
     {
-      "title": "The Sentient Machine: Decoding AI Consciousness",
-      "topic": "20 minute deep analysis of whether Artificial Intelligence can truly become sentient. Cover the philosophical debates, current scientific breakthroughs in AI learning and neural networks, key milestones in AGI development, and the ethical implications of creating truly conscious machines. Discuss concepts like emergent intelligence, Turing tests, and the future challenges of human-AI coexistence. Explore the history of AI's promise and the current race to achieve Artificial General Intelligence (AGI), including specific examples of AI capabilities that blur the lines between computation and cognition.",
-      "hook": "Can a machine truly think, feel, or even dream? The race to create sentient AI is accelerating, challenging everything we know about consciousness.",
+      "title": "AI's Creative Revolution: From Text-to-Video to Medical Breakthroughs (20 Minute Documentary)",
+      "topic": "20 minute deep analysis of the rapid advancements and societal impact of Artificial Intelligence, focusing on two key areas: the text-to-video revolution exemplified by OpenAI's Sora, and AI's transformative role in accelerating drug discovery and medical research. Cover the historical context of AI development, how these specific technologies work, their current capabilities and limitations, ethical considerations, and their profound implications for creative industries, scientific innovation, and the future of humanity. Include specific facts about Sora's capabilities, examples of AI-driven drug design, and expert predictions.",
+      "hook": "Artificial Intelligence is no longer just a futuristic concept; it's actively creating hyper-realistic videos from text and revolutionizing medicine at an unprecedented pace.",
       "tags": [
         "AI",
-        "AGI",
-        "Consciousness",
-        "Philosophy",
+        "SoraAI",
+        "DrugDiscovery",
+        "OpenAI",
         "FutureTech",
-        "Robotics",
-        "Ethics",
-        "ScienceDocumentary"
+        "Documentary",
+        "ArtificialIntelligence",
+        "Innovation"
       ],
-      "inspired_by": "AI-Curated Viral Trends: Will AI Become Sentient?",
+      "inspired_by": "AI-CURATED VIRAL TRENDS (Sora AI, AI in Drug Discovery)",
       "estimated_views": "high",
       "duration_minutes": 20
     },
     {
-      "title": "The Rare Earth Rush: Geopolitics of Critical Minerals",
-      "topic": "20 minute deep analysis of the global competition for rare earth minerals and their profound impact on geopolitics, technology, and economic stability. Cover the essential role these 17 elements play in modern electronics, renewable energy, and defense. Explore the historical dominance of specific countries in mining and processing, the environmental costs of extraction, and the strategies nations are employing to secure their supply chains. Discuss how rare earths are becoming a new battleground in international relations, influencing trade wars, technological advancements, and the balance of global power, providing specific examples of recent supply disruptions and their consequences.",
-      "hook": "Every smartphone, electric car, and fighter jet relies on them, yet the global supply of rare earth minerals is dominated by just a few players, sparking a silent geopolitical war.",
+      "title": "History's Deepest Secrets: Unraveling Dyatlov Pass and Project MKUltra (20 Minute Documentary)",
+      "topic": "20 minute deep analysis of two of history's most enduring and chilling mysteries: the Dyatlov Pass incident and the CIA's Project MKUltra. For Dyatlov Pass, detail the hikers' strange deaths, the unexplained trauma, and the competing theories ranging from avalanches to paradoxical reactions and military involvement. For MKUltra, explore the CIA's unethical mind control experiments, including drug administration, psychological torture, and the destruction of records. Connect these stories by examining how governments and nature can hide truths, and the human fascination with the unknown. Include specific dates, locations, and declassified information where available.",
+      "hook": "From nine hikers found with inexplicable trauma in Russia to the CIA's secret mind control experiments, history is filled with chilling events still shrouded in official secrecy and public speculation.",
       "tags": [
-        "RareEarths",
-        "Geopolitics",
-        "Economics",
-        "Technology",
-        "Mining",
-        "SupplyChain",
-        "GlobalConflict",
-        "Documentary"
+        "DyatlovPass",
+        "MKUltra",
+        "TrueCrime",
+        "Conspiracy",
+        "UnsolvedMysteries",
+        "HistoryDocumentary",
+        "CIA",
+        "ColdWar"
       ],
-      "inspired_by": "Trending World News Videos: economic crisis explained, technology explained",
+      "inspired_by": "AI-CURATED VIRAL TRENDS (Dyatlov Pass Incident, Project MKUltra)",
       "estimated_views": "high",
       "duration_minutes": 20
     }
   ],
   "ambient_recommendations": [
     {
-      "type": "forest",
-      "hours": 8,
-      "reason": "Forest sounds offer natural white noise and a calming atmosphere, perfect for study or concentration."
-    },
-    {
       "type": "ocean",
       "hours": 8,
-      "reason": "The rhythmic sounds of ocean waves provide a deeply relaxing backdrop, ideal for meditation or stress relief."
+      "reason": "Ocean sounds are consistently popular for relaxation, meditation, and blocking out distractions, offering a calming natural soundscape for passive watch time."
     },
     {
-      "type": "aurora",
+      "type": "forest",
       "hours": 8,
-      "reason": "Visually stunning and rare, an aurora video offers a unique and mesmerizing backdrop for relaxation or creative work."
+      "reason": "Forest ambiance, particularly with subtle bird calls and rustling leaves, provides a peaceful backdrop for study, focus, or gentle unwinding, appealing to a broad audience."
+    },
+    {
+      "type": "thunderstorm",
+      "hours": 8,
+      "reason": "The rhythmic sounds of rain and distant thunder are highly effective for masking unwanted noise, promoting deep sleep, and creating a dramatic yet soothing atmosphere for dedicated ambient viewers."
     }
   ],
-  "generated_at": "2026-05-11T23:46:52.334841",
+  "generated_at": "2026-05-12T23:50:43.916352",
   "trending_count": 85,
-  "channels_analyzed": 6,
-  "winner_variations_count": 6,
-  "status": "in_progress",
-  "last_executed_at": "2026-05-12T23:04:55.615741",
-  "results": {
-    "shorts_produced": 1,
-    "longform_produced": 0,
-    "errors": []
-  }
+  "channels_analyzed": 7,
+  "winner_variations_count": 7,
+  "status": "pending"
 }
