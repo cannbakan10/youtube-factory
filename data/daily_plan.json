@@ -15,7 +15,8 @@
       "inspired_by": "Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "jQ6gW5Oe-n8"
+      "winner_source_id": "jQ6gW5Oe-n8",
+      "status": "failed"
     },
     {
       "title": "Pantheon's Oculus: A 2000-Year Air Conditioner",
@@ -365,5 +366,13 @@
   "trending_count": 85,
   "channels_analyzed": 7,
   "winner_variations_count": 7,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-05-13T14:39:14.638781",
+  "results": {
+    "shorts_produced": 0,
+    "longform_produced": 0,
+    "errors": [
+      "Short 'Pantheon Concrete: Rome's Lost Supermaterial' failed (Reason: check logs)"
+    ]
+  }
 }
