@@ -16,7 +16,8 @@
       "estimated_views": "high",
       "is_winner_variation": true,
       "winner_source_id": "jQ6gW5Oe-n8",
-      "status": "failed"
+      "status": "produced",
+      "production_id": "The_Pantheons_concrete_dome_ha_1778859876"
     },
     {
       "title": "Pantheon's Oculus: A 2000-Year Air Conditioner",
@@ -32,7 +33,9 @@
       "inspired_by": "Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "jQ6gW5Oe-n8"
+      "winner_source_id": "jQ6gW5Oe-n8",
+      "status": "produced",
+      "production_id": "The_Pantheons_iconic_oculus_a__1778860078"
     },
     {
       "title": "Early Universe: Galaxy Evolution Speed Shock",
@@ -48,7 +51,9 @@
       "inspired_by": "Oldest Galaxy GLASS-z13 Discovered",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "n41UVkdKXxY"
+      "winner_source_id": "n41UVkdKXxY",
+      "status": "produced",
+      "production_id": "The_discovery_of_GLASSz13_and__1778860236"
     },
     {
       "title": "Hidden Dangers: Kitchen Mold Zones Exposed",
@@ -367,12 +372,10 @@
   "channels_analyzed": 7,
   "winner_variations_count": 7,
   "status": "in_progress",
-  "last_executed_at": "2026-05-15T14:17:07.357308",
+  "last_executed_at": "2026-05-15T15:53:10.829028",
   "results": {
-    "shorts_produced": 0,
+    "shorts_produced": 3,
     "longform_produced": 0,
-    "errors": [
-      "Short 'Pantheon Concrete: Rome's Lost Supermaterial' failed (Reason: check logs)"
-    ]
+    "errors": []
   }
 }
