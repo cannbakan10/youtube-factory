@@ -69,7 +69,9 @@
       "inspired_by": "Restaurant Shutdown After Dirty Fridge & Mold",
       "estimated_views": "medium",
       "is_winner_variation": true,
-      "winner_source_id": "T_yBjy6aSGA"
+      "winner_source_id": "T_yBjy6aSGA",
+      "status": "produced",
+      "production_id": "Beyond_obvious_spoilage_hidden_1778869420"
     },
     {
       "title": "Health Inspection Triggers: What Closes Kitchens",
@@ -372,9 +374,9 @@
   "channels_analyzed": 7,
   "winner_variations_count": 7,
   "status": "in_progress",
-  "last_executed_at": "2026-05-15T15:53:10.829028",
+  "last_executed_at": "2026-05-15T18:26:31.068125",
   "results": {
-    "shorts_produced": 3,
+    "shorts_produced": 1,
     "longform_produced": 0,
     "errors": []
   }
