@@ -1,0 +1,189 @@
+{
+  "timestamp": "2026-05-15T23:43:47.442895",
+  "dry_run": false,
+  "api_health": {
+    "gemini": "ok (gemini-2.5-flash)",
+    "openai": "not_configured",
+    "healthy": true
+  },
+  "performance_review": {
+    "total_recent": 7,
+    "winners_count": 4,
+    "losers_count": 1,
+    "avg_views_48h": 70.6,
+    "best_topics": [
+      "Kitchen Germs: Invisible Threats & Health Risks #Shorts",
+      "Pantheon's Oculus: Ancient AC #Shorts",
+      "2000-Year-Old Dome's Secret Material #Shorts"
+    ],
+    "best_views": [
+      133,
+      123,
+      107
+    ],
+    "winner_titles": [
+      "Kitchen Germs: Invisible Threats & Health Risks #Shorts",
+      "JWST finds galaxies forming impossibly fast #Shorts",
+      "Pantheon's Oculus: Ancient AC #Shorts",
+      "2000-Year-Old Dome's Secret Material #Shorts"
+    ],
+    "loser_titles": [
+      "🔥 Cozy Fireplace 24/7 — Relaxing Fire Sounds for Sleep"
+    ]
+  },
+  "cleanup": {
+    "unlisted": 0,
+    "deleted": 1,
+    "failed": 0,
+    "kept": 36,
+    "thresholds": {
+      "shorts_7d": 25,
+      "shorts_14d": 50,
+      "shorts_30d": 100,
+      "long_14d": 25,
+      "long_30d": 50,
+      "multiplier": 0.5
+    }
+  },
+  "trending": {
+    "found": 84,
+    "viral_shorts_found": 30,
+    "world_news_found": 18,
+    "competitors_analyzed": 0,
+    "comments_mined": 0,
+    "top_5": [
+      {
+        "title": "Crazy women mess with the wrong driver",
+        "views": 35095851,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "AquariumFiltering",
+        "views": 34432898,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Do Fish EAT RAMEN?",
+        "views": 25581484,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Nathan Wore Rain Boots in 10 Degree Weather and Luke Had to ",
+        "views": 11023844,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "The Boy Who Filled A Fence With Nails 😮",
+        "views": 9911343,
+        "category": "Entertainment"
+      }
+    ],
+    "top_viral_shorts": [
+      {
+        "title": "Animals That Seem to Know They’re Dying 💔😨#animalfacts #wild",
+        "views": 3753155,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "The Cruelest Animal Farms In The World 😢#animalfacts #wildli",
+        "views": 3393905,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "Did you know these random basketball facts?",
+        "views": 2726300,
+        "query": "did you know facts"
+      },
+      {
+        "title": "The Shocking Truth of Salmon Fish Farming! The Dark Reality ",
+        "views": 2263926,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "Animals That Nature Designed To Suffer 😨#animalfacts #wildli",
+        "views": 2186861,
+        "query": "animal facts wildlife"
+      }
+    ]
+  },
+  "winners": {
+    "added": 0,
+    "total": 0,
+    "threshold": 0,
+    "median": 0,
+    "active": 0,
+    "top": []
+  },
+  "peak_hours": {
+    "utc": [
+      22,
+      23,
+      0,
+      1,
+      16
+    ],
+    "source": "fallback_defaults",
+    "samples": 0
+  },
+  "retention": {
+    "avg_pct": 0,
+    "avg_dur_sec": 0,
+    "source": "unavailable",
+    "video_count": 0
+  },
+  "ambient_analysis": {
+    "total_ambient": 0,
+    "total_views": 0,
+    "top_type": null,
+    "worst_type": null,
+    "type_rankings": []
+  },
+  "plan": {
+    "shorts_planned": 20,
+    "longform_planned": 2,
+    "ambient_recommendations": [
+      {
+        "type": "rain",
+        "hours": 8,
+        "reason": "Rain sounds are universally appealing for relaxation, sleep, and focus. An 8-hour loop maximizes passive watch time and offers a soothing, non-distracting background for work or meditation, directly addressing the 'passive watch time' goal."
+      },
+      {
+        "type": "forest",
+        "hours": 6,
+        "reason": "Forest sounds combined with gentle visuals provide a calming escape into nature, ideal for users seeking stress relief or a natural soundscape for concentration. It complements BrainBolt's knowledge-based content by offering a peaceful environment for learning or contemplation."
+      },
+      {
+        "type": "aurora",
+        "hours": 4,
+        "reason": "An aurora loop offers visually stunning and unique ambient content, tapping into the human fascination with cosmic phenomena. It provides a mesmerizing, yet tranquil, visual experience that can capture attention and encourage passive viewing for several hours."
+      }
+    ],
+    "winner_variations_count": 0,
+    "shorts": [
+      "Figure's Robot Can Now Pour You a Drink",
+      "JWST Saw Stars Born 13.4 Billion Years Ago",
+      "D.B. Cooper's Parachute Found, Body Never Was",
+      "Tulsa's Black Wall Street Destroyed in a Day",
+      "Germany Started Daylight Saving Time in 1916",
+      "GPT-4o Can Read Your Emotions Via Webcam",
+      "CRISPR Cured Sickle Cell Anemia's Genetic Code",
+      "Knocking on Wood Comes From Tree Spirits",
+      "The CIA Tried Mind Control with LSD & Hypnosis",
+      "Over 50 Ships Vanished in Bermuda Triangle",
+      "AI Art Uses Copyrighted Work Without Consent",
+      "A Ghost Shark Lives in the Deep Pacific Ocean",
+      "Thousands Vanish Annually in US National Parks",
+      "Australia Lost a War Against Emus in 1932",
+      "Microplastics Found in Human Blood & Brains",
+      "Elephants Mourn Their Dead Relatives' Bones",
+      "Foie Gras: Force-Feeding Ducks for Swollen Livers",
+      "Farmed Salmon's Pink Color Is From Their Diet",
+      "1859 Solar Flare Shocked Telegraph Operators",
+      "Horses Can Mirror and Understand Human Emotions"
+    ],
+    "longform": [
+      "The Unstoppable March: Decoding Germany's 1939 Expansion",
+      "The Secret History of Skinwalker Ranch: Unpacking Its Enduri"
+    ]
+  }
+}

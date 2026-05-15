@@ -1,316 +1,322 @@
 {
-  "date": "2026-05-13",
+  "date": "2026-05-16",
   "shorts": [
     {
-      "title": "Pantheon Concrete: Rome's Lost Supermaterial",
-      "topic": "The Pantheon's concrete dome has endured 2000 years, a recipe lost to time. Explain how Roman volcanic concrete, using pozzolana ash, self-heals and gains strength over millennia, unlike modern concrete.",
-      "hook": "The concrete in Rome's Pantheon is stronger today than when it was first poured, a 2000-year-old secret still baffling engineers.",
+      "title": "Figure's Robot Can Now Pour You a Drink",
+      "topic": "The humanoid robot from Figure AI has gone viral demonstrating human-like dexterity, including pouring and handing out drinks. This short will explain the specific AI advancements allowing such complex tasks and the potential everyday implications of these robots.",
+      "hook": "A humanoid robot from Figure AI just went viral for expertly pouring and handing out drinks, showcasing incredible dexterity. But how is this possible?",
       "tags": [
-        "Pantheon",
-        "RomanEngineering",
-        "AncientTech",
-        "History",
-        "Concrete"
-      ],
-      "inspired_by": "Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome",
-      "estimated_views": "high",
-      "is_winner_variation": true,
-      "winner_source_id": "jQ6gW5Oe-n8",
-      "status": "produced",
-      "production_id": "The_Pantheons_concrete_dome_ha_1778859876"
-    },
-    {
-      "title": "Pantheon's Oculus: A 2000-Year Air Conditioner",
-      "topic": "The Pantheon's iconic oculus, a 30-foot open hole to the sky, serves a surprising purpose beyond light: it's an ancient air conditioning system, cleverly using convection to cool the vast interior.",
-      "hook": "Rome's Pantheon has a massive hole in its roof, not just for light, but as an ingenious 2000-year-old air conditioning system.",
-      "tags": [
-        "Pantheon",
-        "Oculus",
-        "AncientRome",
-        "Architecture",
-        "Engineering"
-      ],
-      "inspired_by": "Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome",
-      "estimated_views": "high",
-      "is_winner_variation": true,
-      "winner_source_id": "jQ6gW5Oe-n8",
-      "status": "produced",
-      "production_id": "The_Pantheons_iconic_oculus_a__1778860078"
-    },
-    {
-      "title": "Early Universe: Galaxy Evolution Speed Shock",
-      "topic": "The discovery of GLASS-z13 and other early galaxies by JWST challenges existing models of cosmic evolution, suggesting stars and galaxies formed much faster in the early universe than previously thought.",
-      "hook": "The universe's earliest galaxies are forcing scientists to rethink how quickly stars and structures formed after the Big Bang.",
-      "tags": [
-        "EarlyUniverse",
-        "GalaxyFormation",
-        "Astronomy",
-        "JWST",
-        "CosmicEvolution"
-      ],
-      "inspired_by": "Oldest Galaxy GLASS-z13 Discovered",
-      "estimated_views": "high",
-      "is_winner_variation": true,
-      "winner_source_id": "n41UVkdKXxY",
-      "status": "produced",
-      "production_id": "The_discovery_of_GLASSz13_and__1778860236"
-    },
-    {
-      "title": "Hidden Dangers: Kitchen Mold Zones Exposed",
-      "topic": "Beyond obvious spoilage, hidden mold and bacteria thrive in specific, often overlooked kitchen zones, posing significant health risks and triggering immediate health code violations.",
-      "hook": "Even seemingly clean kitchens hide dangerous mold zones that can instantly shut down an establishment.",
-      "tags": [
-        "FoodSafety",
-        "KitchenHygiene",
-        "Mold",
-        "HealthInspection",
-        "HiddenDangers"
-      ],
-      "inspired_by": "Restaurant Shutdown After Dirty Fridge & Mold",
-      "estimated_views": "medium",
-      "is_winner_variation": true,
-      "winner_source_id": "T_yBjy6aSGA",
-      "status": "produced",
-      "production_id": "Beyond_obvious_spoilage_hidden_1778869420"
-    },
-    {
-      "title": "Health Inspection Triggers: What Closes Kitchens",
-      "topic": "Uncover the specific, often surprising, health code violations that lead to immediate kitchen closures, from temperature abuse in fridges to cross-contamination issues that patrons rarely see.",
-      "hook": "Health inspectors look for specific, often invisible, violations that can shut down a kitchen in minutes.",
-      "tags": [
-        "FoodSafety",
-        "HealthViolations",
-        "KitchenSecrets",
-        "PublicHealth",
-        "Inspection"
-      ],
-      "inspired_by": "Restaurant Shutdown After Dirty Fridge & Mold",
-      "estimated_views": "medium",
-      "is_winner_variation": true,
-      "winner_source_id": "T_yBjy6aSGA",
-      "status": "produced",
-      "production_id": "Uncover_the_specific_often_sur_1778885702"
-    },
-    {
-      "title": "Snake Island's Viper: Gold, Venom, Isolation",
-      "topic": "Brazil's Ilha da Queimada Grande, or Snake Island, is home to the Golden Lancehead Viper, a species found nowhere else. Its potent venom and island isolation have made it one of the most feared snakes.",
-      "hook": "Brazil's infamous Snake Island is the only place on Earth where the Golden Lancehead Viper lives, armed with a venom that can cause rapid tissue necrosis.",
-      "tags": [
-        "SnakeIsland",
-        "Vipers",
-        "GoldenLancehead",
-        "Wildlife",
-        "Brazil"
-      ],
-      "inspired_by": "Deadly Snake Island: Venom Liquefies Flesh",
-      "estimated_views": "high",
-      "is_winner_variation": true,
-      "winner_source_id": "40TJre3Wyy8"
-    },
-    {
-      "title": "Snake Island: Why Humans Are Forbidden",
-      "topic": "Explore why Brazil strictly forbids human entry to Ilha da Queimada Grande, known as Snake Island. It's not just the sheer number of highly venomous vipers, but their aggressive nature and evolutionary adaptations that make it uniquely dangerous for humans.",
-      "hook": "No human is allowed on Brazil's Snake Island, not just because of its thousands of vipers, but because their venom is among the fastest acting in the world.",
-      "tags": [
-        "SnakeIsland",
-        "ForbiddenPlaces",
-        "Venom",
-        "Conservation",
-        "WildlifeFacts"
-      ],
-      "inspired_by": "Deadly Snake Island: Venom Liquefies Flesh",
-      "estimated_views": "high",
-      "is_winner_variation": true,
-      "winner_source_id": "40TJre3Wyy8"
-    },
-    {
-      "title": "Sora AI: One Minute Of Ultra-Realistic Video",
-      "topic": "OpenAI's Sora AI can generate stunning, realistic video clips up to a minute long from simple text prompts, showing complex scene interactions and character emotions that blur the line with reality.",
-      "hook": "OpenAI's new Sora AI is generating mind-bending, minute-long video clips from text that are almost indistinguishable from real footage.",
-      "tags": [
-        "AI",
-        "Sora",
-        "OpenAI",
-        "TextToVideo",
+        "HumanoidRobot",
+        "FigureAI",
+        "AIAdvancements",
+        "Robotics",
         "FutureTech"
       ],
-      "inspired_by": "Sora AI's Mind-Blowing Text-to-Video Revolution",
+      "inspired_by": "The Rise of Humanoid Robots and Their Future Impact (AI-curated trend)",
       "estimated_views": "high",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "JWST's Exoplanet Search: Life Beyond Earth?",
-      "topic": "The James Webb Space Telescope isn't just seeing distant galaxies; it's analyzing exoplanet atmospheres for biosignatures, chemical clues that could indicate the presence of alien life beyond Earth.",
-      "hook": "The James Webb Space Telescope is scrutinizing exoplanet atmospheres, searching for chemical fingerprints that could signal the presence of life light-years away.",
+      "title": "JWST Saw Stars Born 13.4 Billion Years Ago",
+      "topic": "The James Webb Space Telescope recently detected stars that formed only 350 million years after the Big Bang, pushing back our understanding of cosmic dawn. This short explains the significance of these extremely distant, ancient stars and what they tell us about the early universe.",
+      "hook": "The James Webb Space Telescope has captured light from stars that formed an astonishing 13.4 billion years ago, barely after the Big Bang itself. But why does this discovery matter?",
       "tags": [
         "JWST",
-        "Exoplanets",
-        "AlienLife",
-        "Space",
+        "SpaceFacts",
+        "CosmicOrigins",
+        "FirstStars",
         "Astronomy"
       ],
-      "inspired_by": "James Webb Space Telescope: Latest Discoveries on Early Galaxies",
+      "inspired_by": "James Webb Telescope: Unveiling the Universe's First Stars and Galaxies (AI-curated trend)",
       "estimated_views": "high",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "Dyatlov Pass: Hikers' Bodies Unexplained Trauma",
-      "topic": "The Dyatlov Pass incident remains an enigma: nine hikers died with inexplicable injuries, some with internal trauma and fractured skulls but no external wounds, fueling theories from avalanches to paranormal activity.",
-      "hook": "Nine hikers in Russia's Dyatlov Pass died with fractured skulls and missing eyes, yet no external struggle, leaving one of history's most baffling mysteries.",
+      "title": "D.B. Cooper's Parachute Found, Body Never Was",
+      "topic": "After D.B. Cooper famously parachuted from a plane with ransom money in 1971, only part of his parachute was found years later, but his body or the rest of the money never were. This short explores the specific details of the recovered parachute and why it offered tantalizing clues but no definitive answers.",
+      "hook": "In 1971, D.B. Cooper vanished mid-flight with ransom money, only for a piece of his parachute to be found years later, his body still missing. What did that discovery reveal?",
       "tags": [
-        "DyatlovPass",
-        "UnsolvedMystery",
-        "TrueCrime",
-        "History",
-        "ColdCase"
+        "DBCooper",
+        "TrueMystery",
+        "UnsolvedCase",
+        "ColdCase",
+        "Skyjacking"
       ],
-      "inspired_by": "The Unsolved Mystery of the Dyatlov Pass Incident",
+      "inspired_by": "The Enduring Mystery of D.B. Cooper: Are We Closer to the Truth? (AI-curated trend)",
       "estimated_views": "high",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "CRISPR Gene Editing: Editing Human Embryos",
-      "topic": "CRISPR gene editing technology allows scientists to modify DNA with unprecedented precision, raising ethical questions about its use in human embryos to eliminate genetic diseases before birth.",
-      "hook": "CRISPR gene editing has the power to eliminate inherited diseases by modifying human embryos, presenting a future where genetic flaws could be erased before birth.",
+      "title": "Tulsa's Black Wall Street Destroyed in a Day",
+      "topic": "In 1921, the thriving African American community of Greenwood in Tulsa, Oklahoma, known as 'Black Wall Street', was destroyed in a single day by a white mob. This short focuses on the specific historical events of that brutal day and its devastating impact.",
+      "hook": "On a single day in 1921, Tulsa, Oklahoma's prosperous 'Black Wall Street' was brutally destroyed by a white mob, erasing decades of black wealth and progress. What exactly happened?",
+      "tags": [
+        "TulsaMassacre",
+        "BlackHistory",
+        "USHistory",
+        "RacialInjustice",
+        "Greenwood"
+      ],
+      "inspired_by": "The Tulsa Race Massacre: A Century of Silence and Its Resurgence in Public Awareness (AI-curated trend)",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Germany Started Daylight Saving Time in 1916",
+      "topic": "Germany was the first country to officially implement Daylight Saving Time in 1916 during World War I to conserve coal. This short explains the specific historical context of this decision and how it led to a global shift.",
+      "hook": "Did you know Germany was the very first country to implement Daylight Saving Time in 1916? It was a wartime measure. But why did they do it?",
+      "tags": [
+        "DaylightSaving",
+        "WW1History",
+        "GermanyFacts",
+        "HistoricalFacts",
+        "TimeChange"
+      ],
+      "inspired_by": "Daylight Saving Time: The Surprising History and Why We Still Change Clocks (AI-curated trend)",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "GPT-4o Can Read Your Emotions Via Webcam",
+      "topic": "OpenAI's GPT-4o model introduced multimodal capabilities, including the ability to interpret user emotions and intent through live webcam video and voice, not just text. This short explains how this specific AI feature works and its startling implications for human-AI interaction.",
+      "hook": "OpenAI's latest model, GPT-4o, can now interpret your emotions and intentions simply by analyzing your webcam video and voice. How does it achieve this unprecedented level of understanding?",
+      "tags": [
+        "GPT4o",
+        "OpenAI",
+        "AICommunication",
+        "MultimodalAI",
+        "TechFacts"
+      ],
+      "inspired_by": "GPT-4o: The Future of Human-AI Multimodal Communication and Its Implications (AI-curated trend)",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "CRISPR Cured Sickle Cell Anemia's Genetic Code",
+      "topic": "CRISPR gene-editing technology has achieved a groundbreaking milestone by successfully curing patients with sickle cell anemia, a debilitating genetic blood disorder. This short explains the specific mechanism by which CRISPR targets and corrects the genetic mutation responsible for the disease.",
+      "hook": "CRISPR gene editing just made history by effectively curing sickle cell anemia, one of the most widespread genetic blood disorders. How does this revolutionary technology rewrite our very DNA?",
       "tags": [
         "CRISPR",
-        "Genetics",
-        "Bioethics",
-        "Medicine",
-        "Future"
+        "GeneEditing",
+        "SickleCell",
+        "MedicalBreakthrough",
+        "ScienceFacts"
       ],
-      "inspired_by": "CRISPR Gene Editing: New Cures & Ethical Dilemmas",
+      "inspired_by": "CRISPR Technology: Curing Diseases and Navigating Ethical Dilemmas (AI-curated trend)",
       "estimated_views": "high",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "Antikythera Mechanism: Ancient Greek Computer",
-      "topic": "The Antikythera Mechanism, recovered from a shipwreck, is a 2000-year-old astronomical calculator. Its complex gears predict eclipses and planetary positions, showcasing technology far beyond its supposed era.",
-      "hook": "Ancient Greeks built a device 2000 years ago, the Antikythera Mechanism, that could predict celestial movements with the precision of a modern computer.",
+      "title": "Knocking on Wood Comes From Tree Spirits",
+      "topic": "The common superstition of 'knocking on wood' to ward off bad luck actually originates from ancient pagan beliefs that benevolent spirits resided in trees. This short details the specific historical and cultural origins of this widespread practice.",
+      "hook": "You knock on wood for good luck, but did you know this superstition comes from ancient beliefs that tree spirits could protect you? What's the true history behind it?",
       "tags": [
-        "AncientTech",
-        "Archaeology",
-        "History",
-        "Innovation",
-        "Science"
+        "Superstitions",
+        "Mythology",
+        "Folklore",
+        "AncientBeliefs",
+        "CulturalFacts"
       ],
-      "inspired_by": "Ancient Civilizations: Shocking Technologies Ahead of Their Time",
-      "estimated_views": "high",
+      "inspired_by": "The True Origins of Common Superstitions: Why We Believe What We Believe (AI-curated trend)",
+      "estimated_views": "medium",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "Neuralink: Human Thoughts Control Computers",
-      "topic": "Elon Musk's Neuralink has successfully implanted brain-computer interfaces into humans, allowing thoughts to directly control computers, a breakthrough that could revolutionize treatment for paralysis.",
-      "hook": "Elon Musk's Neuralink has just allowed a human to control a computer cursor with their thoughts alone, marking a monumental step for brain-computer interfaces.",
+      "title": "The CIA Tried Mind Control with LSD & Hypnosis",
+      "topic": "Project MKUltra was a real, controversial CIA program that experimented with methods of mind control, including administering LSD and using hypnosis on unwitting subjects. This short details the specific, shocking experiments conducted under MKUltra and their ethical implications.",
+      "hook": "It sounds like a movie plot, but the CIA really did run a secret program called MKUltra, experimenting with LSD and hypnosis to try and achieve mind control. What dark secrets did they uncover?",
       "tags": [
-        "Neuralink",
-        "BCI",
-        "ElonMusk",
-        "FutureTech",
-        "Neuroscience"
+        "MKUltra",
+        "CIASecrets",
+        "Conspiracy",
+        "ColdWar",
+        "MindControl"
       ],
-      "inspired_by": "Neuralink's First Human Trials",
+      "inspired_by": "Project MKUltra: The CIA's Shocking Mind Control Experiments Revealed (AI-curated trend)",
       "estimated_views": "high",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "Mariana Trench: Life In Crushing Darkness",
-      "topic": "The Mariana Trench, Earth's deepest point, hosts bizarre life forms adapted to unimaginable pressure and complete darkness, surviving on chemical energy rather than sunlight in hidden ecosystems.",
-      "hook": "At the bottom of the Mariana Trench, where sunlight never reaches and pressure crushes steel, life thrives in forms stranger than science fiction.",
+      "title": "Over 50 Ships Vanished in Bermuda Triangle",
+      "topic": "The Bermuda Triangle is famously associated with the disappearance of over 50 ships and 20 aircraft, often without a trace, in a specific region of the western North Atlantic Ocean. This short explores one specific, notable disappearance (e.g., Flight 19) and the scientific theories attempting to explain these events.",
+      "hook": "In the mysterious Bermuda Triangle, over 50 ships and 20 aircraft have vanished without a trace. What happened to them, and is there a scientific explanation for these disappearances?",
+      "tags": [
+        "BermudaTriangle",
+        "UnexplainedMystery",
+        "OceanMystery",
+        "MissingShips",
+        "Flight19"
+      ],
+      "inspired_by": "The Bermuda Triangle: Scientific Explanations vs. Legendary Lore (AI-curated trend)",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "AI Art Uses Copyrighted Work Without Consent",
+      "topic": "A major ethical and legal challenge with AI-generated art is that many models are trained on vast datasets of copyrighted images without explicit consent from the original artists. This short focuses on the specific legal battles and ethical concerns surrounding this practice.",
+      "hook": "Many popular AI art generators use massive datasets to create images, but often, these datasets include copyrighted artwork without the original artist's permission. Is AI art stealing from creators?",
+      "tags": [
+        "AIArt",
+        "CopyrightLaw",
+        "EthicalAI",
+        "GenerativeAI",
+        "ArtistRights"
+      ],
+      "inspired_by": "The Dark Side of AI Art: Copyright, Ethics, and the Future of Creativity (AI-curated trend)",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "A Ghost Shark Lives in the Deep Pacific Ocean",
+      "topic": "Scientists recently discovered a 'ghost shark' species (Chimaera) in the deep waters off the Pacific coast, a creature so elusive and bizarre it looks alien. This short highlights the unique characteristics of this specific deep-sea creature and the challenges of exploring its habitat.",
+      "hook": "Deep in the Pacific Ocean, scientists have discovered a creature so bizarre and elusive, they call it a 'ghost shark.' What makes this deep-sea dweller truly alien?",
       "tags": [
         "DeepSea",
-        "MarianaTrench",
-        "Ocean",
+        "OceanLife",
+        "GhostShark",
         "MarineBiology",
-        "Extremophile"
+        "NewSpecies"
       ],
-      "inspired_by": "Deep-Sea Discoveries",
+      "inspired_by": "Deep Sea Discoveries: Alien Worlds and Bizarre Creatures Hidden Beneath Our Oceans (AI-curated trend)",
       "estimated_views": "high",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "Mandela Effect: Berenstain Bears Or Berenstein?",
-      "topic": "The Mandela Effect is a phenomenon where many people collectively misremember facts, like the spelling of 'Berenstain Bears' as 'Berenstein,' sparking debates on alternate realities versus cognitive biases.",
-      "hook": "Millions swear the children's books were 'Berenstein Bears,' not 'Berenstain Bears,' a classic example of the Mandela Effect where collective memory defies reality.",
+      "title": "Thousands Vanish Annually in US National Parks",
+      "topic": "Thousands of people go missing in US National Parks every year, with many disappearances remaining unexplained, a phenomenon often associated with the 'Missing 411' theories. This short will focus on a specific, high-profile case of a perplexing disappearance in a national park.",
+      "hook": "Thousands of people vanish in US National Parks every year, often without a trace, baffling search teams and fueling theories. What truly happens when people disappear into the wilderness?",
       "tags": [
-        "MandelaEffect",
-        "Psychology",
-        "CognitiveScience",
-        "Memory",
-        "Paranormal"
+        "Missing411",
+        "NationalParks",
+        "TrueCrime",
+        "UnexplainedDisappearances",
+        "WildernessMystery"
       ],
-      "inspired_by": "The Mandela Effect",
+      "inspired_by": "The 'Missing 411' Phenomenon: Unexplained Disappearances in National Parks (AI-curated trend)",
       "estimated_views": "high",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "Tesla's Wardenclyffe Tower: Free Wireless Power?",
-      "topic": "Nikola Tesla's Wardenclyffe Tower was intended to be a global wireless transmission station, capable of beaming free electricity and communications across the Atlantic, but it was mysteriously shut down.",
-      "hook": "Nikola Tesla once built a giant tower, Wardenclyffe, believing he could provide free, wireless electricity to the entire world, a vision that was never realized.",
+      "title": "Australia Lost a War Against Emus in 1932",
+      "topic": "In 1932, the Australian military was deployed against a large population of emus in Western Australia to protect crops, in what became known as the 'Great Emu War' – which the emus ultimately won. This short recounts the specific events and the surprising outcome of this bizarre historical conflict.",
+      "hook": "Believe it or not, in 1932, Australia actually deployed its military against a huge population of emus – and lost. What on earth was the Great Emu War?",
       "tags": [
-        "NikolaTesla",
-        "Wardenclyffe",
-        "LostTech",
-        "History",
-        "Inventor"
+        "EmuWar",
+        "AustraliaHistory",
+        "BizarreHistory",
+        "MilitaryHistory",
+        "AnimalFacts"
       ],
-      "inspired_by": "Nikola Tesla's Lost Inventions",
+      "inspired_by": "The Great Emu War of Australia: When Soldiers Fought Birds and Lost (AI-curated trend)",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Microplastics Found in Human Blood & Brains",
+      "topic": "Recent scientific studies have confirmed the presence of microplastics not only in the human bloodstream but also in brain tissue, raising serious concerns about their health impacts. This short explains the specific findings and the potential long-term risks of microplastic accumulation in the body.",
+      "hook": "Scientists have made a shocking discovery: microplastics are now being found not just in our blood, but also inside human brain tissue. What does this mean for our health?",
+      "tags": [
+        "Microplastics",
+        "EnvironmentalHealth",
+        "Pollution",
+        "ScienceFacts",
+        "HealthAlert"
+      ],
+      "inspired_by": "The Secret Life of Plastic: How Microplastics Are Invading Our Bodies and Environment (AI-curated trend)",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Elephants Mourn Their Dead Relatives' Bones",
+      "topic": "Elephants are one of the few species known to exhibit complex behaviors around the remains of their dead, often returning to specific sites and interacting with the bones of deceased family members, suggesting a form of mourning. This short details these specific behaviors and what they indicate about elephant intelligence and empathy.",
+      "hook": "Elephants are known to mourn their dead, often returning to the skeletal remains of their relatives and engaging in solemn, ritualistic behaviors. What does this reveal about their emotional depth?",
+      "tags": [
+        "ElephantFacts",
+        "AnimalEmotions",
+        "Wildlife",
+        "AnimalIntelligence",
+        "NatureFacts"
+      ],
+      "inspired_by": "Animals That Seem to Know They’re Dying (Viral Niche Short)",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Foie Gras: Force-Feeding Ducks for Swollen Livers",
+      "topic": "The production of foie gras involves a controversial practice of 'gavage' – force-feeding ducks or geese through a tube to enlarge their livers up to ten times their normal size. This short delves into the specific process of foie gras production and its ethical debates.",
+      "hook": "Foie gras, a luxury delicacy, is produced through a controversial method called 'gavage,' where ducks and geese are force-fed until their livers swell to an enormous size. Is this ethical?",
+      "tags": [
+        "AnimalWelfare",
+        "FoieGras",
+        "FoodIndustry",
+        "EthicalDebate",
+        "AnimalFacts"
+      ],
+      "inspired_by": "The Cruelest Animal Farms In The World (Viral Niche Short)",
       "estimated_views": "medium",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "Quantum Computers: Qubit's Superposition Secret",
-      "topic": "Unlike traditional bits, quantum computers use 'qubits' that can be both 0 and 1 simultaneously through superposition. This allows them to perform calculations exponentially faster for complex problems.",
-      "hook": "Quantum computers solve problems unimaginable for regular computers, thanks to 'qubits' that can exist in multiple states at once, not just a simple on or off.",
+      "title": "Farmed Salmon's Pink Color Is From Their Diet",
+      "topic": "While wild salmon get their pink color from their diet of crustaceans, farmed salmon's flesh is naturally gray and is often colored pink by adding synthetic carotenoids (like astaxanthin) to their feed. This short reveals the specific feeding practices in salmon farming and why their color is altered.",
+      "hook": "Did you know that farmed salmon's vibrant pink color often comes from artificial dyes added to their feed, rather than their natural diet? The truth is surprising.",
       "tags": [
-        "QuantumComputing",
-        "FutureTech",
-        "Physics",
-        "Science",
-        "AI"
+        "SalmonFarming",
+        "FoodFacts",
+        "Aquaculture",
+        "HealthFacts",
+        "DietTruth"
       ],
-      "inspired_by": "Quantum Computing: How It Works and Its Future Impact",
-      "estimated_views": "medium",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Fermi Paradox: Where Are All The Aliens?",
-      "topic": "The Fermi Paradox asks: if the universe is vast and ancient, with billions of potentially habitable planets, why haven't we found any evidence of alien civilizations? Are we truly alone?",
-      "hook": "The universe is ancient, vast, and teeming with billions of planets, yet the Fermi Paradox asks a chilling question: where is everybody?",
-      "tags": [
-        "FermiParadox",
-        "AlienLife",
-        "Space",
-        "Astronomy",
-        "Mystery"
-      ],
-      "inspired_by": "The Fermi Paradox: Why Haven't We Found Alien Life Yet?",
+      "inspired_by": "The Shocking Truth of Salmon Fish Farming! (Viral Niche Short)",
       "estimated_views": "high",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "Göbekli Tepe: Humanity's First Temple 11,000 BCE",
-      "topic": "Göbekli Tepe in Turkey, dated to 9600–9000 BCE, predates farming and writing, challenging our understanding of civilization's origins by revealing complex, monumental structures built by hunter-gatherers.",
-      "hook": "Before agriculture, before cities, hunter-gatherers built Göbekli Tepe, a massive temple complex in Turkey 11,000 years ago, rewriting human history.",
+      "title": "1859 Solar Flare Shocked Telegraph Operators",
+      "topic": "The Carrington Event of 1859 was the most powerful solar storm in recorded history, causing bright auroras globally and, more specifically, making telegraph systems spark, shocking operators, and even allowing some to operate without batteries. This short focuses on the specific terrestrial impacts of this historic solar flare.",
+      "hook": "In 1859, the most powerful solar storm in history, the Carrington Event, caused telegraph machines to spark, shock operators, and even transmit messages without batteries. What cosmic force was at play?",
       "tags": [
-        "GobekliTepe",
-        "Archaeology",
-        "AncientHistory",
-        "Civilization",
-        "Mystery"
+        "SolarFlare",
+        "CarringtonEvent",
+        "SpaceWeather",
+        "HistoryFacts",
+        "ScienceHistory"
       ],
-      "inspired_by": "Forgotten Wonders: Ancient Sites More Mysterious Than the Pyramids",
+      "inspired_by": "1859: Earth’s Fastest Solar Slam (Viral Niche Short)",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Horses Can Mirror and Understand Human Emotions",
+      "topic": "Research shows that horses possess a remarkable ability to not only recognize human emotions through facial expressions but also to 'mirror' those emotions, indicating a deep level of social intelligence and empathy. This short explores the specific scientific findings behind this equine emotional understanding.",
+      "hook": "Horses aren't just intelligent; they can actually recognize and even mirror human emotions, showing a profound understanding of our feelings. How do these majestic animals achieve such empathy?",
+      "tags": [
+        "HorseFacts",
+        "AnimalCognition",
+        "Equine",
+        "AnimalEmpathy",
+        "ScienceOfAnimals"
+      ],
+      "inspired_by": "Why Are Horses So Intelligent (Viral Niche Short)",
       "estimated_views": "high",
       "is_winner_variation": false,
       "winner_source_id": ""
@@ -318,68 +324,59 @@
   ],
   "longform": [
     {
-      "title": "AI's Creative Revolution: From Text-to-Video to Medical Breakthroughs (20 Minute Documentary)",
-      "topic": "20 minute deep analysis of the rapid advancements and societal impact of Artificial Intelligence, focusing on two key areas: the text-to-video revolution exemplified by OpenAI's Sora, and AI's transformative role in accelerating drug discovery and medical research. Cover the historical context of AI development, how these specific technologies work, their current capabilities and limitations, ethical considerations, and their profound implications for creative industries, scientific innovation, and the future of humanity. Include specific facts about Sora's capabilities, examples of AI-driven drug design, and expert predictions.",
-      "hook": "Artificial Intelligence is no longer just a futuristic concept; it's actively creating hyper-realistic videos from text and revolutionizing medicine at an unprecedented pace.",
+      "title": "The Unstoppable March: Decoding Germany's 1939 Expansion",
+      "topic": "20 minute deep analysis focusing on the geopolitical, economic, and ideological factors that drove Nazi Germany's expansionist policies beyond the invasion of Poland in 1939. This would cover the motivations behind the Blitzkrieg, the role of key figures like Hitler, the reactions and miscalculations of Allied powers, and the long-term strategic aims that led to a global conflict. Explain the diplomatic failures, military doctrines, and the domestic pressures that fueled this relentless drive for more territory and power, examining primary sources and historical interpretations.",
+      "hook": "In September 1939, after swiftly conquering Poland, Nazi Germany stood at a precipice. The world held its breath. Why, then, did Hitler choose to push even further, igniting a conflict that would engulf the entire globe instead of consolidating his gains?",
       "tags": [
-        "AI",
-        "SoraAI",
-        "DrugDiscovery",
-        "OpenAI",
-        "FutureTech",
-        "Documentary",
-        "ArtificialIntelligence",
-        "Innovation"
+        "WW2 History",
+        "Nazi Germany",
+        "Geopolitics",
+        "Historical Analysis",
+        "Military Strategy",
+        "Hitler"
       ],
-      "inspired_by": "AI-CURATED VIRAL TRENDS (Sora AI, AI in Drug Discovery)",
+      "inspired_by": "Why didn't Germany stop expanding in 1939? (Trending World News)",
       "estimated_views": "high",
       "duration_minutes": 20
     },
     {
-      "title": "History's Deepest Secrets: Unraveling Dyatlov Pass and Project MKUltra (20 Minute Documentary)",
-      "topic": "20 minute deep analysis of two of history's most enduring and chilling mysteries: the Dyatlov Pass incident and the CIA's Project MKUltra. For Dyatlov Pass, detail the hikers' strange deaths, the unexplained trauma, and the competing theories ranging from avalanches to paradoxical reactions and military involvement. For MKUltra, explore the CIA's unethical mind control experiments, including drug administration, psychological torture, and the destruction of records. Connect these stories by examining how governments and nature can hide truths, and the human fascination with the unknown. Include specific dates, locations, and declassified information where available.",
-      "hook": "From nine hikers found with inexplicable trauma in Russia to the CIA's secret mind control experiments, history is filled with chilling events still shrouded in official secrecy and public speculation.",
+      "title": "The Secret History of Skinwalker Ranch: Unpacking Its Enduring Mysteries",
+      "topic": "20 minute deep analysis into the history, alleged paranormal activities, and multi-decade scientific investigations surrounding Skinwalker Ranch in Utah. Explore the Ute tribal legends predating European settlement, the harrowing experiences of the Sherman family, the covert BASS and NIDS investigations, and the recent revelations from the History Channel series. Detail claims of UFOs, cryptids, interdimensional portals, cattle mutilations, and other unexplained phenomena, critically examining the evidence and the enduring theories behind why it continues to be a hotspot for the unknown. Include the role of Robert Bigelow and the scientific teams involved.",
+      "hook": "Nestled in rural Utah lies Skinwalker Ranch, a property so steeped in unexplained phenomena – from UFOs and cryptids to interdimensional portals – that it has captivated scientists, paranormal investigators, and even the US government for decades. What secrets does this enigmatic land truly hold?",
       "tags": [
-        "DyatlovPass",
-        "MKUltra",
-        "TrueCrime",
-        "Conspiracy",
-        "UnsolvedMysteries",
-        "HistoryDocumentary",
-        "CIA",
-        "ColdWar"
+        "SkinwalkerRanch",
+        "UFO Mystery",
+        "Paranormal",
+        "Unexplained Phenomena",
+        "Cryptids",
+        "TrueMystery",
+        "Conspiracy"
       ],
-      "inspired_by": "AI-CURATED VIRAL TRENDS (Dyatlov Pass Incident, Project MKUltra)",
+      "inspired_by": "Revisiting the Ranch’s Wildest Events | The Secret of Skinwalker Ranch (Trending World News)",
       "estimated_views": "high",
       "duration_minutes": 20
     }
   ],
   "ambient_recommendations": [
     {
-      "type": "ocean",
+      "type": "rain",
       "hours": 8,
-      "reason": "Ocean sounds are consistently popular for relaxation, meditation, and blocking out distractions, offering a calming natural soundscape for passive watch time."
+      "reason": "Rain sounds are universally appealing for relaxation, sleep, and focus. An 8-hour loop maximizes passive watch time and offers a soothing, non-distracting background for work or meditation, directly addressing the 'passive watch time' goal."
     },
     {
       "type": "forest",
-      "hours": 8,
-      "reason": "Forest ambiance, particularly with subtle bird calls and rustling leaves, provides a peaceful backdrop for study, focus, or gentle unwinding, appealing to a broad audience."
+      "hours": 6,
+      "reason": "Forest sounds combined with gentle visuals provide a calming escape into nature, ideal for users seeking stress relief or a natural soundscape for concentration. It complements BrainBolt's knowledge-based content by offering a peaceful environment for learning or contemplation."
     },
     {
-      "type": "thunderstorm",
-      "hours": 8,
-      "reason": "The rhythmic sounds of rain and distant thunder are highly effective for masking unwanted noise, promoting deep sleep, and creating a dramatic yet soothing atmosphere for dedicated ambient viewers."
+      "type": "aurora",
+      "hours": 4,
+      "reason": "An aurora loop offers visually stunning and unique ambient content, tapping into the human fascination with cosmic phenomena. It provides a mesmerizing, yet tranquil, visual experience that can capture attention and encourage passive viewing for several hours."
     }
   ],
-  "generated_at": "2026-05-12T23:50:43.916352",
-  "trending_count": 85,
-  "channels_analyzed": 7,
-  "winner_variations_count": 7,
-  "status": "in_progress",
-  "last_executed_at": "2026-05-15T22:57:28.410292",
-  "results": {
-    "shorts_produced": 1,
-    "longform_produced": 0,
-    "errors": []
-  }
+  "generated_at": "2026-05-15T23:44:54.618318",
+  "trending_count": 84,
+  "channels_analyzed": 8,
+  "winner_variations_count": 0,
+  "status": "pending"
 }
