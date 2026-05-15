@@ -87,7 +87,9 @@
       "inspired_by": "Restaurant Shutdown After Dirty Fridge & Mold",
       "estimated_views": "medium",
       "is_winner_variation": true,
-      "winner_source_id": "T_yBjy6aSGA"
+      "winner_source_id": "T_yBjy6aSGA",
+      "status": "produced",
+      "production_id": "Uncover_the_specific_often_sur_1778885702"
     },
     {
       "title": "Snake Island's Viper: Gold, Venom, Isolation",
@@ -374,7 +376,7 @@
   "channels_analyzed": 7,
   "winner_variations_count": 7,
   "status": "in_progress",
-  "last_executed_at": "2026-05-15T18:26:31.068125",
+  "last_executed_at": "2026-05-15T22:57:28.410292",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
