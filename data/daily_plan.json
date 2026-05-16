@@ -15,7 +15,9 @@
       "inspired_by": "The Rise of Humanoid Robots and Their Future Impact (AI-curated trend)",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "The_humanoid_robot_from_Figure_1778937810"
     },
     {
       "title": "JWST Saw Stars Born 13.4 Billion Years Ago",
@@ -378,5 +380,11 @@
   "trending_count": 84,
   "channels_analyzed": 8,
   "winner_variations_count": 0,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-05-16T13:25:30.729907",
+  "results": {
+    "shorts_produced": 1,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
