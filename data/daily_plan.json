@@ -51,7 +51,9 @@
       "inspired_by": "The Enduring Mystery of D.B. Cooper: Are We Closer to the Truth? (AI-curated trend)",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "After_DB_Cooper_famously_parac_1778971562"
     },
     {
       "title": "Tulsa's Black Wall Street Destroyed in a Day",
@@ -384,7 +386,7 @@
   "channels_analyzed": 8,
   "winner_variations_count": 0,
   "status": "in_progress",
-  "last_executed_at": "2026-05-16T17:57:57.794355",
+  "last_executed_at": "2026-05-16T22:48:19.282896",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
