@@ -339,7 +339,8 @@
       ],
       "inspired_by": "Why didn't Germany stop expanding in 1939? (Trending World News)",
       "estimated_views": "high",
-      "duration_minutes": 20
+      "duration_minutes": 20,
+      "status": "produced"
     },
     {
       "title": "The Secret History of Skinwalker Ranch: Unpacking Its Enduring Mysteries",
@@ -381,10 +382,10 @@
   "channels_analyzed": 8,
   "winner_variations_count": 0,
   "status": "in_progress",
-  "last_executed_at": "2026-05-16T13:25:30.729907",
+  "last_executed_at": "2026-05-16T17:29:11.057140",
   "results": {
-    "shorts_produced": 1,
-    "longform_produced": 0,
+    "shorts_produced": 0,
+    "longform_produced": 1,
     "errors": []
   }
 }
