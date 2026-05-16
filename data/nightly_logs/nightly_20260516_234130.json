@@ -1,0 +1,250 @@
+{
+  "timestamp": "2026-05-16T23:40:11.799168",
+  "dry_run": false,
+  "api_health": {
+    "gemini": "ok (gemini-2.5-flash)",
+    "openai": "not_configured",
+    "healthy": true
+  },
+  "performance_review": {
+    "total_recent": 10,
+    "winners_count": 6,
+    "losers_count": 0,
+    "avg_views_48h": 90.9,
+    "best_topics": [
+      "Kitchen Germs: Invisible Threats & Health Risks #Shorts",
+      "2000-Year-Old Dome's Secret Material #Shorts",
+      "Pantheon's Oculus: Ancient AC #Shorts"
+    ],
+    "best_views": [
+      136,
+      128,
+      126
+    ],
+    "winner_titles": [
+      "D.B. Cooper's Parachute Whispers Secrets #Shorts",
+      "JWST Sees Stars 350M Years After Big Bang #Shorts",
+      "Kitchen Germs: Invisible Threats & Health Risks #Shorts",
+      "JWST finds galaxies forming impossibly fast #Shorts",
+      "Pantheon's Oculus: Ancient AC #Shorts",
+      "2000-Year-Old Dome's Secret Material #Shorts"
+    ],
+    "loser_titles": []
+  },
+  "cleanup": {
+    "unlisted": 0,
+    "deleted": 0,
+    "failed": 0,
+    "kept": 39,
+    "thresholds": {
+      "shorts_7d": 25,
+      "shorts_14d": 50,
+      "shorts_30d": 100,
+      "long_14d": 25,
+      "long_30d": 50,
+      "multiplier": 0.5
+    }
+  },
+  "trending": {
+    "found": 84,
+    "viral_shorts_found": 30,
+    "world_news_found": 20,
+    "competitors_analyzed": 4,
+    "comments_mined": 20,
+    "top_5": [
+      {
+        "title": "Jackie Chan Saved The Day 🥶🔥 | The Shadow's Edge | FUNK ABNO",
+        "views": 38464058,
+        "category": "Entertainment"
+      },
+      {
+        "title": "Toddler's Quick Thinking Saves Her Father",
+        "views": 14500957,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Reddington saved the people in the convenience store.#shortv",
+        "views": 11783951,
+        "category": "Entertainment"
+      },
+      {
+        "title": "He Couldn’t Stop Himself | 27 Dresses | HEAVENLY JUMPSTYLE (",
+        "views": 10801981,
+        "category": "Entertainment"
+      },
+      {
+        "title": "The Boy Who Filled A Fence With Nails 😮",
+        "views": 10505212,
+        "category": "Entertainment"
+      }
+    ],
+    "top_viral_shorts": [
+      {
+        "title": "The Cruelest Animal Farms In The World 😢#animalfacts #wildli",
+        "views": 3751915,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "Did you know these random basketball facts?",
+        "views": 3532783,
+        "query": "did you know facts"
+      },
+      {
+        "title": "Animals That Nature Designed To Suffer 😨#animalfacts #wildli",
+        "views": 2627927,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "The Shocking Truth of Salmon Fish Farming! The Dark Reality ",
+        "views": 2265324,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "Why Are Horses So Intelligent",
+        "views": 2162589,
+        "query": "animal facts wildlife"
+      }
+    ]
+  },
+  "winners": {
+    "added": 6,
+    "total": 6,
+    "threshold": 300,
+    "median": 103,
+    "active": 6,
+    "top": [
+      {
+        "video_id": "2lPlWWgiCLE",
+        "title": "Your Kitchen Sponge Is Dirtier Than Your Toilet #Shorts",
+        "views": 1391,
+        "views_per_day": 347.8,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "jQ6gW5Oe-n8",
+        "title": "Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome #Shorts",
+        "views": 1253,
+        "views_per_day": 208.8,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "A92xFY3pWBU",
+        "title": "Galaxy GLASS-z13: 300 Million Years After Big Bang #Shorts",
+        "views": 796,
+        "views_per_day": 199.0,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "n41UVkdKXxY",
+        "title": "Oldest Galaxy GLASS-z13 Discovered #Shorts",
+        "views": 985,
+        "views_per_day": 140.7,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "T_yBjy6aSGA",
+        "title": "Restaurant Shutdown After Dirty Fridge & Mold #Shorts",
+        "views": 961,
+        "views_per_day": 120.1,
+        "variations_generated": 0
+      }
+    ]
+  },
+  "peak_hours": {
+    "utc": [
+      23,
+      22,
+      18
+    ],
+    "source": "channel_data",
+    "samples": 28
+  },
+  "retention": {
+    "avg_pct": 0,
+    "avg_dur_sec": 0,
+    "source": "unavailable",
+    "video_count": 0
+  },
+  "ambient_analysis": {
+    "total_ambient": 4,
+    "total_views": 168,
+    "top_type": "fireplace",
+    "worst_type": "rain",
+    "type_rankings": [
+      {
+        "type": "fireplace",
+        "video_count": 3,
+        "total_views": 105,
+        "avg_views": 35,
+        "avg_views_per_day": 14.7,
+        "engagement_rate": 51.43,
+        "best_video": {
+          "title": "8 Hours Cozy Cat by the Fireplace — Purring & Crackling Fire",
+          "views": 42,
+          "views_per_day": 7.0
+        }
+      },
+      {
+        "type": "rain",
+        "video_count": 1,
+        "total_views": 63,
+        "avg_views": 63,
+        "avg_views_per_day": 7.9,
+        "engagement_rate": 39.68,
+        "best_video": {
+          "title": "1 Hour 4 Hours Rainy Night Ambience for Deep Sleep",
+          "views": 63,
+          "views_per_day": 7.9
+        }
+      }
+    ]
+  },
+  "plan": {
+    "shorts_planned": 20,
+    "longform_planned": 2,
+    "ambient_recommendations": [
+      {
+        "type": "thunderstorm",
+        "hours": 8,
+        "reason": "Thunderstorm ambience often performs well for focus, relaxation, and inducing sleep due to its natural white noise effect, and it offers a dramatic yet soothing natural soundscape."
+      },
+      {
+        "type": "forest",
+        "hours": 8,
+        "reason": "Forest sounds with birds chirping and gentle breezes provide a calming natural backdrop for study, meditation, or light background noise. It's a popular evergreen ambient choice for relaxation and focus."
+      },
+      {
+        "type": "ocean",
+        "hours": 8,
+        "reason": "Ocean waves are a classic, universally appealing sound for relaxation, meditation, or as unobtrusive background noise. It offers a sense of calm and escape, making it a reliable performer for passive watch time."
+      }
+    ],
+    "winner_variations_count": 6,
+    "shorts": [
+      "Kitchen Sink Germs: Dirtier Than Sponges",
+      "Roman Concrete's Self-Healing Secret",
+      "JWST Found Galaxies Too Young to Exist",
+      "Restaurant Ice Machines: Hidden Danger",
+      "World's Most Forbidden Island: North Sentinel",
+      "Pantheon Oculus: Ancient Rome's Climate Control",
+      "Alexa Can Lie When Asked About Ghosts",
+      "Cotton Candy from Crayons: Impossible Science",
+      "Jaws Shark Was Barely Seen for Budget",
+      "World's Smallest 4K VR Headset: Visor",
+      "OpenAI's Sora Can Create Fake Reality",
+      "CRISPR Cures Sickle Cell: Gene Editing Success",
+      "Neuralink's First Brain Implant: Telepathy?",
+      "Antarctica's Blood Falls: Iron-Rich Glacier",
+      "Microplastics Found in Human Bloodstream",
+      "The Mandela Effect: Shared False Memories",
+      "Deep Sea Vents Host Alien-Like Life",
+      "AI Training's Shocking Carbon Footprint",
+      "Why Horses Are Smarter Than You Think",
+      "Fish Farming's Dark Side Exposed"
+    ],
+    "longform": [
+      "The Petrodollar's Shifting Sands: US Debt, China, and a New ",
+      "Earth's Slow Split: The Rift Valley Tearing Africa Apart"
+    ]
+  }
+}
