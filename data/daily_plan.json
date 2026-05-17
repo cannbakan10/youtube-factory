@@ -34,7 +34,9 @@
       "inspired_by": "Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome #Shorts",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "jQ6gW5Oe-n8"
+      "winner_source_id": "jQ6gW5Oe-n8",
+      "status": "produced",
+      "production_id": "The_ancient_Roman_secret_to_lo_1779040716"
     },
     {
       "title": "JWST Found Galaxies Too Young to Exist",
@@ -412,7 +414,7 @@
   "channels_analyzed": 6,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-05-17T13:23:34.876358",
+  "last_executed_at": "2026-05-17T18:00:48.947459",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
