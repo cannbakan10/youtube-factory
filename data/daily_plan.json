@@ -53,7 +53,9 @@
       "inspired_by": "Galaxy GLASS-z13: 300 Million Years After Big Bang #Shorts",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "A92xFY3pWBU"
+      "winner_source_id": "A92xFY3pWBU",
+      "status": "produced",
+      "production_id": "The_James_Webb_Space_Telescope_1779058486"
     },
     {
       "title": "Restaurant Ice Machines: Hidden Danger",
@@ -414,7 +416,7 @@
   "channels_analyzed": 6,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-05-17T18:00:48.947459",
+  "last_executed_at": "2026-05-17T22:57:11.523108",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
