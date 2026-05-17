@@ -15,7 +15,9 @@
       "inspired_by": "Your Kitchen Sponge Is Dirtier Than Your Toilet #Shorts",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "2lPlWWgiCLE"
+      "winner_source_id": "2lPlWWgiCLE",
+      "status": "produced",
+      "production_id": "The_surprising_truth_that_kitc_1779024102"
     },
     {
       "title": "Roman Concrete's Self-Healing Secret",
@@ -409,5 +411,11 @@
   "trending_count": 84,
   "channels_analyzed": 6,
   "winner_variations_count": 6,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-05-17T13:23:34.876358",
+  "results": {
+    "shorts_produced": 1,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
