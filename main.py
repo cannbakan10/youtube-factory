@@ -607,6 +607,9 @@ Examples:
                         help="Produce a long-form documentary video on this topic (direct, no plan needed)")
     parser.add_argument("--longform-duration", type=int, default=20,
                         help="Target duration in minutes for longform video (default: 20)")
+    parser.add_argument("--longform-mode", type=str, default="info",
+                        choices=["info", "top10", "horror", "quiz"],
+                        help="Script style for longform video (default: info)")
     parser.add_argument("--longform-suggest", action="store_true",
                         help="Show top trending long-form topics and let the system pick the best one")
     parser.add_argument("--longform-suggest-produce", type=int, metavar="N", default=0,
@@ -907,15 +910,19 @@ Examples:
 
         # Direct topic mode
         if args.longform_topic:
-            topic = f"{args.longform_duration} minute documentary about {args.longform_topic}"
-            logger.info(f"🎬 Producing long-form: {topic[:60]}")
-            send_telegram_alert(f"🎬 *Uzun Video Üretimi Başladı*\n\n*Konu:* {args.longform_topic[:60]}\n*Süre:* {args.longform_duration} dakika")
+            lf_mode = getattr(args, 'longform_mode', 'info') or 'info'
+            if lf_mode == "top10":
+                topic = f"{args.longform_duration} minute top 10 list about {args.longform_topic}"
+            else:
+                topic = f"{args.longform_duration} minute documentary about {args.longform_topic}"
+            logger.info(f"🎬 Producing long-form [{lf_mode}]: {topic[:60]}")
+            send_telegram_alert(f"🎬 *Uzun Video Üretimi Başladı*\n\n*Konu:* {args.longform_topic[:60]}\n*Süre:* {args.longform_duration} dakika\n*Format:* {lf_mode}")
             production_id = factory.run(
                 topic=topic,
                 languages=args.langs.split(","),
                 auto_upload=args.upload,
                 video_type="long",
-                mode="info",
+                mode=lf_mode,
             )
             if not production_id:
                 logger.error("Long-form production failed.")

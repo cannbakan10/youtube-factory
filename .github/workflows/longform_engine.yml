@@ -1,20 +1,18 @@
-name: "🎬 Longform Engine — Documentary Production"
+name: "🎬 Longform Engine — Top 10 & Documentary Production"
 
 # ╔══════════════════════════════════════════════════════════╗
-# ║  LONGFORM ENGINE v1.1 — Documentaries & World Events     ║
+# ║  LONGFORM ENGINE v2.0 — Top 10 Lists & Documentaries    ║
 # ║                                                         ║
-# ║  Two modes:                                             ║
-# ║  A) Scheduled: Produces from Nightly Brain plan         ║
-# ║  B) Manual: Write a topic OR let system pick trending   ║
+# ║  Modes:                                                 ║
+# ║  A) top10    : Auto-generate viral Top 10 list video    ║
+# ║  B) topic    : Custom topic with top10 or documentary   ║
+# ║  C) trending : Auto-pick trending topic                 ║
+# ║  D) plan     : Produce from Nightly Brain plan          ║
 # ║                                                         ║
-# ║  Schedule: Daily at US midday (no conflict w/ Shorts)   ║
-# ║  • 16:00 UTC = 12 PM ET — longform production          ║
-# ║                                                         ║
-# ║  Each run produces 1 long-form video (~30-45 min build) ║
+# ║  Schedule: Daily at 16:00 UTC                          ║
 # ╚══════════════════════════════════════════════════════════╝
 
 on:
-  # Daily at 16:00 UTC (12PM ET) — offset from Content Engine (14:00, 20:00)
   schedule:
     - cron: '0 16 * * *'
 
@@ -23,22 +21,23 @@ on:
       mode:
         description: 'Production mode'
         required: true
-        default: 'plan'
+        default: 'top10'
         type: choice
         options:
-          - 'plan'
+          - 'top10'
           - 'topic'
           - 'trending'
+          - 'plan'
       topic:
-        description: 'Custom topic (only for mode=topic). Example: "Strait of Hormuz Crisis"'
+        description: 'Custom topic (mode=topic). Example: "Top 10 Most Dangerous Animals"'
         required: false
         default: ''
       duration:
         description: 'Video duration in minutes'
         required: false
-        default: '15'
+        default: '12'
       count:
-        description: 'Number of videos to produce (plan/trending mode)'
+        description: 'Number of videos to produce (plan/trending/top10 mode)'
         required: false
         default: '1'
 
@@ -114,6 +113,42 @@ jobs:
           if [ -n "${{ secrets.TOKEN_PICKLE_BASE64 }}" ]; then
             printf "%s" "${{ secrets.TOKEN_PICKLE_BASE64 }}" | base64 -d > token.pickle
           fi
+
+      - name: "Mode: Top10 — Auto-generate viral Top 10 list video"
+        if: steps.mode.outputs.status == 'ready' && steps.mode.outputs.mode == 'top10'
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          FREEPIK_API_KEY: ${{ secrets.FREEPIK_API_KEY }}
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          TOKEN_PICKLE_BASE64: ${{ secrets.TOKEN_PICKLE_BASE64 }}
+          CLIENT_SECRETS_JSON: ${{ secrets.CLIENT_SECRETS_JSON }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: |
+          DURATION="${{ github.event.inputs.duration }}"
+          DURATION=${DURATION:-12}
+          TOP10_TOPICS=(
+            "Top 10 Most Dangerous Animals in the World"
+            "Top 10 Most Mysterious Places on Earth"
+            "Top 10 Biggest Space Discoveries Ever"
+            "Top 10 Most Extreme Weather Events in History"
+            "Top 10 Strangest Deep Sea Creatures"
+            "Top 10 Ancient Wonders You Never Heard Of"
+            "Top 10 Most Powerful Natural Disasters"
+            "Top 10 Mind-Blowing Space Facts"
+            "Top 10 Deadliest Viruses in History"
+            "Top 10 Most Bizarre Natural Phenomena"
+            "Top 10 Unsolved Mysteries of the Universe"
+            "Top 10 Most Incredible Animal Abilities"
+          )
+          IDX=$((RANDOM % ${#TOP10_TOPICS[@]}))
+          TOPIC="${TOP10_TOPICS[$IDX]}"
+          echo "🏆 Selected Top 10 topic: $TOPIC"
+          python main.py --longform-topic "$TOPIC" --longform-duration $DURATION --longform-mode top10 --upload --langs en
 
       - name: "Mode: Plan — Produce from Nightly Brain plan"
         if: steps.mode.outputs.status == 'ready' && steps.mode.outputs.mode == 'plan'

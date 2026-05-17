@@ -233,6 +233,54 @@ class ScriptWriter:
                   3. USE natural transitions.
                 """
 
+            if mode == "top10":
+                # Extract the number if specified (Top 5, Top 10, Top 15...)
+                num_match = re.search(r'top\s*(\d+)', topic.lower())
+                top_n = int(num_match.group(1)) if num_match else 10
+
+                if language == "tr":
+                    hook_intro = f"Bu listenin son sırası sizi şok edecek..."
+                    count_label = f"En İyi {top_n}"
+                    cta = "Hangi madde sizi en çok şaşırttı? Yorumlara yazın!"
+                else:
+                    hook_intro = f"Number one on this list will shock you..."
+                    count_label = f"Top {top_n}"
+                    cta = f"Which one surprised you most? Drop a comment below and subscribe!"
+
+                return f"""
+                Using the provided research data, write a compelling TOP {top_n} LIST video narration script.
+                This is for a {target_minutes}-minute YouTube video in a popular list format.
+                You must provide at least {target_word_count} words of engaging narration.
+
+                Everything MUST be in {lang_name}.
+                {extra_style}
+                {retention_block}
+                RESEARCH DATA: {research_data}
+                TOPIC: {topic}
+
+                PRODUCTION SPECIFICATIONS:
+                - TARGET DURATION: {target_minutes} minutes
+                - WORD COUNT TARGET: {target_word_count} words (STRICT MINIMUM)
+                - FORMAT: Ranked countdown list from #{top_n} down to #1
+
+                STRUCTURE & STYLE RULES:
+                - 🎞️ HOOK (FIRST 20 SECONDS): Start with "{hook_intro}" — tease the #1 entry to create suspense.
+                - COUNTDOWN FORMAT: Go from #{top_n} to #1. Each entry gets 60-90 seconds of narration.
+                - EACH ENTRY MUST INCLUDE:
+                  * A clear announcement: "Number [X]:" or "{count_label} [X]:"
+                  * A shocking or fascinating opening fact about that entry
+                  * 2-3 sentences of rich detail, history, or surprising context
+                  * A smooth transition to the next entry ("But that's nothing compared to...")
+                - BUILD SUSPENSE: Tease the next entry at the end of each entry.
+                - #1 ENTRY: Give it extra time and impact — this is the payoff.
+                - ENDING: Close with "{cta}"
+                - NO META-COMMENTARY: {meta_avoid}
+                - STRICTLY NARRATION ONLY: No brackets, no labels, no scene descriptions.
+                - Language: STRICTLY {lang_name} only.
+
+                FAILURE TO REACH {target_word_count} WORDS WILL RESULT IN PRODUCTION FAILURE. BE DETAILED AND ENGAGING.
+                """
+
             return f"""
             Using the provided research data, write an EXHAUSTIVE and DEEP documentary-style narration script.
             This is for a VERY LONG video ({target_minutes} minutes).
@@ -256,7 +304,7 @@ class ScriptWriter:
             - ⚠️ NO TIME REVEAL & NO META-COMMENTARY: {meta_avoid}
             - STRICTLY NARRATION ONLY: Include ONLY spoken words. No scene descriptions or labels.
             - Language: STRICTLY {lang_name} only.
-            
+
             FAILURE TO REACH {target_word_count} WORDS WILL RESULT IN PRODUCTION FAILURE. BE DETAILED.
             """
         elif mode == "horror":
