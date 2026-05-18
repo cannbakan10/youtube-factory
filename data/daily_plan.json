@@ -1,312 +1,302 @@
 {
-  "date": "2026-05-18",
+  "date": "2026-05-19",
   "shorts": [
     {
-      "title": "Your Phone Has 10x More Germs Than Toilet",
-      "topic": "The shocking bacterial load on smartphones and other common household objects, and how often they should be cleaned.",
-      "hook": "Your smartphone carries ten times more bacteria than a toilet seat, making it one of the dirtiest items you touch daily.",
+      "title": "Your Toothbrush Holds Fecal Bacteria from Flushing",
+      "topic": "The surprising scientific fact that toothbrush bristles can harbor fecal coliform bacteria, spread through aerosolized toilet plumes when flushing, and why this is a health concern.",
+      "hook": "Every time you flush an open toilet, a plume of microscopic fecal bacteria sprays across your bathroom, landing directly on your toothbrush.",
       "tags": [
         "hygiene",
-        "germs",
         "bacteria",
-        "smartphone",
-        "dailyfacts"
+        "healthfacts",
+        "grossfacts"
       ],
-      "inspired_by": "Channel Winner: Your Kitchen Sponge Is Dirtier Than Your Toilet",
+      "inspired_by": "BrainBolt Winner: Kitchen Sponge Germs",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "2lPlWWgiCLE",
-      "status": "produced",
-      "production_id": "The_shocking_bacterial_load_on_1779118472"
+      "winner_source_id": "2lPlWWgiCLE"
     },
     {
-      "title": "Roman Domes Lasted 2000 Years: The Secret",
-      "topic": "The innovative composition of Roman concrete, focusing on its self-healing properties that allowed massive structures like the Pantheon's dome to endure for thousands of years without modern reinforcement.",
-      "hook": "For two millennia, Roman domes like the Pantheon have stood, thanks to a unique concrete that actually gets stronger over time.",
+      "title": "D.B. Cooper's Unclaimed Money: A Federal Mystery",
+      "topic": "The enduring mystery of D.B. Cooper's ransom money, with only a small portion ever found, and the ongoing federal investigation into its disappearance.",
+      "hook": "Decades after D.B. Cooper's daring skyjacking, the vast majority of his $200,000 ransom money remains missing, a federal mystery.",
       "tags": [
-        "romanarchitecture",
-        "concrete",
-        "pantheon",
-        "engineering",
-        "historyfacts"
+        "dbcooper",
+        "unsolvedmystery",
+        "truecrimefacts",
+        "historysecrets"
       ],
-      "inspired_by": "Channel Winner: Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome",
+      "inspired_by": "BrainBolt Winner: D.B. Cooper's Parachute",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "jQ6gW5Oe-n8",
-      "status": "produced",
-      "production_id": "The_innovative_composition_of__1779130350"
+      "winner_source_id": "QHpgbH-oAYo"
     },
     {
-      "title": "Early Galaxies Grew Impossibly Fast",
-      "topic": "The rapid formation of early galaxies, exemplified by GLASS-z13, and how this discovery contradicts existing cosmological models, forcing scientists to rethink galaxy evolution.",
-      "hook": "Scientists are baffled: galaxies formed much faster than predicted, only 300 million years after the Big Bang, challenging our understanding of cosmic evolution.",
+      "title": "Pantheon's Floor Drains Stop Rain From Flooding It",
+      "topic": "How the Pantheon's perfectly sloped floor and twenty-two hidden drainage holes prevent it from flooding despite its enormous open oculus.",
+      "hook": "Rain pours directly into the Pantheon through its 30-foot oculus, yet the floor never floods thanks to an ingenious Roman drainage system.",
+      "tags": [
+        "romanengineering",
+        "architecturefacts",
+        "historicalfacts",
+        "pantheon"
+      ],
+      "inspired_by": "BrainBolt Winner: Pantheon Leak-Proof Dome",
+      "estimated_views": "high",
+      "is_winner_variation": true,
+      "winner_source_id": "jQ6gW5Oe-n8"
+    },
+    {
+      "title": "The Universe's Earliest Galaxies Formed Rapidly",
+      "topic": "New evidence suggests the earliest galaxies formed far more rapidly and extensively than previously thought, challenging existing cosmological models.",
+      "hook": "Scientists are stunned by new data showing massive, mature galaxies formed just a few hundred million years into the universe's existence.",
       "tags": [
         "cosmology",
-        "galaxies",
-        "bigbang",
-        "earlyuniverse",
-        "spacefacts"
+        "spacefacts",
+        "galaxyformation",
+        "earlyuniverse"
       ],
-      "inspired_by": "Channel Winner: Galaxy GLASS-z13: 300 Million Years After Big Bang",
+      "inspired_by": "BrainBolt Winner: Galaxy GLASS-z13",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "A92xFY3pWBU",
-      "status": "produced",
-      "production_id": "The_rapid_formation_of_early_g_1779145345"
+      "winner_source_id": "A92xFY3pWBU"
     },
     {
-      "title": "Hotel Ice Machines Hide Dangerous Mold",
-      "topic": "The often-overlooked health hazards of hotel ice machines, explaining how they can harbor dangerous mold and bacteria due to infrequent cleaning and poor maintenance.",
-      "hook": "That seemingly clean hotel ice machine could be a dangerous source of hidden mold and bacteria, posing a significant health risk.",
+      "title": "Distant Galaxy Defies Universe Creation Theory",
+      "topic": "The discovery of extremely distant and evolved galaxies challenges the standard model of cosmic evolution, suggesting new theories about early universe formation.",
+      "hook": "This newly observed galaxy is so unexpectedly developed, it's forcing astrophysicists to completely rethink how the universe began.",
       "tags": [
-        "publichealth",
-        "foodsafety",
-        "hygiene",
-        "traveltips",
-        "bacteria"
+        "astrophysics",
+        "cosmicmystery",
+        "spacetheory",
+        "galaxy"
       ],
-      "inspired_by": "Channel Winner: Restaurant Shutdown After Dirty Fridge & Mold",
-      "estimated_views": "high",
-      "is_winner_variation": true,
-      "winner_source_id": "T_yBjy6aSGA"
-    },
-    {
-      "title": "North Sentinel Island: Worlds Most Dangerous Place",
-      "topic": "The extreme isolation and unique dangers of North Sentinel Island, home to the Sentinelese people who fiercely reject outside contact, making it virtually impossible to visit safely.",
-      "hook": "North Sentinel Island is one of Earth's most dangerous and isolated places, where any attempt to land is met with deadly force by its inhabitants.",
-      "tags": [
-        "geography",
-        "isolatedtribes",
-        "dangerzone",
-        "travelbans",
-        "historyfacts"
-      ],
-      "inspired_by": "Channel Winner: Deadly Snake Island: Venom Liquefies Flesh",
-      "estimated_views": "high",
-      "is_winner_variation": true,
-      "winner_source_id": "40TJre3Wyy8"
-    },
-    {
-      "title": "Light From Universe's First Star Formation",
-      "topic": "The significance of light from the most distant galaxies, such as GLASS-z13, as a direct window into the universe's initial period of star formation, allowing scientists to study cosmic origins.",
-      "hook": "When we observe galaxies like GLASS-z13, we are seeing the raw light from the universe's earliest moments, revealing star formation from its infancy.",
-      "tags": [
-        "astronomy",
-        "starlight",
-        "universeorigin",
-        "cosmicdiscovery",
-        "telescopes"
-      ],
-      "inspired_by": "Channel Winner: Oldest Galaxy GLASS-z13 Discovered",
+      "inspired_by": "BrainBolt Winner: Oldest Galaxy GLASS-z13",
       "estimated_views": "high",
       "is_winner_variation": true,
       "winner_source_id": "n41UVkdKXxY"
     },
     {
-      "title": "Neuralink Patient Controls Mouse With Thought",
-      "topic": "The groundbreaking success of Neuralink's first human trial, where a patient with a brain implant can manipulate digital interfaces using only their thoughts, opening new possibilities for assistive technology.",
-      "hook": "Neuralink's first human patient is now controlling a computer mouse with pure thought, a revolutionary breakthrough in mind-machine interfaces.",
+      "title": "Brazil's Snake Island: Home to 5,000 Vipers",
+      "topic": "Ilha da Queimada Grande, off Brazil's coast, is infested with up to 5,000 critically endangered Golden Lancehead Vipers, one of the world's deadliest snakes.",
+      "hook": "There's an island off Brazil's coast so deadly, it's home to nearly 5,000 highly venomous Golden Lancehead Vipers, making human entry lethal.",
+      "tags": [
+        "snakeisland",
+        "deadlyanimals",
+        "wildlifefacts",
+        "dangerousplaces"
+      ],
+      "inspired_by": "BrainBolt Winner: Deadly Snake Island",
+      "estimated_views": "high",
+      "is_winner_variation": true,
+      "winner_source_id": "40TJre3Wyy8"
+    },
+    {
+      "title": "AI Designed a New Antibiotic in Just Three Days",
+      "topic": "Explain how AI algorithms can rapidly identify potential antibiotic compounds, dramatically accelerating the drug discovery process compared to traditional methods.",
+      "hook": "Artificial intelligence just designed a powerful new antibiotic in only three days, a process that typically takes years for human scientists.",
+      "tags": [
+        "aidiscovery",
+        "medicalbreakthrough",
+        "scitechnews",
+        "drugdiscovery"
+      ],
+      "inspired_by": "AI-Curated Trend: AI Breakthroughs in Drug Discovery",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "The Mariana Trench's Depth Exceeds Mount Everest",
+      "topic": "Describe the extreme depth of the Mariana Trench, emphasizing how vast it is by comparing its depth to the height of Mount Everest.",
+      "hook": "The deepest point on Earth, the Mariana Trench, plunges so far down its depth exceeds the height of Mount Everest.",
+      "tags": [
+        "mariana_trench",
+        "oceanfacts",
+        "deepsea",
+        "geographyfacts"
+      ],
+      "inspired_by": "AI-Curated Trend: Earth's Deepest Ocean Trenches",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Radium Girls' Bones Glowed From Fatal Exposure",
+      "topic": "Detail the tragic story of the Radium Girls who painted clock dials with radium, leading to their bones glowing in the dark and eventual fatal radiation poisoning.",
+      "hook": "Women painting clock dials with radium in the early 20th century suffered a horrific fate: their bones literally glowed in the dark before they died.",
+      "tags": [
+        "radiumgirls",
+        "historicaltragedy",
+        "scienceethics",
+        "truehistory"
+      ],
+      "inspired_by": "AI-Curated Trend: The Shocking True Story of the Radium Girls",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Humans Have a Tiny Remnant of a Third Eyelid",
+      "topic": "Explain the plica semilunaris, the small fold in the corner of the human eye, as a vestigial remnant of a nictitating membrane or 'third eyelid' found in other animals.",
+      "hook": "Look closely at the inner corner of your eye: that tiny pink fold is a vestigial remnant of a third eyelid, a trait common in many animals.",
+      "tags": [
+        "humanbodyfacts",
+        "evolution",
+        "biologyfacts",
+        "vestigialorgans"
+      ],
+      "inspired_by": "AI-Curated Trend: Why Humans Have a 'Third Eyelid'",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Boston Dynamics' Atlas Robot Performs Parkour",
+      "topic": "Describe the advanced capabilities of Boston Dynamics' Atlas humanoid robot, specifically its ability to perform complex parkour maneuvers and impressive acrobatic feats.",
+      "hook": "Boston Dynamics' Atlas robot can now perform incredible parkour, including flips and spins, showcasing a new frontier in humanoid robotics.",
+      "tags": [
+        "robotics",
+        "ai",
+        "technology",
+        "humanoi_robots"
+      ],
+      "inspired_by": "AI-Curated Trend: The Future of Humanoid Robots",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Great Pyramid of Giza Aligns With Cardinal Points",
+      "topic": "Explain the remarkable astronomical alignment and precision engineering of the Great Pyramid of Giza, noting its near-perfect orientation to true north, south, east, and west.",
+      "hook": "The Great Pyramid of Giza, a marvel of engineering, aligns with the four cardinal points of a compass with astonishing accuracy.",
+      "tags": [
+        "egyptianhistory",
+        "pyramids",
+        "engineeringfacts",
+        "historymysteries"
+      ],
+      "inspired_by": "AI-Curated Trend: Ancient Civilizations: Unexplained Feats of Engineering",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Ocean Microplastics Found From Trenches to Arctic",
+      "topic": "Discuss the pervasive spread of microplastics throughout the global ocean, from the deepest marine trenches to the ice in the Arctic, highlighting their environmental impact.",
+      "hook": "Microplastics have permeated every corner of our oceans, discovered from the crushing depths of the Mariana Trench to the remote Arctic ice caps.",
+      "tags": [
+        "microplastics",
+        "oceanpollution",
+        "environmentalscience",
+        "ecofacts"
+      ],
+      "inspired_by": "AI-Curated Trend: The Unsettling Truth About Ocean Microplastics",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Dreams Activate Brain's Emotion & Memory Centers",
+      "topic": "Detail the neuroscience behind dreams, explaining that they predominantly occur during REM sleep and involve heightened activity in brain regions associated with emotions and memory consolidation.",
+      "hook": "When you dream, your brain's emotional and memory centers become intensely active, crafting intricate narratives from your subconscious.",
+      "tags": [
+        "dreamscience",
+        "neuroscience",
+        "brainfacts",
+        "psychologyfacts"
+      ],
+      "inspired_by": "AI-Curated Trend: How the Brain Creates Dreams",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Permian Extinction Wiped Out 96% of Marine Life",
+      "topic": "Explain the devastating scale of the Permian-Triassic extinction event, known as 'The Great Dying,' which eliminated 96% of marine species and 70% of terrestrial vertebrate species.",
+      "hook": "Two hundred fifty-two million years ago, 'The Great Dying' wiped out a shocking 96% of all marine species, Earth's most catastrophic extinction event.",
+      "tags": [
+        "greatdying",
+        "extinctionevent",
+        "earthhistory",
+        "paleontology"
+      ],
+      "inspired_by": "AI-Curated Trend: The 'Great Dying'",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Quantum Computers Use Qubits: 0, 1, or Both",
+      "topic": "Explain the fundamental concept of quantum bits (qubits) in quantum computing, which can exist in a superposition of states (0, 1, or both simultaneously), unlike classical bits.",
+      "hook": "Unlike regular computer bits that are 0 or 1, quantum computers use 'qubits' that can be 0, 1, or both simultaneously, unlocking immense processing power.",
+      "tags": [
+        "quantumcomputing",
+        "techfacts",
+        "futuretech",
+        "scienceexplained"
+      ],
+      "inspired_by": "AI-Curated Trend: Quantum Computing Explained",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Immortal Jellyfish Can Revert to a Juvenile Stage",
+      "topic": "Describe the unique biological ability of the Turritopsis dohrnii jellyfish to revert from its adult medusa stage back to its juvenile polyp stage, effectively avoiding natural death.",
+      "hook": "The 'immortal jellyfish,' Turritopsis dohrnii, possesses a unique ability to reverse its aging process, transforming back into a juvenile state.",
+      "tags": [
+        "immortaljellyfish",
+        "animalfacts",
+        "biologywonders",
+        "naturefacts"
+      ],
+      "inspired_by": "AI-Curated Trend: The Real-Life 'Immortal' Jellyfish",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Neuralink Aims to Control Computers With Thoughts",
+      "topic": "Explain Elon Musk's Neuralink project and its goal of creating brain-computer interfaces (BCIs) that would allow humans, particularly those with paralysis, to control digital devices using only their thoughts.",
+      "hook": "Elon Musk's Neuralink aims to implant tiny chips into human brains, potentially allowing people to control computers and phones with just their thoughts.",
       "tags": [
         "neuralink",
         "braincomputerinterface",
-        "technology",
-        "mindcontrol",
-        "innovation"
+        "elonmusk",
+        "futuremedicine"
       ],
-      "inspired_by": "AI-Curated Viral Trends: Neuralink's First Human Trial",
+      "inspired_by": "AI-Curated Trend: Neuralink and Brain-Computer Interfaces",
       "estimated_views": "high",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "The Mandela Effect: Collective False Memories",
-      "topic": "Explaining the Mandela Effect, where large groups of people recall events or details differently from how they factually occurred, with examples like the Berenstain Bears.",
-      "hook": "Hundreds of thousands share the exact same false memory, a phenomenon known as the Mandela Effect, raising questions about collective consciousness and parallel realities.",
+      "title": "Super-Earth Found: 137 Light-Years Away, Has Water",
+      "topic": "Discuss the recent discovery of an exoplanet, a 'Super-Earth,' located 137 light-years away, with strong evidence suggesting the presence of liquid water and potential habitability.",
+      "hook": "Astronomers just discovered a 'Super-Earth' exoplanet 137 light-years away that appears to have liquid water, a key ingredient for life.",
       "tags": [
-        "mandelaeffect",
+        "exoplanets",
+        "spacenews",
+        "astronomy",
+        "alienlife"
+      ],
+      "inspired_by": "AI-Curated Trend: New Discoveries from the James Webb Space Telescope (rephrased)",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Your Brain Hallucinates Reality to Make Sense",
+      "topic": "Explain the concept that human perception is largely a reconstructive process, where the brain actively predicts and 'fills in' sensory information, meaning we don't experience reality exactly as it is.",
+      "hook": "Your brain doesn't just receive reality; it actively hallucinates it, constructing what you perceive based on predictions and limited sensory input.",
+      "tags": [
+        "brainscience",
+        "perception",
         "psychology",
-        "memory",
-        "conspiracytheory",
-        "humanbrain"
+        "mindfacts"
       ],
-      "inspired_by": "AI-Curated Viral Trends: The Mandela Effect",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "CRISPR Can Edit Human Genes Flawlessly",
-      "topic": "The precision and power of CRISPR gene-editing technology, showcasing its ability to target and modify specific DNA sequences, and its implications for medical treatments and genetic engineering.",
-      "hook": "CRISPR technology allows scientists to edit human genes with pinpoint accuracy, offering the potential to cure genetic diseases but raising profound ethical questions.",
-      "tags": [
-        "crispr",
-        "genetics",
-        "bioengineering",
-        "medicine",
-        "ethicaldilemmas"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: CRISPR Gene Editing",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Lidar Reveals Lost Amazonian Cities",
-      "topic": "How Lidar remote sensing technology is uncovering sophisticated, large-scale settlements in the Amazon rainforest, challenging previous assumptions about ancient Amazonian populations and their capabilities.",
-      "hook": "Lidar technology has pierced through the Amazon's dense canopy, revealing vast, previously unknown cities and complex societies that rewrite history.",
-      "tags": [
-        "archaeology",
-        "lidar",
-        "amazonrainforest",
-        "lostcities",
-        "historyunveiled"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: Hidden Civilizations of the Amazon",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Your Brain Is Paralyzed While Dreaming",
-      "topic": "The fascinating neurological process of sleep paralysis during REM sleep, explaining how the brain temporarily incapacitates muscles to ensure safety while dreaming.",
-      "hook": "During REM sleep, your brain actively paralyzes your body to prevent you from acting out your dreams, a crucial protective mechanism.",
-      "tags": [
-        "sleepparalysis",
-        "remsleep",
-        "neuroscience",
-        "dreams",
-        "humanbody"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: The Science of Sleep",
-      "estimated_views": "medium",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "You Eat 5 Grams of Plastic Every Week",
-      "topic": "The pervasive issue of microplastic consumption, detailing how these tiny plastic particles contaminate our food, water, and even the air, and the potential health implications.",
-      "hook": "On average, you ingest five grams of microplastics every single week, equivalent to eating a credit card, through your food and water.",
-      "tags": [
-        "microplastics",
-        "pollution",
-        "environmentalhealth",
-        "plasticwaste",
-        "healthfacts"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: Microplastics",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Thera Eruption Caused Bronze Age Collapse",
-      "topic": "The immense scale and far-reaching consequences of the Thera volcanic eruption (Santorini), exploring its potential role in the decline of the Minoan civilization and its impact on the wider Bronze Age world.",
-      "hook": "The catastrophic Thera eruption, one of history's largest, may have triggered the collapse of Bronze Age civilizations across the Aegean.",
-      "tags": [
-        "thera",
-        "volcano",
-        "minoancivilization",
-        "bronzeage",
-        "ancienthistory"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: The Thera Eruption",
-      "estimated_views": "medium",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "The Dyatlov Pass: Unsolved 1959 Mystery",
-      "topic": "The chilling details of the Dyatlov Pass Incident, where a group of Soviet hikers perished with bizarre injuries, and the various theories attempting to explain their unsolved deaths.",
-      "hook": "In 1959, nine experienced hikers died under inexplicable circumstances in Russia's Dyatlov Pass, sparking one of history's most enduring wilderness mysteries.",
-      "tags": [
-        "dyatlovpass",
-        "unsolvedmystery",
-        "truecrime",
-        "coldcase",
-        "russia"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: The Dyatlov Pass Incident",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "The Great Filter: Why No Alien Life?",
-      "topic": "Exploring the Great Filter hypothesis, which attempts to answer the Fermi paradox by postulating that intelligent life faces insurmountable obstacles, either in its past or future, that prevent interstellar colonization.",
-      "hook": "The 'Great Filter' theory suggests there's a barrier preventing intelligent life from expanding, explaining why we haven't found aliens yet – and it could still be ahead of us.",
-      "tags": [
-        "greatfilter",
-        "fermiparadox",
-        "alienlife",
-        "astrobiology",
-        "cosmicmystery"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: The Great Filter",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "AI Diagnoses Disease Faster Than Doctors",
-      "topic": "The impressive capabilities of AI in medical diagnostics, highlighting how machine learning algorithms can analyze vast datasets to detect diseases like cancer or rare conditions much faster and more reliably than traditional methods.",
-      "hook": "Artificial intelligence is now diagnosing complex diseases with greater speed and accuracy than human doctors, revolutionizing medical practice.",
-      "tags": [
-        "aiinmedicine",
-        "healthcare",
-        "medicaldiagnostics",
-        "artificialintelligence",
-        "futureofhealth"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: AI in Healthcare",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Mariana Trench: Life Thrives Under 8 Miles",
-      "topic": "The astonishing biodiversity and adaptations of life forms found in the crushing depths of the Mariana Trench, showcasing how organisms survive in one of Earth's most extreme environments.",
-      "hook": "In the Mariana Trench, the deepest point on Earth, life thrives under pressures equivalent to 1,000 elephants standing on a car, revealing extreme adaptation.",
-      "tags": [
-        "marianatrench",
-        "deepsea",
-        "extremophile",
-        "oceanography",
-        "marinebiology"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: The Deepest Points on Earth",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Crows Solve Puzzles Harder Than Toddlers",
-      "topic": "The surprising cognitive abilities of crows, demonstrating their capacity for abstract thought, tool use, and complex problem-solving through scientific experiments.",
-      "hook": "Crows possess problem-solving abilities that rival a human toddler's, showcasing incredible intelligence in complex puzzle tasks.",
-      "tags": [
-        "animalintelligence",
-        "crows",
-        "birdfacts",
-        "cognitivescience",
-        "wildlife"
-      ],
-      "inspired_by": "Viral Shorts in Our Niche: Why Are Horses So Intelligent",
-      "estimated_views": "medium",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Star Exploded, Visible 1 Billion Light Years",
-      "topic": "The sheer scale of stellar explosions (supernovae or gamma-ray bursts), explaining how a single star's demise can outshine entire galaxies and be observed across vast cosmic distances.",
-      "hook": "A single star exploded with such immense power that its light was visible from one billion light-years away, a truly cosmic event.",
-      "tags": [
-        "supernova",
-        "cosmicexplosion",
-        "starexplosion",
-        "astronomyfacts",
-        "lightyear"
-      ],
-      "inspired_by": "Viral Shorts in Our Niche: Biggest Explosion Ever Seen in Space",
+      "inspired_by": "Competitor: Thought Factory",
       "estimated_views": "medium",
       "is_winner_variation": false,
       "winner_source_id": ""
@@ -314,67 +304,56 @@
   ],
   "longform": [
     {
-      "title": "The Unseen Global Cost of El Niño: Economic Chaos Explained",
-      "topic": "20 minute deep analysis of how El Niño weather patterns, beyond just extreme weather, trigger devastating global economic ripple effects. Cover its historical impact on agriculture, commodity prices, supply chains, and its role in geopolitical instability, looking at current predictions and long-term implications for global markets and vulnerable nations.",
-      "hook": "Beyond the headlines of floods and droughts, the El Niño phenomenon quietly orchestrates billions in economic losses, disrupting global food security and igniting unforeseen conflicts.",
+      "title": "The Geopolitical Scramble for Gold: Why Nations Are Buying Big",
+      "topic": "20 minute deep analysis of the accelerating trend of central banks and nations stockpiling gold. Cover the historical role of gold as a reserve asset, the reasons behind the current surge in purchases (e.g., de-dollarization, economic instability, hedging against inflation), its implications for global financial markets, and potential future scenarios for the global economy. Include specific examples of countries increasing their gold reserves, historical precedents, and expert analyses.",
+      "hook": "For centuries, gold has been the ultimate store of value, but today, nations are stockpiling it at an unprecedented rate. What do central banks know about the future that you don't?",
       "tags": [
-        "el_nino",
-        "climatechange",
-        "global_economy",
-        "foodsecurity",
-        "commoditymarkets",
         "geopolitics",
-        "weather_patterns"
+        "goldmarket",
+        "economics",
+        "globalfinance",
+        "centralbanks"
       ],
-      "inspired_by": "Trending World News: How ‘super’ El Niño could bring chaos to the world’s weather",
+      "inspired_by": "Trending World News: Why PM Modi Is Warning People About Buying Gold / RBI Uses Emergency Reserves",
       "estimated_views": "high",
-      "duration_minutes": 20,
-      "status": "produced"
+      "duration_minutes": 20
     },
     {
-      "title": "China's Silent Rise: How Its Economic Power Reshaped the World",
-      "topic": "20 minute deep analysis of China's transformation from a developing nation to a global economic superpower, and the profound impact this shift has had on international relations, trade, and the balance of global power. Explore the historical policies, key economic reforms, and strategic decisions that fueled its growth, and analyze the implications for the future world order.",
-      "hook": "In just four decades, China engineered an economic miracle, quietly rising to challenge global dominance and fundamentally reshaping the geopolitical landscape – but how did they do it?",
+      "title": "The Hidden Scarcity: Inside the Global Battle for Critical Minerals",
+      "topic": "20 minute deep analysis on the global competition for critical minerals (e.g., lithium, rare earths, cobalt) essential for modern technology and green energy. Discuss where these minerals are found, the complex supply chains, geopolitical tensions arising from control over resources, environmental and social impacts of extraction, and potential solutions like recycling or new discoveries. Explain how this scramble impacts global power dynamics and future technological development.",
+      "hook": "Your smartphone, electric car, and every green energy device relies on them: a handful of obscure minerals. But a hidden global battle for these critical resources is now erupting, quietly shaping our future.",
       "tags": [
-        "chinaeconomy",
+        "criticalminerals",
         "geopolitics",
-        "globaltrade",
-        "economichistory",
-        "superpower",
-        "internationalrelations",
-        "worldorder"
+        "resourcetrade",
+        "supplychain",
+        "greentech"
       ],
-      "inspired_by": "Trending World News: Is China the New Superpower?",
+      "inspired_by": "Trending World News: Geopolitics (Africa & Iran Lego Message), general economic crises.",
       "estimated_views": "high",
       "duration_minutes": 20
     }
   ],
   "ambient_recommendations": [
     {
-      "type": "ocean",
+      "type": "rain",
       "hours": 8,
-      "reason": "The calming visual and auditory experience of gentle ocean waves is universally appealing for focus and relaxation, distinct from rain or fire."
+      "reason": "Gentle rain sounds are universally calming and highly sought after for focused work, reading, or creating a peaceful atmosphere."
     },
     {
       "type": "forest",
       "hours": 8,
-      "reason": "Deep forest sounds and visuals provide a natural escape, promoting stress reduction and a sense of tranquility for study or meditation."
+      "reason": "The natural symphony of a forest, with rustling leaves and distant birdsong, provides a serene backdrop for relaxation and nature immersion."
     },
     {
-      "type": "thunderstorm",
+      "type": "ocean",
       "hours": 8,
-      "reason": "The dramatic yet soothing sounds of a distant thunderstorm, combined with rain, offers a unique blend of intensity and calm, popular for both concentration and unwinding."
+      "reason": "The rhythmic ebb and flow of ocean waves are deeply soothing, promoting tranquility and aiding in relaxation, ideal for background listening."
     }
   ],
-  "generated_at": "2026-05-17T23:47:24.510363",
-  "trending_count": 83,
-  "channels_analyzed": 4,
+  "generated_at": "2026-05-18T23:56:15.478327",
+  "trending_count": 84,
+  "channels_analyzed": 7,
   "winner_variations_count": 6,
-  "status": "in_progress",
-  "last_executed_at": "2026-05-18T23:03:34.809071",
-  "results": {
-    "shorts_produced": 1,
-    "longform_produced": 0,
-    "errors": []
-  }
+  "status": "pending"
 }

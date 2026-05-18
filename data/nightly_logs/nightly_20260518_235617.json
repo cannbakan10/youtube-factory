@@ -1,0 +1,250 @@
+{
+  "timestamp": "2026-05-18T23:54:43.941187",
+  "dry_run": false,
+  "api_health": {
+    "gemini": "ok (gemini-2.5-flash)",
+    "openai": "not_configured",
+    "healthy": true
+  },
+  "performance_review": {
+    "total_recent": 9,
+    "winners_count": 6,
+    "losers_count": 0,
+    "avg_views_48h": 213.9,
+    "best_topics": [
+      "JWST Finds Ancient Galaxies Too Early #Shorts",
+      "D.B. Cooper's Parachute Whispers Secrets #Shorts",
+      "Rome's Self-Healing Concrete Secret #Shorts"
+    ],
+    "best_views": [
+      858,
+      349,
+      299
+    ],
+    "winner_titles": [
+      "Your Phone Has More Germs Than A Toilet #Shorts",
+      "JWST Finds Ancient Galaxies Too Early #Shorts",
+      "Rome's Self-Healing Concrete Secret #Shorts",
+      "D.B. Cooper's Parachute Whispers Secrets #Shorts",
+      "JWST Sees Stars 350M Years After Big Bang #Shorts",
+      "Robot Pours Drinks With Human Skill #Shorts"
+    ],
+    "loser_titles": []
+  },
+  "cleanup": {
+    "unlisted": 0,
+    "deleted": 1,
+    "failed": 0,
+    "kept": 43,
+    "thresholds": {
+      "shorts_7d": 25,
+      "shorts_14d": 50,
+      "shorts_30d": 100,
+      "long_14d": 25,
+      "long_30d": 50,
+      "multiplier": 0.5
+    }
+  },
+  "trending": {
+    "found": 84,
+    "viral_shorts_found": 30,
+    "world_news_found": 20,
+    "competitors_analyzed": 5,
+    "comments_mined": 20,
+    "top_5": [
+      {
+        "title": "One Year in Thailand 💀🔥 | The Shadow's Edge | FUNK ABNORMAL ",
+        "views": 49793802,
+        "category": "Entertainment"
+      },
+      {
+        "title": "Survive 30 Days On An Island With Your Ex, Win $250,000",
+        "views": 45724531,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Toddler's Quick Thinking Saves Her Father",
+        "views": 18914509,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "I Made Cotton Candy out of Crayons",
+        "views": 17955357,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Reddington saved the people in the convenience store.#shortv",
+        "views": 17648363,
+        "category": "Entertainment"
+      }
+    ],
+    "top_viral_shorts": [
+      {
+        "title": "Did you know these random basketball facts?",
+        "views": 4421701,
+        "query": "did you know facts"
+      },
+      {
+        "title": "Animals That Nature Designed To Suffer 😨#animalfacts #wildli",
+        "views": 3099036,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "Datos tan raros que Parecen Mentira.          #DatosCuriosos",
+        "views": 2317992,
+        "query": "did you know facts"
+      },
+      {
+        "title": "క్రూరత్వమా? లేక సైన్సా? The terrifying secret behind how thi",
+        "views": 2266135,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "TOP 5 GENIUS HACKS FOR YOUR LIFE 😱 || #shots",
+        "views": 2079527,
+        "query": "top 5 facts"
+      }
+    ]
+  },
+  "winners": {
+    "added": 7,
+    "total": 7,
+    "threshold": 300,
+    "median": 118,
+    "active": 7,
+    "top": [
+      {
+        "video_id": "2lPlWWgiCLE",
+        "title": "Your Kitchen Sponge Is Dirtier Than Your Toilet #Shorts",
+        "views": 1392,
+        "views_per_day": 232.0,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "QHpgbH-oAYo",
+        "title": "D.B. Cooper's Parachute Whispers Secrets #Shorts",
+        "views": 349,
+        "views_per_day": 174.5,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "jQ6gW5Oe-n8",
+        "title": "Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome #Shorts",
+        "views": 1254,
+        "views_per_day": 156.8,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "A92xFY3pWBU",
+        "title": "Galaxy GLASS-z13: 300 Million Years After Big Bang #Shorts",
+        "views": 796,
+        "views_per_day": 132.7,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "n41UVkdKXxY",
+        "title": "Oldest Galaxy GLASS-z13 Discovered #Shorts",
+        "views": 985,
+        "views_per_day": 109.4,
+        "variations_generated": 0
+      }
+    ]
+  },
+  "peak_hours": {
+    "utc": [
+      23,
+      22,
+      18
+    ],
+    "source": "channel_data",
+    "samples": 37
+  },
+  "retention": {
+    "avg_pct": 0,
+    "avg_dur_sec": 0,
+    "source": "unavailable",
+    "video_count": 0
+  },
+  "ambient_analysis": {
+    "total_ambient": 4,
+    "total_views": 176,
+    "top_type": "fireplace",
+    "worst_type": "rain",
+    "type_rankings": [
+      {
+        "type": "fireplace",
+        "video_count": 3,
+        "total_views": 113,
+        "avg_views": 38,
+        "avg_views_per_day": 7.2,
+        "engagement_rate": 47.79,
+        "best_video": {
+          "title": "8 Hours Cozy Cat by the Fireplace — Purring & Crackling Fire",
+          "views": 44,
+          "views_per_day": 5.5
+        }
+      },
+      {
+        "type": "rain",
+        "video_count": 1,
+        "total_views": 63,
+        "avg_views": 63,
+        "avg_views_per_day": 6.3,
+        "engagement_rate": 39.68,
+        "best_video": {
+          "title": "1 Hour 4 Hours Rainy Night Ambience for Deep Sleep",
+          "views": 63,
+          "views_per_day": 6.3
+        }
+      }
+    ]
+  },
+  "plan": {
+    "shorts_planned": 20,
+    "longform_planned": 2,
+    "ambient_recommendations": [
+      {
+        "type": "rain",
+        "hours": 8,
+        "reason": "Gentle rain sounds are universally calming and highly sought after for focused work, reading, or creating a peaceful atmosphere."
+      },
+      {
+        "type": "forest",
+        "hours": 8,
+        "reason": "The natural symphony of a forest, with rustling leaves and distant birdsong, provides a serene backdrop for relaxation and nature immersion."
+      },
+      {
+        "type": "ocean",
+        "hours": 8,
+        "reason": "The rhythmic ebb and flow of ocean waves are deeply soothing, promoting tranquility and aiding in relaxation, ideal for background listening."
+      }
+    ],
+    "winner_variations_count": 6,
+    "shorts": [
+      "Your Toothbrush Holds Fecal Bacteria from Flushing",
+      "D.B. Cooper's Unclaimed Money: A Federal Mystery",
+      "Pantheon's Floor Drains Stop Rain From Flooding It",
+      "The Universe's Earliest Galaxies Formed Rapidly",
+      "Distant Galaxy Defies Universe Creation Theory",
+      "Brazil's Snake Island: Home to 5,000 Vipers",
+      "AI Designed a New Antibiotic in Just Three Days",
+      "The Mariana Trench's Depth Exceeds Mount Everest",
+      "Radium Girls' Bones Glowed From Fatal Exposure",
+      "Humans Have a Tiny Remnant of a Third Eyelid",
+      "Boston Dynamics' Atlas Robot Performs Parkour",
+      "Great Pyramid of Giza Aligns With Cardinal Points",
+      "Ocean Microplastics Found From Trenches to Arctic",
+      "Dreams Activate Brain's Emotion & Memory Centers",
+      "Permian Extinction Wiped Out 96% of Marine Life",
+      "Quantum Computers Use Qubits: 0, 1, or Both",
+      "Immortal Jellyfish Can Revert to a Juvenile Stage",
+      "Neuralink Aims to Control Computers With Thoughts",
+      "Super-Earth Found: 137 Light-Years Away, Has Water",
+      "Your Brain Hallucinates Reality to Make Sense"
+    ],
+    "longform": [
+      "The Geopolitical Scramble for Gold: Why Nations Are Buying B",
+      "The Hidden Scarcity: Inside the Global Battle for Critical M"
+    ]
+  }
+}
