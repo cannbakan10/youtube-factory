@@ -15,7 +15,9 @@
       "inspired_by": "Channel Winner: Your Kitchen Sponge Is Dirtier Than Your Toilet",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "2lPlWWgiCLE"
+      "winner_source_id": "2lPlWWgiCLE",
+      "status": "produced",
+      "production_id": "The_shocking_bacterial_load_on_1779118472"
     },
     {
       "title": "Roman Domes Lasted 2000 Years: The Secret",
@@ -363,5 +365,11 @@
   "trending_count": 83,
   "channels_analyzed": 4,
   "winner_variations_count": 6,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-05-18T15:36:40.507873",
+  "results": {
+    "shorts_produced": 1,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
