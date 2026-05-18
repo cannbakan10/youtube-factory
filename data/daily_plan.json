@@ -51,7 +51,9 @@
       "inspired_by": "Channel Winner: Galaxy GLASS-z13: 300 Million Years After Big Bang",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "A92xFY3pWBU"
+      "winner_source_id": "A92xFY3pWBU",
+      "status": "produced",
+      "production_id": "The_rapid_formation_of_early_g_1779145345"
     },
     {
       "title": "Hotel Ice Machines Hide Dangerous Mold",
@@ -369,7 +371,7 @@
   "channels_analyzed": 4,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-05-18T18:53:39.977289",
+  "last_executed_at": "2026-05-18T23:03:34.809071",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
