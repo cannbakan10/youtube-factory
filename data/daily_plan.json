@@ -33,7 +33,9 @@
       "inspired_by": "Channel Winner: Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "jQ6gW5Oe-n8"
+      "winner_source_id": "jQ6gW5Oe-n8",
+      "status": "produced",
+      "production_id": "The_innovative_composition_of__1779130350"
     },
     {
       "title": "Early Galaxies Grew Impossibly Fast",
@@ -367,10 +369,10 @@
   "channels_analyzed": 4,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-05-18T18:32:39.312879",
+  "last_executed_at": "2026-05-18T18:53:39.977289",
   "results": {
-    "shorts_produced": 0,
-    "longform_produced": 1,
+    "shorts_produced": 1,
+    "longform_produced": 0,
     "errors": []
   }
 }
