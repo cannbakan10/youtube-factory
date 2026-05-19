@@ -31,7 +31,9 @@
       "inspired_by": "BrainBolt Winner: D.B. Cooper's Parachute",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "QHpgbH-oAYo"
+      "winner_source_id": "QHpgbH-oAYo",
+      "status": "produced",
+      "production_id": "The_enduring_mystery_of_DB_Coo_1779217319"
     },
     {
       "title": "Pantheon's Floor Drains Stop Rain From Flooding It",
@@ -359,10 +361,10 @@
   "channels_analyzed": 7,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-05-19T18:23:13.335294",
+  "last_executed_at": "2026-05-19T19:03:15.959384",
   "results": {
-    "shorts_produced": 0,
-    "longform_produced": 1,
+    "shorts_produced": 1,
+    "longform_produced": 0,
     "errors": []
   }
 }
