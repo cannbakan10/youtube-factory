@@ -1,0 +1,250 @@
+{
+  "timestamp": "2026-05-19T23:53:07.971758",
+  "dry_run": false,
+  "api_health": {
+    "gemini": "ok (gemini-2.5-flash)",
+    "openai": "not_configured",
+    "healthy": true
+  },
+  "performance_review": {
+    "total_recent": 6,
+    "winners_count": 4,
+    "losers_count": 1,
+    "avg_views_48h": 238.2,
+    "best_topics": [
+      "JWST Finds Ancient Galaxies Too Early #Shorts",
+      "Rome's Self-Healing Concrete Secret #Shorts",
+      "Your Phone Has More Germs Than A Toilet #Shorts"
+    ],
+    "best_views": [
+      866,
+      302,
+      133
+    ],
+    "winner_titles": [
+      "Rome's Pantheon: How Rain Never Floods It #Shorts",
+      "Your Phone Has More Germs Than A Toilet #Shorts",
+      "JWST Finds Ancient Galaxies Too Early #Shorts",
+      "Rome's Self-Healing Concrete Secret #Shorts"
+    ],
+    "loser_titles": [
+      "El Niño: The Silent Architect of Global Economic Upheaval"
+    ]
+  },
+  "cleanup": {
+    "unlisted": 0,
+    "deleted": 0,
+    "failed": 0,
+    "kept": 44,
+    "thresholds": {
+      "shorts_7d": 25,
+      "shorts_14d": 50,
+      "shorts_30d": 100,
+      "long_14d": 25,
+      "long_30d": 50,
+      "multiplier": 0.5
+    }
+  },
+  "trending": {
+    "found": 84,
+    "viral_shorts_found": 30,
+    "world_news_found": 20,
+    "competitors_analyzed": 4,
+    "comments_mined": 20,
+    "top_5": [
+      {
+        "title": "One Year in Thailand 💀🔥 | The Shadow's Edge | FUNK ABNORMAL ",
+        "views": 54305777,
+        "category": "Entertainment"
+      },
+      {
+        "title": "I Made Cotton Candy out of Crayons",
+        "views": 20734289,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Toddler's Quick Thinking Saves Her Father",
+        "views": 20002660,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Reddington saved the people in the convenience store.#shortv",
+        "views": 19867088,
+        "category": "Entertainment"
+      },
+      {
+        "title": "Break The Glass, YOU LOSE",
+        "views": 15498512,
+        "category": "Sports"
+      }
+    ],
+    "top_viral_shorts": [
+      {
+        "title": "Did you know these random basketball facts?",
+        "views": 4746183,
+        "query": "did you know facts"
+      },
+      {
+        "title": "TOP 5 GENIUS HACKS FOR YOUR LIFE 😱 || #shots",
+        "views": 2484701,
+        "query": "top 5 facts"
+      },
+      {
+        "title": "Datos tan raros que Parecen Mentira.          #DatosCuriosos",
+        "views": 2455252,
+        "query": "did you know facts"
+      },
+      {
+        "title": "The Cruelest Animal Endings 😱#animalfacts #wildlife #facts",
+        "views": 1864875,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "సడన్‌గా సింహం ఎదురైతే ఇలా చేయండి! 🦁⚠️ #shorts #safety #escap",
+        "views": 1361254,
+        "query": "animal facts wildlife"
+      }
+    ]
+  },
+  "winners": {
+    "added": 9,
+    "total": 9,
+    "threshold": 300,
+    "median": 129,
+    "active": 9,
+    "top": [
+      {
+        "video_id": "pZnlVbjTAkg",
+        "title": "JWST Finds Ancient Galaxies Too Early #Shorts",
+        "views": 866,
+        "views_per_day": 433.0,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "2lPlWWgiCLE",
+        "title": "Your Kitchen Sponge Is Dirtier Than Your Toilet #Shorts",
+        "views": 1392,
+        "views_per_day": 198.9,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "40bHnzks7-A",
+        "title": "Rome's Self-Healing Concrete Secret #Shorts",
+        "views": 302,
+        "views_per_day": 151.0,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "jQ6gW5Oe-n8",
+        "title": "Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome #Shorts",
+        "views": 1254,
+        "views_per_day": 139.3,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "QHpgbH-oAYo",
+        "title": "D.B. Cooper's Parachute Whispers Secrets #Shorts",
+        "views": 353,
+        "views_per_day": 117.7,
+        "variations_generated": 0
+      }
+    ]
+  },
+  "peak_hours": {
+    "utc": [
+      23,
+      22,
+      18
+    ],
+    "source": "channel_data",
+    "samples": 40
+  },
+  "retention": {
+    "avg_pct": 0,
+    "avg_dur_sec": 0,
+    "source": "unavailable",
+    "video_count": 0
+  },
+  "ambient_analysis": {
+    "total_ambient": 4,
+    "total_views": 176,
+    "top_type": "fireplace",
+    "worst_type": "rain",
+    "type_rankings": [
+      {
+        "type": "fireplace",
+        "video_count": 3,
+        "total_views": 113,
+        "avg_views": 38,
+        "avg_views_per_day": 5.9,
+        "engagement_rate": 47.79,
+        "best_video": {
+          "title": "8 Hours Cozy Cat by the Fireplace — Purring & Crackling Fire",
+          "views": 44,
+          "views_per_day": 4.9
+        }
+      },
+      {
+        "type": "rain",
+        "video_count": 1,
+        "total_views": 63,
+        "avg_views": 63,
+        "avg_views_per_day": 5.7,
+        "engagement_rate": 39.68,
+        "best_video": {
+          "title": "1 Hour 4 Hours Rainy Night Ambience for Deep Sleep",
+          "views": 63,
+          "views_per_day": 5.7
+        }
+      }
+    ]
+  },
+  "plan": {
+    "shorts_planned": 20,
+    "longform_planned": 2,
+    "ambient_recommendations": [
+      {
+        "type": "rain",
+        "hours": 8,
+        "reason": "Classic ambient sound for focus, relaxation, and sleep, consistently high performing regardless of seasonal changes."
+      },
+      {
+        "type": "forest",
+        "hours": 4,
+        "reason": "Offers natural sounds and visuals, appealing for relaxation, meditation, or background noise during work, providing a sense of calm and escape."
+      },
+      {
+        "type": "ocean",
+        "hours": 8,
+        "reason": "Gentle waves and calming ocean sounds are universally relaxing and effective for stress reduction and deep sleep, tapping into primal human connections with nature."
+      }
+    ],
+    "winner_variations_count": 6,
+    "shorts": [
+      "Webb Telescope Challenges Big Bang",
+      "Your Smartphone Harbors Shocking Germs",
+      "Roman Concrete Heals Its Own Cracks",
+      "The Pantheon's Open Roof Never Leaks",
+      "D.B. Cooper's Money Still Unclaimed",
+      "Public Ice Machines Hide Frightening Germs",
+      "Your Tea Bag Contains Billions of Microplastics",
+      "Neuralink Patient Controls Cursor with Thoughts",
+      "AI Wrote This Script, Here's How",
+      "Pentagon Confirmed UFO Footage Is Real",
+      "Titanic's Lifeboat Drill Was Cancelled",
+      "AI Can Deepfake Your Voice From 3 Seconds",
+      "You Can Only Dream About Faces You've Seen",
+      "Göbekli Tepe Is Older Than Stonehenge",
+      "Toxoplasma Gondii Controls Cat's Brain",
+      "Saturn's Rings Are Disappearing Soon",
+      "Diamonds Are Formed From Ancient Plants",
+      "VR Headsets Simulate Smell & Taste",
+      "Deer Often 'Kidnap' Fawns For Safety",
+      "The Ocean's 'Dead Zones' Are Growing"
+    ],
+    "longform": [
+      "Microplastics: The Invisible Threat Redefining Human Health",
+      "The New Global Race: Unearthing the Arctic's Hidden Riches"
+    ]
+  }
+}
