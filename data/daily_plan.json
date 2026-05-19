@@ -14,7 +14,9 @@
       "inspired_by": "BrainBolt Winner: Kitchen Sponge Germs",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "2lPlWWgiCLE"
+      "winner_source_id": "2lPlWWgiCLE",
+      "status": "produced",
+      "production_id": "The_surprising_scientific_fact_1779204197"
     },
     {
       "title": "D.B. Cooper's Unclaimed Money: A Federal Mystery",
@@ -355,5 +357,11 @@
   "trending_count": 84,
   "channels_analyzed": 7,
   "winner_variations_count": 6,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-05-19T15:25:11.435738",
+  "results": {
+    "shorts_produced": 1,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
