@@ -48,7 +48,9 @@
       "inspired_by": "BrainBolt Winner: Pantheon Leak-Proof Dome",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "jQ6gW5Oe-n8"
+      "winner_source_id": "jQ6gW5Oe-n8",
+      "status": "produced",
+      "production_id": "How_the_Pantheons_perfectly_sl_1779231769"
     },
     {
       "title": "The Universe's Earliest Galaxies Formed Rapidly",
@@ -361,7 +363,7 @@
   "channels_analyzed": 7,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-05-19T19:03:15.959384",
+  "last_executed_at": "2026-05-19T23:04:35.365455",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
