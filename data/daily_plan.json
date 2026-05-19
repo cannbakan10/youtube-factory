@@ -318,7 +318,8 @@
       ],
       "inspired_by": "Trending World News: Why PM Modi Is Warning People About Buying Gold / RBI Uses Emergency Reserves",
       "estimated_views": "high",
-      "duration_minutes": 20
+      "duration_minutes": 20,
+      "status": "produced"
     },
     {
       "title": "The Hidden Scarcity: Inside the Global Battle for Critical Minerals",
@@ -358,10 +359,10 @@
   "channels_analyzed": 7,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-05-19T15:25:11.435738",
+  "last_executed_at": "2026-05-19T18:23:13.335294",
   "results": {
-    "shorts_produced": 1,
-    "longform_produced": 0,
+    "shorts_produced": 0,
+    "longform_produced": 1,
     "errors": []
   }
 }
