@@ -48,7 +48,9 @@
       "inspired_by": "Rome's Self-Healing Concrete Secret #Shorts",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "40bHnzks7-A"
+      "winner_source_id": "40bHnzks7-A",
+      "status": "produced",
+      "production_id": "Roman_concrete_possesses_a_uni_1779318880"
     },
     {
       "title": "The Pantheon's Open Roof Never Leaks",
@@ -362,7 +364,7 @@
   "channels_analyzed": 4,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-05-20T19:28:10.294948",
+  "last_executed_at": "2026-05-20T23:16:08.778639",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
