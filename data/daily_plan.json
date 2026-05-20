@@ -14,7 +14,9 @@
       "inspired_by": "JWST Finds Ancient Galaxies Too Early #Shorts",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "pZnlVbjTAkg"
+      "winner_source_id": "pZnlVbjTAkg",
+      "status": "produced",
+      "production_id": "The_Webb_Telescope_has_observe_1779290463"
     },
     {
       "title": "Your Smartphone Harbors Shocking Germs",
@@ -356,5 +358,11 @@
   "trending_count": 84,
   "channels_analyzed": 4,
   "winner_variations_count": 6,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-05-20T15:23:34.793634",
+  "results": {
+    "shorts_produced": 1,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
