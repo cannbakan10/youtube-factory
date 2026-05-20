@@ -31,7 +31,9 @@
       "inspired_by": "Your Kitchen Sponge Is Dirtier Than Your Toilet #Shorts",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "2lPlWWgiCLE"
+      "winner_source_id": "2lPlWWgiCLE",
+      "status": "produced",
+      "production_id": "Your_smartphone_a_constant_com_1779305165"
     },
     {
       "title": "Roman Concrete Heals Its Own Cracks",
@@ -360,10 +362,10 @@
   "channels_analyzed": 4,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-05-20T18:38:07.036343",
+  "last_executed_at": "2026-05-20T19:28:10.294948",
   "results": {
-    "shorts_produced": 0,
-    "longform_produced": 1,
+    "shorts_produced": 1,
+    "longform_produced": 0,
     "errors": []
   }
 }
