@@ -319,7 +319,8 @@
       ],
       "inspired_by": "AI-Curated Viral Trends (Microplastics)",
       "estimated_views": "high",
-      "duration_minutes": 20
+      "duration_minutes": 20,
+      "status": "produced"
     },
     {
       "title": "The New Global Race: Unearthing the Arctic's Hidden Riches",
@@ -359,10 +360,10 @@
   "channels_analyzed": 4,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-05-20T15:23:34.793634",
+  "last_executed_at": "2026-05-20T18:38:07.036343",
   "results": {
-    "shorts_produced": 1,
-    "longform_produced": 0,
+    "shorts_produced": 0,
+    "longform_produced": 1,
     "errors": []
   }
 }
