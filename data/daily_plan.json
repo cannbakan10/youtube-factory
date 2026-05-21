@@ -51,7 +51,9 @@
       "inspired_by": "Channel Winner Variation",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "A92xFY3pWBU"
+      "winner_source_id": "A92xFY3pWBU",
+      "status": "produced",
+      "production_id": "The_light_from_Galaxy_GLASSz13_1779404674"
     },
     {
       "title": "Detecting Galaxy GLASS-z13 Required Hidden Wavelengths",
@@ -305,7 +307,7 @@
   "channels_analyzed": 6,
   "winner_variations_count": 4,
   "status": "in_progress",
-  "last_executed_at": "2026-05-21T19:00:25.178722",
+  "last_executed_at": "2026-05-21T23:05:41.426402",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
