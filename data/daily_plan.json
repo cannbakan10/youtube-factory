@@ -15,7 +15,9 @@
       "inspired_by": "Channel Winner Variation",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "QHpgbH-oAYo"
+      "winner_source_id": "QHpgbH-oAYo",
+      "status": "produced",
+      "production_id": "The_missing_ransom_money_from__1779377292"
     },
     {
       "title": "Early Galaxies Defy Formation Timelines",
@@ -299,5 +301,11 @@
   "trending_count": 85,
   "channels_analyzed": 6,
   "winner_variations_count": 4,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-05-21T15:30:18.935188",
+  "results": {
+    "shorts_produced": 1,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
