@@ -262,7 +262,8 @@
       ],
       "inspired_by": "Multiple 'ECONOMIC CRISIS explained' and 'Financial Crisis' trending world news videos.",
       "estimated_views": "high",
-      "duration_minutes": 20
+      "duration_minutes": 20,
+      "status": "produced"
     },
     {
       "title": "The Geopolitical Chessboard: Shifting Powers in South Asia",
@@ -302,10 +303,10 @@
   "channels_analyzed": 6,
   "winner_variations_count": 4,
   "status": "in_progress",
-  "last_executed_at": "2026-05-21T15:30:18.935188",
+  "last_executed_at": "2026-05-21T17:55:39.776525",
   "results": {
-    "shorts_produced": 1,
-    "longform_produced": 0,
+    "shorts_produced": 0,
+    "longform_produced": 1,
     "errors": []
   }
 }
