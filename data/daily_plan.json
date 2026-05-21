@@ -33,7 +33,9 @@
       "inspired_by": "Channel Winner Variation",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "pZnlVbjTAkg"
+      "winner_source_id": "pZnlVbjTAkg",
+      "status": "produced",
+      "production_id": "Observations_of_the_universes__1779389959"
     },
     {
       "title": "We See Galaxy GLASS-z13 As It Was 13 Billion Years Ago",
@@ -303,10 +305,10 @@
   "channels_analyzed": 6,
   "winner_variations_count": 4,
   "status": "in_progress",
-  "last_executed_at": "2026-05-21T17:55:39.776525",
+  "last_executed_at": "2026-05-21T19:00:25.178722",
   "results": {
-    "shorts_produced": 0,
-    "longform_produced": 1,
+    "shorts_produced": 1,
+    "longform_produced": 0,
     "errors": []
   }
 }
