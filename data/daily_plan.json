@@ -2,315 +2,328 @@
   "date": "2026-05-22",
   "shorts": [
     {
-      "title": "D.B. Cooper's Missing Money Still Holds Clues",
-      "topic": "The missing ransom money from the D.B. Cooper hijacking, some of which was found years later, still holds forensic clues that could solve the cold case.",
-      "hook": "Decades after D.B. Cooper's legendary jump, his missing ransom money still whispers secrets to investigators.",
+      "title": "Light Reveals Universe's Infancy",
+      "topic": "The incredible journey of light from the universe's earliest stars, taking billions of years to reach Earth, providing a direct glimpse into the universe's infancy and challenging previous cosmological models.",
+      "hook": "We can see light from the universe's earliest stars that began their journey billions of years ago.",
       "tags": [
-        "dbcooper",
-        "unsolvedmystery",
-        "truecrime",
-        "mystery",
+        "space",
+        "cosmology",
+        "stars"
+      ],
+      "inspired_by": "Channel Winner: JWST Finds Ancient Galaxies Too Early",
+      "estimated_views": "high",
+      "is_winner_variation": true,
+      "winner_source_id": "pZnlVbjTAkg"
+    },
+    {
+      "title": "Hidden Germ Hotspots at Home",
+      "topic": "Uncovering the surprising germ hotspots in your household, revealing common items that harbor more bacteria than you'd expect and simple steps to maintain a healthier living environment.",
+      "hook": "Your phone screen carries more germs than most public toilet seats.",
+      "tags": [
+        "hygiene",
+        "health",
+        "germs"
+      ],
+      "inspired_by": "Channel Winner: Your Kitchen Sponge Is Dirtier Than Your Toilet",
+      "estimated_views": "medium",
+      "is_winner_variation": true,
+      "winner_source_id": "2lPlWWgiCLE"
+    },
+    {
+      "title": "Roman Engineering Defies Logic",
+      "topic": "Examining a specific engineering marvel from the Roman era, such as their aqueducts or advanced concrete, showcasing how they achieved feats that still baffle modern builders without today's technology.",
+      "hook": "Roman engineers built structures that still stand perfectly today, using methods we struggle to replicate.",
+      "tags": [
+        "Roman",
+        "engineering",
         "history"
       ],
-      "inspired_by": "Channel Winner Variation",
-      "estimated_views": "high",
+      "inspired_by": "Channel Winner: Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome",
+      "estimated_views": "medium",
       "is_winner_variation": true,
-      "winner_source_id": "QHpgbH-oAYo",
-      "status": "produced",
-      "production_id": "The_missing_ransom_money_from__1779377292"
+      "winner_source_id": "jQ6gW5Oe-n8"
     },
     {
-      "title": "Early Galaxies Defy Formation Timelines",
-      "topic": "Observations of the universe's earliest galaxies reveal they formed incredibly quickly, challenging current cosmological models about star and galaxy evolution.",
-      "hook": "The universe's earliest galaxies appear to have formed at an impossible speed, defying everything we thought we knew about cosmic timelines.",
+      "title": "Gravity Bends Light to See Farthest",
+      "topic": "Explaining gravitational lensing, a cosmic phenomenon where massive objects bend light, allowing astronomers to see incredibly distant and faint galaxies that would otherwise be invisible, revealing the universe's earliest moments.",
+      "hook": "Massive galaxy clusters can act as cosmic magnifying glasses, bending light to reveal the universe's most distant objects.",
       "tags": [
-        "galaxies",
-        "cosmology",
         "space",
-        "astronomy",
-        "science"
+        "physics",
+        "galaxies"
       ],
-      "inspired_by": "Channel Winner Variation",
+      "inspired_by": "Channel Winner: Galaxy GLASS-z13: 300 Million Years After Big Bang",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "pZnlVbjTAkg",
-      "status": "produced",
-      "production_id": "Observations_of_the_universes__1779389959"
+      "winner_source_id": "A92xFY3pWBU"
     },
     {
-      "title": "We See Galaxy GLASS-z13 As It Was 13 Billion Years Ago",
-      "topic": "The light from Galaxy GLASS-z13, one of the most distant ever observed, has traveled for over 13 billion years, offering a direct view into the universe's infancy.",
-      "hook": "The shimmering light reaching us from Galaxy GLASS-z13 is actually 13 billion years old, showing us the universe as it was in its infancy.",
+      "title": "Starlight is a Time Machine",
+      "topic": "Exploring the mind-bending concept that when we look at distant stars and galaxies, we are literally looking back in time, seeing them as they were billions of years ago due to the finite speed of light.",
+      "hook": "Observing a star 100 light-years away means you are seeing it as it existed 100 years ago.",
       "tags": [
-        "galaxy",
-        "lightspeed",
-        "universe",
-        "spaceexploration",
-        "physics"
+        "space",
+        "physics",
+        "time"
       ],
-      "inspired_by": "Channel Winner Variation",
-      "estimated_views": "high",
-      "is_winner_variation": true,
-      "winner_source_id": "A92xFY3pWBU",
-      "status": "produced",
-      "production_id": "The_light_from_Galaxy_GLASSz13_1779404674"
-    },
-    {
-      "title": "Detecting Galaxy GLASS-z13 Required Hidden Wavelengths",
-      "topic": "Identifying a galaxy as distant as GLASS-z13 isn't done with visible light; scientists must use infrared wavelengths to pierce through cosmic dust and detect its redshifted glow.",
-      "hook": "Detecting the universe's oldest known galaxy, GLASS-z13, wasn't possible with visible light; it required looking into hidden infrared wavelengths.",
-      "tags": [
-        "telescope",
-        "astronomy",
-        "scienceexplained",
-        "infrared",
-        "cosmic"
-      ],
-      "inspired_by": "Channel Winner Variation",
+      "inspired_by": "Channel Winner: Oldest Galaxy GLASS-z13 Discovered",
       "estimated_views": "high",
       "is_winner_variation": true,
       "winner_source_id": "n41UVkdKXxY"
     },
     {
-      "title": "The Bermuda Triangle's Vanishing Flight 19",
-      "topic": "The mysterious disappearance of Flight 19, five U.S. Navy torpedo bombers, and their rescue plane in the Bermuda Triangle in 1945 remains one of its most famous unsolved cases.",
-      "hook": "In 1945, five U.S. Navy bombers vanished without a trace in the Bermuda Triangle, then their rescue plane disappeared too.",
+      "title": "Lost Roman Materials Recreated",
+      "topic": "The ongoing efforts of modern material scientists to reverse-engineer and understand the lost secrets behind incredibly durable Roman construction materials, particularly their long-lasting cements and concretes, to inspire new sustainable solutions.",
+      "hook": "Scientists are finally cracking the code of how Romans made self-healing materials that lasted for millennia.",
       "tags": [
-        "bermudatriangle",
-        "unsolvedmystery",
-        "aviation",
-        "history",
-        "conspiracy"
+        "Roman",
+        "materials",
+        "science"
       ],
-      "inspired_by": "AI-Curated Viral Trends: Unsolved Mysteries of the Bermuda Triangle",
+      "inspired_by": "Channel Winner: Rome's Self-Healing Concrete Secret",
+      "estimated_views": "medium",
+      "is_winner_variation": true,
+      "winner_source_id": "40bHnzks7-A"
+    },
+    {
+      "title": "GPT-4o Sees and Hears You Now",
+      "topic": "OpenAI's GPT-4o model can now process audio, vision, and text inputs and generate responses in real-time, allowing for incredibly natural human-AI conversations that feel more like talking to a person.",
+      "hook": "OpenAI's new GPT-4o model can now interpret emotions in your voice and respond instantly.",
+      "tags": [
+        "AI",
+        "GPT4o",
+        "technology"
+      ],
+      "inspired_by": "AI-Curated Viral Trends (GPT-4o)",
       "estimated_views": "high",
       "is_winner_variation": false
     },
     {
-      "title": "Quantum Computers Solve Problems in Minutes",
-      "topic": "Quantum computers can process complex calculations in minutes that would take classical supercomputers thousands of years, leveraging principles like superposition and entanglement.",
-      "hook": "Imagine a computer solving problems in minutes that would take our fastest supercomputers thousands of years.",
+      "title": "CRISPR Can Rewrite Your DNA",
+      "topic": "CRISPR gene editing technology allows scientists to precisely modify DNA sequences, offering the potential to cure genetic diseases by correcting faulty genes, but also raising significant ethical questions about altering the human germline.",
+      "hook": "Scientists can now edit human DNA with unprecedented precision using CRISPR technology.",
       "tags": [
-        "quantumcomputing",
-        "technology",
-        "futuretech",
-        "science",
-        "innovation"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: Quantum Computing Breakthroughs",
-      "estimated_views": "high",
-      "is_winner_variation": false
-    },
-    {
-      "title": "Tunguska Event: Forest Flattened with No Crater",
-      "topic": "The 1908 Tunguska Event flattened 80 million trees over 2,150 square kilometers in Siberia, yet left no impact crater, baffling scientists for decades.",
-      "hook": "In 1908, a mysterious explosion in Siberia flattened an entire forest, yet left no trace of an impact crater.",
-      "tags": [
-        "tunguska",
-        "mystery",
-        "explosion",
-        "history",
-        "earthscience"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: The Tunguska Event",
-      "estimated_views": "high",
-      "is_winner_variation": false
-    },
-    {
-      "title": "CRISPR Can Edit Human DNA With Precision",
-      "topic": "CRISPR gene-editing technology allows scientists to precisely cut and paste specific sections of human DNA, opening doors to treating genetic diseases at their source.",
-      "hook": "Imagine a tool that can rewrite your very own genetic code, fixing diseases before they even start.",
-      "tags": [
-        "crispr",
+        "CRISPR",
         "genetics",
-        "medicine",
-        "biotechnology",
         "science"
       ],
-      "inspired_by": "AI-Curated Viral Trends: CRISPR Gene Editing",
+      "inspired_by": "AI-Curated Viral Trends (CRISPR)",
       "estimated_views": "high",
       "is_winner_variation": false
     },
     {
-      "title": "The Voynich Manuscript's Unknown Language",
-      "topic": "The Voynich Manuscript, an enigmatic medieval book filled with strange illustrations and an undeciphered script, has puzzled cryptographers and historians for centuries.",
-      "hook": "For centuries, one mysterious medieval book has resisted every attempt at translation, its language completely unknown.",
+      "title": "Ocean's Deep Has New Creatures",
+      "topic": "The deep sea, a vast and largely unexplored frontier, is a treasure trove of biodiversity, constantly yielding new and bizarre species that thrive in extreme conditions, challenging our understanding of life on Earth.",
+      "hook": "Scientists are finding creatures in the deep ocean that look like they're from another planet.",
       "tags": [
-        "voynich",
-        "manuscript",
+        "deepsea",
+        "marinebiology",
+        "discovery"
+      ],
+      "inspired_by": "AI-Curated Viral Trends (Deep Sea)",
+      "estimated_views": "medium",
+      "is_winner_variation": false
+    },
+    {
+      "title": "Siberia's Mysterious Cosmic Blast",
+      "topic": "In 1908, a mysterious explosion flattened 80 million trees in Siberia, an event known as the Tunguska Event, still debated by scientists as either an air burst from a meteor or comet, leaving no crater.",
+      "hook": "An explosion in Siberia in 1908 flattened 80 million trees, yet left no impact crater.",
+      "tags": [
+        "Tunguska",
         "mystery",
-        "cryptography",
         "history"
       ],
-      "inspired_by": "AI-Curated Viral Trends: The Voynich Manuscript",
-      "estimated_views": "high",
+      "inspired_by": "AI-Curated Viral Trends (Tunguska)",
+      "estimated_views": "medium",
       "is_winner_variation": false
     },
     {
-      "title": "Deepfake AI Can Mimic Any Voice Perfectly",
-      "topic": "Advanced deepfake technology can now clone any human voice from just a few seconds of audio, creating hyper-realistic speech that's indistinguishable from the original.",
-      "hook": "Imagine an AI that can perfectly mimic anyone's voice, from just a few seconds of audio.",
+      "title": "Quantum Computers Use Superposition",
+      "topic": "Quantum computers leverage quantum-mechanical phenomena like superposition and entanglement to process information in fundamentally different ways than classical computers, promising to solve problems currently impossible, from drug discovery to AI.",
+      "hook": "Quantum computers use the strangest rules of physics to solve problems regular computers can't.",
       "tags": [
-        "deepfake",
-        "aiethics",
-        "voicetech",
-        "cybersecurity",
-        "misinformation"
+        "quantum",
+        "technology",
+        "physics"
       ],
-      "inspired_by": "AI-Curated Viral Trends: Deepfakes",
-      "estimated_views": "high",
+      "inspired_by": "AI-Curated Viral Trends (Quantum Computing)",
+      "estimated_views": "medium",
       "is_winner_variation": false
     },
     {
-      "title": "Mantis Shrimp Punch Faster Than a Bullet",
-      "topic": "The mantis shrimp delivers a punch that accelerates faster than a .22 caliber bullet, creating cavitation bubbles that release shockwaves strong enough to crack aquarium glass.",
-      "hook": "The mantis shrimp delivers a punch so fast, it creates underwater shockwaves and can even boil water.",
+      "title": "Déjà Vu: Brain's Memory Glitch?",
+      "topic": "Déjà vu, the eerie feeling of having already experienced something new, is believed by neuroscientists to be a temporary glitch in the brain's memory processing, where new information is briefly mislabeled as old.",
+      "hook": "That strange feeling of déjà vu might just be your brain briefly confusing new memories for old ones.",
       "tags": [
-        "animals",
-        "mantisshrimp",
-        "wildlife",
-        "oceanlife",
-        "biology"
+        "psychology",
+        "brain",
+        "mystery"
       ],
-      "inspired_by": "Niche Viral Short: 'THESE ANIMALS HAVE REFLEXES SO FAST'",
+      "inspired_by": "AI-Curated Viral Trends (Déjà Vu)",
       "estimated_views": "high",
       "is_winner_variation": false
     },
     {
-      "title": "Crows Taught to Pick Up Litter For Rewards",
-      "topic": "In some parts of Sweden, crows are being trained to pick up cigarette butts and litter in exchange for food rewards, utilizing their natural intelligence for urban cleanup.",
-      "hook": "In a unique urban experiment, crows in Sweden are being trained to pick up litter in exchange for food.",
+      "title": "Your Brain Dreams to Learn",
+      "topic": "Neuroscience suggests that dreaming plays a critical role in memory consolidation, emotional regulation, and problem-solving, acting as a virtual reality simulator where the brain processes daily experiences and prepares for future ones.",
+      "hook": "Your dreams are your brain's secret laboratory, helping you process emotions and consolidate memories.",
       "tags": [
-        "crows",
-        "animalintelligence",
-        "environment",
-        "sweden",
-        "urbanecology"
+        "dreams",
+        "neuroscience",
+        "psychology"
       ],
-      "inspired_by": "Niche Viral Short: 'Sweden is Paying Crows to Pick Up Trash?!'",
-      "estimated_views": "high",
+      "inspired_by": "AI-Curated Viral Trends (Why We Dream)",
+      "estimated_views": "medium",
       "is_winner_variation": false
     },
     {
-      "title": "Australia's Outback Was Once an Inland Sea",
-      "topic": "The vast, arid interior of Australia, known as the Outback, was once covered by a massive inland sea millions of years ago, shaping its unique geology and current emptiness.",
-      "hook": "Why is the center of Australia so empty and desolate? It was once a massive inland sea.",
+      "title": "Microplastics in Your Blood",
+      "topic": "Microplastics, tiny plastic particles, are now ubiquitous, found in our food, water, air, and even human blood, with scientists actively researching their long-term health impacts and how to mitigate their spread.",
+      "hook": "Scientists have found microplastics inside human bloodstreams across the globe.",
       "tags": [
-        "australia",
-        "geography",
-        "outback",
-        "geology",
-        "history"
+        "microplastics",
+        "health",
+        "environment"
       ],
-      "inspired_by": "Niche Viral Short: 'Why Is Australia Empty in the Middle?'",
+      "inspired_by": "AI-Curated Viral Trends (Microplastics)",
       "estimated_views": "high",
       "is_winner_variation": false
     },
     {
-      "title": "Cosmic Cold Spot Defies Universe Models",
-      "topic": "The Cosmic Cold Spot, a vast region of the universe significantly colder than its surroundings, is an unexplained anomaly that challenges standard cosmological models.",
-      "hook": "There's a spot in space so cold and vast, it shouldn't even exist according to our best models of the universe.",
+      "title": "New Planets May Host Life",
+      "topic": "Astronomers are regularly discovering new exoplanets, some of which fall within the 'habitable zone' of their stars, fueling the search for extraterrestrial life and pushing the boundaries of what we consider a potential home for life.",
+      "hook": "Astronomers have found thousands of exoplanets, some potentially habitable, bringing us closer to finding alien life.",
       "tags": [
+        "exoplanets",
         "space",
-        "cosmology",
-        "universe",
-        "anomaly",
-        "science"
+        "life"
       ],
-      "inspired_by": "Niche Viral Short: 'THE UNIVERSE HAS A GLITCH'",
+      "inspired_by": "AI-Curated Viral Trends (New Exoplanets)",
       "estimated_views": "high",
       "is_winner_variation": false
     },
     {
-      "title": "AI Assistant Hallucinates Non-Existent Facts",
-      "topic": "Large Language Models (LLMs) used in AI assistants can 'hallucinate' by confidently generating false information, creating believable but entirely fabricated responses.",
-      "hook": "Your AI assistant can confidently tell you a fact that is entirely made up, a phenomenon called 'hallucination.'",
+      "title": "Voynich: Unreadable 600-Year Book",
+      "topic": "The Voynich Manuscript, a 15th-century book filled with undeciphered text and strange illustrations, has baffled cryptographers and linguists for centuries, remaining one of history's greatest unsolved linguistic mysteries.",
+      "hook": "For over 600 years, no one has been able to read a single word of the mysterious Voynich Manuscript.",
       "tags": [
-        "ai",
-        "llms",
-        "artificialintelligence",
-        "techrisks",
-        "hallucination"
+        "Voynich",
+        "mystery",
+        "history"
       ],
-      "inspired_by": "Trending Video: 'This Is Why You Don’t Trust Alexa at Night'",
+      "inspired_by": "AI-Curated Viral Trends (Voynich Manuscript)",
+      "estimated_views": "medium",
+      "is_winner_variation": false
+    },
+    {
+      "title": "Australia Lost a War to Emus",
+      "topic": "In 1932, the Australian military was deployed against a population of emus destroying crops, a bizarre and largely unsuccessful operation now known as the 'Great Emu War,' highlighting the challenges of human-wildlife conflict.",
+      "hook": "In 1932, the Australian army literally declared war on emus and lost.",
+      "tags": [
+        "EmuWar",
+        "history",
+        "animals"
+      ],
+      "inspired_by": "AI-Curated Viral Trends (Emu War)",
       "estimated_views": "high",
       "is_winner_variation": false
     },
     {
-      "title": "Augmented Reality Headsets Will Replace Screens",
-      "topic": "Breakthroughs in augmented reality (AR) headset technology are moving towards devices so compact and powerful, they could eventually replace physical screens for daily computing.",
-      "hook": "Soon, bulky monitors and TV screens could become obsolete, replaced by incredibly compact augmented reality headsets.",
+      "title": "Algorithms Change Your Brain",
+      "topic": "Social media algorithms are designed to maximize engagement, subtly altering our dopamine pathways and influencing our moods, attention spans, and even self-perception, creating a significant psychological impact.",
+      "hook": "The algorithms powering your social media feed are subtly reshaping your brain's reward system.",
       "tags": [
-        "ar",
-        "virtualreality",
-        "futuretech",
-        "innovation",
-        "displaytech"
+        "socialmedia",
+        "psychology",
+        "algorithms"
       ],
-      "inspired_by": "Trending Video: 'World's smallest 4k headset'",
+      "inspired_by": "AI-Curated Viral Trends (Social Media Algorithms)",
+      "estimated_views": "high",
+      "is_winner_variation": false
+    },
+    {
+      "title": "Game Theory: Prisoner's Dilemma",
+      "topic": "The Prisoner's Dilemma is a classic game theory problem where two individuals, acting in their own self-interest, choose outcomes that are collectively worse than if they had cooperated, illustrating complex decision-making.",
+      "hook": "The Prisoner's Dilemma shows why self-interest often leads to a worse outcome for everyone involved.",
+      "tags": [
+        "gametheory",
+        "psychology",
+        "logic"
+      ],
+      "inspired_by": "Trending US Videos (The Legal Answer to the Prisoner Dilemma)",
+      "estimated_views": "medium",
+      "is_winner_variation": false
+    },
+    {
+      "title": "Australia's Vast Arid Center",
+      "topic": "A vast portion of Australia's interior is sparsely populated due to its extremely arid climate, characterized by deserts and semi-arid lands, making it one of the driest continents on Earth despite its size.",
+      "hook": "Australia is the only continent with an entire desert at its core, making much of its center uninhabitable.",
+      "tags": [
+        "Australia",
+        "geography",
+        "desert"
+      ],
+      "inspired_by": "Viral Shorts in Our Niche (Why Is Australia Empty in the Middle?)",
       "estimated_views": "high",
       "is_winner_variation": false
     }
   ],
   "longform": [
     {
-      "title": "Global Financial Instability: Decoding the Coming Storm",
-      "topic": "20 minute deep analysis of the current indicators and historical precedents for global financial instability. Cover the impact of rising inflation, interest rate hikes, banking sector fragilities, and geopolitical tensions on global markets. Explore historical financial crises, compare current conditions, and discuss potential scenarios for central bank responses and future economic landscapes. Include specific facts, dates, and context from recent trending news about economic crises in various regions.",
-      "hook": "From rising inflation to banking sector fragilities, the global economy is signaling a perfect storm.",
+      "title": "The AI Arms Race: How Nations Clash for Tech Supremacy",
+      "topic": "20 minute deep analysis of the global competition for artificial intelligence dominance, particularly between the US and China. Cover the historical origins of this technological rivalry, key AI breakthroughs by both nations, their strategic investments, and the geopolitical and economic implications for the rest of the world. Discuss how this race is reshaping global power dynamics, military capabilities, and future economic landscapes.",
+      "hook": "The next world superpower won't be defined by military might, but by who controls the future of artificial intelligence.",
       "tags": [
-        "economiccrisis",
-        "financialmarkets",
-        "globaleconomy",
+        "AI",
         "geopolitics",
-        "inflation"
+        "technology",
+        "China",
+        "USA",
+        "economics",
+        "future"
       ],
-      "inspired_by": "Multiple 'ECONOMIC CRISIS explained' and 'Financial Crisis' trending world news videos.",
+      "inspired_by": "Trending World News (US & China Tech Revolution), AI-Curated Viral Trends (AI breakthroughs)",
       "estimated_views": "high",
-      "duration_minutes": 20,
-      "status": "produced"
+      "duration_minutes": 20
     },
     {
-      "title": "The Geopolitical Chessboard: Shifting Powers in South Asia",
-      "topic": "20 minute deep analysis of the evolving geopolitical dynamics in South Asia, focusing on key players like India, Pakistan, Bangladesh, and China. Examine recent developments such as regional defense deals (e.g., JF-17), infrastructure projects, and strategic alliances. Discuss the historical context of regional rivalries and cooperation, the growing influence of external powers, and the potential implications for global stability and trade. Include specific facts, dates, and context from recent trending news about South Asian geopolitics.",
-      "hook": "South Asia is rapidly becoming a battleground for global influence, as ancient rivalries clash with new economic and military alignments.",
+      "title": "Abyssal Secrets: Unveiling the Ocean's Last Unexplored Frontier",
+      "topic": "20 minute deep analysis of the scientific exploration of the deep ocean. Explore the extreme conditions of the abyssal zone, the incredible biodiversity of newly discovered species, and the unique ecosystems like hydrothermal vents that thrive without sunlight. Discuss the technological challenges of deep-sea exploration, the potential for medical and scientific breakthroughs, and the critical importance of protecting these fragile, unexplored environments from human impact.",
+      "hook": "More people have walked on the Moon than have ventured into the deepest parts of our own planet's oceans.",
       "tags": [
-        "geopolitics",
-        "southasia",
-        "internationalrelations",
-        "india",
-        "china"
+        "deepsea",
+        "marinebiology",
+        "exploration",
+        "oceans",
+        "biodiversity",
+        "science",
+        "discovery"
       ],
-      "inspired_by": "Trending World News: 'South Asia Changing Fast!' and similar analyses.",
-      "estimated_views": "high",
+      "inspired_by": "AI-Curated Viral Trends (Deep Sea Discoveries), Competitor Activity (Bright Side deep ocean content)",
+      "estimated_views": "medium",
       "duration_minutes": 20
     }
   ],
   "ambient_recommendations": [
     {
-      "type": "rain",
-      "hours": 8,
-      "reason": "Consistently high demand for relaxing rain sounds for sleep, study, and focus. Very broad appeal and a proven category."
-    },
-    {
-      "type": "forest",
-      "hours": 8,
-      "reason": "Offers calming natural sounds and visuals, appealing to those seeking nature immersion and stress relief."
-    },
-    {
       "type": "ocean",
       "hours": 8,
-      "reason": "Ocean waves are a timeless sound for relaxation and meditation, known for their soothing, repetitive patterns."
+      "reason": "The calming sound of gentle waves and vast open views are highly effective for relaxation, studying, and background ambience. Universal appeal for destressing."
+    },
+    {
+      "type": "thunderstorm",
+      "hours": 8,
+      "reason": "The dramatic sounds of thunder and heavy rain, combined with low light, create a powerful and immersive environment perfect for focus, deep sleep, or dramatic background noise for creative work."
+    },
+    {
+      "type": "river",
+      "hours": 8,
+      "reason": "The continuous, soothing sound of flowing water is excellent for masking disruptive noises and creating a peaceful, natural soundscape conducive to concentration or quiet contemplation."
     }
   ],
-  "generated_at": "2026-05-21T00:04:00.925218",
-  "trending_count": 85,
+  "generated_at": "2026-05-21T23:50:10.447188",
+  "trending_count": 83,
   "channels_analyzed": 6,
-  "winner_variations_count": 4,
-  "status": "in_progress",
-  "last_executed_at": "2026-05-21T23:05:41.426402",
-  "results": {
-    "shorts_produced": 1,
-    "longform_produced": 0,
-    "errors": []
-  }
+  "winner_variations_count": 6,
+  "status": "pending"
 }

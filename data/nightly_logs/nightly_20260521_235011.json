@@ -1,0 +1,241 @@
+{
+  "timestamp": "2026-05-21T23:48:57.689931",
+  "dry_run": false,
+  "api_health": {
+    "gemini": "ok (gemini-2.5-flash)",
+    "openai": "not_configured",
+    "healthy": true
+  },
+  "performance_review": {
+    "total_recent": 1,
+    "winners_count": 1,
+    "losers_count": 0,
+    "avg_views_48h": 102.0,
+    "best_topics": [
+      "Rome's Pantheon: How Rain Never Floods It #Shorts"
+    ],
+    "best_views": [
+      102
+    ],
+    "winner_titles": [
+      "Rome's Pantheon: How Rain Never Floods It #Shorts"
+    ],
+    "loser_titles": []
+  },
+  "cleanup": {
+    "unlisted": 0,
+    "deleted": 0,
+    "failed": 0,
+    "kept": 44,
+    "thresholds": {
+      "shorts_7d": 25,
+      "shorts_14d": 50,
+      "shorts_30d": 100,
+      "long_14d": 25,
+      "long_30d": 50,
+      "multiplier": 0.5
+    }
+  },
+  "trending": {
+    "found": 83,
+    "viral_shorts_found": 30,
+    "world_news_found": 20,
+    "competitors_analyzed": 4,
+    "comments_mined": 20,
+    "top_5": [
+      {
+        "title": "I Made Cotton Candy out of Crayons",
+        "views": 23917828,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Reddington saved the people in the convenience store.#shortv",
+        "views": 23634040,
+        "category": "Entertainment"
+      },
+      {
+        "title": "“Bro Defeated a Genius Security System 😳” | MacGyver | FUNK ",
+        "views": 22313984,
+        "category": "Film & Animation"
+      },
+      {
+        "title": "Brick Dominos 🧱 @zackdfilms",
+        "views": 19067307,
+        "category": "Entertainment"
+      },
+      {
+        "title": "Superman gave up his powers #shorts",
+        "views": 14653731,
+        "category": "Entertainment"
+      }
+    ],
+    "top_viral_shorts": [
+      {
+        "title": "Animales que se Metieron con el Oponente Equivocado",
+        "views": 1966972,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "The Cruelest Animal Endings 😱#animalfacts #wildlife #facts",
+        "views": 1882362,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "Animals that might be gone by 2030…",
+        "views": 1143580,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "Why Is Australia Empty in the Middle? 🇦🇺",
+        "views": 1019706,
+        "query": "country facts geography"
+      },
+      {
+        "title": "Every Territory Ever Controlled By Countries. #history #shor",
+        "views": 869521,
+        "query": "country facts geography"
+      }
+    ]
+  },
+  "winners": {
+    "added": 9,
+    "total": 9,
+    "threshold": 300,
+    "median": 118,
+    "active": 9,
+    "top": [
+      {
+        "video_id": "pZnlVbjTAkg",
+        "title": "JWST Finds Ancient Galaxies Too Early #Shorts",
+        "views": 868,
+        "views_per_day": 217.0,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "2lPlWWgiCLE",
+        "title": "Your Kitchen Sponge Is Dirtier Than Your Toilet #Shorts",
+        "views": 1392,
+        "views_per_day": 154.7,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "jQ6gW5Oe-n8",
+        "title": "Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome #Shorts",
+        "views": 1255,
+        "views_per_day": 114.1,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "A92xFY3pWBU",
+        "title": "Galaxy GLASS-z13: 300 Million Years After Big Bang #Shorts",
+        "views": 798,
+        "views_per_day": 88.7,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "n41UVkdKXxY",
+        "title": "Oldest Galaxy GLASS-z13 Discovered #Shorts",
+        "views": 989,
+        "views_per_day": 82.4,
+        "variations_generated": 0
+      }
+    ]
+  },
+  "peak_hours": {
+    "utc": [
+      23,
+      22,
+      18
+    ],
+    "source": "channel_data",
+    "samples": 43
+  },
+  "retention": {
+    "avg_pct": 0,
+    "avg_dur_sec": 0,
+    "source": "unavailable",
+    "video_count": 0
+  },
+  "ambient_analysis": {
+    "total_ambient": 4,
+    "total_views": 180,
+    "top_type": "fireplace",
+    "worst_type": "rain",
+    "type_rankings": [
+      {
+        "type": "fireplace",
+        "video_count": 3,
+        "total_views": 115,
+        "avg_views": 38,
+        "avg_views_per_day": 4.4,
+        "engagement_rate": 46.96,
+        "best_video": {
+          "title": "8 Hours Cozy Cat by the Fireplace — Purring & Crackling Fire",
+          "views": 44,
+          "views_per_day": 4.0
+        }
+      },
+      {
+        "type": "rain",
+        "video_count": 1,
+        "total_views": 65,
+        "avg_views": 65,
+        "avg_views_per_day": 5.0,
+        "engagement_rate": 38.46,
+        "best_video": {
+          "title": "1 Hour 4 Hours Rainy Night Ambience for Deep Sleep",
+          "views": 65,
+          "views_per_day": 5.0
+        }
+      }
+    ]
+  },
+  "plan": {
+    "shorts_planned": 20,
+    "longform_planned": 2,
+    "ambient_recommendations": [
+      {
+        "type": "ocean",
+        "hours": 8,
+        "reason": "The calming sound of gentle waves and vast open views are highly effective for relaxation, studying, and background ambience. Universal appeal for destressing."
+      },
+      {
+        "type": "thunderstorm",
+        "hours": 8,
+        "reason": "The dramatic sounds of thunder and heavy rain, combined with low light, create a powerful and immersive environment perfect for focus, deep sleep, or dramatic background noise for creative work."
+      },
+      {
+        "type": "river",
+        "hours": 8,
+        "reason": "The continuous, soothing sound of flowing water is excellent for masking disruptive noises and creating a peaceful, natural soundscape conducive to concentration or quiet contemplation."
+      }
+    ],
+    "winner_variations_count": 6,
+    "shorts": [
+      "Light Reveals Universe's Infancy",
+      "Hidden Germ Hotspots at Home",
+      "Roman Engineering Defies Logic",
+      "Gravity Bends Light to See Farthest",
+      "Starlight is a Time Machine",
+      "Lost Roman Materials Recreated",
+      "GPT-4o Sees and Hears You Now",
+      "CRISPR Can Rewrite Your DNA",
+      "Ocean's Deep Has New Creatures",
+      "Siberia's Mysterious Cosmic Blast",
+      "Quantum Computers Use Superposition",
+      "Déjà Vu: Brain's Memory Glitch?",
+      "Your Brain Dreams to Learn",
+      "Microplastics in Your Blood",
+      "New Planets May Host Life",
+      "Voynich: Unreadable 600-Year Book",
+      "Australia Lost a War to Emus",
+      "Algorithms Change Your Brain",
+      "Game Theory: Prisoner's Dilemma",
+      "Australia's Vast Arid Center"
+    ],
+    "longform": [
+      "The AI Arms Race: How Nations Clash for Tech Supremacy",
+      "Abyssal Secrets: Unveiling the Ocean's Last Unexplored Front"
+    ]
+  }
+}
