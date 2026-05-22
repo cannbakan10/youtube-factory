@@ -286,7 +286,8 @@
       ],
       "inspired_by": "Trending World News (US & China Tech Revolution), AI-Curated Viral Trends (AI breakthroughs)",
       "estimated_views": "high",
-      "duration_minutes": 20
+      "duration_minutes": 20,
+      "status": "produced"
     },
     {
       "title": "Abyssal Secrets: Unveiling the Ocean's Last Unexplored Frontier",
@@ -328,10 +329,10 @@
   "channels_analyzed": 6,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-05-22T14:42:11.451632",
+  "last_executed_at": "2026-05-22T18:05:06.858822",
   "results": {
-    "shorts_produced": 1,
-    "longform_produced": 0,
+    "shorts_produced": 0,
+    "longform_produced": 1,
     "errors": []
   }
 }
