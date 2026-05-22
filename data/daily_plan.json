@@ -13,7 +13,9 @@
       "inspired_by": "Channel Winner: JWST Finds Ancient Galaxies Too Early",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "pZnlVbjTAkg"
+      "winner_source_id": "pZnlVbjTAkg",
+      "status": "produced",
+      "production_id": "The_incredible_journey_of_ligh_1779460839"
     },
     {
       "title": "Hidden Germ Hotspots at Home",
@@ -325,5 +327,11 @@
   "trending_count": 83,
   "channels_analyzed": 6,
   "winner_variations_count": 6,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-05-22T14:42:11.451632",
+  "results": {
+    "shorts_produced": 1,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
