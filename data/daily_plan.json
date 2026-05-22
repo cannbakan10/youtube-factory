@@ -45,7 +45,9 @@
       "inspired_by": "Channel Winner: Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome",
       "estimated_views": "medium",
       "is_winner_variation": true,
-      "winner_source_id": "jQ6gW5Oe-n8"
+      "winner_source_id": "jQ6gW5Oe-n8",
+      "status": "produced",
+      "production_id": "Examining_a_specific_engineeri_1779490785"
     },
     {
       "title": "Gravity Bends Light to See Farthest",
@@ -331,7 +333,7 @@
   "channels_analyzed": 6,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-05-22T18:56:36.100303",
+  "last_executed_at": "2026-05-22T23:01:10.638872",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
