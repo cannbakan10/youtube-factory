@@ -29,7 +29,9 @@
       "inspired_by": "Channel Winner: Your Kitchen Sponge Is Dirtier Than Your Toilet",
       "estimated_views": "medium",
       "is_winner_variation": true,
-      "winner_source_id": "2lPlWWgiCLE"
+      "winner_source_id": "2lPlWWgiCLE",
+      "status": "produced",
+      "production_id": "Uncovering_the_surprising_germ_1779476127"
     },
     {
       "title": "Roman Engineering Defies Logic",
@@ -329,10 +331,10 @@
   "channels_analyzed": 6,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-05-22T18:05:06.858822",
+  "last_executed_at": "2026-05-22T18:56:36.100303",
   "results": {
-    "shorts_produced": 0,
-    "longform_produced": 1,
+    "shorts_produced": 1,
+    "longform_produced": 0,
     "errors": []
   }
 }
