@@ -77,7 +77,9 @@
       "inspired_by": "Channel Winner: Oldest Galaxy GLASS-z13 Discovered",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "n41UVkdKXxY"
+      "winner_source_id": "n41UVkdKXxY",
+      "status": "produced",
+      "production_id": "Exploring_the_mindbending_conc_1779559327"
     },
     {
       "title": "Lost Roman Materials Recreated",
@@ -336,10 +338,10 @@
   "channels_analyzed": 6,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-05-23T16:57:15.082451",
+  "last_executed_at": "2026-05-23T18:04:07.226653",
   "results": {
-    "shorts_produced": 0,
-    "longform_produced": 1,
+    "shorts_produced": 1,
+    "longform_produced": 0,
     "errors": []
   }
 }
