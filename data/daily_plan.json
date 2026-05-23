@@ -93,7 +93,9 @@
       "inspired_by": "Channel Winner: Rome's Self-Healing Concrete Secret",
       "estimated_views": "medium",
       "is_winner_variation": true,
-      "winner_source_id": "40bHnzks7-A"
+      "winner_source_id": "40bHnzks7-A",
+      "status": "produced",
+      "production_id": "The_ongoing_efforts_of_modern__1779576874"
     },
     {
       "title": "GPT-4o Sees and Hears You Now",
@@ -338,7 +340,7 @@
   "channels_analyzed": 6,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-05-23T18:04:07.226653",
+  "last_executed_at": "2026-05-23T22:56:05.810903",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
