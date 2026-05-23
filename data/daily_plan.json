@@ -61,7 +61,9 @@
       "inspired_by": "Channel Winner: Galaxy GLASS-z13: 300 Million Years After Big Bang",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "A92xFY3pWBU"
+      "winner_source_id": "A92xFY3pWBU",
+      "status": "produced",
+      "production_id": "Explaining_gravitational_lensi_1779542776"
     },
     {
       "title": "Starlight is a Time Machine",
@@ -333,7 +335,7 @@
   "channels_analyzed": 6,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-05-22T23:01:10.638872",
+  "last_executed_at": "2026-05-23T13:27:20.505050",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
