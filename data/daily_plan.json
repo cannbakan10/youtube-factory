@@ -138,7 +138,9 @@
       ],
       "inspired_by": "AI-Curated Viral Trends (Deep Sea)",
       "estimated_views": "medium",
-      "is_winner_variation": false
+      "is_winner_variation": false,
+      "status": "produced",
+      "production_id": "The_deep_sea_a_vast_and_largel_1779663509"
     },
     {
       "title": "Siberia's Mysterious Cosmic Blast",
@@ -344,7 +346,7 @@
   "channels_analyzed": 6,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-05-24T18:00:00.369449",
+  "last_executed_at": "2026-05-24T22:59:34.026741",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
