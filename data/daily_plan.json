@@ -108,7 +108,9 @@
       ],
       "inspired_by": "AI-Curated Viral Trends (GPT-4o)",
       "estimated_views": "high",
-      "is_winner_variation": false
+      "is_winner_variation": false,
+      "status": "produced",
+      "production_id": "OpenAIs_GPT4o_model_can_now_pr_1779629214"
     },
     {
       "title": "CRISPR Can Rewrite Your DNA",
@@ -340,7 +342,7 @@
   "channels_analyzed": 6,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-05-23T22:56:05.810903",
+  "last_executed_at": "2026-05-24T13:28:22.905873",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
