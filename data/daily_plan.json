@@ -183,7 +183,9 @@
       ],
       "inspired_by": "AI-Curated Viral Trends (Déjà Vu)",
       "estimated_views": "high",
-      "is_winner_variation": false
+      "is_winner_variation": false,
+      "status": "produced",
+      "production_id": "Deja_vu_the_eerie_feeling_of_h_1779750185"
     },
     {
       "title": "Your Brain Dreams to Learn",
@@ -350,7 +352,7 @@
   "channels_analyzed": 6,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-05-25T18:27:12.719765",
+  "last_executed_at": "2026-05-25T23:04:11.669641",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
