@@ -168,7 +168,9 @@
       ],
       "inspired_by": "AI-Curated Viral Trends (Quantum Computing)",
       "estimated_views": "medium",
-      "is_winner_variation": false
+      "is_winner_variation": false,
+      "status": "produced",
+      "production_id": "Quantum_computers_leverage_qua_1779733561"
     },
     {
       "title": "Déjà Vu: Brain's Memory Glitch?",
@@ -348,7 +350,7 @@
   "channels_analyzed": 6,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-05-25T14:55:37.160640",
+  "last_executed_at": "2026-05-25T18:27:12.719765",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
