@@ -153,7 +153,9 @@
       ],
       "inspired_by": "AI-Curated Viral Trends (Tunguska)",
       "estimated_views": "medium",
-      "is_winner_variation": false
+      "is_winner_variation": false,
+      "status": "produced",
+      "production_id": "In_1908_a_mysterious_explosion_1779720871"
     },
     {
       "title": "Quantum Computers Use Superposition",
@@ -346,7 +348,7 @@
   "channels_analyzed": 6,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-05-24T22:59:34.026741",
+  "last_executed_at": "2026-05-25T14:55:37.160640",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
