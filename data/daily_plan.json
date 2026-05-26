@@ -213,7 +213,9 @@
       ],
       "inspired_by": "AI-Curated Viral Trends (Microplastics)",
       "estimated_views": "high",
-      "is_winner_variation": false
+      "is_winner_variation": false,
+      "status": "produced",
+      "production_id": "Microplastics_tiny_plastic_par_1779823335"
     },
     {
       "title": "New Planets May Host Life",
@@ -354,7 +356,7 @@
   "channels_analyzed": 6,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-05-26T15:31:04.815127",
+  "last_executed_at": "2026-05-26T19:24:20.617832",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
