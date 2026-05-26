@@ -198,7 +198,9 @@
       ],
       "inspired_by": "AI-Curated Viral Trends (Why We Dream)",
       "estimated_views": "medium",
-      "is_winner_variation": false
+      "is_winner_variation": false,
+      "status": "produced",
+      "production_id": "Neuroscience_suggests_that_dre_1779809383"
     },
     {
       "title": "Microplastics in Your Blood",
@@ -352,7 +354,7 @@
   "channels_analyzed": 6,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-05-25T23:04:11.669641",
+  "last_executed_at": "2026-05-26T15:31:04.815127",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
