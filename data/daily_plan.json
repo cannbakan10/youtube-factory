@@ -243,7 +243,9 @@
       ],
       "inspired_by": "AI-Curated Viral Trends (Voynich Manuscript)",
       "estimated_views": "medium",
-      "is_winner_variation": false
+      "is_winner_variation": false,
+      "status": "produced",
+      "production_id": "The_Voynich_Manuscript_a_15thc_1779896577"
     },
     {
       "title": "Australia Lost a War to Emus",
@@ -358,7 +360,7 @@
   "channels_analyzed": 6,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-05-26T23:11:28.916695",
+  "last_executed_at": "2026-05-27T15:44:03.367597",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
