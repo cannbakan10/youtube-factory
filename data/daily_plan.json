@@ -288,7 +288,9 @@
       ],
       "inspired_by": "Trending US Videos (The Legal Answer to the Prisoner Dilemma)",
       "estimated_views": "medium",
-      "is_winner_variation": false
+      "is_winner_variation": false,
+      "status": "produced",
+      "production_id": "The_Prisoners_Dilemma_is_a_cla_1779983792"
     },
     {
       "title": "Australia's Vast Arid Center",
@@ -364,7 +366,7 @@
   "channels_analyzed": 6,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-05-27T23:19:20.424462",
+  "last_executed_at": "2026-05-28T15:57:58.680197",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
