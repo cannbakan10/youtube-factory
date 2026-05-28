@@ -303,7 +303,9 @@
       ],
       "inspired_by": "Viral Shorts in Our Niche (Why Is Australia Empty in the Middle?)",
       "estimated_views": "high",
-      "is_winner_variation": false
+      "is_winner_variation": false,
+      "status": "produced",
+      "production_id": "A_vast_portion_of_Australias_i_1779996947"
     }
   ],
   "longform": [
@@ -365,11 +367,12 @@
   "trending_count": 83,
   "channels_analyzed": 6,
   "winner_variations_count": 6,
-  "status": "in_progress",
-  "last_executed_at": "2026-05-28T15:57:58.680197",
+  "status": "completed",
+  "last_executed_at": "2026-05-28T19:36:59.355999",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
     "errors": []
-  }
+  },
+  "completed_at": "2026-05-28T19:36:59.355948"
 }
