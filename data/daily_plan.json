@@ -15,7 +15,9 @@
       "inspired_by": "Viral Shorts In Our Niche - 'The Sky Looked Normal… Until It Didn’t 😱✈️'",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "Theres_a_dense_brine_pool_at_t_1780308514"
     },
     {
       "title": "The Jellyfish That Can Live Forever",
@@ -31,7 +33,9 @@
       "inspired_by": "Winner Source: Your Kitchen Sponge Is Dirtier Than Your Toilet #Shorts (id:2lPlWWgiCLE)",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "2lPlWWgiCLE"
+      "winner_source_id": "2lPlWWgiCLE",
+      "status": "produced",
+      "production_id": "The_Turritopsis_dohrnii_jellyf_1780308579"
     },
     {
       "title": "Voyager 1's 22-Hour Signals",
@@ -47,7 +51,9 @@
       "inspired_by": "AI-CURATED VIRAL TRENDS (High Potential) - JWST's Deepest Glimpses of the Early Universe",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "Voyager_1_is_so_far_from_Earth_1780308663"
     },
     {
       "title": "Rome's Hole That Never Leaks",
@@ -63,7 +69,9 @@
       "inspired_by": "Winner Source: Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome #Shorts (id:jQ6gW5Oe-n8)",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "jQ6gW5Oe-n8"
+      "winner_source_id": "jQ6gW5Oe-n8",
+      "status": "produced",
+      "production_id": "The_Pantheon_in_Rome_has_a_30f_1780308752"
     },
     {
       "title": "The Truth About Phone Germs",
@@ -343,5 +351,11 @@
   "trending_count": 82,
   "channels_analyzed": 6,
   "winner_variations_count": 5,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-06-01T10:14:01.039310",
+  "results": {
+    "shorts_produced": 4,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
