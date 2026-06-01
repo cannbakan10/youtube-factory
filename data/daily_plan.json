@@ -295,7 +295,8 @@
       ],
       "inspired_by": "How We Build an Alien Pool — Full Process Revealed #poolbuild #luxurypool  #satisfying #poolhacks",
       "estimated_views": "medium",
-      "duration_minutes": 20
+      "duration_minutes": 20,
+      "status": "produced"
     },
     {
       "title": "Deep Dive: This brave dog soldier brought salvation to all",
@@ -311,10 +312,10 @@
   "trending_count": 72,
   "status": "in_progress",
   "fallback_mode": true,
-  "last_executed_at": "2026-06-01T18:38:31.811509",
+  "last_executed_at": "2026-06-01T20:15:17.455358",
   "results": {
-    "shorts_produced": 1,
-    "longform_produced": 0,
+    "shorts_produced": 0,
+    "longform_produced": 1,
     "errors": []
   }
 }
