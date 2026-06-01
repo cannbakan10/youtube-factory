@@ -42,7 +42,7 @@ on:
       shorts_count:
         description: 'How many Shorts to produce immediately'
         required: false
-        default: '4'
+        default: '2'
 
 jobs:
   nightly-brain:
@@ -126,7 +126,7 @@ jobs:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         run: |
-          SHORTS=${{ github.event.inputs.shorts_count || '4' }}
+          SHORTS=${{ github.event.inputs.shorts_count || '2' }}
           echo "📹 INSTANT PRODUCTION: $SHORTS Shorts"
           python main.py --execute-plan --plan-shorts $SHORTS --plan-longform 0
 

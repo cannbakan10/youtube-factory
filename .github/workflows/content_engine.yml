@@ -1,24 +1,23 @@
 name: "🎬 Content Engine — Shorts Production"
 
 # ╔══════════════════════════════════════════════════════════╗
-# ║  CONTENT ENGINE v5.2 — 3 Shorts/day + Quality           ║
+# ║  CONTENT ENGINE v5.3 — 2 Shorts/day + Quality           ║
 # ║                                                         ║
 # ║  ┌──────────┬──────────────────────────────────────────┐ ║
 # ║  │ Time UTC │ Action                                   │ ║
 # ║  ├──────────┼──────────────────────────────────────────┤ ║
-# ║  │ 12:00    │ 1 Short (US 8AM ET + EU afternoon)      │ ║
-# ║  │ 17:00    │ 1 Short (US 1PM ET lunch break)         │ ║
-# ║  │ 22:00    │ 1 Short (US 6PM ET prime time)          │ ║
+# ║  │ 13:00    │ 1 Short (US 9AM ET morning)             │ ║
+# ║  │ 21:00    │ 1 Short (US 5PM ET prime time)          │ ║
 # ║  └──────────┴──────────────────────────────────────────┘ ║
 # ║                                                         ║
-# ║  3 Shorts/day + 1 Longform (16:00) = 4 videos/day      ║
-# ║  Spaced 5h apart for algorithm warm-up between posts    ║
+# ║  2 Shorts/day + 1 Longform (16:00) = 3 videos/day      ║
+# ║  Gemini free tier safe: ~10 calls/day (limit: 20)      ║
 # ╚══════════════════════════════════════════════════════════╝
 
 on:
-  # 3 Shorts/day, spaced 5h apart, avoids 16:00 (Longform Engine)
+  # 2 Shorts/day, avoids 16:00 (Longform Engine)
   schedule:
-    - cron: '0 12,17,22 * * *'
+    - cron: '0 13,21 * * *'
 
   workflow_dispatch:
     inputs:
