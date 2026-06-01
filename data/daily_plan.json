@@ -9,7 +9,9 @@
       "inspired_by": "jbl go4 pvc pipe drop jumping",
       "estimated_views": "medium",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "jbl_go4_pvc_pipe_drop_jumping_1780339064"
     },
     {
       "title": "What Nobody Tells You About @Zack D. Films",
@@ -307,6 +309,12 @@
   ],
   "generated_at": "2026-06-01T11:46:22.904778",
   "trending_count": 72,
-  "status": "pending",
-  "fallback_mode": true
+  "status": "in_progress",
+  "fallback_mode": true,
+  "last_executed_at": "2026-06-01T18:38:31.811509",
+  "results": {
+    "shorts_produced": 1,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
