@@ -1,0 +1,145 @@
+{
+  "timestamp": "2026-06-01T11:46:06.352702",
+  "dry_run": false,
+  "api_health": {
+    "gemini": "credits_exhausted (gemini-2.5-flash-lite)",
+    "openai": "error: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please",
+    "healthy": false
+  },
+  "performance_review": {
+    "status": "no_recent_videos"
+  },
+  "cleanup": {
+    "unlisted": 0,
+    "deleted": 0,
+    "failed": 0,
+    "kept": 0,
+    "thresholds": {}
+  },
+  "trending": {
+    "found": 72,
+    "viral_shorts_found": 0,
+    "world_news_found": 0,
+    "competitors_analyzed": 0,
+    "comments_mined": 20,
+    "top_5": [
+      {
+        "title": "jbl go4 pvc pipe drop jumping",
+        "views": 24582731,
+        "category": "Science & Technology"
+      },
+      {
+        "title": "How We Build an Alien Pool — Full Process Revealed #poolbuil",
+        "views": 22411750,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "#fyp @Zack D. Films",
+        "views": 22317017,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Fisherman CAUGHT Using Weights 🤯",
+        "views": 19345843,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "This scene in The Guardians of the Galaxy is so iconic 😂",
+        "views": 18118059,
+        "category": "Entertainment"
+      }
+    ],
+    "top_viral_shorts": []
+  },
+  "winners": {
+    "added": 0,
+    "total": 0,
+    "threshold": 0,
+    "median": 0,
+    "active": 0,
+    "top": []
+  },
+  "peak_hours": {
+    "utc": [
+      22,
+      23,
+      0,
+      1,
+      16
+    ],
+    "source": "fallback_defaults",
+    "samples": 0
+  },
+  "retention": {
+    "avg_pct": 0,
+    "avg_dur_sec": 0,
+    "source": "unavailable",
+    "video_count": 0
+  },
+  "ambient_analysis": {
+    "total_ambient": 4,
+    "total_views": 190,
+    "top_type": "fireplace",
+    "worst_type": "rain",
+    "type_rankings": [
+      {
+        "type": "fireplace",
+        "video_count": 3,
+        "total_views": 121,
+        "avg_views": 40,
+        "avg_views_per_day": 2.1,
+        "engagement_rate": 44.63,
+        "best_video": {
+          "title": "8 Hours Cozy Cat by the Fireplace — Purring & Crackling Fire",
+          "views": 44,
+          "views_per_day": 2.1
+        }
+      },
+      {
+        "type": "rain",
+        "video_count": 1,
+        "total_views": 69,
+        "avg_views": 69,
+        "avg_views_per_day": 3.0,
+        "engagement_rate": 36.23,
+        "best_video": {
+          "title": "1 Hour 4 Hours Rainy Night Ambience for Deep Sleep",
+          "views": 69,
+          "views_per_day": 3.0
+        }
+      }
+    ]
+  },
+  "plan": {
+    "shorts_planned": 20,
+    "longform_planned": 2,
+    "ambient_recommendations": [],
+    "winner_variations_count": 0,
+    "shorts": [
+      "The Shocking Truth About jbl go4 pvc pipe drop jum",
+      "What Nobody Tells You About @Zack D. Films",
+      "The Hidden Secret Of Fisherman CAUGHT Using Weight",
+      "You Won't Believe This About This scene in The Gua",
+      "3 Mind-Blowing Facts About He just wanted to have ",
+      "The Dark Side Of Ranking Funniest Parkour Fails😭😭",
+      "Why Dad Handles It Perfectly 🥹 Changed Everything",
+      "This Will Change How You See Testing Fake parachut",
+      "The Shocking Truth About Kindness Always Pays Off ",
+      "What Nobody Tells You About Fake MJ Who Hit A Pole",
+      "The Hidden Secret Of How I Accidentally Burned Mys",
+      "You Won't Believe This About This 3D Printer Uses ",
+      "3 Mind-Blowing Facts About Wireless Charging Stopp",
+      "The Dark Side Of HER REACTION 🥺",
+      "Why “Don’t go down that slide!” Changed Everything",
+      "This Will Change How You See This is exactly what ",
+      "The Shocking Truth About Doordash Gets Big Tip $$$",
+      "What Nobody Tells You About A mixup results in a k",
+      "The Hidden Secret Of The infinite notebook that wi",
+      "You Won't Believe This About No it isn't 💀🫡"
+    ],
+    "longform": [
+      "Deep Dive: How We Build an Alien Pool — Full Process Reveale",
+      "Deep Dive: This brave dog soldier brought salvation to all"
+    ]
+  }
+}

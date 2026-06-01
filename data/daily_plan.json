@@ -84,7 +84,7 @@
         "ranking hilarious water parkour fails",
         "rating the funniest parkour fails",
         "rating parkour fails",
-        "top 10 worst parkour fails"
+        "funniest parkour fail"
       ],
       "optimized_title": "The Dark Side Of Ranking Funniest Parkour Fails😭😭 | Ranking Funniest Parkour Fails Moments"
     },
@@ -144,8 +144,8 @@
       "seo_keywords": [
         "i accidentally burned myself",
         "what happens when you burn hair",
-        "what to do when you burn yourself with boiling water",
-        "what happens if you burn yourself"
+        "what happens if you burn yourself",
+        "what to do when you burn yourself with boiling water"
       ],
       "optimized_title": "The Hidden Secret Of How I Accidentally Burned Myself | What Happens When You Burn Hair"
     },
@@ -159,10 +159,10 @@
       "is_winner_variation": false,
       "winner_source_id": "",
       "seo_keywords": [
-        "3d printing mouse shell",
-        "3d printing a mouse"
+        "3d printing a mouse",
+        "3d printed fly swatter"
       ],
-      "optimized_title": "You Won't Believe This About This 3D Printer Uses A Mosquito 😮 | 3D Printing Mouse Shell"
+      "optimized_title": "You Won't Believe This About This 3D Printer Uses A Mosquito 😮 | 3D Printing A Mouse"
     },
     {
       "title": "3 Mind-Blowing Facts About Wireless Charging Stopped Working!",
@@ -224,7 +224,22 @@
       "winner_source_id": ""
     },
     {
-      "title": "What Nobody Tells You About The infinite notebook that will never run out of p",
+      "title": "What Nobody Tells You About A mixup results in a kidnapping |",
+      "topic": "A mixup results in a kidnapping | #TheRookie",
+      "hook": "You're about to learn something shocking about a mixup results in a kidnapping |.",
+      "tags": [],
+      "inspired_by": "A mixup results in a kidnapping | #TheRookie",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": "",
+      "seo_keywords": [
+        "the rookie girl gets kidnapped",
+        "the rookie girl kidnapped"
+      ],
+      "optimized_title": "What Nobody Tells You About A mixup results in a kidnapping |"
+    },
+    {
+      "title": "The Hidden Secret Of The infinite notebook that will never run out of p",
       "topic": "The infinite notebook that will never run out of pages!",
       "hook": "You're about to learn something shocking about the infinite notebook that will never run out of p.",
       "tags": [],
@@ -240,23 +255,7 @@
         "the infinite notebook that will never run out of pages of information",
         "the infinite notebook that will never run out of pages in your passport"
       ],
-      "optimized_title": "What Nobody Tells You About The infinite notebook that will never run out of p"
-    },
-    {
-      "title": "The Hidden Secret Of A mixup results in a kidnapping |",
-      "topic": "A mixup results in a kidnapping | #TheRookie",
-      "hook": "You're about to learn something shocking about a mixup results in a kidnapping |.",
-      "tags": [],
-      "inspired_by": "A mixup results in a kidnapping | #TheRookie",
-      "estimated_views": "medium",
-      "is_winner_variation": false,
-      "winner_source_id": "",
-      "seo_keywords": [
-        "the rookie girl gets kidnapped",
-        "the rookie girl kidnapped",
-        "the rookie gets kidnapped"
-      ],
-      "optimized_title": "The Hidden Secret Of A mixup results in a kidnapping | | The Rookie Girl Gets Kidnapped"
+      "optimized_title": "The Hidden Secret Of The infinite notebook that will never run out of p"
     },
     {
       "title": "You Won't Believe This About No it isn't 💀🫡",
@@ -282,21 +281,6 @@
   ],
   "longform": [
     {
-      "title": "Deep Dive: This Trick Shot Almost Made Him QUIT",
-      "topic": "20 minute deep analysis of This Trick Shot Almost Made Him QUIT. Cover the background, key context, current situation, and implications.",
-      "hook": "What you're about to learn about this trick shot almost made him quit will change how you see the world.",
-      "tags": [
-        "dudeperfect",
-        "dude perfect basketball",
-        "dp",
-        "dude perfect pickleball",
-        "pickleball"
-      ],
-      "inspired_by": "This Trick Shot Almost Made Him QUIT",
-      "estimated_views": "medium",
-      "duration_minutes": 20
-    },
-    {
       "title": "Deep Dive: How We Build an Alien Pool — Full Process Revealed",
       "topic": "20 minute deep analysis of How We Build an Alien Pool — Full Process Revealed #poolbuild #luxurypool  #satisfying #poolhacks. Cover the background, key context, current situation, and implications.",
       "hook": "What you're about to learn about how we build an alien pool — full process revealed will change how you see the world.",
@@ -310,10 +294,19 @@
       "inspired_by": "How We Build an Alien Pool — Full Process Revealed #poolbuild #luxurypool  #satisfying #poolhacks",
       "estimated_views": "medium",
       "duration_minutes": 20
+    },
+    {
+      "title": "Deep Dive: This brave dog soldier brought salvation to all",
+      "topic": "20 minute deep analysis of This brave dog soldier brought salvation to all. Cover the background, key context, current situation, and implications.",
+      "hook": "What you're about to learn about this brave dog soldier brought salvation to all will change how you see the world.",
+      "tags": [],
+      "inspired_by": "This brave dog soldier brought salvation to all",
+      "estimated_views": "medium",
+      "duration_minutes": 20
     }
   ],
-  "generated_at": "2026-06-01T11:16:46.113377",
-  "trending_count": 82,
+  "generated_at": "2026-06-01T11:46:22.904778",
+  "trending_count": 72,
   "status": "pending",
   "fallback_mode": true
 }
