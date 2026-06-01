@@ -14,7 +14,9 @@
       "inspired_by": "Ultra-specific angles - Voyager 1",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "pZnlVbjTAkg"
+      "winner_source_id": "pZnlVbjTAkg",
+      "status": "produced",
+      "production_id": "Voyager_1_is_currently_the_mos_1780310438"
     },
     {
       "title": "Lake at Ocean's Bottom Kills Everything",
@@ -29,7 +31,9 @@
       "inspired_by": "Ultra-specific angles - Ocean facts",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "Discover_the_brine_pools_at_th_1780310505"
     },
     {
       "title": "Japan's Train Never Late in 50 Years",
@@ -44,7 +48,9 @@
       "inspired_by": "Ultra-specific angles - Japan facts",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "Explore_the_incredible_punctua_1780310599"
     },
     {
       "title": "Dyatlov Pass Incident: Unsolved Mystery",
@@ -59,7 +65,9 @@
       "inspired_by": "AI-Curated Viral Trends - The Dyatlov Pass Incident",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "Recap_the_baffling_and_tragic__1780310620"
     },
     {
       "title": "Sora: AI Video Generation Marvel",
@@ -280,5 +288,11 @@
   "trending_count": 82,
   "channels_analyzed": 6,
   "winner_variations_count": 3,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-06-01T10:44:35.703389",
+  "results": {
+    "shorts_produced": 4,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
