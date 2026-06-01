@@ -1,0 +1,226 @@
+{
+  "timestamp": "2026-06-01T10:06:30.280900",
+  "dry_run": false,
+  "api_health": {
+    "gemini": "ok (gemini-2.5-flash)",
+    "openai": "not_configured",
+    "healthy": true
+  },
+  "performance_review": {
+    "status": "no_recent_videos"
+  },
+  "cleanup": {
+    "unlisted": 0,
+    "deleted": 0,
+    "failed": 0,
+    "kept": 44,
+    "thresholds": {
+      "shorts_7d": 25,
+      "shorts_14d": 50,
+      "shorts_30d": 100,
+      "long_14d": 25,
+      "long_30d": 50,
+      "multiplier": 0.5
+    }
+  },
+  "trending": {
+    "found": 82,
+    "viral_shorts_found": 30,
+    "world_news_found": 20,
+    "competitors_analyzed": 4,
+    "comments_mined": 20,
+    "top_5": [
+      {
+        "title": "This Trick Shot Almost Made Him QUIT",
+        "views": 35854400,
+        "category": "Sports"
+      },
+      {
+        "title": "jbl go4 pvc pipe drop jumping",
+        "views": 24303734,
+        "category": "Science & Technology"
+      },
+      {
+        "title": "How We Build an Alien Pool — Full Process Revealed #poolbuil",
+        "views": 22270312,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "#fyp @Zack D. Films",
+        "views": 22169066,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Fisherman CAUGHT Using Weights 🤯",
+        "views": 19281482,
+        "category": "Howto & Style"
+      }
+    ],
+    "top_viral_shorts": [
+      {
+        "title": "Animal Moments That Shouldn't Be Real",
+        "views": 12209801,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "The Sky Looked Normal… Until It Didn’t 😱✈️ #shorts #trending",
+        "views": 7906589,
+        "query": "space facts universe"
+      },
+      {
+        "title": "The Tiger That Was Forced to Hunt Humans 😢🐅#facts #shorts",
+        "views": 3832298,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "Saturn’s Rings Could Be the Graveyard of Lost Worlds 😳🪐 #sho",
+        "views": 1494062,
+        "query": "space facts universe"
+      },
+      {
+        "title": "The Grandfather Paradox? 🤯 The Time Travellers Trap! #physic",
+        "views": 1467805,
+        "query": "space facts universe"
+      }
+    ]
+  },
+  "winners": {
+    "added": 9,
+    "total": 9,
+    "threshold": 300,
+    "median": 118,
+    "active": 9,
+    "top": [
+      {
+        "video_id": "2lPlWWgiCLE",
+        "title": "Your Kitchen Sponge Is Dirtier Than Your Toilet #Shorts",
+        "views": 1392,
+        "views_per_day": 73.3,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "pZnlVbjTAkg",
+        "title": "JWST Finds Ancient Galaxies Too Early #Shorts",
+        "views": 870,
+        "views_per_day": 62.1,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "jQ6gW5Oe-n8",
+        "title": "Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome #Shorts",
+        "views": 1255,
+        "views_per_day": 59.8,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "n41UVkdKXxY",
+        "title": "Oldest Galaxy GLASS-z13 Discovered #Shorts",
+        "views": 999,
+        "views_per_day": 45.4,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "A92xFY3pWBU",
+        "title": "Galaxy GLASS-z13: 300 Million Years After Big Bang #Shorts",
+        "views": 800,
+        "views_per_day": 42.1,
+        "variations_generated": 0
+      }
+    ]
+  },
+  "peak_hours": {
+    "utc": [
+      23,
+      22,
+      18
+    ],
+    "source": "channel_data",
+    "samples": 43
+  },
+  "retention": {
+    "avg_pct": 0,
+    "avg_dur_sec": 0,
+    "source": "unavailable",
+    "video_count": 0
+  },
+  "ambient_analysis": {
+    "total_ambient": 4,
+    "total_views": 190,
+    "top_type": "fireplace",
+    "worst_type": "rain",
+    "type_rankings": [
+      {
+        "type": "fireplace",
+        "video_count": 3,
+        "total_views": 121,
+        "avg_views": 40,
+        "avg_views_per_day": 2.1,
+        "engagement_rate": 44.63,
+        "best_video": {
+          "title": "8 Hours Cozy Cat by the Fireplace — Purring & Crackling Fire",
+          "views": 44,
+          "views_per_day": 2.1
+        }
+      },
+      {
+        "type": "rain",
+        "video_count": 1,
+        "total_views": 69,
+        "avg_views": 69,
+        "avg_views_per_day": 3.0,
+        "engagement_rate": 36.23,
+        "best_video": {
+          "title": "1 Hour 4 Hours Rainy Night Ambience for Deep Sleep",
+          "views": 69,
+          "views_per_day": 3.0
+        }
+      }
+    ]
+  },
+  "plan": {
+    "shorts_planned": 18,
+    "longform_planned": 2,
+    "ambient_recommendations": [
+      {
+        "type": "rain",
+        "hours": 8,
+        "reason": "Rain sounds are universally calming and popular for sleep, study, and relaxation, providing passive watch time."
+      },
+      {
+        "type": "thunderstorm",
+        "hours": 8,
+        "reason": "Thunderstorms offer a more dramatic yet still relaxing ambiance, appealing to viewers seeking immersive background noise for focus or sleep."
+      },
+      {
+        "type": "campfire",
+        "hours": 8,
+        "reason": "The crackling sound of a campfire provides a cozy and natural ambiance, perfect for relaxation and passive viewing."
+      }
+    ],
+    "winner_variations_count": 5,
+    "shorts": [
+      "The Unseen Lake That Kills Everything",
+      "The Jellyfish That Can Live Forever",
+      "Voyager 1's 22-Hour Signals",
+      "Rome's Hole That Never Leaks",
+      "The Truth About Phone Germs",
+      "Black Hole's Million-Year Echo",
+      "The Giant Hadron Collider's Secret",
+      "AI That Writes Like Humans",
+      "JWST's Earliest Galaxy",
+      "The Mystery of Déjà Vu",
+      "AI Drug Discovery Breakthrough",
+      "D.B. Cooper's Lingering Mystery",
+      "Octopus Intelligence Revealed",
+      "The 'Alien Pool' Building Process",
+      "The Voynich Manuscript Mystery",
+      "Fish That Walk on Land",
+      "Neuralink's Human Trials",
+      "The Case of the Fake Parachute"
+    ],
+    "longform": [
+      "The Great Emu War: When Australia Declared War on Birds",
+      "Beyond the Mariana Trench: Humanity's Deepest Mysteries"
+    ]
+  }
+}

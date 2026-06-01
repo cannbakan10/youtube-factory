@@ -1,378 +1,347 @@
 {
-  "date": "2026-05-22",
+  "date": "2026-06-02",
   "shorts": [
     {
-      "title": "Light Reveals Universe's Infancy",
-      "topic": "The incredible journey of light from the universe's earliest stars, taking billions of years to reach Earth, providing a direct glimpse into the universe's infancy and challenging previous cosmological models.",
-      "hook": "We can see light from the universe's earliest stars that began their journey billions of years ago.",
+      "title": "The Unseen Lake That Kills Everything",
+      "topic": "There's a dense brine pool at the bottom of the Gulf of Mexico that's toxic to marine life. Anything that enters it dies, creating a distinct 'underwater lake' with its own shore.",
+      "hook": "There's a lake at the bottom of the Gulf of Mexico that kills everything that touches it.",
       "tags": [
-        "space",
-        "cosmology",
-        "stars"
+        "ocean facts",
+        "deep sea",
+        "discovery",
+        "science",
+        "nature"
       ],
-      "inspired_by": "Channel Winner: JWST Finds Ancient Galaxies Too Early",
+      "inspired_by": "Viral Shorts In Our Niche - 'The Sky Looked Normal… Until It Didn’t 😱✈️'",
       "estimated_views": "high",
-      "is_winner_variation": true,
-      "winner_source_id": "pZnlVbjTAkg",
-      "status": "produced",
-      "production_id": "The_incredible_journey_of_ligh_1779460839"
+      "is_winner_variation": false,
+      "winner_source_id": ""
     },
     {
-      "title": "Hidden Germ Hotspots at Home",
-      "topic": "Uncovering the surprising germ hotspots in your household, revealing common items that harbor more bacteria than you'd expect and simple steps to maintain a healthier living environment.",
-      "hook": "Your phone screen carries more germs than most public toilet seats.",
+      "title": "The Jellyfish That Can Live Forever",
+      "topic": "The Turritopsis dohrnii jellyfish, often called the 'immortal jellyfish,' can revert back to its polyp stage after reaching maturity, effectively resetting its life cycle.",
+      "hook": "There's a species of jellyfish that is biologically immortal.",
       "tags": [
-        "hygiene",
-        "health",
-        "germs"
-      ],
-      "inspired_by": "Channel Winner: Your Kitchen Sponge Is Dirtier Than Your Toilet",
-      "estimated_views": "medium",
-      "is_winner_variation": true,
-      "winner_source_id": "2lPlWWgiCLE",
-      "status": "produced",
-      "production_id": "Uncovering_the_surprising_germ_1779476127"
-    },
-    {
-      "title": "Roman Engineering Defies Logic",
-      "topic": "Examining a specific engineering marvel from the Roman era, such as their aqueducts or advanced concrete, showcasing how they achieved feats that still baffle modern builders without today's technology.",
-      "hook": "Roman engineers built structures that still stand perfectly today, using methods we struggle to replicate.",
-      "tags": [
-        "Roman",
-        "engineering",
-        "history"
-      ],
-      "inspired_by": "Channel Winner: Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome",
-      "estimated_views": "medium",
-      "is_winner_variation": true,
-      "winner_source_id": "jQ6gW5Oe-n8",
-      "status": "produced",
-      "production_id": "Examining_a_specific_engineeri_1779490785"
-    },
-    {
-      "title": "Gravity Bends Light to See Farthest",
-      "topic": "Explaining gravitational lensing, a cosmic phenomenon where massive objects bend light, allowing astronomers to see incredibly distant and faint galaxies that would otherwise be invisible, revealing the universe's earliest moments.",
-      "hook": "Massive galaxy clusters can act as cosmic magnifying glasses, bending light to reveal the universe's most distant objects.",
-      "tags": [
-        "space",
-        "physics",
-        "galaxies"
-      ],
-      "inspired_by": "Channel Winner: Galaxy GLASS-z13: 300 Million Years After Big Bang",
-      "estimated_views": "high",
-      "is_winner_variation": true,
-      "winner_source_id": "A92xFY3pWBU",
-      "status": "produced",
-      "production_id": "Explaining_gravitational_lensi_1779542776"
-    },
-    {
-      "title": "Starlight is a Time Machine",
-      "topic": "Exploring the mind-bending concept that when we look at distant stars and galaxies, we are literally looking back in time, seeing them as they were billions of years ago due to the finite speed of light.",
-      "hook": "Observing a star 100 light-years away means you are seeing it as it existed 100 years ago.",
-      "tags": [
-        "space",
-        "physics",
-        "time"
-      ],
-      "inspired_by": "Channel Winner: Oldest Galaxy GLASS-z13 Discovered",
-      "estimated_views": "high",
-      "is_winner_variation": true,
-      "winner_source_id": "n41UVkdKXxY",
-      "status": "produced",
-      "production_id": "Exploring_the_mindbending_conc_1779559327"
-    },
-    {
-      "title": "Lost Roman Materials Recreated",
-      "topic": "The ongoing efforts of modern material scientists to reverse-engineer and understand the lost secrets behind incredibly durable Roman construction materials, particularly their long-lasting cements and concretes, to inspire new sustainable solutions.",
-      "hook": "Scientists are finally cracking the code of how Romans made self-healing materials that lasted for millennia.",
-      "tags": [
-        "Roman",
-        "materials",
+        "animal facts",
+        "biology",
+        "immortality",
+        "nature",
         "science"
       ],
-      "inspired_by": "Channel Winner: Rome's Self-Healing Concrete Secret",
-      "estimated_views": "medium",
+      "inspired_by": "Winner Source: Your Kitchen Sponge Is Dirtier Than Your Toilet #Shorts (id:2lPlWWgiCLE)",
+      "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "40bHnzks7-A",
-      "status": "produced",
-      "production_id": "The_ongoing_efforts_of_modern__1779576874"
+      "winner_source_id": "2lPlWWgiCLE"
     },
     {
-      "title": "GPT-4o Sees and Hears You Now",
-      "topic": "OpenAI's GPT-4o model can now process audio, vision, and text inputs and generate responses in real-time, allowing for incredibly natural human-AI conversations that feel more like talking to a person.",
-      "hook": "OpenAI's new GPT-4o model can now interpret emotions in your voice and respond instantly.",
+      "title": "Voyager 1's 22-Hour Signals",
+      "topic": "Voyager 1 is so far from Earth that its radio signals take 22 hours to reach us, yet it continues to send back valuable data about interstellar space.",
+      "hook": "Voyager 1's signals take 22 hours to reach Earth, but it's still sending data.",
       "tags": [
-        "AI",
-        "GPT4o",
+        "space",
+        "nasa",
+        "astronomy",
+        "science",
+        "voyager"
+      ],
+      "inspired_by": "AI-CURATED VIRAL TRENDS (High Potential) - JWST's Deepest Glimpses of the Early Universe",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Rome's Hole That Never Leaks",
+      "topic": "The Pantheon in Rome has a 30-foot hole in its ceiling, the oculus, but its ingenious design ensures that rain never floods the interior.",
+      "hook": "The Pantheon in Rome has a 30-foot hole in its ceiling — and it never leaks.",
+      "tags": [
+        "ancient rome",
+        "architecture",
+        "engineering",
+        "history",
+        "mystery"
+      ],
+      "inspired_by": "Winner Source: Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome #Shorts (id:jQ6gW5Oe-n8)",
+      "estimated_views": "high",
+      "is_winner_variation": true,
+      "winner_source_id": "jQ6gW5Oe-n8"
+    },
+    {
+      "title": "The Truth About Phone Germs",
+      "topic": "Your smartphone screen can harbor more bacteria than a public toilet seat, acting as a breeding ground for germs that can impact your health.",
+      "hook": "Your phone screen has more germs than a toilet seat.",
+      "tags": [
+        "health",
+        "science",
+        "hygiene",
+        "technology",
+        "bacteria"
+      ],
+      "inspired_by": "Winner Source: Your Kitchen Sponge Is Dirtier Than Your Toilet #Shorts (id:2lPlWWgiCLE)",
+      "estimated_views": "high",
+      "is_winner_variation": true,
+      "winner_source_id": "2lPlWWgiCLE"
+    },
+    {
+      "title": "Black Hole's Million-Year Echo",
+      "topic": "A massive black hole in a distant galaxy has been observed emitting a powerful radio wave 'echo' that suggests it's been active for over a million years.",
+      "hook": "Scientists detected a million-year-old echo from a supermassive black hole.",
+      "tags": [
+        "space",
+        "astronomy",
+        "black hole",
+        "science",
+        "universe"
+      ],
+      "inspired_by": "AI-CURATED VIRAL TRENDS (High Potential) - JWST's Deepest Glimpses of the Early Universe",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "The Giant Hadron Collider's Secret",
+      "topic": "The Large Hadron Collider, famous for particle physics, also holds immense potential for simulating conditions of the early universe and searching for dark matter.",
+      "hook": "The world's most powerful particle collider could unlock secrets of the early universe.",
+      "tags": [
+        "science",
+        "physics",
+        "cern",
+        "lhc",
         "technology"
       ],
-      "inspired_by": "AI-Curated Viral Trends (GPT-4o)",
-      "estimated_views": "high",
+      "inspired_by": "Science Channel - STRIKE! How to Make a Bowling Ball! | How It's Made",
+      "estimated_views": "medium",
       "is_winner_variation": false,
-      "status": "produced",
-      "production_id": "OpenAIs_GPT4o_model_can_now_pr_1779629214"
+      "winner_source_id": ""
     },
     {
-      "title": "CRISPR Can Rewrite Your DNA",
-      "topic": "CRISPR gene editing technology allows scientists to precisely modify DNA sequences, offering the potential to cure genetic diseases by correcting faulty genes, but also raising significant ethical questions about altering the human germline.",
-      "hook": "Scientists can now edit human DNA with unprecedented precision using CRISPR technology.",
+      "title": "AI That Writes Like Humans",
+      "topic": "OpenAI's new AI model can generate text so convincingly human-like it's difficult to distinguish from real writing, raising questions about creativity and authenticity.",
+      "hook": "This new AI can write text that's indistinguishable from human writing.",
       "tags": [
-        "CRISPR",
-        "genetics",
+        "ai",
+        "technology",
+        "openai",
+        "future",
+        "writing"
+      ],
+      "inspired_by": "AI-CURATED VIRAL TRENDS (High Potential) - OpenAI's Sora: The Future of Video Creation?",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "JWST's Earliest Galaxy",
+      "topic": "The James Webb Space Telescope has detected a galaxy, GLASS-z13, that existed just 300 million years after the Big Bang, rewriting our understanding of early cosmic formation.",
+      "hook": "This galaxy existed just 300 million years after the Big Bang.",
+      "tags": [
+        "space",
+        "jwst",
+        "galaxy",
+        "cosmology",
         "science"
       ],
-      "inspired_by": "AI-Curated Viral Trends (CRISPR)",
+      "inspired_by": "Winner Source: Galaxy GLASS-z13: 300 Million Years After Big Bang #Shorts (id:A92xFY3pWBU)",
       "estimated_views": "high",
-      "is_winner_variation": false,
-      "status": "produced",
-      "production_id": "CRISPR_gene_editing_technology_1779645537"
+      "is_winner_variation": true,
+      "winner_source_id": "A92xFY3pWBU"
     },
     {
-      "title": "Ocean's Deep Has New Creatures",
-      "topic": "The deep sea, a vast and largely unexplored frontier, is a treasure trove of biodiversity, constantly yielding new and bizarre species that thrive in extreme conditions, challenging our understanding of life on Earth.",
-      "hook": "Scientists are finding creatures in the deep ocean that look like they're from another planet.",
-      "tags": [
-        "deepsea",
-        "marinebiology",
-        "discovery"
-      ],
-      "inspired_by": "AI-Curated Viral Trends (Deep Sea)",
-      "estimated_views": "medium",
-      "is_winner_variation": false,
-      "status": "produced",
-      "production_id": "The_deep_sea_a_vast_and_largel_1779663509"
-    },
-    {
-      "title": "Siberia's Mysterious Cosmic Blast",
-      "topic": "In 1908, a mysterious explosion flattened 80 million trees in Siberia, an event known as the Tunguska Event, still debated by scientists as either an air burst from a meteor or comet, leaving no crater.",
-      "hook": "An explosion in Siberia in 1908 flattened 80 million trees, yet left no impact crater.",
-      "tags": [
-        "Tunguska",
-        "mystery",
-        "history"
-      ],
-      "inspired_by": "AI-Curated Viral Trends (Tunguska)",
-      "estimated_views": "medium",
-      "is_winner_variation": false,
-      "status": "produced",
-      "production_id": "In_1908_a_mysterious_explosion_1779720871"
-    },
-    {
-      "title": "Quantum Computers Use Superposition",
-      "topic": "Quantum computers leverage quantum-mechanical phenomena like superposition and entanglement to process information in fundamentally different ways than classical computers, promising to solve problems currently impossible, from drug discovery to AI.",
-      "hook": "Quantum computers use the strangest rules of physics to solve problems regular computers can't.",
-      "tags": [
-        "quantum",
-        "technology",
-        "physics"
-      ],
-      "inspired_by": "AI-Curated Viral Trends (Quantum Computing)",
-      "estimated_views": "medium",
-      "is_winner_variation": false,
-      "status": "produced",
-      "production_id": "Quantum_computers_leverage_qua_1779733561"
-    },
-    {
-      "title": "Déjà Vu: Brain's Memory Glitch?",
-      "topic": "Déjà vu, the eerie feeling of having already experienced something new, is believed by neuroscientists to be a temporary glitch in the brain's memory processing, where new information is briefly mislabeled as old.",
-      "hook": "That strange feeling of déjà vu might just be your brain briefly confusing new memories for old ones.",
+      "title": "The Mystery of Déjà Vu",
+      "topic": "Scientists believe déjà vu might be caused by minor misfirings in the brain's memory systems, creating a false sense of recognition.",
+      "hook": "Déjà vu might be a glitch in your brain's memory.",
       "tags": [
         "psychology",
         "brain",
-        "mystery"
-      ],
-      "inspired_by": "AI-Curated Viral Trends (Déjà Vu)",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "status": "produced",
-      "production_id": "Deja_vu_the_eerie_feeling_of_h_1779750185"
-    },
-    {
-      "title": "Your Brain Dreams to Learn",
-      "topic": "Neuroscience suggests that dreaming plays a critical role in memory consolidation, emotional regulation, and problem-solving, acting as a virtual reality simulator where the brain processes daily experiences and prepares for future ones.",
-      "hook": "Your dreams are your brain's secret laboratory, helping you process emotions and consolidate memories.",
-      "tags": [
-        "dreams",
-        "neuroscience",
-        "psychology"
-      ],
-      "inspired_by": "AI-Curated Viral Trends (Why We Dream)",
-      "estimated_views": "medium",
-      "is_winner_variation": false,
-      "status": "produced",
-      "production_id": "Neuroscience_suggests_that_dre_1779809383"
-    },
-    {
-      "title": "Microplastics in Your Blood",
-      "topic": "Microplastics, tiny plastic particles, are now ubiquitous, found in our food, water, air, and even human blood, with scientists actively researching their long-term health impacts and how to mitigate their spread.",
-      "hook": "Scientists have found microplastics inside human bloodstreams across the globe.",
-      "tags": [
-        "microplastics",
-        "health",
-        "environment"
-      ],
-      "inspired_by": "AI-Curated Viral Trends (Microplastics)",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "status": "produced",
-      "production_id": "Microplastics_tiny_plastic_par_1779823335"
-    },
-    {
-      "title": "New Planets May Host Life",
-      "topic": "Astronomers are regularly discovering new exoplanets, some of which fall within the 'habitable zone' of their stars, fueling the search for extraterrestrial life and pushing the boundaries of what we consider a potential home for life.",
-      "hook": "Astronomers have found thousands of exoplanets, some potentially habitable, bringing us closer to finding alien life.",
-      "tags": [
-        "exoplanets",
-        "space",
-        "life"
-      ],
-      "inspired_by": "AI-Curated Viral Trends (New Exoplanets)",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "status": "produced",
-      "production_id": "Astronomers_are_regularly_disc_1779837023"
-    },
-    {
-      "title": "Voynich: Unreadable 600-Year Book",
-      "topic": "The Voynich Manuscript, a 15th-century book filled with undeciphered text and strange illustrations, has baffled cryptographers and linguists for centuries, remaining one of history's greatest unsolved linguistic mysteries.",
-      "hook": "For over 600 years, no one has been able to read a single word of the mysterious Voynich Manuscript.",
-      "tags": [
-        "Voynich",
+        "science",
         "mystery",
-        "history"
+        "mind"
       ],
-      "inspired_by": "AI-Curated Viral Trends (Voynich Manuscript)",
+      "inspired_by": "AI-CURATED VIRAL TRENDS (High Potential) - The Scientific Mystery Behind Déjà Vu",
       "estimated_views": "medium",
       "is_winner_variation": false,
-      "status": "produced",
-      "production_id": "The_Voynich_Manuscript_a_15thc_1779896577"
+      "winner_source_id": ""
     },
     {
-      "title": "Australia Lost a War to Emus",
-      "topic": "In 1932, the Australian military was deployed against a population of emus destroying crops, a bizarre and largely unsuccessful operation now known as the 'Great Emu War,' highlighting the challenges of human-wildlife conflict.",
-      "hook": "In 1932, the Australian army literally declared war on emus and lost.",
+      "title": "AI Drug Discovery Breakthrough",
+      "topic": "Artificial intelligence is dramatically accelerating the process of discovering new drugs and understanding complex diseases, promising faster cures.",
+      "hook": "AI is now discovering new drugs and curing diseases faster than ever before.",
       "tags": [
-        "EmuWar",
+        "ai",
+        "technology",
+        "medicine",
+        "health",
+        "science"
+      ],
+      "inspired_by": "AI-CURATED VIRAL TRENDS (High Potential) - AI Revolutionizing Drug Discovery: Curing Diseases Faster?",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "D.B. Cooper's Lingering Mystery",
+      "topic": "The infamous D.B. Cooper vanished after hijacking a plane and parachuting with $200,000 in 1971. His identity and fate remain one of America's greatest unsolved mysteries.",
+      "hook": "D.B. Cooper jumped out of a plane with $200,000 and was never found.",
+      "tags": [
+        "true crime",
+        "mystery",
         "history",
-        "animals"
+        "unsolved",
+        "usa"
       ],
-      "inspired_by": "AI-Curated Viral Trends (Emu War)",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "status": "produced",
-      "production_id": "In_1932_the_Australian_militar_1779910006"
+      "inspired_by": "Winner Source: D.B. Cooper's Parachute Whispers Secrets #Shorts (id:QHpgbH-oAYo)",
+      "estimated_views": "medium",
+      "is_winner_variation": true,
+      "winner_source_id": "QHpgbH-oAYo"
     },
     {
-      "title": "Algorithms Change Your Brain",
-      "topic": "Social media algorithms are designed to maximize engagement, subtly altering our dopamine pathways and influencing our moods, attention spans, and even self-perception, creating a significant psychological impact.",
-      "hook": "The algorithms powering your social media feed are subtly reshaping your brain's reward system.",
+      "title": "Octopus Intelligence Revealed",
+      "topic": "Octopuses possess remarkable problem-solving abilities, can use tools, and have a distributed nervous system allowing parts of their body to 'think' independently.",
+      "hook": "Octopuses are so intelligent, their arms can think for themselves.",
       "tags": [
-        "socialmedia",
-        "psychology",
-        "algorithms"
+        "animal facts",
+        "nature",
+        "intelligence",
+        "science",
+        "invertebrates"
       ],
-      "inspired_by": "AI-Curated Viral Trends (Social Media Algorithms)",
+      "inspired_by": "AI-CURATED VIRAL TRENDS (High Potential) - Beyond the Brain: The Mind-boggling Intelligence of Octopuses",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "status": "produced",
-      "production_id": "Social_media_algorithms_are_de_1779923896"
+      "winner_source_id": ""
     },
     {
-      "title": "Game Theory: Prisoner's Dilemma",
-      "topic": "The Prisoner's Dilemma is a classic game theory problem where two individuals, acting in their own self-interest, choose outcomes that are collectively worse than if they had cooperated, illustrating complex decision-making.",
-      "hook": "The Prisoner's Dilemma shows why self-interest often leads to a worse outcome for everyone involved.",
+      "title": "The 'Alien Pool' Building Process",
+      "topic": "Watch the intricate and satisfying process of building a high-tech, custom swimming pool, highlighting the engineering and design involved.",
+      "hook": "See how an 'alien pool' is built, revealing every satisfying step.",
       "tags": [
-        "gametheory",
-        "psychology",
-        "logic"
+        "howto",
+        "satisfying",
+        "construction",
+        "design",
+        "luxury"
       ],
-      "inspired_by": "Trending US Videos (The Legal Answer to the Prisoner Dilemma)",
+      "inspired_by": "Trending Video #3: How We Build an Alien Pool — Full Process Revealed",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "The Voynich Manuscript Mystery",
+      "topic": "The Voynich Manuscript, an ancient, illustrated codex, remains undeciphered, written in an unknown language and filled with enigmatic diagrams, baffling linguists for centuries.",
+      "hook": "This ancient book is written in a language nobody can translate.",
+      "tags": [
+        "mystery",
+        "history",
+        "linguistics",
+        "cryptography",
+        "books"
+      ],
+      "inspired_by": "AI-CURATED VIRAL TRENDS (High Potential) - The Uncracked Code: Secrets of the Voynich Manuscript",
       "estimated_views": "medium",
       "is_winner_variation": false,
-      "status": "produced",
-      "production_id": "The_Prisoners_Dilemma_is_a_cla_1779983792"
+      "winner_source_id": ""
     },
     {
-      "title": "Australia's Vast Arid Center",
-      "topic": "A vast portion of Australia's interior is sparsely populated due to its extremely arid climate, characterized by deserts and semi-arid lands, making it one of the driest continents on Earth despite its size.",
-      "hook": "Australia is the only continent with an entire desert at its core, making much of its center uninhabitable.",
+      "title": "Fish That Walk on Land",
+      "topic": "The Mudskipper fish can breathe air and 'walk' on land using its pectoral fins, thriving in mangrove swamps and tidal flats.",
+      "hook": "This fish can breathe air and walk on land.",
       "tags": [
-        "Australia",
-        "geography",
-        "desert"
+        "animal facts",
+        "nature",
+        "evolution",
+        "fish",
+        "wildlife"
       ],
-      "inspired_by": "Viral Shorts in Our Niche (Why Is Australia Empty in the Middle?)",
+      "inspired_by": "Viral Shorts In Our Niche - 'The Tiger That Was Forced to Hunt Humans 😢🐅'",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Neuralink's Human Trials",
+      "topic": "Elon Musk's Neuralink has begun human trials for its brain-computer interface, aiming to help paralyzed individuals control devices with their thoughts.",
+      "hook": "The first human is now controlling a computer with their brain.",
+      "tags": [
+        "technology",
+        "ai",
+        "elon musk",
+        "neuralink",
+        "medicine"
+      ],
+      "inspired_by": "AI-CURATED VIRAL TRENDS (High Potential) - Neuralink's First Human Trials: Brain-Computer Future",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "status": "produced",
-      "production_id": "A_vast_portion_of_Australias_i_1779996947"
+      "winner_source_id": ""
+    },
+    {
+      "title": "The Case of the Fake Parachute",
+      "topic": "Testing a parachute bought online reveals critical flaws and dangers, highlighting the risks of unverified products for extreme activities.",
+      "hook": "This parachute bought from Amazon failed in a terrifying test.",
+      "tags": [
+        "howto",
+        "testing",
+        "safety",
+        "skydiving",
+        "product review"
+      ],
+      "inspired_by": "Trending Video #12: Testing Fake parachute From Amazon . Parachute landing.",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
     }
   ],
   "longform": [
     {
-      "title": "The AI Arms Race: How Nations Clash for Tech Supremacy",
-      "topic": "20 minute deep analysis of the global competition for artificial intelligence dominance, particularly between the US and China. Cover the historical origins of this technological rivalry, key AI breakthroughs by both nations, their strategic investments, and the geopolitical and economic implications for the rest of the world. Discuss how this race is reshaping global power dynamics, military capabilities, and future economic landscapes.",
-      "hook": "The next world superpower won't be defined by military might, but by who controls the future of artificial intelligence.",
+      "title": "The Great Emu War: When Australia Declared War on Birds",
+      "topic": "20 minute deep analysis of the bizarre historical event where the Australian military waged war against emus in 1932. Cover the context of post-WWI farming, the emu's resilience, the military's tactics, and the surprising outcome where the emus effectively won.",
+      "hook": "In 1932, the Australian army declared war on emus... and lost.",
       "tags": [
-        "AI",
-        "geopolitics",
-        "technology",
-        "China",
-        "USA",
-        "economics",
-        "future"
+        "history",
+        "australia",
+        "military history",
+        "animal kingdom",
+        "weird events"
       ],
-      "inspired_by": "Trending World News (US & China Tech Revolution), AI-Curated Viral Trends (AI breakthroughs)",
+      "inspired_by": "AI-CURATED VIRAL TRENDS (High Potential) - The Bizarre True Story of Australia's Great Emu War",
       "estimated_views": "high",
-      "duration_minutes": 20,
-      "status": "produced"
+      "duration_minutes": 20
     },
     {
-      "title": "Abyssal Secrets: Unveiling the Ocean's Last Unexplored Frontier",
-      "topic": "20 minute deep analysis of the scientific exploration of the deep ocean. Explore the extreme conditions of the abyssal zone, the incredible biodiversity of newly discovered species, and the unique ecosystems like hydrothermal vents that thrive without sunlight. Discuss the technological challenges of deep-sea exploration, the potential for medical and scientific breakthroughs, and the critical importance of protecting these fragile, unexplored environments from human impact.",
-      "hook": "More people have walked on the Moon than have ventured into the deepest parts of our own planet's oceans.",
+      "title": "Beyond the Mariana Trench: Humanity's Deepest Mysteries",
+      "topic": "20 minute deep dive into the ongoing exploration of the Mariana Trench and other abyssal plains. Explore the extreme conditions, newly discovered species, the challenges of deep-sea exploration, and what these discoveries tell us about life and our planet's hidden ecosystems.",
+      "hook": "We've sent humans to the moon, but less than a dozen people have ever visited Earth's deepest point.",
       "tags": [
-        "deepsea",
-        "marinebiology",
-        "exploration",
-        "oceans",
-        "biodiversity",
         "science",
-        "discovery"
+        "oceanography",
+        "deep sea",
+        "exploration",
+        "nature documentary"
       ],
-      "inspired_by": "AI-Curated Viral Trends (Deep Sea Discoveries), Competitor Activity (Bright Side deep ocean content)",
+      "inspired_by": "AI-CURATED VIRAL TRENDS (High Potential) - Uncharted Depths: New Discoveries in the Mariana Trench",
       "estimated_views": "medium",
-      "duration_minutes": 20,
-      "status": "produced"
+      "duration_minutes": 20
     }
   ],
   "ambient_recommendations": [
     {
-      "type": "ocean",
+      "type": "rain",
       "hours": 8,
-      "reason": "The calming sound of gentle waves and vast open views are highly effective for relaxation, studying, and background ambience. Universal appeal for destressing."
+      "reason": "Rain sounds are universally calming and popular for sleep, study, and relaxation, providing passive watch time."
     },
     {
       "type": "thunderstorm",
       "hours": 8,
-      "reason": "The dramatic sounds of thunder and heavy rain, combined with low light, create a powerful and immersive environment perfect for focus, deep sleep, or dramatic background noise for creative work."
+      "reason": "Thunderstorms offer a more dramatic yet still relaxing ambiance, appealing to viewers seeking immersive background noise for focus or sleep."
     },
     {
-      "type": "river",
+      "type": "campfire",
       "hours": 8,
-      "reason": "The continuous, soothing sound of flowing water is excellent for masking disruptive noises and creating a peaceful, natural soundscape conducive to concentration or quiet contemplation."
+      "reason": "The crackling sound of a campfire provides a cozy and natural ambiance, perfect for relaxation and passive viewing."
     }
   ],
-  "generated_at": "2026-05-21T23:50:10.447188",
-  "trending_count": 83,
+  "generated_at": "2026-06-01T10:08:29.229160",
+  "trending_count": 82,
   "channels_analyzed": 6,
-  "winner_variations_count": 6,
-  "status": "completed",
-  "last_executed_at": "2026-05-28T19:36:59.355999",
-  "results": {
-    "shorts_produced": 1,
-    "longform_produced": 0,
-    "errors": []
-  },
-  "completed_at": "2026-05-28T19:36:59.355948"
+  "winner_variations_count": 5,
+  "status": "pending"
 }
