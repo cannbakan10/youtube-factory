@@ -27,7 +27,9 @@
         "zack d films tera",
         "zack d. films shorts"
       ],
-      "optimized_title": "What Nobody Tells You About @Zack D. Films | Zack D Films Sorry"
+      "optimized_title": "What Nobody Tells You About @Zack D. Films | Zack D Films Sorry",
+      "status": "produced",
+      "production_id": "fyp_Zack_D_Films_1780354899"
     },
     {
       "title": "The Hidden Secret Of Fisherman CAUGHT Using Weights 🤯",
@@ -312,10 +314,10 @@
   "trending_count": 72,
   "status": "in_progress",
   "fallback_mode": true,
-  "last_executed_at": "2026-06-01T20:15:17.455358",
+  "last_executed_at": "2026-06-01T23:02:25.517110",
   "results": {
-    "shorts_produced": 0,
-    "longform_produced": 1,
+    "shorts_produced": 1,
+    "longform_produced": 0,
     "errors": []
   }
 }
