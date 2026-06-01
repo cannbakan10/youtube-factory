@@ -1,0 +1,223 @@
+{
+  "timestamp": "2026-06-01T10:39:11.128983",
+  "dry_run": false,
+  "api_health": {
+    "gemini": "ok (gemini-2.5-flash)",
+    "openai": "not_configured",
+    "healthy": true
+  },
+  "performance_review": {
+    "status": "no_recent_videos"
+  },
+  "cleanup": {
+    "unlisted": 0,
+    "deleted": 0,
+    "failed": 0,
+    "kept": 44,
+    "thresholds": {
+      "shorts_7d": 25,
+      "shorts_14d": 50,
+      "shorts_30d": 100,
+      "long_14d": 25,
+      "long_30d": 50,
+      "multiplier": 0.5
+    }
+  },
+  "trending": {
+    "found": 82,
+    "viral_shorts_found": 30,
+    "world_news_found": 20,
+    "competitors_analyzed": 4,
+    "comments_mined": 20,
+    "top_5": [
+      {
+        "title": "This Trick Shot Almost Made Him QUIT",
+        "views": 35891901,
+        "category": "Sports"
+      },
+      {
+        "title": "jbl go4 pvc pipe drop jumping",
+        "views": 24386341,
+        "category": "Science & Technology"
+      },
+      {
+        "title": "How We Build an Alien Pool — Full Process Revealed #poolbuil",
+        "views": 22312627,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "#fyp @Zack D. Films",
+        "views": 22204624,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Fisherman CAUGHT Using Weights 🤯",
+        "views": 19301077,
+        "category": "Howto & Style"
+      }
+    ],
+    "top_viral_shorts": [
+      {
+        "title": "Animal Moments That Shouldn't Be Real",
+        "views": 12243984,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "The Sky Looked Normal… Until It Didn’t 😱✈️ #shorts #trending",
+        "views": 7909575,
+        "query": "space facts universe"
+      },
+      {
+        "title": "The Tiger That Was Forced to Hunt Humans 😢🐅#facts #shorts",
+        "views": 3833580,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "Saturn’s Rings Could Be the Graveyard of Lost Worlds 😳🪐 #sho",
+        "views": 1494535,
+        "query": "space facts universe"
+      },
+      {
+        "title": "The Grandfather Paradox? 🤯 The Time Travellers Trap! #physic",
+        "views": 1469579,
+        "query": "space facts universe"
+      }
+    ]
+  },
+  "winners": {
+    "added": 9,
+    "total": 9,
+    "threshold": 300,
+    "median": 118,
+    "active": 9,
+    "top": [
+      {
+        "video_id": "2lPlWWgiCLE",
+        "title": "Your Kitchen Sponge Is Dirtier Than Your Toilet #Shorts",
+        "views": 1392,
+        "views_per_day": 73.3,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "pZnlVbjTAkg",
+        "title": "JWST Finds Ancient Galaxies Too Early #Shorts",
+        "views": 870,
+        "views_per_day": 62.1,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "jQ6gW5Oe-n8",
+        "title": "Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome #Shorts",
+        "views": 1255,
+        "views_per_day": 59.8,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "n41UVkdKXxY",
+        "title": "Oldest Galaxy GLASS-z13 Discovered #Shorts",
+        "views": 999,
+        "views_per_day": 45.4,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "A92xFY3pWBU",
+        "title": "Galaxy GLASS-z13: 300 Million Years After Big Bang #Shorts",
+        "views": 800,
+        "views_per_day": 42.1,
+        "variations_generated": 0
+      }
+    ]
+  },
+  "peak_hours": {
+    "utc": [
+      23,
+      22,
+      18
+    ],
+    "source": "channel_data",
+    "samples": 43
+  },
+  "retention": {
+    "avg_pct": 0,
+    "avg_dur_sec": 0,
+    "source": "unavailable",
+    "video_count": 0
+  },
+  "ambient_analysis": {
+    "total_ambient": 4,
+    "total_views": 190,
+    "top_type": "fireplace",
+    "worst_type": "rain",
+    "type_rankings": [
+      {
+        "type": "fireplace",
+        "video_count": 3,
+        "total_views": 121,
+        "avg_views": 40,
+        "avg_views_per_day": 2.1,
+        "engagement_rate": 44.63,
+        "best_video": {
+          "title": "8 Hours Cozy Cat by the Fireplace — Purring & Crackling Fire",
+          "views": 44,
+          "views_per_day": 2.1
+        }
+      },
+      {
+        "type": "rain",
+        "video_count": 1,
+        "total_views": 69,
+        "avg_views": 69,
+        "avg_views_per_day": 3.0,
+        "engagement_rate": 36.23,
+        "best_video": {
+          "title": "1 Hour 4 Hours Rainy Night Ambience for Deep Sleep",
+          "views": 69,
+          "views_per_day": 3.0
+        }
+      }
+    ]
+  },
+  "plan": {
+    "shorts_planned": 15,
+    "longform_planned": 2,
+    "ambient_recommendations": [
+      {
+        "type": "rain",
+        "hours": 8,
+        "reason": "Rain sounds are consistently popular for relaxation, study, and sleep, providing passive watch time."
+      },
+      {
+        "type": "fireplace",
+        "hours": 8,
+        "reason": "Cozy fireplace ambiance is a proven performer for passive watch time, especially for viewers seeking relaxation or study background noise."
+      },
+      {
+        "type": "forest",
+        "hours": 8,
+        "reason": "Nature sounds like a forest ambience offer a natural, calming background that appeals to a broad audience looking for passive entertainment or relaxation."
+      }
+    ],
+    "winner_variations_count": 3,
+    "shorts": [
+      "Voyager 1 Signals Take 22 Hours to Earth",
+      "Lake at Ocean's Bottom Kills Everything",
+      "Japan's Train Never Late in 50 Years",
+      "Dyatlov Pass Incident: Unsolved Mystery",
+      "Sora: AI Video Generation Marvel",
+      "Pompeii's Last Moments",
+      "Tardigrades Survive Space",
+      "JWST's 'Pillars of Creation'",
+      "CRISPR Cures Genetic Diseases",
+      "Neuralink Controls Device with Brain",
+      "The Bloop Mystery Solved?",
+      "Library of Alexandria's True Fate",
+      "Quantum Computing Explained",
+      "Why We Dream: Sleep Science",
+      "Hidden Dangers in Your Kitchen"
+    ],
+    "longform": [
+      "The Unsolved Mystery of the Dyatlov Pass Incident: A 20-Minu",
+      "Armenia's Break with Russia: Geopolitical Repercussions Expl"
+    ]
+  }
+}

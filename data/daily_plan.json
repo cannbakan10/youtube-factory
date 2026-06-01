@@ -2,330 +2,259 @@
   "date": "2026-06-02",
   "shorts": [
     {
-      "title": "The Unseen Lake That Kills Everything",
-      "topic": "There's a dense brine pool at the bottom of the Gulf of Mexico that's toxic to marine life. Anything that enters it dies, creating a distinct 'underwater lake' with its own shore.",
-      "hook": "There's a lake at the bottom of the Gulf of Mexico that kills everything that touches it.",
+      "title": "Voyager 1 Signals Take 22 Hours to Earth",
+      "topic": "Voyager 1 is currently the most distant human-made object. Discuss its incredible journey, the immense distance it has traveled, and the time it takes for its signals to reach us.",
+      "hook": "Voyager 1 is so far away that its signals take 22 hours to reach Earth.",
+      "tags": [
+        "space facts",
+        "voyager 1",
+        "nasa",
+        "astronomy shorts"
+      ],
+      "inspired_by": "Ultra-specific angles - Voyager 1",
+      "estimated_views": "high",
+      "is_winner_variation": true,
+      "winner_source_id": "pZnlVbjTAkg"
+    },
+    {
+      "title": "Lake at Ocean's Bottom Kills Everything",
+      "topic": "Discover the brine pools at the bottom of the Gulf of Mexico. These super-salty, dense bodies of water create a stark boundary, and anything that crosses it dies due to the extreme salinity.",
+      "hook": "There's a lake at the bottom of the ocean that kills everything.",
       "tags": [
         "ocean facts",
         "deep sea",
-        "discovery",
-        "science",
-        "nature"
-      ],
-      "inspired_by": "Viral Shorts In Our Niche - 'The Sky Looked Normal… Until It Didn’t 😱✈️'",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": "",
-      "status": "produced",
-      "production_id": "Theres_a_dense_brine_pool_at_t_1780308514"
-    },
-    {
-      "title": "The Jellyfish That Can Live Forever",
-      "topic": "The Turritopsis dohrnii jellyfish, often called the 'immortal jellyfish,' can revert back to its polyp stage after reaching maturity, effectively resetting its life cycle.",
-      "hook": "There's a species of jellyfish that is biologically immortal.",
-      "tags": [
-        "animal facts",
-        "biology",
-        "immortality",
-        "nature",
+        "geography shorts",
         "science"
       ],
-      "inspired_by": "Winner Source: Your Kitchen Sponge Is Dirtier Than Your Toilet #Shorts (id:2lPlWWgiCLE)",
-      "estimated_views": "high",
-      "is_winner_variation": true,
-      "winner_source_id": "2lPlWWgiCLE",
-      "status": "produced",
-      "production_id": "The_Turritopsis_dohrnii_jellyf_1780308579"
-    },
-    {
-      "title": "Voyager 1's 22-Hour Signals",
-      "topic": "Voyager 1 is so far from Earth that its radio signals take 22 hours to reach us, yet it continues to send back valuable data about interstellar space.",
-      "hook": "Voyager 1's signals take 22 hours to reach Earth, but it's still sending data.",
-      "tags": [
-        "space",
-        "nasa",
-        "astronomy",
-        "science",
-        "voyager"
-      ],
-      "inspired_by": "AI-CURATED VIRAL TRENDS (High Potential) - JWST's Deepest Glimpses of the Early Universe",
+      "inspired_by": "Ultra-specific angles - Ocean facts",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "winner_source_id": "",
-      "status": "produced",
-      "production_id": "Voyager_1_is_so_far_from_Earth_1780308663"
+      "winner_source_id": ""
     },
     {
-      "title": "Rome's Hole That Never Leaks",
-      "topic": "The Pantheon in Rome has a 30-foot hole in its ceiling, the oculus, but its ingenious design ensures that rain never floods the interior.",
-      "hook": "The Pantheon in Rome has a 30-foot hole in its ceiling — and it never leaks.",
+      "title": "Japan's Train Never Late in 50 Years",
+      "topic": "Explore the incredible punctuality of Japan's train system, specifically the average delay times, highlighting the precision engineering and operational efficiency involved.",
+      "hook": "Japan has a train that's been 0 seconds late on average for 50 years.",
       "tags": [
-        "ancient rome",
-        "architecture",
-        "engineering",
-        "history",
-        "mystery"
+        "japan facts",
+        "transportation",
+        "world records",
+        "shorts"
       ],
-      "inspired_by": "Winner Source: Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome #Shorts (id:jQ6gW5Oe-n8)",
+      "inspired_by": "Ultra-specific angles - Japan facts",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Dyatlov Pass Incident: Unsolved Mystery",
+      "topic": "Recap the baffling and tragic events of the Dyatlov Pass incident in 1959, where nine hikers died under mysterious circumstances, leaving behind an enduring enigma.",
+      "hook": "Nine hikers vanished and died in the Ural Mountains under circumstances that remain a chilling mystery.",
+      "tags": [
+        "dyatlov pass",
+        "unsolved mysteries",
+        "true crime shorts",
+        "history"
+      ],
+      "inspired_by": "AI-Curated Viral Trends - The Dyatlov Pass Incident",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Sora: AI Video Generation Marvel",
+      "topic": "Introduce OpenAI's Sora, a revolutionary AI model that generates hyper-realistic videos from text prompts, and discuss its implications for filmmaking and creative industries.",
+      "hook": "AI can now create incredibly realistic videos just from a text description.",
+      "tags": [
+        "ai",
+        "sora",
+        "technology shorts",
+        "future tech"
+      ],
+      "inspired_by": "AI-Curated Viral Trends - AI Takes Over Creativity",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Pompeii's Last Moments",
+      "topic": "Detail the final hours of Pompeii before Mount Vesuvius erupted, drawing on recent archaeological findings to paint a vivid picture of the disaster.",
+      "hook": "Mount Vesuvius erupted so fast, people in Pompeii were caught mid-meal and mid-conversation.",
+      "tags": [
+        "pompeii",
+        "ancient history",
+        "archaeology shorts",
+        "disaster"
+      ],
+      "inspired_by": "AI-Curated Viral Trends - The Real Story of Pompeii",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Tardigrades Survive Space",
+      "topic": "Highlight the incredible resilience of tardigrades (water bears), microscopic creatures known for their ability to survive extreme conditions, including the vacuum of space.",
+      "hook": "These tiny creatures can survive the vacuum of space and extreme radiation.",
+      "tags": [
+        "tardigrade",
+        "extremophiles",
+        "science facts",
+        "nature shorts"
+      ],
+      "inspired_by": "AI-Curated Viral Trends - Tardigrades",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "JWST's 'Pillars of Creation'",
+      "topic": "Showcase the stunning images of the 'Pillars of Creation' captured by the James Webb Space Telescope, explaining the scientific significance of these cosmic structures.",
+      "hook": "The James Webb Space Telescope has revealed the 'Pillars of Creation' in breathtaking new detail.",
+      "tags": [
+        "jwst",
+        "space",
+        "astronomy",
+        "cosmos shorts"
+      ],
+      "inspired_by": "AI-Curated Viral Trends - NASA's Webb Telescope",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "jQ6gW5Oe-n8",
-      "status": "produced",
-      "production_id": "The_Pantheon_in_Rome_has_a_30f_1780308752"
+      "winner_source_id": "pZnlVbjTAkg"
     },
     {
-      "title": "The Truth About Phone Germs",
-      "topic": "Your smartphone screen can harbor more bacteria than a public toilet seat, acting as a breeding ground for germs that can impact your health.",
-      "hook": "Your phone screen has more germs than a toilet seat.",
+      "title": "CRISPR Cures Genetic Diseases",
+      "topic": "Explain the groundbreaking potential of CRISPR gene editing technology in treating and potentially curing genetic diseases.",
+      "hook": "Scientists can now edit human genes to cure diseases that were once untreatable.",
       "tags": [
-        "health",
-        "science",
-        "hygiene",
-        "technology",
-        "bacteria"
+        "crispr",
+        "gene editing",
+        "medical breakthroughs",
+        "science shorts"
       ],
-      "inspired_by": "Winner Source: Your Kitchen Sponge Is Dirtier Than Your Toilet #Shorts (id:2lPlWWgiCLE)",
+      "inspired_by": "AI-Curated Viral Trends - CRISPR Breakthroughs",
       "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Neuralink Controls Device with Brain",
+      "topic": "Discuss the latest advancements from Neuralink, particularly the first human patient successfully controlling a device using only their thoughts.",
+      "hook": "A person can now control a computer with their mind thanks to brain-computer interface technology.",
+      "tags": [
+        "neuralink",
+        "elon musk",
+        "bci",
+        "technology shorts"
+      ],
+      "inspired_by": "AI-Curated Viral Trends - Neuralink Update",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "The Bloop Mystery Solved?",
+      "topic": "Revisit the mystery of 'The Bloop', an ultra-loud sound detected in the Pacific Ocean in 1997, and discuss current theories about its origin.",
+      "hook": "Scientists detected an ultra-loud sound from the deep ocean, and nobody knows what made it.",
+      "tags": [
+        "bloop",
+        "ocean mystery",
+        "unexplained",
+        "science shorts"
+      ],
+      "inspired_by": "AI-Curated Viral Trends - The Mystery of the Bloop",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Library of Alexandria's True Fate",
+      "topic": "Explore the various theories and historical accounts regarding the destruction of the Great Library of Alexandria, moving beyond the myth of a single catastrophic fire.",
+      "hook": "The Great Library of Alexandria wasn't destroyed in one single fire, its end was far more complex.",
+      "tags": [
+        "library of alexandria",
+        "ancient history",
+        "historical mysteries",
+        "shorts"
+      ],
+      "inspired_by": "AI-Curated Viral Trends - The Library of Alexandria's True Fate",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Quantum Computing Explained",
+      "topic": "Provide a simplified explanation of quantum computing and its potential to revolutionize technology, including breaking current encryption methods.",
+      "hook": "Quantum computers could soon be powerful enough to break all existing online security.",
+      "tags": [
+        "quantum computing",
+        "future tech",
+        "science explained",
+        "ai"
+      ],
+      "inspired_by": "AI-Curated Viral Trends - Quantum Computing Explained",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Why We Dream: Sleep Science",
+      "topic": "Delve into the science of sleep, exploring the theories behind why we dream and what happens to our bodies and minds when we don't get enough.",
+      "hook": "Your brain is more active when you're asleep than when you're awake.",
+      "tags": [
+        "science of sleep",
+        "dreams",
+        "psychology",
+        "health"
+      ],
+      "inspired_by": "AI-Curated Viral Trends - The Science of Sleep",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Hidden Dangers in Your Kitchen",
+      "topic": "Uncover common, overlooked hygiene risks found in kitchens, beyond just sponges, focusing on areas like faucet handles and sink drains.",
+      "hook": "Your kitchen faucet handle might be dirtier than your toilet seat.",
+      "tags": [
+        "hygiene",
+        "health tips",
+        "kitchen hacks",
+        "shorts"
+      ],
+      "inspired_by": "Your channel's own winners",
+      "estimated_views": "medium",
       "is_winner_variation": true,
       "winner_source_id": "2lPlWWgiCLE"
-    },
-    {
-      "title": "Black Hole's Million-Year Echo",
-      "topic": "A massive black hole in a distant galaxy has been observed emitting a powerful radio wave 'echo' that suggests it's been active for over a million years.",
-      "hook": "Scientists detected a million-year-old echo from a supermassive black hole.",
-      "tags": [
-        "space",
-        "astronomy",
-        "black hole",
-        "science",
-        "universe"
-      ],
-      "inspired_by": "AI-CURATED VIRAL TRENDS (High Potential) - JWST's Deepest Glimpses of the Early Universe",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "The Giant Hadron Collider's Secret",
-      "topic": "The Large Hadron Collider, famous for particle physics, also holds immense potential for simulating conditions of the early universe and searching for dark matter.",
-      "hook": "The world's most powerful particle collider could unlock secrets of the early universe.",
-      "tags": [
-        "science",
-        "physics",
-        "cern",
-        "lhc",
-        "technology"
-      ],
-      "inspired_by": "Science Channel - STRIKE! How to Make a Bowling Ball! | How It's Made",
-      "estimated_views": "medium",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "AI That Writes Like Humans",
-      "topic": "OpenAI's new AI model can generate text so convincingly human-like it's difficult to distinguish from real writing, raising questions about creativity and authenticity.",
-      "hook": "This new AI can write text that's indistinguishable from human writing.",
-      "tags": [
-        "ai",
-        "technology",
-        "openai",
-        "future",
-        "writing"
-      ],
-      "inspired_by": "AI-CURATED VIRAL TRENDS (High Potential) - OpenAI's Sora: The Future of Video Creation?",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "JWST's Earliest Galaxy",
-      "topic": "The James Webb Space Telescope has detected a galaxy, GLASS-z13, that existed just 300 million years after the Big Bang, rewriting our understanding of early cosmic formation.",
-      "hook": "This galaxy existed just 300 million years after the Big Bang.",
-      "tags": [
-        "space",
-        "jwst",
-        "galaxy",
-        "cosmology",
-        "science"
-      ],
-      "inspired_by": "Winner Source: Galaxy GLASS-z13: 300 Million Years After Big Bang #Shorts (id:A92xFY3pWBU)",
-      "estimated_views": "high",
-      "is_winner_variation": true,
-      "winner_source_id": "A92xFY3pWBU"
-    },
-    {
-      "title": "The Mystery of Déjà Vu",
-      "topic": "Scientists believe déjà vu might be caused by minor misfirings in the brain's memory systems, creating a false sense of recognition.",
-      "hook": "Déjà vu might be a glitch in your brain's memory.",
-      "tags": [
-        "psychology",
-        "brain",
-        "science",
-        "mystery",
-        "mind"
-      ],
-      "inspired_by": "AI-CURATED VIRAL TRENDS (High Potential) - The Scientific Mystery Behind Déjà Vu",
-      "estimated_views": "medium",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "AI Drug Discovery Breakthrough",
-      "topic": "Artificial intelligence is dramatically accelerating the process of discovering new drugs and understanding complex diseases, promising faster cures.",
-      "hook": "AI is now discovering new drugs and curing diseases faster than ever before.",
-      "tags": [
-        "ai",
-        "technology",
-        "medicine",
-        "health",
-        "science"
-      ],
-      "inspired_by": "AI-CURATED VIRAL TRENDS (High Potential) - AI Revolutionizing Drug Discovery: Curing Diseases Faster?",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "D.B. Cooper's Lingering Mystery",
-      "topic": "The infamous D.B. Cooper vanished after hijacking a plane and parachuting with $200,000 in 1971. His identity and fate remain one of America's greatest unsolved mysteries.",
-      "hook": "D.B. Cooper jumped out of a plane with $200,000 and was never found.",
-      "tags": [
-        "true crime",
-        "mystery",
-        "history",
-        "unsolved",
-        "usa"
-      ],
-      "inspired_by": "Winner Source: D.B. Cooper's Parachute Whispers Secrets #Shorts (id:QHpgbH-oAYo)",
-      "estimated_views": "medium",
-      "is_winner_variation": true,
-      "winner_source_id": "QHpgbH-oAYo"
-    },
-    {
-      "title": "Octopus Intelligence Revealed",
-      "topic": "Octopuses possess remarkable problem-solving abilities, can use tools, and have a distributed nervous system allowing parts of their body to 'think' independently.",
-      "hook": "Octopuses are so intelligent, their arms can think for themselves.",
-      "tags": [
-        "animal facts",
-        "nature",
-        "intelligence",
-        "science",
-        "invertebrates"
-      ],
-      "inspired_by": "AI-CURATED VIRAL TRENDS (High Potential) - Beyond the Brain: The Mind-boggling Intelligence of Octopuses",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "The 'Alien Pool' Building Process",
-      "topic": "Watch the intricate and satisfying process of building a high-tech, custom swimming pool, highlighting the engineering and design involved.",
-      "hook": "See how an 'alien pool' is built, revealing every satisfying step.",
-      "tags": [
-        "howto",
-        "satisfying",
-        "construction",
-        "design",
-        "luxury"
-      ],
-      "inspired_by": "Trending Video #3: How We Build an Alien Pool — Full Process Revealed",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "The Voynich Manuscript Mystery",
-      "topic": "The Voynich Manuscript, an ancient, illustrated codex, remains undeciphered, written in an unknown language and filled with enigmatic diagrams, baffling linguists for centuries.",
-      "hook": "This ancient book is written in a language nobody can translate.",
-      "tags": [
-        "mystery",
-        "history",
-        "linguistics",
-        "cryptography",
-        "books"
-      ],
-      "inspired_by": "AI-CURATED VIRAL TRENDS (High Potential) - The Uncracked Code: Secrets of the Voynich Manuscript",
-      "estimated_views": "medium",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Fish That Walk on Land",
-      "topic": "The Mudskipper fish can breathe air and 'walk' on land using its pectoral fins, thriving in mangrove swamps and tidal flats.",
-      "hook": "This fish can breathe air and walk on land.",
-      "tags": [
-        "animal facts",
-        "nature",
-        "evolution",
-        "fish",
-        "wildlife"
-      ],
-      "inspired_by": "Viral Shorts In Our Niche - 'The Tiger That Was Forced to Hunt Humans 😢🐅'",
-      "estimated_views": "medium",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Neuralink's Human Trials",
-      "topic": "Elon Musk's Neuralink has begun human trials for its brain-computer interface, aiming to help paralyzed individuals control devices with their thoughts.",
-      "hook": "The first human is now controlling a computer with their brain.",
-      "tags": [
-        "technology",
-        "ai",
-        "elon musk",
-        "neuralink",
-        "medicine"
-      ],
-      "inspired_by": "AI-CURATED VIRAL TRENDS (High Potential) - Neuralink's First Human Trials: Brain-Computer Future",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "The Case of the Fake Parachute",
-      "topic": "Testing a parachute bought online reveals critical flaws and dangers, highlighting the risks of unverified products for extreme activities.",
-      "hook": "This parachute bought from Amazon failed in a terrifying test.",
-      "tags": [
-        "howto",
-        "testing",
-        "safety",
-        "skydiving",
-        "product review"
-      ],
-      "inspired_by": "Trending Video #12: Testing Fake parachute From Amazon . Parachute landing.",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
     }
   ],
   "longform": [
     {
-      "title": "The Great Emu War: When Australia Declared War on Birds",
-      "topic": "20 minute deep analysis of the bizarre historical event where the Australian military waged war against emus in 1932. Cover the context of post-WWI farming, the emu's resilience, the military's tactics, and the surprising outcome where the emus effectively won.",
-      "hook": "In 1932, the Australian army declared war on emus... and lost.",
+      "title": "The Unsolved Mystery of the Dyatlov Pass Incident: A 20-Minute Deep Dive",
+      "topic": "20 minute deep analysis of the Dyatlov Pass incident. Cover the background of the expedition, the discovery of the bodies, the bizarre scene at the campsite, the conflicting official reports, and the most compelling theories that attempt to explain the inexplicable deaths of the nine hikers. Include specific details from the autopsy reports and eyewitness accounts.",
+      "hook": "In 1959, nine experienced hikers died under circumstances so bizarre, they defy rational explanation and continue to haunt Russia's Ural Mountains.",
       "tags": [
-        "history",
-        "australia",
-        "military history",
-        "animal kingdom",
-        "weird events"
+        "dyatlov pass",
+        "unsolved mysteries",
+        "true crime",
+        "history documentary",
+        "russian mysteries"
       ],
-      "inspired_by": "AI-CURATED VIRAL TRENDS (High Potential) - The Bizarre True Story of Australia's Great Emu War",
+      "inspired_by": "AI-Curated Viral Trends - The Dyatlov Pass Incident",
       "estimated_views": "high",
       "duration_minutes": 20
     },
     {
-      "title": "Beyond the Mariana Trench: Humanity's Deepest Mysteries",
-      "topic": "20 minute deep dive into the ongoing exploration of the Mariana Trench and other abyssal plains. Explore the extreme conditions, newly discovered species, the challenges of deep-sea exploration, and what these discoveries tell us about life and our planet's hidden ecosystems.",
-      "hook": "We've sent humans to the moon, but less than a dozen people have ever visited Earth's deepest point.",
+      "title": "Armenia's Break with Russia: Geopolitical Repercussions Explained (20 Minute Documentary)",
+      "topic": "20 minute deep analysis of Armenia's shifting geopolitical alignment away from Russia. Examine the historical context of Armenia-Russia relations, the factors driving Armenia's recent pivot (e.g., Nagorno-Karabakh conflict, perceived Russian inaction), potential new alliances, and the wider implications for regional stability and Russia's influence. Include analysis of statements from DW News and other geopolitical sources.",
+      "hook": "A decades-long alliance is fracturing, potentially reshaping the balance of power in a volatile region.",
       "tags": [
-        "science",
-        "oceanography",
-        "deep sea",
-        "exploration",
-        "nature documentary"
+        "geopolitics",
+        "armenia",
+        "russia",
+        "world news",
+        "foreign policy documentary"
       ],
-      "inspired_by": "AI-CURATED VIRAL TRENDS (High Potential) - Uncharted Depths: New Discoveries in the Mariana Trench",
+      "inspired_by": "TRENDING WORLD NEWS VIDEOS - Armenia is breaking with Russia",
       "estimated_views": "medium",
       "duration_minutes": 20
     }
@@ -334,28 +263,22 @@
     {
       "type": "rain",
       "hours": 8,
-      "reason": "Rain sounds are universally calming and popular for sleep, study, and relaxation, providing passive watch time."
+      "reason": "Rain sounds are consistently popular for relaxation, study, and sleep, providing passive watch time."
     },
     {
-      "type": "thunderstorm",
+      "type": "fireplace",
       "hours": 8,
-      "reason": "Thunderstorms offer a more dramatic yet still relaxing ambiance, appealing to viewers seeking immersive background noise for focus or sleep."
+      "reason": "Cozy fireplace ambiance is a proven performer for passive watch time, especially for viewers seeking relaxation or study background noise."
     },
     {
-      "type": "campfire",
+      "type": "forest",
       "hours": 8,
-      "reason": "The crackling sound of a campfire provides a cozy and natural ambiance, perfect for relaxation and passive viewing."
+      "reason": "Nature sounds like a forest ambience offer a natural, calming background that appeals to a broad audience looking for passive entertainment or relaxation."
     }
   ],
-  "generated_at": "2026-06-01T10:08:29.229160",
+  "generated_at": "2026-06-01T10:40:33.678918",
   "trending_count": 82,
   "channels_analyzed": 6,
-  "winner_variations_count": 5,
-  "status": "in_progress",
-  "last_executed_at": "2026-06-01T10:14:01.039310",
-  "results": {
-    "shorts_produced": 4,
-    "longform_produced": 0,
-    "errors": []
-  }
+  "winner_variations_count": 3,
+  "status": "pending"
 }
