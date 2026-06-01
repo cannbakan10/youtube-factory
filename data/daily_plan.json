@@ -2,297 +2,318 @@
   "date": "2026-06-02",
   "shorts": [
     {
-      "title": "Voyager 1 Signals Take 22 Hours to Earth",
-      "topic": "Voyager 1 is currently the most distant human-made object. Discuss its incredible journey, the immense distance it has traveled, and the time it takes for its signals to reach us.",
-      "hook": "Voyager 1 is so far away that its signals take 22 hours to reach Earth.",
-      "tags": [
-        "space facts",
-        "voyager 1",
-        "nasa",
-        "astronomy shorts"
-      ],
-      "inspired_by": "Ultra-specific angles - Voyager 1",
-      "estimated_views": "high",
-      "is_winner_variation": true,
-      "winner_source_id": "pZnlVbjTAkg",
-      "status": "produced",
-      "production_id": "Voyager_1_is_currently_the_mos_1780310438"
-    },
-    {
-      "title": "Lake at Ocean's Bottom Kills Everything",
-      "topic": "Discover the brine pools at the bottom of the Gulf of Mexico. These super-salty, dense bodies of water create a stark boundary, and anything that crosses it dies due to the extreme salinity.",
-      "hook": "There's a lake at the bottom of the ocean that kills everything.",
-      "tags": [
-        "ocean facts",
-        "deep sea",
-        "geography shorts",
-        "science"
-      ],
-      "inspired_by": "Ultra-specific angles - Ocean facts",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": "",
-      "status": "produced",
-      "production_id": "Discover_the_brine_pools_at_th_1780310505"
-    },
-    {
-      "title": "Japan's Train Never Late in 50 Years",
-      "topic": "Explore the incredible punctuality of Japan's train system, specifically the average delay times, highlighting the precision engineering and operational efficiency involved.",
-      "hook": "Japan has a train that's been 0 seconds late on average for 50 years.",
-      "tags": [
-        "japan facts",
-        "transportation",
-        "world records",
-        "shorts"
-      ],
-      "inspired_by": "Ultra-specific angles - Japan facts",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": "",
-      "status": "produced",
-      "production_id": "Explore_the_incredible_punctua_1780310599"
-    },
-    {
-      "title": "Dyatlov Pass Incident: Unsolved Mystery",
-      "topic": "Recap the baffling and tragic events of the Dyatlov Pass incident in 1959, where nine hikers died under mysterious circumstances, leaving behind an enduring enigma.",
-      "hook": "Nine hikers vanished and died in the Ural Mountains under circumstances that remain a chilling mystery.",
-      "tags": [
-        "dyatlov pass",
-        "unsolved mysteries",
-        "true crime shorts",
-        "history"
-      ],
-      "inspired_by": "AI-Curated Viral Trends - The Dyatlov Pass Incident",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": "",
-      "status": "produced",
-      "production_id": "Recap_the_baffling_and_tragic__1780310620"
-    },
-    {
-      "title": "Sora: AI Video Generation Marvel",
-      "topic": "Introduce OpenAI's Sora, a revolutionary AI model that generates hyper-realistic videos from text prompts, and discuss its implications for filmmaking and creative industries.",
-      "hook": "AI can now create incredibly realistic videos just from a text description.",
-      "tags": [
-        "ai",
-        "sora",
-        "technology shorts",
-        "future tech"
-      ],
-      "inspired_by": "AI-Curated Viral Trends - AI Takes Over Creativity",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Pompeii's Last Moments",
-      "topic": "Detail the final hours of Pompeii before Mount Vesuvius erupted, drawing on recent archaeological findings to paint a vivid picture of the disaster.",
-      "hook": "Mount Vesuvius erupted so fast, people in Pompeii were caught mid-meal and mid-conversation.",
-      "tags": [
-        "pompeii",
-        "ancient history",
-        "archaeology shorts",
-        "disaster"
-      ],
-      "inspired_by": "AI-Curated Viral Trends - The Real Story of Pompeii",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Tardigrades Survive Space",
-      "topic": "Highlight the incredible resilience of tardigrades (water bears), microscopic creatures known for their ability to survive extreme conditions, including the vacuum of space.",
-      "hook": "These tiny creatures can survive the vacuum of space and extreme radiation.",
-      "tags": [
-        "tardigrade",
-        "extremophiles",
-        "science facts",
-        "nature shorts"
-      ],
-      "inspired_by": "AI-Curated Viral Trends - Tardigrades",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "JWST's 'Pillars of Creation'",
-      "topic": "Showcase the stunning images of the 'Pillars of Creation' captured by the James Webb Space Telescope, explaining the scientific significance of these cosmic structures.",
-      "hook": "The James Webb Space Telescope has revealed the 'Pillars of Creation' in breathtaking new detail.",
-      "tags": [
-        "jwst",
-        "space",
-        "astronomy",
-        "cosmos shorts"
-      ],
-      "inspired_by": "AI-Curated Viral Trends - NASA's Webb Telescope",
-      "estimated_views": "high",
-      "is_winner_variation": true,
-      "winner_source_id": "pZnlVbjTAkg"
-    },
-    {
-      "title": "CRISPR Cures Genetic Diseases",
-      "topic": "Explain the groundbreaking potential of CRISPR gene editing technology in treating and potentially curing genetic diseases.",
-      "hook": "Scientists can now edit human genes to cure diseases that were once untreatable.",
-      "tags": [
-        "crispr",
-        "gene editing",
-        "medical breakthroughs",
-        "science shorts"
-      ],
-      "inspired_by": "AI-Curated Viral Trends - CRISPR Breakthroughs",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Neuralink Controls Device with Brain",
-      "topic": "Discuss the latest advancements from Neuralink, particularly the first human patient successfully controlling a device using only their thoughts.",
-      "hook": "A person can now control a computer with their mind thanks to brain-computer interface technology.",
-      "tags": [
-        "neuralink",
-        "elon musk",
-        "bci",
-        "technology shorts"
-      ],
-      "inspired_by": "AI-Curated Viral Trends - Neuralink Update",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "The Bloop Mystery Solved?",
-      "topic": "Revisit the mystery of 'The Bloop', an ultra-loud sound detected in the Pacific Ocean in 1997, and discuss current theories about its origin.",
-      "hook": "Scientists detected an ultra-loud sound from the deep ocean, and nobody knows what made it.",
-      "tags": [
-        "bloop",
-        "ocean mystery",
-        "unexplained",
-        "science shorts"
-      ],
-      "inspired_by": "AI-Curated Viral Trends - The Mystery of the Bloop",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Library of Alexandria's True Fate",
-      "topic": "Explore the various theories and historical accounts regarding the destruction of the Great Library of Alexandria, moving beyond the myth of a single catastrophic fire.",
-      "hook": "The Great Library of Alexandria wasn't destroyed in one single fire, its end was far more complex.",
-      "tags": [
-        "library of alexandria",
-        "ancient history",
-        "historical mysteries",
-        "shorts"
-      ],
-      "inspired_by": "AI-Curated Viral Trends - The Library of Alexandria's True Fate",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Quantum Computing Explained",
-      "topic": "Provide a simplified explanation of quantum computing and its potential to revolutionize technology, including breaking current encryption methods.",
-      "hook": "Quantum computers could soon be powerful enough to break all existing online security.",
-      "tags": [
-        "quantum computing",
-        "future tech",
-        "science explained",
-        "ai"
-      ],
-      "inspired_by": "AI-Curated Viral Trends - Quantum Computing Explained",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Why We Dream: Sleep Science",
-      "topic": "Delve into the science of sleep, exploring the theories behind why we dream and what happens to our bodies and minds when we don't get enough.",
-      "hook": "Your brain is more active when you're asleep than when you're awake.",
-      "tags": [
-        "science of sleep",
-        "dreams",
-        "psychology",
-        "health"
-      ],
-      "inspired_by": "AI-Curated Viral Trends - The Science of Sleep",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Hidden Dangers in Your Kitchen",
-      "topic": "Uncover common, overlooked hygiene risks found in kitchens, beyond just sponges, focusing on areas like faucet handles and sink drains.",
-      "hook": "Your kitchen faucet handle might be dirtier than your toilet seat.",
-      "tags": [
-        "hygiene",
-        "health tips",
-        "kitchen hacks",
-        "shorts"
-      ],
-      "inspired_by": "Your channel's own winners",
+      "title": "The Shocking Truth About jbl go4 pvc pipe drop jumping",
+      "topic": "jbl go4 pvc pipe drop jumping",
+      "hook": "You're about to learn something shocking about jbl go4 pvc pipe drop jumping.",
+      "tags": [],
+      "inspired_by": "jbl go4 pvc pipe drop jumping",
       "estimated_views": "medium",
-      "is_winner_variation": true,
-      "winner_source_id": "2lPlWWgiCLE"
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "What Nobody Tells You About @Zack D. Films",
+      "topic": "#fyp @Zack D. Films",
+      "hook": "You're about to learn something shocking about @zack d. films.",
+      "tags": [],
+      "inspired_by": "#fyp @Zack D. Films",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": "",
+      "seo_keywords": [
+        "zack d films sorry",
+        "zack d films tera",
+        "zack d. films shorts"
+      ],
+      "optimized_title": "What Nobody Tells You About @Zack D. Films | Zack D Films Sorry"
+    },
+    {
+      "title": "The Hidden Secret Of Fisherman CAUGHT Using Weights 🤯",
+      "topic": "Fisherman CAUGHT Using Weights 🤯",
+      "hook": "You're about to learn something shocking about fisherman caught using weights 🤯.",
+      "tags": [],
+      "inspired_by": "Fisherman CAUGHT Using Weights 🤯",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": "",
+      "seo_keywords": [
+        "fisher caught with weights"
+      ],
+      "optimized_title": "The Hidden Secret Of Fisherman CAUGHT Using Weights 🤯 | Fisher Caught With Weights"
+    },
+    {
+      "title": "You Won't Believe This About This scene in The Guardians of the Galaxy is so ic",
+      "topic": "This scene in The Guardians of the Galaxy is so iconic 😂",
+      "hook": "You're about to learn something shocking about this scene in the guardians of the galaxy is so ic.",
+      "tags": [],
+      "inspired_by": "This scene in The Guardians of the Galaxy is so iconic 😂",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": "",
+      "seo_keywords": [
+        "this scene in the guardians of the galaxy is so iconic 😂😂",
+        "this scene in the guardians of the galaxy is so iconic 😂 meme",
+        "this scene in the guardians of the galaxy is so iconic 😂 meaning"
+      ],
+      "optimized_title": "You Won't Believe This About This scene in The Guardians of the Galaxy is so ic"
+    },
+    {
+      "title": "3 Mind-Blowing Facts About He just wanted to have some fun 💔",
+      "topic": "He just wanted to have some fun 💔",
+      "hook": "You're about to learn something shocking about he just wanted to have some fun 💔.",
+      "tags": [],
+      "inspired_by": "He just wanted to have some fun 💔",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "The Dark Side Of Ranking Funniest Parkour Fails😭😭",
+      "topic": "Ranking Funniest Parkour Fails😭😭",
+      "hook": "You're about to learn something shocking about ranking funniest parkour fails😭😭.",
+      "tags": [],
+      "inspired_by": "Ranking Funniest Parkour Fails😭😭",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": "",
+      "seo_keywords": [
+        "ranking funniest parkour fails",
+        "ranking funniest parkour fails moments",
+        "ranking hilarious parkour fails",
+        "ranking funniest water parkour fails",
+        "ranking hilarious water parkour fails",
+        "rating the funniest parkour fails",
+        "rating parkour fails",
+        "top 10 worst parkour fails"
+      ],
+      "optimized_title": "The Dark Side Of Ranking Funniest Parkour Fails😭😭 | Ranking Funniest Parkour Fails Moments"
+    },
+    {
+      "title": "Why Dad Handles It Perfectly 🥹 Changed Everything",
+      "topic": "Dad Handles It Perfectly 🥹",
+      "hook": "You're about to learn something shocking about dad handles it perfectly 🥹.",
+      "tags": [],
+      "inspired_by": "Dad Handles It Perfectly 🥹",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "This Will Change How You See Testing Fake parachute From Amazon . Parachute lan",
+      "topic": "Testing Fake parachute From Amazon . Parachute landing. #skydiving #amazon #shorts",
+      "hook": "You're about to learn something shocking about testing fake parachute from amazon . parachute lan.",
+      "tags": [],
+      "inspired_by": "Testing Fake parachute From Amazon . Parachute landing. #skydiving #amazon #shorts",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "The Shocking Truth About Kindness Always Pays Off In Business",
+      "topic": "Kindness Always Pays Off In Business",
+      "hook": "You're about to learn something shocking about kindness always pays off in business.",
+      "tags": [],
+      "inspired_by": "Kindness Always Pays Off In Business",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": "",
+      "seo_keywords": [
+        "kindness always pays off in businesses"
+      ],
+      "optimized_title": "The Shocking Truth About Kindness Always Pays Off In Business"
+    },
+    {
+      "title": "What Nobody Tells You About Fake MJ Who Hit A Pole While Moonwalking Is Back 😳",
+      "topic": "Fake MJ Who Hit A Pole While Moonwalking Is Back 😳",
+      "hook": "You're about to learn something shocking about fake mj who hit a pole while moonwalking is back 😳.",
+      "tags": [],
+      "inspired_by": "Fake MJ Who Hit A Pole While Moonwalking Is Back 😳",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "The Hidden Secret Of How I Accidentally Burned Myself",
+      "topic": "How I Accidentally Burned Myself",
+      "hook": "You're about to learn something shocking about how i accidentally burned myself.",
+      "tags": [],
+      "inspired_by": "How I Accidentally Burned Myself",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": "",
+      "seo_keywords": [
+        "i accidentally burned myself",
+        "what happens when you burn hair",
+        "what to do when you burn yourself with boiling water",
+        "what happens if you burn yourself"
+      ],
+      "optimized_title": "The Hidden Secret Of How I Accidentally Burned Myself | What Happens When You Burn Hair"
+    },
+    {
+      "title": "You Won't Believe This About This 3D Printer Uses A Mosquito 😮",
+      "topic": "This 3D Printer Uses A Mosquito 😮",
+      "hook": "You're about to learn something shocking about this 3d printer uses a mosquito 😮.",
+      "tags": [],
+      "inspired_by": "This 3D Printer Uses A Mosquito 😮",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": "",
+      "seo_keywords": [
+        "3d printing mouse shell",
+        "3d printing a mouse"
+      ],
+      "optimized_title": "You Won't Believe This About This 3D Printer Uses A Mosquito 😮 | 3D Printing Mouse Shell"
+    },
+    {
+      "title": "3 Mind-Blowing Facts About Wireless Charging Stopped Working!",
+      "topic": "Wireless Charging Stopped Working!#wutheringwaves #wuwa #wuwacreator",
+      "hook": "You're about to learn something shocking about wireless charging stopped working!.",
+      "tags": [],
+      "inspired_by": "Wireless Charging Stopped Working!#wutheringwaves #wuwa #wuwacreator",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "The Dark Side Of HER REACTION 🥺",
+      "topic": "HER REACTION 🥺",
+      "hook": "You're about to learn something shocking about her reaction 🥺.",
+      "tags": [],
+      "inspired_by": "HER REACTION 🥺",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Why “Don’t go down that slide!” Changed Everything",
+      "topic": "“Don’t go down that slide!”",
+      "hook": "You're about to learn something shocking about “don’t go down that slide!”.",
+      "tags": [],
+      "inspired_by": "“Don’t go down that slide!”",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": "",
+      "seo_keywords": [
+        "don’t go down that slide meme",
+        "don’t go down that slide taser",
+        "don’t go down that slide akira",
+        "don’t go down that slide goku",
+        "don't go down that slide past",
+        "don't go down that slide open"
+      ],
+      "optimized_title": "Why “Don’t go down that slide!” Changed Everything | Don’T Go Down That Slide Meme"
+    },
+    {
+      "title": "This Will Change How You See This is exactly what it looks like when you create",
+      "topic": "This is exactly what it looks like when you create my dream life 😌🥹 #dog #dogshorts #petshub #pets",
+      "hook": "You're about to learn something shocking about this is exactly what it looks like when you create.",
+      "tags": [],
+      "inspired_by": "This is exactly what it looks like when you create my dream life 😌🥹 #dog #dogshorts #petshub #pets",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "The Shocking Truth About Doordash Gets Big Tip $$$",
+      "topic": "Doordash Gets Big Tip $$$",
+      "hook": "You're about to learn something shocking about doordash gets big tip $$$.",
+      "tags": [],
+      "inspired_by": "Doordash Gets Big Tip $$$",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "What Nobody Tells You About The infinite notebook that will never run out of p",
+      "topic": "The infinite notebook that will never run out of pages!",
+      "hook": "You're about to learn something shocking about the infinite notebook that will never run out of p.",
+      "tags": [],
+      "inspired_by": "The infinite notebook that will never run out of pages!",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": "",
+      "seo_keywords": [
+        "the infinite notebook that will never run out of pages now",
+        "the infinite notebook that will never run out of pages of books",
+        "the infinite notebook that will never run out of pages of money",
+        "the infinite notebook that will never run out of pages of words",
+        "the infinite notebook that will never run out of pages of information",
+        "the infinite notebook that will never run out of pages in your passport"
+      ],
+      "optimized_title": "What Nobody Tells You About The infinite notebook that will never run out of p"
+    },
+    {
+      "title": "The Hidden Secret Of A mixup results in a kidnapping |",
+      "topic": "A mixup results in a kidnapping | #TheRookie",
+      "hook": "You're about to learn something shocking about a mixup results in a kidnapping |.",
+      "tags": [],
+      "inspired_by": "A mixup results in a kidnapping | #TheRookie",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": "",
+      "seo_keywords": [
+        "the rookie girl gets kidnapped",
+        "the rookie girl kidnapped",
+        "the rookie gets kidnapped"
+      ],
+      "optimized_title": "The Hidden Secret Of A mixup results in a kidnapping | | The Rookie Girl Gets Kidnapped"
+    },
+    {
+      "title": "You Won't Believe This About No it isn't 💀🫡",
+      "topic": "No it isn't 💀🫡",
+      "hook": "You're about to learn something shocking about no it isn't 💀🫡.",
+      "tags": [],
+      "inspired_by": "No it isn't 💀🫡",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": "",
+      "seo_keywords": [
+        "no it isnt 44",
+        "no it isn't plus 44",
+        "no it isn't",
+        "no it isn't plus 44 guitar cover",
+        "no it isn't plus 44 live",
+        "no it isn't demo",
+        "no it isn't plus 44 lyrics",
+        "no it isn't plus 44 guitar lesson"
+      ],
+      "optimized_title": "You Won't Believe This About No it isn't 💀🫡 | No It Isnt 44"
     }
   ],
   "longform": [
     {
-      "title": "The Unsolved Mystery of the Dyatlov Pass Incident: A 20-Minute Deep Dive",
-      "topic": "20 minute deep analysis of the Dyatlov Pass incident. Cover the background of the expedition, the discovery of the bodies, the bizarre scene at the campsite, the conflicting official reports, and the most compelling theories that attempt to explain the inexplicable deaths of the nine hikers. Include specific details from the autopsy reports and eyewitness accounts.",
-      "hook": "In 1959, nine experienced hikers died under circumstances so bizarre, they defy rational explanation and continue to haunt Russia's Ural Mountains.",
+      "title": "Deep Dive: This Trick Shot Almost Made Him QUIT",
+      "topic": "20 minute deep analysis of This Trick Shot Almost Made Him QUIT. Cover the background, key context, current situation, and implications.",
+      "hook": "What you're about to learn about this trick shot almost made him quit will change how you see the world.",
       "tags": [
-        "dyatlov pass",
-        "unsolved mysteries",
-        "true crime",
-        "history documentary",
-        "russian mysteries"
+        "dudeperfect",
+        "dude perfect basketball",
+        "dp",
+        "dude perfect pickleball",
+        "pickleball"
       ],
-      "inspired_by": "AI-Curated Viral Trends - The Dyatlov Pass Incident",
-      "estimated_views": "high",
+      "inspired_by": "This Trick Shot Almost Made Him QUIT",
+      "estimated_views": "medium",
       "duration_minutes": 20
     },
     {
-      "title": "Armenia's Break with Russia: Geopolitical Repercussions Explained (20 Minute Documentary)",
-      "topic": "20 minute deep analysis of Armenia's shifting geopolitical alignment away from Russia. Examine the historical context of Armenia-Russia relations, the factors driving Armenia's recent pivot (e.g., Nagorno-Karabakh conflict, perceived Russian inaction), potential new alliances, and the wider implications for regional stability and Russia's influence. Include analysis of statements from DW News and other geopolitical sources.",
-      "hook": "A decades-long alliance is fracturing, potentially reshaping the balance of power in a volatile region.",
+      "title": "Deep Dive: How We Build an Alien Pool — Full Process Revealed",
+      "topic": "20 minute deep analysis of How We Build an Alien Pool — Full Process Revealed #poolbuild #luxurypool  #satisfying #poolhacks. Cover the background, key context, current situation, and implications.",
+      "hook": "What you're about to learn about how we build an alien pool — full process revealed will change how you see the world.",
       "tags": [
-        "geopolitics",
-        "armenia",
-        "russia",
-        "world news",
-        "foreign policy documentary"
+        "shorts",
+        "entertainment",
+        "good",
+        "story",
+        "wholesome"
       ],
-      "inspired_by": "TRENDING WORLD NEWS VIDEOS - Armenia is breaking with Russia",
+      "inspired_by": "How We Build an Alien Pool — Full Process Revealed #poolbuild #luxurypool  #satisfying #poolhacks",
       "estimated_views": "medium",
       "duration_minutes": 20
     }
   ],
-  "ambient_recommendations": [
-    {
-      "type": "rain",
-      "hours": 8,
-      "reason": "Rain sounds are consistently popular for relaxation, study, and sleep, providing passive watch time."
-    },
-    {
-      "type": "fireplace",
-      "hours": 8,
-      "reason": "Cozy fireplace ambiance is a proven performer for passive watch time, especially for viewers seeking relaxation or study background noise."
-    },
-    {
-      "type": "forest",
-      "hours": 8,
-      "reason": "Nature sounds like a forest ambience offer a natural, calming background that appeals to a broad audience looking for passive entertainment or relaxation."
-    }
-  ],
-  "generated_at": "2026-06-01T10:40:33.678918",
+  "generated_at": "2026-06-01T11:16:46.113377",
   "trending_count": 82,
-  "channels_analyzed": 6,
-  "winner_variations_count": 3,
-  "status": "in_progress",
-  "last_executed_at": "2026-06-01T10:44:35.703389",
-  "results": {
-    "shorts_produced": 4,
-    "longform_produced": 0,
-    "errors": []
-  }
+  "status": "pending",
+  "fallback_mode": true
 }
