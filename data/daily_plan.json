@@ -31,7 +31,9 @@
       "inspired_by": "BrainBolt Winner: JWST Finds Ancient Galaxies Too Early",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "pZnlVbjTAkg"
+      "winner_source_id": "pZnlVbjTAkg",
+      "status": "produced",
+      "production_id": "Focusing_on_the_revolutionary__1780441347"
     },
     {
       "title": "The Pantheon's Ocular Design: A Weatherproof Marvel",
@@ -361,10 +363,10 @@
   "channels_analyzed": 5,
   "winner_variations_count": 8,
   "status": "in_progress",
-  "last_executed_at": "2026-06-02T19:57:14.337837",
+  "last_executed_at": "2026-06-02T23:03:38.697387",
   "results": {
-    "shorts_produced": 0,
-    "longform_produced": 1,
+    "shorts_produced": 1,
+    "longform_produced": 0,
     "errors": []
   }
 }
