@@ -14,7 +14,9 @@
       "inspired_by": "BrainBolt Winner: Your Kitchen Sponge Is Dirtier Than Your Toilet",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "2lPlWWgiCLE"
+      "winner_source_id": "2lPlWWgiCLE",
+      "status": "produced",
+      "production_id": "Explaining_how_dishcloths_harb_1780420928"
     },
     {
       "title": "The Earliest Light: How Telescopes See Infant Galaxies",
@@ -357,5 +359,11 @@
   "trending_count": 83,
   "channels_analyzed": 5,
   "winner_variations_count": 8,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-06-02T17:23:49.839264",
+  "results": {
+    "shorts_produced": 1,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
