@@ -1,0 +1,201 @@
+{
+  "timestamp": "2026-06-02T00:04:40.360379",
+  "dry_run": false,
+  "api_health": {
+    "gemini": "ok (gemini-2.5-flash)",
+    "openai": "error: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please",
+    "healthy": true
+  },
+  "performance_review": {
+    "status": "no_recent_videos"
+  },
+  "cleanup": {
+    "unlisted": 0,
+    "deleted": 0,
+    "failed": 0,
+    "kept": 44,
+    "thresholds": {
+      "shorts_7d": 25,
+      "shorts_14d": 50,
+      "shorts_30d": 100,
+      "long_14d": 25,
+      "long_30d": 50,
+      "multiplier": 0.5
+    }
+  },
+  "trending": {
+    "found": 83,
+    "viral_shorts_found": 30,
+    "world_news_found": 14,
+    "competitors_analyzed": 1,
+    "comments_mined": 20,
+    "top_5": [
+      {
+        "title": "This Trick Shot Almost Made Him QUIT",
+        "views": 36905694,
+        "category": "Sports"
+      },
+      {
+        "title": "jbl go4 pvc pipe drop jumping",
+        "views": 27495449,
+        "category": "Science & Technology"
+      },
+      {
+        "title": "#fyp @Zack D. Films",
+        "views": 23821211,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "How We Build an Alien Pool — Full Process Revealed #poolbuil",
+        "views": 23364279,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Fisherman CAUGHT Using Weights 🤯",
+        "views": 20213791,
+        "category": "Howto & Style"
+      }
+    ],
+    "top_viral_shorts": [
+      {
+        "title": "Animal Moments That Shouldn't Be Real",
+        "views": 13468414,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "The Sky Looked Normal… Until It Didn’t 😱✈️ #shorts #trending",
+        "views": 7976341,
+        "query": "space facts universe"
+      },
+      {
+        "title": "The Tiger That Was Forced to Hunt Humans 😢🐅#facts #shorts",
+        "views": 3851783,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "माँ लकड़बग्घा की खतरनाक डिलीवरी 😨🐾 #लकड़बग्घा #जंगल #मातृत्व",
+        "views": 1648908,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "Saturn’s Rings Could Be the Graveyard of Lost Worlds 😳🪐 #sho",
+        "views": 1513934,
+        "query": "space facts universe"
+      }
+    ]
+  },
+  "winners": {
+    "added": 9,
+    "total": 9,
+    "threshold": 300,
+    "median": 118,
+    "active": 9,
+    "top": [
+      {
+        "video_id": "2lPlWWgiCLE",
+        "title": "Your Kitchen Sponge Is Dirtier Than Your Toilet #Shorts",
+        "views": 1392,
+        "views_per_day": 69.6,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "pZnlVbjTAkg",
+        "title": "JWST Finds Ancient Galaxies Too Early #Shorts",
+        "views": 870,
+        "views_per_day": 58.0,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "jQ6gW5Oe-n8",
+        "title": "Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome #Shorts",
+        "views": 1255,
+        "views_per_day": 57.0,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "n41UVkdKXxY",
+        "title": "Oldest Galaxy GLASS-z13 Discovered #Shorts",
+        "views": 999,
+        "views_per_day": 43.4,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "T_yBjy6aSGA",
+        "title": "Restaurant Shutdown After Dirty Fridge & Mold #Shorts",
+        "views": 962,
+        "views_per_day": 40.1,
+        "variations_generated": 0
+      }
+    ]
+  },
+  "peak_hours": {
+    "utc": [
+      23,
+      22,
+      18
+    ],
+    "source": "channel_data",
+    "samples": 43
+  },
+  "retention": {
+    "avg_pct": 0,
+    "avg_dur_sec": 0,
+    "source": "unavailable",
+    "video_count": 0
+  },
+  "ambient_analysis": {
+    "total_ambient": 0,
+    "total_views": 0,
+    "top_type": null,
+    "worst_type": null,
+    "type_rankings": []
+  },
+  "plan": {
+    "shorts_planned": 20,
+    "longform_planned": 2,
+    "ambient_recommendations": [
+      {
+        "type": "river",
+        "hours": 8,
+        "reason": "Offers a soothing, natural soundscape that promotes relaxation and focus, appealing to a wide audience for studying, working, or meditation."
+      },
+      {
+        "type": "underwater",
+        "hours": 8,
+        "reason": "Provides a unique, calming visual and auditory experience, evoking a sense of tranquility and escapism popular for deep concentration or sleep aid."
+      },
+      {
+        "type": "garden",
+        "hours": 8,
+        "reason": "Creates a peaceful and uplifting atmosphere with gentle sounds of nature (birds, light breeze), ideal for stress relief and background relaxation."
+      }
+    ],
+    "winner_variations_count": 8,
+    "shorts": [
+      "The Hidden Biofilm on Your Dishcloth",
+      "The Earliest Light: How Telescopes See Infant Gala",
+      "The Pantheon's Ocular Design: A Weatherproof Marve",
+      "Cosmic Time Capsule: Peering Back to the Universe'",
+      "Health Inspections: Why Mold in Food Storage is Cr",
+      "Universe's First Stars: Why They Formed So Fast",
+      "The Missing Evidence of D.B. Cooper's Parachute",
+      "Volcanic Concrete: The Lost Strength of Roman Stru",
+      "Tardigrades: Surviving the Vacuum of Space Unharme",
+      "The Chilling Reason Tigers Become Man-Eaters",
+      "Saturn's Rings: Debris of a Destroyed Moon?",
+      "The Sports Record Thought Impossible to Break",
+      "The Science Behind Unbreakable Materials",
+      "The Pool Built Upside Down: An Engineering Marvel",
+      "The Worlds Most Dangerous DIY Experiment Gone Wron",
+      "This Tiny Robot Swims Through Veins to Deliver Med",
+      "The Hidden Reason Why Trees Talk to Each Other",
+      "What Happens When You Fall Into a Black Hole?",
+      "The Sea Creature That Never Stops Growing",
+      "The City Buried Entirely in Ice"
+    ],
+    "longform": [
+      "Geopolitical Chessboard: The Rising Tensions in Central Asia",
+      "Beyond the Battlefield: The Hidden History of the Spanish-Am"
+    ]
+  }
+}
