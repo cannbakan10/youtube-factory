@@ -319,7 +319,8 @@
       ],
       "inspired_by": "Trending World News: Central Asia Great Game: Russia Afghanistan Deal?Ukraine Sweden Jets Shock Russia |Iran LPG Pakistan",
       "estimated_views": "high",
-      "duration_minutes": 20
+      "duration_minutes": 20,
+      "status": "produced"
     },
     {
       "title": "Beyond the Battlefield: The Hidden History of the Spanish-American War (20 Minutes)",
@@ -360,10 +361,10 @@
   "channels_analyzed": 5,
   "winner_variations_count": 8,
   "status": "in_progress",
-  "last_executed_at": "2026-06-02T17:23:49.839264",
+  "last_executed_at": "2026-06-02T19:57:14.337837",
   "results": {
-    "shorts_produced": 1,
-    "longform_produced": 0,
+    "shorts_produced": 0,
+    "longform_produced": 1,
     "errors": []
   }
 }
