@@ -15,7 +15,9 @@
       "inspired_by": "Your Kitchen Sponge Is Dirtier Than Your Toilet #Shorts (winner variation)",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "2lPlWWgiCLE"
+      "winner_source_id": "2lPlWWgiCLE",
+      "status": "produced",
+      "production_id": "Investigating_how_common_house_1780509602"
     },
     {
       "title": "Pantheon Concrete: Impervious For 2000 Years",
@@ -378,5 +380,11 @@
   "trending_count": 83,
   "channels_analyzed": 4,
   "winner_variations_count": 7,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-06-03T18:01:32.904726",
+  "results": {
+    "shorts_produced": 1,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
