@@ -33,7 +33,9 @@
       "inspired_by": "Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome #Shorts (winner variation)",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "jQ6gW5Oe-n8"
+      "winner_source_id": "jQ6gW5Oe-n8",
+      "status": "produced",
+      "production_id": "Exploring_the_chemical_and_str_1780527966"
     },
     {
       "title": "Webb Sees Galaxies That Shouldn't Exist",
@@ -382,10 +384,10 @@
   "channels_analyzed": 4,
   "winner_variations_count": 7,
   "status": "in_progress",
-  "last_executed_at": "2026-06-03T20:01:01.288600",
+  "last_executed_at": "2026-06-03T23:07:52.331924",
   "results": {
-    "shorts_produced": 0,
-    "longform_produced": 1,
+    "shorts_produced": 1,
+    "longform_produced": 0,
     "errors": []
   }
 }
