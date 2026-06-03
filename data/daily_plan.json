@@ -339,7 +339,8 @@
       ],
       "inspired_by": "Trending World News Videos: Multiple stories on Iran crisis and geopolitical analysis",
       "estimated_views": "high",
-      "duration_minutes": 20
+      "duration_minutes": 20,
+      "status": "produced"
     },
     {
       "title": "Hidden Oceans, Alien Life? The Race to Explore Icy Moons",
@@ -381,10 +382,10 @@
   "channels_analyzed": 4,
   "winner_variations_count": 7,
   "status": "in_progress",
-  "last_executed_at": "2026-06-03T18:01:32.904726",
+  "last_executed_at": "2026-06-03T20:01:01.288600",
   "results": {
-    "shorts_produced": 1,
-    "longform_produced": 0,
+    "shorts_produced": 0,
+    "longform_produced": 1,
     "errors": []
   }
 }
