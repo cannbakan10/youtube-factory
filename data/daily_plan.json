@@ -303,7 +303,8 @@
       ],
       "inspired_by": "Trending World News: Global conflict update on Iran",
       "estimated_views": "high",
-      "duration_minutes": 20
+      "duration_minutes": 20,
+      "status": "produced"
     },
     {
       "title": "The AI Revolution: 20-Minute Analysis of Its Impact on Human Intelligence",
@@ -343,10 +344,10 @@
   "channels_analyzed": 6,
   "winner_variations_count": 5,
   "status": "in_progress",
-  "last_executed_at": "2026-06-04T16:21:39.828415",
+  "last_executed_at": "2026-06-04T18:36:41.415366",
   "results": {
-    "shorts_produced": 1,
-    "longform_produced": 0,
+    "shorts_produced": 0,
+    "longform_produced": 1,
     "errors": []
   }
 }
