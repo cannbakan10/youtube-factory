@@ -1,363 +1,320 @@
 {
-  "date": "2026-06-04",
+  "date": "2026-06-05",
   "shorts": [
     {
-      "title": "Your Water Bottle: Germier Than You Think",
-      "topic": "Investigating how common household items like water bottles can harbor more germs than a toilet, explaining the science behind bacterial growth in moist environments.",
-      "hook": "Your everyday water bottle might be a hidden germ factory, accumulating more bacteria than a toilet seat.",
+      "title": "Pantheon's Hole: Rain Falls Directly Inside, Never Flooding",
+      "topic": "The surprising engineering of the Pantheon's oculus, where rain enters freely but the building never floods due to an ingenious drainage system beneath the floor.",
+      "hook": "Rain openly pours through the Pantheon's giant oculus, yet the building remarkably remains completely dry.",
       "tags": [
-        "hygiene",
-        "science",
-        "bacteria",
-        "healthfacts",
-        "didyouknow"
-      ],
-      "inspired_by": "Your Kitchen Sponge Is Dirtier Than Your Toilet #Shorts (winner variation)",
-      "estimated_views": "high",
-      "is_winner_variation": true,
-      "winner_source_id": "2lPlWWgiCLE",
-      "status": "produced",
-      "production_id": "Investigating_how_common_house_1780509602"
-    },
-    {
-      "title": "Pantheon Concrete: Impervious For 2000 Years",
-      "topic": "Exploring the chemical and structural secrets of the Pantheon's concrete, specifically how its unique composition has allowed it to stand for two millennia without major decay.",
-      "hook": "The concrete used to build the Pantheon over 2000 years ago is still stronger and more durable than many modern materials.",
-      "tags": [
+        "architecture",
         "engineering",
-        "history",
-        "materialscience",
-        "romanempire",
-        "architecturefacts"
+        "ancientwonders",
+        "RomanTech"
       ],
-      "inspired_by": "Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome #Shorts (winner variation)",
+      "inspired_by": "Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "jQ6gW5Oe-n8",
-      "status": "produced",
-      "production_id": "Exploring_the_chemical_and_str_1780527966"
+      "winner_source_id": "jQ6gW5Oe-n8"
     },
     {
-      "title": "Webb Sees Galaxies That Shouldn't Exist",
-      "topic": "Discussing how the James Webb Space Telescope (JWST) has observed massive, fully formed galaxies at an incredibly early stage of the universe, challenging existing cosmological models.",
-      "hook": "The Webb Telescope has discovered galaxies so developed they defy our current understanding of cosmic evolution.",
+      "title": "Light From Farthest Stars Started Traveling Billions Years Ago",
+      "topic": "Explaining that light from the most distant galaxies we observe today began its journey billions of years ago, meaning we see the universe as it was in its infancy, not as it is now.",
+      "hook": "The light reaching our telescopes from the universe's most distant galaxies began its journey over 13 billion years ago.",
       "tags": [
         "space",
-        "astronomy",
-        "cosmology",
-        "webb",
-        "universefacts"
+        "cosmic",
+        "universe",
+        "lightspeed"
       ],
-      "inspired_by": "JWST Finds Ancient Galaxies Too Early #Shorts (winner variation)",
+      "inspired_by": "JWST Finds Ancient Galaxies Too Early",
       "estimated_views": "high",
       "is_winner_variation": true,
       "winner_source_id": "pZnlVbjTAkg"
     },
     {
-      "title": "GLASS-z13: Galaxy From Creation's Dawn",
-      "topic": "Detailing the significance of Galaxy GLASS-z13, one of the earliest and most distant galaxies ever discovered, and what its existence tells us about the universe's infancy.",
-      "hook": "Galaxy GLASS-z13 emerged so soon after the Big Bang, it's pushing the boundaries of when we thought galaxies could form.",
+      "title": "Hidden Mold Threat: It Can Grow Inside Your Ice Maker",
+      "topic": "Explaining how mold can secretly thrive inside household or commercial ice makers, leading to contaminated ice and potential health issues if not regularly cleaned.",
+      "hook": "Your ice maker could be silently growing mold, turning your refreshing drink into a hidden health hazard.",
       "tags": [
-        "galaxy",
-        "spacefacts",
-        "cosmicdiscovery",
-        "astrophysics",
-        "bigbang"
-      ],
-      "inspired_by": "Oldest Galaxy GLASS-z13 Discovered #Shorts (winner variation)",
-      "estimated_views": "high",
-      "is_winner_variation": true,
-      "winner_source_id": "n41UVkdKXxY"
-    },
-    {
-      "title": "Hidden Mold Under Sink Is a Silent Threat",
-      "topic": "Educating on the dangers of unseen mold growth in household areas like under sinks, detailing its health impacts and how quickly it can spread in dark, damp environments.",
-      "hook": "That dark, damp space under your kitchen or bathroom sink could be hiding dangerous mold colonies impacting your health.",
-      "tags": [
-        "health",
-        "homehygiene",
+        "foodsafety",
+        "hygiene",
         "mold",
-        "fungus",
-        "environmentalhealth"
+        "healthfacts"
       ],
-      "inspired_by": "Restaurant Shutdown After Dirty Fridge & Mold #Shorts (winner variation)",
+      "inspired_by": "Restaurant Shutdown After Dirty Fridge & Mold",
       "estimated_views": "medium",
       "is_winner_variation": true,
       "winner_source_id": "T_yBjy6aSGA"
     },
     {
-      "title": "GLASS-z13 Rewrites Early Universe History",
-      "topic": "Explaining how the discovery of Galaxy GLASS-z13 forces cosmologists to rethink the timeline and mechanisms of galaxy formation in the very early universe, potentially rewriting textbooks.",
-      "hook": "The sheer age and maturity of Galaxy GLASS-z13 are forcing scientists to completely re-evaluate the universe's initial developmental stages.",
+      "title": "D.B. Cooper's Jump: He Used Two Parachutes, But Only One Worked",
+      "topic": "The detail that D.B. Cooper took four parachutes but one was a dummy and another was ripped, yet he still successfully jumped from the plane and vanished.",
+      "hook": "D.B. Cooper jumped from a plane with two parachutes, one of them ripped, yet his disappearance remains an aviation enigma.",
       "tags": [
-        "cosmology",
-        "galaxy",
-        "universe",
-        "scientificbreakthrough",
-        "spaceexploration"
-      ],
-      "inspired_by": "Galaxy GLASS-z13: 300 Million Years After Big Bang #Shorts (winner variation)",
-      "estimated_views": "high",
-      "is_winner_variation": true,
-      "winner_source_id": "A92xFY3pWBU"
-    },
-    {
-      "title": "D.B. Cooper's Missing Parachute Mystery",
-      "topic": "Focusing on the specific detail of one of D.B. Cooper's parachutes that was never found, and how its absence complicates the investigation into one of history's greatest unsolved hijackings.",
-      "hook": "Of the four parachutes D.B. Cooper took, one has never been recovered, a detail that deepens the enduring mystery of his escape.",
-      "tags": [
+        "unsolvedmystery",
         "truecrime",
-        "mystery",
-        "dbcooper",
-        "unsolved",
-        "historyfacts"
+        "DBCooper",
+        "aviation"
       ],
-      "inspired_by": "D.B. Cooper's Parachute Whispers Secrets #Shorts (winner variation)",
-      "estimated_views": "medium",
+      "inspired_by": "D.B. Cooper's Parachute Whispers Secrets",
+      "estimated_views": "high",
       "is_winner_variation": true,
       "winner_source_id": "QHpgbH-oAYo"
     },
     {
-      "title": "GPT-4o's Voice AI Understands Your Feelings",
-      "topic": "Exploring the groundbreaking emotional intelligence capabilities of OpenAI's GPT-4o, specifically its ability to interpret and respond to human emotions through voice interaction.",
-      "hook": "OpenAI's GPT-4o can now understand and respond to the nuances of your emotional tone, a game-changer for human-AI communication.",
+      "title": "Roman Concrete Heals Itself From Cracks Over Centuries",
+      "topic": "The incredible longevity of Roman concrete, specifically its ability to self-heal micro-cracks over centuries due to unique components like quicklime, contributing to structures lasting thousands of years.",
+      "hook": "Roman concrete isn't just durable; it actually self-heals its own cracks, a secret to its millennia-long survival.",
       "tags": [
-        "ai",
-        "gpt4o",
-        "artificialintelligence",
-        "techtrends",
-        "futuretech"
+        "materials",
+        "engineering",
+        "historyfacts",
+        "romanconcrete"
       ],
-      "inspired_by": "AI-CURATED VIRAL TRENDS: GPT-4o's Emotional Intelligence",
+      "inspired_by": "Rome's Self-Healing Concrete Secret",
       "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
+      "is_winner_variation": true,
+      "winner_source_id": "40bHnzks7-A"
     },
     {
-      "title": "Europa's Ocean Has More Water Than Earth",
-      "topic": "Highlighting the immense volume of subsurface ocean water on Jupiter's moon Europa, estimated to contain more liquid water than all of Earth's oceans combined, and its implications for life.",
-      "hook": "Jupiter's moon Europa hides a massive ocean beneath its icy crust, holding more water than our entire planet.",
+      "title": "Axolotl Can Regrow Its Brain After Severe Injury",
+      "topic": "The remarkable regenerative capabilities of the axolotl, a salamander species known for regrowing entire limbs, jaws, and even parts of its brain after injury, offering clues for human medicine.",
+      "hook": "Meet the axolotl, a creature that possesses the incredible ability to regrow not just limbs, but even significant portions of its brain.",
       "tags": [
-        "space",
-        "europa",
-        "oceanworlds",
-        "extraterrestriallife",
-        "nasa"
-      ],
-      "inspired_by": "AI-CURATED VIRAL TRENDS: Hidden 'Ocean Worlds'",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Australia Lost a War... Against Emus",
-      "topic": "Recounting the bizarre historical event known as the Great Emu War of 1932, where the Australian military deployed machine guns against a large emu population and ultimately failed.",
-      "hook": "In 1932, Australia declared war on its native emu population and, astonishingly, lost the conflict.",
-      "tags": [
-        "history",
-        "bizarrefacts",
-        "emuwar",
-        "australia",
-        "militaryhistory"
-      ],
-      "inspired_by": "AI-CURATED VIRAL TRENDS: The Great Emu War",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Dyatlov Pass: Bodies Found With No Clothes",
-      "topic": "Delving into one of the most chilling details of the Dyatlov Pass Incident: the discovery of some hikers' bodies partially clothed or without clothes in sub-zero temperatures, suggesting a sudden, terrifying escape.",
-      "hook": "At Dyatlov Pass, some hikers were found kilometers from their tent, unclothed in deadly freezing conditions, deepening the mystery of their deaths.",
-      "tags": [
-        "mystery",
-        "dyatlovpass",
-        "unexplained",
-        "truecrime",
-        "historymystery"
-      ],
-      "inspired_by": "AI-CURATED VIRAL TRENDS: The Dyatlov Pass Incident",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Your Brain Prunes Itself Every Single Night",
-      "topic": "Explaining the scientific process of synaptic pruning, a crucial neurological activity where the brain eliminates unnecessary neural connections, enhancing efficiency for learning and memory.",
-      "hook": "Every night, while you rest, your brain actively prunes away unused connections, reshaping itself for the next day.",
-      "tags": [
-        "neuroscience",
-        "brainfacts",
-        "memory",
+        "animals",
         "biology",
-        "humanbody"
+        "regeneration",
+        "sciencefacts"
       ],
-      "inspired_by": "AI-CURATED VIRAL TRENDS: Your Brain Rewires Itself Every Night",
-      "estimated_views": "medium",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Apple Vision Pro Users Are Hiding From Reality",
-      "topic": "Discussing emerging user behaviors with the Apple Vision Pro, where some users are reportedly isolating themselves or retreating into digital worlds, raising questions about its social impact.",
-      "hook": "Reports suggest some Apple Vision Pro users are increasingly choosing virtual environments over real-world interaction, creating a new societal phenomenon.",
-      "tags": [
-        "applevisionpro",
-        "tech",
-        "vrar",
-        "socialimpact",
-        "futureoftech"
-      ],
-      "inspired_by": "AI-CURATED VIRAL TRENDS: Apple Vision Pro: What Happened After the Hype?",
+      "inspired_by": "AI-Curated Viral Trends: Animals That Can Regrow Entire Organs (Even Brains!)",
       "estimated_views": "high",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "Lost Roman City Found Using Ground Radar",
-      "topic": "Highlighting a recent archaeological breakthrough where ground-penetrating radar was used to discover a previously unknown Roman city, revealing its layout and structures without excavation.",
-      "hook": "A lost Roman city, complete with public baths and markets, has been discovered using ground-penetrating radar, buried just beneath a modern field.",
+      "title": "JBL Speakers Survive Extreme Water & Drop Tests",
+      "topic": "Highlighting the extreme durability and waterproof design of modern portable speakers like JBL, capable of withstanding submersion and impact far beyond typical consumer expectations.",
+      "hook": "Modern portable speakers like JBL are engineered to survive tests that seem impossible, from deep-water submersion to high-impact drops.",
       "tags": [
-        "archaeology",
-        "romanempire",
         "technology",
-        "discovery",
-        "historyfacts"
+        "durability",
+        "engineering",
+        "producttest"
       ],
-      "inspired_by": "AI-CURATED VIRAL TRENDS: Lost Roman City Found Using Ground-Penetrating Radar",
+      "inspired_by": "Trending US: jbl go4 pvc pipe drop jumping",
       "estimated_views": "high",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "The Tunguska Event: History's Biggest Blast",
-      "topic": "Unpacking the 1908 Tunguska Event, a massive and mysterious explosion in Siberia that flattened millions of trees but left no impact crater, still debated as either a meteor or comet airburst.",
-      "hook": "In 1908, a mysterious explosion flattened 80 million trees across 2,000 square kilometers in Siberia, and scientists still aren't entirely sure what caused it.",
+      "title": "Your Brain Treats Your Future Self Like a Stranger",
+      "topic": "The psychological phenomenon where the brain processes decisions for our future selves similarly to how it processes decisions for strangers, leading to procrastination and poor long-term planning.",
+      "hook": "Believe it or not, your brain literally treats your future self almost like a completely different person.",
       "tags": [
-        "mystery",
-        "tunguska",
-        "history",
-        "unexplained",
-        "cosmicimpact"
+        "psychology",
+        "brainfacts",
+        "selfimprovement",
+        "behavior"
       ],
-      "inspired_by": "AI-CURATED VIRAL TRENDS: The Real Story of the Tunguska Event",
+      "inspired_by": "AI-Curated Viral Trends: The Brain's Secret Bias Against Your Future Self",
       "estimated_views": "high",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "Octopuses Can Solve Puzzles & Use Tools",
-      "topic": "Showcasing the extraordinary cognitive abilities of octopuses, including their capacity for problem-solving, camouflage, and surprising demonstrations of tool use in laboratory settings.",
-      "hook": "Octopuses aren't just intelligent; they've been observed solving complex puzzles and even using tools, challenging our definitions of animal cognition.",
-      "tags": [
-        "animals",
-        "marinelife",
-        "intelligence",
-        "cephalopods",
-        "naturefacts"
-      ],
-      "inspired_by": "AI-CURATED VIRAL TRENDS: Octopus Intelligence",
-      "estimated_views": "medium",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Vultures Smell Dead Animals From Miles Away",
-      "topic": "Explaining the incredible olfactory sense of vultures, specifically their ability to detect the mercaptans released by decaying flesh from vast distances, guiding them to carrion.",
-      "hook": "Vultures possess an extraordinary sense of smell, allowing them to pinpoint a dead animal from dozens of miles away.",
-      "tags": [
-        "animals",
-        "wildlife",
-        "vulturefacts",
-        "nature",
-        "biology"
-      ],
-      "inspired_by": "Viral Shorts in Our Niche: \"Kya baat hai Vulture bird can smell dead animals so far\"",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Quantum Physics: How Big Are You, Really?",
-      "topic": "Delving into the concept of Planck Length and how quantum physics suggests that at the most fundamental level, our perception of size is entirely different from the reality of subatomic particles.",
-      "hook": "According to quantum physics, your true size might be far smaller than you could ever imagine, existing at the edge of the measurable universe.",
-      "tags": [
-        "quantumphysics",
-        "science",
-        "universe",
-        "cosmos",
-        "mindblown"
-      ],
-      "inspired_by": "Viral Shorts in Our Niche: \"How big are you really? #QuantumPhysics\"",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Saturn's Rings Made Of Countless Ice Worlds",
-      "topic": "Explaining that Saturn's majestic rings are not solid but comprised of billions of individual icy particles, ranging from tiny dust grains to house-sized chunks, each its own miniature world.",
-      "hook": "Saturn's iconic rings aren't solid structures, but a vast collection of billions of icy fragments, each a tiny world orbiting the planet.",
+      "title": "Voyager 1 Leaves Solar System, Sends Data 22 Hours Away",
+      "topic": "Voyager 1, the farthest human-made object, has officially left our solar system and continues to send back data, with signals taking a staggering 22 hours to reach Earth.",
+      "hook": "Humanity's farthest emissary, Voyager 1, is now so remote its signals take 22 hours to travel back to Earth.",
       "tags": [
         "space",
-        "saturn",
-        "planets",
-        "astronomy",
-        "solarsystem"
+        "exploration",
+        "voyager",
+        "astronomy"
       ],
-      "inspired_by": "Viral Shorts in Our Niche: \"Saturn’s Rings Could Be the Graveyard of Lost Worlds\"",
+      "inspired_by": "Viral Shorts Niche: Fastest Ways to Reach Jupiter",
       "estimated_views": "high",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "The Medieval Mystery of England's Green Children",
-      "topic": "Recounting the bizarre 12th-century English legend of two children with green skin who appeared in Woolpit, spoke an unknown language, and ate only raw beans, sparking centuries of speculation.",
-      "hook": "In 12th-century England, two children with green skin inexplicably appeared in a village, speaking a language no one understood, becoming one of history's strangest mysteries.",
+      "title": "Amelia Earhart Vanished: New Evidence Points To Pacific Island",
+      "topic": "Discussing recent theories and potential new evidence, including underwater sonar data and artifact analysis, that suggest Amelia Earhart's plane may have crash-landed on a specific remote Pacific island.",
+      "hook": "The enduring mystery of Amelia Earhart's disappearance might finally be unraveling, with new clues pointing to a specific Pacific island.",
       "tags": [
-        "historymystery",
-        "england",
-        "folklore",
-        "unexplained",
-        "medieval"
+        "mystery",
+        "history",
+        "ameliaearhart",
+        "aviation"
       ],
-      "inspired_by": "AI-CURATED VIRAL TRENDS: The Green Children of Woolpit",
+      "inspired_by": "AI-Curated Viral Trends: The Vanishing of Amelia Earhart: New Clues Emerge?",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Crows Use Tools and Fire to Hunt Prey Intelligently",
+      "topic": "Explaining how certain crow species exhibit advanced intelligence by using tools and even intentionally spreading fire to flush out prey, a behavior once thought exclusive to humans.",
+      "hook": "Some crows don't just use tools; they actively manipulate fire to hunt, showcasing an astonishing level of intelligence.",
+      "tags": [
+        "animals",
+        "intelligence",
+        "crows",
+        "wildlifefacts"
+      ],
+      "inspired_by": "Viral Shorts Niche: Crows That Hunt by Setting Fires",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Mandela Effect: Shared False Memories Feel Real",
+      "topic": "Exploring the Mandela Effect, a phenomenon where a large group of people share a false memory of past events or details, often with vivid conviction, sparking debate about reality and perception.",
+      "hook": "Have you ever experienced a memory so vivid, yet later found out it never actually happened? Welcome to the Mandela Effect.",
+      "tags": [
+        "psychology",
+        "mystery",
+        "braingames",
+        "mandelaeffect"
+      ],
+      "inspired_by": "AI-Curated Viral Trends: The Mandela Effect",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Your Gut Bacteria Secretly Control Your Mood",
+      "topic": "The profound impact of the gut microbiome on mental health and mood, often referred to as the 'second brain,' explaining how gut bacteria influence neurotransmitter production and emotional states.",
+      "hook": "Your gut isn't just for digestion; the bacteria living inside you might be secretly influencing your mood and mental well-being.",
+      "tags": [
+        "health",
+        "science",
+        "guthealth",
+        "psychology"
+      ],
+      "inspired_by": "AI-Curated Viral Trends: Your Body's 'Second Brain': The Gut Microbiome Secrets",
       "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Exoplanet K2-18 b: A Water World Potentially Hosting Life",
+      "topic": "The exciting discovery of exoplanet K2-18 b, a 'hycean' world with a vast ocean and potential for habitable conditions, sparking hopes for finding extraterrestrial life.",
+      "hook": "Astronomers have discovered exoplanet K2-18 b, a distant 'water world' that could potentially harbor life far beyond our solar system.",
+      "tags": [
+        "space",
+        "exoplanets",
+        "aliens",
+        "sciencefacts"
+      ],
+      "inspired_by": "AI-Curated Viral Trends: The 'Ocean World' Exoplanet That Could Host Life",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Cloud Brightening: Can We Spray Our Way Out of Climate Change?",
+      "topic": "Explaining the controversial geoengineering concept of marine cloud brightening, where sea salt aerosols are sprayed into the atmosphere to make clouds more reflective and cool the Earth.",
+      "hook": "Could we literally spray our way out of global warming? The idea of 'cloud brightening' aims to do just that.",
+      "tags": [
+        "climatechange",
+        "geoengineering",
+        "science",
+        "environment"
+      ],
+      "inspired_by": "AI-Curated Viral Trends: Could We 'Cloud Brighten' Our Way Out of Global Warming?",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Underwater Concrete Pours Are Mind-Bogglingly Complex",
+      "topic": "The incredibly challenging and specialized process of pouring concrete underwater, often used for massive infrastructure projects, requiring precise control to prevent washout and ensure structural integrity.",
+      "hook": "Imagine pouring concrete thousands of feet underwater – it's an engineering feat so complex, it seems almost impossible.",
+      "tags": [
+        "engineering",
+        "construction",
+        "science",
+        "underwater"
+      ],
+      "inspired_by": "Trending US: How We Build an Alien Pool",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Gold Never Rusts: Its Atomic Structure Makes It Immortal",
+      "topic": "The chemical reason why gold never rusts or tarnishes, explaining its inert atomic structure that prevents it from reacting with oxygen or most other elements, making it truly immortal among metals.",
+      "hook": "Did you know that gold is virtually indestructible, completely immune to rust or tarnish, thanks to its unique atomic structure?",
+      "tags": [
+        "chemistry",
+        "gold",
+        "sciencefacts",
+        "materials"
+      ],
+      "inspired_by": "Viral Shorts Niche: Did You Know Fuse Color Determines How Fast It Burns?",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "AI Automating Jobs: Will Your Profession Be Replaced?",
+      "topic": "Discussing the rapid advancement of AI and its increasing capability to automate various tasks across industries, leading to questions about which jobs are most vulnerable and the future of human employment.",
+      "hook": "As AI continues to advance at an unprecedented pace, a critical question emerges: is your job safe from automation?",
+      "tags": [
+        "AI",
+        "futureofwork",
+        "technology",
+        "economy"
+      ],
+      "inspired_by": "AI-Curated Viral Trends: Will AI Take Your Job?",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Titanic's Final Moments: Officer Thought It Would Capsize",
+      "topic": "A specific, harrowing detail from the Titanic's sinking: the little-known fact that one senior officer initially believed the ship would capsize rather than sink by the bow, influencing early decisions.",
+      "hook": "During the Titanic's final moments, a senior officer made a critical misjudgment, believing the ship would capsize, not sink straight down.",
+      "tags": [
+        "history",
+        "titanic",
+        "disaster",
+        "maritime"
+      ],
+      "inspired_by": "AI-Curated Viral Trends: Why Is Everyone Still Talking About the Titanic?",
+      "estimated_views": "high",
       "is_winner_variation": false,
       "winner_source_id": ""
     }
   ],
   "longform": [
     {
-      "title": "The Silent War: Unpacking The Escalating Iran-West Conflict",
-      "topic": "20 minute deep analysis of the current geopolitical tensions and historical context behind the escalating conflict between Iran and Western powers. Cover the background of nuclear ambitions, proxy wars, economic sanctions, and the strategic interests of all involved nations. Detail recent events and potential future scenarios, including the role of major global players like the US, EU, China, and Russia. Explain why this region remains a critical flashpoint for global stability.",
-      "hook": "The Middle East is a powder keg, and the fuse is lit. The escalating tensions between Iran and the West aren't just headlines; they're a silent war with global consequences.",
+      "title": "Iran's Evolving Military Power: A 20-Minute Deep Dive into Regional Threats",
+      "topic": "20 minute deep analysis of Iran's evolving military capabilities and geopolitical strategy. Cover the historical context of its military development, including its ballistic missile program, drone technology, and proxies. Analyze its current posture in the Middle East, recent tensions with Israel and the US, and its role in regional conflicts. Discuss the implications for global stability and the future of international diplomacy. Include specific details on IRGC, key military assets, and recent strategic moves.",
+      "hook": "From advanced drones to a formidable missile arsenal, Iran's military power is rapidly reshaping the geopolitical landscape of the Middle East and beyond.",
       "tags": [
-        "geopolitics",
-        "iran",
-        "globalconflict",
-        "middleeast",
-        "internationalrelations",
-        "documentary"
+        "IranMilitary",
+        "Geopolitics",
+        "MiddleEast",
+        "GlobalSecurity",
+        "MilitaryAnalysis"
       ],
-      "inspired_by": "Trending World News Videos: Multiple stories on Iran crisis and geopolitical analysis",
+      "inspired_by": "Trending World News: Global conflict update on Iran",
       "estimated_views": "high",
-      "duration_minutes": 20,
-      "status": "produced"
+      "duration_minutes": 20
     },
     {
-      "title": "Hidden Oceans, Alien Life? The Race to Explore Icy Moons",
-      "topic": "20 minute deep analysis exploring the astonishing discoveries of subsurface oceans on icy moons like Europa, Enceladus, and Titan. Discuss the scientific missions (e.g., Europa Clipper, Cassini-Huygens) that revealed these 'ocean worlds,' the conditions that make them potentially habitable, and the cutting-edge technology being developed to search for extraterrestrial life within these extreme environments. Delve into the astrobiological implications and the future of space exploration focused on these distant bodies.",
-      "hook": "Beyond Earth, some of the most promising places to find alien life are not on planets, but hidden deep beneath the icy crusts of our solar system's distant moons.",
+      "title": "The AI Revolution: 20-Minute Analysis of Its Impact on Human Intelligence",
+      "topic": "20 minute deep analysis of the rapid advancements in Artificial Intelligence and its profound implications for human intelligence, creativity, and daily life. Explore how AI is already excelling in complex tasks like disease diagnosis and creative fields, sparking debates on whether human creativity is becoming obsolete. Discuss the competition between major AI developers like Google Gemini and OpenAI. Analyze the ethical considerations, the potential for augmented human intelligence, and the long-term societal changes AI is expected to bring. Include specific examples of AI's current capabilities and future projections.",
+      "hook": "As AI excels in medicine, art, and complex problem-solving, are we witnessing the dawn of a new super-intelligence that will redefine human potential?",
       "tags": [
-        "spaceexploration",
-        "aliens",
-        "oceanworlds",
-        "europa",
-        "enceladus",
-        "astrobiology",
-        "documentary"
+        "AI",
+        "ArtificialIntelligence",
+        "FutureTech",
+        "Humanity",
+        "Innovation"
       ],
-      "inspired_by": "AI-CURATED VIRAL TRENDS: Hidden 'Ocean Worlds' Discovered Under Icy Moons",
+      "inspired_by": "AI-Curated Viral Trends: AI Diagnosing Diseases, Google Gemini vs. OpenAI, AI Making Music and Art",
       "estimated_views": "high",
       "duration_minutes": 20
     }
@@ -366,28 +323,22 @@
     {
       "type": "rain",
       "hours": 8,
-      "reason": "Rain sounds are universally calming and a proven high-performer for passive watch time, especially for studying or relaxation."
+      "reason": "High demand for calming and focus-enhancing sounds. Rain loops are consistently popular for study, work, and relaxation."
     },
     {
       "type": "forest",
       "hours": 8,
-      "reason": "Forest ambience with natural sounds offers a serene backdrop for focus and stress relief, appealing to a broad audience seeking tranquility."
+      "reason": "Nature sounds like forest ambience offer a sense of tranquility and connection to nature, popular for background noise and stress relief."
     },
     {
-      "type": "ocean",
+      "type": "thunderstorm",
       "hours": 8,
-      "reason": "Ocean waves are a classic ambient sound, providing rhythmic, consistent noise that aids concentration and can mask distracting background sounds."
+      "reason": "The dramatic yet calming sounds of a thunderstorm with rain provide a powerful and immersive ambient experience, highly requested for deep sleep and focus."
     }
   ],
-  "generated_at": "2026-06-03T00:24:06.915898",
-  "trending_count": 83,
-  "channels_analyzed": 4,
-  "winner_variations_count": 7,
-  "status": "in_progress",
-  "last_executed_at": "2026-06-03T23:07:52.331924",
-  "results": {
-    "shorts_produced": 1,
-    "longform_produced": 0,
-    "errors": []
-  }
+  "generated_at": "2026-06-04T00:26:17.704341",
+  "trending_count": 82,
+  "channels_analyzed": 6,
+  "winner_variations_count": 5,
+  "status": "pending"
 }
