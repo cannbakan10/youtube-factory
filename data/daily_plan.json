@@ -31,7 +31,9 @@
       "inspired_by": "JWST Finds Ancient Galaxies Too Early",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "pZnlVbjTAkg"
+      "winner_source_id": "pZnlVbjTAkg",
+      "status": "produced",
+      "production_id": "Explaining_that_light_from_the_1780611610"
     },
     {
       "title": "Hidden Mold Threat: It Can Grow Inside Your Ice Maker",
@@ -344,10 +346,10 @@
   "channels_analyzed": 6,
   "winner_variations_count": 5,
   "status": "in_progress",
-  "last_executed_at": "2026-06-04T18:36:41.415366",
+  "last_executed_at": "2026-06-04T22:21:36.494434",
   "results": {
-    "shorts_produced": 0,
-    "longform_produced": 1,
+    "shorts_produced": 1,
+    "longform_produced": 0,
     "errors": []
   }
 }
