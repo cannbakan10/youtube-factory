@@ -14,7 +14,9 @@
       "inspired_by": "Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "jQ6gW5Oe-n8"
+      "winner_source_id": "jQ6gW5Oe-n8",
+      "status": "produced",
+      "production_id": "The_surprising_engineering_of__1780590025"
     },
     {
       "title": "Light From Farthest Stars Started Traveling Billions Years Ago",
@@ -340,5 +342,11 @@
   "trending_count": 82,
   "channels_analyzed": 6,
   "winner_variations_count": 5,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-06-04T16:21:39.828415",
+  "results": {
+    "shorts_produced": 1,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
