@@ -31,7 +31,9 @@
       "inspired_by": "Channel Winner: 'Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome'",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "jQ6gW5Oe-n8"
+      "winner_source_id": "jQ6gW5Oe-n8",
+      "status": "produced",
+      "production_id": "Romes_colossal_ancient_dome_st_1780697672"
     },
     {
       "title": "Cosmic Giants: Universe's Too-Fast Galaxy Growth",
@@ -381,10 +383,10 @@
   "channels_analyzed": 2,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-06-05T18:10:09.034489",
+  "last_executed_at": "2026-06-05T22:15:59.973181",
   "results": {
-    "shorts_produced": 0,
-    "longform_produced": 1,
+    "shorts_produced": 1,
+    "longform_produced": 0,
     "errors": []
   }
 }
