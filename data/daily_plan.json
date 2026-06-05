@@ -335,7 +335,8 @@
       ],
       "inspired_by": "AI-Curated Viral Trends: Hottest Year Ever",
       "estimated_views": "high",
-      "duration_minutes": 20
+      "duration_minutes": 20,
+      "status": "produced"
     },
     {
       "title": "The AI Arms Race: Global Power in the Age of Algorithms (20 Minute Documentary)",
@@ -380,10 +381,10 @@
   "channels_analyzed": 2,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-06-05T15:54:19.719662",
+  "last_executed_at": "2026-06-05T18:10:09.034489",
   "results": {
-    "shorts_produced": 1,
-    "longform_produced": 0,
+    "shorts_produced": 0,
+    "longform_produced": 1,
     "errors": []
   }
 }
