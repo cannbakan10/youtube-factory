@@ -1,0 +1,228 @@
+{
+  "timestamp": "2026-06-04T23:59:00.734756",
+  "dry_run": false,
+  "api_health": {
+    "gemini": "ok (gemini-2.5-flash)",
+    "openai": "error: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please",
+    "healthy": true
+  },
+  "performance_review": {
+    "status": "no_recent_videos"
+  },
+  "cleanup": {
+    "unlisted": 0,
+    "deleted": 0,
+    "failed": 0,
+    "kept": 44,
+    "thresholds": {
+      "shorts_7d": 25,
+      "shorts_14d": 50,
+      "shorts_30d": 100,
+      "long_14d": 25,
+      "long_30d": 50,
+      "multiplier": 0.5
+    }
+  },
+  "trending": {
+    "found": 82,
+    "viral_shorts_found": 30,
+    "world_news_found": 20,
+    "competitors_analyzed": 4,
+    "comments_mined": 20,
+    "top_5": [
+      {
+        "title": "jbl go4 pvc pipe drop jumping",
+        "views": 31212950,
+        "category": "Science & Technology"
+      },
+      {
+        "title": "#fyp @Zack D. Films",
+        "views": 25193103,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Still Wearing My Shoes... Just Not My Heels 👠😂 #meme",
+        "views": 22928137,
+        "category": "Entertainment"
+      },
+      {
+        "title": "I Thought She Parked Badly…🥶",
+        "views": 22718017,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Testing Fake parachute From Amazon . Parachute landing. #sky",
+        "views": 18871227,
+        "category": "Howto & Style"
+      }
+    ],
+    "top_viral_shorts": [
+      {
+        "title": "Hiena Ini Akhirnya Kena Batunya Setelah Menyerang Anak Topi",
+        "views": 2243724,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "THIS WOULD HAVE ENDED US 💀☝️",
+        "views": 1964746,
+        "query": "space facts universe"
+      },
+      {
+        "title": "Guess How Many Deep Sea Animals Are UNKNOWN",
+        "views": 1539965,
+        "query": "ocean deep sea facts"
+      },
+      {
+        "title": "49°C की गर्मी, सूखा और आग! सेरेनगेटी का सबसे भयानक रहस्य 😱|#",
+        "views": 1328797,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "How China Stopped Rats Forever! 🐀❌ #shorts #facts",
+        "views": 1312802,
+        "query": "did you know facts"
+      }
+    ]
+  },
+  "winners": {
+    "added": 9,
+    "total": 9,
+    "threshold": 300,
+    "median": 118,
+    "active": 9,
+    "top": [
+      {
+        "video_id": "2lPlWWgiCLE",
+        "title": "Your Kitchen Sponge Is Dirtier Than Your Toilet #Shorts",
+        "views": 1392,
+        "views_per_day": 60.5,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "jQ6gW5Oe-n8",
+        "title": "Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome #Shorts",
+        "views": 1255,
+        "views_per_day": 50.2,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "pZnlVbjTAkg",
+        "title": "JWST Finds Ancient Galaxies Too Early #Shorts",
+        "views": 870,
+        "views_per_day": 48.3,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "n41UVkdKXxY",
+        "title": "Oldest Galaxy GLASS-z13 Discovered #Shorts",
+        "views": 1000,
+        "views_per_day": 38.5,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "T_yBjy6aSGA",
+        "title": "Restaurant Shutdown After Dirty Fridge & Mold #Shorts",
+        "views": 962,
+        "views_per_day": 35.6,
+        "variations_generated": 0
+      }
+    ]
+  },
+  "peak_hours": {
+    "utc": [
+      23,
+      22,
+      18
+    ],
+    "source": "channel_data",
+    "samples": 43
+  },
+  "retention": {
+    "avg_pct": 0,
+    "avg_dur_sec": 0,
+    "source": "unavailable",
+    "video_count": 0
+  },
+  "ambient_analysis": {
+    "total_ambient": 4,
+    "total_views": 194,
+    "top_type": "fireplace",
+    "worst_type": "rain",
+    "type_rankings": [
+      {
+        "type": "fireplace",
+        "video_count": 3,
+        "total_views": 125,
+        "avg_views": 42,
+        "avg_views_per_day": 1.8,
+        "engagement_rate": 43.2,
+        "best_video": {
+          "title": "8 Hours Cozy Cat by the Fireplace — Purring & Crackling Fire",
+          "views": 44,
+          "views_per_day": 1.8
+        }
+      },
+      {
+        "type": "rain",
+        "video_count": 1,
+        "total_views": 69,
+        "avg_views": 69,
+        "avg_views_per_day": 2.6,
+        "engagement_rate": 36.23,
+        "best_video": {
+          "title": "1 Hour 4 Hours Rainy Night Ambience for Deep Sleep",
+          "views": 69,
+          "views_per_day": 2.6
+        }
+      }
+    ]
+  },
+  "plan": {
+    "shorts_planned": 20,
+    "longform_planned": 2,
+    "ambient_recommendations": [
+      {
+        "type": "forest",
+        "hours": 8,
+        "reason": "Forest ambience provides natural sounds and visuals known for stress reduction and focus, appealing to a broad audience for study, relaxation, or background noise."
+      },
+      {
+        "type": "ocean",
+        "hours": 8,
+        "reason": "Ocean waves are universally calming and popular for meditation, relaxation, and as a natural white noise source, suitable for long passive watch times."
+      },
+      {
+        "type": "thunderstorm",
+        "hours": 8,
+        "reason": "Thunderstorm sounds offer dramatic yet soothing natural audio, often sought out for sleep, concentration, or simply enjoying the immersive atmospheric experience."
+      }
+    ],
+    "winner_variations_count": 6,
+    "shorts": [
+      "Your Toothbrush Holder's Secret Germ Hub",
+      "Rome's Uncracked Dome: Concrete's Hidden Layers",
+      "Cosmic Giants: Universe's Too-Fast Galaxy Growth",
+      "Light from the Dawn of Time: GLASS-z13",
+      "Your Cutting Board's Hidden Bacteria Traps",
+      "D.B. Cooper: The Unfound Ransom Cash",
+      "Exoplanet K2-18 b: Water Vapor Found",
+      "AI Now Writes Code Faster Than Most Humans",
+      "CRISPR's First Cure for Sickle Cell",
+      "Methane Gas Explains Bermuda Triangle?",
+      "Quantum Computers Break Encryption Faster",
+      "Glass Octopus: The Near-Invisible Deep Sea Hunter",
+      "The Great Filter: Why Aliens Are Missing",
+      "Neuralink User Controls PC With Brain",
+      "New Brain Cells Found in Adult Humans",
+      "Nuclear Fusion Nears Energy Break-Even",
+      "Is Glass Actually a Liquid? The Science Explained",
+      "Square Parachutes: Why Modern Skydivers Use Them",
+      "Oxytocin: The Molecule of Kindness",
+      "True or False: Goldfish Have 3-Second Memory?"
+    ],
+    "longform": [
+      "Climate's Tipping Point: Decoding Earth's Hottest Years (20 ",
+      "The AI Arms Race: Global Power in the Age of Algorithms (20 "
+    ]
+  }
+}
