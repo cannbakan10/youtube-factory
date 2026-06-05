@@ -1,318 +1,302 @@
 {
-  "date": "2026-06-05",
+  "date": "2026-06-06",
   "shorts": [
     {
-      "title": "Your Toothbrush Holder's Secret Germ Hub",
-      "topic": "Your toothbrush holder harbors staggering amounts of bacteria, often exceeding levels found on a toilet seat, posing a hidden health risk due to its damp environment and proximity to airborne germs.",
-      "hook": "Your toothbrush holder harbors staggering amounts of bacteria, often exceeding levels found on a toilet seat, posing a hidden health risk.",
+      "title": "Your Phone Screen is a Germ Hotspot",
+      "topic": "Mobile phone screens harbor more bacteria than a toilet seat, making them a significant vector for illness in daily life.",
+      "hook": "Your phone screen carries ten times more bacteria than a toilet seat.",
       "tags": [
+        "health",
         "hygiene",
-        "germs",
-        "health facts",
-        "everyday science"
+        "facts",
+        "germs"
       ],
-      "inspired_by": "Channel Winner: 'Your Kitchen Sponge Is Dirtier Than Your Toilet'",
+      "inspired_by": "Channel Winner: Your Kitchen Sponge Is Dirtier Than Your Toilet",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "2lPlWWgiCLE",
-      "status": "produced",
-      "production_id": "Your_toothbrush_holder_harbors_1780674780"
+      "winner_source_id": "2lPlWWgiCLE"
     },
     {
-      "title": "Rome's Uncracked Dome: Concrete's Hidden Layers",
-      "topic": "Rome's colossal ancient dome, still perfectly intact, employed a genius architectural secret: the density of its concrete mix was progressively lightened with different aggregates towards the top, preventing structural failure.",
-      "hook": "Rome's colossal ancient dome still stands because its builders lightened the concrete progressively towards the top.",
+      "title": "Pantheon's Dome Stands 2000 Years",
+      "topic": "The massive concrete dome of the Pantheon, built almost two millennia ago, remains structurally sound without reinforcement, a testament to Roman engineering.",
+      "hook": "The Pantheon's giant concrete dome stands after 2,000 years, defying modern structural limits.",
       "tags": [
         "engineering",
-        "ancient history",
         "architecture",
-        "materials science"
+        "history",
+        "roman"
       ],
-      "inspired_by": "Channel Winner: 'Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome'",
+      "inspired_by": "Channel Winner: Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "jQ6gW5Oe-n8",
-      "status": "produced",
-      "production_id": "Romes_colossal_ancient_dome_st_1780697672"
+      "winner_source_id": "jQ6gW5Oe-n8"
     },
     {
-      "title": "Cosmic Giants: Universe's Too-Fast Galaxy Growth",
-      "topic": "Astronomers discovered massive, fully formed galaxies existing far too early in the universe's history, just hundreds of millions of years after the Big Bang, challenging existing cosmological models of galaxy formation.",
-      "hook": "Astronomers found fully formed galaxies existing far too early, challenging our understanding of how the universe began.",
+      "title": "Early Universe Held Massive Galaxies",
+      "topic": "Observations from space telescopes reveal fully formed, massive galaxies existed surprisingly early in the universe's history, challenging previous models of cosmic evolution.",
+      "hook": "Gigantic galaxies appeared much earlier in the universe than scientists ever predicted.",
       "tags": [
-        "cosmos",
-        "galaxy formation",
-        "cosmology",
-        "space science"
+        "space",
+        "universe",
+        "galaxies",
+        "cosmology"
       ],
-      "inspired_by": "Channel Winner: 'JWST Finds Ancient Galaxies Too Early'",
+      "inspired_by": "Channel Winner: JWST Finds Ancient Galaxies Too Early",
       "estimated_views": "high",
       "is_winner_variation": true,
       "winner_source_id": "pZnlVbjTAkg"
     },
     {
-      "title": "Light from the Dawn of Time: GLASS-z13",
-      "topic": "The light from galaxy GLASS-z13 traveled an incredible 13.4 billion years to reach us, offering a direct glimpse into the universe when it was only 300 million years old, just after its infancy.",
-      "hook": "The light from galaxy GLASS-z13 traveled 13.4 billion years to reach us, showing the universe in its infancy.",
+      "title": "Light from Universe's First Stars",
+      "topic": "Light from the universe's earliest stars and galaxies has traveled billions of years to reach us, offering a glimpse into the cosmos' infancy.",
+      "hook": "We're observing galaxies whose light left them over 13 billion years ago.",
       "tags": [
-        "astronomy",
-        "deep space",
-        "universe origins",
-        "cosmic light"
+        "space",
+        "lightspeed",
+        "universe",
+        "telescope"
       ],
-      "inspired_by": "Channel Winner: 'Oldest Galaxy GLASS-z13 Discovered'",
+      "inspired_by": "Channel Winner: Oldest Galaxy GLASS-z13 Discovered",
       "estimated_views": "high",
       "is_winner_variation": true,
       "winner_source_id": "n41UVkdKXxY"
     },
     {
-      "title": "Your Cutting Board's Hidden Bacteria Traps",
-      "topic": "Even after washing, your cutting board's knife grooves can harbor dangerous bacteria like Salmonella and E. coli deep within, leading to cross-contamination and foodborne illnesses if not properly sanitized.",
-      "hook": "Even after washing, your cutting board's knife grooves can harbor dangerous bacteria, leading to cross-contamination.",
+      "title": "Hidden Fungus Lurks in Your Coffee",
+      "topic": "The ice machine in many homes and public places is often a breeding ground for mold and bacteria, posing a hidden health risk.",
+      "hook": "Your favorite coffee shop's ice machine might contain more mold than you think.",
       "tags": [
-        "food safety",
-        "bacteria",
-        "health risks",
-        "home hygiene"
+        "hygiene",
+        "foodsafety",
+        "health",
+        "bacteria"
       ],
-      "inspired_by": "Channel Winner: 'Restaurant Shutdown After Dirty Fridge & Mold'",
-      "estimated_views": "high",
+      "inspired_by": "Channel Winner: Restaurant Shutdown After Dirty Fridge & Mold",
+      "estimated_views": "medium",
       "is_winner_variation": true,
       "winner_source_id": "T_yBjy6aSGA"
     },
     {
-      "title": "D.B. Cooper: The Unfound Ransom Cash",
-      "topic": "Despite extensive searches and decades of investigation, the vast majority of D.B. Cooper's $200,000 ransom money has never been recovered, fueling endless speculation about whether he survived his daring parachute escape.",
-      "hook": "Despite the massive manhunt, most of D.B. Cooper's ransom money has never been found, fueling speculation about his fate.",
+      "title": "D.B. Cooper's Missing Money Mystery",
+      "topic": "After D.B. Cooper jumped from a plane with $200,000, only a small portion of the money was ever found years later, deepening the enigma of his fate.",
+      "hook": "D.B. Cooper vanished with $200,000, but only $5,800 was ever recovered.",
       "tags": [
-        "true crime",
-        "unsolved mysteries",
-        "cold case",
+        "truecrime",
+        "mystery",
+        "unsolved",
         "history"
       ],
-      "inspired_by": "Channel Winner: 'D.B. Cooper's Parachute Whispers Secrets'",
+      "inspired_by": "Channel Winner: D.B. Cooper's Parachute Whispers Secrets",
       "estimated_views": "high",
       "is_winner_variation": true,
       "winner_source_id": "QHpgbH-oAYo"
     },
     {
-      "title": "Exoplanet K2-18 b: Water Vapor Found",
-      "topic": "The James Webb Space Telescope detected water vapor and other molecules in the atmosphere of exoplanet K2-18 b, a potential hycean world, hinting at distant life and fundamentally changing our search for habitable worlds.",
-      "hook": "Scientists recently found water vapor in the atmosphere of exoplanet K2-18 b, significantly boosting the search for life beyond Earth.",
-      "tags": [
-        "exoplanets",
-        "space",
-        "astronomy",
-        "alien life",
-        "science"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: Exoplanet Atmospheres",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "AI Now Writes Code Faster Than Most Humans",
-      "topic": "Generative AI models like GitHub Copilot are now writing software code with greater speed and efficiency than many human developers, fundamentally reshaping the tech industry and raising questions about future workforce needs.",
-      "hook": "Generative AI can now write functional code significantly faster than most human programmers, revolutionizing the software development landscape.",
+      "title": "AI Created A Feature Film Script",
+      "topic": "Generative AI can now write entire screenplays, raising questions about the future of human creativity in film and literature.",
+      "hook": "An AI recently generated a complete feature film script that fooled industry experts.",
       "tags": [
         "AI",
-        "technology",
-        "programming",
-        "future of work",
-        "innovation"
+        "generativeAI",
+        "futuretech",
+        "creativity"
       ],
-      "inspired_by": "AI-Curated Viral Trends: AI & The Workforce",
+      "inspired_by": "AI-Curated Viral Trend: The Rise of Generative AI",
       "estimated_views": "high",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "CRISPR's First Cure for Sickle Cell",
-      "topic": "CRISPR gene editing technology achieved its first regulatory approval for treating sickle cell disease, offering a potentially curative therapy for the genetic blood disorder and marking a monumental step in genetic medicine.",
-      "hook": "CRISPR gene editing just received approval for its first human cure, offering a revolutionary treatment for sickle cell disease.",
+      "title": "Hubble Saw Universe's Youngest Planet",
+      "topic": "The Hubble Space Telescope captured direct images of a planet still forming in its protoplanetary disk, offering insights into planet birth.",
+      "hook": "The Hubble Space Telescope directly observed a planet still actively being born.",
+      "tags": [
+        "space",
+        "planets",
+        "astronomy",
+        "hubble"
+      ],
+      "inspired_by": "AI-Curated Viral Trend: James Webb Telescope's Latest Discoveries (general space observation)",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "The Invisible Entity of Skinwalker Ranch",
+      "topic": "Reports from Skinwalker Ranch describe invisible entities that leave physical marks and influence electromagnetic fields, perplexing researchers.",
+      "hook": "Researchers at Skinwalker Ranch documented invisible entities leaving physical burns on witnesses.",
+      "tags": [
+        "paranormal",
+        "mystery",
+        "ufo",
+        "unexplained"
+      ],
+      "inspired_by": "AI-Curated Viral Trend: The 'Skinwalker Ranch' Phenomenon",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "CRISPR Edited Human Embryos",
+      "topic": "Scientists have successfully used CRISPR gene-editing technology to correct disease-causing mutations in human embryos, sparking ethical debates.",
+      "hook": "CRISPR technology has been used to edit genes in human embryos, preventing inherited diseases.",
       "tags": [
         "CRISPR",
-        "gene editing",
-        "medicine",
-        "biotechnology",
-        "science breakthroughs"
+        "genetics",
+        "science",
+        "bioethics"
       ],
-      "inspired_by": "AI-Curated Viral Trends: CRISPR Cures",
+      "inspired_by": "AI-Curated Viral Trend: Breakthroughs in CRISPR Gene Editing",
       "estimated_views": "high",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "Methane Gas Explains Bermuda Triangle?",
-      "topic": "One leading scientific theory suggests massive undersea methane hydrate eruptions could explain disappearances in the Bermuda Triangle by reducing water density and sinking ships instantly, leaving no trace.",
-      "hook": "Scientists theorize explosive underwater methane gas eruptions could be responsible for the mysterious disappearances in the Bermuda Triangle.",
+      "title": "Why Australia Fought and Lost to Birds",
+      "topic": "In 1932, the Australian military was deployed against thousands of emus destroying crops, a conflict famously dubbed the 'Great Emu War' which the emus surprisingly won against armed soldiers.",
+      "hook": "Australia once waged a bizarre military campaign against emus and famously lost.",
       "tags": [
-        "bermuda triangle",
-        "unexplained",
-        "oceanography",
-        "geology",
-        "science theories"
+        "history",
+        "bizarre",
+        "military",
+        "animals"
       ],
-      "inspired_by": "AI-Curated Viral Trends: Bermuda Triangle",
+      "inspired_by": "AI-Curated Viral Trend: The Great Emu War",
       "estimated_views": "high",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "Quantum Computers Break Encryption Faster",
-      "topic": "Quantum computers have the potential to break current encryption standards far faster than classical computers, posing a significant challenge to cybersecurity and data privacy in the near future.",
-      "hook": "Quantum computers could soon break modern encryption in minutes, a task that would take classical supercomputers billions of years.",
+      "title": "Deepfakes Can Mimic Any Voice",
+      "topic": "Advanced deepfake technology can now clone a person's voice from just a few seconds of audio, creating convincing synthetic speech for any purpose.",
+      "hook": "It's now possible for AI to perfectly replicate your voice from just a five-second audio clip.",
       "tags": [
-        "quantum computing",
+        "deepfake",
+        "AI",
         "technology",
-        "cybersecurity",
-        "future tech",
-        "encryption"
+        "privacy"
       ],
-      "inspired_by": "AI-Curated Viral Trends: Quantum Computing",
+      "inspired_by": "AI-Curated Viral Trend: Deepfake Technology",
       "estimated_views": "high",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "Glass Octopus: The Near-Invisible Deep Sea Hunter",
-      "topic": "The glass octopus, a nearly transparent creature, lives in the deep ocean, using its invisibility to avoid predators and hunt in the sunless abyss, revealing incredible adaptations to extreme environments.",
-      "hook": "The incredibly rare glass octopus is almost completely transparent, making it nearly invisible in the deep ocean where light barely penetrates.",
-      "tags": [
-        "deep sea",
-        "ocean life",
-        "marine biology",
-        "animal facts",
-        "nature"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: Lost Worlds Discovered",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "The Great Filter: Why Aliens Are Missing",
-      "topic": "The Great Filter theory suggests advanced civilizations face existential barriers that prevent them from emerging or expanding beyond their home planet, explaining why we haven't found extraterrestrial life in the vast cosmos.",
-      "hook": "The 'Great Filter' theory proposes an evolutionary hurdle so immense that it wipes out advanced life before it can spread, explaining our cosmic silence.",
-      "tags": [
-        "fermi paradox",
-        "space",
-        "alien life",
-        "cosmology",
-        "philosophy"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: Fermi Paradox",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Neuralink User Controls PC With Brain",
-      "topic": "Neuralink recently demonstrated its first human subject controlling a computer cursor with their thoughts, highlighting the revolutionary potential and significant ethical complexities of brain-computer interfaces for disabled individuals.",
-      "hook": "Neuralink's first human patient can now control a computer mouse with just his thoughts, a revolutionary step in brain-computer interface technology.",
-      "tags": [
-        "neuralink",
-        "brain tech",
-        "Elon Musk",
-        "biotechnology",
-        "AI ethics"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: Neuralink",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "New Brain Cells Found in Adult Humans",
-      "topic": "Scientists once believed adult humans couldn't grow new brain cells, but recent research confirms neurogenesis, the creation of new neurons, continues in specific regions of the adult human brain, impacting learning and memory.",
-      "hook": "Contrary to old beliefs, adult human brains actually grow new neurons in specific regions, a process called neurogenesis.",
-      "tags": [
-        "neuroscience",
-        "brain facts",
-        "human body",
-        "biology",
-        "science discoveries"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: Unlocking the Brain",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Nuclear Fusion Nears Energy Break-Even",
-      "topic": "Recent experiments in nuclear fusion have achieved significant energy gains, nearing the critical 'break-even' point where more energy is produced than consumed, heralding a future of virtually limitless clean power.",
-      "hook": "Nuclear fusion experiments are getting closer to producing more energy than they consume, promising a future of limitless clean power.",
-      "tags": [
-        "fusion energy",
-        "clean energy",
-        "science news",
-        "future technology",
-        "physics"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: Unlimited Clean Energy",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Is Glass Actually a Liquid? The Science Explained",
-      "topic": "The popular misconception that glass is a very slow-moving liquid is false; glass is actually an amorphous solid, a state between a true solid and a liquid, giving it its unique properties without flowing.",
-      "hook": "Despite what you've heard, ancient windows don't prove glass is slowly flowing; it's actually an amorphous solid.",
-      "tags": [
-        "materials science",
-        "physics facts",
-        "science myths",
-        "everyday objects"
-      ],
-      "inspired_by": "Top trending #1: material properties",
-      "estimated_views": "medium",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Square Parachutes: Why Modern Skydivers Use Them",
-      "topic": "Modern parachutes are square or rectangular, not round, because their ram-air design allows for controlled steering, precise landings, and greater safety, fundamentally changing the sport of skydiving.",
-      "hook": "Modern skydivers prefer square-shaped parachutes over traditional round ones for their superior control and steering capabilities.",
-      "tags": [
-        "skydiving",
-        "aerodynamics",
-        "engineering",
-        "sports science"
-      ],
-      "inspired_by": "Trending #5: Parachute landing",
-      "estimated_views": "medium",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Oxytocin: The Molecule of Kindness",
-      "topic": "Oxytocin, often called the 'love hormone,' plays a crucial role in human bonding, empathy, and prosocial behaviors, chemically encouraging acts of kindness and trust among individuals.",
-      "hook": "Oxytocin, often called the 'love hormone,' is a powerful chemical that directly influences our capacity for empathy and acts of kindness.",
+      "title": "Berenstain Bears vs. Berenstein",
+      "topic": "The 'Berenstain Bears' phenomenon is a classic example of the Mandela Effect, where many people distinctly remember the name as 'Berenstein,' despite evidence.",
+      "hook": "Millions remember the 'Berenstain Bears' as 'Berenstein Bears,' a glitch in collective memory.",
       "tags": [
         "psychology",
-        "biology",
-        "human behavior",
-        "neuroscience",
-        "social science"
+        "mandelaeffect",
+        "memory",
+        "facts"
       ],
-      "inspired_by": "Trending #6 & #10: Kindness narratives",
+      "inspired_by": "AI-Curated Viral Trend: The Mandela Effect",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Pompeii's Last Meal Revealed",
+      "topic": "Recent excavations in Pompeii have uncovered intact remains of fast food stalls, revealing the diet of common citizens before the eruption.",
+      "hook": "Archaeologists in Pompeii found perfectly preserved 'fast food' counters with uneaten meals.",
+      "tags": [
+        "archaeology",
+        "history",
+        "pompeii",
+        "foodhistory"
+      ],
+      "inspired_by": "AI-Curated Viral Trend: New Discoveries in Pompeii",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "The Bystander Effect's Dark Side",
+      "topic": "The bystander effect describes how individuals are less likely to offer help to a victim when other people are present, due to diffusion of responsibility.",
+      "hook": "The more people present, the less likely someone is to help in an emergency.",
+      "tags": [
+        "psychology",
+        "socialexperiment",
+        "humanbehavior",
+        "facts"
+      ],
+      "inspired_by": "Trending YouTube: 'I Thought She Parked Badly…'",
       "estimated_views": "medium",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "True or False: Goldfish Have 3-Second Memory?",
-      "topic": "The popular belief that goldfish have a three-second memory is a widespread myth; scientific studies show they can remember things for months and even be trained to perform complex tricks and respond to cues.",
-      "hook": "The widespread belief that goldfish possess only a three-second memory is completely false; they can actually remember things for months.",
+      "title": "The Hummingbird's Camo Nest",
+      "topic": "Hummingbirds construct tiny, intricate nests covered in lichen and spider silk, making them almost perfectly camouflaged against tree bark.",
+      "hook": "Hummingbird nests are architectural masterpieces, camouflaged with lichen and bound with spider silk.",
       "tags": [
-        "animal facts",
-        "biology",
-        "science myths",
-        "brain facts",
-        "debunked"
+        "animals",
+        "nature",
+        "birds",
+        "wildlife"
       ],
-      "inspired_by": "Trending #9: General knowledge/debunking myths",
+      "inspired_by": "Viral Shorts Niche: 'Birds With The Most Amazing Nests'",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Earth's Skies Show Strange Lights",
+      "topic": "Transient Luminous Events (TLEs) like 'sprites' and 'elves' are bizarre, fleeting flashes of light occurring high above thunderstorms, rarely seen from the ground.",
+      "hook": "Mysterious, fleeting flashes of light, known as 'sprites,' dance above thunderstorms.",
+      "tags": [
+        "weather",
+        "atmosphere",
+        "sky",
+        "science"
+      ],
+      "inspired_by": "Viral Shorts Niche: 'A Rare Sky Phenomenon Captured in Tibet'",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Jupiter's Moon Has Deep Ocean",
+      "topic": "Europa, one of Jupiter's moons, is believed to harbor a vast, subsurface saltwater ocean twice the volume of Earth's oceans, making it a prime candidate for extraterrestrial life.",
+      "hook": "Jupiter's moon Europa hides a massive saltwater ocean beneath its icy crust.",
+      "tags": [
+        "space",
+        "europa",
+        "NASA",
+        "extraterrestrial"
+      ],
+      "inspired_by": "AI-Curated Viral Trend: Is There Life on Europa?",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Microplastics in Human Blood",
+      "topic": "Recent research has confirmed the presence of microplastic particles in human bloodstreams, raising concerns about their potential long-term health impacts.",
+      "hook": "Scientists have now detected microplastic particles circulating in human blood.",
+      "tags": [
+        "environment",
+        "health",
+        "science",
+        "pollution"
+      ],
+      "inspired_by": "AI-Curated Viral Trend: The Unseen World of Microplastics",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "The Power of Reciprocity",
+      "topic": "The psychological principle of reciprocity explains how people tend to return favors and respond in kind to positive actions, driving social cooperation.",
+      "hook": "Giving a small gift significantly increases the chances of receiving a favor in return.",
+      "tags": [
+        "psychology",
+        "humanbehavior",
+        "socialscience",
+        "facts"
+      ],
+      "inspired_by": "Trending YouTube: 'This Man Spread Kindness One Rose at a Time'",
       "estimated_views": "medium",
       "is_winner_variation": false,
       "winner_source_id": ""
@@ -320,73 +304,60 @@
   ],
   "longform": [
     {
-      "title": "Climate's Tipping Point: Decoding Earth's Hottest Years (20 Minute Documentary)",
-      "topic": "20 minute deep analysis of Earth's escalating climate crisis, focusing on the scientific evidence behind record-breaking global temperatures. Cover the historical context of climate change, the role of greenhouse gases, specific impacts like extreme weather events and sea level rise, and the potential future scenarios if current trends continue. Include data from NOAA, NASA, and IPCC reports, explaining the mechanisms of global warming and its long-term implications for ecosystems and human civilization.",
-      "hook": "Our planet just experienced its hottest year on record, a critical warning sign that demands a deep dive into the science behind Earth's accelerating climate crisis.",
-      "tags": [
-        "climate change",
-        "global warming",
-        "environment",
-        "science",
-        "documentary",
-        "climate crisis",
-        "earth science",
-        "environmental science",
-        "carbon emissions",
-        "future predictions"
-      ],
-      "inspired_by": "AI-Curated Viral Trends: Hottest Year Ever",
-      "estimated_views": "high",
-      "duration_minutes": 20,
-      "status": "produced"
-    },
-    {
-      "title": "The AI Arms Race: Global Power in the Age of Algorithms (20 Minute Documentary)",
-      "topic": "20 minute deep analysis of the global competition for AI dominance, exploring how nations like the US, China, and emerging powers are investing heavily in artificial intelligence for economic, military, and geopolitical advantage. Cover the ethical implications, national security risks, and the potential for a new cold war driven by technological supremacy. Discuss key players, strategic initiatives, and the long-term societal impact of AI's rapid advancement on the world stage.",
-      "hook": "Beyond Silicon Valley, a silent global war is raging: the AI arms race, where nations are battling for technological supremacy that could reshape the 21st century.",
+      "title": "The AI Infrastructure Crisis: Why Data Centers Are Collapsing",
+      "topic": "20 minute deep analysis of the quiet collapse and increasing challenges faced by AI data center projects globally. This will cover the intense demand for computing power, the hidden environmental costs, energy consumption crises, supply chain issues for specialized hardware (like GPUs), and the economic viability concerns leading to project slowdowns or cancellations. Explore the geopolitical implications for AI dominance and the future of technological advancement.",
+      "hook": "The hidden truth about AI's explosive growth: the infrastructure powering it is quietly collapsing.",
       "tags": [
         "AI",
-        "artificial intelligence",
-        "geopolitics",
         "technology",
-        "future of AI",
-        "China AI",
-        "US AI",
-        "tech war",
-        "global power",
-        "documentary"
+        "economics",
+        "datacenter",
+        "futuretech",
+        "environment",
+        "globalcrisis"
       ],
-      "inspired_by": "Trending World News (geopolitics) & AI-Curated Viral Trends (AI Workforce)",
+      "inspired_by": "Trending World News: 'The Quiet Collapse of AI Data Center Projects'",
+      "estimated_views": "high",
+      "duration_minutes": 20
+    },
+    {
+      "title": "Europe's Digital Iron Curtain: The EU's Tech Sovereignty Push",
+      "topic": "20 minute deep analysis of the European Union's aggressive push for 'tech sovereignty' – its ambition to reduce reliance on US and Chinese tech giants. This will involve examining the motivations (data privacy, security, economic independence), key legislative acts (GDPR, Digital Markets Act, Digital Services Act, AI Act), the challenges faced (innovation gap, market fragmentation), and the global implications for the future of the internet and international tech relations.",
+      "hook": "Europe is building a digital iron curtain, attempting to reclaim control from global tech giants.",
+      "tags": [
+        "EU",
+        "technology",
+        "geopolitics",
+        "privacy",
+        "regulation",
+        "digitalrights",
+        "economics"
+      ],
+      "inspired_by": "Trending World News: 'The EU’s Tech Sovereignty Package Explained'",
       "estimated_views": "high",
       "duration_minutes": 20
     }
   ],
   "ambient_recommendations": [
     {
+      "type": "thunderstorm",
+      "hours": 8,
+      "reason": "High demand for natural soundscapes for background noise, relaxation, and focus. Thunderstorms provide unique dramatic sounds combined with rain."
+    },
+    {
       "type": "forest",
       "hours": 8,
-      "reason": "Forest ambience provides natural sounds and visuals known for stress reduction and focus, appealing to a broad audience for study, relaxation, or background noise."
+      "reason": "Evergreen appeal for nature enthusiasts and those seeking calm, natural soundscapes for meditation or studying. Birds and gentle wind offer soothing ambience."
     },
     {
       "type": "ocean",
       "hours": 8,
-      "reason": "Ocean waves are universally calming and popular for meditation, relaxation, and as a natural white noise source, suitable for long passive watch times."
-    },
-    {
-      "type": "thunderstorm",
-      "hours": 8,
-      "reason": "Thunderstorm sounds offer dramatic yet soothing natural audio, often sought out for sleep, concentration, or simply enjoying the immersive atmospheric experience."
+      "reason": "Consistent popularity for white noise, relaxation, and mindfulness. The rhythmic sound of waves has a broad calming effect on viewers."
     }
   ],
-  "generated_at": "2026-06-05T00:00:18.811271",
-  "trending_count": 82,
+  "generated_at": "2026-06-05T23:59:19.209383",
+  "trending_count": 84,
   "channels_analyzed": 2,
   "winner_variations_count": 6,
-  "status": "in_progress",
-  "last_executed_at": "2026-06-05T22:15:59.973181",
-  "results": {
-    "shorts_produced": 1,
-    "longform_produced": 0,
-    "errors": []
-  }
+  "status": "pending"
 }
