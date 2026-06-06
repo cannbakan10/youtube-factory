@@ -31,7 +31,9 @@
       "inspired_by": "Channel Winner: Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "jQ6gW5Oe-n8"
+      "winner_source_id": "jQ6gW5Oe-n8",
+      "status": "produced",
+      "production_id": "The_massive_concrete_dome_of_t_1780783339"
     },
     {
       "title": "Early Universe Held Massive Galaxies",
@@ -362,7 +364,7 @@
   "channels_analyzed": 2,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-06-06T14:31:11.006183",
+  "last_executed_at": "2026-06-06T22:04:35.610541",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
