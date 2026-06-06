@@ -14,7 +14,9 @@
       "inspired_by": "Channel Winner: Your Kitchen Sponge Is Dirtier Than Your Toilet",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "2lPlWWgiCLE"
+      "winner_source_id": "2lPlWWgiCLE",
+      "status": "produced",
+      "production_id": "Mobile_phone_screens_harbor_mo_1780756146"
     },
     {
       "title": "Pantheon's Dome Stands 2000 Years",
@@ -359,5 +361,11 @@
   "trending_count": 84,
   "channels_analyzed": 2,
   "winner_variations_count": 6,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-06-06T14:31:11.006183",
+  "results": {
+    "shorts_produced": 1,
+    "longform_produced": 0,
+    "errors": []
+  }
 }
