@@ -1,0 +1,243 @@
+{
+  "timestamp": "2026-06-06T23:55:03.596324",
+  "dry_run": false,
+  "api_health": {
+    "gemini": "ok (gemini-2.5-flash)",
+    "openai": "error: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please",
+    "healthy": true
+  },
+  "performance_review": {
+    "total_recent": 2,
+    "winners_count": 2,
+    "losers_count": 0,
+    "avg_views_48h": 432.0,
+    "best_topics": [
+      "2000-Year-Old Dome Stands Strong Without Steel #Shorts",
+      "Phone Screens Dirtier Than Toilets #Shorts"
+    ],
+    "best_views": [
+      543,
+      321
+    ],
+    "winner_titles": [
+      "2000-Year-Old Dome Stands Strong Without Steel #Shorts",
+      "Phone Screens Dirtier Than Toilets #Shorts"
+    ],
+    "loser_titles": []
+  },
+  "cleanup": {
+    "unlisted": 5,
+    "deleted": 0,
+    "failed": 0,
+    "kept": 41,
+    "thresholds": {
+      "shorts_7d": 25,
+      "shorts_14d": 50,
+      "shorts_30d": 100,
+      "long_14d": 25,
+      "long_30d": 50,
+      "multiplier": 0.5
+    }
+  },
+  "trending": {
+    "found": 83,
+    "viral_shorts_found": 30,
+    "world_news_found": 20,
+    "competitors_analyzed": 4,
+    "comments_mined": 20,
+    "top_5": [
+      {
+        "title": "This Man Spread Kindness One Rose at a Time 🌹",
+        "views": 31910569,
+        "category": "Entertainment"
+      },
+      {
+        "title": "Still Wearing My Shoes... Just Not My Heels 👠😂 #meme",
+        "views": 27539940,
+        "category": "Entertainment"
+      },
+      {
+        "title": "Stump game 3v3 😂😭",
+        "views": 22963738,
+        "category": "Sports"
+      },
+      {
+        "title": "The baby said, “Make it memorable.”🩷💙#genderreveal #couple #",
+        "views": 20744852,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Kindness Always Pays Off In Business",
+        "views": 18835590,
+        "category": "Film & Animation"
+      }
+    ],
+    "top_viral_shorts": [
+      {
+        "title": "What Happens If An Astronaut Gets Stuck Floating In Space? 😱",
+        "views": 7714777,
+        "query": "space facts universe"
+      },
+      {
+        "title": "Tubuh Kecil, Mental Baja! Pitbull Tak Mau Menyerah 🐶💥#shorts",
+        "views": 3086136,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "(4)Birds With The Most Amazing Nests 😱🐦 #shorts #nest #birds",
+        "views": 2941204,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "A Rare Sky Phenomenon Captured in Tibet 🌌#space #cosmos",
+        "views": 1732626,
+        "query": "space facts universe"
+      },
+      {
+        "title": "Top 5 Expensive Things in IPL 😳",
+        "views": 1403625,
+        "query": "top 5 facts"
+      }
+    ]
+  },
+  "winners": {
+    "added": 9,
+    "total": 9,
+    "threshold": 300,
+    "median": 118,
+    "active": 9,
+    "top": [
+      {
+        "video_id": "2lPlWWgiCLE",
+        "title": "Your Kitchen Sponge Is Dirtier Than Your Toilet #Shorts",
+        "views": 1393,
+        "views_per_day": 55.7,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "jQ6gW5Oe-n8",
+        "title": "Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome #Shorts",
+        "views": 1255,
+        "views_per_day": 46.5,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "pZnlVbjTAkg",
+        "title": "JWST Finds Ancient Galaxies Too Early #Shorts",
+        "views": 870,
+        "views_per_day": 43.5,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "n41UVkdKXxY",
+        "title": "Oldest Galaxy GLASS-z13 Discovered #Shorts",
+        "views": 1002,
+        "views_per_day": 35.8,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "T_yBjy6aSGA",
+        "title": "Restaurant Shutdown After Dirty Fridge & Mold #Shorts",
+        "views": 962,
+        "views_per_day": 33.2,
+        "variations_generated": 0
+      }
+    ]
+  },
+  "peak_hours": {
+    "utc": [
+      23,
+      22,
+      18
+    ],
+    "source": "channel_data",
+    "samples": 43
+  },
+  "retention": {
+    "avg_pct": 0,
+    "avg_dur_sec": 0,
+    "source": "unavailable",
+    "video_count": 0
+  },
+  "ambient_analysis": {
+    "total_ambient": 4,
+    "total_views": 194,
+    "top_type": "fireplace",
+    "worst_type": "rain",
+    "type_rankings": [
+      {
+        "type": "fireplace",
+        "video_count": 3,
+        "total_views": 125,
+        "avg_views": 42,
+        "avg_views_per_day": 1.7,
+        "engagement_rate": 43.2,
+        "best_video": {
+          "title": "8 Hours Cozy Cat by the Fireplace — Purring & Crackling Fire",
+          "views": 44,
+          "views_per_day": 1.6
+        }
+      },
+      {
+        "type": "rain",
+        "video_count": 1,
+        "total_views": 69,
+        "avg_views": 69,
+        "avg_views_per_day": 2.4,
+        "engagement_rate": 36.23,
+        "best_video": {
+          "title": "1 Hour 4 Hours Rainy Night Ambience for Deep Sleep",
+          "views": 69,
+          "views_per_day": 2.4
+        }
+      }
+    ]
+  },
+  "plan": {
+    "shorts_planned": 19,
+    "longform_planned": 2,
+    "ambient_recommendations": [
+      {
+        "type": "underwater",
+        "hours": 8,
+        "reason": "Provides a uniquely calming and immersive experience, tapping into fascination with marine environments for relaxation and focus. Offers a unique visual and auditory escape."
+      },
+      {
+        "type": "aurora",
+        "hours": 8,
+        "reason": "Visually stunning and serene, the Northern Lights are a natural wonder that captivates viewers, providing a mystical backdrop for study or meditation without direct engagement."
+      },
+      {
+        "type": "jungle",
+        "hours": 8,
+        "reason": "Offers rich, immersive natural sounds of birds, insects, and rain, creating an exotic and deeply relaxing atmosphere that transports viewers to a lush environment, distinct from other nature sounds."
+      }
+    ],
+    "winner_variations_count": 6,
+    "shorts": [
+      "Bacteria Bloom: Unseen Dangers in Your Sponge",
+      "Pantheon's Oculus: A 9-Ton Concrete Puzzle",
+      "Cosmic Paradox: Galaxies Forming Too Early",
+      "Moldy Fridge Dangers: Beyond The Spoilage",
+      "D.B. Cooper's Missing Money: What Happened?",
+      "Concrete That Heals Itself: A Lost Roman Secret",
+      "Exoplanets: Water Worlds Discovered Everywhere",
+      "Roman Law: One Bizarre Funeral Custom",
+      "UAP: Why Governments Are Now Talking",
+      "Brain Trick: The Rubber Hand Illusion",
+      "CRISPR: Editing Genes to Cure Disease",
+      "Lost Greek Fire: An Unstoppable Weapon",
+      "Arctic Fox: Surviving Winter's Extreme Cold",
+      "Marie Antoinette: The 'Let Them Eat Cake' Lie",
+      "Deep Web: The Internet's Hidden 96%",
+      "Psychology: The Power of Reciprocity",
+      "Astronaut Adrift: Surviving a Space Walk",
+      "Weaver Birds: Architecture Master Nests",
+      "Kaymakli's City: Eight Levels Under Earth"
+    ],
+    "longform": [
+      "Peru's Lost Mega-City: The Unknown Civilization That Rewrote",
+      "The AI Revolution: How Generative Video & Bots Reshape Our F"
+    ]
+  }
+}
