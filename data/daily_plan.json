@@ -1,379 +1,363 @@
 {
-  "date": "2026-06-07",
+  "date": "2026-06-08",
   "shorts": [
     {
-      "title": "Bacteria Bloom: Unseen Dangers in Your Sponge",
-      "topic": "A deep dive into the specific types of bacteria and microorganisms that thrive in everyday kitchen sponges, explaining why they are such fertile breeding grounds and the potential health risks they pose.",
-      "hook": "That kitchen sponge you use daily is home to more bacteria than a public toilet seat.",
+      "title": "Toilet Plume Contaminates Your Brush",
+      "topic": "The shocking truth about how far bacteria from a flushing toilet can travel and contaminate objects like your toothbrush, making it a surprising source of germs in your bathroom.",
+      "hook": "Flushing a toilet can launch microscopic bacteria plumes up to 6 feet, contaminating your open toothbrush.",
       "tags": [
-        "germs",
+        "hygiene",
         "bacteria",
-        "household hygiene",
-        "hidden dangers",
-        "health facts"
+        "health facts",
+        "bathroom secrets"
       ],
-      "inspired_by": "Channel Winner: 'Your Kitchen Sponge Is Dirtier Than Your Toilet'",
+      "inspired_by": "Your Kitchen Sponge Is Dirtier Than Your Toilet #Shorts",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "2lPlWWgiCLE",
-      "status": "produced",
-      "production_id": "A_deep_dive_into_the_specific__1780843846"
+      "winner_source_id": "2lPlWWgiCLE"
     },
     {
-      "title": "Pantheon's Oculus: A 9-Ton Concrete Puzzle",
-      "topic": "How the Pantheon's massive, open oculus was constructed with precision, detailing the unique concrete mixture and engineering feats that allowed its unreinforced dome to stand for centuries despite its massive central opening, which also served as a ventilation and light source.",
-      "hook": "The Pantheon's iconic 30-foot hole in its ceiling is not just for light — it's a 9-ton engineering marvel.",
+      "title": "Pantheon Oculus: Ancient Airflow",
+      "topic": "The architectural marvel of the Pantheon's central oculus, designed not only for light but also for perfect ventilation, creating a unique microclimate inside the ancient Roman structure.",
+      "hook": "The Pantheon's massive open oculus acts as an ancient natural air conditioning system, not just a skylight.",
       "tags": [
-        "roman engineering",
-        "pantheon facts",
-        "architecture",
-        "concrete secrets",
-        "structural design"
+        "ancient engineering",
+        "roman architecture",
+        "pantheon",
+        "historical facts"
       ],
-      "inspired_by": "Channel Winner: 'Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome'",
-      "estimated_views": "high",
+      "inspired_by": "Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome #Shorts",
+      "estimated_views": "medium",
       "is_winner_variation": true,
-      "winner_source_id": "jQ6gW5Oe-n8",
-      "status": "produced",
-      "production_id": "How_the_Pantheons_massive_open_1780869768"
+      "winner_source_id": "jQ6gW5Oe-n8"
     },
     {
-      "title": "Cosmic Paradox: Galaxies Forming Too Early",
-      "topic": "Explaining the cosmological paradox presented by the discovery of galaxies like GLASS-z13, which appear to have formed incredibly rapidly after the Big Bang, challenging existing models of galaxy formation and the early universe's timeline.",
-      "hook": "Galaxies are forming so fast in the early universe, they're shattering our understanding of cosmic evolution.",
+      "title": "Universe's Early Galaxy Boom",
+      "topic": "The incredible speed at which early galaxies must have formed and grown to reach their observed maturity just hundreds of millions of years after the Big Bang, a timeframe far shorter than current models suggest.",
+      "hook": "Early universe galaxies observed by the Webb telescope appear to have formed at an impossibly rapid rate, achieving maturity far quicker than theoretical models predict.",
       "tags": [
-        "cosmology",
+        "cosmic evolution",
         "galaxy formation",
-        "early universe",
-        "big bang theory",
-        "space mysteries"
+        "astronomy mysteries",
+        "webb telescope"
       ],
-      "inspired_by": "Channel Winner: 'JWST Finds Ancient Galaxies Too Early' / 'Oldest Galaxy GLASS-z13'",
+      "inspired_by": "JWST Finds Ancient Galaxies Too Early #Shorts",
       "estimated_views": "high",
       "is_winner_variation": true,
       "winner_source_id": "pZnlVbjTAkg"
     },
     {
-      "title": "Moldy Fridge Dangers: Beyond The Spoilage",
-      "topic": "Discussing the hidden dangers of mold growth in refrigeration units, explaining that it's not just about spoiled food but also potential airborne toxins and cross-contamination risks that can lead to severe health issues or widespread foodborne illness.",
-      "hook": "A moldy refrigerator isn't just gross — it's a biohazard silently spreading toxins through your food.",
+      "title": "GLASS-z13: Universe's Earliest Light",
+      "topic": "The discovery of GLASS-z13, one of the most distant objects ever observed, pushing back the observable universe to a time when it was only about 330 million years old, revealing conditions shortly after the Big Bang.",
+      "hook": "The GLASS-z13 observation reveals light emitted when the universe was just 330 million years old, offering a direct look into the cosmic dawn.",
+      "tags": [
+        "deep space",
+        "cosmic dawn",
+        "telescope discoveries",
+        "universe age"
+      ],
+      "inspired_by": "Oldest Galaxy GLASS-z13 Discovered #Shorts",
+      "estimated_views": "high",
+      "is_winner_variation": true,
+      "winner_source_id": "n41UVkdKXxY"
+    },
+    {
+      "title": "Ice Machine: Hidden Germ Hazard",
+      "topic": "The hidden dangers of ice machines in public eateries, often found to harbor more bacteria and mold than a public toilet due to infrequent cleaning and moisture.",
+      "hook": "Public ice machines in fast food and beverage establishments are often found to contain more bacteria than a toilet bowl, posing a significant health risk.",
       "tags": [
         "food safety",
-        "mold dangers",
-        "health risks",
-        "foodborne illness",
-        "home hygiene"
+        "public health",
+        "bacteria facts",
+        "hidden dangers"
       ],
-      "inspired_by": "Channel Winner: 'Restaurant Shutdown After Dirty Fridge & Mold'",
-      "estimated_views": "medium",
+      "inspired_by": "Restaurant Shutdown After Dirty Fridge & Mold #Shorts",
+      "estimated_views": "high",
       "is_winner_variation": true,
       "winner_source_id": "T_yBjy6aSGA"
     },
     {
-      "title": "D.B. Cooper's Missing Money: What Happened?",
-      "topic": "An exploration of the fate of the $200,000 ransom money from the D.B. Cooper hijacking, discussing the theories behind why most of it was never recovered and the small amount that was found years later, adding to the enduring mystery.",
-      "hook": "D.B. Cooper vanished with $200,000, but nearly all of it has never been found – and the reasons are as baffling as the hijacker himself.",
+      "title": "D.B. Cooper's Missing Ransom",
+      "topic": "The enduring mystery of D.B. Cooper's unrecovered ransom money, specifically the 20-dollar bills, which complicates the case and hints at how he might have evaded capture after his daring skyjacking.",
+      "hook": "The exact sequence numbers of D.B. Cooper's ransom money were released, yet not a single bill has ever resurfaced in circulation.",
       "tags": [
-        "db cooper",
-        "unsolved mysteries",
-        "true crime facts",
-        "cold cases",
-        "missing money"
+        "true crime",
+        "unsolved mystery",
+        "d.b. cooper",
+        "heist facts"
       ],
-      "inspired_by": "Channel Winner: 'D.B. Cooper's Parachute Whispers Secrets'",
+      "inspired_by": "D.B. Cooper's Parachute Whispers Secrets #Shorts",
       "estimated_views": "medium",
       "is_winner_variation": true,
       "winner_source_id": "QHpgbH-oAYo"
     },
     {
-      "title": "Concrete That Heals Itself: A Lost Roman Secret",
-      "topic": "Explaining the scientific mechanisms behind the Roman concrete's extraordinary longevity and ability to 'self-heal' micro-cracks over centuries, including the role of specific volcanic ash and lime reactions that modern concrete lacks.",
-      "hook": "Roman concrete wasn't just strong; it possessed a biological secret that allowed it to heal itself for thousands of years.",
+      "title": "Self-Healing Roman Building Mix",
+      "topic": "The ancient Roman secret to self-healing concrete involved adding specific volcanic ash and unslaked lime, allowing structures to naturally repair cracks when exposed to water over centuries.",
+      "hook": "Ancient Roman builders used volcanic ash and unslaked lime in their concrete, creating a self-healing material that repairs cracks over centuries.",
       "tags": [
-        "roman science",
-        "material science",
         "ancient technology",
-        "self-healing materials",
-        "engineering facts"
+        "roman materials",
+        "engineering marvel",
+        "building science"
       ],
-      "inspired_by": "Channel Winner: 'Rome's Self-Healing Concrete Secret'",
-      "estimated_views": "high",
+      "inspired_by": "Rome's Self-Healing Concrete Secret #Shorts",
+      "estimated_views": "medium",
       "is_winner_variation": true,
       "winner_source_id": "40bHnzks7-A"
     },
     {
-      "title": "Exoplanets: Water Worlds Discovered Everywhere",
-      "topic": "The recent flood of exoplanet discoveries, highlighting the surprising prevalence of 'water worlds' and what these findings imply about the potential for life beyond Earth, based on data from various space telescopes.",
-      "hook": "Scientists are finding water-rich exoplanets so frequently, it's changing our entire perspective on the universe's potential for life.",
+      "title": "GLASS-z13's Unexpected Mass",
+      "topic": "The surprising discovery of the immense stellar mass and rapid star formation rate within the GLASS-z13 proto-galaxy, a structure far more developed than expected so early in the universe's history.",
+      "hook": "The proto-galaxy GLASS-z13 is far more massive and actively forming stars than astronomers believed possible in the universe's infancy.",
       "tags": [
-        "exoplanets",
-        "space exploration",
-        "alien life",
-        "cosmic discoveries",
-        "astronomy facts"
+        "cosmic structure",
+        "star formation",
+        "astrophysics",
+        "webb discoveries"
       ],
-      "inspired_by": "AI-Curated Viral Trend: JWST's Shocking Exoplanet Discoveries",
+      "inspired_by": "Galaxy GLASS-z13: 300 Million Years After Big Bang #Shorts",
+      "estimated_views": "high",
+      "is_winner_variation": true,
+      "winner_source_id": "A92xFY3pWBU"
+    },
+    {
+      "title": "Pentagon Declassifies UAP Reports",
+      "topic": "The Pentagon's recent declassification of Unidentified Aerial Phenomena (UAP) reports, revealing detailed accounts from military pilots and radar operators that lack conventional explanation.",
+      "hook": "The US Pentagon has declassified numerous UAP reports, detailing inexplicable encounters by military personnel that challenge conventional physics.",
+      "tags": [
+        "uap",
+        "ufo",
+        "pentagon",
+        "mystery",
+        "aviation"
+      ],
+      "inspired_by": "Government UAP/UFO Reports: What the Pentagon Doesn't Want You to Know (Yet)",
       "estimated_views": "high",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "Roman Law: One Bizarre Funeral Custom",
-      "topic": "Focus on one specific, bizarre Roman law or custom, such as the practice of making sure a deceased person was truly dead by checking for signs of life at a funeral before burial, to prevent premature entombment.",
-      "hook": "Roman law had a chilling requirement at funerals: proving the dead were actually dead, just in case.",
-      "tags": [
-        "roman history",
-        "historical laws",
-        "cultural facts",
-        "historical oddities",
-        "legal history"
-      ],
-      "inspired_by": "AI-Curated Viral Trend: Ancient Rome's Most Brutal & Bizarre Laws",
-      "estimated_views": "medium",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "UAP: Why Governments Are Now Talking",
-      "topic": "Explaining the shift in governmental approach to Unidentified Aerial Phenomena (UAP), detailing recent declassified reports and why major world powers are now openly discussing and investigating these sightings.",
-      "hook": "For decades, governments dismissed UAPs, but recent declassifications are changing everything we thought we knew about unexplained aerial sightings.",
-      "tags": [
-        "UAP",
-        "UFO",
-        "government secrets",
-        "unexplained phenomena",
-        "conspiracy theories"
-      ],
-      "inspired_by": "AI-Curated Viral Trend: New UAP Sightings & Government Reports",
-      "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Brain Trick: The Rubber Hand Illusion",
-      "topic": "Explaining the 'rubber hand illusion,' a psychological phenomenon where people can be made to feel a fake hand as their own, revealing how easily our brains can be tricked and our sense of bodily ownership manipulated.",
-      "hook": "Your brain can be tricked into believing a rubber hand is your own, revealing the strange malleability of your body perception.",
-      "tags": [
-        "brain facts",
-        "psychology tricks",
-        "cognitive science",
-        "human mind",
-        "perception experiments"
-      ],
-      "inspired_by": "AI-Curated Viral Trend: 5 Mind-Bending Facts About Your Brain You Didn't Know",
-      "estimated_views": "medium",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "CRISPR: Editing Genes to Cure Disease",
-      "topic": "A concise explanation of CRISPR technology, focusing on its revolutionary potential to precisely edit genes to correct genetic mutations responsible for various diseases, offering hope for new medical treatments.",
-      "hook": "CRISPR isn't just science fiction; it's a real technology capable of editing individual genes to cure devastating diseases.",
+      "title": "CRISPR: DNA's Molecular Scissors",
+      "topic": "How CRISPR gene editing works by using a 'molecular scissor' derived from bacterial defense systems to precisely cut and edit DNA, offering unprecedented control over genetic code.",
+      "hook": "CRISPR gene editing technology functions like a molecular scissor, allowing scientists to precisely cut and modify DNA sequences with unprecedented accuracy.",
       "tags": [
         "gene editing",
-        "CRISPR technology",
-        "medical science",
-        "genetic engineering",
-        "future medicine"
+        "crispr",
+        "biotechnology",
+        "medical breakthroughs"
       ],
-      "inspired_by": "AI-Curated Viral Trend: Gene Editing Miracles: How CRISPR is Changing Medicine Forever",
+      "inspired_by": "CRISPR Gene Editing: Curing Diseases & Designing the Future",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Great Filter Explains Alien Silence",
+      "topic": "The 'Great Filter' theory, which suggests that at least one major evolutionary or technological barrier prevents intelligent civilizations from reaching advanced interstellar travel, explaining the Fermi Paradox.",
+      "hook": "The 'Great Filter' theory proposes a monumental barrier prevents intelligent life from becoming interstellar, explaining why the universe appears so silent.",
+      "tags": [
+        "fermi paradox",
+        "alien life",
+        "space philosophy",
+        "cosmic mysteries"
+      ],
+      "inspired_by": "The Great Filter: Why We Haven't Found Alien Life Yet",
       "estimated_views": "high",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "Lost Greek Fire: An Unstoppable Weapon",
-      "topic": "Detailing the mystery of 'Greek Fire,' a legendary Byzantine incendiary weapon whose exact composition remains lost, discussing its devastating effectiveness and why its secret was so closely guarded.",
-      "hook": "The Byzantine Empire wielded a secret weapon, 'Greek Fire,' so potent its formula is still lost to history, leaving us to wonder at its unstoppable power.",
+      "title": "Antikythera: Ancient Greek Computer",
+      "topic": "The Antikythera Mechanism, an ancient Greek device recovered from a shipwreck, which is an incredibly complex analog computer used to predict astronomical positions and eclipses centuries before similar technology appeared.",
+      "hook": "Discovered in a shipwreck, the Antikythera Mechanism is a 2,000-year-old analog computer built by ancient Greeks, capable of predicting astronomical events.",
       "tags": [
-        "byzantine history",
+        "ancient science",
+        "archaeology",
         "lost technology",
-        "ancient weapons",
-        "historical mysteries",
-        "military history"
+        "greek history"
       ],
-      "inspired_by": "AI-Curated Viral Trend: Lost Ancient Inventions That Were Centuries Ahead of Their Time",
+      "inspired_by": "Ancient Civilizations' Unexplained Technologies That Still Mystify Scientists",
       "estimated_views": "medium",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "Arctic Fox: Surviving Winter's Extreme Cold",
-      "topic": "Highlighting the incredible adaptations of the Arctic Fox, detailing specific physiological and behavioral strategies it employs to survive in some of the coldest environments on Earth, like its unique fur and hunting techniques.",
-      "hook": "The Arctic Fox endures brutal polar winters with a fur so insulating, it can sleep comfortably at -50°C.",
+      "title": "Neuralink: Brain to Computer Direct",
+      "topic": "Elon Musk's Neuralink aims to create a direct brain-computer interface by implanting ultra-fine threads into the brain, allowing for thought-controlled devices and potentially restoring lost senses.",
+      "hook": "Elon Musk's Neuralink project is developing implants that could allow direct brain-to-computer communication, enabling thought-controlled devices.",
       "tags": [
-        "animal survival",
-        "arctic wildlife",
-        "nature facts",
-        "extreme animals",
-        "biology facts"
+        "neuralink",
+        "bci",
+        "neuroscience",
+        "future tech",
+        "elon musk"
       ],
-      "inspired_by": "AI-Curated Viral Trend: The Most Insane Survival Tactics of Animals You Won't Believe",
+      "inspired_by": "Neuralink & Brain-Computer Interfaces: The Future of Human-Tech Interaction?",
       "estimated_views": "high",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "Marie Antoinette: The 'Let Them Eat Cake' Lie",
-      "topic": "Debunking the pervasive myth that Marie Antoinette uttered the phrase 'Let them eat cake,' explaining the origins of this quote and how it became falsely attributed to her, shaping her historical image.",
-      "hook": "Marie Antoinette never actually said 'Let them eat cake' – this famous quote is a historical lie that defined her tragic end.",
+      "title": "Dumbo Octopus Lives Deepest",
+      "topic": "The discovery of the 'Dumbo Octopus,' a genus of deep-sea cephalopods named for their ear-like fins resembling Disney's Dumbo, living at extreme depths and exhibiting unique adaptations.",
+      "hook": "The 'Dumbo Octopus', named for its ear-like fins, lives deeper than any other known octopus species, thriving in the extreme pressures of the abyssal plain.",
       "tags": [
-        "historical myths",
-        "debunked facts",
-        "french revolution",
-        "marie antoinette",
-        "history explained"
+        "deep sea",
+        "marine biology",
+        "new species",
+        "ocean exploration"
       ],
-      "inspired_by": "AI-Curated Viral Trend: Historical Lies You Still Believe",
+      "inspired_by": "The Deep Sea's Bizarre Creatures: New Discoveries from Earth's Last Frontier",
       "estimated_views": "medium",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "Deep Web: The Internet's Hidden 96%",
-      "topic": "Explaining that the visible internet is only a tiny fraction of the whole, describing the vastness of the Deep Web (not the Dark Web) and what kind of legitimate, unindexed content resides there.",
-      "hook": "The internet you browse everyday is just 4% of the whole picture – the other 96% is the mysterious Deep Web.",
+      "title": "Knuckle Cracking: No Arthritis Risk",
+      "topic": "Debunking the common myth that cracking your knuckles causes arthritis, explaining that the sound comes from gas bubbles in synovial fluid and has no proven link to joint disease.",
+      "hook": "Cracking your knuckles does not cause arthritis; the sound is simply gas bubbles collapsing in your synovial fluid, with no proven long-term joint damage.",
       "tags": [
-        "deep web facts",
-        "internet mysteries",
-        "technology facts",
-        "cybersecurity",
-        "web explained"
+        "medical myths",
+        "health facts",
+        "body science",
+        "joint health"
       ],
-      "inspired_by": "AI-Curated Viral Trend: The Dark Side of the Internet",
+      "inspired_by": "Common Medical Myths Debunked: What You Thought Was True About Your Body",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "High Heels: Persian Male Cavalry",
+      "topic": "The surprising origin of high heels, which were initially worn by Persian male cavalry soldiers in the 10th century to help keep their feet in stirrups, before being adopted by European aristocrats.",
+      "hook": "High heels were originally worn by Persian male cavalry soldiers in the 10th century to secure their feet in stirrups, not as a fashion statement.",
+      "tags": [
+        "history facts",
+        "fashion origins",
+        "cultural history",
+        "everyday objects"
+      ],
+      "inspired_by": "The surprising evolution of high heels 👠",
+      "estimated_views": "medium",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Quantum Entanglement: Spooky Link",
+      "topic": "Quantum entanglement, often called 'spooky action at a distance' by Einstein, where two particles become linked and instantly share the same state, regardless of the distance separating them, forming the basis of quantum computing.",
+      "hook": "Quantum entanglement allows two particles to become instantly linked, sharing the same state regardless of distance, a phenomenon Einstein called 'spooky action'.",
+      "tags": [
+        "quantum physics",
+        "science explained",
+        "new technology",
+        "theoretical physics"
+      ],
+      "inspired_by": "Quantum Entanglement Explained: The 'Spooky Action' Driving New Tech",
       "estimated_views": "high",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "Psychology: The Power of Reciprocity",
-      "topic": "Explaining the psychological principle of reciprocity, where people feel compelled to return favors or kindness, and how this fundamental human tendency influences social interactions and even marketing.",
-      "hook": "The ancient rule of reciprocity is a psychological superpower, compelling people to return favors even without asking.",
+      "title": "Android's Hidden Developer Mode",
+      "topic": "The existence of 'developer options' in Android smartphones, a hidden menu that unlocks advanced settings and debugging tools, enabling users to customize their device far beyond standard settings.",
+      "hook": "Your Android smartphone contains a hidden 'Developer Options' menu, unlocking advanced system settings and debugging tools most users never discover.",
       "tags": [
-        "social psychology",
-        "influence tactics",
-        "human behavior",
-        "mind hacks",
-        "psychology facts"
+        "smartphone hacks",
+        "tech tips",
+        "android secrets",
+        "hidden features"
       ],
-      "inspired_by": "AI-Curated Viral Trend: Psychological Tricks You Can Use to Influence Anyone",
+      "inspired_by": "The Hidden Features & Secret Codes in Your Smartphone You Didn't Know About",
       "estimated_views": "medium",
       "is_winner_variation": false,
       "winner_source_id": ""
     },
     {
-      "title": "Astronaut Adrift: Surviving a Space Walk",
-      "topic": "What protocols and safety measures are in place for astronauts during spacewalks, explaining how they are tethered and the redundant systems to prevent them from drifting off into orbit, and what would happen if a catastrophic failure occurred.",
-      "hook": "An astronaut drifting alone in the vacuum of space is a terrifying scenario, but every spacewalk is designed to prevent it.",
+      "title": "3D Print with Mosquito Proboscis",
+      "topic": "A novel 3D printing technique that utilizes the microscopic scale of a mosquito's proboscis to print incredibly small, intricate structures with unparalleled precision at the nano level.",
+      "hook": "Scientists are now using a mosquito's proboscis as a tool for a new type of 3D printer, creating incredibly precise nanoscale structures.",
       "tags": [
+        "3d printing",
+        "nanotechnology",
+        "biomimicry",
+        "innovative tech"
+      ],
+      "inspired_by": "[Science & Technology] This 3D Printer Uses A Mosquito 😮",
+      "estimated_views": "high",
+      "is_winner_variation": false,
+      "winner_source_id": ""
+    },
+    {
+      "title": "Astronaut Lost in Empty Space",
+      "topic": "The chilling scenario of an astronaut becoming untethered during an EVA, drifting endlessly in space, highlighting the critical importance of safety protocols and the vast, unforgiving nature of the cosmos.",
+      "hook": "Imagine an astronaut untethered during a spacewalk, drifting silently into the infinite void, unable to return to Earth.",
+      "tags": [
+        "space safety",
         "astronaut facts",
-        "space travel",
-        "NASA facts",
-        "survival stories",
-        "engineering safety"
+        "cosmos dangers",
+        "human survival"
       ],
-      "inspired_by": "Viral Niche Short: 'What Happens If An Astronaut Gets Stuck Floating In Space?'",
+      "inspired_by": "What Happens If An Astronaut Gets Stuck Floating In Space? 😱#space #universe",
       "estimated_views": "high",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Weaver Birds: Architecture Master Nests",
-      "topic": "Focusing on the incredible nest-building skills of weaver birds, describing the intricate knotting and weaving techniques they use to construct complex, suspended nests that are both secure and protective.",
-      "hook": "Weaver birds are nature's architects, building gravity-defying, intricately woven nests that put human engineering to shame.",
-      "tags": [
-        "bird facts",
-        "animal engineering",
-        "nature wonders",
-        "wildlife facts",
-        "bird nests"
-      ],
-      "inspired_by": "Viral Niche Short: '(4)Birds With The Most Amazing Nests'",
-      "estimated_views": "medium",
-      "is_winner_variation": false,
-      "winner_source_id": ""
-    },
-    {
-      "title": "Kaymakli's City: Eight Levels Under Earth",
-      "topic": "Detailing the extraordinary ancient underground city of Kaymakli in Cappadocia, Turkey, explaining its eight subterranean levels, elaborate ventilation, and how it sustained thousands of inhabitants.",
-      "hook": "Kaymakli is an underground city spanning eight levels, built by an unknown civilization to house thousands deep beneath the Earth.",
-      "tags": [
-        "underground cities",
-        "archeological sites",
-        "cappadocia",
-        "engineering marvels",
-        "ancient defense"
-      ],
-      "inspired_by": "Competitor Activity: Science Channel - 'Kaymakli's 8-Level Subterranean Labyrinth'",
-      "estimated_views": "medium",
       "is_winner_variation": false,
       "winner_source_id": ""
     }
   ],
   "longform": [
     {
-      "title": "Peru's Lost Mega-City: The Unknown Civilization That Rewrote History",
-      "topic": "20 minute deep analysis of the recent archaeological discovery of a vast, previously unknown ancient city in Peru. Discuss its scale, the unique architectural features, what scientists believe about its inhabitants, and how this discovery challenges existing historical timelines and understandings of pre-Columbian South America. Explore the implications for our knowledge of early civilizations and advanced engineering without modern tools.",
-      "hook": "Hidden deep within the Peruvian Amazon lies a discovery so monumental, it's forcing historians to completely rewrite the timeline of human civilization.",
+      "title": "Cosmic Revelations: The Webb Telescope's Universe-Changing Discoveries",
+      "topic": "20 minute deep analysis of the most groundbreaking and unexpected discoveries made by the James Webb Space Telescope since its launch. Cover the identification of surprisingly mature early galaxies, the detailed atmospheric analysis of exoplanets revealing potential biosignatures, and the unprecedented clarity of star formation in stellar nurseries. Explain how these findings challenge existing cosmological models and reshape our understanding of the universe's origins and the potential for life beyond Earth, including implications for the 'Great Filter' theory.",
+      "hook": "Just two years into its mission, the James Webb Space Telescope has already delivered cosmic revelations that are forcing scientists to rewrite textbooks about the universe's earliest moments and the very potential for life.",
       "tags": [
-        "ancient civilizations",
-        "archeology",
-        "peru history",
-        "lost cities",
-        "megafortress",
-        "history documentary",
-        "new discoveries"
+        "james webb space telescope",
+        "cosmology",
+        "exoplanets",
+        "early universe",
+        "astronomy",
+        "scientific discoveries"
       ],
-      "inspired_by": "Trending World News: 'Peru's Hidden MegaFortress Just REWROTE Human History'",
-      "estimated_views": "high",
-      "duration_minutes": 20,
-      "status": "produced"
+      "inspired_by": "The James Webb Space Telescope's Most Shocking Discoveries So Far",
+      "estimated_views": "medium/high",
+      "duration_minutes": 20
     },
     {
-      "title": "The AI Revolution: How Generative Video & Bots Reshape Our Future (20 Minute Analysis)",
-      "topic": "20 minute deep analysis of the rapid advancements in AI, focusing on generative video (like Sora) and the broader economic and societal implications of AI on the job market and creative industries. Explore specific examples of AI's impact, ethical concerns, potential for job displacement versus creation, and what the future might hold as AI capabilities continue to expand. Discuss the implications for media, education, and daily life.",
-      "hook": "From creating photorealistic videos to performing complex tasks, AI is no longer just a tool – it's actively reshaping the very fabric of our professional and creative worlds.",
+      "title": "Water Wars: The Geopolitical Stakes of the Indus River",
+      "topic": "20 minute deep analysis of the geopolitical tensions surrounding the Indus River water treaty between India and Pakistan. Examine the historical context of the 1960 agreement, the critical dependence of both nations on its waters for agriculture and energy, and the escalating disputes over dam projects and water allocation. Explore the potential for hydrological conflict amidst climate change and growing populations, and how this vital resource could shape future strategic alignments and regional stability in South Asia.",
+      "hook": "Beyond borders and conventional battlefields, a silent war over water is brewing in the heart of South Asia, where the lifeblood of millions — the Indus River — threatens to ignite a geopolitical powder keg between India and Pakistan.",
       "tags": [
-        "AI revolution",
-        "generative video",
-        "Sora AI",
-        "future of work",
-        "AI jobs",
-        "technological impact",
-        "ethical AI",
-        "20 minute documentary"
+        "geopolitics",
+        "water crisis",
+        "india pakistan",
+        "indus river",
+        "international relations",
+        "resource conflict"
       ],
-      "inspired_by": "AI-Curated Viral Trend: 'The AI That Creates Unbelievable Video' & 'Is AI Taking Over?'",
-      "estimated_views": "high",
+      "inspired_by": "सिंधु का पानी रुका तो पाकिस्तान खत्म? 😱 | India vs Pakistan | Indus River Update #indiavspakistan",
+      "estimated_views": "medium/high",
       "duration_minutes": 20
     }
   ],
   "ambient_recommendations": [
     {
-      "type": "underwater",
+      "type": "rain",
       "hours": 8,
-      "reason": "Provides a uniquely calming and immersive experience, tapping into fascination with marine environments for relaxation and focus. Offers a unique visual and auditory escape."
+      "reason": "Rain ambience is consistently popular for focus and relaxation, offering a soothing background soundscape for work or study, and a calm alternative to the banned 'fireplace' and 'sleep' categories."
     },
     {
-      "type": "aurora",
+      "type": "forest",
       "hours": 8,
-      "reason": "Visually stunning and serene, the Northern Lights are a natural wonder that captivates viewers, providing a mystical backdrop for study or meditation without direct engagement."
+      "reason": "Forest sounds, particularly with gentle birdsong or rustling leaves, provide a natural, calming backdrop, highly sought after for meditation, relaxation, and reducing stress, appealing to a broad audience seeking tranquility."
     },
     {
-      "type": "jungle",
+      "type": "ocean",
       "hours": 8,
-      "reason": "Offers rich, immersive natural sounds of birds, insects, and rain, creating an exotic and deeply relaxing atmosphere that transports viewers to a lush environment, distinct from other nature sounds."
+      "reason": "Ocean waves provide a powerful, rhythmic, and naturally occurring white noise that is excellent for blocking out distractions and promoting a sense of calm and well-being, suitable for study or general relaxation."
     }
   ],
-  "generated_at": "2026-06-06T23:56:32.756094",
-  "trending_count": 83,
-  "channels_analyzed": 4,
-  "winner_variations_count": 6,
-  "status": "in_progress",
-  "last_executed_at": "2026-06-07T22:05:12.221889",
-  "results": {
-    "shorts_produced": 1,
-    "longform_produced": 0,
-    "errors": []
-  }
+  "generated_at": "2026-06-07T23:58:39.712019",
+  "trending_count": 81,
+  "channels_analyzed": 5,
+  "winner_variations_count": 8,
+  "status": "pending"
 }

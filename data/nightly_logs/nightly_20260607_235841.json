@@ -1,0 +1,247 @@
+{
+  "timestamp": "2026-06-07T23:57:03.851419",
+  "dry_run": false,
+  "api_health": {
+    "gemini": "ok (gemini-2.5-flash)",
+    "openai": "error: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please",
+    "healthy": true
+  },
+  "performance_review": {
+    "total_recent": 5,
+    "winners_count": 3,
+    "losers_count": 0,
+    "avg_views_48h": 500.8,
+    "best_topics": [
+      "Phone Screens Dirtier Than Toilets #Shorts",
+      "2000-Year-Old Dome Stands Strong Without Steel #Shorts",
+      "Kitchen Sponge: 10 Million Bacteria Per Square Inch #Shorts"
+    ],
+    "best_views": [
+      1315,
+      1000,
+      108
+    ],
+    "winner_titles": [
+      "Kitchen Sponge: 10 Million Bacteria Per Square Inch #Shorts",
+      "2000-Year-Old Dome Stands Strong Without Steel #Shorts",
+      "Phone Screens Dirtier Than Toilets #Shorts"
+    ],
+    "loser_titles": []
+  },
+  "cleanup": {
+    "unlisted": 2,
+    "deleted": 6,
+    "failed": 0,
+    "kept": 42,
+    "thresholds": {
+      "shorts_7d": 25,
+      "shorts_14d": 50,
+      "shorts_30d": 100,
+      "long_14d": 25,
+      "long_30d": 50,
+      "multiplier": 0.5
+    }
+  },
+  "trending": {
+    "found": 81,
+    "viral_shorts_found": 30,
+    "world_news_found": 20,
+    "competitors_analyzed": 5,
+    "comments_mined": 20,
+    "top_5": [
+      {
+        "title": "Oil vs Water (Part.3)",
+        "views": 67325714,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "This Man Spread Kindness One Rose at a Time 🌹",
+        "views": 39352120,
+        "category": "Entertainment"
+      },
+      {
+        "title": "The baby said, “Make it memorable.”🩷💙#genderreveal #couple #",
+        "views": 30243702,
+        "category": "Howto & Style"
+      },
+      {
+        "title": "Still Wearing My Shoes... Just Not My Heels 👠😂 #meme",
+        "views": 28786324,
+        "category": "Entertainment"
+      },
+      {
+        "title": "Product Link is in bio #fyp #hairtutorial #haircare #hairtra",
+        "views": 27530999,
+        "category": "Howto & Style"
+      }
+    ],
+    "top_viral_shorts": [
+      {
+        "title": "What Happens If An Astronaut Gets Stuck Floating In Space? 😱",
+        "views": 12292485,
+        "query": "space facts universe"
+      },
+      {
+        "title": "(4)Birds With The Most Amazing Nests 😱🐦 #shorts #nest #birds",
+        "views": 3102503,
+        "query": "animal facts wildlife"
+      },
+      {
+        "title": "A Rare Sky Phenomenon Captured in Tibet 🌌#space #cosmos",
+        "views": 1983725,
+        "query": "space facts universe"
+      },
+      {
+        "title": "Top 5 Expensive Things in IPL 😳",
+        "views": 1453337,
+        "query": "top 5 facts"
+      },
+      {
+        "title": "Speed Kings of Earth and Sky 👑⚡#animals #trending #wildlife ",
+        "views": 1058194,
+        "query": "animal facts wildlife"
+      }
+    ]
+  },
+  "winners": {
+    "added": 9,
+    "total": 9,
+    "threshold": 300,
+    "median": 138,
+    "active": 9,
+    "top": [
+      {
+        "video_id": "2lPlWWgiCLE",
+        "title": "Your Kitchen Sponge Is Dirtier Than Your Toilet #Shorts",
+        "views": 1393,
+        "views_per_day": 53.6,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "jQ6gW5Oe-n8",
+        "title": "Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome #Shorts",
+        "views": 1255,
+        "views_per_day": 44.8,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "pZnlVbjTAkg",
+        "title": "JWST Finds Ancient Galaxies Too Early #Shorts",
+        "views": 870,
+        "views_per_day": 41.4,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "n41UVkdKXxY",
+        "title": "Oldest Galaxy GLASS-z13 Discovered #Shorts",
+        "views": 1003,
+        "views_per_day": 34.6,
+        "variations_generated": 0
+      },
+      {
+        "video_id": "T_yBjy6aSGA",
+        "title": "Restaurant Shutdown After Dirty Fridge & Mold #Shorts",
+        "views": 962,
+        "views_per_day": 32.1,
+        "variations_generated": 0
+      }
+    ]
+  },
+  "peak_hours": {
+    "utc": [
+      23,
+      22,
+      18
+    ],
+    "source": "channel_data",
+    "samples": 38
+  },
+  "retention": {
+    "avg_pct": 0,
+    "avg_dur_sec": 0,
+    "source": "unavailable",
+    "video_count": 0
+  },
+  "ambient_analysis": {
+    "total_ambient": 4,
+    "total_views": 195,
+    "top_type": "fireplace",
+    "worst_type": "rain",
+    "type_rankings": [
+      {
+        "type": "fireplace",
+        "video_count": 3,
+        "total_views": 126,
+        "avg_views": 42,
+        "avg_views_per_day": 1.6,
+        "engagement_rate": 42.86,
+        "best_video": {
+          "title": "8 Hours Cozy Cat by the Fireplace — Purring & Crackling Fire",
+          "views": 44,
+          "views_per_day": 1.6
+        }
+      },
+      {
+        "type": "rain",
+        "video_count": 1,
+        "total_views": 69,
+        "avg_views": 69,
+        "avg_views_per_day": 2.3,
+        "engagement_rate": 36.23,
+        "best_video": {
+          "title": "1 Hour 4 Hours Rainy Night Ambience for Deep Sleep",
+          "views": 69,
+          "views_per_day": 2.3
+        }
+      }
+    ]
+  },
+  "plan": {
+    "shorts_planned": 20,
+    "longform_planned": 2,
+    "ambient_recommendations": [
+      {
+        "type": "rain",
+        "hours": 8,
+        "reason": "Rain ambience is consistently popular for focus and relaxation, offering a soothing background soundscape for work or study, and a calm alternative to the banned 'fireplace' and 'sleep' categories."
+      },
+      {
+        "type": "forest",
+        "hours": 8,
+        "reason": "Forest sounds, particularly with gentle birdsong or rustling leaves, provide a natural, calming backdrop, highly sought after for meditation, relaxation, and reducing stress, appealing to a broad audience seeking tranquility."
+      },
+      {
+        "type": "ocean",
+        "hours": 8,
+        "reason": "Ocean waves provide a powerful, rhythmic, and naturally occurring white noise that is excellent for blocking out distractions and promoting a sense of calm and well-being, suitable for study or general relaxation."
+      }
+    ],
+    "winner_variations_count": 8,
+    "shorts": [
+      "Toilet Plume Contaminates Your Brush",
+      "Pantheon Oculus: Ancient Airflow",
+      "Universe's Early Galaxy Boom",
+      "GLASS-z13: Universe's Earliest Light",
+      "Ice Machine: Hidden Germ Hazard",
+      "D.B. Cooper's Missing Ransom",
+      "Self-Healing Roman Building Mix",
+      "GLASS-z13's Unexpected Mass",
+      "Pentagon Declassifies UAP Reports",
+      "CRISPR: DNA's Molecular Scissors",
+      "Great Filter Explains Alien Silence",
+      "Antikythera: Ancient Greek Computer",
+      "Neuralink: Brain to Computer Direct",
+      "Dumbo Octopus Lives Deepest",
+      "Knuckle Cracking: No Arthritis Risk",
+      "High Heels: Persian Male Cavalry",
+      "Quantum Entanglement: Spooky Link",
+      "Android's Hidden Developer Mode",
+      "3D Print with Mosquito Proboscis",
+      "Astronaut Lost in Empty Space"
+    ],
+    "longform": [
+      "Cosmic Revelations: The Webb Telescope's Universe-Changing D",
+      "Water Wars: The Geopolitical Stakes of the Indus River"
+    ]
+  }
+}
