@@ -33,7 +33,9 @@
       "inspired_by": "Channel Winner: 'Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome'",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "jQ6gW5Oe-n8"
+      "winner_source_id": "jQ6gW5Oe-n8",
+      "status": "produced",
+      "production_id": "How_the_Pantheons_massive_open_1780869768"
     },
     {
       "title": "Cosmic Paradox: Galaxies Forming Too Early",
@@ -368,10 +370,10 @@
   "channels_analyzed": 4,
   "winner_variations_count": 6,
   "status": "in_progress",
-  "last_executed_at": "2026-06-07T17:32:50.443417",
+  "last_executed_at": "2026-06-07T22:05:12.221889",
   "results": {
-    "shorts_produced": 0,
-    "longform_produced": 1,
+    "shorts_produced": 1,
+    "longform_produced": 0,
     "errors": []
   }
 }
