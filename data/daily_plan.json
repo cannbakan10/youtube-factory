@@ -362,10 +362,12 @@
   "channels_analyzed": 5,
   "winner_variations_count": 8,
   "status": "in_progress",
-  "last_executed_at": "2026-06-08T19:11:09.341502",
+  "last_executed_at": "2026-06-08T22:27:38.543006",
   "results": {
     "shorts_produced": 0,
     "longform_produced": 0,
-    "errors": []
+    "errors": [
+      "Short 'Toilet Plume Contaminates Your Brush' failed (Reason: check logs)"
+    ]
   }
 }
