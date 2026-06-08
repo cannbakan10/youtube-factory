@@ -14,7 +14,8 @@
       "inspired_by": "Your Kitchen Sponge Is Dirtier Than Your Toilet #Shorts",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "2lPlWWgiCLE"
+      "winner_source_id": "2lPlWWgiCLE",
+      "status": "failed"
     },
     {
       "title": "Pantheon Oculus: Ancient Airflow",
@@ -359,5 +360,13 @@
   "trending_count": 81,
   "channels_analyzed": 5,
   "winner_variations_count": 8,
-  "status": "pending"
+  "status": "in_progress",
+  "last_executed_at": "2026-06-08T16:50:17.953804",
+  "results": {
+    "shorts_produced": 0,
+    "longform_produced": 0,
+    "errors": [
+      "Short 'Toilet Plume Contaminates Your Brush' failed (Reason: check logs)"
+    ]
+  }
 }
