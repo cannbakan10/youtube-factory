@@ -320,7 +320,8 @@
       ],
       "inspired_by": "The James Webb Space Telescope's Most Shocking Discoveries So Far",
       "estimated_views": "medium/high",
-      "duration_minutes": 20
+      "duration_minutes": 20,
+      "status": "failed"
     },
     {
       "title": "Water Wars: The Geopolitical Stakes of the Indus River",
@@ -361,12 +362,10 @@
   "channels_analyzed": 5,
   "winner_variations_count": 8,
   "status": "in_progress",
-  "last_executed_at": "2026-06-08T16:50:17.953804",
+  "last_executed_at": "2026-06-08T19:11:09.341502",
   "results": {
     "shorts_produced": 0,
     "longform_produced": 0,
-    "errors": [
-      "Short 'Toilet Plume Contaminates Your Brush' failed (Reason: check logs)"
-    ]
+    "errors": []
   }
 }
