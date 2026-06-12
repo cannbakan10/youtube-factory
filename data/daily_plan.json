@@ -31,7 +31,9 @@
       "inspired_by": "Rome's Pantheon: A 2000-Year-Old Leak-Proof Dome #Shorts",
       "estimated_views": "medium",
       "is_winner_variation": true,
-      "winner_source_id": "jQ6gW5Oe-n8"
+      "winner_source_id": "jQ6gW5Oe-n8",
+      "status": "produced",
+      "production_id": "The_architectural_marvel_of_th_1781303046"
     },
     {
       "title": "Universe's Early Galaxy Boom",
@@ -363,10 +365,10 @@
   "channels_analyzed": 5,
   "winner_variations_count": 8,
   "status": "in_progress",
-  "last_executed_at": "2026-06-12T18:19:29.306213",
+  "last_executed_at": "2026-06-12T22:25:18.392084",
   "results": {
-    "shorts_produced": 0,
-    "longform_produced": 1,
+    "shorts_produced": 1,
+    "longform_produced": 0,
     "errors": []
   }
 }
