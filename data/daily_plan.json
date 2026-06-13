@@ -48,7 +48,9 @@
       "inspired_by": "JWST Finds Ancient Galaxies Too Early #Shorts",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "pZnlVbjTAkg"
+      "winner_source_id": "pZnlVbjTAkg",
+      "status": "produced",
+      "production_id": "The_incredible_speed_at_which__1781362780"
     },
     {
       "title": "GLASS-z13: Universe's Earliest Light",
@@ -365,7 +367,7 @@
   "channels_analyzed": 5,
   "winner_variations_count": 8,
   "status": "in_progress",
-  "last_executed_at": "2026-06-12T22:25:18.392084",
+  "last_executed_at": "2026-06-13T15:00:50.409685",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
