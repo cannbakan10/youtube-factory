@@ -65,7 +65,9 @@
       "inspired_by": "Oldest Galaxy GLASS-z13 Discovered #Shorts",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "n41UVkdKXxY"
+      "winner_source_id": "n41UVkdKXxY",
+      "status": "produced",
+      "production_id": "The_discovery_of_GLASSz13_one__1781388147"
     },
     {
       "title": "Ice Machine: Hidden Germ Hazard",
@@ -368,10 +370,10 @@
   "channels_analyzed": 5,
   "winner_variations_count": 8,
   "status": "in_progress",
-  "last_executed_at": "2026-06-13T17:39:29.675556",
+  "last_executed_at": "2026-06-13T22:03:40.422800",
   "results": {
-    "shorts_produced": 0,
-    "longform_produced": 1,
+    "shorts_produced": 1,
+    "longform_produced": 0,
     "errors": []
   }
 }
