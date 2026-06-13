@@ -342,7 +342,8 @@
       ],
       "inspired_by": "सिंधु का पानी रुका तो पाकिस्तान खत्म? 😱 | India vs Pakistan | Indus River Update #indiavspakistan",
       "estimated_views": "medium/high",
-      "duration_minutes": 20
+      "duration_minutes": 20,
+      "status": "produced"
     }
   ],
   "ambient_recommendations": [
@@ -367,10 +368,10 @@
   "channels_analyzed": 5,
   "winner_variations_count": 8,
   "status": "in_progress",
-  "last_executed_at": "2026-06-13T15:00:50.409685",
+  "last_executed_at": "2026-06-13T17:39:29.675556",
   "results": {
-    "shorts_produced": 1,
-    "longform_produced": 0,
+    "shorts_produced": 0,
+    "longform_produced": 1,
     "errors": []
   }
 }
