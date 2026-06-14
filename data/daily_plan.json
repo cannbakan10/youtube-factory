@@ -83,7 +83,8 @@
       "estimated_views": "high",
       "is_winner_variation": true,
       "winner_source_id": "T_yBjy6aSGA",
-      "status": "failed"
+      "status": "produced",
+      "production_id": "The_hidden_dangers_of_ice_mach_1781474884"
     },
     {
       "title": "D.B. Cooper's Missing Ransom",
@@ -371,12 +372,10 @@
   "channels_analyzed": 5,
   "winner_variations_count": 8,
   "status": "in_progress",
-  "last_executed_at": "2026-06-14T15:09:12.647281",
+  "last_executed_at": "2026-06-14T22:09:11.669177",
   "results": {
-    "shorts_produced": 0,
+    "shorts_produced": 1,
     "longform_produced": 0,
-    "errors": [
-      "Short 'Ice Machine: Hidden Germ Hazard' failed (Reason: check logs)"
-    ]
+    "errors": []
   }
 }
