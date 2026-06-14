@@ -82,7 +82,8 @@
       "inspired_by": "Restaurant Shutdown After Dirty Fridge & Mold #Shorts",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "T_yBjy6aSGA"
+      "winner_source_id": "T_yBjy6aSGA",
+      "status": "failed"
     },
     {
       "title": "D.B. Cooper's Missing Ransom",
@@ -370,10 +371,12 @@
   "channels_analyzed": 5,
   "winner_variations_count": 8,
   "status": "in_progress",
-  "last_executed_at": "2026-06-13T22:03:40.422800",
+  "last_executed_at": "2026-06-14T15:09:12.647281",
   "results": {
-    "shorts_produced": 1,
+    "shorts_produced": 0,
     "longform_produced": 0,
-    "errors": []
+    "errors": [
+      "Short 'Ice Machine: Hidden Germ Hazard' failed (Reason: check logs)"
+    ]
   }
 }
