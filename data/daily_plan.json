@@ -116,7 +116,9 @@
       "inspired_by": "Rome's Self-Healing Concrete Secret #Shorts",
       "estimated_views": "medium",
       "is_winner_variation": true,
-      "winner_source_id": "40bHnzks7-A"
+      "winner_source_id": "40bHnzks7-A",
+      "status": "produced",
+      "production_id": "The_ancient_Roman_secret_to_se_1781564533"
     },
     {
       "title": "GLASS-z13's Unexpected Mass",
@@ -374,7 +376,7 @@
   "channels_analyzed": 5,
   "winner_variations_count": 8,
   "status": "in_progress",
-  "last_executed_at": "2026-06-15T17:55:40.603336",
+  "last_executed_at": "2026-06-15T23:03:47.862790",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
