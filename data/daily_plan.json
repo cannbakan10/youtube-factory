@@ -99,7 +99,9 @@
       "inspired_by": "D.B. Cooper's Parachute Whispers Secrets #Shorts",
       "estimated_views": "medium",
       "is_winner_variation": true,
-      "winner_source_id": "QHpgbH-oAYo"
+      "winner_source_id": "QHpgbH-oAYo",
+      "status": "produced",
+      "production_id": "The_enduring_mystery_of_DB_Coo_1781546051"
     },
     {
       "title": "Self-Healing Roman Building Mix",
@@ -372,7 +374,7 @@
   "channels_analyzed": 5,
   "winner_variations_count": 8,
   "status": "in_progress",
-  "last_executed_at": "2026-06-14T22:09:11.669177",
+  "last_executed_at": "2026-06-15T17:55:40.603336",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
