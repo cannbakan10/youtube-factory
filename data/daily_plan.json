@@ -133,7 +133,9 @@
       "inspired_by": "Galaxy GLASS-z13: 300 Million Years After Big Bang #Shorts",
       "estimated_views": "high",
       "is_winner_variation": true,
-      "winner_source_id": "A92xFY3pWBU"
+      "winner_source_id": "A92xFY3pWBU",
+      "status": "produced",
+      "production_id": "The_surprising_discovery_of_th_1781633098"
     },
     {
       "title": "Pentagon Declassifies UAP Reports",
@@ -376,7 +378,7 @@
   "channels_analyzed": 5,
   "winner_variations_count": 8,
   "status": "in_progress",
-  "last_executed_at": "2026-06-15T23:03:47.862790",
+  "last_executed_at": "2026-06-16T18:06:07.594656",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
