@@ -202,7 +202,9 @@
       "inspired_by": "Ancient Civilizations' Unexplained Technologies That Still Mystify Scientists",
       "estimated_views": "medium",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "The_Antikythera_Mechanism_an_a_1781800556"
     },
     {
       "title": "Neuralink: Brain to Computer Direct",
@@ -384,7 +386,7 @@
   "channels_analyzed": 5,
   "winner_variations_count": 8,
   "status": "in_progress",
-  "last_executed_at": "2026-06-17T22:45:57.397855",
+  "last_executed_at": "2026-06-18T16:37:07.212255",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
