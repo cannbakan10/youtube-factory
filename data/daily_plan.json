@@ -288,7 +288,9 @@
       "inspired_by": "Quantum Entanglement Explained: The 'Spooky Action' Driving New Tech",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "Quantum_entanglement_often_cal_1781993101"
     },
     {
       "title": "Android's Hidden Developer Mode",
@@ -394,7 +396,7 @@
   "channels_analyzed": 5,
   "winner_variations_count": 8,
   "status": "in_progress",
-  "last_executed_at": "2026-06-20T15:06:09.524247",
+  "last_executed_at": "2026-06-20T22:06:01.696586",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
