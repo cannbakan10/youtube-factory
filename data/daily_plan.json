@@ -305,7 +305,9 @@
       "inspired_by": "The Hidden Features & Secret Codes in Your Smartphone You Didn't Know About",
       "estimated_views": "medium",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "The_existence_of_developer_opt_1782054671"
     },
     {
       "title": "3D Print with Mosquito Proboscis",
@@ -396,7 +398,7 @@
   "channels_analyzed": 5,
   "winner_variations_count": 8,
   "status": "in_progress",
-  "last_executed_at": "2026-06-20T22:06:01.696586",
+  "last_executed_at": "2026-06-21T15:12:50.012596",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
