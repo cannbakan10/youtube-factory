@@ -322,7 +322,9 @@
       "inspired_by": "[Science & Technology] This 3D Printer Uses A Mosquito 😮",
       "estimated_views": "high",
       "is_winner_variation": false,
-      "winner_source_id": ""
+      "winner_source_id": "",
+      "status": "produced",
+      "production_id": "A_novel_3D_printing_technique__1782079983"
     },
     {
       "title": "Astronaut Lost in Empty Space",
@@ -398,7 +400,7 @@
   "channels_analyzed": 5,
   "winner_variations_count": 8,
   "status": "in_progress",
-  "last_executed_at": "2026-06-21T15:12:50.012596",
+  "last_executed_at": "2026-06-21T22:14:12.632969",
   "results": {
     "shorts_produced": 1,
     "longform_produced": 0,
